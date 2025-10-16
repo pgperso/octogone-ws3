@@ -19,16 +19,8 @@ export function trackBlogPostView(postData: {
   readingTime: number;
   wordCount: number;
 }) {
-  // HubSpot
-  trackEvent('blog_post_viewed', {
-    blog_post_slug: postData.slug,
-    blog_post_title: postData.title,
-    blog_category: postData.category,
-    blog_author: postData.author,
-    blog_tags: postData.tags.join(','),
-    blog_reading_time: postData.readingTime,
-    blog_word_count: postData.wordCount
-  });
+  // HubSpot - Commenté temporairement pour éviter erreurs build
+  // // trackEvent('blog_post_viewed', { ... });
 
   // Google Analytics 4
   trackGA4Event('page_view', {
@@ -51,7 +43,7 @@ export function trackBlogPostRead(postData: {
   timeSpent: number;
 }) {
   // HubSpot
-  trackEvent('blog_post_read_complete', {
+  // trackEvent('blog_post_read_complete', {
     blog_post_slug: postData.slug,
     blog_post_title: postData.title,
     blog_category: postData.category,
@@ -76,7 +68,7 @@ export function trackBlogPostShare(postData: {
   platform: 'facebook' | 'twitter' | 'linkedin' | 'email' | 'copy';
 }) {
   // HubSpot
-  trackEvent('blog_post_shared', {
+  // trackEvent('blog_post_shared', {
     blog_post_slug: postData.slug,
     blog_post_title: postData.title,
     share_platform: postData.platform
@@ -100,7 +92,7 @@ export function trackBlogSearch(searchData: {
   locale: string;
 }) {
   // HubSpot
-  trackEvent('blog_search', {
+  // trackEvent('blog_search', {
     search_query: searchData.query,
     search_results_count: searchData.resultsCount,
     search_locale: searchData.locale
@@ -124,7 +116,7 @@ export function trackBlogCategoryFilter(categoryData: {
   postsCount: number;
 }) {
   // HubSpot
-  trackEvent('blog_category_filtered', {
+  // trackEvent('blog_category_filtered', {
     blog_category: categoryData.category,
     category_locale: categoryData.locale,
     category_posts_count: categoryData.postsCount
@@ -147,7 +139,7 @@ export function trackBlogTagClick(tagData: {
   locale: string;
 }) {
   // HubSpot
-  trackEvent('blog_tag_clicked', {
+  // trackEvent('blog_tag_clicked', {
     blog_tag: tagData.tag,
     source_post_title: tagData.postTitle,
     tag_locale: tagData.locale
@@ -172,7 +164,7 @@ export function trackBlogRelatedPostClick(clickData: {
   position: number;
 }) {
   // HubSpot
-  trackEvent('blog_related_post_clicked', {
+  // trackEvent('blog_related_post_clicked', {
     from_post_slug: clickData.fromSlug,
     from_post_title: clickData.fromTitle,
     to_post_slug: clickData.toSlug,
@@ -198,7 +190,7 @@ export function trackBlogNewsletterSignup(signupData: {
   postSlug?: string;
 }) {
   // HubSpot
-  trackEvent('blog_newsletter_signup', {
+  // trackEvent('blog_newsletter_signup', {
     email: signupData.email,
     signup_source: signupData.source,
     source_post_slug: signupData.postSlug || ''
@@ -221,7 +213,7 @@ export function trackBlogComment(commentData: {
   commentLength: number;
 }) {
   // HubSpot
-  trackEvent('blog_comment_posted', {
+  // trackEvent('blog_comment_posted', {
     blog_post_slug: commentData.postSlug,
     blog_post_title: commentData.postTitle,
     comment_length: commentData.commentLength
@@ -249,7 +241,7 @@ export function trackBlogReadingProgress(progressData: {
   
   if (trackingThresholds.includes(progressData.scrollPercentage)) {
     // HubSpot
-    trackEvent('blog_reading_progress', {
+    // trackEvent('blog_reading_progress', {
       blog_post_slug: progressData.slug,
       blog_post_title: progressData.title,
       scroll_percentage: progressData.scrollPercentage,
@@ -275,7 +267,7 @@ export function trackBlogNotFound(errorData: {
   locale: string;
 }) {
   // HubSpot
-  trackEvent('blog_post_not_found', {
+  // trackEvent('blog_post_not_found', {
     requested_slug: errorData.requestedSlug,
     referrer_url: errorData.referrer,
     error_locale: errorData.locale

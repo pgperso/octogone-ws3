@@ -4,10 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { ResponsiveSection } from '@/components/ui/responsive-section';
 import { OctogoneButton } from '@/components/ui/octogone-button';
-import { 
-  Warehouse, 
-  ChefHat, 
-  Thermometer,
+import {
   DollarSign,
   TrendingUp,
   Clock,
@@ -16,13 +13,6 @@ import {
 import { AVAILABLE_MODULES, LOCATION_RANGES } from '../config';
 import { calculateROI, formatCurrency, formatHours } from '../utils/roi-calculations';
 
-// Map des icônes (seulement les 4 forfaits réels)
-const ICON_MAP: Record<string, React.ComponentType> = {
-  Warehouse,    // Inventaire
-  ChefHat,      // Foodcost
-  Thermometer,  // Thermomètre
-  DollarSign    // Pourboire
-};
 
 export default function ROICalculatorSection() {
   const params = useParams();
@@ -115,7 +105,6 @@ export default function ROICalculatorSection() {
               
               <div className="grid grid-cols-1 gap-3">
                 {AVAILABLE_MODULES.map((module) => {
-                  const Icon = ICON_MAP[module.icon];
                   const isSelected = selectedModules.includes(module.id);
                   
                   return (
