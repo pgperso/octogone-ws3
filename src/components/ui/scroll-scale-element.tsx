@@ -7,7 +7,6 @@ interface ScrollScaleElementProps {
   initialScale?: number;
   finalScale?: number;
   scrollRange?: number;
-  reverse?: boolean;
   style?: React.CSSProperties;
 }
 
@@ -21,7 +20,6 @@ export function ScrollScaleElement({
   initialScale = 1.15,
   finalScale = 0.95,
   scrollRange = 300,
-  reverse = false,
   style = {},
 }: ScrollScaleElementProps) {
   // Utiliser notre hook personnalisé pour l'animation d'échelle

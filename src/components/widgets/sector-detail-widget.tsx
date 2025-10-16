@@ -114,7 +114,7 @@ const getRelevantModules = (sectorId: string) => {
 };
 
 export default function SectorDetailWidget({ sector, locale, isRestaurantStyle = false }: SectorDetailWidgetProps) {
-  const relevantModules = getRelevantModules(sector.id, isRestaurantStyle);
+  const relevantModules = getRelevantModules(sector.id);
   
   // FORCER l'utilisation de la V2 UNIQUEMENT
   const contentV2 = getSectorContentV2(sector.id, isRestaurantStyle);
