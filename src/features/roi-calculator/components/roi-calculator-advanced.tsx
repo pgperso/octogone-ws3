@@ -330,7 +330,7 @@ export default function ROICalculatorAdvanced({ onSavingsCalculated }: ROICalcul
                       <div className="flex items-center gap-2 w-full">
                         <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
                              style={{ backgroundColor: isSelected ? 'var(--surface)' : 'var(--secondary-container)' }}>
-                          {Icon && <Icon className="w-4 h-4" />}
+                          <div className="w-4 h-4 rounded bg-current opacity-50"></div>
                         </div>
                         <div className="flex-1 text-left">
                           <div className="flex items-center gap-2">
