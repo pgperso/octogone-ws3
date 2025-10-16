@@ -7,13 +7,11 @@ import { BlogCard } from './blog-card';
 interface BlogRelatedPostsProps {
   posts: BlogPost[];
   locale: 'fr' | 'en';
-  currentSlug: string;
 }
 
 export const BlogRelatedPosts: React.FC<BlogRelatedPostsProps> = ({
   posts,
-  locale,
-  currentSlug: _currentSlug
+  locale
 }) => {
   if (posts.length === 0) {
     return null;

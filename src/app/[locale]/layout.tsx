@@ -8,7 +8,7 @@ import { Footer } from "@/components/ui/footer";
 import FloatingROIWidget from "@/components/ui/floating-roi-widget";
 import { AnalyticsProvider } from "@/components/analytics/analytics-provider";
 import { SimpleSchema } from "@/components/seo/global-schema";
-import { routes } from "@/config/routes";
+import { routes, type Route } from "@/config/routes";
 import { CalculatorProvider, useCalculator } from "@/contexts/calculator-context";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -39,7 +39,7 @@ export default function LocaleLayout({
       path: child.path,
       description: child.description,
     }))
-  }));
+  })) as Route[];
 
   return (
     <AnalyticsProvider>

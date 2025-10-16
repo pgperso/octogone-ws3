@@ -61,7 +61,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
           >
             <BlogRelatedPosts 
               posts={relatedPosts}
-              currentSlug={slug}
               locale={typedLocale}
             />
           </ResponsiveSection>
