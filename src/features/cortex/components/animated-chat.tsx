@@ -240,10 +240,8 @@ export default function AnimatedChat({ locale }: AnimatedChatProps) {
             </div>
 
             {/* Graphique en pleine largeur */}
-            {/* @ts-expect-error - chart property exists in runtime data */}
             {message.chart && (
               <div className="w-full">
-                {/* @ts-expect-error - chart property exists in runtime data */}
                 <ChartWrapper chart={message.chart} isEnglish={isEnglish} />
               </div>
             )}

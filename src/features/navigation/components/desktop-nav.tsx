@@ -120,7 +120,7 @@ export const DesktopNav: React.FC<DesktopNavProps> = ({
                               return (
                                 <Link
                                   key={item.path}
-                                  href={item.href || item.path}
+                                  href={item.path}
                                   className="block p-4 rounded-md transition-all duration-200"
                                   style={{
                                     backgroundColor: isActive ? 'var(--secondary-container)' : 'transparent'
@@ -145,11 +145,6 @@ export const DesktopNav: React.FC<DesktopNavProps> = ({
                                   <div className="item-title text-lg font-medium mb-2" style={{ color: isActive ? 'var(--on-secondary-container)' : 'var(--on-background)' }}>
                                     {item.label}
                                   </div>
-                                  {item.description && (
-                                    <p className="item-description text-sm" style={{ color: isActive ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)' }}>
-                                      {item.description}
-                                    </p>
-                                  )}
                                 </Link>
                               );
                             })}

@@ -1,0 +1,30 @@
+{
+  "categories": [
+    {
+      "id": "nouveautes",
+      "nameFr": "Nouveautés",
+      "nameEn": "News"
+    },
+    {
+      "id": "conseils",
+      "nameFr": "Conseils",
+      "nameEn": "Tips"
+    }
+  ],
+  "authors": [
+    {
+      "id": "octogone-team",
+      "nameFr": "Équipe Octogone",
+      "nameEn": "Octogone Team"
+    }
+  ],
+  "seo": {
+    "defaultTitleFr": "Blog Octogone",
+    "defaultTitleEn": "Octogone Blog",
+    "defaultDescriptionFr": "Conseils et actualités pour la gestion de restaurants",
+    "defaultDescriptionEn": "Tips and news for restaurant management"
+  },
+  "social": {
+    "defaultImage": "/images/blog/default-og.jpg"
+  }
+}
