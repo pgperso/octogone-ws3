@@ -239,7 +239,7 @@ export default function SectorDetailWidget({ sector, locale, isRestaurantStyle =
                 <div className={`${isEven ? 'lg:order-2' : 'lg:order-1'}`}>
                   <div className="mb-6">
                     <h3 className="text-3xl lg:text-4xl font-bold text-marine-900 mb-2">
-                      {locale === "fr" ? module.titleFr : module.titleEn}
+                      {locale === "fr" ? moduleData.titleFr : moduleData.titleEn}
                     </h3>
                     <p className="text-marine-600 text-lg">
                       {locale === "fr" ? "Module Octogone" : "Octogone Module"}
@@ -248,8 +248,8 @@ export default function SectorDetailWidget({ sector, locale, isRestaurantStyle =
                   
                   <p className="text-marine-700 mb-6 text-lg leading-relaxed">
                     {locale === "fr" ? 
-                      `Module ${module.titleFr} adapté spécifiquement pour les ${sector.titleFr.toLowerCase()}` :
-                      `${module.titleEn} module specifically adapted for ${sector.titleEn.toLowerCase()}`
+                      `Module ${moduleData.titleFr} adapté spécifiquement pour les ${sector.titleFr.toLowerCase()}` :
+                      `${moduleData.titleEn} module specifically adapted for ${sector.titleEn.toLowerCase()}`
                     }
                   </p>
                   
