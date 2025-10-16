@@ -1,0 +1,171 @@
+@layer base {
+  /* Base Typography */
+  html {
+    font-family: var(--font-inter);
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Fluid Typography System */
+  :root {
+    --fluid-min-width: 320;
+    --fluid-max-width: 1536;
+    --fluid-min-size: 16;
+    --fluid-max-size: 19;
+    --fluid-min-ratio: 1.2;
+    --fluid-max-ratio: 1.333;
+
+    --fluid-screen: 100vw;
+    --fluid-bp: calc(
+      (var(--fluid-screen) - var(--fluid-min-width) / 16 * 1rem) /
+      (var(--fluid-max-width) - var(--fluid-min-width))
+    );
+  }
+
+  /* Fluid Base Size */
+  :root {
+    --fluid-base: calc(
+      (var(--fluid-min-size) / 16) * 1rem +
+      (var(--fluid-max-size) - var(--fluid-min-size)) *
+      var(--fluid-bp)
+    );
+  }
+
+  /* Fluid Type Scale */
+  :root {
+    --scale-000: calc(var(--fluid-base) / var(--fluid-min-ratio));
+    --scale-100: var(--fluid-base);
+    --scale-200: calc(var(--scale-100) * var(--fluid-min-ratio));
+    --scale-300: calc(var(--scale-200) * var(--fluid-min-ratio));
+    --scale-400: calc(var(--scale-300) * var(--fluid-min-ratio));
+    --scale-500: calc(var(--scale-400) * var(--fluid-min-ratio));
+    --scale-600: calc(var(--scale-500) * var(--fluid-min-ratio));
+    --scale-700: calc(var(--scale-600) * var(--fluid-min-ratio));
+    --scale-800: calc(var(--scale-700) * var(--fluid-min-ratio));
+    --scale-900: calc(var(--scale-800) * var(--fluid-min-ratio));
+  }
+
+  /* Base Text Styles */
+  body {
+    font-size: var(--scale-100);
+    line-height: 1.6;
+  }
+
+  /* Heading Styles */
+  h1, .h1 {
+    font-size: var(--scale-800);
+    line-height: 1.1;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    @media (max-width: 768px) {
+      font-size: var(--scale-700);
+    }
+  }
+
+  h2, .h2 {
+    font-size: var(--scale-700);
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    @media (max-width: 768px) {
+      font-size: var(--scale-600);
+    }
+  }
+
+  h3, .h3 {
+    font-size: var(--scale-600);
+    line-height: 1.3;
+    font-weight: 600;
+    @media (max-width: 768px) {
+      font-size: var(--scale-500);
+    }
+  }
+
+  h4, .h4 {
+    font-size: var(--scale-500);
+    line-height: 1.4;
+    font-weight: 600;
+    @media (max-width: 768px) {
+      font-size: var(--scale-400);
+    }
+  }
+
+  h5, .h5 {
+    font-size: var(--scale-400);
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  h6, .h6 {
+    font-size: var(--scale-300);
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  /* Paragraph Styles */
+  p, .body-large {
+    font-size: var(--scale-200);
+    line-height: 1.6;
+  }
+
+  .body-base {
+    font-size: var(--scale-100);
+    line-height: 1.6;
+  }
+
+  .body-small {
+    font-size: var(--scale-000);
+    line-height: 1.6;
+  }
+
+  /* Link Styles */
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--color-primary-dark);
+      text-decoration: underline;
+    }
+  }
+
+  /* List Styles */
+  ul, ol {
+    padding-left: 1.5em;
+    margin-bottom: 1.5em;
+  }
+
+  li {
+    margin-bottom: 0.5em;
+  }
+
+  /* Semantic Text */
+  strong, b {
+    font-weight: 600;
+  }
+
+  em, i {
+    font-style: italic;
+  }
+
+  /* Article Typography */
+  article {
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 2em;
+      margin-bottom: 1em;
+    }
+
+    p {
+      margin-bottom: 1.5em;
+    }
+
+    img {
+      margin: 2em 0;
+    }
+  }
+}

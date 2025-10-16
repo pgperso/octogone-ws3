@@ -1,0 +1,43 @@
+import * as React from "react";
+import { Inter } from "next/font/google";
+import { usePathname } from "next/navigation";
+import Navigation from "@/features/navigation";
+import { Footer } from "@/components/ui/footer";
+import FloatingROIWidget from "@/components/ui/floating-roi-widget";
+import { AnalyticsProvider } from "@/components/analytics/analytics-provider";
+import SimpleSchema from "@/components/seo/simple-schema";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export default function LocaleLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = React.use(params);
+  const pathname = usePathname();
+
+  // Extraire le chemin sans le préfixe de locale
+  const path = pathname.replace(/^\/[^\/]+/, "");
+  const activeRoute = path || "/";
+
+  return (
+    <AnalyticsProvider>
+      <div lang={locale} className={inter.className}>
+        {/* Schema.org simple et fiable pour SEO IA */}
+        <SimpleSchema locale={locale} />
+        
+        <Navigation activeRoute={activeRoute} theme="light" locale={locale} />
+        <div className="pt-20 min-h-screen flex flex-col">
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </div>
+        
+        {/* Widget flottant ROI */}
+        <FloatingROIWidget />
+      </div>
+    </AnalyticsProvider>
+  );
+}

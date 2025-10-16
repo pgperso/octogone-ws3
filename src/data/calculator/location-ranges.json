@@ -1,0 +1,37 @@
+[
+  {
+    "min": 1,
+    "max": 1,
+    "labelFr": "1 établissement",
+    "labelEn": "1 location",
+    "efficiencyMultiplier": 1.0
+  },
+  {
+    "min": 2,
+    "max": 5,
+    "labelFr": "2-5 établissements",
+    "labelEn": "2-5 locations",
+    "efficiencyMultiplier": 1.15
+  },
+  {
+    "min": 6,
+    "max": 10,
+    "labelFr": "6-10 établissements",
+    "labelEn": "6-10 locations",
+    "efficiencyMultiplier": 1.25
+  },
+  {
+    "min": 11,
+    "max": 20,
+    "labelFr": "11-20 établissements",
+    "labelEn": "11-20 locations",
+    "efficiencyMultiplier": 1.35
+  },
+  {
+    "min": 21,
+    "max": null,
+    "labelFr": "21+ établissements",
+    "labelEn": "21+ locations",
+    "efficiencyMultiplier": 1.5
+  }
+]

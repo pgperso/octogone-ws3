@@ -1,0 +1,85 @@
+{
+  "postsPerPage": 6,
+  "categories": [
+    {
+      "id": "nouveautes",
+      "nameFr": "Nouveautés",
+      "nameEn": "News",
+      "descriptionFr": "Dernières fonctionnalités et mises à jour d'Octogone",
+      "descriptionEn": "Latest Octogone features and updates",
+      "color": "#C8B6FF"
+    },
+    {
+      "id": "conseils",
+      "nameFr": "Conseils",
+      "nameEn": "Tips",
+      "descriptionFr": "Conseils pratiques pour optimiser votre restaurant",
+      "descriptionEn": "Practical tips to optimize your restaurant",
+      "color": "#B4D4FF"
+    },
+    {
+      "id": "etudes-cas",
+      "nameFr": "Études de cas",
+      "nameEn": "Case Studies",
+      "descriptionFr": "Histoires de succès de nos clients",
+      "descriptionEn": "Success stories from our clients",
+      "color": "#B8E0D2"
+    },
+    {
+      "id": "tendances",
+      "nameFr": "Tendances",
+      "nameEn": "Trends",
+      "descriptionFr": "Tendances de l'industrie de la restauration",
+      "descriptionEn": "Restaurant industry trends",
+      "color": "#FFE5B4"
+    }
+  ],
+  "authors": [
+    {
+      "id": "equipe-octogone",
+      "name": "Équipe Octogone",
+      "nameEn": "Octogone Team",
+      "bio": "L'équipe d'experts d'Octogone partage ses connaissances sur la gestion de restaurant.",
+      "bioEn": "Octogone's team of experts shares their knowledge on restaurant management.",
+      "avatar": "/images/authors/octogone-team.jpg",
+      "role": "Équipe",
+      "roleEn": "Team"
+    },
+    {
+      "id": "chef-produit",
+      "name": "Chef de Produit",
+      "nameEn": "Product Manager",
+      "bio": "Responsable produit chez Octogone, spécialisé dans l'innovation restaurant.",
+      "bioEn": "Product Manager at Octogone, specialized in restaurant innovation.",
+      "avatar": "/images/authors/product-manager.jpg",
+      "role": "Chef de Produit",
+      "roleEn": "Product Manager"
+    }
+  ],
+  "seo": {
+    "defaultTitleFr": "Octogone Insight - Intelligence et Données pour la Restauration",
+    "defaultTitleEn": "Octogone Insight - Intelligence and Data for Restaurant Management",
+    "defaultDescriptionFr": "Articles, analyses et innovations pour une restauration guidée par l'intelligence et la donnée. Opérer. Automatiser. Analyser. Prédire.",
+    "defaultDescriptionEn": "Articles, analysis and innovations for data-driven restaurant management. Operate. Automate. Analyze. Predict.",
+    "defaultKeywords": [
+      "gestion restaurant",
+      "food cost",
+      "inventaire restaurant",
+      "octogone",
+      "conseils restaurant",
+      "restaurant management",
+      "restaurant tips",
+      "food cost control"
+    ]
+  },
+  "social": {
+    "enableSharing": true,
+    "platforms": ["facebook", "twitter", "linkedin", "email"],
+    "defaultImage": "/images/blog/octogone-blog-default.jpg"
+  },
+  "reading": {
+    "wordsPerMinute": 200,
+    "showReadingTime": true,
+    "showWordCount": false
+  }
+}

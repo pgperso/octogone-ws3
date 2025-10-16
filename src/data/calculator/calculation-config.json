@@ -1,0 +1,15 @@
+{
+  "defaultHourlyCost": 25,
+  "defaultManualTasksHoursPerWeek": 10,
+  "weeksPerMonth": 4.33,
+  "weeksPerYear": 52,
+  "roiPeriodMonths": 12,
+  "integrationFeePerLocation": 1500,
+  "conservativeFactor": 0.85,
+  "inventorySavings": {
+    "timeSavedPerInventoryPerPersonHours": 2.5,
+    "moneySavedPerInventory": 150,
+    "defaultInventoriesPerMonth": 4,
+    "defaultEmployeesPerInventory": 2
+  }
+}

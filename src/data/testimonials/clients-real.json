@@ -1,0 +1,124 @@
+{
+  "testimonials": [
+    {
+      "id": "pauline-baroche-bromont",
+      "nameFr": "Pauline Baroche",
+      "nameEn": "Pauline Baroche",
+      "businessFr": "Technicienne administrative - Restauration, Bromont",
+      "businessEn": "Administrative Technician - Food Service, Bromont",
+      "quoteFr": "La plateforme Octogone offre une merveilleuse opportunité de centralisation des données ainsi qu'un accès efficace à l'information. Le fait que les fournisseurs soient intégrés et que la facturation se fasse automatiquement engendre un gain de temps significatif.",
+      "quoteEn": "The Octogone platform offers a wonderful opportunity for data centralization and efficient access to information. The fact that suppliers are integrated and billing is done automatically generates significant time savings.",
+      "fullStoryFr": "En tant que technicienne administrative pour la restauration à Bromont, je gère les opérations de plusieurs établissements touristiques. Avant Octogone, la centralisation des données était un défi majeur : chaque restaurant utilisait ses propres méthodes, rendant difficile la consolidation des informations et la prise de décisions stratégiques. L'intégration des fournisseurs et la facturation automatique ont transformé notre efficacité opérationnelle. Aujourd'hui, j'ai accès en temps réel à tous les rapports et banques de données dont j'ai besoin, peu importe où je me trouve. L'ensemble des modules permet un suivi précis des stocks et des prix, ce qui nous aide à maintenir nos marges tout en offrant un service de qualité à nos clients.",
+      "fullStoryEn": "As an administrative technician for food service in Bromont, I manage operations for several tourist establishments. Before Octogone, data centralization was a major challenge: each restaurant used its own methods, making it difficult to consolidate information and make strategic decisions. Supplier integration and automatic billing have transformed our operational efficiency. Today, I have real-time access to all the reports and databases I need, no matter where I am. The complete set of modules enables precise tracking of inventory and prices, helping us maintain our margins while offering quality service to our customers.",
+      "rating": 5,
+      "image": "/images/testimonials/bromont.png",
+      "sectors": ["tourism-industrial", "chains-groups"],
+      "isRestaurantStyle": false,
+      "isReal": true,
+      "resultsFr": [
+        "Centralisation complète des données multi-établissements",
+        "Gain de temps significatif grâce à la facturation automatique",
+        "Accès efficace aux rapports en temps réel",
+        "Suivi précis des stocks et des prix",
+        "Intégration fluide avec les fournisseurs"
+      ],
+      "resultsEn": [
+        "Complete data centralization across multiple locations",
+        "Significant time savings through automatic billing",
+        "Efficient access to real-time reports",
+        "Precise inventory and price tracking",
+        "Seamless supplier integration"
+      ]
+    },
+    {
+      "id": "les-mordus-brasserie",
+      "nameFr": "Équipe de gestion",
+      "nameEn": "Management Team",
+      "businessFr": "Brasserie Les Mordus - Vieux-Québec",
+      "businessEn": "Les Mordus Brewery - Old Quebec",
+      "quoteFr": "Octogone nous a permis d'automatiser notre inventaire mensuel et de gagner une clarté précieuse dans notre gestion. L'import automatique des factures avec les prix et food cost ont vraiment changé la donne. Nos recettes sont organisées et calculées en temps réel, et l'inventaire est parfaitement aligné avec les ventes grâce à l'intégration POS.",
+      "quoteEn": "Octogone allowed us to automate our monthly inventory and gain precious clarity in our management. The automatic import of invoices with prices and food cost truly changed the game. Our recipes are organized and calculated in real-time, and inventory is perfectly aligned with sales thanks to POS integration.",
+      "fullStoryFr": "Située au cœur du Vieux-Québec, la Brasserie Les Mordus s'est rapidement taillée une place de choix dans le paysage culinaire québécois. Réputée pour notre cuisine inventive mettant en valeur les produits locaux et notre offre de bières artisanales, nous faisions face à des défis importants : le suivi des coûts de recettes complexes, la fluctuation des prix fournisseurs, et la perte de temps stratégique dans les inventaires manuels. Octogone nous a permis d'automatiser notre inventaire mensuel, nous faisant gagner une clarté précieuse dans notre gestion. L'import automatique des factures avec les prix et le calcul du food cost en temps réel ont vraiment changé la donne.",
+      "fullStoryEn": "Located in the heart of Old Quebec, Brasserie Les Mordus has quickly carved out a prime spot in Quebec's culinary landscape. Known for our inventive cuisine showcasing local products and our craft beer selection, we faced significant challenges: tracking complex recipe costs, fluctuating supplier prices, and losing strategic time on manual inventories. Octogone allowed us to automate our monthly inventory, giving us precious clarity in our management. Automatic invoice import with prices and real-time food cost calculation truly changed the game.",
+      "rating": 5,
+      "image": "/images/testimonials/mordus.jpg",
+      "sectors": ["pub-microbrewery", "independent-restaurants"],
+      "isRestaurantStyle": true,
+      "isReal": true,
+      "resultsFr": [
+        "Automatisation complète de l'inventaire mensuel",
+        "Import automatique des factures avec calcul du food cost",
+        "Recettes organisées et calculées en temps réel",
+        "Inventaire synchronisé avec les ventes via POS",
+        "Réduction de 50% du temps de gestion d'inventaire"
+      ],
+      "resultsEn": [
+        "Complete automation of monthly inventory",
+        "Automatic invoice import with food cost calculation",
+        "Recipes organized and calculated in real-time",
+        "Inventory synchronized with sales via POS",
+        "50% reduction in inventory management time"
+      ]
+    },
+    {
+      "id": "olive-gourmando",
+      "nameFr": "Équipe de gestion",
+      "nameEn": "Management Team",
+      "businessFr": "Olive+Gourmando - Boulangerie et épicerie fine, Montréal",
+      "businessEn": "Olive+Gourmando - Bakery and Fine Grocery, Montreal",
+      "quoteFr": "Avec Octogone, nous avons enfin une structure qui nous permet de croire tout en gardant une gestion rigoureuse de nos coûts et inventaires. Nous pouvons désormais nous concentrer sur ce que nous faisons de mieux : offrir une cuisine authentique et généreuse.",
+      "quoteEn": "With Octogone, we finally have a structure that allows us to believe while maintaining rigorous management of our costs and inventories. We can now focus on what we do best: offering authentic and generous cuisine.",
+      "fullStoryFr": "Fondée en 1998 par Dyan Solomon et Eric Girard, Olive+Gourmando est devenue une adresse incontournable de Montréal. Notre boulangerie et épicerie fine célèbre la richesse des produits locaux avec une cuisine créative et artisanale. Avec Octogone, nous avons enfin une structure qui nous permet de croire tout en gardant une gestion rigoureuse de nos coûts et inventaires. L'automatisation de l'inventaire et la structuration des processus nous ont permis un suivi plus rapide et efficace.",
+      "fullStoryEn": "Founded in 1998 by Dyan Solomon and Eric Girard, Olive+Gourmando has become an essential Montreal address. Our bakery and fine grocery celebrates the richness of local products with creative and artisanal cuisine. With Octogone, we finally have a structure that allows us to believe while maintaining rigorous management of our costs and inventories. Inventory automation and process structuring have enabled faster and more efficient tracking.",
+      "rating": 5,
+      "image": "/images/testimonials/olive.jpg",
+      "sectors": ["cafe", "independent-restaurants"],
+      "isRestaurantStyle": true,
+      "isReal": true,
+      "resultsFr": [
+        "Réduction de 50% du temps de gestion d'inventaire",
+        "Calcul automatique des coûts avec mises à jour fournisseurs",
+        "Suivi optimisé des coûts de main-d'œuvre",
+        "Intégration fluide avec POS (Epos et EmployeurQ)",
+        "Meilleure gestion des pertes et du gaspillage"
+      ],
+      "resultsEn": [
+        "50% reduction in inventory management time",
+        "Automatic cost calculation with supplier updates",
+        "Optimized labor cost tracking",
+        "Seamless POS integration (Epos and EmployeurQ)",
+        "Better loss and waste management"
+      ]
+    },
+    {
+      "id": "rioux-pettigrew",
+      "nameFr": "Équipe de gestion",
+      "nameEn": "Management Team",
+      "businessFr": "Rioux & Pettigrew - Restaurant gastronomique, Vieux-Québec",
+      "businessEn": "Rioux & Pettigrew - Fine Dining Restaurant, Old Quebec",
+      "quoteFr": "Avec notre croissance et l'ouverture de nouveaux espaces, la gestion des stocks, des coûts et des opérations était devenue un enjeu majeur. Octogone nous a permis d'optimiser nos processus et de maintenir notre excellence culinaire tout en gérant efficacement nos opérations.",
+      "quoteEn": "With our growth and the opening of new spaces, managing inventory, costs and operations had become a major challenge. Octogone allowed us to optimize our processes and maintain our culinary excellence while efficiently managing our operations.",
+      "fullStoryFr": "Situé au cœur du Vieux-Québec, Rioux & Pettigrew est une adresse incontournable qui célèbre la richesse des produits locaux avec une cuisine créative et raffinée. Avec notre popularité croissante et l'ouverture de nouveaux espaces, la gestion des stocks, des coûts et des opérations était devenue un enjeu majeur. Les défis étaient nombreux : communication complexifiée par la croissance, coordination difficile entre la cuisine, la gestion et la salle. Octogone nous a permis d'optimiser nos processus et de maintenir notre excellence culinaire.",
+      "fullStoryEn": "Located in the heart of Old Quebec, Rioux & Pettigrew is an essential address that celebrates the richness of local products with creative and refined cuisine. With our growing popularity and the opening of new spaces, managing inventory, costs, and operations had become a major challenge. The challenges were numerous: communication complicated by growth, difficult coordination between kitchen, management, and dining room. Octogone allowed us to optimize our processes and maintain our culinary excellence.",
+      "rating": 5,
+      "image": "/images/testimonials/rioux.jpg",
+      "sectors": ["gastronomic", "independent-restaurants"],
+      "isRestaurantStyle": true,
+      "isReal": true,
+      "resultsFr": [
+        "Optimisation complète des processus opérationnels",
+        "Coordination améliorée entre cuisine, gestion et salle",
+        "Réduction significative des ruptures de stock",
+        "Suivi efficace des fluctuations de prix fournisseurs",
+        "Gestion centralisée multi-établissements"
+      ],
+      "resultsEn": [
+        "Complete optimization of operational processes",
+        "Improved coordination between kitchen, management and dining room",
+        "Significant reduction in stock shortages",
+        "Effective tracking of supplier price fluctuations",
+        "Centralized multi-location management"
+      ]
+    }
+  ]
+}

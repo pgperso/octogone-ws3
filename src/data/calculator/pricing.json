@@ -1,0 +1,27 @@
+[
+  {
+    "minLocations": 1,
+    "maxLocations": 1,
+    "pricePerLocationPerMonth": 159
+  },
+  {
+    "minLocations": 2,
+    "maxLocations": 5,
+    "pricePerLocationPerMonth": 139
+  },
+  {
+    "minLocations": 6,
+    "maxLocations": 10,
+    "pricePerLocationPerMonth": 119
+  },
+  {
+    "minLocations": 11,
+    "maxLocations": 20,
+    "pricePerLocationPerMonth": 99
+  },
+  {
+    "minLocations": 21,
+    "maxLocations": null,
+    "pricePerLocationPerMonth": 89
+  }
+]

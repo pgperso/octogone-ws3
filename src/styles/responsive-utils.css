@@ -1,0 +1,152 @@
+@layer utilities {
+  /* Masquer/Afficher des éléments de manière responsive */
+  .hidden-mobile {
+    @media (max-width: 479px) {
+      display: none;
+    }
+  }
+  
+  .hidden-desktop {
+    @media (min-width: 480px) {
+      display: none;
+    }
+  }
+
+  /* Espacement responsive */
+  .section-spacing {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    @media (min-width: 480px) {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+
+    @media (min-width: 768px) {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+
+    @media (min-width: 1024px) {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+  }
+
+  .component-spacing {
+    padding: 1rem;
+
+    @media (min-width: 480px) {
+      padding: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      padding: 2rem;
+    }
+  }
+
+  /* Typographie responsive */
+  .text-responsive {
+    font-size: 1rem;
+    line-height: 1.5;
+
+    @media (min-width: 480px) {
+      font-size: 1.125rem;
+    }
+
+    @media (min-width: 768px) {
+      font-size: 1.25rem;
+    }
+  }
+
+  .heading-responsive {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+
+    @media (min-width: 480px) {
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+    }
+
+    @media (min-width: 768px) {
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+    }
+
+    @media (min-width: 1024px) {
+      font-size: 3rem;
+      line-height: 1;
+    }
+  }
+
+  /* Flexbox responsive */
+  .flex-responsive {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 480px) {
+      flex-direction: row;
+    }
+  }
+
+  /* Grille responsive */
+  .grid-responsive {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1rem;
+
+    @media (min-width: 480px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  /* Images responsives */
+  .image-responsive {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* Marges responsives */
+  .margin-responsive {
+    margin: 1rem;
+
+    @media (min-width: 480px) {
+      margin: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      margin: 2rem;
+    }
+
+    @media (min-width: 1024px) {
+      margin: 2.5rem;
+    }
+  }
+
+  /* Padding responsive */
+  .padding-responsive {
+    padding: 1rem;
+
+    @media (min-width: 480px) {
+      padding: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      padding: 2rem;
+    }
+
+    @media (min-width: 1024px) {
+      padding: 2.5rem;
+    }
+  }
+}

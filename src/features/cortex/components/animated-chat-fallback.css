@@ -1,0 +1,51 @@
+/* Fallbacks CSS pour navigateurs anciens */
+.animated-chat-fallback {
+  --background: #ffffff;
+  --on-surface: #1f2937;
+  --on-surface-variant: #6b7280;
+  --secondary-container: #f3f4f6;
+  --on-secondary-container: #374151;
+  --purple_cortex: #8b5cf6;
+  --on-purple_cortex: #ffffff;
+  --outline-variant: #d1d5db;
+  --surface: #ffffff;
+}
+
+/* Support pour les navigateurs sans CSS custom properties */
+@supports not (color: var(--background)) {
+  .animated-chat-fallback {
+    background-color: #ffffff;
+    color: #1f2937;
+  }
+  
+  .animated-chat-fallback .user-message {
+    background-color: #8b5cf6;
+    color: #ffffff;
+  }
+  
+  .animated-chat-fallback .cortex-message {
+    background-color: #f3f4f6;
+    color: #374151;
+  }
+  
+  .animated-chat-fallback .chart-container {
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+  }
+}
+
+/* Réduction des animations pour les utilisateurs qui préfèrent moins de mouvement */
+@media (prefers-reduced-motion: reduce) {
+  .animated-chat-fallback * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Optimisations pour les appareils à faible performance */
+@media (max-width: 768px) {
+  .animated-chat-fallback .chart-container {
+    height: 200px; /* Réduire la hauteur sur mobile */
+  }
+}

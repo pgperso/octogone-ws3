@@ -1,0 +1,20 @@
+{
+  "modulePresets": {
+    "chains-groups": ["products","inventories","recipes","analytics","hr","invoicing"],
+    "independent-restaurants": ["products","inventories","recipes","analytics","thermometers"],
+    "caterers": ["products","recipes","inventories","analytics","invoicing"],
+    "brewers-distillers": ["products","recipes","inventories","analytics","thermometers"],
+    "purchasing-groups": ["products","inventories","analytics","invoicing"],
+    "retail-commerce": ["products","inventories","recipes","analytics","invoicing"],
+
+    "gastronomic": ["products","recipes","inventories","analytics","thermometers","tips"],
+    "bistro-brasserie": ["products","recipes","inventories","analytics"],
+    "fast-food": ["products","inventories","recipes","analytics","hr"],
+    "casse-croute": ["products","inventories","recipes","analytics"],
+    "family-restaurant": ["products","recipes","inventories","analytics"],
+    "cafe": ["products","inventories","recipes","analytics"],
+    "pub-microbrewery": ["products","recipes","inventories","analytics","thermometers"],
+    "catering-corporate": ["products","recipes","inventories","analytics","invoicing"],
+    "tourism-industrial": ["products","inventories","recipes","analytics","hr","thermometers"]
+  }
+}

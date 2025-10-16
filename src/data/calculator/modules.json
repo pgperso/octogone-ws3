@@ -1,0 +1,164 @@
+[
+  {
+    "id": "inventory",
+    "nameFr": "Inventaire",
+    "nameEn": "Inventory",
+    "descriptionFr": "Éliminez la double saisie et les erreurs de calcul",
+    "descriptionEn": "Eliminate double entry and calculation errors",
+    "featuresFr": [
+      "Catalogue centralisé de produits",
+      "Numérisation d'inventaire",
+      "Mise à jour automatique des coûts",
+      "Surveillance des prix",
+      "Centralisation des fournisseurs",
+      "Valeur d'inventaire précis",
+      "Planification de budget",
+      "Gain de temps",
+      "Rapports détaillés",
+      "Compatible Android et iOS"
+    ],
+    "featuresEn": [
+      "Centralized product catalog",
+      "Inventory digitization",
+      "Automatic cost updates",
+      "Price monitoring",
+      "Supplier centralization",
+      "Accurate inventory value",
+      "Budget planning",
+      "Time savings",
+      "Detailed reports",
+      "Android and iOS compatible"
+    ],
+    "monthlySavingsPerLocation": 1200,
+    "timesSavedPerWeekPerLocation": 8,
+    "manualTasksReduction": 0.7,
+    "invoiceTasksReduction": 0.2,
+    "icon": "Warehouse"
+  },
+  {
+    "id": "foodcost",
+    "nameFr": "Foodcost",
+    "nameEn": "Foodcost",
+    "descriptionFr": "Standardisation des recettes et Food Cost en temps réel",
+    "descriptionEn": "Recipe standardization and real-time Food Cost",
+    "featuresFr": [
+      "Standardisation des recettes",
+      "Catalogue centralisé de produits",
+      "Mises à jour automatiques des coûts",
+      "Surveillance des prix",
+      "Simulateur de Food Cost",
+      "Food Cost en temps réel",
+      "Ingénierie de menu",
+      "Automatisation des calculs",
+      "Centralisation des fournisseurs",
+      "Suivi des tendances",
+      "Intégration POS"
+    ],
+    "featuresEn": [
+      "Recipe standardization",
+      "Centralized product catalog",
+      "Automatic cost updates",
+      "Price monitoring",
+      "Food Cost simulator",
+      "Real-time Food Cost",
+      "Menu engineering",
+      "Calculation automation",
+      "Supplier centralization",
+      "Trend tracking",
+      "POS integration"
+    ],
+    "monthlySavingsPerLocation": 800,
+    "timesSavedPerWeekPerLocation": 6,
+    "manualTasksReduction": 0.5,
+    "invoiceTasksReduction": 0.1,
+    "icon": "ChefHat"
+  },
+  {
+    "id": "thermometer",
+    "nameFr": "Thermomètre",
+    "nameEn": "Thermometer",
+    "descriptionFr": "Surveillance active en temps réel et alertes personnalisées",
+    "descriptionEn": "Active real-time monitoring and personalized alerts",
+    "featuresFr": [
+      "Surveillance active en temps réel",
+      "Alertes personnalisées",
+      "Terminé les saisies manuelles",
+      "Rapports complets automatisés",
+      "1 thermomètre",
+      "1 hub"
+    ],
+    "featuresEn": [
+      "Active real-time monitoring",
+      "Personalized alerts",
+      "No more manual entries",
+      "Automated complete reports",
+      "1 thermometer",
+      "1 hub"
+    ],
+    "monthlySavingsPerLocation": 400,
+    "timesSavedPerWeekPerLocation": 3,
+    "manualTasksReduction": 0.3,
+    "invoiceTasksReduction": 0.0,
+    "icon": "Thermometer"
+  },
+  {
+    "id": "tips",
+    "nameFr": "Pourboire",
+    "nameEn": "Tips",
+    "descriptionFr": "Répartition automatique et gestion des exceptions",
+    "descriptionEn": "Automatic distribution and exception management",
+    "featuresFr": [
+      "Adapté à la majorité des conventions",
+      "Répartition automatique",
+      "Gestion des exceptions",
+      "Intégration POS",
+      "Intégration d'horodateurs externes"
+    ],
+    "featuresEn": [
+      "Adapted to most conventions",
+      "Automatic distribution",
+      "Exception management",
+      "POS integration",
+      "External time clock integration"
+    ],
+    "monthlySavingsPerLocation": 600,
+    "timesSavedPerWeekPerLocation": 4,
+    "manualTasksReduction": 0.4,
+    "invoiceTasksReduction": 0.8,
+    "icon": "DollarSign"
+  },
+  {
+    "id": "pro",
+    "nameFr": "PRO",
+    "nameEn": "PRO",
+    "descriptionFr": "Tous les modules inclus",
+    "descriptionEn": "All modules included",
+    "featuresFr": [
+      "Tout ce qui inclut le forfait Inventaire",
+      "Tout ce qui inclut le forfait Foodcost",
+      "Tout ce qui inclut le forfait Pourboire",
+      "Inventaire en temps réel",
+      "Planification des commandes",
+      "Planification de la production",
+      "Gestion des pertes",
+      "Suivi des coûts de main d'oeuvre",
+      "Transferts entre succursales"
+    ],
+    "featuresEn": [
+      "Everything included in Inventory plan",
+      "Everything included in Foodcost plan",
+      "Everything included in Tips plan",
+      "Real-time inventory",
+      "Order planning",
+      "Production planning",
+      "Loss management",
+      "Labor cost tracking",
+      "Inter-branch transfers"
+    ],
+    "monthlySavingsPerLocation": 3000,
+    "timesSavedPerWeekPerLocation": 21,
+    "manualTasksReduction": 0.8,
+    "invoiceTasksReduction": 0.9,
+    "icon": "Package"
+  }
+]

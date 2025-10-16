@@ -1,0 +1,189 @@
+{
+  "navigation": {
+    "menu": {
+      "home": "Accueil",
+      "features": "Fonctionnalités",
+      "premium_modules": "Modules Premium",
+      "support": "Support",
+      "contact": "Contact",
+      "login": "Connexion"
+    },
+    "features": {
+      "title": "Ce que vous maîtrisez avec Octogone",
+      "catalog": "Catalogue produits & recettes",
+      "catalog_desc": "Gérez facilement vos produits et recettes dans un catalogue structuré, prêt à l'usage.",
+      "inventory": "Prise d'inventaire",
+      "inventory_desc": "Effectuez vos inventaires rapidement et sans erreurs, même en multi-sites.",
+      "recipes": "Recettes & food cost",
+      "recipes_desc": "Créez des recettes standardisées avec calcul automatique des coûts.",
+      "realtime": "Inventaire en temps réel",
+      "realtime_desc": "Suivez vos sorties produits en direct, connectées à votre POS.",
+      "invoicing": "Facturation automatisée",
+      "invoicing_desc": "Gérez vos factures fournisseurs sans saisie manuelle ni oubli.",
+      "tips": "Gestion des pourboires",
+      "tips_desc": "Automatisez la répartition selon vos règles, en toute transparence.",
+      "employees": "Gestion des employés (RH)",
+      "employees_desc": "Centralisez les rôles, accès et documents de vos équipes.",
+      "thermometers": "Thermomètres connectés",
+      "thermometers_desc": "Recevez des alertes automatiques en cas d'écarts de température.",
+      "kitchen": "Module de production cuisine",
+      "kitchen_desc": "Planifiez et gérez la production interne en toute fluidité."
+    },
+    "premium": {
+      "title": "Des solutions adaptées à vos besoins spécifiques",
+      "360": "Octogone 360 – Analyse des KPIs",
+      "360_desc": "Suivez vos performances en temps réel et améliorez vos décisions.",
+      "hq": "Octogone HQ – Transferts inter-établissements",
+      "hq_desc": "Standardisez vos transferts de produits et gérez la facturation interne."
+    },
+    "support": {
+      "title": "Un accompagnement personnalisé pour optimiser votre expérience Octogone",
+      "client": "Accompagnement client",
+      "client_desc": "Un support humain, dédié, et réellement impliqué dans vos résultats.",
+      "hours": "Banques d'heures",
+      "hours_desc": "Des blocs de temps pour vos besoins spécifiques ou ponctuels.",
+      "concierge": "Conciergerie",
+      "concierge_desc": "On entretient et optimise votre plateforme pour vous.",
+      "onboarding": "Onboarding",
+      "onboarding_desc": "Un démarrage structuré, rapide, avec vos données intégrées dès le départ."
+    },
+    "cta": {
+      "demo": "Réserver une démo",
+      "demo_desc": "Réservez une démo personnalisée",
+      "login": "Connexion",
+      "login_desc": "Accédez à votre espace client"
+    },
+    "announcement": "Nouvelle fonctionnalité disponible : Modules Premium avec IA intégrée !",
+    "learn_more": "En savoir plus"
+  },
+  "home": {
+    "meta": {
+      "title": "Octogone – L'ultime solution pour les professionnels de la restauration",
+      "description": "Plateforme de gestion complète pour les restaurateurs : food cost, inventaire, facturation, et plus encore."
+    },
+    "hero": {
+      "title": "Conçu pour simplifier. Pensé pour performer.",
+      "description": "Octogone est une plateforme de gestion complète pour les restaurateurs qui veulent :",
+      "benefits": [
+        "gagner du temps",
+        "mieux contrôler leurs coûts",
+        "améliorer leur rentabilité"
+      ],
+      "subtitle": "Des recettes aux inventaires, des factures aux pourboires — vous avez tout sous la main, à jour, au bon endroit."
+    },
+    "features": {
+      "title": "Ce que vous maîtrisez avec Octogone",
+      "items": [
+        {
+          "title": "Food cost en temps réel",
+          "description": "Coûts de recette calculés automatiquement selon vos prix d'achat réels."
+        },
+        {
+          "title": "Inventaire clair et connecté",
+          "description": "Plus de feuilles volantes. Des données fiables, accessibles à tout moment."
+        },
+        {
+          "title": "Analyse de rentabilité",
+          "description": "Marges par plat, par site, par période. Tout est mesurable."
+        },
+        {
+          "title": "Facturation fournisseurs automatisée",
+          "description": "Zéro saisie manuelle. Moins d'erreurs, plus d'efficacité."
+        },
+        {
+          "title": "Transferts entre établissements",
+          "description": "Produits et recettes transférés avec suivi complet et facturation interne."
+        },
+        {
+          "title": "Pourboires",
+          "description": "Répartition automatisée, transparente, conforme."
+        },
+        {
+          "title": "Dossiers RH centralisés",
+          "description": "Accès, rôles, documents : tout est structuré."
+        },
+        {
+          "title": "Connexion POS",
+          "description": "Octogone ne remplace pas votre caisse — il la complète intelligemment."
+        },
+        {
+          "title": "Surveillance des températures",
+          "description": "Thermomètres connectés, alertes automatiques, produits protégés."
+        }
+      ]
+    },
+    "benefits": {
+      "title": "Axé sur l'essentiel : performance et simplicité",
+      "items": [
+        "Vous voyez clair sur vos coûts et vos marges",
+        "Vous réduisez vos pertes",
+        "Vous normalisez vos opérations, même en multi-sites",
+        "Vous libérez du temps à vos équipes"
+      ]
+    },
+    "modules": {
+      "title": "Modules avancés",
+      "items": [
+        {
+          "title": "Octogone 360",
+          "description": "Analyse de performance avancée (KPIs). Tableaux de bord, suivi en temps réel, données consolidées."
+        },
+        {
+          "title": "Octogone HQ",
+          "description": "Gestion des transferts inter-succursales. Contrôle, structure, facturation automatisée."
+        }
+      ]
+    },
+    "support": {
+      "title": "Un accompagnement qui fait la différence",
+      "description": "Octogone, c'est aussi un vrai service :",
+      "items": [
+        "Une équipe qui vous répond, vous suit, vous connaît",
+        "Des banques d'heures pour aller plus loin",
+        "Un service de conciergerie pour garder vos données propres et votre système performant"
+      ]
+    },
+    "target": {
+      "title": "Pour qui ?",
+      "description": "Groupes de restauration, franchises, chaînes. Restaurants indépendants avec une vision claire."
+    },
+    "cta": {
+      "title": "Réservez une démo personnalisée",
+      "description": "15 minutes pour voir comment Octogone peut transformer votre quotidien.",
+      "subtitle": "Clarté, simplicité, performance — sans changer vos outils actuels."
+    }
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "success": "Opération réussie",
+    "language": "Langue",
+    "buttons": {
+      "demo": "Réserver une démo",
+      "contact": "Nous contacter",
+      "learn_more": "En savoir plus"
+    },
+    "navigation": {
+      "home": "Accueil",
+      "features": "Fonctionnalités",
+      "about": "À propos",
+      "contact": "Contact",
+      "modules": "Modules Premium",
+      "pricing": "Tarifs",
+      "support": "Support"
+    }
+  },
+  "footer": {
+    "company_description": "Plateforme de gestion complète pour les restaurants, optimisant vos opérations quotidiennes et améliorant votre rentabilité.",
+    "quick_links": "Liens rapides",
+    "contact_us": "Nous contacter",
+    "newsletter": "Newsletter",
+    "newsletter_description": "Inscrivez-vous pour recevoir nos dernières actualités et offres spéciales.",
+    "email_placeholder": "Votre adresse email",
+    "subscribe": "S'inscrire",
+    "all_rights_reserved": "Tous droits réservés.",
+    "legal_notice": "Mentions légales",
+    "privacy_policy": "Politique de confidentialité",
+    "terms_of_use": "Conditions d'utilisation"
+  }
+}

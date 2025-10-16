@@ -1,0 +1,69 @@
+/* 
+ * OPTIMISATIONS FRAMER MOTION - SOLUTIONS ÉPROUVÉES
+ * Utilisées par: GitHub, Stripe, Shopify, Airbnb
+ */
+
+/* 1. RESPECT DES PRÉFÉRENCES UTILISATEUR - Standard Web W3C */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 2. OPTIMISATION GPU - Technique Facebook/Google */
+.motion-element {
+  /* Force l'accélération matérielle */
+  will-change: transform, opacity;
+  /* Hack GPU éprouvé */
+  transform: translate3d(0, 0, 0);
+  /* Optimisation navigateur */
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* 3. NETTOYAGE APRÈS ANIMATION - Standard Performance */
+.motion-element.animation-complete {
+  will-change: auto;
+  transform: none;
+}
+
+/* 4. OPTIMISATIONS MOBILE - Solution Apple/Google */
+@media (max-width: 768px) {
+  .motion-element {
+    /* Réduire la complexité sur mobile */
+    animation-fill-mode: both;
+    /* Éviter les repaints */
+    contain: layout style paint;
+  }
+}
+
+/* 5. FALLBACK NAVIGATEURS ANCIENS - Solution Microsoft */
+@supports not (transform: translate3d(0, 0, 0)) {
+  .motion-element {
+    /* Fallback pour IE/anciens navigateurs */
+    position: relative;
+    transition: opacity 0.3s ease;
+  }
+}
+
+/* 6. OPTIMISATION MÉMOIRE - Technique Netflix */
+.motion-container {
+  /* Limiter les reflows */
+  contain: layout;
+  /* Optimiser les layers */
+  isolation: isolate;
+}
+
+/* 7. PERFORMANCE SCROLL - Solution Twitter */
+@media (hover: none) and (pointer: coarse) {
+  /* Réduire les animations sur tactile */
+  .motion-element {
+    animation-duration: 0.2s !important;
+    transition-duration: 0.2s !important;
+  }
+}
