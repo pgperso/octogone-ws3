@@ -446,6 +446,7 @@ const Hero = () => {
                           provider="vimeo"
                           title={locale === 'fr' ? octogones[activeOctogone].titleFr : octogones[activeOctogone].titleEn}
                           thumbnail={activeOctogone === 0 ? '/operate.jpg' : activeOctogone === 3 ? '/predict.jpg' : '/resto.jpg'}
+                          autoload={true}
                           className="w-full h-full"
                         />
                       </div>

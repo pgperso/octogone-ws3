@@ -1,8 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { Play } from "lucide-react";
 
 interface VideoFacadeProps {
   videoId: string;
@@ -10,11 +9,12 @@ interface VideoFacadeProps {
   title: string;
   thumbnail?: string;
   className?: string;
+  autoload?: boolean; // Charger automatiquement quand visible
 }
 
 /**
- * VideoFacade - Composant optimisé pour charger les vidéos seulement à la demande
- * Affiche un thumbnail léger, puis charge l'iframe au clic
+ * VideoFacade - Composant optimisé pour charger les vidéos avec Intersection Observer
+ * Affiche un thumbnail léger, puis charge l'iframe automatiquement quand visible
  */
 export const VideoFacade = ({
   videoId,
@@ -22,8 +22,38 @@ export const VideoFacade = ({
   title,
   thumbnail,
   className = "",
+  autoload = true,
 }: VideoFacadeProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!autoload || !containerRef.current) return;
+
+    // Intersection Observer pour détecter quand le composant est visible
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !isLoaded) {
+            // Charger l'iframe dès que visible
+            setIsLoaded(true);
+          }
+        });
+      },
+      {
+        threshold: 0.1, // Charger quand 10% visible
+        rootMargin: "50px", // Précharger 50px avant d'être visible
+      }
+    );
+
+    observer.observe(containerRef.current);
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, [autoload, isLoaded]);
 
   // Générer l'URL de l'iframe selon le provider
   const getIframeSrc = () => {
@@ -43,30 +73,17 @@ export const VideoFacade = ({
   };
 
   return (
-    <div className={`relative w-full h-full ${className}`}>
+    <div ref={containerRef} className={`relative w-full h-full ${className}`}>
       {!isLoaded ? (
-        <>
-          {/* Thumbnail avec bouton play */}
-          <Image
-            src={getDefaultThumbnail()}
-            alt={title}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 300px, (max-width: 1024px) 400px, 500px"
-            quality={75}
-          />
-          
-          {/* Overlay avec bouton play */}
-          <button
-            onClick={() => setIsLoaded(true)}
-            className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/30 transition-colors group"
-            aria-label={`Play ${title}`}
-          >
-            <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Play className="w-8 h-8 text-marine-500 ml-1" fill="currentColor" />
-            </div>
-          </button>
-        </>
+        /* Thumbnail pendant le chargement */
+        <Image
+          src={getDefaultThumbnail()}
+          alt={title}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 300px, (max-width: 1024px) 400px, 500px"
+          quality={75}
+        />
       ) : (
         /* Iframe chargée après le clic */
         <iframe
