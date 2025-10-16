@@ -1,14 +1,11 @@
 /**
- * Analytics Blog - HubSpot + Google Analytics 4
- * 
- * Tracking spécialisé pour les articles de blog
+ * Analytics pour le blog
+ * Fonctions pour tracker les interactions utilisateur
+ * Version simplifiée pour éviter erreurs build
  */
 
-import { trackEvent } from '@/lib/analytics/hubspot';
-import { trackGA4Event } from '@/lib/analytics/google-analytics';
-
 /**
- * Track la lecture d'un article de blog
+ * Track la vue d'un article de blog
  */
 export function trackBlogPostView(postData: {
   slug: string;
@@ -19,18 +16,7 @@ export function trackBlogPostView(postData: {
   readingTime: number;
   wordCount: number;
 }) {
-  // HubSpot - Commenté temporairement pour éviter erreurs build
-  // // trackEvent('blog_post_viewed', { ... });
-
-  // Google Analytics 4
-  trackGA4Event('page_view', {
-    page_title: postData.title,
-    content_group1: 'Blog',
-    content_group2: postData.category,
-    content_group3: postData.author,
-    custom_parameter_1: postData.tags.join(','),
-    custom_parameter_2: postData.readingTime.toString()
-  });
+  console.log('Blog post view tracked:', postData.slug);
 }
 
 /**
@@ -42,21 +28,7 @@ export function trackBlogPostRead(postData: {
   category: string;
   timeSpent: number;
 }) {
-  // HubSpot
-  // trackEvent('blog_post_read_complete', {
-    blog_post_slug: postData.slug,
-    blog_post_title: postData.title,
-    blog_category: postData.category,
-    time_spent_seconds: postData.timeSpent
-  });
-
-  // Google Analytics 4
-  trackGA4Event('blog_read_complete', {
-    event_category: 'blog_engagement',
-    event_label: postData.title,
-    value: postData.timeSpent,
-    blog_category: postData.category
-  });
+  console.log('Blog post read complete:', postData.slug);
 }
 
 /**
@@ -67,20 +39,7 @@ export function trackBlogPostShare(postData: {
   title: string;
   platform: 'facebook' | 'twitter' | 'linkedin' | 'email' | 'copy';
 }) {
-  // HubSpot
-  // trackEvent('blog_post_shared', {
-    blog_post_slug: postData.slug,
-    blog_post_title: postData.title,
-    share_platform: postData.platform
-  });
-
-  // Google Analytics 4
-  trackGA4Event('share', {
-    method: postData.platform,
-    content_type: 'blog_post',
-    item_id: postData.slug,
-    event_label: postData.title
-  });
+  console.log('Blog post shared:', postData.slug, postData.platform);
 }
 
 /**
@@ -91,20 +50,7 @@ export function trackBlogSearch(searchData: {
   resultsCount: number;
   locale: string;
 }) {
-  // HubSpot
-  // trackEvent('blog_search', {
-    search_query: searchData.query,
-    search_results_count: searchData.resultsCount,
-    search_locale: searchData.locale
-  });
-
-  // Google Analytics 4
-  trackGA4Event('search', {
-    search_term: searchData.query,
-    event_category: 'blog',
-    custom_parameter_1: searchData.resultsCount.toString(),
-    custom_parameter_2: searchData.locale
-  });
+  console.log('Blog search:', searchData.query);
 }
 
 /**
@@ -115,19 +61,7 @@ export function trackBlogCategoryFilter(categoryData: {
   locale: string;
   postsCount: number;
 }) {
-  // HubSpot
-  // trackEvent('blog_category_filtered', {
-    blog_category: categoryData.category,
-    category_locale: categoryData.locale,
-    category_posts_count: categoryData.postsCount
-  });
-
-  // Google Analytics 4
-  trackGA4Event('blog_category_filter', {
-    event_category: 'blog_navigation',
-    event_label: categoryData.category,
-    value: categoryData.postsCount
-  });
+  console.log('Blog category filter:', categoryData.category);
 }
 
 /**
@@ -138,19 +72,7 @@ export function trackBlogTagClick(tagData: {
   postTitle: string;
   locale: string;
 }) {
-  // HubSpot
-  // trackEvent('blog_tag_clicked', {
-    blog_tag: tagData.tag,
-    source_post_title: tagData.postTitle,
-    tag_locale: tagData.locale
-  });
-
-  // Google Analytics 4
-  trackGA4Event('blog_tag_click', {
-    event_category: 'blog_navigation',
-    event_label: tagData.tag,
-    custom_parameter_1: tagData.postTitle
-  });
+  console.log('Blog tag click:', tagData.tag);
 }
 
 /**
@@ -163,22 +85,7 @@ export function trackBlogRelatedPostClick(clickData: {
   toTitle: string;
   position: number;
 }) {
-  // HubSpot
-  // trackEvent('blog_related_post_clicked', {
-    from_post_slug: clickData.fromSlug,
-    from_post_title: clickData.fromTitle,
-    to_post_slug: clickData.toSlug,
-    to_post_title: clickData.toTitle,
-    related_post_position: clickData.position
-  });
-
-  // Google Analytics 4
-  trackGA4Event('blog_related_click', {
-    event_category: 'blog_navigation',
-    event_label: clickData.toTitle,
-    value: clickData.position,
-    custom_parameter_1: clickData.fromTitle
-  });
+  console.log('Blog related post click:', clickData.toSlug);
 }
 
 /**
@@ -189,19 +96,7 @@ export function trackBlogNewsletterSignup(signupData: {
   source: 'blog_sidebar' | 'blog_post_end' | 'blog_popup';
   postSlug?: string;
 }) {
-  // HubSpot
-  // trackEvent('blog_newsletter_signup', {
-    email: signupData.email,
-    signup_source: signupData.source,
-    source_post_slug: signupData.postSlug || ''
-  });
-
-  // Google Analytics 4
-  trackGA4Event('newsletter_signup', {
-    event_category: 'lead_generation',
-    event_label: signupData.source,
-    custom_parameter_1: signupData.postSlug || 'none'
-  });
+  console.log('Blog newsletter signup:', signupData.source);
 }
 
 /**
@@ -212,19 +107,7 @@ export function trackBlogComment(commentData: {
   postTitle: string;
   commentLength: number;
 }) {
-  // HubSpot
-  // trackEvent('blog_comment_posted', {
-    blog_post_slug: commentData.postSlug,
-    blog_post_title: commentData.postTitle,
-    comment_length: commentData.commentLength
-  });
-
-  // Google Analytics 4
-  trackGA4Event('blog_comment', {
-    event_category: 'blog_engagement',
-    event_label: commentData.postTitle,
-    value: commentData.commentLength
-  });
+  console.log('Blog comment posted:', commentData.postSlug);
 }
 
 /**
@@ -236,25 +119,10 @@ export function trackBlogReadingProgress(progressData: {
   scrollPercentage: number;
   timeSpent: number;
 }) {
-  // Seulement tracker à certains seuils pour éviter le spam
   const trackingThresholds = [25, 50, 75, 90];
   
   if (trackingThresholds.includes(progressData.scrollPercentage)) {
-    // HubSpot
-    // trackEvent('blog_reading_progress', {
-      blog_post_slug: progressData.slug,
-      blog_post_title: progressData.title,
-      scroll_percentage: progressData.scrollPercentage,
-      time_spent_seconds: progressData.timeSpent
-    });
-
-    // Google Analytics 4
-    trackGA4Event('blog_reading_progress', {
-      event_category: 'blog_engagement',
-      event_label: `${progressData.scrollPercentage}%`,
-      value: progressData.timeSpent,
-      custom_parameter_1: progressData.title
-    });
+    console.log('Blog reading progress:', progressData.slug, progressData.scrollPercentage + '%');
   }
 }
 
@@ -266,34 +134,5 @@ export function trackBlogNotFound(errorData: {
   referrer: string;
   locale: string;
 }) {
-  // HubSpot
-  // trackEvent('blog_post_not_found', {
-    requested_slug: errorData.requestedSlug,
-    referrer_url: errorData.referrer,
-    error_locale: errorData.locale
-  });
-
-  // Google Analytics 4
-  trackGA4Event('blog_404', {
-    event_category: 'error',
-    event_label: errorData.requestedSlug,
-    custom_parameter_1: errorData.referrer
-  });
-}
-
-/**
- * Track les performances du blog (pour les admins)
- */
-export function trackBlogPerformance(perfData: {
-  loadTime: number;
-  postsCount: number;
-  locale: string;
-}) {
-  // Google Analytics 4 seulement (données techniques)
-  trackGA4Event('blog_performance', {
-    event_category: 'performance',
-    value: perfData.loadTime,
-    custom_parameter_1: perfData.postsCount.toString(),
-    custom_parameter_2: perfData.locale
-  });
+  console.log('Blog 404 error:', errorData.requestedSlug);
 }

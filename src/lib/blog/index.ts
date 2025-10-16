@@ -46,6 +46,5 @@ export {
   trackBlogNewsletterSignup,
   trackBlogComment,
   trackBlogReadingProgress,
-  trackBlogNotFound,
-  trackBlogPerformance
+  trackBlogNotFound
 } from './blog-analytics';
