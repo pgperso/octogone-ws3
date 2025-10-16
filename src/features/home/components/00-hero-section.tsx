@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Play, Zap, LineChart, Brain } from "lucide-react";
 import { OctogoneButton } from "@/components/ui/octogone-button";
+import { VideoFacade } from "@/components/ui/video-facade";
 import { useScaleIn } from "@/hooks/use-scroll-scale";
 import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
@@ -439,17 +440,15 @@ const Hero = () => {
                     transition: 'transform 0.5s ease-out'
                   }}>
                     {activeOctogone !== null && octogones[activeOctogone].mediaType === 'vimeo' ? (
-                      <iframe
-                        key={activeOctogone}
-                        src={`${octogones[activeOctogone].media}?background=1&autoplay=1&loop=1&muted=1&controls=0`}
-                        className="absolute inset-0 w-full h-full"
-                        frameBorder="0"
-                        allow="autoplay; fullscreen"
-                        style={{
-                          animation: 'fadeIn 0.5s ease-out',
-                          pointerEvents: 'none'
-                        }}
-                      />
+                      <div key={activeOctogone} className="absolute inset-0 w-full h-full">
+                        <VideoFacade
+                          videoId="1126878170"
+                          provider="vimeo"
+                          title={locale === 'fr' ? octogones[activeOctogone].titleFr : octogones[activeOctogone].titleEn}
+                          thumbnail={activeOctogone === 0 ? '/operate.jpg' : activeOctogone === 3 ? '/predict.jpg' : '/resto.jpg'}
+                          className="w-full h-full"
+                        />
+                      </div>
                     ) : (
                       <Image
                         key={activeOctogone !== null ? activeOctogone : 0}
