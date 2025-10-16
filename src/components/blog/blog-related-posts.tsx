@@ -13,7 +13,7 @@ interface BlogRelatedPostsProps {
 export const BlogRelatedPosts: React.FC<BlogRelatedPostsProps> = ({
   posts,
   locale,
-  currentSlug
+  currentSlug: _currentSlug
 }) => {
   if (posts.length === 0) {
     return null;
