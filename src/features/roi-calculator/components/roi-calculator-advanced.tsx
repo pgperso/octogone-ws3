@@ -3,27 +3,15 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { OctogoneButton } from '@/components/ui/octogone-button';
-import { 
-  Warehouse, 
-  ChefHat, 
-  Thermometer,
+import {
   DollarSign,
   TrendingUp,
   Check,
-  Info,
-  Package
+  Info
 } from 'lucide-react';
 import { AVAILABLE_MODULES, CALCULATION_CONFIG, INVENTORY_SAVINGS } from '../config';
 import { calculateROI, formatCurrency, formatHours } from '../utils/roi-calculations';
 
-// Map des icônes (5 forfaits)
-const ICON_MAP: Record<string, React.ComponentType> = {
-  Warehouse,    // Inventaire
-  ChefHat,      // Foodcost
-  Thermometer,  // Thermomètre
-  DollarSign,   // Pourboire
-  Package       // PRO (tous les modules)
-};
 
 interface ROICalculatorAdvancedProps {
   onSavingsCalculated?: (savings: number) => void;
@@ -307,7 +295,6 @@ export default function ROICalculatorAdvanced({ onSavingsCalculated }: ROICalcul
               
               <div className="grid grid-cols-1 gap-2">
                 {AVAILABLE_MODULES.map((module) => {
-                  const Icon = ICON_MAP[module.icon];
                   const isSelected = selectedModules.includes(module.id);
                   const isPro = module.id === 'pro';
                   const isProSelected = selectedModules.includes('pro');
@@ -376,12 +363,11 @@ export default function ROICalculatorAdvanced({ onSavingsCalculated }: ROICalcul
                   {selectedModules.includes('pro') ? (
                     // Si PRO est sélectionné, afficher tous les modules avec détails
                     AVAILABLE_MODULES.filter(m => m.id !== 'pro').map(moduleData => {
-                      const Icon = ICON_MAP[moduleData.icon];
                       const features = locale === "fr" ? moduleData.featuresFr : moduleData.featuresEn;
                       return (
                         <div key={moduleData.id} className="pb-3 border-b last:border-b-0" style={{ borderColor: 'var(--outline)' }}>
                           <div className="flex items-center gap-2 mb-2">
-                            {Icon && <Icon className="w-5 h-5" style={{ color: 'var(--on-surface)' }} />}
+                            <div className="w-5 h-5 rounded bg-current opacity-30"></div>
                             <span className="font-bold text-sm" style={{ color: 'var(--on-surface)' }}>
                               {locale === "fr" ? moduleData.nameFr : moduleData.nameEn}
                             </span>
@@ -402,12 +388,11 @@ export default function ROICalculatorAdvanced({ onSavingsCalculated }: ROICalcul
                     selectedModules.map(moduleId => {
                       const moduleData = AVAILABLE_MODULES.find(m => m.id === moduleId);
                       if (!moduleData) return null;
-                      const Icon = ICON_MAP[moduleData.icon];
                       const features = locale === "fr" ? moduleData.featuresFr : moduleData.featuresEn;
                       return (
                         <div key={moduleId} className="pb-3 border-b last:border-b-0" style={{ borderColor: 'var(--outline)' }}>
                           <div className="flex items-center gap-2 mb-2">
-                            {Icon && <Icon className="w-5 h-5" style={{ color: 'var(--on-surface)' }} />}
+                            <div className="w-5 h-5 rounded bg-current opacity-30"></div>
                             <span className="font-bold text-sm" style={{ color: 'var(--on-surface)' }}>
                               {locale === "fr" ? moduleData.nameFr : moduleData.nameEn}
                             </span>

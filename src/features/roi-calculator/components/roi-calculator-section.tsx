@@ -131,7 +131,7 @@ export default function ROICalculatorSection() {
                       <div className="flex items-start gap-3">
                         <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
                              style={{ backgroundColor: 'var(--secondary-container)' }}>
-                          {Icon && <Icon className="w-5 h-5" style={{ color: 'var(--on-secondary-container)' }} />}
+                          <div className="w-5 h-5 rounded bg-current opacity-30"></div>
                         </div>
                         <div className="flex-1">
                           <div className="flex items-center justify-between mb-1">
@@ -182,7 +182,7 @@ export default function ROICalculatorSection() {
                         {locale === "fr" ? "Économies monétaires" : "Money savings"}
                       </p>
                       <p className="text-2xl font-bold" style={{ color: 'var(--on-surface)' }}>
-                        {formatCurrency(roiResult.yearlyMoneySavings, locale)}
+                        {formatCurrency(roiResult.yearlyMoneySavings)}
                       </p>
                     </div>
                   </div>
@@ -202,7 +202,7 @@ export default function ROICalculatorSection() {
                       </p>
                       <p className="text-sm mt-1" style={{ color: 'var(--on-surface-variant)' }}>
                         {locale === "fr" ? "Valeur : " : "Value: "}
-                        {formatCurrency(roiResult.timeSavingsValue, locale)}
+                        {formatCurrency(roiResult.timeSavingsValue)}
                       </p>
                     </div>
                   </div>
@@ -233,13 +233,13 @@ export default function ROICalculatorSection() {
                     <p className="text-sm mb-2" style={{ color: 'var(--on-surface-variant)' }}>
                       {locale === "fr" ? "Coût mensuel : " : "Monthly cost: "}
                       <span className="font-semibold" style={{ color: 'var(--on-surface)' }}>
-                        {formatCurrency(roiResult.monthlySubscriptionCost, locale)}
+                        {formatCurrency(roiResult.monthlySubscriptionCost)}
                       </span>
                     </p>
                     <p className="text-sm" style={{ color: 'var(--on-surface-variant)' }}>
                       {locale === "fr" ? "Gains nets annuels : " : "Net annual savings: "}
                       <span className="font-semibold" style={{ color: 'var(--on-surface)' }}>
-                        {formatCurrency(roiResult.netYearlySavings, locale)}
+                        {formatCurrency(roiResult.netYearlySavings)}
                       </span>
                     </p>
                   </div>
