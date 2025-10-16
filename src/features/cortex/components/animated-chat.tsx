@@ -64,19 +64,10 @@ export default function AnimatedChat({ locale }: AnimatedChatProps) {
   // Gestion d'erreur robuste (mémorisé pour éviter les recalculs)
   const currentConversations = useMemo(() => {
     return conversations?.[isEnglish ? 'en' : 'fr'] || [];
-  }, [conversations, isEnglish]);
+  }, [isEnglish]);
   
   const currentConversation = currentConversations[currentConversationIndex];
   
-  // Vérification de sécurité
-  if (!currentConversation || !currentConversations.length) {
-    return (
-      <div className="max-w-4xl mx-auto p-8 text-center" style={{ color: 'var(--on-surface-variant)' }}>
-        <p>{isEnglish ? 'Chat temporarily unavailable' : 'Chat temporairement indisponible'}</p>
-      </div>
-    );
-  }
-
   // Fonction de nettoyage des timeouts
   const cleanupTimeouts = useCallback((timeouts: NodeJS.Timeout[]) => {
     timeouts.forEach(timeout => clearTimeout(timeout));
@@ -122,6 +113,15 @@ export default function AnimatedChat({ locale }: AnimatedChatProps) {
       setHasError(true);
     }
   }, [currentConversationIndex, isPlaying, currentConversations, currentConversation, isClient, cleanupTimeouts]);
+
+  // Vérification de sécurité APRÈS tous les hooks
+  if (!currentConversation || !currentConversations.length) {
+    return (
+      <div className="max-w-4xl mx-auto p-8 text-center" style={{ color: 'var(--on-surface-variant)' }}>
+        <p>{isEnglish ? 'Chat temporarily unavailable' : 'Chat temporairement indisponible'}</p>
+      </div>
+    );
+  }
 
   // Calculer la hauteur nécessaire pour la conversation la plus longue
   // Chaque message fait environ 120px (bulle + avatar + espacement)
