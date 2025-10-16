@@ -129,8 +129,8 @@ const Hero = () => {
       color: "text-marine-500",
       pastelColor: "green_pastel", // Vert menthe pastel
       position: "top-left",
-      media: "https://video-previews.elements.envatousercontent.com/files/4d84a701-5c1b-47d2-bcee-fe25efab5926/video_preview_h264.mp4",
-      mediaType: "video",
+      media: "https://player.vimeo.com/video/1126878170",
+      mediaType: "vimeo",
       link: "/features/operate"
     },
     {
@@ -143,8 +143,8 @@ const Hero = () => {
       color: "text-gold-500",
       pastelColor: "blue_pastel", // Bleu ciel pastel
       position: "top-right",
-      media: "https://video-previews.elements.envatousercontent.com/files/a7d69e9a-192d-41bb-ae64-ebf5b295cfeb/video_preview_h264.mp4",
-      mediaType: "video",
+      media: "https://player.vimeo.com/video/1126878170",
+      mediaType: "vimeo",
       link: "/features/automate"
     },
     {
@@ -157,8 +157,8 @@ const Hero = () => {
       color: "text-marine-500",
       pastelColor: "yellow_pastel", // Jaune pastel
       position: "bottom-right",
-      media: "https://video-previews.elements.envatousercontent.com/7e71a914-f289-4e20-9519-bc1721bece49/watermarked_preview/watermarked_preview.mp4",
-      mediaType: "video",
+      media: "https://player.vimeo.com/video/1126878170",
+      mediaType: "vimeo",
       link: "/features/analyze"
     },
     {
@@ -171,8 +171,8 @@ const Hero = () => {
       color: "text-gold-500",
       pastelColor: "purple_pastel", // Mauve du dégradé Cortex
       position: "bottom-left",
-      media: "https://video-previews.elements.envatousercontent.com/e341f344-626e-40a6-ab21-24c2140998d1/watermarked_preview/watermarked_preview.mp4",
-      mediaType: "video",
+      media: "https://player.vimeo.com/video/1126878170",
+      mediaType: "vimeo",
       link: "/features/predict"
     }
   ];
@@ -438,30 +438,18 @@ const Hero = () => {
                     transform: `rotate(-${rotationDegrees}deg)`,
                     transition: 'transform 0.5s ease-out'
                   }}>
-                    {activeOctogone !== null && octogones[activeOctogone].mediaType === 'video' ? (
-                      <>
-                        <video
-                          key={activeOctogone}
-                          autoPlay
-                          loop
-                          muted
-                          playsInline
-                          className="absolute inset-0 w-full h-full object-cover"
-                          style={{
-                            animation: 'fadeIn 0.5s ease-out'
-                          }}
-                          poster={activeOctogone === 0 ? '/operate.jpg' : activeOctogone === 3 ? '/predict.jpg' : '/resto.jpg'}
-                        >
-                          <source src={octogones[activeOctogone].media} type="video/mp4" />
-                          {/* Fallback image si la vidéo ne charge pas */}
-                          <Image
-                            src={activeOctogone === 0 ? '/operate.jpg' : activeOctogone === 3 ? '/predict.jpg' : '/resto.jpg'}
-                            alt="Restaurant"
-                            fill
-                            className="object-cover"
-                          />
-                        </video>
-                      </>
+                    {activeOctogone !== null && octogones[activeOctogone].mediaType === 'vimeo' ? (
+                      <iframe
+                        key={activeOctogone}
+                        src={`${octogones[activeOctogone].media}?background=1&autoplay=1&loop=1&muted=1&controls=0`}
+                        className="absolute inset-0 w-full h-full"
+                        frameBorder="0"
+                        allow="autoplay; fullscreen"
+                        style={{
+                          animation: 'fadeIn 0.5s ease-out',
+                          pointerEvents: 'none'
+                        }}
+                      />
                     ) : (
                       <Image
                         key={activeOctogone !== null ? activeOctogone : 0}
