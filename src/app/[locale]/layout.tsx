@@ -8,7 +8,8 @@ import { Footer } from "@/components/ui/footer";
 import FloatingROIWidget from "@/components/ui/floating-roi-widget";
 import { AnalyticsProvider } from "@/components/analytics/analytics-provider";
 import { SimpleSchema } from "@/components/seo/global-schema";
-import { routes, type Route } from "@/config/routes";
+import { routes } from "@/config/routes";
+import type { Route } from "@/features/navigation/types";
 import { CalculatorProvider, useCalculator } from "@/contexts/calculator-context";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -59,7 +60,7 @@ function LayoutContent({
   children 
 }: { 
   locale: string; 
-  localizedRoutes: Array<Record<string, unknown>>; 
+  localizedRoutes: Route[]; 
   activeRoute: string; 
   children: React.ReactNode;
 }) {

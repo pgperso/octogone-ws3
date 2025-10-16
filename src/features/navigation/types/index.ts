@@ -1,6 +1,12 @@
-import { Route } from "@/types/routes";
-
 export type NavTheme = "light" | "dark" | "transparent";
+
+export interface Route {
+  path: string;
+  label: string;
+  href: string;
+  description?: string;
+  children?: Route[];
+}
 
 export interface NavContextType {
   isOpen: boolean;
