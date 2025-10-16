@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { useScrollScale } from '@/hooks/use-scroll-scale';
+import { useScaleIn } from '@/hooks/use-scroll-scale';
 
 interface ScrollScaleElementProps {
   children: ReactNode;
@@ -25,11 +25,10 @@ export function ScrollScaleElement({
   style = {},
 }: ScrollScaleElementProps) {
   // Utiliser notre hook personnalisé pour l'animation d'échelle
-  const scale = useScrollScale({
+  const scale = useScaleIn({
     initialScale,
     finalScale,
     scrollRange,
-    reverse,
   });
 
   return (

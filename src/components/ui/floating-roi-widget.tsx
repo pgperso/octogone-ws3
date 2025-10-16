@@ -133,7 +133,7 @@ export default function FloatingROIWidget({
                   {locale === "fr" ? "Vos gains potentiels" : "Your potential savings"}
                 </p>
                 <p className="text-2xl md:text-4xl font-bold" style={{ color: 'var(--on-secondary-container)' }}>
-                  {formatCurrency(displaySavings, locale)}
+                  {formatCurrency(displaySavings)}
                 </p>
                 <p className="text-xs mt-1" style={{ color: 'var(--on-secondary-container)', opacity: 0.8 }}>
                   {locale === "fr" ? "par année" : "per year"}
