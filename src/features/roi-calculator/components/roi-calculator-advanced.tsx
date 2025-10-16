@@ -264,8 +264,8 @@ export default function ROICalculatorAdvanced({ onSavingsCalculated }: ROICalcul
                         <Info className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: 'var(--on-surface-variant)' }} />
                         <p className="text-xs" style={{ color: 'var(--on-surface-variant)' }}>
                           {locale === "fr" 
-                            ? `Économies par inventaire par personne : ${formatHours(INVENTORY_SAVINGS.timeSavedPerInventoryPerPersonHours, locale)} + ${formatCurrency(INVENTORY_SAVINGS.moneySavedPerInventory / employeesPerInventory, locale)}`
-                            : `Savings per inventory per person: ${formatHours(INVENTORY_SAVINGS.timeSavedPerInventoryPerPersonHours, locale)} + ${formatCurrency(INVENTORY_SAVINGS.moneySavedPerInventory / employeesPerInventory, locale)}`
+                            ? `Économies par inventaire par personne : ${formatHours(INVENTORY_SAVINGS.timeSavedPerInventoryPerPersonHours, locale)} + ${formatCurrency(INVENTORY_SAVINGS.moneySavedPerInventory / employeesPerInventory)}`
+                            : `Savings per inventory per person: ${formatHours(INVENTORY_SAVINGS.timeSavedPerInventoryPerPersonHours, locale)} + ${formatCurrency(INVENTORY_SAVINGS.moneySavedPerInventory / employeesPerInventory)}`
                           }
                         </p>
                       </div>
@@ -284,7 +284,7 @@ export default function ROICalculatorAdvanced({ onSavingsCalculated }: ROICalcul
                 {selectedModules.length > 0 && !selectedModules.includes('pro') && (
                   <div className="text-right">
                     <span className="px-3 py-1 rounded-lg text-sm font-bold" style={{ backgroundColor: 'var(--primary-container)', color: 'var(--on-primary-container)' }}>
-                      {formatCurrency(periodView === 'month' ? calculateIndividualPrice() : calculateIndividualPrice() * 12, locale)}/
+                      {formatCurrency(periodView === 'month' ? calculateIndividualPrice() : calculateIndividualPrice() * 12)}/
                       {locale === "fr" ? (periodView === 'month' ? "mois" : "an") : (periodView === 'month' ? "mo" : "yr")}
                     </span>
                     <p className="text-xs mt-1" style={{ color: 'var(--on-surface-variant)' }}>
@@ -295,7 +295,7 @@ export default function ROICalculatorAdvanced({ onSavingsCalculated }: ROICalcul
                 {selectedModules.includes('pro') && (
                   <div className="text-right">
                     <span className="px-3 py-1 rounded-lg text-sm font-bold" style={{ backgroundColor: '#BFD495', color: '#1F1F1F' }}>
-                      {formatCurrency(periodView === 'month' ? roiResult.monthlySubscriptionCost : roiResult.monthlySubscriptionCost * 12, locale)}/
+                      {formatCurrency(periodView === 'month' ? roiResult.monthlySubscriptionCost : roiResult.monthlySubscriptionCost * 12)}/
                       {locale === "fr" ? (periodView === 'month' ? "mois" : "an") : (periodView === 'month' ? "mo" : "yr")}
                     </span>
                     <p className="text-xs mt-1" style={{ color: 'var(--on-surface-variant)' }}>
@@ -330,7 +330,7 @@ export default function ROICalculatorAdvanced({ onSavingsCalculated }: ROICalcul
                       <div className="flex items-center gap-2 w-full">
                         <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
                              style={{ backgroundColor: isSelected ? 'var(--surface)' : 'var(--secondary-container)' }}>
-                          {Icon && <Icon className="w-4 h-4" style={{ color: isSelected ? 'var(--on-surface)' : 'var(--on-secondary-container)' }} />}
+                          {Icon && <Icon className="w-4 h-4" />}
                         </div>
                         <div className="flex-1 text-left">
                           <div className="flex items-center gap-2">
@@ -486,8 +486,7 @@ export default function ROICalculatorAdvanced({ onSavingsCalculated }: ROICalcul
                         + {formatCurrency(
                           periodView === 'month' 
                             ? (roiResult.monthlyMoneySavings + roiResult.monthlyTimeSavings * hourlyCost + roiResult.manualTasksValueSaved / 12)
-                            : (roiResult.yearlyMoneySavings + roiResult.timeSavingsValue + roiResult.manualTasksValueSaved), 
-                          locale
+                            : (roiResult.yearlyMoneySavings + roiResult.timeSavingsValue + roiResult.manualTasksValueSaved)
                         )}
                       </span>
                     </div>
@@ -498,7 +497,7 @@ export default function ROICalculatorAdvanced({ onSavingsCalculated }: ROICalcul
                         {locale === "fr" ? "Coût Octogone" : "Octogone cost"}
                       </span>
                       <span className="text-base font-bold" style={{ color: 'var(--on-surface)' }}>
-                        - {formatCurrency(periodView === 'month' ? roiResult.monthlySubscriptionCost : roiResult.yearlySubscriptionCost, locale)}
+                        - {formatCurrency(periodView === 'month' ? roiResult.monthlySubscriptionCost : roiResult.yearlySubscriptionCost)}
                       </span>
                     </div>
 
@@ -547,7 +546,7 @@ export default function ROICalculatorAdvanced({ onSavingsCalculated }: ROICalcul
                           </p>
                         </div>
                         <p className="text-3xl font-bold mb-1" style={{ color: 'var(--on-secondary-container)' }}>
-                          {formatCurrency(periodView === 'month' ? roiResult.netYearlySavings / 12 : roiResult.netYearlySavings, locale).replace(/\s/g, '')}
+                          {formatCurrency(periodView === 'month' ? roiResult.netYearlySavings / 12 : roiResult.netYearlySavings).replace(/\s/g, '')}
                         </p>
                         <p className="text-xs" style={{ color: 'var(--on-secondary-container)', opacity: 0.8 }}>
                           {locale === "fr" 
@@ -594,15 +593,15 @@ Forfait sélectionné : ${selectedModules.includes('pro') ? 'PRO (tous les modul
 
 RÉSULTATS FINANCIERS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-• Coût mensuel : ${formatCurrency(roiResult.monthlySubscriptionCost, locale)}
-• Gains nets annuels : ${formatCurrency(roiResult.netYearlySavings, locale)}
+• Coût mensuel : ${formatCurrency(roiResult.monthlySubscriptionCost)}
+• Gains nets annuels : ${formatCurrency(roiResult.netYearlySavings)}
 • ROI : ${Math.round(roiResult.roiPercentage)}%
 • Période de retour : ${Math.ceil(roiResult.paybackPeriodMonths)} mois
 
 ÉCONOMIES DE TEMPS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 • Temps économisé par an : ${formatHours(roiResult.yearlyTimeSavings, locale)}
-• Valeur du temps économisé : ${formatCurrency(roiResult.timeSavingsValue, locale)}
+• Valeur du temps économisé : ${formatCurrency(roiResult.timeSavingsValue)}
 
 J'aimerais discuter de la mise en place d'Octogone pour mon/mes établissement(s).
 
@@ -622,15 +621,15 @@ Selected plan: ${selectedModules.includes('pro') ? 'PRO (all modules)' : selecte
 
 FINANCIAL RESULTS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-• Monthly cost: ${formatCurrency(roiResult.monthlySubscriptionCost, locale)}
-• Net annual savings: ${formatCurrency(roiResult.netYearlySavings, locale)}
+• Monthly cost: ${formatCurrency(roiResult.monthlySubscriptionCost)}
+• Net annual savings: ${formatCurrency(roiResult.netYearlySavings)}
 • ROI: ${Math.round(roiResult.roiPercentage)}%
 • Payback period: ${Math.ceil(roiResult.paybackPeriodMonths)} months
 
 TIME SAVINGS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 • Time saved per year: ${formatHours(roiResult.yearlyTimeSavings, locale)}
-• Value of time saved: ${formatCurrency(roiResult.timeSavingsValue, locale)}
+• Value of time saved: ${formatCurrency(roiResult.timeSavingsValue)}
 
 I would like to discuss implementing Octogone for my location(s).
 
