@@ -20,57 +20,6 @@ interface ClientLogo {
   alt: string;
 }
 
-// Exemples de logos clients
-const clientLogos: ClientLogo[] = [
-  {
-    id: 1,
-    name: "Restaurant A",
-    logo: "/images/clients/client1.svg",
-    alt: "Logo Restaurant A",
-  },
-  {
-    id: 2,
-    name: "Restaurant B",
-    logo: "/images/clients/client2.svg",
-    alt: "Logo Restaurant B",
-  },
-  {
-    id: 3,
-    name: "Restaurant C",
-    logo: "/images/clients/client3.svg",
-    alt: "Logo Restaurant C",
-  },
-  {
-    id: 4,
-    name: "Restaurant D",
-    logo: "/images/clients/client4.svg",
-    alt: "Logo Restaurant D",
-  },
-  {
-    id: 5,
-    name: "Restaurant E",
-    logo: "/images/clients/client5.svg",
-    alt: "Logo Restaurant E",
-  },
-  {
-    id: 6,
-    name: "Restaurant F",
-    logo: "/images/clients/client6.svg",
-    alt: "Logo Restaurant F",
-  },
-  {
-    id: 7,
-    name: "Restaurant G",
-    logo: "/images/clients/client7.svg",
-    alt: "Logo Restaurant G",
-  },
-  {
-    id: 8,
-    name: "Restaurant H",
-    logo: "/images/clients/client8.svg",
-    alt: "Logo Restaurant H",
-  },
-];
 
 /**
  * Composant Hero - Section principale de la page d'accueil (VERSION SANS ANIMATIONS)
