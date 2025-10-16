@@ -12,13 +12,6 @@ import { motion } from "framer-motion";
 // ⚙️ CONFIGURATION - Ligne animée autour de l'octogone
 const ENABLE_ANIMATED_LINE = true; // Mettre à false pour désactiver l'animation de la ligne
 
-// Définition du type pour les logos des clients
-interface ClientLogo {
-  id: number;
-  name: string;
-  logo: string;
-  alt: string;
-}
 
 
 /**
