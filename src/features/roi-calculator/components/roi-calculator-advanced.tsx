@@ -41,11 +41,11 @@ export default function ROICalculatorAdvanced({ onSavingsCalculated }: ROICalcul
   const [employeesPerInventory, setEmployeesPerInventory] = useState(INVENTORY_SAVINGS.defaultEmployeesPerInventory);
   const [manualTasksHours, setManualTasksHours] = useState(CALCULATION_CONFIG.defaultManualTasksHoursPerWeek);
   const [periodView, setPeriodView] = useState<'month' | 'year'>('month'); // Toggle mois/année - Mois par défaut
-  const [roiResult, setRoiResult] = useState(calculateROI(1, [], CALCULATION_CONFIG.defaultHourlyCost, INVENTORY_SAVINGS.defaultInventoriesPerMonth, INVENTORY_SAVINGS.defaultEmployeesPerInventory, CALCULATION_CONFIG.defaultManualTasksHoursPerWeek));
+  const [roiResult, setRoiResult] = useState(calculateROI(1, [], CALCULATION_CONFIG.defaultHourlyCost, CALCULATION_CONFIG.defaultManualTasksHoursPerWeek));
   
   // Recalculer le ROI quand les paramètres changent
   useEffect(() => {
-    const result = calculateROI(numberOfLocations, selectedModules, hourlyCost, inventoriesPerMonth, employeesPerInventory, manualTasksHours);
+    const result = calculateROI(numberOfLocations, selectedModules, hourlyCost, manualTasksHours);
     setRoiResult(result);
     
     // Notifier le parent si callback fourni

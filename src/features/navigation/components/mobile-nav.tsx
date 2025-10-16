@@ -17,6 +17,12 @@ import {
 } from "@/components/ui/sheet";
 import { navigationLinkVariants } from "@/components/ui/navigation-menu/variants";
 
+// Variants pour les animations Framer Motion
+const motionVariants = {
+  hidden: { opacity: 0, y: -10 },
+  visible: { opacity: 1, y: 0 }
+};
+
 export const MobileNav: React.FC<MobileDrawerProps> = ({
   isOpen,
   onClose,
@@ -96,13 +102,13 @@ export const MobileNav: React.FC<MobileDrawerProps> = ({
                           pl-4
                         >
                           <div className="space-y-1 border-l border-marine-100 pl-4">
-                            {route.children.map((child: Route) => (
+                            {route.children.map((child: Route, childIndex) => (
                               <motion.div
-                                key={route.path}
+                                key={child.path}
                                 initial="hidden"
                                 animate="visible"
-                                variants={navigationLinkVariants}
-                                transition={{ delay: index * 0.1 }}
+                                variants={motionVariants}
+                                transition={{ delay: childIndex * 0.1 }}
                                 className="motion-element"
                                 onAnimationComplete={() => {
                                   // Nettoyage GPU après animation
