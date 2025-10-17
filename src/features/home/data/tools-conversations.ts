@@ -31,33 +31,33 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'Comment optimiser la prise d\'inventaire dans mon restaurant ?', 
+          text: 'Salut Cortex ! On perd vraiment trop de temps sur nos inventaires...', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'Excellente question ! Avec Inventaire, transformez une corvée en processus efficace 📦\n\n✅ Prenez vos inventaires en équipe et divisez le temps par 3\n✅ Suivez vos stocks en temps réel\n✅ Détectez les écarts instantanément',
+          text: 'Salut ! Je te comprends, c\'est souvent la corvée de la semaine 😅\n\nAvec la prise d\'inventaire en équipe, vous pouvez diviser le temps par 3 ! Chacun compte sur son appareil et tout se synchronise automatiquement.',
           delay: 1500
         },
         { 
           type: 'user', 
-          text: 'Et pour la prise en équipe, comment ça fonctionne exactement ?', 
-          delay: 4000 
+          text: 'Ah ouais ? Donc plusieurs personnes peuvent compter en même temps ?', 
+          delay: 4500 
         },
         {
           type: 'cortex',
-          text: 'Chaque membre de l\'équipe peut compter simultanément sur son appareil (téléphone, tablette). Les données se synchronisent automatiquement en temps réel !\n\nPar exemple : pendant qu\'un employé compte le bar, un autre fait la cuisine, et un troisième le garde-manger. Tout se consolide automatiquement.',
-          delay: 5500
+          text: 'Exactement ! Pendant qu\'un employé fait le bar, un autre s\'occupe de la cuisine, et un troisième du garde-manger 📱\n\nTout se consolide en temps réel. Plus besoin d\'attendre que quelqu\'un finisse pour commencer !',
+          delay: 6000
         },
         { 
           type: 'user', 
-          text: 'Ça m\'intéresse ! Quels sont les autres avantages ?', 
-          delay: 9000 
+          text: 'Parfait ! Et on peut voir les écarts directement ?', 
+          delay: 9500 
         },
         {
           type: 'cortex',
-          text: '✅ Réduisez vos pertes de 2 à 5%\n✅ Comparez physique vs théorique instantanément\n✅ Identifiez les produits à commander\n✅ Historique complet de tous vos inventaires\n\nVous gagnez 10-15 heures par semaine et vous avez enfin le contrôle total sur vos stocks !',
-          delay: 10500,
+          text: 'Oui ! Dès que l\'inventaire est terminé, tu compares physique vs théorique instantanément 📊\n\nTu vois exactement où sont les pertes, ce qui manque, et ce qu\'il faut commander. Historique complet inclus !',
+          delay: 11000,
           cta: {
             label: 'Découvrir Inventaire',
             link: '/fonctionnalites/inventaire'
@@ -70,33 +70,33 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'J\'aimerais mieux contrôler mon food cost et créer des recettes standardisées', 
+          text: 'Cortex, mes prix d\'ingrédients changent souvent, c\'est compliqué à suivre...', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'Parfait ! Le Food Cost est la clé de votre rentabilité 👨‍🍳\n\n✅ Créez vos fiches techniques détaillées\n✅ Calculez automatiquement vos coûts et marges\n✅ Analysez la rentabilité de chaque plat',
+          text: 'Je te comprends ! C\'est frustrant de devoir tout recalculer manuellement 😓\n\nAvec Food Cost, dès qu\'un prix change, toutes tes recettes se mettent à jour automatiquement. Coûts, marges, prix de vente... tout est recalculé en temps réel !',
           delay: 1500
         },
         { 
           type: 'user', 
-          text: 'Et si un prix d\'ingrédient change ?', 
-          delay: 4000 
+          text: 'Ah oui ? Donc si le prix du bœuf augmente par exemple ?', 
+          delay: 4500 
         },
         {
           type: 'cortex',
-          text: 'Excellente question ! Toutes vos recettes se mettent à jour instantanément 🔄\n\nPar exemple : le prix du bœuf augmente ? En un clic, vous voyez l\'impact sur TOUTES vos recettes qui contiennent du bœuf. Coûts, marges, prix de vente suggérés... tout est recalculé automatiquement.',
-          delay: 5500
+          text: 'Exactement ! Tu vois instantanément l\'impact sur TOUTES tes recettes qui contiennent du bœuf 🔄\n\nTu peux même voir quels plats restent rentables et lesquels ont besoin d\'un ajustement de prix.',
+          delay: 6000
         },
         { 
           type: 'user', 
-          text: 'Plus besoin d\'Excel alors !', 
-          delay: 9000 
+          text: 'Génial ! Et pour créer mes fiches techniques ?', 
+          delay: 9500 
         },
         {
           type: 'cortex',
-          text: 'Exactement ! Zéro erreur de calcul, zéro formule Excel à maintenir 🎉\n\nVous avez des rapports en temps réel : food cost global, par catégorie, par plat. Vous savez exactement où vous êtes rentable et où vous perdez de l\'argent.',
-          delay: 10500,
+          text: 'Super simple ! Tu crées tes recettes avec les ingrédients et quantités, et le système calcule tout automatiquement 👨‍🍳\n\nPlus besoin d\'Excel ou de calculatrice. Tout est centralisé et toujours à jour !',
+          delay: 11000,
           cta: {
             label: 'Découvrir Food Cost',
             link: '/fonctionnalites/food-cost'
@@ -109,33 +109,33 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'Comment surveiller les températures de mes zones tempérées pour la sécurité alimentaire ?', 
+          text: 'Hey Cortex ! J\'en ai marre de noter les températures à la main tous les jours...', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'La sécurité alimentaire, c\'est critique ! Avec Températures, simplifiez votre conformité 🌡️\n\n✅ Surveillance automatique 24/7\n✅ Alertes instantanées si hors norme\n✅ Fini les saisies manuelles',
+          text: 'Je te comprends ! C\'est répétitif et on peut facilement oublier 😅\n\nAvec les capteurs de température, tout est automatisé. Tes frigos, congélos et zones chaudes sont surveillés 24/7 sans que tu aies à y penser !',
           delay: 1500
         },
         { 
           type: 'user', 
-          text: 'Comment ça fonctionne concrètement ?', 
-          delay: 4000 
+          text: 'Et si une température déraille pendant la nuit ?', 
+          delay: 4500 
         },
         {
           type: 'cortex',
-          text: 'Des capteurs IoT dans vos frigos, congélateurs et zones chaudes envoient les températures en temps réel 📡\n\nSi une température sort de la plage acceptable, vous recevez une alerte immédiate (notification, SMS, email). Vous pouvez agir AVANT que la nourriture soit compromise.',
-          delay: 5500
+          text: 'Tu reçois une alerte immédiate ! Notification, SMS ou email selon tes préférences 📡\n\nTu peux agir rapidement avant que la nourriture soit compromise. Plus de mauvaises surprises le matin !',
+          delay: 6000
         },
         { 
           type: 'user', 
-          text: 'Et pour les inspections MAPAQ ?', 
-          delay: 9000 
+          text: 'Parfait ! Et pour le MAPAQ, j\'ai toujours les données ?', 
+          delay: 9500 
         },
         {
           type: 'cortex',
-          text: 'Historique complet automatique ! 📋\n\nToutes les températures sont enregistrées avec date et heure. En cas d\'inspection, vous exportez le rapport en un clic. Fini les feuilles papier perdues ou les données manquantes !',
-          delay: 10500,
+          text: 'Oui ! Historique complet automatique avec date et heure 📋\n\nEn cas d\'inspection, tu exportes le rapport en un clic. Fini les feuilles papier perdues ou incomplètes. Tu es toujours prêt !',
+          delay: 11000,
           cta: {
             label: 'Découvrir Températures',
             link: '/fonctionnalites/temperatures'
@@ -148,33 +148,33 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'Je veux gérer mes fiches employés et conventions collectives sans Excel !', 
+          text: 'Salut ! J\'ai 15 employés et je galère avec mes fichiers Excel pour les RH...', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'On vous comprend ! Excel, c\'est fini 👥\n\n✅ Fiches employés complètes et centralisées\n✅ Gestion des conventions collectives simplifiée\n✅ Suivi des heures et disponibilités',
+          text: 'Ah oui, Excel pour les RH c\'est l\'enfer ! Versions multiples, fichiers perdus... 😅\n\nAvec le module RH, toutes tes fiches employés sont centralisées. Infos perso, contrats, horaires, tout au même endroit !',
           delay: 1500
         },
         { 
           type: 'user', 
-          text: 'C\'est quoi exactement les conventions collectives dans votre système ?', 
-          delay: 4000 
+          text: 'Et pour les conventions collectives ? C\'est compliqué à gérer...', 
+          delay: 4500 
         },
         {
           type: 'cortex',
-          text: 'Les conventions collectives, c\'est toutes les règles de travail : salaires, heures, congés, avantages sociaux, etc. 📄\n\nAu lieu de chercher dans des PDF de 200 pages ou des fichiers Excel, tout est structuré et accessible. Vous savez instantanément ce qui s\'applique à chaque employé.',
-          delay: 5500
+          text: 'Je sais ! Au lieu de chercher dans des PDF de 200 pages, tout est structuré dans le système 📄\n\nSalaires, congés, avantages... Tu sais instantanément ce qui s\'applique à chaque employé selon sa convention.',
+          delay: 6000
         },
         { 
           type: 'user', 
-          text: 'Parfait ! Et pour les documents RH ?', 
-          delay: 9000 
+          text: 'Génial ! Et les documents comme les contrats, évaluations ?', 
+          delay: 9500 
         },
         {
           type: 'cortex',
-          text: 'Tous vos documents RH au même endroit, sécurisés 🔒\n\nContrats, évaluations, formations, certifications... Tout est lié à la fiche employé. Plus de fichiers Excel perdus, plus de versions multiples. Tout est centralisé et toujours à jour !',
-          delay: 10500,
+          text: 'Tout est attaché à la fiche de l\'employé ! Contrats, évaluations, formations, certifications 🔒\n\nPlus de fichiers perdus ou de versions multiples. Tout est sécurisé, centralisé et accessible en un clic !',
+          delay: 11000,
           cta: {
             label: 'Découvrir RH',
             link: '/fonctionnalites/ressources-humaines'

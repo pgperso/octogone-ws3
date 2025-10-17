@@ -96,7 +96,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
   return (
     <div 
       ref={chatContainerRef}
-      className="max-w-4xl mx-auto motion-container overflow-y-auto"
+      className="max-w-4xl mx-auto motion-container overflow-y-auto overflow-x-hidden"
       style={{ 
         height: '500px',
         scrollbarWidth: 'thin',
