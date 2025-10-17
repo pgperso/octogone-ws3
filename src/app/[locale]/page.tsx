@@ -1,14 +1,25 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Hero from "@/features/home/components/00-hero-section";
 import PartnersSection from "@/features/home/components/02-clients-section";
-import CortexIntro from "@/features/home/components/03-cortex-section";
-import TargetSectors from "@/features/home/components/04-target-sectors-section";
-import HowItWorks from "@/features/home/components/05-how-it-works-section";
-import RecentBlogPosts from "@/features/home/components/06-blog-posts-section";
 import { useRef, useState, useEffect } from "react";
 import * as React from "react";
 import { useCalculator } from "@/contexts/calculator-context";
+
+// Lazy load des sections non-critiques (économise ~22 KB au chargement initial)
+const CortexIntro = dynamic(() => import("@/features/home/components/03-cortex-section"), {
+  loading: () => <div className="h-96" />,
+});
+const TargetSectors = dynamic(() => import("@/features/home/components/04-target-sectors-section"), {
+  loading: () => <div className="h-96" />,
+});
+const HowItWorks = dynamic(() => import("@/features/home/components/05-how-it-works-section"), {
+  loading: () => <div className="h-96" />,
+});
+const RecentBlogPosts = dynamic(() => import("@/features/home/components/06-blog-posts-section"), {
+  loading: () => <div className="h-96" />,
+});
 
 export default function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   // Utiliser React.use pour accéder aux paramètres de route
