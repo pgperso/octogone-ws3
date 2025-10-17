@@ -186,7 +186,7 @@ export default function ContactPage() {
           </div>
 
           {/* Numéro de téléphone en évidence */}
-          <div className="mb-8">
+          <div className="mb-12">
             <div className="flex items-center justify-center bg-gradient-to-r from-primary_color to-gold-400 px-8 py-6 rounded-xl shadow-lg">
               <Phone className="w-8 h-8 text-marine-900 mr-4" />
               <div className="text-center">
@@ -203,8 +203,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Numéro de téléphone en évidence */}
-          <div className="mb-12">
+          {/* Calendrier HubSpot */}
           <div className="rounded-2xl p-8 bg-white shadow-xl border border-gray-200">
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-marine-900 mb-4">
