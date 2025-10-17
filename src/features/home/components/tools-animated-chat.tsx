@@ -157,6 +157,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
               width={32}
               height={32}
               className="w-8 h-8"
+              style={{ color: 'var(--on-secondary-container)' }}
             />
           </motion.button>
         )}
@@ -198,6 +199,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
                     width={24}
                     height={24}
                     className="w-6 h-6"
+                    style={{ color: 'var(--on-secondary-container)' }}
                   />
                 </div>
                 <div>
@@ -249,19 +251,12 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
                   }}
                 >
                   <Image
-                    src="/images/cortex.svg"
+                    src="/cortex.svg"
                     alt="Cortex"
                     width={24}
                     height={24}
                     className="w-6 h-6"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                      const parent = target.parentElement;
-                      if (parent) {
-                        parent.innerHTML = '<span style="color: var(--on-secondary-container); font-weight: bold;">C</span>';
-                      }
-                    }}
+                    style={{ color: 'var(--on-secondary-container)' }}
                   />
                 </div>
               )}
