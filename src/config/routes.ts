@@ -36,6 +36,11 @@ export const routes: Route[] = [
         label: "Ressources Humaines",
         description: "Simplifiez la gestion de vos équipes et des pourboires",
       },
+      {
+        path: "/fonctionnalites/octogone-360",
+        label: "Octogone 360",
+        description: "Tableau de bord intelligent avec tous vos KPIs en temps réel",
+      },
     ],
   },
   {
