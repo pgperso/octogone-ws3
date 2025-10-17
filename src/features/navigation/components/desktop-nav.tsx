@@ -115,12 +115,12 @@ export const DesktopNav: React.FC<DesktopNavProps> = ({
                               gridTemplateColumns: `repeat(${columnCount}, 1fr)`,
                             }}
                           >
-                            {route.children?.map((item: { path: string; label: string }) => {
+                            {route.children?.map((item: { path: string; href: string; label: string }) => {
                               const isActive = pathname.includes(item.path);
                               return (
                                 <Link
                                   key={item.path}
-                                  href={item.path}
+                                  href={item.href}
                                   className="block p-4 rounded-md transition-all duration-200"
                                   style={{
                                     backgroundColor: isActive ? 'var(--secondary-container)' : 'transparent'

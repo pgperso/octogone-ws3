@@ -110,7 +110,7 @@ export const ModernMobileNav: React.FC<MobileDrawerProps> = ({
                                 return (
                                   <Link
                                     key={child.path}
-                                    href={child.path}
+                                    href={child.href || child.path}
                                     className={cn(
                                       "p-3 rounded-lg transition-colors",
                                       isChildActive
