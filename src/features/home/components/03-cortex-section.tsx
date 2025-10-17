@@ -137,7 +137,9 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
         >
           <div className="mt-32 mb-32">
             <LaptopFrame>
-              <div style={{ height: '600px', position: 'relative' }}>
+              <div 
+                className="relative h-[600px] md:h-[600px] sm:h-[700px] max-sm:h-[800px]"
+              >
                 <ToolsAnimatedChat locale={locale} />
               </div>
             </LaptopFrame>
