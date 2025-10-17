@@ -1,0 +1,8 @@
+# Browsers that we support (modern browsers only)
+# This reduces polyfills and saves ~11 KB
+
+> 0.5%
+last 2 versions
+not dead
+not IE 11
+not op_mini all

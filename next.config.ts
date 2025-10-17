@@ -37,6 +37,11 @@ const nextConfig: NextConfig = {
     optimizePackageImports: ['framer-motion', 'lucide-react', '@radix-ui/react-accordion'],
   },
   
+  // Désactiver les polyfills pour navigateurs modernes (économise ~11 KB)
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  
   // Compression
   compress: true,
   
