@@ -127,7 +127,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
         className="absolute inset-0 w-full h-full hidden md:block"
         style={{
           backgroundImage: `url('${dashboardImage}')`,
-          backgroundSize: 'cover',
+          backgroundSize: '100% 100%',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
         }}
@@ -138,7 +138,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
         className="absolute inset-0 w-full h-full md:hidden"
         style={{
           backgroundImage: `url('${dashboardImageMobile}')`,
-          backgroundSize: 'cover',
+          backgroundSize: '100% 100%',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
         }}
