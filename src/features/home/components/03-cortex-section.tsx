@@ -7,6 +7,7 @@ import OctogoneButton from "@/components/ui/octogone-button";
 import { Sparkles, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import ToolsAnimatedChat from "./tools-animated-chat";
+import { LaptopFrame } from "@/components/ui/laptop-frame";
 
 interface CortexIntroProps {
   locale?: string;
@@ -122,9 +123,9 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
           </div>
         </motion.div>
 
-        {/* Chat animé des outils */}
+        {/* Chat animé des outils dans un laptop */}
         <motion.div
-          className="motion-element"
+          className="motion-element max-w-5xl mx-auto"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -134,15 +135,13 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
             if (element) element.classList.add('animation-complete');
           }}
         >
-        <div 
-          className="relative rounded-2xl p-8 shadow-2xl mt-32 mb-32"
-          style={{ 
-            backgroundColor: 'var(--surface)',
-            border: '1px solid var(--outline)'
-          }}
-        >
-          <ToolsAnimatedChat locale={locale} />
-        </div>
+          <div className="mt-32 mb-32">
+            <LaptopFrame>
+              <div className="p-8">
+                <ToolsAnimatedChat locale={locale} />
+              </div>
+            </LaptopFrame>
+          </div>
         </motion.div>
 
         {/* Texte percutant sous la vidéo */}
