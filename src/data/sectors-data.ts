@@ -18,7 +18,7 @@ export const targetSectors: TargetSector[] = [
     titleEn: "Restaurant chains and groups",
     descriptionFr: "Multi-établissements & franchises",
     descriptionEn: "Multi-location & franchises",
-    image: "/resto.jpg",
+    image: "/images/sectors/chains-groups.avif",
     gradient: "from-gold-400 to-gold-600",
     hoverGradient: "from-gold-500 to-gold-700"
   },
@@ -28,7 +28,7 @@ export const targetSectors: TargetSector[] = [
     titleEn: "Independent restaurants",
     descriptionFr: "Établissements uniques",
     descriptionEn: "Single establishments",
-    image: "/resto.jpg",
+    image: "/images/sectors/independent-restaurants.avif",
     gradient: "from-marine-400 to-marine-600",
     hoverGradient: "from-marine-500 to-marine-700"
   },
@@ -38,7 +38,7 @@ export const targetSectors: TargetSector[] = [
     titleEn: "Caterers",
     descriptionFr: "Événementiel & corporate",
     descriptionEn: "Events & corporate",
-    image: "/resto.jpg",
+    image: "/images/sectors/caterers.avif",
     gradient: "from-blue-400 to-blue-600",
     hoverGradient: "from-blue-500 to-blue-700"
   },
@@ -48,7 +48,7 @@ export const targetSectors: TargetSector[] = [
     titleEn: "Brewers & distilleries",
     descriptionFr: "Production de boissons",
     descriptionEn: "Beverage production",
-    image: "/resto.jpg",
+    image: "/images/sectors/brewers-distillers.avif",
     gradient: "from-amber-400 to-amber-600",
     hoverGradient: "from-amber-500 to-amber-700"
   },
@@ -58,7 +58,7 @@ export const targetSectors: TargetSector[] = [
     titleEn: "Purchasing groups",
     descriptionFr: "Achats groupés",
     descriptionEn: "Group purchasing",
-    image: "/resto.jpg",
+    image: "/images/sectors/purchasing-groups.avif",
     gradient: "from-purple-400 to-purple-600",
     hoverGradient: "from-purple-500 to-purple-700"
   },
@@ -68,7 +68,7 @@ export const targetSectors: TargetSector[] = [
     titleEn: "Retail commerce",
     descriptionFr: "Vente au détail",
     descriptionEn: "Retail sales",
-    image: "/resto.jpg",
+    image: "/images/sectors/retail-commerce.avif",
     gradient: "from-yellow-400 to-yellow-600",
     hoverGradient: "from-yellow-500 to-yellow-700"
   }
@@ -82,7 +82,7 @@ export const restaurantStyles: TargetSector[] = [
     titleEn: "Gastronomic dining",
     descriptionFr: "Haute cuisine raffinée",
     descriptionEn: "Refined haute cuisine",
-    image: "/resto.jpg",
+    image: "/images/sectors/gastronomic.avif",
     gradient: "from-purple-400 to-purple-600",
     hoverGradient: "from-purple-500 to-purple-700"
   },
@@ -92,7 +92,7 @@ export const restaurantStyles: TargetSector[] = [
     titleEn: "Bistro & brasserie",
     descriptionFr: "Ambiance conviviale",
     descriptionEn: "Friendly atmosphere",
-    image: "/resto.jpg",
+    image: "/images/sectors/bistro-brasserie.avif",
     gradient: "from-amber-400 to-amber-600",
     hoverGradient: "from-amber-500 to-amber-700"
   },
@@ -102,7 +102,7 @@ export const restaurantStyles: TargetSector[] = [
     titleEn: "Fast food",
     descriptionFr: "Service rapide et efficace",
     descriptionEn: "Quick and efficient service",
-    image: "/resto.jpg",
+    image: "/images/sectors/fast-food.avif",
     gradient: "from-red-400 to-red-600",
     hoverGradient: "from-red-500 to-red-700"
   },
@@ -112,7 +112,7 @@ export const restaurantStyles: TargetSector[] = [
     titleEn: "Snack bar",
     descriptionFr: "Mets simples servis au comptoir",
     descriptionEn: "Simple meals served at counter",
-    image: "/resto.jpg",
+    image: "/images/sectors/casse-croute.avif",
     gradient: "from-orange-400 to-orange-600",
     hoverGradient: "from-orange-500 to-orange-700"
   },
@@ -122,7 +122,7 @@ export const restaurantStyles: TargetSector[] = [
     titleEn: "Family restaurant",
     descriptionFr: "Ambiance chaleureuse",
     descriptionEn: "Warm atmosphere",
-    image: "/resto.jpg",
+    image: "/images/sectors/family-restaurant.avif",
     gradient: "from-green-400 to-green-600",
     hoverGradient: "from-green-500 to-green-700"
   },
@@ -132,7 +132,7 @@ export const restaurantStyles: TargetSector[] = [
     titleEn: "Café",
     descriptionFr: "Produits frais et artisanaux",
     descriptionEn: "Fresh and artisanal products",
-    image: "/resto.jpg",
+    image: "/images/sectors/cafe.avif",
     gradient: "from-yellow-400 to-yellow-600",
     hoverGradient: "from-yellow-500 to-yellow-700"
   },
@@ -142,7 +142,7 @@ export const restaurantStyles: TargetSector[] = [
     titleEn: "Pub & microbrewery",
     descriptionFr: "Bières artisanales",
     descriptionEn: "Craft beers",
-    image: "/resto.jpg",
+    image: "/images/sectors/pub-microbrewery.avif",
     gradient: "from-blue-400 to-blue-600",
     hoverGradient: "from-blue-500 to-blue-700"
   },
@@ -152,7 +152,7 @@ export const restaurantStyles: TargetSector[] = [
     titleEn: "Catering & food service",
     descriptionFr: "Services événementiels",
     descriptionEn: "Event services",
-    image: "/resto.jpg",
+    image: "/images/sectors/catering-corporate.avif",
     gradient: "from-indigo-400 to-indigo-600",
     hoverGradient: "from-indigo-500 to-indigo-700"
   },
@@ -162,7 +162,7 @@ export const restaurantStyles: TargetSector[] = [
     titleEn: "Tourism and industrial dining",
     descriptionFr: "Secteurs spécialisés",
     descriptionEn: "Specialized sectors",
-    image: "/resto.jpg",
+    image: "/images/sectors/tourism-industrial.avif",
     gradient: "from-teal-400 to-teal-600",
     hoverGradient: "from-teal-500 to-teal-700"
   }
