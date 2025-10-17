@@ -24,6 +24,7 @@ export function HubSpotContactForm({ locale = "fr" }: HubSpotContactFormProps) {
 
   const [status, setStatus] = React.useState<"idle" | "loading" | "success" | "error">("idle");
 
+  // Labels multilingues pour le formulaire
   const labels = {
     fr: {
       firstname: "Prénom",
