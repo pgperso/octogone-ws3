@@ -549,8 +549,7 @@ export const tools: Tool[] = [
     
     sections: [
       { concept: 'analyze', features: [0, 1] },
-      { features: [2, 3, 4] },
-      { concept: 'operate', features: [5] }
+      { features: [2, 3, 4] }
     ],
     
     features: [
@@ -568,8 +567,8 @@ export const tools: Tool[] = [
         concepts: ['analyze']
       },
       {
-        titleFr: 'Comparaisons intelligentes',
-        titleEn: 'Smart Comparisons',
+        titleFr: 'Comparaisons historiques',
+        titleEn: 'Historical Comparisons',
         descriptionFr: 'Comparez vos performances avec les périodes précédentes. Jour, semaine, mois... Identifiez les tendances et ajustez votre stratégie en conséquence.',
         descriptionEn: 'Compare your performance with previous periods. Day, week, month... Identify trends and adjust your strategy accordingly.',
         image: '/images/tools/360-compare.jpg',
@@ -591,7 +590,7 @@ export const tools: Tool[] = [
           { fr: 'Heures de pointe', en: 'Peak hours' },
           { fr: 'Optimisation staff', en: 'Staff optimization' }
         ],
-        concepts: ['operate']
+        concepts: ['analyze']
       },
       {
         titleFr: 'Rentabilité et coûts',
@@ -618,19 +617,6 @@ export const tools: Tool[] = [
           { fr: 'Revenu optimisé', en: 'Optimized revenue' }
         ],
         concepts: ['analyze']
-      },
-      {
-        titleFr: 'Multi-établissements',
-        titleEn: 'Multi-Location',
-        descriptionFr: 'Gérez plusieurs restaurants depuis un seul tableau de bord. Comparez les performances et identifiez les meilleures pratiques.',
-        descriptionEn: 'Manage multiple restaurants from one dashboard. Compare performance and identify best practices.',
-        image: '/images/tools/360-multi.jpg',
-        benefits: [
-          { fr: 'Vue centralisée', en: 'Centralized view' },
-          { fr: 'Comparaisons inter-sites', en: 'Cross-location comparisons' },
-          { fr: 'Gestion simplifiée', en: 'Simplified management' }
-        ],
-        concepts: ['operate']
       }
     ]
   }
