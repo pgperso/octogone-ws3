@@ -144,14 +144,15 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
             backgroundColor: 'var(--surface-variant)'
           }}
         >
-          <iframe
-            src="https://player.vimeo.com/video/1126878170?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1&muted=1&controls=0&background=1"
-            className="w-full h-full"
-            frameBorder="0"
-            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-            allowFullScreen
-            title="Cortex Demo"
-          />
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src="/animations/predict.mp4" type="video/mp4" />
+          </video>
         </div>
         </motion.div>
 
