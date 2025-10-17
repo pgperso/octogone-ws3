@@ -130,8 +130,8 @@ const Hero = () => {
       color: "text-marine-500",
       pastelColor: "green_pastel", // Vert menthe pastel
       position: "top-left",
-      media: "https://player.vimeo.com/video/1126878170",
-      mediaType: "vimeo",
+      media: "/animations/operate.webp",
+      mediaType: "webp",
       link: "/features/operate"
     },
     {
@@ -144,8 +144,8 @@ const Hero = () => {
       color: "text-gold-500",
       pastelColor: "blue_pastel", // Bleu ciel pastel
       position: "top-right",
-      media: "https://player.vimeo.com/video/1126878170",
-      mediaType: "vimeo",
+      media: "/animations/automate.webp",
+      mediaType: "webp",
       link: "/features/automate"
     },
     {
@@ -158,8 +158,8 @@ const Hero = () => {
       color: "text-marine-500",
       pastelColor: "yellow_pastel", // Jaune pastel
       position: "bottom-right",
-      media: "https://player.vimeo.com/video/1126878170",
-      mediaType: "vimeo",
+      media: "/animations/analyze.webp",
+      mediaType: "webp",
       link: "/features/analyze"
     },
     {
@@ -172,8 +172,8 @@ const Hero = () => {
       color: "text-gold-500",
       pastelColor: "purple_pastel", // Mauve du dégradé Cortex
       position: "bottom-left",
-      media: "https://player.vimeo.com/video/1126878170",
-      mediaType: "vimeo",
+      media: "/animations/predict.webp",
+      mediaType: "webp",
       link: "/features/predict"
     }
   ];
@@ -439,31 +439,19 @@ const Hero = () => {
                     transform: `rotate(-${rotationDegrees}deg)`,
                     transition: 'transform 0.5s ease-out'
                   }}>
-                    {activeOctogone !== null && octogones[activeOctogone].mediaType === 'vimeo' ? (
-                      <div key={activeOctogone} className="absolute inset-0 w-full h-full">
-                        <VideoFacade
-                          videoId="1126878170"
-                          provider="vimeo"
-                          title={locale === 'fr' ? octogones[activeOctogone].titleFr : octogones[activeOctogone].titleEn}
-                          thumbnail={activeOctogone === 0 ? '/operate.jpg' : activeOctogone === 3 ? '/predict.jpg' : '/resto.jpg'}
-                          autoload={true}
-                          className="w-full h-full"
-                        />
-                      </div>
-                    ) : (
-                      <Image
-                        key={activeOctogone !== null ? activeOctogone : 0}
-                        src={activeOctogone !== null ? octogones[activeOctogone].media : octogones[0].media}
-                        alt="Restaurant"
-                        fill
-                        className="object-cover"
-                        style={{
-                          animation: 'fadeIn 0.5s ease-out'
-                        }}
-                        priority
-                        sizes="(max-width: 768px) 220px, (max-width: 1024px) 320px, 380px"
-                      />
-                    )}
+                    <Image
+                      key={activeOctogone !== null ? activeOctogone : 0}
+                      src={activeOctogone !== null ? octogones[activeOctogone].media : octogones[0].media}
+                      alt={activeOctogone !== null ? (locale === 'fr' ? octogones[activeOctogone].titleFr : octogones[activeOctogone].titleEn) : "Restaurant"}
+                      fill
+                      className="object-cover"
+                      style={{
+                        animation: 'fadeIn 0.5s ease-out'
+                      }}
+                      priority
+                      sizes="(max-width: 768px) 220px, (max-width: 1024px) 320px, 380px"
+                      unoptimized
+                    />
                   </div>
                   <style jsx>{`
                     @keyframes fadeIn {
