@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,6 +20,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
   const [isPlaying] = useState(true);
   const [, setHasError] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setIsClient(true);
@@ -36,6 +37,16 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
   const cleanupTimeouts = useCallback((timeouts: NodeJS.Timeout[]) => {
     timeouts.forEach(timeout => clearTimeout(timeout));
   }, []);
+
+  // Auto-scroll vers le bas quand un nouveau message apparaît
+  useEffect(() => {
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTo({
+        top: chatContainerRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
+  }, [visibleMessages]);
 
   useEffect(() => {
     if (!isPlaying || !isClient || !currentConversation?.messages) return;
@@ -82,15 +93,18 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
     );
   }
 
-  const maxMessages = currentConversations.length > 0 
-    ? Math.max(...currentConversations.map(conv => conv?.messages?.length || 0))
-    : 0;
-  const estimatedHeight = Math.max(400, maxMessages * 150 + 100);
-
   return (
-    <div className="max-w-4xl mx-auto space-y-6 motion-container" style={{ minHeight: `${estimatedHeight}px` }}>
+    <div 
+      ref={chatContainerRef}
+      className="max-w-4xl mx-auto motion-container overflow-y-auto"
+      style={{ 
+        height: '500px',
+        scrollbarWidth: 'thin',
+        scrollbarColor: '#cbd5e0 transparent'
+      }}
+    >
       <AnimatePresence mode="wait">
-        <div key={currentConversation.id} className="space-y-4">
+        <div key={currentConversation.id} className="space-y-4 p-4">
           {visibleMessages.map((message, index) => (
           <motion.div
             key={`conv-${currentConversation.id}-msg-${index}`}

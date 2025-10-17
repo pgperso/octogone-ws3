@@ -36,8 +36,28 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         {
           type: 'cortex',
-          text: 'Excellente question ! Avec Inventaire, transformez une corvée en processus efficace 📦\n\n✅ Prenez vos inventaires en équipe et divisez le temps par 3\n✅ Suivez vos stocks en temps réel\n✅ Détectez les écarts instantanément\n✅ Réduisez vos pertes de 2 à 5%\n\nChaque membre de l\'équipe peut compter simultanément sur son appareil. Les données se synchronisent automatiquement !',
-          delay: 1500,
+          text: 'Excellente question ! Avec Inventaire, transformez une corvée en processus efficace 📦\n\n✅ Prenez vos inventaires en équipe et divisez le temps par 3\n✅ Suivez vos stocks en temps réel\n✅ Détectez les écarts instantanément',
+          delay: 1500
+        },
+        { 
+          type: 'user', 
+          text: 'Et pour la prise en équipe, comment ça fonctionne exactement ?', 
+          delay: 4000 
+        },
+        {
+          type: 'cortex',
+          text: 'Chaque membre de l\'équipe peut compter simultanément sur son appareil (téléphone, tablette). Les données se synchronisent automatiquement en temps réel !\n\nPar exemple : pendant qu\'un employé compte le bar, un autre fait la cuisine, et un troisième le garde-manger. Tout se consolide automatiquement.',
+          delay: 5500
+        },
+        { 
+          type: 'user', 
+          text: 'Ça m\'intéresse ! Quels sont les autres avantages ?', 
+          delay: 9000 
+        },
+        {
+          type: 'cortex',
+          text: '✅ Réduisez vos pertes de 2 à 5%\n✅ Comparez physique vs théorique instantanément\n✅ Identifiez les produits à commander\n✅ Historique complet de tous vos inventaires\n\nVous gagnez 10-15 heures par semaine et vous avez enfin le contrôle total sur vos stocks !',
+          delay: 10500,
           cta: {
             label: 'Découvrir Inventaire',
             link: '/fonctionnalites/inventaire'
@@ -55,8 +75,28 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         {
           type: 'cortex',
-          text: 'Parfait ! Le Food Cost est la clé de votre rentabilité 👨‍🍳\n\n✅ Créez vos fiches techniques détaillées\n✅ Calculez automatiquement vos coûts et marges\n✅ Un prix change ? Toutes vos recettes se mettent à jour instantanément\n✅ Analysez la rentabilité de chaque plat\n\nZéro erreur de calcul, zéro Excel. Tout est automatique et toujours à jour !',
-          delay: 1500,
+          text: 'Parfait ! Le Food Cost est la clé de votre rentabilité 👨‍🍳\n\n✅ Créez vos fiches techniques détaillées\n✅ Calculez automatiquement vos coûts et marges\n✅ Analysez la rentabilité de chaque plat',
+          delay: 1500
+        },
+        { 
+          type: 'user', 
+          text: 'Et si un prix d\'ingrédient change ?', 
+          delay: 4000 
+        },
+        {
+          type: 'cortex',
+          text: 'Excellente question ! Toutes vos recettes se mettent à jour instantanément 🔄\n\nPar exemple : le prix du bœuf augmente ? En un clic, vous voyez l\'impact sur TOUTES vos recettes qui contiennent du bœuf. Coûts, marges, prix de vente suggérés... tout est recalculé automatiquement.',
+          delay: 5500
+        },
+        { 
+          type: 'user', 
+          text: 'Plus besoin d\'Excel alors !', 
+          delay: 9000 
+        },
+        {
+          type: 'cortex',
+          text: 'Exactement ! Zéro erreur de calcul, zéro formule Excel à maintenir 🎉\n\nVous avez des rapports en temps réel : food cost global, par catégorie, par plat. Vous savez exactement où vous êtes rentable et où vous perdez de l\'argent.',
+          delay: 10500,
           cta: {
             label: 'Découvrir Food Cost',
             link: '/fonctionnalites/food-cost'
@@ -74,8 +114,28 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         {
           type: 'cortex',
-          text: 'La sécurité alimentaire, c\'est critique ! Avec Températures, simplifiez votre conformité 🌡️\n\n✅ Surveillance automatique 24/7 de vos zones tempérées\n✅ Alertes instantanées si température hors norme\n✅ Fini les saisies manuelles et les oublis\n✅ Historique complet pour inspections MAPAQ\n\nVos frigos, congélateurs et zones chaudes sont surveillés en continu. Vous êtes alerté avant que ça devienne un problème !',
-          delay: 1500,
+          text: 'La sécurité alimentaire, c\'est critique ! Avec Températures, simplifiez votre conformité 🌡️\n\n✅ Surveillance automatique 24/7\n✅ Alertes instantanées si hors norme\n✅ Fini les saisies manuelles',
+          delay: 1500
+        },
+        { 
+          type: 'user', 
+          text: 'Comment ça fonctionne concrètement ?', 
+          delay: 4000 
+        },
+        {
+          type: 'cortex',
+          text: 'Des capteurs IoT dans vos frigos, congélateurs et zones chaudes envoient les températures en temps réel 📡\n\nSi une température sort de la plage acceptable, vous recevez une alerte immédiate (notification, SMS, email). Vous pouvez agir AVANT que la nourriture soit compromise.',
+          delay: 5500
+        },
+        { 
+          type: 'user', 
+          text: 'Et pour les inspections MAPAQ ?', 
+          delay: 9000 
+        },
+        {
+          type: 'cortex',
+          text: 'Historique complet automatique ! 📋\n\nToutes les températures sont enregistrées avec date et heure. En cas d\'inspection, vous exportez le rapport en un clic. Fini les feuilles papier perdues ou les données manquantes !',
+          delay: 10500,
           cta: {
             label: 'Découvrir Températures',
             link: '/fonctionnalites/temperatures'
@@ -93,8 +153,28 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         {
           type: 'cortex',
-          text: 'On vous comprend ! Excel, c\'est fini 👥\n\n✅ Fiches employés complètes et centralisées\n✅ Gestion des conventions collectives simplifiée\n✅ Suivi des heures et disponibilités\n✅ Documents RH accessibles en un clic\n\nToutes vos informations RH au même endroit, sécurisées et toujours à jour. Plus de fichiers Excel perdus ou versions multiples !',
-          delay: 1500,
+          text: 'On vous comprend ! Excel, c\'est fini 👥\n\n✅ Fiches employés complètes et centralisées\n✅ Gestion des conventions collectives simplifiée\n✅ Suivi des heures et disponibilités',
+          delay: 1500
+        },
+        { 
+          type: 'user', 
+          text: 'C\'est quoi exactement les conventions collectives dans votre système ?', 
+          delay: 4000 
+        },
+        {
+          type: 'cortex',
+          text: 'Les conventions collectives, c\'est toutes les règles de travail : salaires, heures, congés, avantages sociaux, etc. 📄\n\nAu lieu de chercher dans des PDF de 200 pages ou des fichiers Excel, tout est structuré et accessible. Vous savez instantanément ce qui s\'applique à chaque employé.',
+          delay: 5500
+        },
+        { 
+          type: 'user', 
+          text: 'Parfait ! Et pour les documents RH ?', 
+          delay: 9000 
+        },
+        {
+          type: 'cortex',
+          text: 'Tous vos documents RH au même endroit, sécurisés 🔒\n\nContrats, évaluations, formations, certifications... Tout est lié à la fiche employé. Plus de fichiers Excel perdus, plus de versions multiples. Tout est centralisé et toujours à jour !',
+          delay: 10500,
           cta: {
             label: 'Découvrir RH',
             link: '/fonctionnalites/ressources-humaines'
