@@ -20,6 +20,8 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
   const [isPlaying] = useState(true);
   const [, setHasError] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isAnimatingOpen, setIsAnimatingOpen] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -40,13 +42,38 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
 
   // Auto-scroll vers le bas quand un nouveau message apparaît
   useEffect(() => {
-    if (chatContainerRef.current) {
+    if (chatContainerRef.current && isChatOpen) {
       chatContainerRef.current.scrollTo({
         top: chatContainerRef.current.scrollHeight,
         behavior: 'smooth'
       });
     }
-  }, [visibleMessages]);
+  }, [visibleMessages, isChatOpen]);
+
+  // Ouvrir le chat automatiquement après un délai
+  useEffect(() => {
+    if (!isClient) return;
+    
+    const openTimer = setTimeout(() => {
+      setIsAnimatingOpen(true);
+      setTimeout(() => setIsChatOpen(true), 100);
+    }, 2000); // Ouvre après 2 secondes
+
+    return () => clearTimeout(openTimer);
+  }, [isClient, currentConversationIndex]);
+
+  // Fermer le chat et passer à la conversation suivante
+  const handleCloseChat = useCallback(() => {
+    setIsChatOpen(false);
+    setIsAnimatingOpen(false);
+    setVisibleMessages([]);
+    
+    setTimeout(() => {
+      setCurrentConversationIndex((prev) => 
+        (prev + 1) % currentConversations.length
+      );
+    }, 1000);
+  }, [currentConversations.length]);
 
   useEffect(() => {
     if (!isPlaying || !isClient || !currentConversation?.messages) return;
@@ -68,14 +95,12 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
 
       const lastMessage = currentConversation.messages[currentConversation.messages.length - 1];
       if (lastMessage && typeof lastMessage.delay === 'number') {
-        const totalTime = lastMessage.delay + (TOOLS_TIMING?.messageDisplay || 4000) + (TOOLS_TIMING?.conversationPause || 3000);
+        const totalTime = lastMessage.delay + (TOOLS_TIMING?.messageDisplay || 4000) + 2000;
 
-        const nextTimeout = setTimeout(() => {
-          setCurrentConversationIndex((prev) => 
-            (prev + 1) % Math.max(1, currentConversations.length)
-          );
+        const closeTimeout = setTimeout(() => {
+          handleCloseChat();
         }, totalTime);
-        timeouts.push(nextTimeout);
+        timeouts.push(closeTimeout);
       }
 
       return () => cleanupTimeouts(timeouts);
@@ -83,7 +108,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
       console.warn('ToolsAnimatedChat error:', _error);
       setHasError(true);
     }
-  }, [currentConversationIndex, isPlaying, currentConversations, currentConversation, isClient, cleanupTimeouts]);
+  }, [currentConversationIndex, isPlaying, currentConversations, currentConversation, isClient, cleanupTimeouts, handleCloseChat]);
 
   if (!currentConversation || !currentConversations.length) {
     return (
@@ -93,18 +118,113 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
     );
   }
 
+  const dashboardImage = isEnglish ? '/dashboard_en.avif' : '/dashboard_fr.avif';
+
   return (
-    <div 
-      ref={chatContainerRef}
-      className="max-w-4xl mx-auto motion-container overflow-y-auto overflow-x-hidden"
-      style={{ 
-        height: '500px',
-        scrollbarWidth: 'thin',
-        scrollbarColor: '#cbd5e0 transparent'
-      }}
-    >
-      <AnimatePresence mode="wait">
-        <div key={currentConversation.id} className="space-y-4 p-4">
+    <div className="relative w-full h-full">
+      {/* Dashboard en arrière-plan */}
+      <div 
+        className="absolute inset-0 w-full h-full"
+        style={{
+          backgroundImage: `url('${dashboardImage}')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      />
+
+      {/* Bouton flottant Cortex */}
+      <AnimatePresence>
+        {!isChatOpen && !isAnimatingOpen && (
+          <motion.button
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={() => {
+              setIsAnimatingOpen(true);
+              setTimeout(() => setIsChatOpen(true), 100);
+            }}
+            className="absolute bottom-6 right-6 w-16 h-16 rounded-full shadow-2xl flex items-center justify-center"
+            style={{
+              backgroundColor: 'var(--purple_cortex)',
+              zIndex: 10
+            }}
+          >
+            <Image
+              src="/cortex-logo.svg"
+              alt="Cortex"
+              width={32}
+              height={32}
+              className="w-8 h-8"
+              onError={(e) => {
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+              }}
+            />
+          </motion.button>
+        )}
+      </AnimatePresence>
+
+      {/* Chat popup */}
+      <AnimatePresence>
+        {isChatOpen && (
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0, y: 50 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.8, opacity: 0, y: 50 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute inset-0 m-4 rounded-2xl shadow-2xl overflow-hidden"
+            style={{
+              backgroundColor: 'var(--surface)',
+              zIndex: 20
+            }}
+          >
+            {/* Header du chat */}
+            <div 
+              className="flex items-center justify-between px-6 py-4"
+              style={{
+                backgroundColor: 'var(--surface-variant)',
+                borderBottom: '1px solid var(--outline-variant)'
+              }}
+            >
+              <div className="flex items-center gap-3">
+                <div 
+                  className="w-10 h-10 rounded-full flex items-center justify-center"
+                  style={{ backgroundColor: 'var(--purple_cortex)' }}
+                >
+                  <span className="text-white font-bold">C</span>
+                </div>
+                <div>
+                  <h3 className="font-semibold" style={{ color: 'var(--on-surface)' }}>
+                    Cortex
+                  </h3>
+                  <p className="text-xs" style={{ color: 'var(--on-surface-variant)' }}>
+                    Assistant intelligent
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={handleCloseChat}
+                className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/5 transition-colors"
+                style={{ color: 'var(--on-surface-variant)' }}
+              >
+                ✕
+              </button>
+            </div>
+
+            {/* Contenu du chat avec scroll */}
+            <div 
+              ref={chatContainerRef}
+              className="overflow-y-auto overflow-x-hidden p-6"
+              style={{ 
+                height: 'calc(100% - 72px)',
+                scrollbarWidth: 'thin',
+                scrollbarColor: '#cbd5e0 transparent'
+              }}
+            >
+              <AnimatePresence mode="wait">
+                <div key={currentConversation.id} className="space-y-4">
           {visibleMessages.map((message, index) => (
           <motion.div
             key={`conv-${currentConversation.id}-msg-${index}`}
@@ -193,7 +313,11 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
             </div>
           </motion.div>
           ))}
-        </div>
+                </div>
+              </AnimatePresence>
+            </div>
+          </motion.div>
+        )}
       </AnimatePresence>
     </div>
   );
