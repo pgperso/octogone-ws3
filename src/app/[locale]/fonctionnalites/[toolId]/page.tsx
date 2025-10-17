@@ -11,6 +11,9 @@ import { getToolById, getNextTool, getPreviousTool } from "@/data/tools/tools-co
 import { ToolSEO } from "@/components/seo/tool-seo";
 import { LogoCard } from "@/components/widgets/logo-card";
 
+// Permettre les paramètres dynamiques
+export const dynamicParams = true;
+
 export default function ToolPage({
   params,
 }: {
