@@ -54,50 +54,60 @@ export default function ContactPage() {
       {/* Contact Info */}
       <ResponsiveSection spacing="lg">
         <div className="max-w-4xl mx-auto">
+          {/* Section d'introduction colorée */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            {/* Téléphone */}
-            <div className="p-6 rounded-2xl text-center bg-gradient-to-br from-blue-50 to-blue-100">
-              <div className="p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-white/50">
-                <Phone className="w-8 h-8 text-blue-600" />
+            <div className="p-6 rounded-2xl text-center" style={{ backgroundColor: '#B8E6D5' }}>
+              <div className="p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: 'rgba(255, 255, 255, 0.3)' }}>
+                <Phone className="w-8 h-8" style={{ color: 'var(--on-secondary-container)' }} />
               </div>
-              <h3 className="font-bold mb-2 text-blue-900">
-                {locale === "fr" ? "Téléphone" : "Phone"}
+              <h3 className="font-bold mb-2" style={{ color: 'var(--on-secondary-container)' }}>
+                {locale === "fr" ? "Service humain et rapide" : "Human and fast service"}
               </h3>
-              <a 
-                href="tel:+15818745990" 
-                className="text-blue-700 hover:text-blue-900 transition-colors font-semibold"
-              >
-                581-874-5990
-              </a>
-            </div>
-
-            {/* Email */}
-            <div className="p-6 rounded-2xl text-center bg-gradient-to-br from-green-50 to-green-100">
-              <div className="p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-white/50">
-                <Mail className="w-8 h-8 text-green-600" />
-              </div>
-              <h3 className="font-bold mb-2 text-green-900">
-                Email
-              </h3>
-              <a 
-                href="mailto:info@octogonecollectif.com" 
-                className="text-green-700 hover:text-green-900 transition-colors text-sm"
-              >
-                info@octogonecollectif.com
-              </a>
-            </div>
-
-            {/* Adresse */}
-            <div className="p-6 rounded-2xl text-center bg-gradient-to-br from-purple-50 to-purple-100">
-              <div className="p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-white/50">
-                <MapPin className="w-8 h-8 text-purple-600" />
-              </div>
-              <h3 className="font-bold mb-2 text-purple-900">
-                {locale === "fr" ? "Adresse" : "Address"}
-              </h3>
-              <p className="text-purple-700 text-sm">
-                Québec, Canada
+              <p className="text-sm" style={{ color: 'var(--on-secondary-container)' }}>
+                {locale === "fr" ? "Notre équipe vous accompagne et facilite votre quotidien" : "Our team supports you and simplifies your daily operations"}
               </p>
+            </div>
+            
+            <div className="p-6 rounded-2xl text-center" style={{ backgroundColor: '#BADFF6' }}>
+              <div className="p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: 'rgba(255, 255, 255, 0.3)' }}>
+                <Mail className="w-8 h-8" style={{ color: 'var(--on-secondary-container)' }} />
+              </div>
+              <h3 className="font-bold mb-2" style={{ color: 'var(--on-secondary-container)' }}>
+                {locale === "fr" ? "Démo sur mesure" : "Custom demo"}
+              </h3>
+              <p className="text-sm" style={{ color: 'var(--on-secondary-container)' }}>
+                {locale === "fr" ? "Voyez Octogone en action" : "See Octogone in action"}
+              </p>
+            </div>
+            
+            <div className="p-6 rounded-2xl text-center" style={{ backgroundColor: '#E2CDED' }}>
+              <div className="p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: 'rgba(255, 255, 255, 0.3)' }}>
+                <MapPin className="w-8 h-8" style={{ color: 'var(--on-secondary-container)' }} />
+              </div>
+              <h3 className="font-bold mb-2" style={{ color: 'var(--on-secondary-container)' }}>
+                {locale === "fr" ? "À l'écoute de vos besoins" : "Listening to your needs"}
+              </h3>
+              <p className="text-sm" style={{ color: 'var(--on-secondary-container)' }}>
+                {locale === "fr" ? "Nous comprenons votre réalité et nous adaptons à vos défis" : "We understand your reality and adapt to your challenges"}
+              </p>
+            </div>
+          </div>
+
+          {/* Numéro de téléphone en évidence */}
+          <div className="mb-8">
+            <div className="flex items-center justify-center bg-gradient-to-r from-primary_color to-gold-400 px-8 py-6 rounded-xl shadow-lg">
+              <Phone className="w-8 h-8 text-marine-900 mr-4" />
+              <div className="text-center">
+                <p className="text-marine-900 text-sm font-medium mb-1">
+                  {locale === "fr" ? "Appelez-nous directement" : "Call us directly"}
+                </p>
+                <a 
+                  href="tel:+15818745990" 
+                  className="text-marine-900 text-3xl font-bold hover:text-marine-700 transition-colors"
+                >
+                  581-874-5990
+                </a>
+              </div>
             </div>
           </div>
         </div>
