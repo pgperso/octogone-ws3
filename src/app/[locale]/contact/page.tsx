@@ -1,9 +1,11 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import { useParams } from "next/navigation";
 import { ResponsiveSection } from "@/components/ui/responsive-section";
 import { Phone, Mail, MapPin } from "lucide-react";
+import Image from "next/image";
 
 export default function ContactPage() {
   const params = useParams();
@@ -35,27 +37,117 @@ export default function ContactPage() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-marine-50 to-white">
+    <main className="flex min-h-screen flex-col" style={{ backgroundColor: 'var(--background)' }}>
       {/* Hero Section */}
-      <ResponsiveSection spacing="xl" className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-marine-900/5 to-gold-500/5"></div>
-        <div className="relative z-10 text-center">
-          <h1 className="text-4xl lg:text-6xl font-bold text-marine-900 mb-6">
-            {locale === "fr" ? "Contactez-nous" : "Contact us"}
-          </h1>
-          <p className="text-xl lg:text-2xl text-marine-700 max-w-3xl mx-auto mb-8">
-            {locale === "fr" 
-              ? "Réservez un appel avec notre équipe pour découvrir comment Octogone peut transformer votre gestion."
-              : "Book a call with our team to discover how Octogone can transform your management."}
-          </p>
+      <ResponsiveSection
+        as="section"
+        spacing="xl"
+        className="relative overflow-hidden"
+        style={{ 
+          background: 'linear-gradient(to bottom right, #BADFF6, var(--background))'
+        }}
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <motion.div 
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+              style={{ backgroundColor: '#BADFF6' }}
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <Phone className="w-5 h-5" style={{ color: '#002236' }} />
+              <span className="text-sm font-semibold" style={{ color: '#002236' }}>
+                {locale === 'fr' ? 'Contact' : 'Contact'}
+              </span>
+            </motion.div>
+            
+            <motion.h1 
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6" 
+              style={{ color: 'var(--on-secondary-container)' }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              {locale === 'fr' ? 'Contactez-nous' : 'Contact us'}
+            </motion.h1>
+            
+            <motion.p 
+              className="text-lg md:text-xl mb-8" 
+              style={{ color: 'var(--on-secondary-container)' }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              {locale === 'fr' 
+                ? "Réservez un appel avec notre équipe pour découvrir comment Octogone peut transformer votre gestion restaurant."
+                : "Book a call with our team to discover how Octogone can transform your restaurant management."}
+            </motion.p>
+
+            {/* Contact Info Cards */}
+            <motion.div 
+              className="grid grid-cols-1 sm:grid-cols-3 gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <div className="p-4 rounded-xl text-center" style={{ backgroundColor: '#B8E6D5' }}>
+                <Phone className="w-6 h-6 mx-auto mb-2" style={{ color: 'var(--on-secondary-container)' }} />
+                <a 
+                  href="tel:+15818745990" 
+                  className="text-sm font-semibold hover:underline"
+                  style={{ color: 'var(--on-secondary-container)' }}
+                >
+                  581-874-5990
+                </a>
+              </div>
+
+              <div className="p-4 rounded-xl text-center" style={{ backgroundColor: '#E2CDED' }}>
+                <Mail className="w-6 h-6 mx-auto mb-2" style={{ color: 'var(--on-secondary-container)' }} />
+                <a 
+                  href="mailto:info@octogonecollectif.com" 
+                  className="text-xs font-semibold hover:underline"
+                  style={{ color: 'var(--on-secondary-container)' }}
+                >
+                  info@octogonecollectif.com
+                </a>
+              </div>
+
+              <div className="p-4 rounded-xl text-center" style={{ backgroundColor: '#BADFF6' }}>
+                <MapPin className="w-6 h-6 mx-auto mb-2" style={{ color: 'var(--on-secondary-container)' }} />
+                <p className="text-sm font-semibold" style={{ color: 'var(--on-secondary-container)' }}>
+                  Québec, Canada
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          <motion.div 
+            className="relative h-[400px] lg:h-[500px]"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <Image
+              src="/images/restaurant2.avif"
+              alt={locale === 'fr' ? 'Restaurant' : 'Restaurant'}
+              fill
+              className="object-cover rounded-2xl shadow-2xl"
+            />
+          </motion.div>
         </div>
       </ResponsiveSection>
 
-      {/* Contact Info */}
-      <ResponsiveSection spacing="lg">
-        <div className="max-w-4xl mx-auto">
-          {/* Section d'introduction colorée */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      {/* Calendar Section */}
+      <div style={{ backgroundColor: 'var(--background)' }}>
+        <ResponsiveSection
+          as="section"
+          spacing="xxl"
+          bgColor=""
+        >
+          <div className="max-w-5xl mx-auto">
+            {/* Section d'introduction colorée */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             <div className="p-6 rounded-2xl text-center" style={{ backgroundColor: '#B8E6D5' }}>
               <div className="p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: 'rgba(255, 255, 255, 0.3)' }}>
                 <Phone className="w-8 h-8" style={{ color: 'var(--on-secondary-container)' }} />
@@ -110,12 +202,9 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
-        </div>
-      </ResponsiveSection>
 
-      {/* Calendrier HubSpot */}
-      <ResponsiveSection spacing="xl">
-        <div className="max-w-4xl mx-auto">
+          {/* Numéro de téléphone en évidence */}
+          <div className="mb-12">
           <div className="rounded-2xl p-8 bg-white shadow-xl border border-gray-200">
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-marine-900 mb-4">
