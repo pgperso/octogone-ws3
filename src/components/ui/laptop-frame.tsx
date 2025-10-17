@@ -8,28 +8,43 @@ interface LaptopFrameProps {
 }
 
 /**
- * Composant LaptopFrame - Cadre de laptop moderne en CSS pur
- * Design épuré sans boutons macOS, style professionnel
+ * Composant TabletFrame - Cadre de tablette moderne en CSS pur
+ * Desktop: Paysage (Landscape) | Mobile: Portrait
  */
 export function LaptopFrame({ children, className = "" }: LaptopFrameProps) {
   return (
     <div className={`relative w-full ${className}`}>
-      {/* Écran du laptop */}
+      {/* Tablette - Paysage en desktop, Portrait en mobile */}
       <div 
-        className="relative rounded-t-2xl overflow-hidden"
+        className="relative rounded-2xl overflow-hidden mx-auto"
         style={{
           backgroundColor: 'var(--surface)',
-          border: '12px solid #e2e8f0',
-          borderBottom: 'none',
-          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.15), inset 0 0 0 1px rgba(0, 0, 0, 0.05)',
+          border: '14px solid #2c3e50',
+          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.1)',
+          maxWidth: '100%'
         }}
       >
-        {/* Barre supérieure minimaliste */}
+        {/* Bouton home (petit cercle en bas) */}
         <div 
-          className="w-full h-8"
+          className="absolute bottom-2 left-1/2 -translate-x-1/2 rounded-full hidden md:block"
           style={{
-            background: 'linear-gradient(180deg, #ffffff 0%, #f7fafc 100%)',
-            borderBottom: '1px solid #e2e8f0'
+            width: '40px',
+            height: '6px',
+            backgroundColor: '#34495e',
+            opacity: 0.6,
+            zIndex: 10
+          }}
+        />
+        
+        {/* Bouton home mobile (en bas en mode portrait) */}
+        <div 
+          className="absolute bottom-2 left-1/2 -translate-x-1/2 rounded-full md:hidden"
+          style={{
+            width: '40px',
+            height: '6px',
+            backgroundColor: '#34495e',
+            opacity: 0.6,
+            zIndex: 10
           }}
         />
         
@@ -46,39 +61,13 @@ export function LaptopFrame({ children, className = "" }: LaptopFrameProps) {
         </div>
       </div>
 
-      {/* Base du laptop (clavier) - Plus large que l'écran */}
-      <div className="relative w-full flex justify-center">
-        <div 
-          className="relative rounded-b-xl"
-          style={{
-            width: '130%',
-            height: '32px',
-            background: 'linear-gradient(180deg, #f7fafc 0%, #e2e8f0 100%)',
-            boxShadow: '0 6px 16px rgba(0, 0, 0, 0.1)',
-            border: '1px solid #cbd5e0',
-            borderTop: 'none'
-          }}
-        >
-          {/* Trackpad suggestion */}
-          <div 
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded"
-            style={{
-              width: '100px',
-              height: '16px',
-              backgroundColor: '#cbd5e0',
-              opacity: 0.4
-            }}
-          />
-        </div>
-      </div>
-
-      {/* Ombre sous le laptop */}
+      {/* Ombre sous la tablette */}
       <div 
         className="absolute -bottom-4 left-1/2 -translate-x-1/2 rounded-full blur-2xl"
         style={{
-          width: '80%',
-          height: '40px',
-          backgroundColor: 'rgba(0, 0, 0, 0.15)',
+          width: '70%',
+          height: '30px',
+          backgroundColor: 'rgba(0, 0, 0, 0.2)',
           zIndex: -1
         }}
       />
