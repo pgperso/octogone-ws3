@@ -31,12 +31,55 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'Hey Cortex ! J\'adore faire mes inventaires en équipe, ça nous fait gagner tellement de temps !', 
+          text: 'Salut Cortex ! Je m\'appelle Sophie, je découvre Octogone. Comment ça fonctionne ?', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'C\'est vrai ! La prise en équipe, c\'est vraiment un game changer 🚀\n\nChacun compte sur son appareil et tout se synchronise en temps réel. Vous divisez le temps par 3 !',
+          text: 'Salut Sophie ! Bienvenue 👋\n\nOctogone, c\'est une plateforme complète pour gérer ton restaurant. Tout est construit autour de 4 piliers : Opérer, Automatiser, Analyser et Prédire !',
+          delay: 1500
+        },
+        { 
+          type: 'user', 
+          text: 'C\'est quoi "Opérer" exactement ?', 
+          delay: 4500 
+        },
+        {
+          type: 'cortex',
+          text: 'Opérer, c\'est gérer ton quotidien Sophie ! 📦 Inventaires, stocks, produits...\n\nTout ce qui touche à l\'exécution de tes opérations au jour le jour.',
+          delay: 6000,
+          cta: {
+            label: 'Découvrir Opérer',
+            link: '/features/operate'
+          }
+        },
+        { 
+          type: 'user', 
+          text: 'Et les 3 autres piliers ?', 
+          delay: 9500 
+        },
+        {
+          type: 'cortex',
+          text: 'Automatiser = calculs automatiques ⚡\nAnalyser = rapports et insights 📊\nPrédire = intelligence artificielle 🤖\n\nChaque pilier t\'aide à optimiser un aspect de ta gestion !',
+          delay: 11000,
+          cta: {
+            label: 'Explorer les concepts',
+            link: '/features/automate'
+          }
+        }
+      ]
+    },
+    {
+      id: 1,
+      messages: [
+        { 
+          type: 'user', 
+          text: 'Hey Cortex ! C\'est Marc. J\'adore faire mes inventaires en équipe, ça nous fait gagner tellement de temps !', 
+          delay: 0 
+        },
+        {
+          type: 'cortex',
+          text: 'Salut Marc ! C\'est vrai, la prise en équipe c\'est vraiment un game changer 🚀\n\nChacun compte sur son appareil et tout se synchronise en temps réel. Vous divisez le temps par 3 !',
           delay: 1500
         },
         { 
@@ -66,16 +109,16 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       ]
     },
     {
-      id: 1,
+      id: 2,
       messages: [
         { 
           type: 'user', 
-          text: 'Salut ! J\'utilise les fiches techniques pour toutes mes recettes, c\'est vraiment pratique !', 
+          text: 'Salut Cortex ! C\'est Julie. J\'utilise les fiches techniques pour toutes mes recettes, c\'est vraiment pratique !', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'Oui ! Et le meilleur, c\'est que tout se met à jour automatiquement quand un prix change ✨\n\nDès qu\'un ingrédient augmente ou baisse, toutes tes recettes sont recalculées en temps réel !',
+          text: 'Salut Julie ! Oui, et le meilleur c\'est que tout se met à jour automatiquement quand un prix change ✨\n\nDès qu\'un ingrédient augmente ou baisse, toutes tes recettes sont recalculées en temps réel !',
           delay: 1500
         },
         { 
@@ -105,16 +148,16 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       ]
     },
     {
-      id: 2,
+      id: 3,
       messages: [
         { 
           type: 'user', 
-          text: 'Hey Cortex ! Les capteurs de température, c\'est vraiment une tranquillité d\'esprit !', 
+          text: 'Hey Cortex ! C\'est Vincent. Les capteurs de température, c\'est vraiment une tranquillité d\'esprit !', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'Oui ! Plus besoin de noter à la main, tout est automatisé 24/7 🔒\n\nTes frigos, congélos et zones chaudes sont surveillés en continu. Tu reçois une alerte si quelque chose déraille !',
+          text: 'Salut Vincent ! Oui, plus besoin de noter à la main, tout est automatisé 24/7 🔒\n\nTes frigos, congélos et zones chaudes sont surveillés en continu. Tu reçois une alerte si quelque chose déraille !',
           delay: 1500
         },
         { 
@@ -144,16 +187,16 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       ]
     },
     {
-      id: 3,
+      id: 4,
       messages: [
         { 
           type: 'user', 
-          text: 'Salut ! J\'ai toutes mes fiches employés dans Octogone, c\'est tellement mieux organisé !', 
+          text: 'Salut Cortex ! C\'est Marie. J\'ai toutes mes fiches employés dans Octogone, c\'est tellement mieux organisé !', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'C\'est vrai ! Tout est centralisé au même endroit 💪\n\nInfos perso, contrats, horaires, disponibilités... Tu retrouves tout en un clic. Plus besoin de chercher dans des fichiers !',
+          text: 'Salut Marie ! C\'est vrai, tout est centralisé au même endroit 💪\n\nInfos perso, contrats, horaires, disponibilités... Tu retrouves tout en un clic. Plus besoin de chercher dans des fichiers !',
           delay: 1500
         },
         { 
