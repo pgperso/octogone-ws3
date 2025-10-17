@@ -73,12 +73,51 @@ export function Footer({ className }: FooterProps) {
             </ul>
           </div>
 
-          {/* 3. Navigation - Entreprise */}
+          {/* 3. Navigation - Concepts */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4" style={{ color: 'var(--primary)' }}>
+              {locale === "fr" ? "Concepts" : "Concepts"}
+            </h3>
+            <ul className="space-y-3">
+              <li>
+                <Link href={`/${locale}/features/operate`} className="transition-colors" style={{ color: 'var(--on-surface-variant)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--on-surface)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--on-surface-variant)'}>
+                  {locale === "fr" ? "Opérer" : "Operate"}
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/features/automate`} className="transition-colors" style={{ color: 'var(--on-surface-variant)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--on-surface)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--on-surface-variant)'}>
+                  {locale === "fr" ? "Automatiser" : "Automate"}
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/features/analyze`} className="transition-colors" style={{ color: 'var(--on-surface-variant)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--on-surface)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--on-surface-variant)'}>
+                  {locale === "fr" ? "Analyser" : "Analyze"}
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/features/predict`} className="transition-colors" style={{ color: 'var(--on-surface-variant)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--on-surface)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--on-surface-variant)'}>
+                  {locale === "fr" ? "Prédire" : "Predict"}
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* 4. Navigation - Entreprise */}
           <div>
             <h3 className="text-lg font-semibold mb-4" style={{ color: 'var(--primary)' }}>
               {locale === "fr" ? "Entreprise" : "Company"}
             </h3>
             <ul className="space-y-3">
+              <li>
+                <Link href={`/${locale}/cortex`} className="transition-colors" style={{ color: 'var(--on-surface-variant)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--on-surface)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--on-surface-variant)'}>
+                  {locale === "fr" ? "Cortex IA" : "Cortex AI"}
+                </Link>
+              </li>
+              <li>
+                <Link href={`/${locale}/blog`} className="transition-colors" style={{ color: 'var(--on-surface-variant)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--on-surface)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--on-surface-variant)'}>
+                  Blog
+                </Link>
+              </li>
               <li>
                 <Link href={`/${locale}/forfaits`} className="transition-colors" style={{ color: 'var(--on-surface-variant)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--on-surface)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--on-surface-variant)'}>
                   {locale === "fr" ? "Tarifs" : "Pricing"}
@@ -86,17 +125,7 @@ export function Footer({ className }: FooterProps) {
               </li>
               <li>
                 <Link href={`/${locale}/contact`} className="transition-colors" style={{ color: 'var(--on-surface-variant)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--on-surface)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--on-surface-variant)'}>
-                  {locale === "fr" ? "Contact" : "Contact"}
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${locale}/login`} className="transition-colors" style={{ color: 'var(--on-surface-variant)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--on-surface)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--on-surface-variant)'}>
-                  {locale === "fr" ? "Connexion" : "Login"}
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${locale}/admin`} className="transition-colors" style={{ color: 'var(--on-surface-variant)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--on-surface)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--on-surface-variant)'}>
-                  Admin
+                  Contact
                 </Link>
               </li>
             </ul>
@@ -104,41 +133,45 @@ export function Footer({ className }: FooterProps) {
 
 
 
-          {/* Contact */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4" style={{ color: 'var(--primary)' }}>
-              {locale === "fr" ? "Nous contacter" : "Contact Us"}
+        </div>
+
+        {/* Newsletter Section */}
+        <div className="mt-12 py-8 px-6 rounded-2xl max-w-[1800px] mx-auto" style={{ background: 'linear-gradient(135deg, #BADFF6 0%, #B8E6D5 100%)' }}>
+          <div className="max-w-2xl mx-auto text-center">
+            <Mail className="w-10 h-10 mx-auto mb-3" style={{ color: 'var(--on-secondary-container)' }} />
+            <h3 className="text-xl font-bold mb-2" style={{ color: 'var(--on-secondary-container)' }}>
+              {locale === "fr" ? "Restez informé" : "Stay informed"}
             </h3>
-            <ul className="space-y-3">
-              <li className="flex items-start">
-                <MapPin className="h-5 w-5 mr-2 mt-0.5" style={{ color: 'var(--primary)' }} />
-                <span style={{ color: 'var(--on-surface-variant)' }}>
-                  Québec (Vieux-Port)
-                </span>
-              </li>
-              <li className="flex items-center">
-                <Phone className="h-5 w-5 mr-2" style={{ color: 'var(--primary)' }} />
-                <a href="tel:+15818745990" className="transition-colors" style={{ color: 'var(--on-surface-variant)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--on-surface)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--on-surface-variant)'}>
-                  581-874-5990
-                </a>
-              </li>
-              <li className="flex items-center">
-                <Mail className="h-5 w-5 mr-2" style={{ color: 'var(--primary)' }} />
-                <a href="mailto:info@octogone.ai" className="transition-colors" style={{ color: 'var(--on-surface-variant)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--on-surface)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--on-surface-variant)'}>
-                  info@octogone.ai
-                </a>
-              </li>
-              <li className="flex items-center">
-                <Mail className="h-5 w-5 mr-2" style={{ color: 'var(--primary)' }} />
-                <a href="mailto:support@octogone.ai" className="transition-colors" style={{ color: 'var(--on-surface-variant)' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--on-surface)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--on-surface-variant)'}>
-                  support@octogone.ai
-                </a>
-              </li>
-            </ul>
+            <p className="text-sm mb-5" style={{ color: 'var(--on-secondary-container)' }}>
+              {locale === "fr" 
+                ? "Recevez nos dernières actualités, conseils et meilleures pratiques pour optimiser votre gestion restaurant."
+                : "Receive our latest news, tips and best practices to optimize your restaurant management."}
+            </p>
+            
+            <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder={locale === "fr" ? "Votre email" : "Your email"}
+                className="flex-1 px-4 py-3 rounded-lg border-2 border-white/30 bg-white/90 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+                style={{ color: '#002236' }}
+              />
+              <button
+                type="submit"
+                className="px-6 py-3 bg-marine-900 text-white rounded-lg font-semibold hover:bg-marine-800 transition-colors whitespace-nowrap"
+              >
+                {locale === "fr" ? "S'abonner" : "Subscribe"}
+              </button>
+            </form>
+            
+            <p className="text-xs mt-3 opacity-80" style={{ color: 'var(--on-secondary-container)' }}>
+              {locale === "fr" 
+                ? "Nous respectons votre vie privée. Désabonnez-vous à tout moment."
+                : "We respect your privacy. Unsubscribe at any time."}
+            </p>
           </div>
         </div>
 
-        {/* 3. Call to Action secondaire */}
+        {/* Call to Action secondaire */}
         <div className="mt-12 py-6 rounded-lg" style={{ backgroundColor: 'var(--surface-variant)' }}>
           <div className="flex flex-col md:flex-row justify-between items-center max-w-[1800px] mx-auto px-4">
             <p className="mb-4 md:mb-0" style={{ color: 'var(--on-surface)' }}>
