@@ -40,7 +40,7 @@ const ListItem = React.forwardRef<
         )}
         {...props}
       >
-        <div className="text-lg font-semibold leading-tight text-marine-900">
+        <div className="text-lg font-semibold leading-tight text-marine-900 min-h-[3.5rem] flex items-start">
           {title}
         </div>
         {children && (
