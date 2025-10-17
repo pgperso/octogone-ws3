@@ -14,6 +14,7 @@ import LanguageToggle from "./components/language-toggle";
 import AnnouncementBanner from "./components/announcement-banner";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { NavigationProvider, useNavigation } from "./hooks/use-navigation";
+import { HubSpotMeetingModal } from "@/components/hubspot/meeting-modal";
 import type { DesktopNavProps } from "./types";
 
 // Constante pour activer/désactiver la bannière d'annonce
@@ -26,6 +27,9 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
 }) => {
   const { isOpen, setIsOpen } = useNavigation();
   const { isScrolled } = useScrollPosition();
+  
+  // État pour la modale de démo
+  const [isDemoModalOpen, setIsDemoModalOpen] = React.useState(false);
 
   // État pour la bannière d'annonce
   const [isAnnouncementVisible, setIsAnnouncementVisible] =
@@ -208,12 +212,12 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
               </div>
 
               {/* CTA Button */}
-              <Link
-                href={`/${locale}/contact`}
-                className="hidden xl:inline-flex items-center justify-center rounded-md px-4 py-2 text-base font-medium bg-gold-500 text-marine-900 hover:bg-gold-400 dark:bg-primary_color dark:text-marine-900 dark:hover:bg-gold-400 transition-colors btn-gold"
+              <button
+                onClick={() => setIsDemoModalOpen(true)}
+                className="hidden xl:inline-flex items-center justify-center rounded-md px-4 py-2 text-base font-medium bg-gold-500 text-marine-900 hover:bg-gold-400 dark:bg-primary_color dark:text-marine-900 dark:hover:bg-gold-400 transition-colors btn-gold cursor-pointer"
               >
                 {locale === "fr" ? "Réserver une démo" : "Book a demo"}
-              </Link>
+              </button>
             </div>
 
             {/* Mobile Navigation - Version moderne */}
@@ -226,6 +230,12 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
           </div>
         </div>
       </motion.header>
+      
+      {/* Modale de réservation de démo */}
+      <HubSpotMeetingModal
+        isOpen={isDemoModalOpen}
+        onClose={() => setIsDemoModalOpen(false)}
+      />
     </>
   );
 };
