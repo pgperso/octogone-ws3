@@ -91,27 +91,27 @@ export default function ContactPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <div className="p-4 rounded-xl text-center" style={{ backgroundColor: '#B8E6D5' }}>
+              <a 
+                href="tel:+15818745990"
+                className="p-4 rounded-xl text-center cursor-pointer hover:scale-105 transition-transform"
+                style={{ backgroundColor: '#B8E6D5' }}
+              >
                 <Phone className="w-6 h-6 mx-auto mb-2" style={{ color: 'var(--on-secondary-container)' }} />
-                <a 
-                  href="tel:+15818745990" 
-                  className="text-sm font-semibold hover:underline"
-                  style={{ color: 'var(--on-secondary-container)' }}
-                >
+                <p className="text-sm font-semibold" style={{ color: 'var(--on-secondary-container)' }}>
                   581-874-5990
-                </a>
-              </div>
+                </p>
+              </a>
 
-              <div className="p-4 rounded-xl text-center" style={{ backgroundColor: '#E2CDED' }}>
+              <a 
+                href="mailto:info@octogonecollectif.com"
+                className="p-4 rounded-xl text-center cursor-pointer hover:scale-105 transition-transform"
+                style={{ backgroundColor: '#E2CDED' }}
+              >
                 <Mail className="w-6 h-6 mx-auto mb-2" style={{ color: 'var(--on-secondary-container)' }} />
-                <a 
-                  href="mailto:info@octogonecollectif.com" 
-                  className="text-xs font-semibold hover:underline"
-                  style={{ color: 'var(--on-secondary-container)' }}
-                >
+                <p className="text-xs font-semibold" style={{ color: 'var(--on-secondary-container)' }}>
                   info@octogonecollectif.com
-                </a>
-              </div>
+                </p>
+              </a>
 
               <div className="p-4 rounded-xl text-center" style={{ backgroundColor: '#BADFF6' }}>
                 <MapPin className="w-6 h-6 mx-auto mb-2" style={{ color: 'var(--on-secondary-container)' }} />
@@ -129,7 +129,7 @@ export default function ContactPage() {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <Image
-              src="/images/restaurant2.avif"
+              src="/restaurant2.avif"
               alt={locale === 'fr' ? 'Restaurant' : 'Restaurant'}
               fill
               className="object-cover rounded-2xl shadow-2xl"
@@ -146,64 +146,7 @@ export default function ContactPage() {
           bgColor=""
         >
           <div className="max-w-5xl mx-auto">
-            {/* Section d'introduction colorée */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            <div className="p-6 rounded-2xl text-center" style={{ backgroundColor: '#B8E6D5' }}>
-              <div className="p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: 'rgba(255, 255, 255, 0.3)' }}>
-                <Phone className="w-8 h-8" style={{ color: 'var(--on-secondary-container)' }} />
-              </div>
-              <h3 className="font-bold mb-2" style={{ color: 'var(--on-secondary-container)' }}>
-                {locale === "fr" ? "Service humain et rapide" : "Human and fast service"}
-              </h3>
-              <p className="text-sm" style={{ color: 'var(--on-secondary-container)' }}>
-                {locale === "fr" ? "Notre équipe vous accompagne et facilite votre quotidien" : "Our team supports you and simplifies your daily operations"}
-              </p>
-            </div>
-            
-            <div className="p-6 rounded-2xl text-center" style={{ backgroundColor: '#BADFF6' }}>
-              <div className="p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: 'rgba(255, 255, 255, 0.3)' }}>
-                <Mail className="w-8 h-8" style={{ color: 'var(--on-secondary-container)' }} />
-              </div>
-              <h3 className="font-bold mb-2" style={{ color: 'var(--on-secondary-container)' }}>
-                {locale === "fr" ? "Démo sur mesure" : "Custom demo"}
-              </h3>
-              <p className="text-sm" style={{ color: 'var(--on-secondary-container)' }}>
-                {locale === "fr" ? "Voyez Octogone en action" : "See Octogone in action"}
-              </p>
-            </div>
-            
-            <div className="p-6 rounded-2xl text-center" style={{ backgroundColor: '#E2CDED' }}>
-              <div className="p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center" style={{ backgroundColor: 'rgba(255, 255, 255, 0.3)' }}>
-                <MapPin className="w-8 h-8" style={{ color: 'var(--on-secondary-container)' }} />
-              </div>
-              <h3 className="font-bold mb-2" style={{ color: 'var(--on-secondary-container)' }}>
-                {locale === "fr" ? "À l'écoute de vos besoins" : "Listening to your needs"}
-              </h3>
-              <p className="text-sm" style={{ color: 'var(--on-secondary-container)' }}>
-                {locale === "fr" ? "Nous comprenons votre réalité et nous adaptons à vos défis" : "We understand your reality and adapt to your challenges"}
-              </p>
-            </div>
-          </div>
-
-          {/* Numéro de téléphone en évidence */}
-          <div className="mb-12">
-            <div className="flex items-center justify-center bg-gradient-to-r from-primary_color to-gold-400 px-8 py-6 rounded-xl shadow-lg">
-              <Phone className="w-8 h-8 text-marine-900 mr-4" />
-              <div className="text-center">
-                <p className="text-marine-900 text-sm font-medium mb-1">
-                  {locale === "fr" ? "Appelez-nous directement" : "Call us directly"}
-                </p>
-                <a 
-                  href="tel:+15818745990" 
-                  className="text-marine-900 text-3xl font-bold hover:text-marine-700 transition-colors"
-                >
-                  581-874-5990
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Calendrier HubSpot */}
+            {/* Calendrier HubSpot */}
           <div className="rounded-2xl p-8 bg-white shadow-xl border border-gray-200">
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-marine-900 mb-4">
