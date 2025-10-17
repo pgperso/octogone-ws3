@@ -155,9 +155,9 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
         />
 
         <div className="w-full relative">
-          <div className="flex h-16 items-center justify-between gap-4 md:h-20 px-4 sm:px-6 lg:px-8 w-full">
+          <div className="flex xl:grid xl:grid-cols-3 h-16 items-center justify-between gap-4 md:h-20 px-4 sm:px-6 lg:px-8 w-full">
             {/* Logo */}
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 xl:flex-shrink xl:justify-start">
               <Link href="/">
                 <Image
                   src="/images/partners/logo_octogne_full.png"
@@ -171,7 +171,7 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
             </div>
 
             {/* Desktop Navigation - uniquement visible sur les écrans plus grands que 1024px */}
-            <div className="flex-1 hidden xl:flex justify-center">
+            <div className="hidden xl:flex justify-center">
               <DesktopNav
                 routes={routes}
                 activeRoute={activeRoute}
@@ -179,7 +179,7 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
               />
             </div>
 
-            <div className="flex-shrink-0 flex items-center gap-3">
+            <div className="flex-shrink-0 flex items-center justify-end gap-3">
               {/* Mobile Menu Button - visible sur toutes les résolutions jusqu'à 1024px inclus */}
               <Button
                 variant="ghost"
