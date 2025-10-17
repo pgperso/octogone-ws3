@@ -231,32 +231,32 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'Cortex, j\'ai 3 employés dont les certifications MAPAQ expirent bientôt. Lesquels ?', 
+          text: 'Cortex, combien de pourboires on a reçus cette semaine et comment je les répartis ?', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'Voici les 3 employés Marie 📋\n\n• Thomas : Hygiène alimentaire expire le 15 mars (dans 12 jours)\n• Sarah : Manipulation sécuritaire expire le 22 mars (dans 19 jours)\n• Kevin : Allergènes expire le 8 avril (dans 35 jours)',
+          text: 'Cette semaine : 4 285 $ de pourboires Marie 💰\n\nSelon ta convention (70% service, 30% cuisine) :\n• Service (8 employés) : 2 999,50 $ → 375 $/personne\n• Cuisine (4 employés) : 1 285,50 $ → 321 $/personne',
           delay: 1500
         },
         { 
           type: 'user', 
-          text: 'Merci ! Et combien d\'heures sup j\'ai payées ce mois-ci ?', 
+          text: 'Parfait ! Et je peux voir l\'historique des pourboires par employé ?', 
           delay: 4500 
         },
         {
           type: 'cortex',
-          text: 'En février : 127 heures sup pour tes 15 employés 💰\n\nCoût total : 3 245 $. C\'est +18% vs janvier (2 748 $). Les pics sont les vendredis et samedis. Julie a fait 32h sup à elle seule.',
+          text: 'Bien sûr ! Voici le top 3 de février 📊\n\n1. Julie (serveuse) : 1 840 $ sur 4 semaines\n2. Thomas (serveur) : 1 625 $\n3. Sarah (serveuse) : 1 580 $\n\nTout est tracé automatiquement dans leurs fiches !',
           delay: 6000
         },
         { 
           type: 'user', 
-          text: 'Ah ! Et pour la convention collective, qui a droit aux congés fériés payés ?', 
+          text: 'Génial ! Et pour les fiches employés, tout est centralisé ?', 
           delay: 9500 
         },
         {
           type: 'cortex',
-          text: '11 de tes 15 employés sont éligibles 📄\n\nThomas, Sarah, Julie et Marc (+ 7 autres) ont plus de 3 mois d\'ancienneté. Kevin, Lisa, Alex et Emma ne sont pas encore éligibles. Budget estimé pour Pâques : 1 840 $.',
+          text: 'Oui ! Tes 15 fiches sont complètes 👥\n\nInfos perso, contrats, horaires, historique des pourboires, documents... Tout au même endroit. Plus besoin de chercher dans des fichiers Excel !',
           delay: 11000,
           cta: {
             label: 'Découvrir RH',
