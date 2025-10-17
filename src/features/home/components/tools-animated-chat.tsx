@@ -153,19 +153,11 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
             }}
           >
             <Image
-              src="/images/cortex.svg"
+              src="/cortex.svg"
               alt="Cortex"
               width={32}
               height={32}
               className="w-8 h-8"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.style.display = 'none';
-                const parent = target.parentElement;
-                if (parent) {
-                  parent.innerHTML = '<span style="color: var(--on-secondary-container); font-weight: bold; font-size: 24px;">C</span>';
-                }
-              }}
             />
           </motion.button>
         )}
@@ -202,19 +194,11 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
                   }}
                 >
                   <Image
-                    src="/images/cortex.svg"
+                    src="/cortex.svg"
                     alt="Cortex"
                     width={24}
                     height={24}
                     className="w-6 h-6"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                      const parent = target.parentElement;
-                      if (parent) {
-                        parent.innerHTML = '<span style="color: var(--on-secondary-container); font-weight: bold;">C</span>';
-                      }
-                    }}
                   />
                 </div>
                 <div>
@@ -259,23 +243,27 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
             <div className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'} items-start gap-3 mb-2`}>
               {message.type === 'cortex' && (
                 <div 
-                  className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-                  style={{ background: 'linear-gradient(135deg, #BADFF6 0%, #E2CDED 100%)' }}
+                  className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                  style={{ 
+                    backgroundColor: 'var(--secondary-container)',
+                    border: '2px solid white'
+                  }}
                 >
-                  <div style={{ filter: 'brightness(0) saturate(100%)' }}>
-                    <Image
-                      src="/cortex.svg"
-                      alt="Cortex"
-                      width={24}
-                      height={24}
-                      className="w-6 h-6"
-                      style={{ color: 'var(--on-secondary-container)' }}
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.src = FALLBACK_CORTEX;
-                      }}
-                    />
-                  </div>
+                  <Image
+                    src="/images/cortex.svg"
+                    alt="Cortex"
+                    width={24}
+                    height={24}
+                    className="w-6 h-6"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      const parent = target.parentElement;
+                      if (parent) {
+                        parent.innerHTML = '<span style="color: var(--on-secondary-container); font-weight: bold;">C</span>';
+                      }
+                    }}
+                  />
                 </div>
               )}
 
