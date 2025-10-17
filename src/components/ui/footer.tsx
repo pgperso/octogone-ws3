@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { OctogoneButton } from "./octogone-button";
-import { Globe, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { Globe, Linkedin, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { HubSpotMeetingModal } from "@/components/hubspot/meeting-modal";
 
