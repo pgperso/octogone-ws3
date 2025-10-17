@@ -18,8 +18,49 @@ export function Footer({ className }: FooterProps) {
   const params = useParams();
   const locale = params ? (typeof params === 'object' && 'locale' in params ? params.locale as string : "fr") : "fr";
   const [isDemoModalOpen, setIsDemoModalOpen] = React.useState(false);
+  const [newsletterEmail, setNewsletterEmail] = React.useState("");
+  const [newsletterStatus, setNewsletterStatus] = React.useState<"idle" | "loading" | "success" | "error">("idle");
   
   const currentYear = new Date().getFullYear();
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setNewsletterStatus("loading");
+
+    try {
+      // Envoyer à HubSpot via l'API Forms
+      const response = await fetch(
+        `https://api.hsforms.com/submissions/v3/integration/submit/46778577/newsletter`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            fields: [
+              { name: "email", value: newsletterEmail },
+            ],
+            context: {
+              pageUri: typeof window !== 'undefined' ? window.location.href : '',
+              pageName: typeof document !== 'undefined' ? document.title : '',
+            },
+          }),
+        }
+      );
+
+      if (response.ok) {
+        setNewsletterStatus("success");
+        setNewsletterEmail("");
+        setTimeout(() => setNewsletterStatus("idle"), 3000);
+      } else {
+        throw new Error("Failed to submit");
+      }
+    } catch (error) {
+      console.error("Newsletter submission error:", error);
+      setNewsletterStatus("error");
+      setTimeout(() => setNewsletterStatus("idle"), 3000);
+    }
+  };
 
   return (
     <footer className={cn("w-full", className)} style={{ backgroundColor: 'var(--surface)', color: 'var(--on-surface)' }}>
@@ -148,26 +189,49 @@ export function Footer({ className }: FooterProps) {
                 : "Receive our latest news, tips and best practices to optimize your restaurant management."}
             </p>
             
-            <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <input
                 type="email"
+                required
+                value={newsletterEmail}
+                onChange={(e) => setNewsletterEmail(e.target.value)}
                 placeholder={locale === "fr" ? "Votre email" : "Your email"}
-                className="flex-1 px-4 py-3 rounded-lg border-2 border-white/30 bg-white/90 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+                disabled={newsletterStatus === "loading"}
+                className="flex-1 px-4 py-3 rounded-lg border-2 border-white/30 bg-white/90 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent disabled:opacity-50"
                 style={{ color: '#002236' }}
               />
               <button
                 type="submit"
-                className="px-6 py-3 bg-marine-900 text-white rounded-lg font-semibold hover:bg-marine-800 transition-colors whitespace-nowrap"
+                disabled={newsletterStatus === "loading"}
+                className="px-6 py-3 bg-marine-900 text-white rounded-lg font-semibold hover:bg-marine-800 transition-colors whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {locale === "fr" ? "S'abonner" : "Subscribe"}
+                {newsletterStatus === "loading" 
+                  ? (locale === "fr" ? "Envoi..." : "Sending...") 
+                  : newsletterStatus === "success"
+                  ? "✓"
+                  : (locale === "fr" ? "S'abonner" : "Subscribe")}
               </button>
             </form>
             
-            <p className="text-xs mt-3 opacity-80" style={{ color: 'var(--on-secondary-container)' }}>
-              {locale === "fr" 
-                ? "Nous respectons votre vie privée. Désabonnez-vous à tout moment."
-                : "We respect your privacy. Unsubscribe at any time."}
-            </p>
+            {newsletterStatus === "success" && (
+              <p className="text-sm mt-3 font-semibold" style={{ color: 'var(--on-secondary-container)' }}>
+                {locale === "fr" ? "✓ Merci ! Vous êtes inscrit." : "✓ Thank you! You're subscribed."}
+              </p>
+            )}
+            
+            {newsletterStatus === "error" && (
+              <p className="text-sm mt-3 font-semibold text-red-700">
+                {locale === "fr" ? "❌ Erreur. Réessayez plus tard." : "❌ Error. Try again later."}
+              </p>
+            )}
+            
+            {newsletterStatus === "idle" && (
+              <p className="text-xs mt-3 opacity-80" style={{ color: 'var(--on-secondary-container)' }}>
+                {locale === "fr" 
+                  ? "Nous respectons votre vie privée. Désabonnez-vous à tout moment."
+                  : "We respect your privacy. Unsubscribe at any time."}
+              </p>
+            )}
           </div>
         </div>
 
