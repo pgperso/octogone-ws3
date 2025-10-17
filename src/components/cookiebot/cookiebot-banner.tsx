@@ -2,6 +2,14 @@
 
 import { useEffect } from "react";
 
+// Déclaration TypeScript pour Cookiebot
+declare global {
+  interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    Cookiebot?: any;
+  }
+}
+
 interface CookiebotBannerProps {
   cbid: string; // Votre Cookiebot ID
 }
@@ -18,10 +26,10 @@ export function CookiebotBanner({ cbid }: CookiebotBannerProps) {
     script.src = 'https://consent.cookiebot.com/uc.js';
     script.setAttribute('data-cbid', cbid);
     script.setAttribute('data-blockingmode', 'auto');
-    script.setAttribute('data-framework', 'custom');
-    script.setAttribute('data-georegions', '{"region":"US","cbid":"' + cbid + '"}');
     script.type = 'text/javascript';
     script.async = true;
+    
+    // Laisser Cookiebot gérer l'affichage automatiquement
     
     // Injecter dans le head
     document.head.appendChild(script);
