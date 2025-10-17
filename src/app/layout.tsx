@@ -77,6 +77,15 @@ export default function RootLayout({
           <link rel="manifest" href="/site.webmanifest" />
           <meta name="theme-color" content="#002236" />
           <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+          
+          {/* HubSpot Tracking Code */}
+          <script
+            type="text/javascript"
+            id="hs-script-loader"
+            async
+            defer
+            src="//js.hs-scripts.com/46778577.js"
+          />
         </head>
         <body className="antialiased" style={{
           background: 'radial-gradient(circle at 20% 30%, rgba(186, 223, 246, 0.08) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(220, 178, 107, 0.06) 0%, transparent 50%), var(--background)',
