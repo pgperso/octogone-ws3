@@ -147,17 +147,17 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
             }}
             className="absolute bottom-6 right-6 w-16 h-16 rounded-2xl shadow-2xl flex items-center justify-center"
             style={{
-              backgroundColor: 'var(--secondary)',
+              backgroundColor: 'var(--secondary-container)',
+              border: '2px solid white',
               zIndex: 10
             }}
           >
             <Image
-              src="/cortex-icon.svg"
+              src="/images/cortex.svg"
               alt="Cortex"
               width={32}
               height={32}
               className="w-8 h-8"
-              style={{ filter: 'brightness(0) saturate(100%) invert(100%)' }}
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.style.display = 'none';
@@ -196,15 +196,17 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
               <div className="flex items-center gap-3">
                 <div 
                   className="w-10 h-10 rounded-lg flex items-center justify-center"
-                  style={{ backgroundColor: 'var(--secondary)' }}
+                  style={{ 
+                    backgroundColor: 'var(--secondary-container)',
+                    border: '2px solid white'
+                  }}
                 >
                   <Image
-                    src="/cortex-icon.svg"
+                    src="/images/cortex.svg"
                     alt="Cortex"
                     width={24}
                     height={24}
                     className="w-6 h-6"
-                    style={{ color: 'var(--on-secondary-container)' }}
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.style.display = 'none';
