@@ -46,7 +46,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         {
           type: 'cortex',
-          text: 'Opérer, c\'est gérer ton quotidien Sophie ! 📦 Inventaires, stocks, produits...\n\nTout ce qui touche à l\'exécution de tes opérations au jour le jour.',
+          text: 'Opérer, c\'est gérer ton quotidien Sophie ! 📦\n\nInventaires en équipe, suivi des stocks en temps réel, gestion des produits... Tout ce qui touche à l\'exécution de tes opérations au jour le jour.',
           delay: 6000,
           cta: {
             label: 'Découvrir Opérer',
@@ -55,16 +55,44 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         { 
           type: 'user', 
-          text: 'Et les 3 autres piliers ?', 
+          text: 'Et "Automatiser" ?', 
           delay: 9500 
         },
         {
           type: 'cortex',
-          text: 'Automatiser = calculs automatiques ⚡\nAnalyser = rapports et insights 📊\nPrédire = intelligence artificielle 🤖\n\nChaque pilier t\'aide à optimiser un aspect de ta gestion !',
+          text: 'Automatiser, c\'est laisser le système faire le travail ! ⚡\n\nCalculs automatiques, mises à jour en temps réel, recettes qui se recalculent... Zéro erreur, zéro effort manuel.',
           delay: 11000,
           cta: {
-            label: 'Explorer les concepts',
+            label: 'Découvrir Automatiser',
             link: '/features/automate'
+          }
+        },
+        { 
+          type: 'user', 
+          text: 'Intéressant ! Et "Analyser" ?', 
+          delay: 14500 
+        },
+        {
+          type: 'cortex',
+          text: 'Analyser, c\'est comprendre tes performances ! 📊\n\nFood cost, rentabilité par plat, écarts d\'inventaire... Tu transformes tes données en décisions éclairées.',
+          delay: 16000,
+          cta: {
+            label: 'Découvrir Analyser',
+            link: '/features/analyze'
+          }
+        },
+        { 
+          type: 'user', 
+          text: 'Et le dernier, "Prédire" ?', 
+          delay: 19500 
+        },
+        {
+          type: 'cortex',
+          text: 'Prédire, c\'est l\'avenir Sophie ! 🤖\n\nL\'intelligence artificielle qui anticipe tes besoins, détecte les anomalies, et te recommande les meilleures décisions. C\'est notre vision !',
+          delay: 21000,
+          cta: {
+            label: 'Découvrir Prédire',
+            link: '/features/predict'
           }
         }
       ]
