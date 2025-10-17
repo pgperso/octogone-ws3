@@ -548,154 +548,89 @@ export const tools: Tool[] = [
     headerDescriptionEn: 'Centralize all your KPIs in one place. Sales, traffic, profits, costs... Everything you need to make the right decisions, in real-time.',
     
     sections: [
-      { concept: 'analyze', features: [0, 1, 2, 3] },
-      { concept: 'operate', features: [4, 5, 6] },
-      { concept: 'automate', features: [7, 8, 9, 10] }
+      { concept: 'analyze', features: [0, 1] },
+      { features: [2, 3, 4] },
+      { concept: 'operate', features: [5] }
     ],
     
     features: [
       {
-        titleFr: 'Ventes en temps réel',
-        titleEn: 'Real-Time Sales',
-        descriptionFr: 'Suivez vos ventes minute par minute avec des comparaisons historiques automatiques. Identifiez les tendances, les pics et les creux. Comparez avec les périodes précédentes pour mesurer votre croissance. Réagissez rapidement aux changements de performance.',
-        descriptionEn: 'Track your sales minute by minute with automatic historical comparisons. Identify trends, peaks and valleys. Compare with previous periods to measure your growth. React quickly to performance changes.',
+        titleFr: 'Vue d\'ensemble en temps réel',
+        titleEn: 'Real-Time Overview',
+        descriptionFr: 'Consultez tous vos indicateurs clés sur un seul écran. Ventes, achalandage, bénéfices... Tout est centralisé pour une prise de décision rapide et éclairée.',
+        descriptionEn: 'View all your key indicators on one screen. Sales, traffic, profits... Everything centralized for quick and informed decision-making.',
+        image: '/images/tools/360-overview.jpg',
+        benefits: [
+          { fr: 'Vision globale instantanée', en: 'Instant global view' },
+          { fr: 'Données actualisées', en: 'Updated data' },
+          { fr: 'Décisions rapides', en: 'Quick decisions' }
+        ],
+        concepts: ['analyze']
+      },
+      {
+        titleFr: 'Comparaisons intelligentes',
+        titleEn: 'Smart Comparisons',
+        descriptionFr: 'Comparez vos performances avec les périodes précédentes. Jour, semaine, mois... Identifiez les tendances et ajustez votre stratégie en conséquence.',
+        descriptionEn: 'Compare your performance with previous periods. Day, week, month... Identify trends and adjust your strategy accordingly.',
+        image: '/images/tools/360-compare.jpg',
+        benefits: [
+          { fr: 'Analyse des tendances', en: 'Trend analysis' },
+          { fr: 'Comparaisons multiples', en: 'Multiple comparisons' },
+          { fr: 'Détection d\'anomalies', en: 'Anomaly detection' }
+        ],
+        concepts: ['analyze']
+      },
+      {
+        titleFr: 'Ventes et achalandage',
+        titleEn: 'Sales and Traffic',
+        descriptionFr: 'Suivez vos ventes et le nombre de clients en temps réel. Identifiez vos heures de pointe et optimisez vos opérations.',
+        descriptionEn: 'Track your sales and customer count in real-time. Identify your peak hours and optimize your operations.',
         image: '/images/tools/360-sales.jpg',
         benefits: [
-          { fr: 'Données en temps réel', en: 'Real-time data' },
-          { fr: 'Comparaisons automatiques', en: 'Automatic comparisons' },
-          { fr: 'Alertes intelligentes', en: 'Smart alerts' }
+          { fr: 'Suivi en temps réel', en: 'Real-time tracking' },
+          { fr: 'Heures de pointe', en: 'Peak hours' },
+          { fr: 'Optimisation staff', en: 'Staff optimization' }
         ],
-        concepts: ['analyze']
+        concepts: ['operate']
       },
       {
-        titleFr: 'Achalandage et trafic',
-        titleEn: 'Traffic Analysis',
-        descriptionFr: 'Analysez le nombre de clients et identifiez vos périodes de pointe. Optimisez vos horaires de personnel en fonction du trafic réel. Comprenez les patterns de fréquentation pour mieux planifier. Maximisez votre efficacité opérationnelle.',
-        descriptionEn: 'Analyze customer count and identify your peak periods. Optimize staff schedules based on actual traffic. Understand attendance patterns to better plan. Maximize your operational efficiency.',
-        image: '/images/tools/360-traffic.jpg',
-        benefits: [
-          { fr: 'Identification des pics', en: 'Peak identification' },
-          { fr: 'Optimisation horaires', en: 'Schedule optimization' },
-          { fr: 'Patterns de fréquentation', en: 'Attendance patterns' }
-        ],
-        concepts: ['analyze']
-      },
-      {
-        titleFr: 'Bénéfices et rentabilité',
-        titleEn: 'Profits and Profitability',
-        descriptionFr: 'Visualisez votre rentabilité avec des comparaisons période par période. Suivez vos marges brutes et nettes en temps réel. Identifiez rapidement les problèmes de rentabilité. Prenez des décisions éclairées pour améliorer vos résultats.',
-        descriptionEn: 'Visualize your profitability with period-over-period comparisons. Track your gross and net margins in real-time. Quickly identify profitability issues. Make informed decisions to improve your results.',
+        titleFr: 'Rentabilité et coûts',
+        titleEn: 'Profitability and Costs',
+        descriptionFr: 'Visualisez vos bénéfices, votre food cost et vos coûts de main d\'œuvre. Maintenez vos marges et contrôlez vos dépenses.',
+        descriptionEn: 'Visualize your profits, food cost and labor costs. Maintain your margins and control your expenses.',
         image: '/images/tools/360-profits.jpg',
         benefits: [
-          { fr: 'Marges en temps réel', en: 'Real-time margins' },
-          { fr: 'Comparaisons historiques', en: 'Historical comparisons' },
-          { fr: 'Alertes rentabilité', en: 'Profitability alerts' }
+          { fr: 'Marges sous contrôle', en: 'Margins under control' },
+          { fr: 'Food cost optimisé', en: 'Optimized food cost' },
+          { fr: 'Coûts maîtrisés', en: 'Controlled costs' }
         ],
         concepts: ['analyze']
       },
       {
-        titleFr: 'Food cost dynamique',
-        titleEn: 'Dynamic Food Cost',
-        descriptionFr: 'Surveillez votre ratio food cost en temps réel. Détectez les déviations avant qu\'elles n\'impactent vos marges. Analysez par catégorie de produits pour identifier les problèmes. Maintenez votre rentabilité avec des alertes proactives.',
-        descriptionEn: 'Monitor your food cost ratio in real-time. Detect deviations before they impact your margins. Analyze by product category to identify issues. Maintain profitability with proactive alerts.',
-        image: '/images/tools/360-foodcost.jpg',
-        benefits: [
-          { fr: 'Ratio en temps réel', en: 'Real-time ratio' },
-          { fr: 'Analyse par catégorie', en: 'Category analysis' },
-          { fr: 'Alertes déviations', en: 'Deviation alerts' }
-        ],
-        concepts: ['analyze']
-      },
-      {
-        titleFr: 'Gains et pertes d\'inventaire',
-        titleEn: 'Inventory Gains and Losses',
-        descriptionFr: 'Identifiez rapidement les écarts d\'inventaire et les pertes. Suivez les variances par catégorie de produits. Détectez les patterns de gaspillage ou de vol. Réduisez vos pertes avec des données précises.',
-        descriptionEn: 'Quickly identify inventory variances and losses. Track variances by product category. Detect waste or theft patterns. Reduce your losses with accurate data.',
-        image: '/images/tools/360-variance.jpg',
-        benefits: [
-          { fr: 'Détection rapide', en: 'Quick detection' },
-          { fr: 'Analyse par catégorie', en: 'Category analysis' },
-          { fr: 'Réduction des pertes', en: 'Loss reduction' }
-        ],
-        concepts: ['operate']
-      },
-      {
-        titleFr: 'Surveillance des prix',
-        titleEn: 'Price Monitoring',
-        descriptionFr: 'Détectez les changements de prix de vos fournisseurs instantanément. Recevez des alertes quand un prix augmente ou diminue. Analysez l\'impact sur vos coûts et vos marges. Négociez avec vos fournisseurs en connaissance de cause.',
-        descriptionEn: 'Detect supplier price changes instantly. Receive alerts when a price increases or decreases. Analyze the impact on your costs and margins. Negotiate with suppliers with full knowledge.',
-        image: '/images/tools/360-prices.jpg',
-        benefits: [
-          { fr: 'Alertes instantanées', en: 'Instant alerts' },
-          { fr: 'Analyse d\'impact', en: 'Impact analysis' },
-          { fr: 'Aide à la négociation', en: 'Negotiation support' }
-        ],
-        concepts: ['operate']
-      },
-      {
-        titleFr: 'Coûts de main d\'œuvre',
-        titleEn: 'Labor Costs',
-        descriptionFr: 'Suivez vos coûts de personnel en pourcentage des ventes. Comparez avec vos objectifs et les standards de l\'industrie. Optimisez vos horaires pour maintenir vos ratios. Équilibrez service client et rentabilité.',
-        descriptionEn: 'Track your labor costs as a percentage of sales. Compare with your targets and industry standards. Optimize schedules to maintain your ratios. Balance customer service and profitability.',
-        image: '/images/tools/360-labor.jpg',
-        benefits: [
-          { fr: 'Ratio en temps réel', en: 'Real-time ratio' },
-          { fr: 'Comparaison objectifs', en: 'Target comparison' },
-          { fr: 'Optimisation horaires', en: 'Schedule optimization' }
-        ],
-        concepts: ['operate']
-      },
-      {
-        titleFr: 'Ingénierie de menu',
-        titleEn: 'Menu Engineering',
-        descriptionFr: 'Analysez la performance de chaque plat (popularité et rentabilité). Identifiez vos stars, vos vaches à lait, vos énigmes et vos poids morts. Optimisez votre menu pour maximiser vos profits. Prenez des décisions data-driven sur votre offre.',
-        descriptionEn: 'Analyze each dish\'s performance (popularity and profitability). Identify your stars, cash cows, puzzles and dogs. Optimize your menu to maximize profits. Make data-driven decisions about your offering.',
-        image: '/images/tools/360-menu.jpg',
-        benefits: [
-          { fr: 'Matrice BCG', en: 'BCG Matrix' },
-          { fr: 'Optimisation menu', en: 'Menu optimization' },
-          { fr: 'Décisions data-driven', en: 'Data-driven decisions' }
-        ],
-        concepts: ['automate']
-      },
-      {
-        titleFr: 'Coûts fixes et variables',
-        titleEn: 'Fixed and Variable Costs',
-        descriptionFr: 'Suivez vos dépenses fixes (loyer, assurances, etc.) et variables. Analysez votre point mort et votre seuil de rentabilité. Comprenez la structure de vos coûts pour mieux les contrôler. Planifiez vos investissements avec précision.',
-        descriptionEn: 'Track your fixed (rent, insurance, etc.) and variable expenses. Analyze your break-even point and profitability threshold. Understand your cost structure to better control it. Plan your investments accurately.',
-        image: '/images/tools/360-costs.jpg',
-        benefits: [
-          { fr: 'Analyse point mort', en: 'Break-even analysis' },
-          { fr: 'Structure des coûts', en: 'Cost structure' },
-          { fr: 'Planification précise', en: 'Accurate planning' }
-        ],
-        concepts: ['automate']
-      },
-      {
-        titleFr: 'Facture moyenne client',
-        titleEn: 'Average Customer Bill',
-        descriptionFr: 'Mesurez le panier moyen et identifiez les opportunités d\'upselling. Suivez l\'évolution par période et par service. Analysez l\'impact de vos promotions et de vos changements de menu. Maximisez votre revenu par client.',
-        descriptionEn: 'Measure average basket and identify upselling opportunities. Track evolution by period and service. Analyze the impact of your promotions and menu changes. Maximize your revenue per customer.',
+        titleFr: 'Facture moyenne',
+        titleEn: 'Average Bill',
+        descriptionFr: 'Mesurez le panier moyen de vos clients. Identifiez les opportunités pour augmenter votre revenu par transaction.',
+        descriptionEn: 'Measure your customers\' average basket. Identify opportunities to increase your revenue per transaction.',
         image: '/images/tools/360-average.jpg',
         benefits: [
           { fr: 'Panier moyen', en: 'Average basket' },
           { fr: 'Opportunités upselling', en: 'Upselling opportunities' },
-          { fr: 'Analyse promotions', en: 'Promotion analysis' }
+          { fr: 'Revenu optimisé', en: 'Optimized revenue' }
         ],
-        concepts: ['automate']
+        concepts: ['analyze']
       },
       {
         titleFr: 'Multi-établissements',
         titleEn: 'Multi-Location',
-        descriptionFr: 'Gérez plusieurs restaurants depuis un seul tableau de bord. Comparez les performances entre vos établissements. Identifiez les meilleures pratiques et les points d\'amélioration. Centralisez votre gestion pour plus d\'efficacité.',
-        descriptionEn: 'Manage multiple restaurants from one dashboard. Compare performance across your locations. Identify best practices and improvement areas. Centralize your management for greater efficiency.',
+        descriptionFr: 'Gérez plusieurs restaurants depuis un seul tableau de bord. Comparez les performances et identifiez les meilleures pratiques.',
+        descriptionEn: 'Manage multiple restaurants from one dashboard. Compare performance and identify best practices.',
         image: '/images/tools/360-multi.jpg',
         benefits: [
           { fr: 'Vue centralisée', en: 'Centralized view' },
           { fr: 'Comparaisons inter-sites', en: 'Cross-location comparisons' },
-          { fr: 'Meilleures pratiques', en: 'Best practices' }
+          { fr: 'Gestion simplifiée', en: 'Simplified management' }
         ],
-        concepts: ['automate']
+        concepts: ['operate']
       }
     ]
   }
