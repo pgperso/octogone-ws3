@@ -8,7 +8,6 @@ import { ArrowRight } from "lucide-react";
 import { toolsConversations, TOOLS_TIMING, type ToolMessage } from "../data/tools-conversations";
 
 const FALLBACK_AVATAR = "/images/avatars/marc.avif";
-const FALLBACK_CORTEX = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z' fill='%23374151'/%3E%3C/svg%3E";
 
 interface ToolsAnimatedChatProps {
   locale: string;
