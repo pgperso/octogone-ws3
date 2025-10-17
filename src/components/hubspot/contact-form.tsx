@@ -23,7 +23,6 @@ export function HubSpotContactForm({ locale = "fr" }: HubSpotContactFormProps) {
   });
 
   const [status, setStatus] = React.useState<"idle" | "loading" | "success" | "error">("idle");
-  const [errorMessage, setErrorMessage] = React.useState("");
 
   const labels = {
     fr: {
@@ -68,7 +67,6 @@ export function HubSpotContactForm({ locale = "fr" }: HubSpotContactFormProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
-    setErrorMessage("");
 
     try {
       // Envoyer à HubSpot via l'API Forms
@@ -112,7 +110,6 @@ export function HubSpotContactForm({ locale = "fr" }: HubSpotContactFormProps) {
     } catch (error) {
       console.error("Form submission error:", error);
       setStatus("error");
-      setErrorMessage(error instanceof Error ? error.message : "Unknown error");
     }
   };
 
