@@ -163,38 +163,6 @@ Predicting is the future. And this future, we're building it together. With Octo
     ctaLabelFr: 'Découvrez Cortex, notre agent IA',
     ctaLabelEn: 'Discover Cortex, our AI agent',
     ctaLink: '/cortex'
-  },
-  {
-    id: 'cortex',
-    nameFr: 'Assistant IA',
-    nameEn: 'AI Assistant',
-    pastelColor: '#BADFF6', // Bleu Cortex pastel
-    
-    heroTitleFr: 'Voici Cortex',
-    heroTitleEn: 'Meet Cortex',
-    heroDescriptionFr: 'Votre assistant IA qui transforme vos données en décisions. Posez des questions, obtenez des réponses instantanées et optimisez vos opérations sans effort.',
-    heroDescriptionEn: 'Your AI assistant that transforms data into decisions. Ask questions, get instant answers, and optimize your restaurant operations effortlessly.',
-    heroImage: 'https://player.vimeo.com/video/1126878170?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1&muted=1&controls=0&background=1',
-    
-    contentFr: `Cortex est votre assistant IA qui révolutionne la façon dont vous interagissez avec vos données. Plus besoin de chercher dans des rapports complexes ou de faire des calculs manuels. Posez simplement vos questions en langage naturel et obtenez des réponses instantanées.
-
-Avec Cortex, vous pouvez demander "Quel est mon food cost cette semaine ?" ou "Quels sont mes plats les plus rentables ?" et recevoir des réponses précises en quelques secondes. Cortex analyse vos données en temps réel et vous donne des insights actionnables pour optimiser vos opérations.
-
-L'intelligence artificielle de Cortex apprend continuellement de vos habitudes et de votre établissement. Plus vous l'utilisez, plus il comprend vos besoins spécifiques et peut vous proposer des recommandations personnalisées.
-
-Cortex est disponible 24/7, toujours prêt à vous aider dans vos décisions. Que ce soit pour analyser vos ventes, optimiser vos stocks ou prédire vos besoins futurs, Cortex transforme la complexité de vos données en simplicité d'utilisation.`,
-    
-    contentEn: `Cortex is your AI assistant that revolutionizes how you interact with your data. No more searching through complex reports or doing manual calculations. Simply ask your questions in natural language and get instant answers.
-
-With Cortex, you can ask "What's my food cost this week?" or "What are my most profitable dishes?" and receive accurate answers in seconds. Cortex analyzes your data in real-time and gives you actionable insights to optimize your operations.
-
-Cortex's artificial intelligence continuously learns from your habits and your establishment. The more you use it, the better it understands your specific needs and can offer personalized recommendations.
-
-Cortex is available 24/7, always ready to help with your decisions. Whether it's analyzing your sales, optimizing your inventory, or predicting your future needs, Cortex transforms the complexity of your data into simplicity of use.`,
-    
-    ctaLabelFr: 'Voir la plateforme en action',
-    ctaLabelEn: 'See the platform in action',
-    ctaLink: '/demo'
   }
 ];
 
