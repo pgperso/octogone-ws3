@@ -18,7 +18,6 @@ export function LaptopFrame({ children, className = "" }: LaptopFrameProps) {
       <div 
         className="relative rounded-2xl overflow-hidden mx-auto"
         style={{
-          backgroundColor: 'var(--surface)',
           border: '14px solid #2c3e50',
           boxShadow: '0 20px 60px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.1)',
           maxWidth: '100%'
@@ -28,8 +27,7 @@ export function LaptopFrame({ children, className = "" }: LaptopFrameProps) {
         <div 
           className="relative"
           style={{
-            minHeight: '400px',
-            maxHeight: '600px',
+            height: '600px',
             overflow: 'hidden'
           }}
         >
