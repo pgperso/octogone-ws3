@@ -17,6 +17,11 @@ export const routes: Route[] = [
     description: "Tous les outils pour optimiser votre restaurant",
     children: [
       {
+        path: "/fonctionnalites/octogone-360",
+        label: "Octogone 360",
+        description: "Tableau de bord intelligent avec tous vos KPIs en temps réel",
+      },
+      {
         path: "/fonctionnalites/inventaire",
         label: "Inventaire",
         description: "Gérez vos stocks en temps réel avec précision et simplicité",
@@ -35,11 +40,6 @@ export const routes: Route[] = [
         path: "/fonctionnalites/ressources-humaines",
         label: "Ressources Humaines",
         description: "Simplifiez la gestion de vos équipes et des pourboires",
-      },
-      {
-        path: "/fonctionnalites/octogone-360",
-        label: "Octogone 360",
-        description: "Tableau de bord intelligent avec tous vos KPIs en temps réel",
       },
     ],
   },
