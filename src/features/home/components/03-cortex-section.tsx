@@ -6,6 +6,7 @@ import { ResponsiveSection } from "@/components/ui/responsive-section";
 import OctogoneButton from "@/components/ui/octogone-button";
 import { Sparkles, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import ToolsAnimatedChat from "./tools-animated-chat";
 
 interface CortexIntroProps {
   locale?: string;
@@ -121,7 +122,7 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
           </div>
         </motion.div>
 
-        {/* Vidéo Cortex depuis Vimeo */}
+        {/* Chat animé des outils */}
         <motion.div
           className="motion-element"
           initial={{ opacity: 0, scale: 0.95 }}
@@ -129,30 +130,18 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           onAnimationComplete={() => {
-            // Nettoyage GPU pour vidéo
-            const videoElements = document.querySelectorAll('.motion-element iframe');
-            videoElements.forEach(el => {
-              const parent = el.closest('.motion-element');
-              if (parent) parent.classList.add('animation-complete');
-            });
+            const element = document.querySelector('.motion-element');
+            if (element) element.classList.add('animation-complete');
           }}
         >
         <div 
-          className="relative rounded-2xl overflow-hidden shadow-2xl mt-32 mb-32"
+          className="relative rounded-2xl p-8 shadow-2xl mt-32 mb-32"
           style={{ 
-            aspectRatio: '16/9',
-            backgroundColor: 'var(--surface-variant)'
+            backgroundColor: 'var(--surface)',
+            border: '1px solid var(--outline)'
           }}
         >
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover"
-          >
-            <source src="/animations/predict.mp4" type="video/mp4" />
-          </video>
+          <ToolsAnimatedChat locale={locale} />
         </div>
         </motion.div>
 
