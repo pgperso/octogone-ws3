@@ -236,6 +236,7 @@ export default function ContactPage() {
           </div>
         </div>
       </ResponsiveSection>
+      </div>
     </main>
   );
 }
