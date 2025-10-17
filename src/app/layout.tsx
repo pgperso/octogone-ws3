@@ -78,15 +78,6 @@ export default function RootLayout({
           <meta name="theme-color" content="#002236" />
           <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
           
-          {/* Cookiebot - Gestion des cookies */}
-          <script
-            id="Cookiebot"
-            src="https://consent.cookiebot.com/uc.js"
-            data-cbid="d6a4b4c0-2a1c-4162-ac30-add8b00588a4"
-            data-blockingmode="auto"
-            type="text/javascript"
-          />
-          
           {/* HubSpot Tracking Code */}
           <script
             type="text/javascript"
