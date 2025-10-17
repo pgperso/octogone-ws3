@@ -31,32 +31,32 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'Salut Cortex ! On perd vraiment trop de temps sur nos inventaires...', 
+          text: 'Salut Cortex ! Je veux utiliser la fonction inventaire en équipe, comment ça marche ?', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'Salut ! Je te comprends, c\'est souvent la corvée de la semaine 😅\n\nAvec la prise d\'inventaire en équipe, vous pouvez diviser le temps par 3 ! Chacun compte sur son appareil et tout se synchronise automatiquement.',
+          text: 'Salut ! Super idée, c\'est une des fonctions les plus puissantes d\'Octogone ! 🚀\n\nChaque membre de ton équipe compte sur son appareil, et tout se synchronise automatiquement en temps réel. Tu divises le temps par 3 !',
           delay: 1500
         },
         { 
           type: 'user', 
-          text: 'Ah ouais ? Donc plusieurs personnes peuvent compter en même temps ?', 
+          text: 'Génial ! Donc je peux assigner différentes zones à chacun ?', 
           delay: 4500 
         },
         {
           type: 'cortex',
-          text: 'Exactement ! Pendant qu\'un employé fait le bar, un autre s\'occupe de la cuisine, et un troisième du garde-manger 📱\n\nTout se consolide en temps réel. Plus besoin d\'attendre que quelqu\'un finisse pour commencer !',
+          text: 'Exactement ! Un employé fait le bar, un autre la cuisine, un troisième le garde-manger 📱\n\nTout se consolide automatiquement. C\'est ultra-rapide et super efficace !',
           delay: 6000
         },
         { 
           type: 'user', 
-          text: 'Parfait ! Et on peut voir les écarts directement ?', 
+          text: 'Parfait ! Et je peux analyser les écarts après ?', 
           delay: 9500 
         },
         {
           type: 'cortex',
-          text: 'Oui ! Dès que l\'inventaire est terminé, tu compares physique vs théorique instantanément 📊\n\nTu vois exactement où sont les pertes, ce qui manque, et ce qu\'il faut commander. Historique complet inclus !',
+          text: 'Oui ! Dès que c\'est terminé, tu as la comparaison physique vs théorique instantanément 📊\n\nTu vois exactement où optimiser, ce qui manque, et ce qu\'il faut commander. Historique complet inclus !',
           delay: 11000,
           cta: {
             label: 'Découvrir Inventaire',
@@ -70,32 +70,32 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'Cortex, mes prix d\'ingrédients changent souvent, c\'est compliqué à suivre...', 
+          text: 'Hey Cortex ! Montre-moi comment utiliser la mise à jour automatique des recettes', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'Je te comprends ! C\'est frustrant de devoir tout recalculer manuellement 😓\n\nAvec Food Cost, dès qu\'un prix change, toutes tes recettes se mettent à jour automatiquement. Coûts, marges, prix de vente... tout est recalculé en temps réel !',
+          text: 'Avec plaisir ! C\'est une des fonctions magiques d\'Octogone ✨\n\nDès qu\'un prix d\'ingrédient change, toutes tes recettes se mettent à jour automatiquement. Coûts, marges, prix de vente... tout est recalculé en temps réel !',
           delay: 1500
         },
         { 
           type: 'user', 
-          text: 'Ah oui ? Donc si le prix du bœuf augmente par exemple ?', 
+          text: 'Donc si le prix du bœuf augmente, je vois l\'impact partout ?', 
           delay: 4500 
         },
         {
           type: 'cortex',
-          text: 'Exactement ! Tu vois instantanément l\'impact sur TOUTES tes recettes qui contiennent du bœuf 🔄\n\nTu peux même voir quels plats restent rentables et lesquels ont besoin d\'un ajustement de prix.',
+          text: 'Exactement ! Tu vois instantanément l\'impact sur TOUTES tes recettes avec du bœuf 🔄\n\nTu peux analyser quels plats restent rentables et optimiser tes prix en conséquence. C\'est super puissant !',
           delay: 6000
         },
         { 
           type: 'user', 
-          text: 'Génial ! Et pour créer mes fiches techniques ?', 
+          text: 'Parfait ! Et pour créer mes fiches techniques ?', 
           delay: 9500 
         },
         {
           type: 'cortex',
-          text: 'Super simple ! Tu crées tes recettes avec les ingrédients et quantités, et le système calcule tout automatiquement 👨‍🍳\n\nPlus besoin d\'Excel ou de calculatrice. Tout est centralisé et toujours à jour !',
+          text: 'C\'est ultra-simple dans Octogone ! Tu ajoutes tes ingrédients et quantités, et le système calcule tout automatiquement 👨‍🍳\n\nTout est centralisé, toujours à jour, et accessible en un clic !',
           delay: 11000,
           cta: {
             label: 'Découvrir Food Cost',
@@ -109,32 +109,32 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'Hey Cortex ! J\'en ai marre de noter les températures à la main tous les jours...', 
+          text: 'Salut ! Je veux activer les alertes automatiques pour mes zones tempérées', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'Je te comprends ! C\'est répétitif et on peut facilement oublier 😅\n\nAvec les capteurs de température, tout est automatisé. Tes frigos, congélos et zones chaudes sont surveillés 24/7 sans que tu aies à y penser !',
+          text: 'Excellente idée ! C\'est une sécurité en plus pour ton restaurant 🔒\n\nAvec les capteurs Octogone, tes frigos, congélos et zones chaudes sont surveillés 24/7. Tout est automatisé, zéro saisie manuelle !',
           delay: 1500
         },
         { 
           type: 'user', 
-          text: 'Et si une température déraille pendant la nuit ?', 
+          text: 'Et je reçois une alerte si une température sort de la norme ?', 
           delay: 4500 
         },
         {
           type: 'cortex',
-          text: 'Tu reçois une alerte immédiate ! Notification, SMS ou email selon tes préférences 📡\n\nTu peux agir rapidement avant que la nourriture soit compromise. Plus de mauvaises surprises le matin !',
+          text: 'Oui ! Alerte instantanée par notification, SMS ou email selon tes préférences 📡\n\nTu peux réagir rapidement et éviter les problèmes. C\'est la tranquillité d\'esprit 24/7 !',
           delay: 6000
         },
         { 
           type: 'user', 
-          text: 'Parfait ! Et pour le MAPAQ, j\'ai toujours les données ?', 
+          text: 'Parfait ! Et pour les inspections MAPAQ ?', 
           delay: 9500 
         },
         {
           type: 'cortex',
-          text: 'Oui ! Historique complet automatique avec date et heure 📋\n\nEn cas d\'inspection, tu exportes le rapport en un clic. Fini les feuilles papier perdues ou incomplètes. Tu es toujours prêt !',
+          text: 'Octogone garde l\'historique complet automatiquement ! Date, heure, températures 📋\n\nEn cas d\'inspection, tu exportes le rapport en un clic. Tu es toujours conforme et prêt !',
           delay: 11000,
           cta: {
             label: 'Découvrir Températures',
@@ -148,32 +148,32 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'Salut ! J\'ai 15 employés et je galère avec mes fichiers Excel pour les RH...', 
+          text: 'Hey Cortex ! Je veux centraliser mes données RH dans Octogone, par où je commence ?', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'Ah oui, Excel pour les RH c\'est l\'enfer ! Versions multiples, fichiers perdus... 😅\n\nAvec le module RH, toutes tes fiches employés sont centralisées. Infos perso, contrats, horaires, tout au même endroit !',
+          text: 'Super choix ! Le module RH d\'Octogone est vraiment puissant 💪\n\nToutes tes fiches employés sont centralisées : infos perso, contrats, horaires, disponibilités... Tout au même endroit, toujours à jour !',
           delay: 1500
         },
         { 
           type: 'user', 
-          text: 'Et pour les conventions collectives ? C\'est compliqué à gérer...', 
+          text: 'Et pour gérer les conventions collectives ?', 
           delay: 4500 
         },
         {
           type: 'cortex',
-          text: 'Je sais ! Au lieu de chercher dans des PDF de 200 pages, tout est structuré dans le système 📄\n\nSalaires, congés, avantages... Tu sais instantanément ce qui s\'applique à chaque employé selon sa convention.',
+          text: 'Octogone structure tout pour toi ! Salaires, congés, avantages sociaux 📄\n\nTu vois instantanément ce qui s\'applique à chaque employé selon sa convention. C\'est clair et simple !',
           delay: 6000
         },
         { 
           type: 'user', 
-          text: 'Génial ! Et les documents comme les contrats, évaluations ?', 
+          text: 'Parfait ! Et je peux attacher les documents directement ?', 
           delay: 9500 
         },
         {
           type: 'cortex',
-          text: 'Tout est attaché à la fiche de l\'employé ! Contrats, évaluations, formations, certifications 🔒\n\nPlus de fichiers perdus ou de versions multiples. Tout est sécurisé, centralisé et accessible en un clic !',
+          text: 'Oui ! Contrats, évaluations, formations, certifications... tout est attaché à la fiche employé 🔒\n\nTout est sécurisé, centralisé et accessible en un clic. C\'est la gestion RH simplifiée !',
           delay: 11000,
           cta: {
             label: 'Découvrir RH',
