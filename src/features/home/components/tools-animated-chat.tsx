@@ -118,14 +118,26 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
   }
 
   const dashboardImage = isEnglish ? '/dashboard_en.avif' : '/dashboard_fr.avif';
+  const dashboardImageMobile = isEnglish ? '/dashboard_mobile_en.avif' : '/dashboard_mobile_fr.avif';
 
   return (
     <div className="relative w-full h-full">
       {/* Dashboard en arrière-plan */}
       <div 
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full hidden md:block"
         style={{
           backgroundImage: `url('${dashboardImage}')`,
+          backgroundSize: 'contain',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      />
+      
+      {/* Dashboard mobile en arrière-plan */}
+      <div 
+        className="absolute inset-0 w-full h-full md:hidden"
+        style={{
+          backgroundImage: `url('${dashboardImageMobile}')`,
           backgroundSize: 'contain',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
@@ -302,17 +314,22 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
               </div>
 
               {message.type === 'user' && (
-                <Image
-                  src={currentConversation.userAvatar || FALLBACK_AVATAR}
-                  alt={currentConversation.userName || "User"}
-                  width={40}
-                  height={40}
-                  className="w-10 h-10 rounded-full object-cover flex-shrink-0"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src = FALLBACK_AVATAR;
-                  }}
-                />
+                <div 
+                  className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+                  style={{ border: '2px solid var(--primary)' }}
+                >
+                  <Image
+                    src={currentConversation.userAvatar || FALLBACK_AVATAR}
+                    alt={currentConversation.userName || "User"}
+                    width={40}
+                    height={40}
+                    className="w-10 h-10 rounded-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = FALLBACK_AVATAR;
+                    }}
+                  />
+                </div>
               )}
             </div>
           </motion.div>
