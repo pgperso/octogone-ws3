@@ -18,6 +18,8 @@ export function CookiebotBanner({ cbid }: CookiebotBannerProps) {
     script.src = 'https://consent.cookiebot.com/uc.js';
     script.setAttribute('data-cbid', cbid);
     script.setAttribute('data-blockingmode', 'auto');
+    script.setAttribute('data-framework', 'custom');
+    script.setAttribute('data-georegions', '{"region":"US","cbid":"' + cbid + '"}');
     script.type = 'text/javascript';
     script.async = true;
     
