@@ -46,12 +46,12 @@ export function LaptopFrame({ children, className = "" }: LaptopFrameProps) {
         </div>
       </div>
 
-      {/* Base du laptop (clavier) - Plus large */}
+      {/* Base du laptop (clavier) - Plus large que l'écran */}
       <div className="relative w-full flex justify-center">
         <div 
           className="relative rounded-b-xl"
           style={{
-            width: '120%',
+            width: '130%',
             height: '32px',
             background: 'linear-gradient(180deg, #f7fafc 0%, #e2e8f0 100%)',
             boxShadow: '0 6px 16px rgba(0, 0, 0, 0.1)',

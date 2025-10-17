@@ -31,12 +31,12 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'Comment optimiser mes inventaires ?', 
+          text: 'Comment optimiser la prise d\'inventaire dans mon restaurant ?', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'Avec Inventaire, prenez vos inventaires en équipe et divisez le temps par 3 ! 📦\n\nSuivez vos stocks en temps réel, détectez les écarts instantanément et réduisez vos pertes de 2 à 5%.',
+          text: 'Excellente question ! Avec Inventaire, transformez une corvée en processus efficace 📦\n\n✅ Prenez vos inventaires en équipe et divisez le temps par 3\n✅ Suivez vos stocks en temps réel\n✅ Détectez les écarts instantanément\n✅ Réduisez vos pertes de 2 à 5%\n\nChaque membre de l\'équipe peut compter simultanément sur son appareil. Les données se synchronisent automatiquement !',
           delay: 1500,
           cta: {
             label: 'Découvrir Inventaire',
@@ -50,16 +50,16 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'Comment calculer mes coûts de recettes ?', 
+          text: 'J\'aimerais mieux contrôler mon food cost et créer des recettes standardisées', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'Avec Recettes, créez vos fiches techniques et calculez automatiquement vos coûts et marges ! 👨‍🍳\n\nUn prix change ? Toutes vos recettes se mettent à jour instantanément. Zéro erreur, zéro calcul manuel.',
+          text: 'Parfait ! Le Food Cost est la clé de votre rentabilité 👨‍🍳\n\n✅ Créez vos fiches techniques détaillées\n✅ Calculez automatiquement vos coûts et marges\n✅ Un prix change ? Toutes vos recettes se mettent à jour instantanément\n✅ Analysez la rentabilité de chaque plat\n\nZéro erreur de calcul, zéro Excel. Tout est automatique et toujours à jour !',
           delay: 1500,
           cta: {
-            label: 'Découvrir Recettes',
-            link: '/fonctionnalites/recettes'
+            label: 'Découvrir Food Cost',
+            link: '/fonctionnalites/food-cost'
           }
         }
       ]
@@ -69,16 +69,16 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'Comment gérer mes commandes fournisseurs ?', 
+          text: 'Comment surveiller les températures de mes zones tempérées pour la sécurité alimentaire ?', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'Avec Commandes, générez vos bons de commande automatiquement selon vos besoins réels ! 📋\n\nFini les commandes à la main. Le système calcule ce qu\'il vous faut et crée les documents en un clic.',
+          text: 'La sécurité alimentaire, c\'est critique ! Avec Températures, simplifiez votre conformité 🌡️\n\n✅ Surveillance automatique 24/7 de vos zones tempérées\n✅ Alertes instantanées si température hors norme\n✅ Fini les saisies manuelles et les oublis\n✅ Historique complet pour inspections MAPAQ\n\nVos frigos, congélateurs et zones chaudes sont surveillés en continu. Vous êtes alerté avant que ça devienne un problème !',
           delay: 1500,
           cta: {
-            label: 'Découvrir Commandes',
-            link: '/fonctionnalites/commandes'
+            label: 'Découvrir Températures',
+            link: '/fonctionnalites/temperatures'
           }
         }
       ]
@@ -88,16 +88,16 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'Comment analyser mes performances ?', 
+          text: 'Je veux gérer mes fiches employés et conventions collectives sans Excel !', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'Avec Rapports, visualisez vos performances en temps réel avec des tableaux de bord clairs ! 📊\n\nFood cost, rentabilité par plat, écarts d\'inventaire... Tout est là, en un coup d\'œil.',
+          text: 'On vous comprend ! Excel, c\'est fini 👥\n\n✅ Fiches employés complètes et centralisées\n✅ Gestion des conventions collectives simplifiée\n✅ Suivi des heures et disponibilités\n✅ Documents RH accessibles en un clic\n\nToutes vos informations RH au même endroit, sécurisées et toujours à jour. Plus de fichiers Excel perdus ou versions multiples !',
           delay: 1500,
           cta: {
-            label: 'Découvrir Rapports',
-            link: '/fonctionnalites/rapports'
+            label: 'Découvrir RH',
+            link: '/fonctionnalites/ressources-humaines'
           }
         }
       ]
@@ -109,12 +109,12 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'How can I optimize my inventory?', 
+          text: 'How can I optimize inventory taking in my restaurant?', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'With Inventory, take your inventory as a team and divide time by 3! 📦\n\nTrack your stock in real-time, detect discrepancies instantly and reduce your losses by 2 to 5%.',
+          text: 'Great question! With Inventory, transform a chore into an efficient process 📦\n\n✅ Take inventory as a team and divide time by 3\n✅ Track your stock in real-time\n✅ Detect discrepancies instantly\n✅ Reduce losses by 2 to 5%\n\nEach team member can count simultaneously on their device. Data syncs automatically!',
           delay: 1500,
           cta: {
             label: 'Discover Inventory',
@@ -128,16 +128,16 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'How do I calculate my recipe costs?', 
+          text: 'I want to better control my food cost and create standardized recipes', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'With Recipes, create your technical sheets and automatically calculate your costs and margins! 👨‍🍳\n\nA price changes? All your recipes update instantly. Zero errors, zero manual calculations.',
+          text: 'Perfect! Food Cost is the key to your profitability 👨‍🍳\n\n✅ Create detailed technical sheets\n✅ Automatically calculate costs and margins\n✅ Price changes? All recipes update instantly\n✅ Analyze profitability of each dish\n\nZero calculation errors, zero Excel. Everything is automatic and always up to date!',
           delay: 1500,
           cta: {
-            label: 'Discover Recipes',
-            link: '/fonctionnalites/recettes'
+            label: 'Discover Food Cost',
+            link: '/fonctionnalites/food-cost'
           }
         }
       ]
@@ -147,16 +147,16 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'How do I manage supplier orders?', 
+          text: 'How can I monitor temperatures in my cold zones for food safety?', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'With Orders, automatically generate your purchase orders based on your real needs! 📋\n\nNo more manual ordering. The system calculates what you need and creates documents in one click.',
+          text: 'Food safety is critical! With Temperatures, simplify your compliance 🌡️\n\n✅ Automatic 24/7 monitoring of cold zones\n✅ Instant alerts if temperature out of range\n✅ No more manual entries and forgotten logs\n✅ Complete history for health inspections\n\nYour fridges, freezers and hot zones are monitored continuously. You\'re alerted before it becomes a problem!',
           delay: 1500,
           cta: {
-            label: 'Discover Orders',
-            link: '/fonctionnalites/commandes'
+            label: 'Discover Temperatures',
+            link: '/fonctionnalites/temperatures'
           }
         }
       ]
@@ -166,16 +166,16 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'How can I analyze my performance?', 
+          text: 'I want to manage employee files and collective agreements without Excel!', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'With Reports, visualize your performance in real-time with clear dashboards! 📊\n\nFood cost, profitability per dish, inventory variances... Everything at a glance.',
+          text: 'We understand! Excel is over 👥\n\n✅ Complete and centralized employee files\n✅ Simplified collective agreement management\n✅ Hours and availability tracking\n✅ HR documents accessible in one click\n\nAll your HR information in one place, secure and always up to date. No more lost Excel files or multiple versions!',
           delay: 1500,
           cta: {
-            label: 'Discover Reports',
-            link: '/fonctionnalites/rapports'
+            label: 'Discover HR',
+            link: '/fonctionnalites/ressources-humaines'
           }
         }
       ]
