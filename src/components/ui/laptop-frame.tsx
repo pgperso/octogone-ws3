@@ -19,17 +19,17 @@ export function LaptopFrame({ children, className = "" }: LaptopFrameProps) {
         className="relative rounded-t-2xl overflow-hidden"
         style={{
           backgroundColor: 'var(--surface)',
-          border: '12px solid #2d3748',
+          border: '12px solid #e2e8f0',
           borderBottom: 'none',
-          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.1)',
+          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.15), inset 0 0 0 1px rgba(0, 0, 0, 0.05)',
         }}
       >
         {/* Barre supérieure minimaliste */}
         <div 
           className="w-full h-8"
           style={{
-            background: 'linear-gradient(180deg, #f7fafc 0%, #e2e8f0 100%)',
-            borderBottom: '1px solid #cbd5e0'
+            background: 'linear-gradient(180deg, #ffffff 0%, #f7fafc 100%)',
+            borderBottom: '1px solid #e2e8f0'
           }}
         />
         
@@ -46,25 +46,27 @@ export function LaptopFrame({ children, className = "" }: LaptopFrameProps) {
         </div>
       </div>
 
-      {/* Base du laptop (clavier) */}
+      {/* Base du laptop (clavier) - Plus large */}
       <div className="relative w-full flex justify-center">
         <div 
           className="relative rounded-b-xl"
           style={{
-            width: '110%',
-            height: '24px',
-            background: 'linear-gradient(180deg, #4a5568 0%, #2d3748 100%)',
-            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+            width: '120%',
+            height: '32px',
+            background: 'linear-gradient(180deg, #f7fafc 0%, #e2e8f0 100%)',
+            boxShadow: '0 6px 16px rgba(0, 0, 0, 0.1)',
+            border: '1px solid #cbd5e0',
+            borderTop: 'none'
           }}
         >
           {/* Trackpad suggestion */}
           <div 
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded"
             style={{
-              width: '80px',
-              height: '12px',
-              backgroundColor: '#1a202c',
-              opacity: 0.5
+              width: '100px',
+              height: '16px',
+              backgroundColor: '#cbd5e0',
+              opacity: 0.4
             }}
           />
         </div>
