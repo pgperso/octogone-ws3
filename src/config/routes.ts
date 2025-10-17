@@ -13,8 +13,8 @@ export const routes: Route[] = [
   },
   {
     path: "/fonctionnalites",
-    label: "Outils",
-    description: "Tous les outils pour optimiser votre restaurant",
+    label: "Fonctionnalités",
+    description: "Toutes les fonctionnalités pour optimiser votre restaurant",
     children: [
       {
         path: "/fonctionnalites/octogone-360",
@@ -23,17 +23,17 @@ export const routes: Route[] = [
       },
       {
         path: "/fonctionnalites/inventaire",
-        label: "Inventaire",
+        label: "Gestion des stocks",
         description: "Gérez vos stocks en temps réel avec précision et simplicité",
       },
       {
         path: "/fonctionnalites/food-cost",
-        label: "Food Cost",
+        label: "Recettes et Food Cost",
         description: "Maîtrisez vos coûts et optimisez vos marges automatiquement",
       },
       {
         path: "/fonctionnalites/iot",
-        label: "IoT",
+        label: "Thermomètres",
         description: "Surveillez vos équipements et températures à distance",
       },
       {
