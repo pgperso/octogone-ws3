@@ -145,21 +145,26 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
               setIsAnimatingOpen(true);
               setTimeout(() => setIsChatOpen(true), 100);
             }}
-            className="absolute bottom-6 right-6 w-16 h-16 rounded-full shadow-2xl flex items-center justify-center"
+            className="absolute bottom-6 right-6 w-16 h-16 rounded-2xl shadow-2xl flex items-center justify-center"
             style={{
-              backgroundColor: 'var(--purple_cortex)',
+              backgroundColor: 'var(--secondary)',
               zIndex: 10
             }}
           >
             <Image
-              src="/cortex-logo.svg"
+              src="/cortex-icon.svg"
               alt="Cortex"
               width={32}
               height={32}
               className="w-8 h-8"
+              style={{ filter: 'brightness(0) saturate(100%) invert(100%)' }}
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.style.display = 'none';
+                const parent = target.parentElement;
+                if (parent) {
+                  parent.innerHTML = '<span style="color: var(--on-secondary-container); font-weight: bold; font-size: 24px;">C</span>';
+                }
               }}
             />
           </motion.button>
@@ -184,23 +189,38 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
             <div 
               className="flex items-center justify-between px-6 py-4"
               style={{
-                backgroundColor: 'var(--surface-variant)',
+                background: 'linear-gradient(135deg, #BADFF6 0%, #E2CDED 100%)',
                 borderBottom: '1px solid var(--outline-variant)'
               }}
             >
               <div className="flex items-center gap-3">
                 <div 
-                  className="w-10 h-10 rounded-full flex items-center justify-center"
-                  style={{ backgroundColor: 'var(--purple_cortex)' }}
+                  className="w-10 h-10 rounded-lg flex items-center justify-center"
+                  style={{ backgroundColor: 'var(--secondary)' }}
                 >
-                  <span className="text-white font-bold">C</span>
+                  <Image
+                    src="/cortex-icon.svg"
+                    alt="Cortex"
+                    width={24}
+                    height={24}
+                    className="w-6 h-6"
+                    style={{ color: 'var(--on-secondary-container)' }}
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      const parent = target.parentElement;
+                      if (parent) {
+                        parent.innerHTML = '<span style="color: var(--on-secondary-container); font-weight: bold;">C</span>';
+                      }
+                    }}
+                  />
                 </div>
                 <div>
                   <h3 className="font-semibold" style={{ color: 'var(--on-surface)' }}>
                     Cortex
                   </h3>
                   <p className="text-xs" style={{ color: 'var(--on-surface-variant)' }}>
-                    Assistant intelligent
+                    {isEnglish ? 'Intelligent Assistant' : 'Assistant intelligent'}
                   </p>
                 </div>
               </div>
