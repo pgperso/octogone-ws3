@@ -108,32 +108,32 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'Hey Cortex ! C\'est Marc. J\'adore faire mes inventaires en équipe, ça nous fait gagner tellement de temps !', 
+          text: 'Cortex, j\'ai remarqué un écart de 12% sur les spiritueux ce mois-ci. C\'est anormal non ?', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'Salut Marc ! C\'est vrai, la prise en équipe c\'est vraiment un game changer 🚀\n\nChacun compte sur son appareil et tout se synchronise en temps réel. Vous divisez le temps par 3 !',
+          text: 'Oui Marc, 12% c\'est effectivement anormal. J\'ai analysé tes données 🔍\n\n8 bouteilles de Whisky Premium manquantes (340 $), 5 bouteilles de Gin (125 $). L\'écart est concentré sur les vendredis et samedis soirs.',
           delay: 1500
         },
         { 
           type: 'user', 
-          text: 'Oui ! Et j\'aimerais savoir la valeur totale de mon inventaire du mois passé', 
+          text: 'Intéressant ! Et quelle était la valeur exacte de mon inventaire en janvier ?', 
           delay: 4500 
         },
         {
           type: 'cortex',
-          text: 'Aucun problème ! Tu as l\'historique complet de tous tes inventaires 📊\n\nTu peux comparer les valeurs d\'un mois à l\'autre, voir l\'évolution, et analyser les tendances. C\'est super pratique pour le suivi !',
+          text: 'En janvier : 45 230 $, soit +8% vs décembre (41 850 $) 📊\n\nTon ratio de rotation a augmenté de 2,3 à 2,8. Tes produits se vendent plus vite, c\'est excellent pour ta trésorerie !',
           delay: 6000
         },
         { 
           type: 'user', 
-          text: 'Parfait ! Et pour voir mon inventaire théorique en temps réel ?', 
+          text: 'Parfait ! Et je peux voir l\'impact en temps réel quand je vends un plat ?', 
           delay: 9500 
         },
         {
           type: 'cortex',
-          text: 'Là c\'est magique ! Grâce à la connexion avec ton POS, l\'inventaire théorique se met à jour automatiquement à chaque vente ✨\n\nTu sais toujours exactement ce que tu as en stock, en temps réel !',
+          text: 'Absolument ! Chaque vente met à jour ton inventaire théorique instantanément ✨\n\nPar exemple, tu viens de vendre 3 Burgers : -450g bœuf, -6 pains, -300g fromage. Ton stock théorique s\'ajuste automatiquement !',
           delay: 11000,
           cta: {
             label: 'Découvrir Inventaire',
@@ -149,32 +149,32 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'Salut Cortex ! C\'est Julie. J\'utilise les fiches techniques pour toutes mes recettes, c\'est vraiment pratique !', 
+          text: 'Cortex, mon food cost a grimpé à 31% cette semaine. Qu\'est-ce qui a changé ?', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'Salut Julie ! Oui, et le meilleur c\'est que tout se met à jour automatiquement quand un prix change ✨\n\nDès qu\'un ingrédient augmente ou baisse, toutes tes recettes sont recalculées en temps réel !',
+          text: 'J\'ai identifié le problème Julie ! Le bœuf AAA est passé de 18,50 $/kg à 19,75 $/kg (+6,8%) 📈\n\nÇa impacte 12 de tes recettes. Ton Burger Premium passe de 4,20 $ à 4,45 $ de coût. Avec ton prix actuel de 14 $, ta marge tombe de 70% à 68,2%.',
           delay: 1500
         },
         { 
           type: 'user', 
-          text: 'Exactement ! Hier le bœuf a augmenté, j\'ai vu l\'impact direct sur mes plats', 
+          text: 'Ah ! Et quels plats sont les moins rentables maintenant ?', 
           delay: 4500 
         },
         {
           type: 'cortex',
-          text: 'C\'est ça la puissance du système ! Tu vois instantanément quels plats sont affectés 🔄\n\nTu peux ajuster tes prix de vente en conséquence et maintenir ta rentabilité. Tout est transparent !',
+          text: 'Voici ton top 3 des plats à optimiser 🔍\n\n1. Bavette grillée : 35,2% (coût 8,80 $, vente 25 $)\n2. Tartare de bœuf : 33,8% (coût 6,75 $, vente 20 $)\n3. Burger Premium : 31,8% (coût 4,45 $, vente 14 $)',
           delay: 6000
         },
         { 
           type: 'user', 
-          text: 'Super ! Et je peux voir mon food cost global en temps réel ?', 
+          text: 'Parfait ! Et si j\'augmente le Burger à 14,50 $ ?', 
           delay: 9500 
         },
         {
           type: 'cortex',
-          text: 'Absolument ! Food cost global, par catégorie, par plat... tout est calculé automatiquement 👨‍🍳\n\nTu as une vision complète de ta rentabilité, toujours à jour !',
+          text: 'Excellente idée ! Avec 14,50 $, ton food cost redescend à 30,7% sur le Burger 👨‍🍳\n\nTu retrouves une marge de 69,3%. Basé sur tes 180 ventes/semaine, ça représente +90 $ de profit hebdomadaire, soit +4 680 $/an !',
           delay: 11000,
           cta: {
             label: 'Découvrir Food Cost',
@@ -190,32 +190,32 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'Hey Cortex ! C\'est Vincent. Les capteurs de température, c\'est vraiment une tranquillité d\'esprit !', 
+          text: 'Cortex, j\'ai reçu 3 alertes cette semaine. C\'est normal ou j\'ai un problème ?', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'Salut Vincent ! Oui, plus besoin de noter à la main, tout est automatisé 24/7 🔒\n\nTes frigos, congélos et zones chaudes sont surveillés en continu. Tu reçois une alerte si quelque chose déraille !',
+          text: 'J\'ai analysé tes alertes Vincent 🔍\n\nFrigo #2 : 3 dépassements (2°C → 6°C). Problème récurrent les mardis matin. Ça coïncide avec les livraisons. La porte reste ouverte trop longtemps (12-15 min vs 5 min recommandé).',
           delay: 1500
         },
         { 
           type: 'user', 
-          text: 'Exactement ! La semaine dernière, j\'ai reçu une alerte à 3h du matin pour un frigo', 
+          text: 'Ah ! Et combien ça m\'a coûté en pertes ce mois-ci ?', 
           delay: 4500 
         },
         {
           type: 'cortex',
-          text: 'Et tu as pu réagir rapidement ! C\'est exactement ça l\'intérêt 📡\n\nTu évites les pertes de nourriture et tu protèges ton inventaire. C\'est une sécurité essentielle !',
+          text: 'Grâce aux alertes, zéro perte ! Tu as réagi en moyenne en 18 minutes 📡\n\nSans le système, avec 3 incidents, tu aurais perdu environ 2 800 $ de produits (viandes, produits laitiers). Le ROI du système est déjà atteint !',
           delay: 6000
         },
         { 
           type: 'user', 
-          text: 'Oui ! Et pour le MAPAQ, j\'ai toutes les données automatiquement ?', 
+          text: 'Parfait ! Et pour l\'inspection MAPAQ de jeudi prochain ?', 
           delay: 9500 
         },
         {
           type: 'cortex',
-          text: 'Tout est enregistré automatiquement ! Date, heure, températures 📋\n\nEn cas d\'inspection, tu exportes le rapport en un clic. Tu es toujours conforme et prêt !',
+          text: 'Tu es 100% prêt Vincent ! J\'ai 90 jours d\'historique complet 📋\n\n2 847 relevés de température, conformité à 99,8%. Les 3 alertes sont documentées avec tes actions correctives. J\'ai généré ton rapport pré-inspection !',
           delay: 11000,
           cta: {
             label: 'Découvrir Températures',
@@ -231,32 +231,32 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'Salut Cortex ! C\'est Marie. J\'ai toutes mes fiches employés dans Octogone, c\'est tellement mieux organisé !', 
+          text: 'Cortex, j\'ai 3 employés dont les certifications MAPAQ expirent bientôt. Lesquels ?', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'Salut Marie ! C\'est vrai, tout est centralisé au même endroit 💪\n\nInfos perso, contrats, horaires, disponibilités... Tu retrouves tout en un clic. Plus besoin de chercher dans des fichiers !',
+          text: 'Voici les 3 employés Marie 📋\n\n• Thomas : Hygiène alimentaire expire le 15 mars (dans 12 jours)\n• Sarah : Manipulation sécuritaire expire le 22 mars (dans 19 jours)\n• Kevin : Allergènes expire le 8 avril (dans 35 jours)',
           delay: 1500
         },
         { 
           type: 'user', 
-          text: 'Oui ! Et pour les conventions collectives, je peux voir ce qui s\'applique à chacun ?', 
+          text: 'Merci ! Et combien d\'heures sup j\'ai payées ce mois-ci ?', 
           delay: 4500 
         },
         {
           type: 'cortex',
-          text: 'Exactement ! Tout est structuré dans le système 📄\n\nSalaires, congés, avantages... Tu vois instantanément ce qui s\'applique selon la convention de chaque employé. C\'est super clair !',
+          text: 'En février : 127 heures sup pour tes 15 employés 💰\n\nCoût total : 3 245 $. C\'est +18% vs janvier (2 748 $). Les pics sont les vendredis et samedis. Julie a fait 32h sup à elle seule.',
           delay: 6000
         },
         { 
           type: 'user', 
-          text: 'Parfait ! Et je peux garder tous les documents attachés aux fiches ?', 
+          text: 'Ah ! Et pour la convention collective, qui a droit aux congés fériés payés ?', 
           delay: 9500 
         },
         {
           type: 'cortex',
-          text: 'Oui ! Contrats, évaluations, formations, certifications... tout est lié à la fiche 🔒\n\nTout est sécurisé et accessible en un clic. C\'est la gestion RH simplifiée !',
+          text: '11 de tes 15 employés sont éligibles 📄\n\nThomas, Sarah, Julie et Marc (+ 7 autres) ont plus de 3 mois d\'ancienneté. Kevin, Lisa, Alex et Emma ne sont pas encore éligibles. Budget estimé pour Pâques : 1 840 $.',
           delay: 11000,
           cta: {
             label: 'Découvrir RH',
