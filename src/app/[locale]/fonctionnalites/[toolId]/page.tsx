@@ -7,9 +7,26 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { ResponsiveSection } from "@/components/ui/responsive-section";
 import ToolDetailWidget from "@/components/widgets/tool-detail-widget";
-import { getToolById, getNextTool, getPreviousTool } from "@/data/tools/tools-content";
+import { getToolById, getNextTool, getPreviousTool, tools } from "@/data/tools/tools-content";
 import { ToolSEO } from "@/components/seo/tool-seo";
 import { LogoCard } from "@/components/widgets/logo-card";
+
+// Générer les routes statiques pour Vercel
+export async function generateStaticParams() {
+  const locales = ['fr', 'en'];
+  const params: { locale: string; toolId: string }[] = [];
+  
+  locales.forEach(locale => {
+    tools.forEach(tool => {
+      params.push({
+        locale,
+        toolId: tool.id
+      });
+    });
+  });
+  
+  return params;
+}
 
 export default function ToolPage({
   params,
