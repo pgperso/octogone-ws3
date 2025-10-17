@@ -7,6 +7,7 @@ import { useParams } from "next/navigation";
 import { Button } from "./button";
 import { ArrowRight, Globe, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { HubSpotMeetingModal } from "@/components/hubspot/meeting-modal";
 
 interface FooterProps {
   className?: string;
@@ -16,6 +17,7 @@ export function Footer({ className }: FooterProps) {
   // Récupérer la locale actuelle des paramètres d'URL
   const params = useParams();
   const locale = params ? (typeof params === 'object' && 'locale' in params ? params.locale as string : "fr") : "fr";
+  const [isDemoModalOpen, setIsDemoModalOpen] = React.useState(false);
   
   const currentYear = new Date().getFullYear();
 
@@ -142,7 +144,13 @@ export function Footer({ className }: FooterProps) {
             <p className="mb-4 md:mb-0" style={{ color: 'var(--on-surface)' }}>
               {locale === "fr" ? "Prêt à voir comment Octogone peut s'intégrer à vos opérations ?" : "Ready to see how Octogone can integrate with your operations?"}
             </p>
-            <Button variant="primary" size="lg" className="font-medium flex items-center" style={{ backgroundColor: "#dcb26b", color: "#002236" }}>
+            <Button 
+              variant="primary" 
+              size="lg" 
+              className="font-medium flex items-center" 
+              style={{ backgroundColor: "#dcb26b", color: "#002236" }}
+              onClick={() => setIsDemoModalOpen(true)}
+            >
               {locale === "fr" ? "Réserver une démo" : "Book a demo"}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
@@ -188,6 +196,12 @@ export function Footer({ className }: FooterProps) {
           </div>
         </div>
       </div>
+      
+      {/* Modale de réservation de démo */}
+      <HubSpotMeetingModal
+        isOpen={isDemoModalOpen}
+        onClose={() => setIsDemoModalOpen(false)}
+      />
     </footer>
   );
 }

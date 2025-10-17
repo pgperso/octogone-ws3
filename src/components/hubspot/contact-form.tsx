@@ -23,6 +23,9 @@ export function HubSpotContactForm({ locale = "fr" }: HubSpotContactFormProps) {
   });
 
   const [status, setStatus] = React.useState<"idle" | "loading" | "success" | "error">("idle");
+  
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const errorMessage = ""; // Variable temporaire pour éviter l'erreur de cache Vercel
 
   // Labels multilingues pour le formulaire
   const labels = {

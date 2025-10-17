@@ -11,6 +11,7 @@ import { MobileDrawerProps } from "./types";
 import { Button } from "@/components/ui/button";
 import LanguageToggle from "./language-toggle";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { HubSpotMeetingModal } from "@/components/hubspot/meeting-modal";
 import {
   Sheet,
   SheetContent,
@@ -26,6 +27,7 @@ export const ModernMobileNav: React.FC<MobileDrawerProps> = ({
   locale = "fr",
 }) => {
   const [expandedItems, setExpandedItems] = React.useState<string[]>([]);
+  const [isDemoModalOpen, setIsDemoModalOpen] = React.useState(false);
   const pathname = usePathname();
   
   // Pour les traductions côté client, nous utilisons des textes codés en dur
@@ -185,11 +187,24 @@ export const ModernMobileNav: React.FC<MobileDrawerProps> = ({
             </Button>
           </a>
           
-          <Button variant="primary" className="w-full py-6 text-base" onClick={onClose}>
+          <Button 
+            variant="primary" 
+            className="w-full py-6 text-base" 
+            onClick={() => {
+              onClose();
+              setIsDemoModalOpen(true);
+            }}
+          >
             {locale === "fr" ? "Réserver une démo" : "Book a demo"}
           </Button>
         </SheetFooter>
       </SheetContent>
+      
+      {/* Modale de réservation de démo */}
+      <HubSpotMeetingModal
+        isOpen={isDemoModalOpen}
+        onClose={() => setIsDemoModalOpen(false)}
+      />
     </Sheet>
   );
 };
