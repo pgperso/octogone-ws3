@@ -606,15 +606,15 @@ export const tools: Tool[] = [
         concepts: ['analyze']
       },
       {
-        titleFr: 'Facture moyenne',
-        titleEn: 'Average Bill',
-        descriptionFr: 'Mesurez le panier moyen de vos clients. Identifiez les opportunités pour augmenter votre revenu par transaction.',
-        descriptionEn: 'Measure your customers\' average basket. Identify opportunities to increase your revenue per transaction.',
-        image: '/images/tools/360-average.jpg',
+        titleFr: 'Et bien plus encore',
+        titleEn: 'And Much More',
+        descriptionFr: 'Surveillez vos gains et pertes d\'inventaire, suivez les changements de prix fournisseurs, analysez votre ingénierie de menu... Octogone 360 centralise tous les indicateurs essentiels pour piloter votre restaurant efficacement.',
+        descriptionEn: 'Monitor your inventory gains and losses, track supplier price changes, analyze your menu engineering... Octogone 360 centralizes all essential indicators to efficiently manage your restaurant.',
+        image: '/images/tools/360-more.jpg',
         benefits: [
-          { fr: 'Panier moyen', en: 'Average basket' },
-          { fr: 'Opportunités upselling', en: 'Upselling opportunities' },
-          { fr: 'Revenu optimisé', en: 'Optimized revenue' }
+          { fr: 'Surveillance complète', en: 'Complete monitoring' },
+          { fr: 'Indicateurs essentiels', en: 'Essential indicators' },
+          { fr: 'Pilotage efficace', en: 'Efficient management' }
         ],
         concepts: ['analyze']
       }
