@@ -115,7 +115,7 @@ export const DesktopNav: React.FC<DesktopNavProps> = ({
                               gridTemplateColumns: `repeat(${columnCount}, 1fr)`,
                             }}
                           >
-                            {route.children?.map((item: { path: string; href: string; label: string }) => {
+                            {route.children?.map((item: { path: string; href: string; label: string; description?: string }) => {
                               const isActive = pathname.includes(item.path);
                               return (
                                 <Link
@@ -145,6 +145,11 @@ export const DesktopNav: React.FC<DesktopNavProps> = ({
                                   <div className="item-title text-lg font-medium mb-2" style={{ color: isActive ? 'var(--on-secondary-container)' : 'var(--on-background)' }}>
                                     {item.label}
                                   </div>
+                                  {item.description && (
+                                    <p className="item-description text-sm leading-snug" style={{ color: isActive ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)' }}>
+                                      {item.description}
+                                    </p>
+                                  )}
                                 </Link>
                               );
                             })}
