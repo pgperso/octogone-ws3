@@ -3,11 +3,13 @@
 import * as React from "react";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { trackDemoModalOpen } from "@/lib/tracking/hubspot-events";
 
 interface HubSpotMeetingModalProps {
   isOpen: boolean;
   onClose: () => void;
   meetingUrl?: string;
+  source?: string;
 }
 
 /**
@@ -17,7 +19,8 @@ interface HubSpotMeetingModalProps {
 export function HubSpotMeetingModal({
   isOpen,
   onClose,
-  meetingUrl = "https://meetings.hubspot.com/caroline-bourbeau/ventes-octogone"
+  meetingUrl = "https://meetings.hubspot.com/caroline-bourbeau/ventes-octogone",
+  source = "unknown"
 }: HubSpotMeetingModalProps) {
   const [isLoading, setIsLoading] = React.useState(true);
   const [hasError, setHasError] = React.useState(false);
@@ -27,6 +30,8 @@ export function HubSpotMeetingModal({
     if (isOpen) {
       setIsLoading(true);
       setHasError(false);
+      // Tracker l'ouverture de la modale
+      trackDemoModalOpen(source);
     }
   }, [isOpen]);
 
