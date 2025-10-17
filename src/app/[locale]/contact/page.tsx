@@ -19,7 +19,9 @@ export default function ContactPage() {
     script.onload = () => {
       setIsLoading(false);
       // Initialiser le widget HubSpot
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       if ((window as any).HubSpotConversations) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (window as any).HubSpotConversations.widget.load();
       }
     };
