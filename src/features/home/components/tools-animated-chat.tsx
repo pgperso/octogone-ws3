@@ -157,7 +157,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
               width={32}
               height={32}
               className="w-8 h-8"
-              style={{ color: 'var(--on-secondary-container)' }}
+              style={{ filter: 'brightness(0) saturate(100%) invert(29%) sepia(89%) saturate(1651%) hue-rotate(203deg) brightness(95%) contrast(101%)' }}
             />
           </motion.button>
         )}
@@ -199,7 +199,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
                     width={24}
                     height={24}
                     className="w-6 h-6"
-                    style={{ color: 'var(--on-secondary-container)' }}
+                    style={{ filter: 'brightness(0) saturate(100%) invert(29%) sepia(89%) saturate(1651%) hue-rotate(203deg) brightness(95%) contrast(101%)' }}
                   />
                 </div>
                 <div>
@@ -256,7 +256,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
                     width={24}
                     height={24}
                     className="w-6 h-6"
-                    style={{ color: 'var(--on-secondary-container)' }}
+                    style={{ filter: 'brightness(0) saturate(100%) invert(29%) sepia(89%) saturate(1651%) hue-rotate(203deg) brightness(95%) contrast(101%)' }}
                   />
                 </div>
               )}
