@@ -272,10 +272,10 @@ const Hero = () => {
                   {octogones.map((oct) => {
                     const isCurrentActive = activeOctogone === oct.id;
                     const imageMap = {
-                      0: '/operate.jpg',  // Opérer
-                      1: '/resto.jpg',    // Automatiser
-                      2: '/resto.jpg',    // Analyser
-                      3: '/predict.jpg'   // Prédire
+                      0: '/images/operate-mobile.avif',   // Opérer
+                      1: '/images/automate-mobile.avif',  // Automatiser
+                      2: '/images/analyze-mobile.avif',   // Analyser
+                      3: '/images/predict-mobile.avif'    // Prédire
                     };
                     
                     return (
