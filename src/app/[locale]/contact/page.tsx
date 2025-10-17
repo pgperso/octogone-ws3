@@ -176,8 +176,8 @@ export default function ContactPage() {
               style={{ minHeight: '600px' }}
             />
           </div>
-        </div>
-      </ResponsiveSection>
+          </div>
+        </ResponsiveSection>
       </div>
     </main>
   );
