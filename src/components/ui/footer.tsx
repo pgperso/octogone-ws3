@@ -4,9 +4,8 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import { Button } from "./button";
 import { OctogoneButton } from "./octogone-button";
-import { ArrowRight, Globe, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { Globe, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { HubSpotMeetingModal } from "@/components/hubspot/meeting-modal";
 
