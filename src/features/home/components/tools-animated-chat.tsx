@@ -121,13 +121,13 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
   const dashboardImageMobile = isEnglish ? '/dashboard_mobile_en.avif' : '/dashboard_mobile_fr.avif';
 
   return (
-    <div className="relative w-full h-full">
+    <div className="relative w-full h-full overflow-hidden">
       {/* Dashboard en arrière-plan */}
       <div 
         className="absolute inset-0 w-full h-full hidden md:block"
         style={{
           backgroundImage: `url('${dashboardImage}')`,
-          backgroundSize: 'contain',
+          backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
         }}
@@ -138,7 +138,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
         className="absolute inset-0 w-full h-full md:hidden"
         style={{
           backgroundImage: `url('${dashboardImageMobile}')`,
-          backgroundSize: 'contain',
+          backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
         }}
@@ -215,10 +215,10 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
                   />
                 </div>
                 <div>
-                  <h3 className="font-semibold" style={{ color: 'var(--on-surface)' }}>
+                  <h3 className="font-semibold" style={{ color: 'var(--on-secondary-container)' }}>
                     Cortex
                   </h3>
-                  <p className="text-xs" style={{ color: 'var(--on-surface-variant)' }}>
+                  <p className="text-xs" style={{ color: 'var(--on-secondary-container)' }}>
                     {isEnglish ? 'Intelligent Assistant' : 'Assistant intelligent'}
                   </p>
                 </div>
@@ -314,22 +314,17 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
               </div>
 
               {message.type === 'user' && (
-                <div 
-                  className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
-                  style={{ border: '2px solid var(--primary)' }}
-                >
-                  <Image
-                    src={currentConversation.userAvatar || FALLBACK_AVATAR}
-                    alt={currentConversation.userName || "User"}
-                    width={40}
-                    height={40}
-                    className="w-10 h-10 rounded-full object-cover"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = FALLBACK_AVATAR;
-                    }}
-                  />
-                </div>
+                <Image
+                  src={currentConversation.userAvatar || FALLBACK_AVATAR}
+                  alt={currentConversation.userName || "User"}
+                  width={40}
+                  height={40}
+                  className="w-10 h-10 rounded-full object-cover flex-shrink-0"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = FALLBACK_AVATAR;
+                  }}
+                />
               )}
             </div>
           </motion.div>
