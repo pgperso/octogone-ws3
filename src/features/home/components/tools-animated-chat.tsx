@@ -226,7 +226,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
               <button
                 onClick={handleCloseChat}
                 className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/5 transition-colors"
-                style={{ color: 'var(--on-surface-variant)' }}
+                style={{ color: 'var(--on-secondary-container)' }}
               >
                 ✕
               </button>
