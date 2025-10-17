@@ -8,6 +8,7 @@ import { motion, useScroll } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useScrollPosition } from "@/lib/hooks/use-scroll-position";
 import { Button } from "@/components/ui/button";
+import { OctogoneButton } from "@/components/ui/octogone-button";
 import { DesktopNav } from "./components/desktop-nav";
 import { ModernMobileNav } from "./components/modern-mobile-nav";
 import LanguageToggle from "./components/language-toggle";
@@ -212,12 +213,15 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
               </div>
 
               {/* CTA Button */}
-              <button
-                onClick={() => setIsDemoModalOpen(true)}
-                className="hidden xl:inline-flex items-center justify-center rounded-md px-4 py-2 text-base font-medium bg-gold-500 text-marine-900 hover:bg-gold-400 dark:bg-primary_color dark:text-marine-900 dark:hover:bg-gold-400 transition-colors btn-gold cursor-pointer"
-              >
-                {locale === "fr" ? "Réserver une démo" : "Book a demo"}
-              </button>
+              <div className="hidden xl:block">
+                <OctogoneButton
+                  onClick={() => setIsDemoModalOpen(true)}
+                  variant="primary"
+                  size="md"
+                >
+                  {locale === "fr" ? "Réserver une démo" : "Book a demo"}
+                </OctogoneButton>
+              </div>
             </div>
 
             {/* Mobile Navigation - Version moderne */}

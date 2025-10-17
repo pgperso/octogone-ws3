@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils";
 import { Route } from "@/types/routes";
 import { MobileDrawerProps } from "./types";
 import { Button } from "@/components/ui/button";
+import { OctogoneButton } from "@/components/ui/octogone-button";
 import LanguageToggle from "./language-toggle";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { HubSpotMeetingModal } from "@/components/hubspot/meeting-modal";
@@ -187,16 +188,17 @@ export const ModernMobileNav: React.FC<MobileDrawerProps> = ({
             </Button>
           </a>
           
-          <Button 
-            variant="primary" 
-            className="w-full py-6 text-base" 
+          <OctogoneButton
+            variant="primary"
+            size="lg"
             onClick={() => {
               onClose();
               setIsDemoModalOpen(true);
             }}
+            className="w-full"
           >
             {locale === "fr" ? "Réserver une démo" : "Book a demo"}
-          </Button>
+          </OctogoneButton>
         </SheetFooter>
       </SheetContent>
       

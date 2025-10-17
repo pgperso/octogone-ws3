@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { Button } from "./button";
+import { OctogoneButton } from "./octogone-button";
 import { ArrowRight, Globe, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { HubSpotMeetingModal } from "@/components/hubspot/meeting-modal";
@@ -144,16 +145,13 @@ export function Footer({ className }: FooterProps) {
             <p className="mb-4 md:mb-0" style={{ color: 'var(--on-surface)' }}>
               {locale === "fr" ? "Prêt à voir comment Octogone peut s'intégrer à vos opérations ?" : "Ready to see how Octogone can integrate with your operations?"}
             </p>
-            <Button 
-              variant="primary" 
-              size="lg" 
-              className="font-medium flex items-center" 
-              style={{ backgroundColor: "#dcb26b", color: "#002236" }}
+            <OctogoneButton
+              variant="primary"
+              size="lg"
               onClick={() => setIsDemoModalOpen(true)}
             >
               {locale === "fr" ? "Réserver une démo" : "Book a demo"}
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            </OctogoneButton>
           </div>
         </div>
 
