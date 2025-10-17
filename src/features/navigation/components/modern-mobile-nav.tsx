@@ -174,6 +174,17 @@ export const ModernMobileNav: React.FC<MobileDrawerProps> = ({
             </div>
           </div>
           
+          <a 
+            href="https://app.octogonecollectif.com/#/login"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full"
+          >
+            <Button variant="outline" className="w-full py-6 text-base">
+              {locale === "fr" ? "Connexion" : "Login"}
+            </Button>
+          </a>
+          
           <Button variant="primary" className="w-full py-6 text-base" onClick={onClose}>
             {locale === "fr" ? "Réserver une démo" : "Book a demo"}
           </Button>

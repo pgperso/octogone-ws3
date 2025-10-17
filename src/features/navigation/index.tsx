@@ -191,13 +191,15 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
               </Button>
 
               {/* Connexion Link */}
-              <Link
-                href={`/${locale}/login`}
+              <a
+                href="https://app.octogonecollectif.com/#/login"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hidden xl:inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-medium transition-colors hover:text-primary_color"
                 style={{ color: 'var(--on-background)' }}
               >
                 {locale === "fr" ? "Connexion" : "Login"}
-              </Link>
+              </a>
 
               {/* Theme Toggle & Language Toggle */}
               <div className="hidden xl:flex items-center gap-2">
