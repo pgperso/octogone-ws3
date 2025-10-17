@@ -127,7 +127,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
         className="absolute inset-0 w-full h-full"
         style={{
           backgroundImage: `url('${dashboardImage}')`,
-          backgroundSize: 'cover',
+          backgroundSize: 'contain',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
         }}
