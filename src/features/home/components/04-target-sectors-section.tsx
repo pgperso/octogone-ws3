@@ -141,7 +141,8 @@ const TargetSectors = () => {
                 }
               }}
             >
-              {locale === "fr" ? "Types d'entreprises" : "Business Types"}
+              <span className="hidden sm:inline">{locale === "fr" ? "Types d'entreprises" : "Business Types"}</span>
+              <span className="sm:hidden">{locale === "fr" ? "Types" : "Types"}</span>
             </button>
             <button
               onClick={() => setActiveTab('styles')}
@@ -161,7 +162,8 @@ const TargetSectors = () => {
                 }
               }}
             >
-              {locale === "fr" ? "Styles de restaurants" : "Restaurant Styles"}
+              <span className="hidden sm:inline">{locale === "fr" ? "Styles de restaurants" : "Restaurant Styles"}</span>
+              <span className="sm:hidden">{locale === "fr" ? "Styles" : "Styles"}</span>
             </button>
             <button
               onClick={() => setActiveTab('testimonials')}
@@ -181,7 +183,8 @@ const TargetSectors = () => {
                 }
               }}
             >
-              {locale === "fr" ? "Témoignages" : "Testimonials"}
+              <span className="hidden sm:inline">{locale === "fr" ? "Témoignages" : "Testimonials"}</span>
+              <span className="sm:hidden">{locale === "fr" ? "Témoignages" : "Testimonials"}</span>
             </button>
           </div>
         </motion.div>
