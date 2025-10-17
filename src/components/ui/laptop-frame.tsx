@@ -24,33 +24,9 @@ export function LaptopFrame({ children, className = "" }: LaptopFrameProps) {
           maxWidth: '100%'
         }}
       >
-        {/* Bouton home (petit cercle en bas) */}
-        <div 
-          className="absolute bottom-2 left-1/2 -translate-x-1/2 rounded-full hidden md:block"
-          style={{
-            width: '40px',
-            height: '6px',
-            backgroundColor: '#34495e',
-            opacity: 0.6,
-            zIndex: 10
-          }}
-        />
-        
-        {/* Bouton home mobile (en bas en mode portrait) */}
-        <div 
-          className="absolute bottom-2 left-1/2 -translate-x-1/2 rounded-full md:hidden"
-          style={{
-            width: '40px',
-            height: '6px',
-            backgroundColor: '#34495e',
-            opacity: 0.6,
-            zIndex: 10
-          }}
-        />
-        
         {/* Contenu de l'écran */}
         <div 
-          className="relative bg-white"
+          className="relative"
           style={{
             minHeight: '400px',
             maxHeight: '600px',
