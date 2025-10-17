@@ -33,7 +33,7 @@ export function HubSpotMeetingModal({
       // Tracker l'ouverture de la modale
       trackDemoModalOpen(source);
     }
-  }, [isOpen]);
+  }, [isOpen, source]);
 
   // Gérer la touche Escape
   React.useEffect(() => {
