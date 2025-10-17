@@ -129,8 +129,8 @@ const Hero = () => {
       color: "text-marine-500",
       pastelColor: "green_pastel", // Vert menthe pastel
       position: "top-left",
-      media: "/animations/operate.webp",
-      mediaType: "webp",
+      media: "/animations/operate.mp4",
+      mediaType: "video",
       link: "/features/operate"
     },
     {
@@ -143,8 +143,8 @@ const Hero = () => {
       color: "text-gold-500",
       pastelColor: "blue_pastel", // Bleu ciel pastel
       position: "top-right",
-      media: "/animations/automate.webp",
-      mediaType: "webp",
+      media: "/animations/automate.mp4",
+      mediaType: "video",
       link: "/features/automate"
     },
     {
@@ -157,8 +157,8 @@ const Hero = () => {
       color: "text-marine-500",
       pastelColor: "yellow_pastel", // Jaune pastel
       position: "bottom-right",
-      media: "/animations/analyze.webp",
-      mediaType: "webp",
+      media: "/animations/analyze.mp4",
+      mediaType: "video",
       link: "/features/analyze"
     },
     {
@@ -171,8 +171,8 @@ const Hero = () => {
       color: "text-gold-500",
       pastelColor: "purple_pastel", // Mauve du dégradé Cortex
       position: "bottom-left",
-      media: "/animations/predict.webp",
-      mediaType: "webp",
+      media: "/animations/predict.mp4",
+      mediaType: "video",
       link: "/features/predict"
     }
   ];
@@ -438,19 +438,19 @@ const Hero = () => {
                     transform: `rotate(-${rotationDegrees}deg)`,
                     transition: 'transform 0.5s ease-out'
                   }}>
-                    <Image
+                    <video
                       key={activeOctogone !== null ? activeOctogone : 0}
-                      src={activeOctogone !== null ? octogones[activeOctogone].media : octogones[0].media}
-                      alt={activeOctogone !== null ? (locale === 'fr' ? octogones[activeOctogone].titleFr : octogones[activeOctogone].titleEn) : "Restaurant"}
-                      fill
-                      className="object-cover"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="absolute inset-0 w-full h-full object-cover"
                       style={{
                         animation: 'fadeIn 0.5s ease-out'
                       }}
-                      priority
-                      sizes="(max-width: 768px) 220px, (max-width: 1024px) 320px, 380px"
-                      unoptimized
-                    />
+                    >
+                      <source src={activeOctogone !== null ? octogones[activeOctogone].media : octogones[0].media} type="video/mp4" />
+                    </video>
                   </div>
                   <style jsx>{`
                     @keyframes fadeIn {
