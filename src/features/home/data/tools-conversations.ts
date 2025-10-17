@@ -274,16 +274,68 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'How can I optimize inventory taking in my restaurant?', 
+          text: 'Hi Cortex! I\'m Sophie, I\'m discovering Octogone. How does it work?', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'Great question! With Inventory, transform a chore into an efficient process 📦\n\n✅ Take inventory as a team and divide time by 3\n✅ Track your stock in real-time\n✅ Detect discrepancies instantly\n✅ Reduce losses by 2 to 5%\n\nEach team member can count simultaneously on their device. Data syncs automatically!',
-          delay: 1500,
+          text: 'Hi Sophie! Welcome 👋\n\nOctogone is a complete platform to manage your restaurant. Everything is built around 4 pillars: Operate, Automate, Analyze and Predict!',
+          delay: 1500
+        },
+        { 
+          type: 'user', 
+          text: 'What exactly is "Operate"?', 
+          delay: 4500 
+        },
+        {
+          type: 'cortex',
+          text: 'Operate is managing your daily operations Sophie! 📦\n\nTeam inventory, real-time stock tracking, product management... Everything related to executing your day-to-day operations.',
+          delay: 6000,
           cta: {
-            label: 'Discover Inventory',
-            link: '/fonctionnalites/inventaire'
+            label: 'Discover Operate',
+            link: '/features/operate'
+          }
+        },
+        { 
+          type: 'user', 
+          text: 'And "Automate"?', 
+          delay: 9500 
+        },
+        {
+          type: 'cortex',
+          text: 'Automate is letting the system do the work! ⚡\n\nAutomatic calculations, real-time updates, recipes that recalculate... Zero errors, zero manual effort.',
+          delay: 11000,
+          cta: {
+            label: 'Discover Automate',
+            link: '/features/automate'
+          }
+        },
+        { 
+          type: 'user', 
+          text: 'Interesting! And "Analyze"?', 
+          delay: 14500 
+        },
+        {
+          type: 'cortex',
+          text: 'Analyze is understanding your performance! 📊\n\nFood cost, profitability per dish, inventory variances... You transform your data into informed decisions.',
+          delay: 16000,
+          cta: {
+            label: 'Discover Analyze',
+            link: '/features/analyze'
+          }
+        },
+        { 
+          type: 'user', 
+          text: 'And the last one, "Predict"?', 
+          delay: 19500 
+        },
+        {
+          type: 'cortex',
+          text: 'Predict is the future Sophie! 🤖\n\nArtificial intelligence that anticipates your needs, detects anomalies, and recommends the best decisions. That\'s our vision!',
+          delay: 21000,
+          cta: {
+            label: 'Discover Predict',
+            link: '/features/predict'
           }
         }
       ]
@@ -295,16 +347,36 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'I want to better control my food cost and create standardized recipes', 
+          text: 'Cortex, I noticed a 12% variance on spirits this month. Is that abnormal?', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'Perfect! Food Cost is the key to your profitability 👨‍🍳\n\n✅ Create detailed technical sheets\n✅ Automatically calculate costs and margins\n✅ Price changes? All recipes update instantly\n✅ Analyze profitability of each dish\n\nZero calculation errors, zero Excel. Everything is automatic and always up to date!',
-          delay: 1500,
+          text: 'Yes Marc, 12% is definitely abnormal. I analyzed your data 🔍\n\n8 bottles of Premium Whisky missing ($340), 5 bottles of Gin ($125). The variance is concentrated on Friday and Saturday nights.',
+          delay: 1500
+        },
+        { 
+          type: 'user', 
+          text: 'Interesting! And what was the exact value of my inventory in January?', 
+          delay: 4500 
+        },
+        {
+          type: 'cortex',
+          text: 'In January: $45,230, up 8% vs December ($41,850) 📊\n\nYour turnover ratio increased from 2.3 to 2.8. Your products are selling faster, excellent for your cash flow!',
+          delay: 6000
+        },
+        { 
+          type: 'user', 
+          text: 'Perfect! And can I see the real-time impact when I sell a dish?', 
+          delay: 9500 
+        },
+        {
+          type: 'cortex',
+          text: 'Absolutely! Every sale updates your theoretical inventory instantly ✨\n\nFor example, you just sold 3 Burgers: -450g beef, -6 buns, -300g cheese. Your theoretical stock adjusts automatically!',
+          delay: 11000,
           cta: {
-            label: 'Discover Food Cost',
-            link: '/fonctionnalites/food-cost'
+            label: 'Discover Inventory',
+            link: '/fonctionnalites/inventaire'
           }
         }
       ]
@@ -316,16 +388,36 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'Hi! I use technical sheets for all my recipes, it\'s really practical!', 
+          text: 'Cortex, my food cost jumped to 31% this week. What changed?', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'Food safety is critical! With Temperatures, simplify your compliance 🌡️\n\n✅ Automatic 24/7 monitoring of cold zones\n✅ Instant alerts if temperature out of range\n✅ No more manual entries and forgotten logs\n✅ Complete history for health inspections\n\nYour fridges, freezers and hot zones are monitored continuously. You\'re alerted before it becomes a problem!',
-          delay: 1500,
+          text: 'I identified the problem Julie! AAA beef went from $18.50/kg to $19.75/kg (+6.8%) 📈\n\nThis impacts 12 of your recipes. Your Premium Burger goes from $4.20 to $4.45 cost. With your current $14 price, your margin drops from 70% to 68.2%.',
+          delay: 1500
+        },
+        { 
+          type: 'user', 
+          text: 'Ah! And which dishes are the least profitable now?', 
+          delay: 4500 
+        },
+        {
+          type: 'cortex',
+          text: 'Here\'s your top 3 dishes to optimize 🔍\n\n1. Grilled Bavette: 35.2% (cost $8.80, sell $25)\n2. Beef Tartare: 33.8% (cost $6.75, sell $20)\n3. Premium Burger: 31.8% (cost $4.45, sell $14)',
+          delay: 6000
+        },
+        { 
+          type: 'user', 
+          text: 'Perfect! What if I increase the Burger to $14.50?', 
+          delay: 9500 
+        },
+        {
+          type: 'cortex',
+          text: 'Excellent idea! At $14.50, your food cost drops to 30.7% on the Burger 👨‍🍳\n\nYou get back to 69.3% margin. Based on your 180 sales/week, that\'s +$90 weekly profit, or +$4,680/year!',
+          delay: 11000,
           cta: {
-            label: 'Discover Temperatures',
-            link: '/fonctionnalites/temperatures'
+            label: 'Discover Food Cost',
+            link: '/fonctionnalites/food-cost'
           }
         }
       ]
@@ -337,13 +429,74 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         { 
           type: 'user', 
-          text: 'Hey Cortex! Temperature sensors are really peace of mind!', 
+          text: 'Cortex, I received 3 alerts this week. Is that normal or do I have a problem?', 
           delay: 0 
         },
         {
           type: 'cortex',
-          text: 'We understand! Excel is over 👥\n\n✅ Complete and centralized employee files\n✅ Simplified collective agreement management\n✅ Hours and availability tracking\n✅ HR documents accessible in one click\n\nAll your HR information in one place, secure and always up to date. No more lost Excel files or multiple versions!',
-          delay: 1500,
+          text: 'I analyzed your alerts Vincent 🔍\n\nFridge #2: 3 exceedances (2°C → 6°C). Recurring problem on Tuesday mornings. It coincides with deliveries. The door stays open too long (12-15 min vs 5 min recommended).',
+          delay: 1500
+        },
+        { 
+          type: 'user', 
+          text: 'Ah! And how much did it cost me in losses this month?', 
+          delay: 4500 
+        },
+        {
+          type: 'cortex',
+          text: 'Thanks to the alerts, zero loss! You reacted in an average of 18 minutes 📡\n\nWithout the system, with 3 incidents, you would have lost about $2,800 in products (meats, dairy). The ROI of the system is already achieved!',
+          delay: 6000
+        },
+        { 
+          type: 'user', 
+          text: 'Perfect! And for the health inspection next Thursday?', 
+          delay: 9500 
+        },
+        {
+          type: 'cortex',
+          text: 'You\'re 100% ready Vincent! I have 90 days of complete history 📋\n\n2,847 temperature readings, 99.8% compliance. The 3 alerts are documented with your corrective actions. I generated your pre-inspection report!',
+          delay: 11000,
+          cta: {
+            label: 'Discover Temperatures',
+            link: '/fonctionnalites/temperatures'
+          }
+        }
+      ]
+    },
+    {
+      id: 4,
+      userName: 'Marie',
+      userAvatar: '/images/avatars/marie.avif',
+      messages: [
+        { 
+          type: 'user', 
+          text: 'Cortex, how much tips did we receive this week and how do I distribute them?', 
+          delay: 0 
+        },
+        {
+          type: 'cortex',
+          text: 'This week: $4,285 in tips Marie 💰\n\nAccording to your agreement (70% service, 30% kitchen):\n• Service (8 employees): $2,999.50 → $375/person\n• Kitchen (4 employees): $1,285.50 → $321/person',
+          delay: 1500
+        },
+        { 
+          type: 'user', 
+          text: 'Perfect! And can I see the tip history per employee?', 
+          delay: 4500 
+        },
+        {
+          type: 'cortex',
+          text: 'Of course! Here\'s the top 3 for February 📊\n\n1. Julie (server): $1,840 over 4 weeks\n2. Thomas (server): $1,625\n3. Sarah (server): $1,580\n\nEverything is automatically tracked in their files!',
+          delay: 6000
+        },
+        { 
+          type: 'user', 
+          text: 'Great! And for employee files, everything is centralized?', 
+          delay: 9500 
+        },
+        {
+          type: 'cortex',
+          text: 'Yes! Your 15 files are complete 👥\n\nPersonal info, contracts, schedules, tip history, documents... All in one place. No more searching through Excel files!',
+          delay: 11000,
           cta: {
             label: 'Discover HR',
             link: '/fonctionnalites/ressources-humaines'
