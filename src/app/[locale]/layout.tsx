@@ -11,6 +11,8 @@ import { SimpleSchema } from "@/components/seo/global-schema";
 import { routes } from "@/config/routes";
 import type { Route } from "@/features/navigation/types";
 import { CalculatorProvider, useCalculator } from "@/contexts/calculator-context";
+import { CookiebotBanner } from "@/components/cookiebot/cookiebot-banner";
+import { COOKIEBOT_CONFIG } from "@/config/cookiebot";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -68,6 +70,9 @@ function LayoutContent({
   
   return (
     <div lang={locale} className={inter.className}>
+      {/* Cookiebot - Gestion des cookies (RGPD, PIPEDA, Loi 25, CCPA) */}
+      {COOKIEBOT_CONFIG.enabled && <CookiebotBanner cbid={COOKIEBOT_CONFIG.cbid} />}
+      
       {/* Schema.org simple et fiable pour SEO IA */}
       <SimpleSchema locale={locale} />
       
