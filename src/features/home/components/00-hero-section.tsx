@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Play, Zap, LineChart, Brain } from "lucide-react";
 import { OctogoneButton } from "@/components/ui/octogone-button";
