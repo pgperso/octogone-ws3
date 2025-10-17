@@ -14,6 +14,8 @@ export type ToolMessage = {
 
 export type ToolConversation = {
   id: number;
+  userName: string;
+  userAvatar: string;
   messages: ToolMessage[];
 };
 
@@ -28,6 +30,8 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
   fr: [
     {
       id: 0,
+      userName: 'Sophie',
+      userAvatar: '/images/avatars/lisa.avif',
       messages: [
         { 
           type: 'user', 
@@ -99,6 +103,8 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
     },
     {
       id: 1,
+      userName: 'Marc',
+      userAvatar: '/images/avatars/marc.avif',
       messages: [
         { 
           type: 'user', 
@@ -138,6 +144,8 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
     },
     {
       id: 2,
+      userName: 'Julie',
+      userAvatar: '/images/avatars/julie.avif',
       messages: [
         { 
           type: 'user', 
@@ -177,6 +185,8 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
     },
     {
       id: 3,
+      userName: 'Vincent',
+      userAvatar: '/images/avatars/vincent.avif',
       messages: [
         { 
           type: 'user', 
@@ -216,6 +226,8 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
     },
     {
       id: 4,
+      userName: 'Marie',
+      userAvatar: '/images/avatars/marie.avif',
       messages: [
         { 
           type: 'user', 
@@ -257,6 +269,8 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
   en: [
     {
       id: 0,
+      userName: 'Sophie',
+      userAvatar: '/images/avatars/lisa.avif',
       messages: [
         { 
           type: 'user', 
@@ -276,6 +290,8 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
     },
     {
       id: 1,
+      userName: 'Marc',
+      userAvatar: '/images/avatars/marc.avif',
       messages: [
         { 
           type: 'user', 
@@ -295,10 +311,12 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
     },
     {
       id: 2,
+      userName: 'Julie',
+      userAvatar: '/images/avatars/julie.avif',
       messages: [
         { 
           type: 'user', 
-          text: 'How can I monitor temperatures in my cold zones for food safety?', 
+          text: 'Hi! I use technical sheets for all my recipes, it\'s really practical!', 
           delay: 0 
         },
         {
@@ -314,10 +332,12 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
     },
     {
       id: 3,
+      userName: 'Vincent',
+      userAvatar: '/images/avatars/vincent.avif',
       messages: [
         { 
           type: 'user', 
-          text: 'I want to manage employee files and collective agreements without Excel!', 
+          text: 'Hey Cortex! Temperature sensors are really peace of mind!', 
           delay: 0 
         },
         {
