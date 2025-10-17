@@ -6,7 +6,7 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ResponsiveSection } from "@/components/ui/responsive-section";
 import { Play, ChevronLeft, ChevronRight } from "lucide-react";
-import Image from "next/image";
+import { HeroMedia } from "@/components/ui/hero-media";
 import FeatureDetailWidget from "@/components/widgets/feature-detail-widget";
 import { getConceptById, getNextConcept, getPreviousConcept } from "@/data/features/features-content";
 import { ConceptSEO } from "@/components/seo/concept-seo";
@@ -119,11 +119,9 @@ export default function OperatePage() {
           </div>
 
           <div className="relative h-[400px] lg:h-[500px]">
-            <Image
+            <HeroMedia
               src={concept.heroImage}
               alt={locale === 'fr' ? concept.nameFr : concept.nameEn}
-              fill
-              className="object-cover rounded-2xl shadow-2xl"
             />
           </div>
         </div>

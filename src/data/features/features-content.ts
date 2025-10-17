@@ -42,7 +42,7 @@ export const concepts: ConceptFeature[] = [
     heroTitleEn: 'Boost your operational performance',
     heroDescriptionFr: 'Opérer, c\'est exécuter. Prendre vos inventaires, gérer vos stocks, contrôler vos ressources. Avec Octogone, chaque opération devient plus rapide et plus efficace. Gagnez du temps, économisez de l\'argent, performez mieux.',
     heroDescriptionEn: 'Operating means executing. Taking inventory, managing stock, controlling resources. With Octogone, every operation becomes faster and more efficient. Save time, save money, perform better.',
-    heroImage: '/operate.jpg',
+    heroImage: '/animations/operate.mp4',
     
     contentFr: `Opérer, c'est le cœur de votre activité quotidienne. C'est faire les choses concrètement : compter vos inventaires, gérer vos stocks, contrôler vos ressources, exécuter vos opérations.
 
@@ -74,7 +74,7 @@ Operating efficiently is the foundation of everything. It's what allows you to a
     heroTitleEn: 'Automate and eliminate errors',
     heroDescriptionFr: 'Laissez le système faire le travail. Calculs automatiques, mises à jour instantanées, zéro erreur humaine. Concentrez-vous sur ce qui compte vraiment.',
     heroDescriptionEn: 'Let the system do the work. Automatic calculations, instant updates, zero human error. Focus on what really matters.',
-    heroImage: '/resto.jpg',
+    heroImage: '/animations/automate.mp4',
     
     contentFr: `Automatiser, c'est libérer votre équipe des tâches répétitives et chronophages. C'est laisser le système faire ce qu'il fait le mieux : calculer, mettre à jour, synchroniser, sans erreur et sans effort.
 
@@ -106,7 +106,7 @@ Automating means working smarter. It's having confidence in your numbers. It's t
     heroTitleEn: 'Analyze and make the right decisions',
     heroDescriptionFr: 'Transformez vos données en décisions éclairées. Comprenez vos performances, identifiez les problèmes et optimisez votre rentabilité.',
     heroDescriptionEn: 'Transform your data into informed decisions. Understand your performance, identify issues and optimize your profitability.',
-    heroImage: '/resto.jpg',
+    heroImage: '/animations/analyze.mp4',
     
     contentFr: `Analyser, c'est comprendre ce qui se passe vraiment dans votre restaurant. C'est transformer des chiffres bruts en insights actionnables qui vous permettent de prendre les bonnes décisions.
 
@@ -138,7 +138,7 @@ Analyzing means having control. It's knowing rather than guessing. It's the diff
     heroTitleEn: 'The future of management: artificial intelligence',
     heroDescriptionFr: 'Prédire, c\'est notre vision. Anticiper plutôt que réagir. Octogone évolue constamment pour intégrer l\'IA et vous donner une longueur d\'avance.',
     heroDescriptionEn: 'Predicting is our vision. Anticipating rather than reacting. Octogone constantly evolves to integrate AI and give you an edge.',
-    heroImage: '/predict.jpg',
+    heroImage: '/animations/predict.mp4',
     
     contentFr: `Prédire, c'est la prochaine frontière de la gestion de restaurant. C'est notre vision et notre direction. C'est anticiper plutôt que réagir, voir les problèmes avant qu'ils n'arrivent, saisir les opportunités avant la concurrence.
 
