@@ -222,19 +222,19 @@ const Hero = () => {
 
         <div className="relative z-10 w-full flex flex-col lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center">
             {/* Version mobile compacte - Octogones superposés */}
-            <div className="flex lg:hidden justify-center items-start h-[450px] mb-12 order-first pt-4">
-              <div className="relative w-[450px] h-[450px] flex justify-center items-center">
+            <div className="flex lg:hidden justify-center items-start h-[320px] mb-8 order-first pt-2">
+              <div className="relative w-[320px] h-[320px] flex justify-center items-center">
                 {/* Octogone central avec image dynamique */}
                 <div 
-                  className="absolute w-[300px] h-[300px]"
+                  className="absolute w-[210px] h-[210px]"
                   style={{ zIndex: 1 }}
                 >
                   {/* SVG pour l'animation du contour - Octogone extérieur plus grand */}
                   {ENABLE_ANIMATED_LINE && (
                   <svg 
                     className="absolute pointer-events-none" 
-                    width="420"
-                    height="420"
+                    width="294"
+                    height="294"
                     viewBox="0 0 200 200"
                     style={{ 
                       zIndex: 10,
@@ -309,7 +309,7 @@ const Hero = () => {
                     <Link 
                       key={oct.id}
                       href={`/${locale}${oct.link}`}
-                      className="absolute w-[150px] h-[150px] shadow-md flex flex-col items-center justify-center cursor-pointer gap-1"
+                      className="absolute w-[105px] h-[105px] shadow-md flex flex-col items-center justify-center cursor-pointer gap-1"
                       style={{
                         ...pos,
                         clipPath: "polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)",
@@ -322,11 +322,11 @@ const Hero = () => {
                       onMouseLeave={() => setHoveredOctogone(null)}
                     >
                       <oct.LucideIcon 
-                        className={`w-10 h-10 ${isActive ? oct.color : ''}`}
+                        className={`w-7 h-7 ${isActive ? oct.color : ''}`}
                         style={{ color: isActive ? undefined : 'var(--on-surface)' }}
                       />
                       <span 
-                        className={`text-[9px] font-semibold text-center px-1 ${isActive ? oct.color : ''}`}
+                        className={`text-[7px] font-semibold text-center px-1 ${isActive ? oct.color : ''}`}
                         style={{ color: isActive ? undefined : 'var(--on-surface)' }}
                       >
                         {locale === 'fr' ? oct.titleFr : oct.titleEn}
