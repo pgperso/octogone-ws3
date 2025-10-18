@@ -329,6 +329,7 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                     backgroundColor: 'var(--surface)'
                   }}
                 >
+                  <div className={chatState === 'large' ? 'max-w-4xl mx-auto' : ''}>
                   {/* Zone des documents générés */}
                   {generatedDocuments.length > 0 && (
                     <div className="mb-4">
@@ -422,6 +423,7 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                         ))}
                       </div>
                     </AnimatePresence>
+                  </div>
                   </div>
                 </div>
               </motion.div>
@@ -544,6 +546,7 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                     backgroundColor: 'var(--surface)'
                   }}
                 >
+                  <div>
                   {/* Zone des documents générés */}
                   {generatedDocuments.length > 0 && (
                     <div className="mb-3">
@@ -637,6 +640,7 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                         ))}
                       </div>
                     </AnimatePresence>
+                  </div>
                   </div>
                 </div>
               </motion.div>
