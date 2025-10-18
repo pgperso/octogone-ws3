@@ -335,7 +335,7 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
 
                             {/* Graphique */}
                             {message.chart && (
-                              <div className="w-full mt-2">
+                              <div className="w-full mt-2 max-w-full overflow-hidden">
                                 <ChartWrapper chart={message.chart} isEnglish={isEnglish} />
                               </div>
                             )}
@@ -524,7 +524,7 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
 
                             {/* Graphique */}
                             {message.chart && (
-                              <div className="w-full mt-2">
+                              <div className="w-full mt-2 max-w-full overflow-hidden">
                                 <ChartWrapper chart={message.chart} isEnglish={isEnglish} />
                               </div>
                             )}
