@@ -12,9 +12,10 @@ const FALLBACK_AVATAR = "/images/avatars/marc.avif";
 
 interface ToolsAnimatedChatProps {
   locale: string;
+  onKeyConceptChange?: (concept: string) => void;
 }
 
-export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
+export default function ToolsAnimatedChat({ locale, onKeyConceptChange }: ToolsAnimatedChatProps) {
   const [currentConversationIndex, setCurrentConversationIndex] = useState(0);
   const [conversationKey, setConversationKey] = useState(0);
   const [visibleMessages, setVisibleMessages] = useState<ToolMessage[]>([]);
@@ -84,6 +85,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
     setVisibleMessages([]);
     setTypingText('');
     setCurrentKeyConcept('');
+    onKeyConceptChange?.('');
     
     setTimeout(() => {
       setCurrentConversationIndex((prev) => 
@@ -130,6 +132,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
               // Mettre à jour le concept clé si présent
               if (message.keyConcept) {
                 setCurrentKeyConcept(message.keyConcept);
+                onKeyConceptChange?.(message.keyConcept);
               }
               
               // Expand le chat si le message a le marqueur expandChat (après 3s de pause)
@@ -147,6 +150,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
             // Mettre à jour le concept clé si présent
             if (message.keyConcept) {
               setCurrentKeyConcept(message.keyConcept);
+              onKeyConceptChange?.(message.keyConcept);
             }
             
             // Expand le chat si le message a le marqueur expandChat (après 3s de pause)
@@ -209,32 +213,6 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
           backgroundRepeat: 'no-repeat'
         }}
       />
-
-      {/* Concept clé affiché en haut */}
-      <AnimatePresence>
-        {currentKeyConcept && chatSize !== 'closed' && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.5 }}
-            className="absolute top-8 left-1/2 transform -translate-x-1/2 z-10"
-          >
-            <div 
-              className="px-6 py-3 rounded-full shadow-lg backdrop-blur-sm"
-              style={{
-                backgroundColor: 'rgba(186, 223, 246, 0.9)',
-                border: '2px solid white',
-                color: 'var(--on-primary-container)'
-              }}
-            >
-              <p className="text-sm font-semibold whitespace-nowrap">
-                {currentKeyConcept}
-              </p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* Bouton flottant Cortex */}
       <AnimatePresence>

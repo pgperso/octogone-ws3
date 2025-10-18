@@ -15,6 +15,7 @@ interface CortexIntroProps {
 
 export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
   const isEnglish = locale === "en";
+  const [currentKeyConcept, setCurrentKeyConcept] = React.useState<string>('');
 
   return (
     <div style={{ backgroundColor: 'var(--background)' }}>
@@ -58,68 +59,30 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
               : "Votre assistant IA qui transforme vos données en décisions."}
           </p>
 
-          {/* Questions que Cortex peut répondre */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto mb-16">
-            {[
-              {
-                fr: "Cortex, quelles sont mes ventes cette semaine ?",
-                en: "Cortex, what are my sales this week?"
-              },
-              {
-                fr: "Cortex, quel plat se vend le mieux...",
-                en: "Cortex, which dish sells best..."
-              },
-              {
-                fr: "Trouve mes recettes avec du boeuf !",
-                en: "Find my recipes with beef!"
-              },
-              {
-                fr: "Combien j'ai de pommes ?",
-                en: "How many apples do I have?"
-              },
-              {
-                fr: "Dis-moi quels produits augmentent de prix...",
-                en: "Tell me which products are increasing in price..."
-              },
-              {
-                fr: "Cortex, quels produits sont sous le minimum !",
-                en: "Cortex, which items are below minimum!"
-              }
-            ].map((feature, index) => (
+          {/* Concept clé dynamique */}
+          <div className="flex justify-center items-center max-w-4xl mx-auto mb-16 min-h-[80px]">
+            {currentKeyConcept && (
               <motion.div 
-                key={index}
-                className="relative p-4 rounded-lg h-20 flex items-center justify-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
+                key={currentKeyConcept}
+                className="relative p-6 rounded-2xl"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.5 }}
                 style={{ 
-                  background: 'transparent'
+                  backgroundColor: 'var(--secondary-container)',
+                  border: '2px solid var(--outline-variant)',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
                 }}
               >
-                {/* Bordure en dégradé Cortex avec halo */}
-                <div 
-                  className="absolute inset-0 rounded-lg p-[2px]"
-                  style={{
-                    background: 'linear-gradient(135deg, #BADFF6 0%, #E2CDED 100%)',
-                    boxShadow: '0 0 10px rgba(186, 223, 246, 0.2), 0 0 20px rgba(226, 205, 237, 0.15)'
-                  }}
+                <p 
+                  className="text-lg font-semibold text-center"
+                  style={{ color: 'var(--on-secondary-container)' }}
                 >
-                  <div 
-                    className="w-full h-full rounded-lg"
-                    style={{ backgroundColor: 'var(--background)' }}
-                  />
-                </div>
-                
-                <span 
-                  className="relative text-sm font-medium text-center"
-                  style={{ color: 'var(--on-surface)' }}
-                >
-                  {isEnglish ? feature.en : feature.fr}
-                </span>
+                  {currentKeyConcept}
+                </p>
               </motion.div>
-            ))}
+            )}
           </div>
         </motion.div>
 
@@ -138,7 +101,7 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
           <div className="mt-32 mb-32">
             <LaptopFrame>
               <div style={{ height: '600px', position: 'relative' }}>
-                <ToolsAnimatedChat locale={locale} />
+                <ToolsAnimatedChat locale={locale} onKeyConceptChange={setCurrentKeyConcept} />
               </div>
             </LaptopFrame>
           </div>
