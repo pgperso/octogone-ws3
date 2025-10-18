@@ -392,7 +392,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
                   }}
                   disabled={!typingText}
                 >
-                  <Send size={16} className="-rotate-45" />
+                  <Send size={16} className="rotate-45" />
                 </button>
               </div>
             </div>

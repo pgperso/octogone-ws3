@@ -490,7 +490,7 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                       }}
                       disabled={!typingText}
                     >
-                      <Send size={16} className="-rotate-45" />
+                      <Send size={16} className="rotate-45" />
                     </button>
                   </div>
                 </div>
@@ -743,7 +743,7 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                       }}
                       disabled={!typingText}
                     >
-                      <Send size={14} className="-rotate-45" />
+                      <Send size={14} className="rotate-45" />
                     </button>
                   </div>
                 </div>
