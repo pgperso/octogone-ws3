@@ -42,10 +42,6 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
     };
   }, [allKeyConcepts]);
 
-  const handleKeyConceptChange = React.useCallback((_concept: string) => {
-    // Plus besoin de gérer les concepts ici, ils sont affichés indépendamment
-  }, []);
-
   return (
     <div style={{ backgroundColor: 'var(--background)' }}>
       <ResponsiveSection spacing="xxl" bgColor="">
@@ -111,7 +107,7 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
           <div className="mt-32 mb-32">
             <LaptopFrame>
               <div style={{ height: '600px', position: 'relative' }}>
-                <ToolsAnimatedChat locale={locale} onKeyConceptChange={handleKeyConceptChange} />
+                <ToolsAnimatedChat locale={locale} />
               </div>
             </LaptopFrame>
           </div>
