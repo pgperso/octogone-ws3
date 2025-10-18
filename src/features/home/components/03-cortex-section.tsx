@@ -18,10 +18,13 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
   const isEnglish = locale === "en";
   const [visibleConceptsCount, setVisibleConceptsCount] = React.useState(0);
 
-  // Tous les concepts à afficher
-  const allKeyConcepts = isEnglish 
-    ? ['Chat naturally', 'Visualize your results', 'Compare your performance', 'Generate documents', 'Request tutorials', 'Take actions']
-    : ['Discutez naturellement', 'Visualisez vos résultats', 'Comparez vos performances', 'Générez des documents', 'Commandez des tutoriels', 'Posez des actions'];
+  // Tous les concepts à afficher - Mémorisé pour éviter les re-renders
+  const allKeyConcepts = React.useMemo(() => 
+    isEnglish 
+      ? ['Chat naturally', 'Visualize your results', 'Compare your performance', 'Generate documents', 'Request tutorials', 'Take actions']
+      : ['Discutez naturellement', 'Visualisez vos résultats', 'Comparez vos performances', 'Générez des documents', 'Commandez des tutoriels', 'Posez des actions'],
+    [isEnglish]
+  );
 
   // Animation séquentielle des concepts au chargement
   React.useEffect(() => {
@@ -39,7 +42,7 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
     };
   }, [allKeyConcepts]);
 
-  const handleKeyConceptChange = React.useCallback((concept: string) => {
+  const handleKeyConceptChange = React.useCallback((_concept: string) => {
     // Plus besoin de gérer les concepts ici, ils sont affichés indépendamment
   }, []);
 
