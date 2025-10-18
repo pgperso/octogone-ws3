@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Send } from "lucide-react";
+import { ArrowRight, Send, Maximize2, Minimize2 } from "lucide-react";
 import { toolsConversations, TOOLS_TIMING, type ToolMessage } from "../data/tools-conversations";
 import InlineChart from "./inline-chart";
 
@@ -20,7 +20,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
   const [isPlaying] = useState(true);
   const [, setHasError] = useState(false);
   const [isClient, setIsClient] = useState(false);
-  const [isChatOpen, setIsChatOpen] = useState(false);
+  const [chatSize, setChatSize] = useState<'closed' | 'small' | 'large'>('closed');
   const [isAnimatingOpen, setIsAnimatingOpen] = useState(false);
   const [typingText, setTypingText] = useState('');
   const chatContainerRef = useRef<HTMLDivElement>(null);
@@ -44,29 +44,29 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
 
   // Auto-scroll vers le bas quand un nouveau message apparaît
   useEffect(() => {
-    if (chatContainerRef.current && isChatOpen) {
+    if (chatContainerRef.current && chatSize !== 'closed') {
       chatContainerRef.current.scrollTo({
         top: chatContainerRef.current.scrollHeight,
         behavior: 'smooth'
       });
     }
-  }, [visibleMessages, isChatOpen]);
+  }, [visibleMessages, chatSize]);
 
-  // Ouvrir le chat automatiquement après un délai
+  // Ouvrir le chat automatiquement après un délai (en mode small)
   useEffect(() => {
-    if (!isClient) return;
+    if (!isClient || chatSize !== 'closed') return;
     
     const openTimer = setTimeout(() => {
       setIsAnimatingOpen(true);
-      setTimeout(() => setIsChatOpen(true), 100);
+      setTimeout(() => setChatSize('small'), 100);
     }, 2000); // Ouvre après 2 secondes
 
     return () => clearTimeout(openTimer);
-  }, [isClient, currentConversationIndex]);
+  }, [isClient, currentConversationIndex, chatSize]);
 
   // Fermer le chat et passer à la conversation suivante
   const handleCloseChat = useCallback(() => {
-    setIsChatOpen(false);
+    setChatSize('closed');
     setIsAnimatingOpen(false);
     setVisibleMessages([]);
     
@@ -110,6 +110,11 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
             const stopTypingTimeout = setTimeout(() => {
               setTypingText('');
               setVisibleMessages(prev => [...prev, message]);
+              
+              // Expand le chat si le message a le marqueur expandChat
+              if (message.expandChat) {
+                setTimeout(() => setChatSize('large'), 500);
+              }
             }, typingDuration + 200);
             timeouts.push(stopTypingTimeout);
           }, typingDelay);
@@ -117,6 +122,11 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
         } else {
           const timeout = setTimeout(() => {
             setVisibleMessages(prev => [...prev, message]);
+            
+            // Expand le chat si le message a le marqueur expandChat
+            if (message.expandChat) {
+              setTimeout(() => setChatSize('large'), 500);
+            }
           }, Math.max(0, message.delay));
           timeouts.push(timeout);
         }
@@ -176,7 +186,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
 
       {/* Bouton flottant Cortex */}
       <AnimatePresence>
-        {!isChatOpen && !isAnimatingOpen && (
+        {chatSize === 'closed' && !isAnimatingOpen && (
           <motion.button
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -184,7 +194,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
             transition={{ duration: 0.3 }}
             onClick={() => {
               setIsAnimatingOpen(true);
-              setTimeout(() => setIsChatOpen(true), 100);
+              setTimeout(() => setChatSize('small'), 100);
             }}
             className="absolute bottom-6 right-6 w-16 h-16 rounded-2xl shadow-2xl flex items-center justify-center"
             style={{
@@ -207,16 +217,28 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
 
       {/* Chat popup */}
       <AnimatePresence>
-        {isChatOpen && (
+        {chatSize !== 'closed' && (
           <motion.div
             initial={{ scale: 0.8, opacity: 0, y: 50 }}
-            animate={{ scale: 1, opacity: 1, y: 0 }}
+            animate={{ 
+              scale: 1, 
+              opacity: 1, 
+              y: 0,
+              width: chatSize === 'small' ? '420px' : '90%',
+              height: chatSize === 'small' ? '500px' : '85vh'
+            }}
             exit={{ scale: 0.8, opacity: 0, y: 50 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-0 m-4 rounded-2xl shadow-2xl overflow-hidden"
+            className="absolute rounded-2xl shadow-2xl overflow-hidden"
             style={{
               backgroundColor: 'var(--surface)',
-              zIndex: 20
+              zIndex: 20,
+              bottom: chatSize === 'small' ? '24px' : '16px',
+              right: chatSize === 'small' ? '24px' : '16px',
+              left: chatSize === 'small' ? 'auto' : '16px',
+              top: chatSize === 'small' ? 'auto' : '16px',
+              maxWidth: chatSize === 'small' ? '420px' : '90%',
+              maxHeight: chatSize === 'small' ? '500px' : '85vh'
             }}
           >
             {/* Header du chat */}
@@ -253,13 +275,22 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
                   </p>
                 </div>
               </div>
-              <button
-                onClick={handleCloseChat}
-                className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/5 transition-colors"
-                style={{ color: 'var(--on-secondary-container)' }}
-              >
-                ✕
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setChatSize(chatSize === 'small' ? 'large' : 'small')}
+                  className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/5 transition-colors"
+                  style={{ color: 'var(--on-secondary-container)' }}
+                >
+                  {chatSize === 'small' ? <Maximize2 size={18} /> : <Minimize2 size={18} />}
+                </button>
+                <button
+                  onClick={handleCloseChat}
+                  className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/5 transition-colors"
+                  style={{ color: 'var(--on-secondary-container)' }}
+                >
+                  ✕
+                </button>
+              </div>
             </div>
 
             {/* Contenu du chat avec scroll */}
