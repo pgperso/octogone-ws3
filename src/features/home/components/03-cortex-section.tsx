@@ -77,7 +77,7 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
 
           {/* Concepts clés dynamiques */}
           <div className="flex flex-wrap justify-center items-center gap-4 max-w-4xl mx-auto mb-16 min-h-[100px]">
-            {keyConcepts.map((concept, index) => (
+            {keyConcepts.map((concept) => (
               <KeyConceptBadge key={concept} concept={concept} />
             ))}
           </div>
