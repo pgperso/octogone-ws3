@@ -87,7 +87,7 @@ export const DesktopNav: React.FC<DesktopNavProps> = ({
                 {hasChildren ? (
                   <>
                     <NavigationMenuTrigger
-                      className={`${navigationLinkVariants({ active: isActive })} nav-item ${isActive ? "active-nav-item" : ""} rounded-md px-3 py-2`}
+                      className={`${navigationTriggerVariants({ active: isActive })} nav-item ${isActive ? "active-nav-item" : ""} rounded-md px-3 py-2`}
                     >
                       {isEnglish && route.labelEn ? route.labelEn : route.label}
                       <ChevronDown 
