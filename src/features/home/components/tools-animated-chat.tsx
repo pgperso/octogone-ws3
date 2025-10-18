@@ -111,9 +111,9 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
               setTypingText('');
               setVisibleMessages(prev => [...prev, message]);
               
-              // Expand le chat si le message a le marqueur expandChat
+              // Expand le chat si le message a le marqueur expandChat (après 3s de pause)
               if (message.expandChat) {
-                setTimeout(() => setChatSize('large'), 500);
+                setTimeout(() => setChatSize('large'), 3000);
               }
             }, typingDuration + 200);
             timeouts.push(stopTypingTimeout);
@@ -123,9 +123,9 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
           const timeout = setTimeout(() => {
             setVisibleMessages(prev => [...prev, message]);
             
-            // Expand le chat si le message a le marqueur expandChat
+            // Expand le chat si le message a le marqueur expandChat (après 3s de pause)
             if (message.expandChat) {
-              setTimeout(() => setChatSize('large'), 500);
+              setTimeout(() => setChatSize('large'), 3000);
             }
           }, Math.max(0, message.delay));
           timeouts.push(timeout);
