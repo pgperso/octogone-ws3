@@ -106,6 +106,14 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
       setVisibleMessages([]);
       setHasError(false);
 
+      // Ouvrir le chat au début de la première conversation
+      if (currentConversationIndex === 0 && chatState === 'closed') {
+        const openTimeout = setTimeout(() => {
+          setChatState('small');
+        }, 500);
+        return () => clearTimeout(openTimeout);
+      }
+
       // Afficher les messages avec leurs délais
       const timeouts: NodeJS.Timeout[] = [];
       
@@ -123,11 +131,26 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
       if (lastMessage && typeof lastMessage.delay === 'number') {
         const totalTime = lastMessage.delay + (TIMING?.messageDisplay || 4000) + (TIMING?.conversationPause || 3000);
 
-        // Passer à la conversation suivante
+        // Gérer la transition après la conversation
         const nextTimeout = setTimeout(() => {
-          setCurrentConversationIndex((prev) => 
-            (prev + 1) % Math.max(1, currentConversations.length)
-          );
+          // Première conversation terminée → passer en mode grand
+          if (currentConversationIndex === 0) {
+            setChatState('large');
+            setTimeout(() => {
+              setCurrentConversationIndex(1);
+            }, 800);
+          }
+          // Dernière conversation terminée → fermer et recommencer
+          else if (currentConversationIndex === currentConversations.length - 1) {
+            setChatState('closed');
+            setTimeout(() => {
+              setCurrentConversationIndex(0);
+            }, 1000);
+          }
+          // Conversations intermédiaires → rester en grand et passer à la suivante
+          else {
+            setCurrentConversationIndex((prev) => prev + 1);
+          }
         }, totalTime);
         timeouts.push(nextTimeout);
       }
@@ -137,7 +160,7 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
       console.warn('CortexAnimatedChat error:', _error);
       setHasError(true);
     }
-  }, [currentConversationIndex, isPlaying, currentConversations, currentConversation, isClient, cleanupTimeouts]);
+  }, [currentConversationIndex, isPlaying, currentConversations, currentConversation, isClient, cleanupTimeouts, chatState]);
 
   // Vérification de sécurité APRÈS tous les hooks
   if (!currentConversation || !currentConversations.length) {
