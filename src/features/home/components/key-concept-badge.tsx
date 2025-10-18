@@ -16,10 +16,9 @@ export default function KeyConceptBadge({ concept }: KeyConceptBadgeProps) {
       exit={{ opacity: 0, scale: 0.9, y: -20 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       style={{ 
-        background: 'linear-gradient(135deg, rgba(186, 223, 246, 0.3) 0%, rgba(226, 205, 237, 0.3) 100%)',
-        border: '2px solid rgba(186, 223, 246, 0.5)',
-        boxShadow: '0 8px 24px rgba(186, 223, 246, 0.2), 0 0 40px rgba(226, 205, 237, 0.15)',
-        backdropFilter: 'blur(10px)'
+        background: 'linear-gradient(135deg, #BADFF6 0%, #E2CDED 100%)',
+        border: '2px solid white',
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
       }}
     >
       <p 

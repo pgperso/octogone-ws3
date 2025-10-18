@@ -47,7 +47,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           type: 'cortex',
           text: 'Bonjour Alexandre ! 👋',
           delay: 2000,
-          keyConcept: 'Converser naturellement avec Cortex'
+          keyConcept: 'Conversez naturellement avec Cortex'
         },
         { 
           type: 'user', 
@@ -63,7 +63,8 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           type: 'user', 
           text: 'Oui ! Je veux une vue d\'ensemble de mon resto.', 
           delay: 12000,
-          expandChat: true
+          expandChat: true,
+          keyConcept: 'Posez-lui des questions'
         },
         {
           type: 'cortex',
@@ -165,7 +166,8 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           type: 'user', 
           text: 'Yes! I want an overview of my restaurant.', 
           delay: 12000,
-          expandChat: true
+          expandChat: true,
+          keyConcept: 'Ask it questions'
         },
         {
           type: 'cortex',
