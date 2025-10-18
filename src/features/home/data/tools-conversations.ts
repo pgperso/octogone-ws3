@@ -80,7 +80,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           type: 'cortex',
           text: 'Voici tes ventes des 7 derniers jours 📊\n\n💰 Total : 8 450 $\n📈 Moyenne/jour : 1 207 $\n🔥 Meilleur jour : Samedi (1 650 $)\n📉 Plus faible : Mardi (850 $)',
           delay: 25500,
-          keyConcept: 'Analysez vos résultats',
+          keyConcept: 'Visualisez vos données',
           chart: {
             type: 'bar',
             title: 'Ventes quotidiennes - 7 derniers jours ($)',
@@ -104,6 +104,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           type: 'cortex',
           text: 'Ton food cost est à 28,5% cette semaine 👨‍🍳\n\n🎯 Objectif : 30% → Tu es en avance !\n📊 Évolution : -1,2% vs semaine dernière\n💡 Tes 3 plats les plus rentables : Carpaccio (78%), Salade César (72%), Burger (69%)',
           delay: 35500,
+          keyConcept: 'Exécuter des commandes',
           chart: {
             type: 'pie',
             title: 'Répartition des coûts (%)',
@@ -185,7 +186,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           type: 'cortex',
           text: 'Here are your sales for the last 7 days 📊\n\n💰 Total: $8,450\n📈 Daily avg: $1,207\n🔥 Best day: Saturday ($1,650)\n📉 Lowest: Tuesday ($850)',
           delay: 25500,
-          keyConcept: 'Analyze your results',
+          keyConcept: 'Visualize your data',
           chart: {
             type: 'bar',
             title: 'Daily Sales - Last 7 Days ($)',
@@ -209,6 +210,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           type: 'cortex',
           text: 'Your food cost is 28.5% this week 👨‍🍳\n\n🎯 Target: 30% → You\'re ahead!\n📊 Evolution: -1.2% vs last week\n💡 Your 3 most profitable dishes: Carpaccio (78%), Caesar Salad (72%), Burger (69%)',
           delay: 35500,
+          keyConcept: 'Execute commands',
           chart: {
             type: 'pie',
             title: 'Cost Breakdown (%)',
