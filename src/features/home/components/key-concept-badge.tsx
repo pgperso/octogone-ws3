@@ -1,12 +1,13 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 
 interface KeyConceptBadgeProps {
   concept: string;
 }
 
-export default function KeyConceptBadge({ concept }: KeyConceptBadgeProps) {
+const KeyConceptBadge = React.memo(({ concept }: KeyConceptBadgeProps) => {
   return (
     <motion.div 
       key={concept}
@@ -36,4 +37,8 @@ export default function KeyConceptBadge({ concept }: KeyConceptBadgeProps) {
       </p>
     </motion.div>
   );
-}
+});
+
+KeyConceptBadge.displayName = 'KeyConceptBadge';
+
+export default KeyConceptBadge;

@@ -39,8 +39,8 @@ export function useScaleIn(options: ScrollScaleOptions = {}) {
       setScale(newScale);
     };
     
-    // Ajouter l'écouteur d'événement
-    window.addEventListener('scroll', handleScroll);
+    // Ajouter l'écouteur d'événement avec passive pour améliorer les performances
+    window.addEventListener('scroll', handleScroll, { passive: true });
     
     // Appeler une fois pour initialiser
     handleScroll();

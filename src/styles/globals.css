@@ -167,3 +167,44 @@ li:not([class*="text-"]) {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;  /* Chrome, Safari et Opera */
 }
+
+/* Optimisations GPU pour les animations */
+.motion-element {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Nettoyage GPU après animation */
+.animation-complete {
+  will-change: auto;
+}
+
+/* Optimisations CSS critiques */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Réduire le CSS Cookiebot inutilisé et optimiser le DOM */
+#CybotCookiebotDialog {
+  contain: layout style paint;
+  content-visibility: auto;
+}
+
+/* Simplifier le DOM Cookiebot */
+#CybotCookiebotDialogHeader,
+#CybotCookiebotDialogBody {
+  contain: layout style;
+}
+
+/* Optimiser les SVG Cookiebot */
+#CybotCookiebotDialog svg {
+  contain: strict;
+  content-visibility: auto;
+}
+
+/* Performance: Réduire les repaints */
+img, video {
+  content-visibility: auto;
+}

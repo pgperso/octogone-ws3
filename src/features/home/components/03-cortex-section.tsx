@@ -2,13 +2,25 @@
 
 import React from "react";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { ResponsiveSection } from "@/components/ui/responsive-section";
 import OctogoneButton from "@/components/ui/octogone-button";
 import { Sparkles, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import ToolsAnimatedChat from "./tools-animated-chat";
 import { LaptopFrame } from "@/components/ui/laptop-frame";
 import KeyConceptBadge from "./key-concept-badge";
+
+// Lazy load du chat pour améliorer le LCP
+const ToolsAnimatedChat = dynamic(() => import("./tools-animated-chat"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex items-center justify-center h-full">
+      <div className="animate-pulse text-sm" style={{ color: 'var(--on-surface-variant)' }}>
+        Chargement...
+      </div>
+    </div>
+  ),
+});
 
 interface CortexIntroProps {
   locale?: string;
@@ -48,6 +60,7 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
               alt="Cortex"
               width={48}
               height={48}
+              priority
               className="w-12 h-12"
             />
             <h2 

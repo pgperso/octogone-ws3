@@ -38,7 +38,7 @@ export const OptimizedImage = ({
   height,
   className = "",
   priority = false,
-  quality = 75,
+  quality = 85,
   lazy = true,
   sizes,
   fill = false,

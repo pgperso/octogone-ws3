@@ -31,6 +31,7 @@ export interface HubSpotIdentity {
 
 /**
  * Initialise le tracking HubSpot
+ * Optimisé : chargement différé pour ne pas bloquer le LCP
  */
 export function initHubSpot(portalId: string): void {
   if (typeof window === 'undefined') return;
@@ -38,14 +39,17 @@ export function initHubSpot(portalId: string): void {
   // Initialiser la queue HubSpot
   window._hsq = window._hsq || [];
   
-  // Charger le script HubSpot
-  const script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.id = 'hs-script-loader';
-  script.async = true;
-  script.defer = true;
-  script.src = `//js.hs-scripts.com/${portalId}.js`;
-  document.head.appendChild(script);
+  // Délai de 3 secondes pour ne pas bloquer le LCP
+  setTimeout(() => {
+    // Charger le script HubSpot
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.id = 'hs-script-loader';
+    script.async = true;
+    script.defer = true;
+    script.src = `//js.hs-scripts.com/${portalId}.js`;
+    document.head.appendChild(script);
+  }, 3000);
 }
 
 /**

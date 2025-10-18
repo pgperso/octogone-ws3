@@ -14,28 +14,32 @@ declare global {
 
 /**
  * Initialise Google Analytics 4
+ * Optimisé : chargement différé pour ne pas bloquer le LCP
  */
 export const initGA4 = (measurementId: string) => {
-  // Charger le script GA4
-  const script = document.createElement('script');
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-  script.async = true;
-  document.head.appendChild(script);
+  // Délai de 2 secondes pour ne pas bloquer le LCP
+  setTimeout(() => {
+    // Charger le script GA4
+    const script = document.createElement('script');
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+    script.async = true;
+    document.head.appendChild(script);
 
-  // Initialiser dataLayer et gtag
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = function gtag(...args: unknown[]) {
-    window.dataLayer.push(args);
-  };
+    // Initialiser dataLayer et gtag
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function gtag(...args: unknown[]) {
+      window.dataLayer.push(args);
+    };
 
-  // Configuration GA4
-  window.gtag('js', new Date());
-  window.gtag('config', measurementId, {
-    page_title: document.title,
-    page_location: window.location.href,
-  });
+    // Configuration GA4
+    window.gtag('js', new Date());
+    window.gtag('config', measurementId, {
+      page_title: document.title,
+      page_location: window.location.href,
+    });
 
-  console.log('[GA4] Initialized with ID:', measurementId);
+    console.log('[GA4] Initialized with ID:', measurementId);
+  }, 2000);
 };
 
 /**

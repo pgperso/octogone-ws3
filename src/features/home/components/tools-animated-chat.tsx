@@ -373,17 +373,19 @@ export default function ToolsAnimatedChat({ locale, onKeyConceptChange }: ToolsA
               )}
 
               <div className={`flex flex-col ${message.type === 'user' ? 'items-end' : 'items-start'} gap-2 ${message.chart ? 'max-w-[95%]' : 'max-w-[80%]'}`}>
-                <div 
-                  className="rounded-2xl px-4 py-3"
-                  style={{ 
-                    backgroundColor: message.type === 'user' ? 'var(--purple_cortex)' : 'var(--secondary-container)',
-                    color: message.type === 'user' ? 'var(--on-purple_cortex)' : 'var(--on-secondary-container)'
-                  }}
-                >
-                  <p className="text-sm whitespace-pre-line">
-                    {message.text}
-                  </p>
-                </div>
+                {message.text && (
+                  <div 
+                    className="rounded-2xl px-4 py-3"
+                    style={{ 
+                      backgroundColor: message.type === 'user' ? 'var(--purple_cortex)' : 'var(--secondary-container)',
+                      color: message.type === 'user' ? 'var(--on-purple_cortex)' : 'var(--on-secondary-container)'
+                    }}
+                  >
+                    <p className="text-sm whitespace-pre-line">
+                      {message.text}
+                    </p>
+                  </div>
+                )}
                 
                 {message.cta && (
                   <Link 

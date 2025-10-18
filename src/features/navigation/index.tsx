@@ -90,8 +90,8 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
       lastScrollY = currentScrollY;
     };
 
-    // Ajouter l'écouteur d'événement
-    window.addEventListener("scroll", handleScroll);
+    // Ajouter l'écouteur d'événement avec passive pour améliorer les performances
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     // Nettoyer
     return () => {
