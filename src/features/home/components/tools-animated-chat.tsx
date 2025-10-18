@@ -9,6 +9,7 @@ import { toolsConversations, TOOLS_TIMING, type ToolMessage } from "../data/tool
 import InlineChart from "./inline-chart";
 import InlineDocument from "./inline-document";
 import InlineVideo from "./inline-video";
+import InlineProgress from "./inline-progress";
 
 const FALLBACK_AVATAR = "/images/avatars/marc.avif";
 
@@ -424,13 +425,9 @@ export default function ToolsAnimatedChat({ locale, onKeyConceptChange }: ToolsA
                   </div>
                 )}
 
-                {message.loading && (
-                  <div className="flex items-center gap-2 mt-2">
-                    <div className="flex gap-1">
-                      <div className="w-2 h-2 rounded-full bg-current animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                      <div className="w-2 h-2 rounded-full bg-current animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                      <div className="w-2 h-2 rounded-full bg-current animate-bounce" style={{ animationDelay: '300ms' }}></div>
-                    </div>
+                {message.progress && (
+                  <div className="w-full max-w-full">
+                    <InlineProgress title={message.progress.title} duration={message.progress.duration} />
                   </div>
                 )}
                 

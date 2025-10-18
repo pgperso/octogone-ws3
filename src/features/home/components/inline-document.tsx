@@ -1,17 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { FileText, Download } from "lucide-react";
-
-export type InlineDocumentData = {
-  title: string;
-  type: 'pdf' | 'excel' | 'report';
-  size?: string;
-  downloadUrl?: string;
-};
+import type { InlineDocument } from "../data/tools-conversations";
 
 interface InlineDocumentProps {
-  document: InlineDocumentData;
+  document: InlineDocument;
 }
 
 export default function InlineDocument({ document }: InlineDocumentProps) {
@@ -41,7 +36,7 @@ export default function InlineDocument({ document }: InlineDocumentProps) {
     }
   };
 
-  return (
+  const content = (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -51,11 +46,6 @@ export default function InlineDocument({ document }: InlineDocumentProps) {
         background: 'linear-gradient(135deg, #BADFF6 0%, #E2CDED 100%)',
         border: '2px solid white',
         boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
-      }}
-      onClick={() => {
-        if (document.downloadUrl) {
-          window.open(document.downloadUrl, '_blank');
-        }
       }}
     >
       <div className="flex items-center gap-3">
@@ -98,4 +88,10 @@ export default function InlineDocument({ document }: InlineDocumentProps) {
       </div>
     </motion.div>
   );
+
+  return document.downloadUrl ? (
+    <Link href={document.downloadUrl}>
+      {content}
+    </Link>
+  ) : content;
 }

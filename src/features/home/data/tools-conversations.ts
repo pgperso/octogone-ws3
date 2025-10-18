@@ -27,6 +27,12 @@ export type InlineVideo = {
   videoUrl?: string;
 };
 
+// Types pour la barre de progression
+export type InlineProgress = {
+  title: string;
+  duration?: number; // durée en ms
+};
+
 // Types pour les messages
 export type ToolMessage = {
   type: 'user' | 'cortex';
@@ -36,9 +42,10 @@ export type ToolMessage = {
   chart?: InlineChart; // Graphique inline (optionnel)
   document?: InlineDocument; // Document inline (optionnel)
   video?: InlineVideo; // Vidéo inline (optionnel)
+  progress?: InlineProgress; // Barre de progression (optionnel)
   expandChat?: boolean; // Déclenche l'expansion du chat (optionnel)
   keyConcept?: string; // Concept clé à afficher en haut (optionnel)
-  loading?: boolean; // Affiche une animation de chargement (optionnel)
+  loading?: boolean; // Affiche une animation de chargement (optionnel) - DEPRECATED, utiliser progress
 };
 
 export type ToolConversation = {
@@ -147,7 +154,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           delay: 43000,
           keyConcept: 'Commandez des tutoriels',
           video: {
-            title: 'Tutoriel : Prise d\'inventaire pour nouveaux employés',
+            title: 'Tutoriel : Prise d\'inventaire',
             duration: '4:12',
             videoUrl: '/fr/fonctionnalites/inventaire'
           }
@@ -164,7 +171,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         {
           type: 'cortex',
-          text: 'Pas de problème ! J\'ai trouvé le Kiwano dans le catalogue Octogone 🍈\n\n📦 Kiwano (Melon à cornes)\n🌍 Origine : Afrique\n🎨 Peau orange épineuse, pulpe verte gélatineuse\n👅 Saveur : Mélange de concombre et kiwi\n💰 Prix : 4,50 $/unité\n\nC\'est bien ce produit que tu veux ajouter à ton catalogue ?',
+          text: 'Pas de problème ! J\'ai trouvé le Kiwano dans le catalogue Octogone 🍈\n\n📦 Kiwano (Melon à cornes)\n🌍 Origine : Afrique\n🎨 Peau orange épineuse, pulpe verte gélatineuse\n👅 Saveur : Mélange de concombre et kiwi\n\nC\'est bien ce produit que tu veux ajouter à ton catalogue ?',
           delay: 55000
         },
         { 
@@ -174,9 +181,12 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         {
           type: 'cortex',
-          text: 'Installation de la fiche produit en cours...',
+          text: '',
           delay: 60000,
-          loading: true
+          progress: {
+            title: 'Installation de la fiche produit en cours...',
+            duration: 2000
+          }
         },
         {
           type: 'cortex',
@@ -298,7 +308,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           delay: 43000,
           keyConcept: 'Request tutorials',
           video: {
-            title: 'Tutorial: Inventory Management for New Employees',
+            title: 'Tutorial: Inventory Management',
             duration: '4:12',
             videoUrl: '/en/features/inventory'
           }
@@ -315,7 +325,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         {
           type: 'cortex',
-          text: 'No problem! I found Kiwano in the Octogone catalog 🍈\n\n📦 Kiwano (Horned Melon)\n🌍 Origin: Africa\n🎨 Orange spiny skin, green gelatinous pulp\n👅 Flavor: Mix of cucumber and kiwi\n💰 Price: $4.50/unit\n\nIs this the product you want to add to your catalog?',
+          text: 'No problem! I found Kiwano in the Octogone catalog 🍈\n\n📦 Kiwano (Horned Melon)\n🌍 Origin: Africa\n🎨 Orange spiny skin, green gelatinous pulp\n👅 Flavor: Mix of cucumber and kiwi\n\nIs this the product you want to add to your catalog?',
           delay: 55000
         },
         { 
@@ -325,9 +335,12 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         {
           type: 'cortex',
-          text: 'Installing product sheet...',
+          text: '',
           delay: 60000,
-          loading: true
+          progress: {
+            title: 'Installing product sheet...',
+            duration: 2000
+          }
         },
         {
           type: 'cortex',

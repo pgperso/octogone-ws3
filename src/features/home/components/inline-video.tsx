@@ -1,21 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Play, Clock } from "lucide-react";
-
-export type InlineVideoData = {
-  title: string;
-  thumbnail?: string;
-  duration?: string;
-  videoUrl?: string;
-};
+import type { InlineVideo } from "../data/tools-conversations";
 
 interface InlineVideoProps {
-  video: InlineVideoData;
+  video: InlineVideo;
 }
 
 export default function InlineVideo({ video }: InlineVideoProps) {
-  return (
+  const content = (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -24,11 +19,6 @@ export default function InlineVideo({ video }: InlineVideoProps) {
       style={{
         border: '2px solid white',
         boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
-      }}
-      onClick={() => {
-        if (video.videoUrl) {
-          window.open(video.videoUrl, '_blank');
-        }
       }}
     >
       {/* Thumbnail avec overlay play */}
@@ -91,4 +81,10 @@ export default function InlineVideo({ video }: InlineVideoProps) {
       </div>
     </motion.div>
   );
+
+  return video.videoUrl ? (
+    <Link href={video.videoUrl}>
+      {content}
+    </Link>
+  ) : content;
 }
