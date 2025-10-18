@@ -37,14 +37,14 @@ export const TOOLS_TIMING = {
 export const toolsConversations: Record<string, ToolConversation[]> = {
   fr: [
     {
-      id: 0,
+      id: 1,
       userName: 'Sophie',
       userAvatar: '/images/avatars/lisa.avif',
       messages: [
         { 
           type: 'user', 
           text: 'Salut Cortex ! Je m\'appelle Sophie, je découvre Octogone. Comment ça fonctionne ?', 
-          delay: 0 
+          delay: 2500 
         },
         {
           type: 'cortex',
@@ -110,14 +110,14 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       ]
     },
     {
-      id: 1,
+      id: 0,
       userName: 'Alexandre',
       userAvatar: '/images/avatars/helene.avif',
       messages: [
         { 
           type: 'user', 
           text: 'Cortex, je veux une vue d\'ensemble de mon restaurant. C\'est possible ?', 
-          delay: 0 
+          delay: 2500 
         },
         {
           type: 'cortex',
@@ -200,7 +200,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         { 
           type: 'user', 
           text: 'Cortex, j\'ai remarqué un écart de 12% sur les spiritueux ce mois-ci. C\'est anormal non ?', 
-          delay: 0 
+          delay: 2500 
         },
         {
           type: 'cortex',
@@ -241,7 +241,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         { 
           type: 'user', 
           text: 'Cortex, mon food cost a grimpé à 31% cette semaine. Qu\'est-ce qui a changé ?', 
-          delay: 0 
+          delay: 2500 
         },
         {
           type: 'cortex',
@@ -282,7 +282,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         { 
           type: 'user', 
           text: 'Cortex, j\'ai reçu 3 alertes cette semaine. C\'est normal ou j\'ai un problème ?', 
-          delay: 0 
+          delay: 2500 
         },
         {
           type: 'cortex',
@@ -323,7 +323,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         { 
           type: 'user', 
           text: 'Cortex, combien de pourboires on a reçus cette semaine et comment je les répartis ?', 
-          delay: 0 
+          delay: 2500 
         },
         {
           type: 'cortex',
@@ -359,14 +359,14 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
   ],
   en: [
     {
-      id: 0,
+      id: 1,
       userName: 'Sophie',
       userAvatar: '/images/avatars/lisa.avif',
       messages: [
         { 
           type: 'user', 
           text: 'Hi Cortex! I\'m Sophie, I\'m discovering Octogone. How does it work?', 
-          delay: 0 
+          delay: 2500 
         },
         {
           type: 'cortex',
@@ -432,14 +432,14 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       ]
     },
     {
-      id: 1,
+      id: 0,
       userName: 'Alexandre',
       userAvatar: '/images/avatars/helene.avif',
       messages: [
         { 
           type: 'user', 
           text: 'Cortex, I want an overview of my restaurant. Is that possible?', 
-          delay: 0 
+          delay: 2500 
         },
         {
           type: 'cortex',
@@ -522,7 +522,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         { 
           type: 'user', 
           text: 'Cortex, I noticed a 12% variance on spirits this month. Is that abnormal?', 
-          delay: 0 
+          delay: 2500 
         },
         {
           type: 'cortex',
@@ -563,7 +563,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         { 
           type: 'user', 
           text: 'Cortex, my food cost jumped to 31% this week. What changed?', 
-          delay: 0 
+          delay: 2500 
         },
         {
           type: 'cortex',
@@ -604,7 +604,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         { 
           type: 'user', 
           text: 'Cortex, I received 3 alerts this week. Is that normal or do I have a problem?', 
-          delay: 0 
+          delay: 2500 
         },
         {
           type: 'cortex',
@@ -645,7 +645,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         { 
           type: 'user', 
           text: 'Cortex, how much tips did we receive this week and how do I distribute them?', 
-          delay: 0 
+          delay: 2500 
         },
         {
           type: 'cortex',
