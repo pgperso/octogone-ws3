@@ -76,7 +76,7 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
           </p>
 
           {/* Concepts clés dynamiques */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto mb-16 min-h-[100px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto mb-16 min-h-[100px]">
             {keyConcepts.map((concept) => (
               <KeyConceptBadge key={concept} concept={concept} />
             ))}
