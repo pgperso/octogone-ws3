@@ -44,7 +44,7 @@ export default function InlineChart({ chart, isEnglish }: InlineChartProps) {
         maxWidth: '100%'
       }}
     >
-      <h4 className="text-sm font-semibold mb-3" style={{ color: 'var(--on-surface)' }}>
+      <h4 className="text-sm font-semibold mb-3" style={{ color: 'var(--on-secondary-container)' }}>
         {chart.title}
       </h4>
       

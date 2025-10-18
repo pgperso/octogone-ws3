@@ -29,7 +29,7 @@ const KeyConceptBadge = React.memo(({ concept }: KeyConceptBadgeProps) => {
       <p 
         className="text-sm font-semibold text-center leading-tight"
         style={{ 
-          color: 'var(--on-background)',
+          color: 'var(--on-secondary-container)',
           textShadow: '0 2px 4px rgba(0,0,0,0.1)'
         }}
       >

@@ -75,18 +75,18 @@ export default function InlineDocument({ document }: InlineDocumentProps) {
         )}
         
         <div className="flex-1">
-          <p className="font-semibold text-sm" style={{ color: 'var(--on-background)' }}>
+          <p className="font-semibold text-sm" style={{ color: 'var(--on-secondary-container)' }}>
             {document.title}
           </p>
           <div className="flex items-center gap-2 mt-1">
             <span className="text-xs font-medium px-2 py-0.5 rounded" style={{ 
               backgroundColor: 'rgba(255, 255, 255, 0.7)',
-              color: 'var(--on-background)'
+              color: 'var(--on-secondary-container)'
             }}>
               {getTypeLabel()}
             </span>
             {document.size && (
-              <span className="text-xs" style={{ color: 'var(--on-surface-variant)' }}>
+              <span className="text-xs" style={{ color: 'var(--on-secondary-container)', opacity: 0.7 }}>
                 {document.size}
               </span>
             )}

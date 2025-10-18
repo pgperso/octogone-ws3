@@ -72,10 +72,10 @@ export default function InlineVideo({ video }: InlineVideoProps) {
           background: 'linear-gradient(135deg, #BADFF6 0%, #E2CDED 100%)'
         }}
       >
-        <p className="font-semibold text-sm" style={{ color: 'var(--on-background)' }}>
+        <p className="font-semibold text-sm" style={{ color: 'var(--on-secondary-container)' }}>
           {video.title}
         </p>
-        <p className="text-xs mt-1" style={{ color: 'var(--on-surface-variant)' }}>
+        <p className="text-xs mt-1" style={{ color: 'var(--on-secondary-container)', opacity: 0.7 }}>
           Cliquez pour regarder
         </p>
       </div>

@@ -45,7 +45,7 @@ export default function InlineProgress({ title, duration = 3000 }: InlineProgres
             <path d="M8 2V8L12 10" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
         </div>
-        <h4 className="text-sm font-semibold" style={{ color: 'var(--on-surface)' }}>
+        <h4 className="text-sm font-semibold" style={{ color: 'var(--on-secondary-container)' }}>
           {title}
         </h4>
       </div>
@@ -63,7 +63,7 @@ export default function InlineProgress({ title, duration = 3000 }: InlineProgres
         />
       </div>
 
-      <div className="mt-2 text-xs" style={{ color: 'var(--on-surface-variant)' }}>
+      <div className="mt-2 text-xs" style={{ color: 'var(--on-secondary-container)', opacity: 0.7 }}>
         {Math.round(progress)}%
       </div>
     </motion.div>
