@@ -11,6 +11,22 @@ export type InlineChart = {
   data: Array<{ label: string; value: number; color?: string }>;
 };
 
+// Types pour les documents inline
+export type InlineDocument = {
+  title: string;
+  type: 'pdf' | 'excel' | 'report';
+  size?: string;
+  downloadUrl?: string;
+};
+
+// Types pour les vidéos inline
+export type InlineVideo = {
+  title: string;
+  thumbnail?: string;
+  duration?: string;
+  videoUrl?: string;
+};
+
 // Types pour les messages
 export type ToolMessage = {
   type: 'user' | 'cortex';
@@ -18,6 +34,8 @@ export type ToolMessage = {
   delay: number; // délai avant d'apparaître (en ms)
   cta?: MessageCTA; // Bouton CTA (optionnel)
   chart?: InlineChart; // Graphique inline (optionnel)
+  document?: InlineDocument; // Document inline (optionnel)
+  video?: InlineVideo; // Vidéo inline (optionnel)
   expandChat?: boolean; // Déclenche l'expansion du chat (optionnel)
   keyConcept?: string; // Concept clé à afficher en haut (optionnel)
 };
@@ -40,46 +58,25 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
   fr: [
     {
       id: 0,
-      userName: 'Alexandre',
+      userName: 'Emma',
       userAvatar: '/images/avatars/helene.avif',
       messages: [
         {
           type: 'cortex',
-          text: 'Bonjour Alexandre ! 👋',
+          text: 'Bonjour Emma ! 👋 Comment puis-je t\'aider aujourd\'hui ?',
           delay: 2000,
-          keyConcept: 'Commandez des tutoriels'
-        },
-        { 
-          type: 'user', 
-          text: 'Salut Cortex !', 
-          delay: 5000 
-        },
-        {
-          type: 'cortex',
-          text: 'Comment vas-tu aujourd\'hui ? Ton restaurant tourne bien ?',
-          delay: 7500
-        },
-        { 
-          type: 'user', 
-          text: 'Oui ! Je veux une vue d\'ensemble de mon resto.', 
-          delay: 12000,
-          expandChat: true,
           keyConcept: 'Posez-lui des questions'
         },
-        {
-          type: 'cortex',
-          text: 'Absolument ! Octogone 360 te donne une vision complète en temps réel 🎯\n\nVoici ton tableau de bord : ventes, inventaire, food cost, alertes... Tout au même endroit !',
-          delay: 17500
-        },
         { 
           type: 'user', 
-          text: 'Génial ! Et je peux voir l\'évolution de mes ventes cette semaine ?', 
-          delay: 23000 
+          text: 'Salut Cortex ! Je veux voir mes ventes de la semaine.', 
+          delay: 5000,
+          expandChat: true
         },
         {
           type: 'cortex',
-          text: 'Voici tes ventes des 7 derniers jours 📊\n\n💰 Total : 8 450 $\n📈 Moyenne/jour : 1 207 $\n🔥 Meilleur jour : Samedi (1 650 $)\n📉 Plus faible : Mardi (850 $)',
-          delay: 25500,
+          text: 'Parfait ! Voici tes ventes des 7 derniers jours 📊',
+          delay: 8000,
           keyConcept: 'Visualisez vos résultats',
           chart: {
             type: 'bar',
@@ -97,45 +94,53 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         { 
           type: 'user', 
-          text: 'Parfait ! Et mon food cost, il est où ?', 
-          delay: 33000 
+          text: 'Super ! Tu as des conseils pour améliorer mes ventes ?', 
+          delay: 14000 
         },
         {
           type: 'cortex',
-          text: 'Ton food cost est à 28,5% cette semaine 👨‍🍳\n\n🎯 Objectif : 30% → Tu es en avance !\n📊 Évolution : -1,2% vs semaine dernière\n💡 Tes 3 plats les plus rentables : Carpaccio (78%), Salade César (72%), Burger (69%)',
-          delay: 35500,
-          keyConcept: 'Posez des actions',
-          chart: {
-            type: 'pie',
-            title: 'Répartition des coûts (%)',
-            data: [
-              { label: 'Nourriture', value: 28.5, color: '#E2CDED' },
-              { label: 'Main d\'œuvre', value: 32, color: '#BADFF6' },
-              { label: 'Autres', value: 39.5, color: '#DCB26B' }
-            ]
-          }
-        },
-        { 
-          type: 'user', 
-          text: 'Excellent ! Et les alertes, j\'en ai combien en ce moment ?', 
-          delay: 43000 
-        },
-        {
-          type: 'cortex',
-          text: 'Tu as 2 alertes actives Alexandre 🔔\n\n⚠️ Stock faible : Bœuf AAA (3 kg restants)\n⚠️ Température : Frigo #2 à 5°C (seuil : 4°C)\n\n✅ Tout le reste est sous contrôle !',
-          delay: 45500,
+          text: 'Bien sûr ! 💡\n\n✨ Tes mardis sont plus faibles → Propose une promo "Mardi gourmand"\n📈 Tes samedis cartonnent → Augmente ton staff ce jour-là\n🎯 Ton plat vedette : Carpaccio (78% de marge)',
+          delay: 17000,
           keyConcept: 'Demandez des conseils'
         },
         { 
           type: 'user', 
-          text: 'Merci Cortex ! Où je peux voir tout ça en détail ?', 
-          delay: 50500 
+          text: 'Génial ! Tu peux me générer un rapport PDF ?', 
+          delay: 23000 
         },
         {
           type: 'cortex',
-          text: 'Tout est dans Octogone 360 ! 🎯\n\nTon tableau de bord centralisé avec toutes tes métriques en temps réel. Ventes, stocks, food cost, alertes, performances... Une seule page pour tout piloter !',
-          delay: 53000,
+          text: 'Voilà ton rapport hebdomadaire ! 📄',
+          delay: 26000,
           keyConcept: 'Générez des documents',
+          document: {
+            title: 'Rapport hebdomadaire - Ventes & Performance',
+            type: 'pdf',
+            size: '2.4 MB',
+            downloadUrl: '#'
+          }
+        },
+        { 
+          type: 'user', 
+          text: 'Parfait ! Montre-moi un tutoriel pour optimiser mes stocks.', 
+          delay: 32000 
+        },
+        {
+          type: 'cortex',
+          text: 'Voici le tutoriel parfait pour toi ! 🎬',
+          delay: 35000,
+          keyConcept: 'Commandez des tutoriels',
+          video: {
+            title: 'Comment optimiser vos stocks avec Octogone 360',
+            duration: '3:45',
+            videoUrl: '#'
+          }
+        },
+        {
+          type: 'cortex',
+          text: 'Besoin d\'autre chose Emma ? Je suis là pour t\'aider ! 🎯',
+          delay: 38000,
+          keyConcept: 'Posez des actions',
           cta: {
             label: 'Découvrir Octogone 360',
             link: '/octogone360'
@@ -147,46 +152,25 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
   en: [
     {
       id: 0,
-      userName: 'Alexandre',
+      userName: 'Emma',
       userAvatar: '/images/avatars/helene.avif',
       messages: [
         {
           type: 'cortex',
-          text: 'Hello Alexandre! 👋',
+          text: 'Hello Emma! 👋 How can I help you today?',
           delay: 2000,
-          keyConcept: 'Request tutorials'
-        },
-        { 
-          type: 'user', 
-          text: 'Hi Cortex!', 
-          delay: 5000 
-        },
-        {
-          type: 'cortex',
-          text: 'How are you today? Is your restaurant doing well?',
-          delay: 7500
-        },
-        { 
-          type: 'user', 
-          text: 'Yes! I want an overview of my restaurant.', 
-          delay: 12000,
-          expandChat: true,
           keyConcept: 'Ask it questions'
         },
-        {
-          type: 'cortex',
-          text: 'Absolutely! Octogone 360 gives you a complete real-time view 🎯\n\nHere\'s your dashboard: sales, inventory, food cost, alerts... Everything in one place!',
-          delay: 17500
-        },
         { 
           type: 'user', 
-          text: 'Great! Can I see my sales evolution this week?', 
-          delay: 23000 
+          text: 'Hi Cortex! I want to see my sales for the week.', 
+          delay: 5000,
+          expandChat: true
         },
         {
           type: 'cortex',
-          text: 'Here are your sales for the last 7 days 📊\n\n💰 Total: $8,450\n📈 Daily avg: $1,207\n🔥 Best day: Saturday ($1,650)\n📉 Lowest: Tuesday ($850)',
-          delay: 25500,
+          text: 'Perfect! Here are your sales for the last 7 days 📊',
+          delay: 8000,
           keyConcept: 'Visualize your results',
           chart: {
             type: 'bar',
@@ -204,45 +188,53 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         { 
           type: 'user', 
-          text: 'Perfect! And where\'s my food cost?', 
-          delay: 33000 
+          text: 'Great! Do you have tips to improve my sales?', 
+          delay: 14000 
         },
         {
           type: 'cortex',
-          text: 'Your food cost is 28.5% this week 👨‍🍳\n\n🎯 Target: 30% → You\'re ahead!\n📊 Evolution: -1.2% vs last week\n💡 Your 3 most profitable dishes: Carpaccio (78%), Caesar Salad (72%), Burger (69%)',
-          delay: 35500,
-          keyConcept: 'Take actions',
-          chart: {
-            type: 'pie',
-            title: 'Cost Breakdown (%)',
-            data: [
-              { label: 'Food', value: 28.5, color: '#E2CDED' },
-              { label: 'Labor', value: 32, color: '#BADFF6' },
-              { label: 'Other', value: 39.5, color: '#DCB26B' }
-            ]
-          }
-        },
-        { 
-          type: 'user', 
-          text: 'Excellent! And how many alerts do I have right now?', 
-          delay: 43000 
-        },
-        {
-          type: 'cortex',
-          text: 'You have 2 active alerts Alexandre 🔔\n\n⚠️ Low stock: AAA Beef (3 kg remaining)\n⚠️ Temperature: Fridge #2 at 5°C (threshold: 4°C)\n\n✅ Everything else is under control!',
-          delay: 45500,
+          text: 'Of course! 💡\n\n✨ Your Tuesdays are slower → Try a "Tuesday Special" promo\n📈 Your Saturdays are booming → Increase staff that day\n🎯 Your star dish: Carpaccio (78% margin)',
+          delay: 17000,
           keyConcept: 'Ask for advice'
         },
         { 
           type: 'user', 
-          text: 'Thanks Cortex! Where can I see all this in detail?', 
-          delay: 50500 
+          text: 'Awesome! Can you generate a PDF report?', 
+          delay: 23000 
         },
         {
           type: 'cortex',
-          text: 'Everything is in Octogone 360! 🎯\n\nYour centralized dashboard with all your real-time metrics. Sales, inventory, food cost, alerts, performance... One page to manage everything!',
-          delay: 53000,
+          text: 'Here\'s your weekly report! 📄',
+          delay: 26000,
           keyConcept: 'Generate documents',
+          document: {
+            title: 'Weekly Report - Sales & Performance',
+            type: 'pdf',
+            size: '2.4 MB',
+            downloadUrl: '#'
+          }
+        },
+        { 
+          type: 'user', 
+          text: 'Perfect! Show me a tutorial to optimize my inventory.', 
+          delay: 32000 
+        },
+        {
+          type: 'cortex',
+          text: 'Here\'s the perfect tutorial for you! 🎬',
+          delay: 35000,
+          keyConcept: 'Request tutorials',
+          video: {
+            title: 'How to optimize your inventory with Octogone 360',
+            duration: '3:45',
+            videoUrl: '#'
+          }
+        },
+        {
+          type: 'cortex',
+          text: 'Need anything else Emma? I\'m here to help! 🎯',
+          delay: 38000,
+          keyConcept: 'Take actions',
           cta: {
             label: 'Discover Octogone 360',
             link: '/octogone360'

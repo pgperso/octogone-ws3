@@ -7,6 +7,8 @@ import Link from "next/link";
 import { ArrowRight, Send, Maximize2, Minimize2 } from "lucide-react";
 import { toolsConversations, TOOLS_TIMING, type ToolMessage } from "../data/tools-conversations";
 import InlineChart from "./inline-chart";
+import InlineDocument from "./inline-document";
+import InlineVideo from "./inline-video";
 
 const FALLBACK_AVATAR = "/images/avatars/marc.avif";
 
@@ -402,6 +404,18 @@ export default function ToolsAnimatedChat({ locale, onKeyConceptChange }: ToolsA
                 {message.chart && (
                   <div className="w-full max-w-full">
                     <InlineChart chart={message.chart} isEnglish={isEnglish} />
+                  </div>
+                )}
+
+                {message.document && (
+                  <div className="w-full max-w-full">
+                    <InlineDocument document={message.document} />
+                  </div>
+                )}
+
+                {message.video && (
+                  <div className="w-full max-w-full">
+                    <InlineVideo video={message.video} />
                   </div>
                 )}
                 
