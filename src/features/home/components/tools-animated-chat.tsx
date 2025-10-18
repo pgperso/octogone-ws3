@@ -196,7 +196,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
               setIsAnimatingOpen(true);
               setTimeout(() => setChatSize('small'), 100);
             }}
-            className="absolute bottom-6 right-6 w-16 h-16 rounded-2xl shadow-2xl flex items-center justify-center"
+            className="absolute bottom-6 right-6 w-16 h-16 rounded-2xl shadow-2xl flex items-center justify-center cursor-pointer"
             style={{
               backgroundColor: 'var(--secondary-container)',
               border: '2px solid white',
@@ -280,14 +280,14 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setChatSize(chatSize === 'small' ? 'large' : 'small')}
-                  className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/5 transition-colors"
+                  className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/5 transition-colors cursor-pointer"
                   style={{ color: 'var(--on-secondary-container)' }}
                 >
                   {chatSize === 'small' ? <Maximize2 size={18} /> : <Minimize2 size={18} />}
                 </button>
                 <button
                   onClick={handleCloseChat}
-                  className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/5 transition-colors"
+                  className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/5 transition-colors cursor-pointer"
                   style={{ color: 'var(--on-secondary-container)' }}
                 >
                   ✕
@@ -352,7 +352,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
                 {message.cta && (
                   <Link 
                     href={`/${locale}${message.cta.link}`}
-                    className="group flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200"
+                    className="group flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 cursor-pointer"
                     style={{ 
                       backgroundColor: '#DCB26B',
                       color: '#002236'
@@ -411,25 +411,31 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
               }}
             >
               <div 
-                className="flex items-center gap-2 px-4 py-3 rounded-full"
+                className="flex items-start gap-2 px-4 py-3 rounded-2xl"
                 style={{ 
                   backgroundColor: 'var(--surface-container-high)',
                   border: '1px solid var(--outline)'
                 }}
               >
-                <input
-                  type="text"
+                <textarea
                   value={typingText}
                   readOnly
                   placeholder={isEnglish ? 'Type a message...' : 'Tapez un message...'}
-                  className="flex-1 bg-transparent outline-none text-sm"
-                  style={{ color: 'var(--on-surface)' }}
+                  className="flex-1 bg-transparent outline-none text-sm resize-none"
+                  style={{ 
+                    color: 'var(--on-surface)',
+                    minHeight: '24px',
+                    maxHeight: '120px',
+                    overflow: 'auto'
+                  }}
+                  rows={1}
                 />
                 <button
-                  className="w-8 h-8 rounded-full flex items-center justify-center transition-colors"
+                  className="w-8 h-8 rounded-full flex items-center justify-center transition-colors flex-shrink-0"
                   style={{ 
                     backgroundColor: typingText ? 'var(--primary)' : 'var(--surface-container-high)',
-                    color: typingText ? 'var(--on-primary)' : 'var(--on-surface-variant)'
+                    color: typingText ? 'var(--on-primary)' : 'var(--on-surface-variant)',
+                    cursor: 'default'
                   }}
                   disabled={!typingText}
                 >
