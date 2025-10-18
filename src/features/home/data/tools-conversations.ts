@@ -74,7 +74,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         {
           type: 'cortex',
-          text: 'J\'adore discuter avec toi. Tu veux connaître tes ventes de la semaine ?',
+          text: 'J\'adore discuter avec toi. Tu veux voir tes ventes de la semaine ?',
           delay: 8000
         },
         { 
@@ -85,7 +85,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         {
           type: 'cortex',
-          text: 'Voici les ventes de la semaine dernière 📊',
+          text: 'Voici tes ventes de la semaine dernière 📊',
           delay: 16000,
           keyConcept: 'Visualisez vos résultats',
           chart: {
@@ -104,14 +104,14 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         { 
           type: 'user', 
-          text: 'Super ! Tu as des conseils pour améliorer mes ventes ?', 
+          text: 'Super ! Compare avec la semaine d\'avant.', 
           delay: 22000 
         },
         {
           type: 'cortex',
-          text: 'Bien sûr ! 💡\n\n✨ Tes mardis sont plus faibles → Propose une promo "Mardi gourmand"\n📈 Tes samedis cartonnent → Augmente ton staff ce jour-là\n🎯 Ton plat vedette : Carpaccio (78% de marge)',
+          text: 'Parfait ! 📈\n\n🔼 Semaine actuelle : 8 450 $\n🔽 Semaine précédente : 7 890 $\n🚀 Augmentation : +7,1% (+560 $)\n\n🎯 Ton meilleur jour : Samedi (+15%)',
           delay: 25000,
-          keyConcept: 'Demandez des conseils'
+          keyConcept: 'Comparez vos résultats'
         },
         { 
           type: 'user', 
@@ -189,7 +189,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         {
           type: 'cortex',
-          text: 'Here are last week\'s sales 📊',
+          text: 'Here are your sales from last week 📊',
           delay: 16000,
           keyConcept: 'Visualize your results',
           chart: {
@@ -208,14 +208,14 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         { 
           type: 'user', 
-          text: 'Great! Do you have tips to improve my sales?', 
+          text: 'Great! Compare with the week before.', 
           delay: 22000 
         },
         {
           type: 'cortex',
-          text: 'Of course! 💡\n\n✨ Your Tuesdays are slower → Try a "Tuesday Special" promo\n📈 Your Saturdays are booming → Increase staff that day\n🎯 Your star dish: Carpaccio (78% margin)',
+          text: 'Perfect! 📈\n\n🔼 Current week: $8,450\n🔽 Previous week: $7,890\n🚀 Increase: +7.1% (+$560)\n\n🎯 Your best day: Saturday (+15%)',
           delay: 25000,
-          keyConcept: 'Ask for advice'
+          keyConcept: 'Compare your results'
         },
         { 
           type: 'user', 
