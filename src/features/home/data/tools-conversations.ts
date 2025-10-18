@@ -143,13 +143,33 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           video: {
             title: 'Tutoriel : Prise d\'inventaire pour nouveaux employés',
             duration: '4:12',
-            videoUrl: '#'
+            videoUrl: '/fr/fonctionnalites/inventaire'
           }
         },
         {
           type: 'cortex',
-          text: 'Besoin d\'autre chose Emma ? Je suis là pour t\'aider ! 🎯',
-          delay: 46000,
+          text: 'Veux-tu que je génère une fiche pour tes nouveaux employés ?',
+          delay: 49000
+        },
+        { 
+          type: 'user', 
+          text: 'Non, c\'est déjà fait. Mais j\'aimerais ajouter un nouveau produit dans mon catalogue : du caviar Ossetra.', 
+          delay: 52000 
+        },
+        {
+          type: 'cortex',
+          text: 'Parfait ! J\'ai trouvé le Caviar Ossetra dans le catalogue Octogone 🐟\n\n📦 Caviar Ossetra Premium\n💰 Prix : 185 $/30g\n📊 Catégorie : Produits de luxe\n\nVeux-tu que j\'ajoute cette fiche produit à ta base de données ?',
+          delay: 55000
+        },
+        { 
+          type: 'user', 
+          text: 'Oui, parfait !', 
+          delay: 58000 
+        },
+        {
+          type: 'cortex',
+          text: 'C\'est fait ! Le Caviar Ossetra est maintenant dans ton inventaire. ✅\n\nBesoin d\'autre chose Emma ? Je suis là pour t\'aider ! 🎯',
+          delay: 60000,
           keyConcept: 'Posez des actions',
           cta: {
             label: 'Découvrir Octogone 360',
@@ -247,13 +267,33 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           video: {
             title: 'Tutorial: Inventory Management for New Employees',
             duration: '4:12',
-            videoUrl: '#'
+            videoUrl: '/en/features/inventory'
           }
         },
         {
           type: 'cortex',
-          text: 'Need anything else Emma? I\'m here to help! 🎯',
-          delay: 46000,
+          text: 'Would you like me to generate a fact sheet for your new employees?',
+          delay: 49000
+        },
+        { 
+          type: 'user', 
+          text: 'No, it\'s already done. But I\'d like to add a new product to my catalog: Ossetra caviar.', 
+          delay: 52000 
+        },
+        {
+          type: 'cortex',
+          text: 'Perfect! I found Ossetra Caviar in the Octogone catalog 🐟\n\n📦 Ossetra Caviar Premium\n💰 Price: $185/30g\n📊 Category: Luxury products\n\nWould you like me to add this product sheet to your database?',
+          delay: 55000
+        },
+        { 
+          type: 'user', 
+          text: 'Yes, perfect!', 
+          delay: 58000 
+        },
+        {
+          type: 'cortex',
+          text: 'Done! Ossetra Caviar is now in your inventory. ✅\n\nNeed anything else Emma? I\'m here to help! 🎯',
+          delay: 60000,
           keyConcept: 'Take actions',
           cta: {
             label: 'Discover Octogone 360',
