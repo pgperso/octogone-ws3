@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { Maximize2, Minimize2 } from "lucide-react";
 import { conversations, TIMING, type Message, type GeneratedDocument } from "../data/conversations";
 import DocumentBadge from "./document-badge";
 import InlineChartComponent from "./inline-chart";
@@ -53,7 +54,8 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
   const [isPlaying] = useState(true);
   const [, setHasError] = useState(false);
   const [isClient, setIsClient] = useState(false);
-  const [isChatOpen, setIsChatOpen] = useState(true);
+  const [chatState, setChatState] = useState<'closed' | 'small' | 'large'>('closed');
+  const [isAnimatingOpen, setIsAnimatingOpen] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const chatContainerMobileRef = useRef<HTMLDivElement>(null);
 
@@ -70,19 +72,19 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
 
   // Auto-scroll vers le bas quand un nouveau message apparaît
   useEffect(() => {
-    if (chatContainerRef.current && isChatOpen) {
+    if (chatContainerRef.current && chatState !== 'closed') {
       chatContainerRef.current.scrollTo({
         top: chatContainerRef.current.scrollHeight,
         behavior: 'smooth'
       });
     }
-    if (chatContainerMobileRef.current && isChatOpen) {
+    if (chatContainerMobileRef.current && chatState !== 'closed') {
       chatContainerMobileRef.current.scrollTo({
         top: chatContainerMobileRef.current.scrollHeight,
         behavior: 'smooth'
       });
     }
-  }, [visibleMessages, isChatOpen]);
+  }, [visibleMessages, chatState]);
   
   // Gestion d'erreur robuste (mémorisé pour éviter les recalculs)
   const currentConversations = useMemo(() => {
@@ -158,7 +160,20 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
   }, [] as GeneratedDocument[]);
 
   const handleCloseChat = () => {
-    setIsChatOpen(false);
+    setChatState('closed');
+  };
+
+  const handleExpandChat = () => {
+    setChatState('large');
+  };
+
+  const handleMinimizeChat = () => {
+    setChatState('small');
+  };
+
+  const handleOpenChat = () => {
+    setIsAnimatingOpen(true);
+    setTimeout(() => setChatState('small'), 100);
   };
 
   return (
@@ -173,8 +188,36 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
           backgroundRepeat: 'no-repeat'
         }}
       >
+          {/* Bouton flottant Cortex */}
           <AnimatePresence>
-            {isChatOpen && (
+            {chatState === 'closed' && !isAnimatingOpen && (
+              <motion.button
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                onClick={handleOpenChat}
+                className="absolute bottom-6 right-6 w-16 h-16 rounded-2xl shadow-2xl flex items-center justify-center"
+                style={{
+                  backgroundColor: 'var(--secondary-container)',
+                  border: '2px solid white',
+                  zIndex: 10
+                }}
+              >
+                <Image
+                  src="/cortex.svg"
+                  alt="Cortex"
+                  width={32}
+                  height={32}
+                  className="w-8 h-8"
+                  style={{ filter: 'brightness(0) saturate(100%)', color: 'var(--on-secondary-container)' }}
+                />
+              </motion.button>
+            )}
+          </AnimatePresence>
+
+          <AnimatePresence>
+            {chatState !== 'closed' && (
               <>
                 {/* Overlay derrière le chat */}
                 <motion.div
@@ -192,7 +235,11 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.9, y: 20 }}
                   transition={{ duration: 0.3 }}
-                  className="absolute bottom-4 right-4 w-[420px] h-[500px] rounded-2xl shadow-2xl overflow-hidden flex flex-col"
+                  className={`absolute rounded-2xl shadow-2xl overflow-hidden flex flex-col ${
+                    chatState === 'large' 
+                      ? 'inset-4' 
+                      : 'bottom-4 right-4 w-[420px] h-[500px]'
+                  }`}
                   style={{
                     backgroundColor: 'var(--surface)',
                     border: '1px solid var(--outline)',
@@ -232,13 +279,23 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                       </p>
                     </div>
                   </div>
-                  <button
-                    onClick={handleCloseChat}
-                    className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/5 transition-colors"
-                    style={{ color: 'var(--on-secondary-container)' }}
-                  >
-                    ✕
-                  </button>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={chatState === 'large' ? handleMinimizeChat : handleExpandChat}
+                      className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/5 transition-colors"
+                      style={{ color: 'var(--on-secondary-container)' }}
+                      title={chatState === 'large' ? (isEnglish ? 'Minimize' : 'Réduire') : (isEnglish ? 'Expand' : 'Agrandir')}
+                    >
+                      {chatState === 'large' ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
+                    </button>
+                    <button
+                      onClick={handleCloseChat}
+                      className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/5 transition-colors"
+                      style={{ color: 'var(--on-secondary-container)' }}
+                    >
+                      ✕
+                    </button>
+                  </div>
                 </div>
 
                 {/* Corps du chat avec scroll */}
@@ -360,8 +417,36 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
           backgroundRepeat: 'no-repeat'
         }}
       >
+          {/* Bouton flottant Cortex */}
           <AnimatePresence>
-            {isChatOpen && (
+            {chatState === 'closed' && !isAnimatingOpen && (
+              <motion.button
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                onClick={handleOpenChat}
+                className="absolute bottom-6 right-6 w-16 h-16 rounded-2xl shadow-2xl flex items-center justify-center"
+                style={{
+                  backgroundColor: 'var(--secondary-container)',
+                  border: '2px solid white',
+                  zIndex: 10
+                }}
+              >
+                <Image
+                  src="/cortex.svg"
+                  alt="Cortex"
+                  width={32}
+                  height={32}
+                  className="w-8 h-8"
+                  style={{ filter: 'brightness(0) saturate(100%)', color: 'var(--on-secondary-container)' }}
+                />
+              </motion.button>
+            )}
+          </AnimatePresence>
+
+          <AnimatePresence>
+            {chatState !== 'closed' && (
               <>
                 {/* Overlay derrière le chat */}
                 <motion.div
