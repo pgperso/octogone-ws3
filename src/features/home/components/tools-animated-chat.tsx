@@ -223,23 +223,24 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
             animate={{ 
               scale: 1, 
               opacity: 1, 
-              y: 0,
-              width: chatSize === 'small' ? '420px' : '90%',
-              height: chatSize === 'small' ? '500px' : '85vh'
+              y: 0
             }}
             exit={{ scale: 0.8, opacity: 0, y: 50 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="absolute rounded-2xl shadow-2xl overflow-hidden"
             style={{
               backgroundColor: 'var(--surface)',
               zIndex: 20,
-              bottom: chatSize === 'small' ? '24px' : '16px',
-              right: chatSize === 'small' ? '24px' : '16px',
-              left: chatSize === 'small' ? 'auto' : '16px',
-              top: chatSize === 'small' ? 'auto' : '16px',
-              maxWidth: chatSize === 'small' ? '420px' : '90%',
-              maxHeight: chatSize === 'small' ? '500px' : '85vh',
-              transformOrigin: 'bottom right'
+              bottom: '16px',
+              right: '16px',
+              left: 'auto',
+              top: 'auto',
+              width: chatSize === 'small' ? '420px' : 'calc(100% - 32px)',
+              height: chatSize === 'small' ? '500px' : 'calc(100vh - 32px)',
+              maxWidth: chatSize === 'small' ? '420px' : 'calc(100% - 32px)',
+              maxHeight: chatSize === 'small' ? '500px' : 'calc(100vh - 32px)',
+              transformOrigin: 'bottom right',
+              transition: 'width 0.5s cubic-bezier(0.22, 1, 0.36, 1), height 0.5s cubic-bezier(0.22, 1, 0.36, 1)'
             }}
           >
             {/* Header du chat */}
