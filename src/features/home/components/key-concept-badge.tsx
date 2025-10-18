@@ -10,7 +10,7 @@ export default function KeyConceptBadge({ concept }: KeyConceptBadgeProps) {
   return (
     <motion.div 
       key={concept}
-      className="relative px-8 py-4 rounded-2xl"
+      className="relative px-6 py-3 rounded-xl"
       initial={{ opacity: 0, scale: 0.9, y: 20 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.9, y: -20 }}
@@ -18,11 +18,13 @@ export default function KeyConceptBadge({ concept }: KeyConceptBadgeProps) {
       style={{ 
         background: 'linear-gradient(135deg, #BADFF6 0%, #E2CDED 100%)',
         border: '2px solid white',
-        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+        minWidth: '280px',
+        width: '280px'
       }}
     >
       <p 
-        className="text-base md:text-lg font-bold text-center whitespace-nowrap"
+        className="text-sm font-semibold text-center"
         style={{ 
           color: 'var(--on-background)',
           textShadow: '0 2px 4px rgba(0,0,0,0.1)'
