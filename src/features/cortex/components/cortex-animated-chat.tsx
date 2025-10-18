@@ -57,7 +57,6 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
   const [chatState, setChatState] = useState<'closed' | 'small' | 'large'>('closed');
   const [isAnimatingOpen, setIsAnimatingOpen] = useState(false);
   const [typingText, setTypingText] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const chatContainerMobileRef = useRef<HTMLDivElement>(null);
 
@@ -129,7 +128,6 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
           
           // Commencer la frappe
           const startTypingTimeout = setTimeout(() => {
-            setIsTyping(true);
             setTypingText('');
             
             // Simuler la frappe caractère par caractère
@@ -145,7 +143,6 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
             
             // Arrêter la frappe et afficher le message
             const stopTypingTimeout = setTimeout(() => {
-              setIsTyping(false);
               setTypingText('');
               setVisibleMessages(prev => [...prev, message]);
             }, typingDuration + 200);

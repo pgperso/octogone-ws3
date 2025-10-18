@@ -22,7 +22,6 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isAnimatingOpen, setIsAnimatingOpen] = useState(false);
   const [typingText, setTypingText] = useState('');
-  const [isTyping, setIsTyping] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -94,7 +93,6 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
           const typingDuration = 1500;
           
           const startTypingTimeout = setTimeout(() => {
-            setIsTyping(true);
             setTypingText('');
             
             const text = message.text;
@@ -108,7 +106,6 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
             });
             
             const stopTypingTimeout = setTimeout(() => {
-              setIsTyping(false);
               setTypingText('');
               setVisibleMessages(prev => [...prev, message]);
             }, typingDuration + 200);
