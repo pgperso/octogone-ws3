@@ -176,17 +176,30 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
         >
           <AnimatePresence>
             {isChatOpen && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                transition={{ duration: 0.3 }}
-                className="absolute bottom-4 right-4 w-[420px] h-[500px] rounded-2xl shadow-2xl overflow-hidden flex flex-col"
-                style={{
-                  backgroundColor: 'var(--surface)',
-                  border: '1px solid var(--outline)'
-                }}
-              >
+              <>
+                {/* Overlay derrière le chat */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute inset-0 bg-black/30 backdrop-blur-sm"
+                  style={{ zIndex: 10 }}
+                />
+                
+                {/* Chat */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute bottom-4 right-4 w-[420px] h-[500px] rounded-2xl shadow-2xl overflow-hidden flex flex-col"
+                  style={{
+                    backgroundColor: 'var(--surface)',
+                    border: '1px solid var(--outline)',
+                    zIndex: 20
+                  }}
+                >
                 {/* Header du chat */}
                 <div 
                   className="flex items-center justify-between p-4"
@@ -330,6 +343,7 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                   </div>
                 </div>
               </motion.div>
+              </>
             )}
           </AnimatePresence>
         </div>
@@ -348,17 +362,30 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
         >
           <AnimatePresence>
             {isChatOpen && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                transition={{ duration: 0.3 }}
-                className="absolute bottom-4 left-4 right-4 h-[400px] rounded-2xl shadow-2xl overflow-hidden flex flex-col"
-                style={{
-                  backgroundColor: 'var(--surface)',
-                  border: '1px solid var(--outline)'
-                }}
-              >
+              <>
+                {/* Overlay derrière le chat */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute inset-0 bg-black/30 backdrop-blur-sm"
+                  style={{ zIndex: 10 }}
+                />
+                
+                {/* Chat */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute bottom-4 left-4 right-4 h-[400px] rounded-2xl shadow-2xl overflow-hidden flex flex-col"
+                  style={{
+                    backgroundColor: 'var(--surface)',
+                    border: '1px solid var(--outline)',
+                    zIndex: 20
+                  }}
+                >
                 {/* Header du chat */}
                 <div 
                   className="flex items-center justify-between p-3"
@@ -502,6 +529,7 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                   </div>
                 </div>
               </motion.div>
+              </>
             )}
           </AnimatePresence>
         </div>
