@@ -170,18 +170,18 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         { 
           type: 'user', 
           text: 'Oui, c\'est ça !', 
-          delay: 55000 
+          delay: 58000 
         },
         {
           type: 'cortex',
           text: 'Installation de la fiche produit en cours...',
-          delay: 57000,
+          delay: 60000,
           loading: true
         },
         {
           type: 'cortex',
           text: '✅ Fiche produit installée avec succès !',
-          delay: 60000,
+          delay: 63000,
           document: {
             title: 'Fiche produit : Kiwano (Melon à cornes)',
             type: 'report',
@@ -326,7 +326,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         {
           type: 'cortex',
           text: 'Installing product sheet...',
-          delay: 57000,
+          delay: 60000,
           loading: true
         },
         {
