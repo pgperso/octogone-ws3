@@ -38,6 +38,7 @@ export type ToolMessage = {
   video?: InlineVideo; // Vidéo inline (optionnel)
   expandChat?: boolean; // Déclenche l'expansion du chat (optionnel)
   keyConcept?: string; // Concept clé à afficher en haut (optionnel)
+  loading?: boolean; // Affiche une animation de chargement (optionnel)
 };
 
 export type ToolConversation = {
@@ -85,7 +86,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         {
           type: 'cortex',
-          text: 'Voici tes ventes de la semaine dernière 📊',
+          text: 'Voici tes ventes de la semaine dernière 📊\n\n💰 Total : 8 450 $\n📈 Moyenne/jour : 1 207 $\n🔥 Meilleur jour : Samedi (1 650 $)\n📉 Plus faible : Mardi (850 $)',
           delay: 16000,
           keyConcept: 'Visualisez vos résultats',
           chart: {
@@ -153,23 +154,39 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         { 
           type: 'user', 
-          text: 'Non, c\'est déjà fait. Mais j\'aimerais ajouter un nouveau produit dans mon catalogue : du caviar Ossetra.', 
+          text: 'Non, c\'est déjà fait. Par contre, j\'aimerais créer une nouvelle recette avec du kiwano. C\'est la première fois qu\'on utilise ce produit au restaurant.', 
           delay: 52000 
         },
         {
           type: 'cortex',
-          text: 'Parfait ! J\'ai trouvé le Caviar Ossetra dans le catalogue Octogone 🐟\n\n📦 Caviar Ossetra Premium\n💰 Prix : 185 $/30g\n📊 Catégorie : Produits de luxe\n\nVeux-tu que j\'ajoute cette fiche produit à ta base de données ?',
+          text: 'Pas de problème ! J\'ai trouvé le Kiwano dans le catalogue Octogone 🍈\n\n📦 Kiwano (Melon à cornes)\n🌍 Origine : Afrique\n🎨 Peau orange épineuse, pulpe verte gélatineuse\n👅 Saveur : Mélange de concombre et kiwi\n💰 Prix : 4,50 $/unité\n\nC\'est bien ce produit que tu veux ajouter à ton catalogue ?',
           delay: 55000
         },
         { 
           type: 'user', 
-          text: 'Oui, parfait !', 
+          text: 'Oui, c\'est ça !', 
           delay: 58000 
         },
         {
           type: 'cortex',
-          text: 'C\'est fait ! Le Caviar Ossetra est maintenant dans ton inventaire. ✅\n\nBesoin d\'autre chose Emma ? Je suis là pour t\'aider ! 🎯',
-          delay: 60000,
+          text: '✅ Fiche produit installée avec succès !',
+          delay: 63000,
+          document: {
+            title: 'Fiche produit : Kiwano (Melon à cornes)',
+            type: 'report',
+            size: '1.2 MB',
+            downloadUrl: '/fr/fonctionnalites/octogone-360'
+          }
+        },
+        { 
+          type: 'user', 
+          text: 'Merci Cortex, tu es génial !', 
+          delay: 66000 
+        },
+        {
+          type: 'cortex',
+          text: 'Avec plaisir Emma ! Besoin d\'autre chose ? Je suis là pour t\'aider ! 🎯',
+          delay: 68000,
           keyConcept: 'Posez des actions',
           cta: {
             label: 'Découvrir Octogone 360',
@@ -209,7 +226,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         {
           type: 'cortex',
-          text: 'Here are your sales from last week 📊',
+          text: 'Here are your sales from last week 📊\n\n💰 Total: $8,450\n📈 Daily avg: $1,207\n🔥 Best day: Saturday ($1,650)\n📉 Lowest: Tuesday ($850)',
           delay: 16000,
           keyConcept: 'Visualize your results',
           chart: {
@@ -277,23 +294,45 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         { 
           type: 'user', 
-          text: 'No, it\'s already done. But I\'d like to add a new product to my catalog: Ossetra caviar.', 
+          text: 'No, it\'s already done. But I\'d like to create a new recipe with kiwano. It\'s the first time we\'re using this product at the restaurant.', 
           delay: 52000 
         },
         {
           type: 'cortex',
-          text: 'Perfect! I found Ossetra Caviar in the Octogone catalog 🐟\n\n📦 Ossetra Caviar Premium\n💰 Price: $185/30g\n📊 Category: Luxury products\n\nWould you like me to add this product sheet to your database?',
+          text: 'No problem! I found Kiwano in the Octogone catalog 🍈\n\n📦 Kiwano (Horned Melon)\n🌍 Origin: Africa\n🎨 Orange spiny skin, green gelatinous pulp\n👅 Flavor: Mix of cucumber and kiwi\n💰 Price: $4.50/unit\n\nIs this the product you want to add to your catalog?',
           delay: 55000
         },
         { 
           type: 'user', 
-          text: 'Yes, perfect!', 
+          text: 'Yes, that\'s it!', 
           delay: 58000 
         },
         {
           type: 'cortex',
-          text: 'Done! Ossetra Caviar is now in your inventory. ✅\n\nNeed anything else Emma? I\'m here to help! 🎯',
+          text: 'Installing product sheet...',
           delay: 60000,
+          loading: true
+        },
+        {
+          type: 'cortex',
+          text: '✅ Product sheet installed successfully!',
+          delay: 63000,
+          document: {
+            title: 'Product Sheet: Kiwano (Horned Melon)',
+            type: 'report',
+            size: '1.2 MB',
+            downloadUrl: '/en/features/octogone-360'
+          }
+        },
+        { 
+          type: 'user', 
+          text: 'Thanks Cortex, you\'re amazing!', 
+          delay: 66000 
+        },
+        {
+          type: 'cortex',
+          text: 'My pleasure Emma! Need anything else? I\'m here to help! 🎯',
+          delay: 68000,
           keyConcept: 'Take actions',
           cta: {
             label: 'Discover Octogone 360',

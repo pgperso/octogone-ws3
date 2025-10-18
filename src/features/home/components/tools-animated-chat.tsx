@@ -423,6 +423,16 @@ export default function ToolsAnimatedChat({ locale, onKeyConceptChange }: ToolsA
                     <InlineVideo video={message.video} />
                   </div>
                 )}
+
+                {message.loading && (
+                  <div className="flex items-center gap-2 mt-2">
+                    <div className="flex gap-1">
+                      <div className="w-2 h-2 rounded-full bg-current animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                      <div className="w-2 h-2 rounded-full bg-current animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                      <div className="w-2 h-2 rounded-full bg-current animate-bounce" style={{ animationDelay: '300ms' }}></div>
+                    </div>
+                  </div>
+                )}
                 
                 <span className="text-xs px-2" style={{ color: 'var(--on-surface-variant)' }}>
                   11:05
