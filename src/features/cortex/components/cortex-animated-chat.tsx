@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { Maximize2, Minimize2 } from "lucide-react";
+import { Maximize2, Minimize2, Send } from "lucide-react";
 import { conversations, TIMING, type Message, type GeneratedDocument } from "../data/conversations";
 import DocumentBadge from "./document-badge";
 import InlineChartComponent from "./inline-chart";
@@ -493,6 +493,16 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                         style={{ backgroundColor: 'var(--primary)' }}
                       />
                     )}
+                    <button
+                      className="w-8 h-8 rounded-full flex items-center justify-center transition-colors"
+                      style={{ 
+                        backgroundColor: typingText ? 'var(--primary)' : 'var(--surface-container-high)',
+                        color: typingText ? 'var(--on-primary)' : 'var(--on-surface-variant)'
+                      }}
+                      disabled={!typingText}
+                    >
+                      <Send size={16} />
+                    </button>
                   </div>
                 </div>
               </motion.div>
@@ -744,6 +754,16 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                         style={{ backgroundColor: 'var(--primary)' }}
                       />
                     )}
+                    <button
+                      className="w-7 h-7 rounded-full flex items-center justify-center transition-colors"
+                      style={{ 
+                        backgroundColor: typingText ? 'var(--primary)' : 'var(--surface-container-high)',
+                        color: typingText ? 'var(--on-primary)' : 'var(--on-surface-variant)'
+                      }}
+                      disabled={!typingText}
+                    >
+                      <Send size={14} />
+                    </button>
                   </div>
                 </div>
               </motion.div>
