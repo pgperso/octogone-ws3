@@ -63,20 +63,30 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         {
           type: 'cortex',
-          text: 'Bonjour Emma ! 👋 Comment puis-je t\'aider aujourd\'hui ?',
+          text: 'Bonjour Emma, que puis-je faire pour toi aujourd\'hui ?',
           delay: 2000,
           keyConcept: 'Posez-lui des questions'
         },
         { 
           type: 'user', 
-          text: 'Salut Cortex ! Je veux voir mes ventes de la semaine.', 
-          delay: 5000,
+          text: 'C\'est trop gentil, Cortex.', 
+          delay: 5000
+        },
+        {
+          type: 'cortex',
+          text: 'J\'adore discuter avec toi. Tu veux connaître tes ventes de la semaine ?',
+          delay: 8000
+        },
+        { 
+          type: 'user', 
+          text: 'Tu lis dans mes pensées.', 
+          delay: 11000,
           expandChat: true
         },
         {
           type: 'cortex',
-          text: 'Parfait ! Voici tes ventes des 7 derniers jours 📊',
-          delay: 8000,
+          text: 'Voici les ventes de la semaine dernière 📊',
+          delay: 16000,
           keyConcept: 'Visualisez vos résultats',
           chart: {
             type: 'bar',
@@ -95,23 +105,23 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         { 
           type: 'user', 
           text: 'Super ! Tu as des conseils pour améliorer mes ventes ?', 
-          delay: 14000 
+          delay: 22000 
         },
         {
           type: 'cortex',
           text: 'Bien sûr ! 💡\n\n✨ Tes mardis sont plus faibles → Propose une promo "Mardi gourmand"\n📈 Tes samedis cartonnent → Augmente ton staff ce jour-là\n🎯 Ton plat vedette : Carpaccio (78% de marge)',
-          delay: 17000,
+          delay: 25000,
           keyConcept: 'Demandez des conseils'
         },
         { 
           type: 'user', 
           text: 'Génial ! Tu peux me générer un rapport PDF ?', 
-          delay: 23000 
+          delay: 31000 
         },
         {
           type: 'cortex',
           text: 'Voilà ton rapport hebdomadaire ! 📄',
-          delay: 26000,
+          delay: 34000,
           keyConcept: 'Générez des documents',
           document: {
             title: 'Rapport hebdomadaire - Ventes & Performance',
@@ -123,12 +133,12 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         { 
           type: 'user', 
           text: 'Parfait ! Montre-moi un tutoriel pour optimiser mes stocks.', 
-          delay: 32000 
+          delay: 40000 
         },
         {
           type: 'cortex',
           text: 'Voici le tutoriel parfait pour toi ! 🎬',
-          delay: 35000,
+          delay: 43000,
           keyConcept: 'Commandez des tutoriels',
           video: {
             title: 'Comment optimiser vos stocks avec Octogone 360',
@@ -139,7 +149,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         {
           type: 'cortex',
           text: 'Besoin d\'autre chose Emma ? Je suis là pour t\'aider ! 🎯',
-          delay: 38000,
+          delay: 46000,
           keyConcept: 'Posez des actions',
           cta: {
             label: 'Découvrir Octogone 360',
@@ -157,20 +167,30 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
       messages: [
         {
           type: 'cortex',
-          text: 'Hello Emma! 👋 How can I help you today?',
+          text: 'Hello Emma, what can I do for you today?',
           delay: 2000,
           keyConcept: 'Ask it questions'
         },
         { 
           type: 'user', 
-          text: 'Hi Cortex! I want to see my sales for the week.', 
-          delay: 5000,
+          text: 'That\'s so nice, Cortex.', 
+          delay: 5000
+        },
+        {
+          type: 'cortex',
+          text: 'I love chatting with you. Want to see your sales for the week?',
+          delay: 8000
+        },
+        { 
+          type: 'user', 
+          text: 'You read my mind.', 
+          delay: 11000,
           expandChat: true
         },
         {
           type: 'cortex',
-          text: 'Perfect! Here are your sales for the last 7 days 📊',
-          delay: 8000,
+          text: 'Here are last week\'s sales 📊',
+          delay: 16000,
           keyConcept: 'Visualize your results',
           chart: {
             type: 'bar',
@@ -189,23 +209,23 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         { 
           type: 'user', 
           text: 'Great! Do you have tips to improve my sales?', 
-          delay: 14000 
+          delay: 22000 
         },
         {
           type: 'cortex',
           text: 'Of course! 💡\n\n✨ Your Tuesdays are slower → Try a "Tuesday Special" promo\n📈 Your Saturdays are booming → Increase staff that day\n🎯 Your star dish: Carpaccio (78% margin)',
-          delay: 17000,
+          delay: 25000,
           keyConcept: 'Ask for advice'
         },
         { 
           type: 'user', 
           text: 'Awesome! Can you generate a PDF report?', 
-          delay: 23000 
+          delay: 31000 
         },
         {
           type: 'cortex',
           text: 'Here\'s your weekly report! 📄',
-          delay: 26000,
+          delay: 34000,
           keyConcept: 'Generate documents',
           document: {
             title: 'Weekly Report - Sales & Performance',
@@ -217,12 +237,12 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         { 
           type: 'user', 
           text: 'Perfect! Show me a tutorial to optimize my inventory.', 
-          delay: 32000 
+          delay: 40000 
         },
         {
           type: 'cortex',
           text: 'Here\'s the perfect tutorial for you! 🎬',
-          delay: 35000,
+          delay: 43000,
           keyConcept: 'Request tutorials',
           video: {
             title: 'How to optimize your inventory with Octogone 360',
@@ -233,7 +253,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         {
           type: 'cortex',
           text: 'Need anything else Emma? I\'m here to help! 🎯',
-          delay: 38000,
+          delay: 46000,
           keyConcept: 'Take actions',
           cta: {
             label: 'Discover Octogone 360',
