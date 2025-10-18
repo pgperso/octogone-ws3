@@ -48,7 +48,7 @@ export default function InlineChart({ chart, isEnglish }: InlineChartProps) {
         {chart.title}
       </h4>
       
-      <div className="w-full" style={{ height: '300px', minHeight: '250px' }}>
+      <div className="w-full" style={{ height: '220px', minHeight: '200px' }}>
         <ResponsiveContainer width="100%" height="100%">
           {chart.type === 'line' ? (
             <LineChart data={chartData}>
