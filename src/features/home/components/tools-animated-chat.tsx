@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Send } from "lucide-react";
 import { toolsConversations, TOOLS_TIMING, type ToolMessage } from "../data/tools-conversations";
 
 const FALLBACK_AVATAR = "/images/avatars/marc.avif";
@@ -21,6 +21,8 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
   const [isClient, setIsClient] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isAnimatingOpen, setIsAnimatingOpen] = useState(false);
+  const [typingText, setTypingText] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -86,10 +88,39 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
       currentConversation.messages.forEach((message) => {
         if (!message || typeof message.delay !== 'number') return;
         
-        const timeout = setTimeout(() => {
-          setVisibleMessages(prev => [...prev, message]);
-        }, Math.max(0, message.delay));
-        timeouts.push(timeout);
+        // Si c'est un message utilisateur, simuler la frappe avant
+        if (message.type === 'user') {
+          const typingDelay = Math.max(0, message.delay - 2000);
+          const typingDuration = 1500;
+          
+          const startTypingTimeout = setTimeout(() => {
+            setIsTyping(true);
+            setTypingText('');
+            
+            const text = message.text;
+            const charDelay = typingDuration / text.length;
+            
+            text.split('').forEach((char, charIndex) => {
+              const charTimeout = setTimeout(() => {
+                setTypingText(prev => prev + char);
+              }, charIndex * charDelay);
+              timeouts.push(charTimeout);
+            });
+            
+            const stopTypingTimeout = setTimeout(() => {
+              setIsTyping(false);
+              setTypingText('');
+              setVisibleMessages(prev => [...prev, message]);
+            }, typingDuration + 200);
+            timeouts.push(stopTypingTimeout);
+          }, typingDelay);
+          timeouts.push(startTypingTimeout);
+        } else {
+          const timeout = setTimeout(() => {
+            setVisibleMessages(prev => [...prev, message]);
+          }, Math.max(0, message.delay));
+          timeouts.push(timeout);
+        }
       });
 
       const lastMessage = currentConversation.messages[currentConversation.messages.length - 1];
@@ -237,7 +268,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
               ref={chatContainerRef}
               className="overflow-y-auto overflow-x-hidden p-6"
               style={{ 
-                height: 'calc(100% - 72px)',
+                height: 'calc(100% - 72px - 80px)',
                 scrollbarWidth: 'thin',
                 scrollbarColor: '#cbd5e0 transparent'
               }}
@@ -331,6 +362,42 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
           ))}
                 </div>
               </AnimatePresence>
+            </div>
+            
+            {/* Champ de saisie simulé - fixe en bas */}
+            <div 
+              className="p-4 border-t"
+              style={{ 
+                backgroundColor: 'var(--surface)',
+                borderColor: 'var(--outline)'
+              }}
+            >
+              <div 
+                className="flex items-center gap-2 px-4 py-3 rounded-full"
+                style={{ 
+                  backgroundColor: 'var(--surface-container-high)',
+                  border: '1px solid var(--outline)'
+                }}
+              >
+                <input
+                  type="text"
+                  value={typingText}
+                  readOnly
+                  placeholder={isEnglish ? 'Type a message...' : 'Tapez un message...'}
+                  className="flex-1 bg-transparent outline-none text-sm"
+                  style={{ color: 'var(--on-surface)' }}
+                />
+                <button
+                  className="w-8 h-8 rounded-full flex items-center justify-center transition-colors"
+                  style={{ 
+                    backgroundColor: typingText ? 'var(--primary)' : 'var(--surface-container-high)',
+                    color: typingText ? 'var(--on-primary)' : 'var(--on-surface-variant)'
+                  }}
+                  disabled={!typingText}
+                >
+                  <Send size={16} className="-rotate-45" />
+                </button>
+              </div>
             </div>
           </motion.div>
         )}
