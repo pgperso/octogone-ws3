@@ -8,7 +8,7 @@ import { conversations, TIMING, type Message, type GeneratedDocument } from "../
 import DocumentBadge from "./document-badge";
 import InlineChartComponent from "./inline-chart";
 
-// Fallbacks pour la compatibilité
+// Fallbacks pour la compatibilité  
 const FALLBACK_AVATAR = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%23e5e7eb'/%3E%3Cpath d='M20 20a6 6 0 1 0 0-12 6 6 0 0 0 0 12zm0 2c-4 0-12 2-12 6v4h24v-4c0-4-8-6-12-6z' fill='%23374151'/%3E%3C/svg%3E";
 const FALLBACK_CORTEX = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z' fill='%23374151'/%3E%3C/svg%3E";
 
