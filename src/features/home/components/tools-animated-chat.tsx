@@ -125,8 +125,8 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
               setTypingText('');
               setVisibleMessages(prev => [...prev, message]);
               
-              // Expand le chat si le message a le marqueur expandChat (après 3s de pause, sauf sur mobile où c'est déjà large)
-              if (message.expandChat && !isMobile) {
+              // Expand le chat si le message a le marqueur expandChat (après 3s de pause)
+              if (message.expandChat) {
                 setTimeout(() => setChatSize('large'), 3000);
               }
             }, typingDuration + 200);
@@ -137,8 +137,8 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
           const timeout = setTimeout(() => {
             setVisibleMessages(prev => [...prev, message]);
             
-            // Expand le chat si le message a le marqueur expandChat (après 3s de pause, sauf sur mobile où c'est déjà large)
-            if (message.expandChat && !isMobile) {
+            // Expand le chat si le message a le marqueur expandChat (après 3s de pause)
+            if (message.expandChat) {
               setTimeout(() => setChatSize('large'), 3000);
             }
           }, Math.max(0, message.delay));
@@ -161,7 +161,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
       console.warn('ToolsAnimatedChat error:', _error);
       setHasError(true);
     }
-  }, [currentConversationIndex, conversationKey, isPlaying, currentConversations, currentConversation, isClient, isMobile, cleanupTimeouts, handleCloseChat]);
+  }, [currentConversationIndex, conversationKey, isPlaying, currentConversations, currentConversation, isClient, cleanupTimeouts, handleCloseChat]);
 
   if (!currentConversation || !currentConversations.length) {
     return (
@@ -248,10 +248,10 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
               ...(chatSize === 'small' ? {
                 bottom: '16px',
                 right: '16px',
-                width: isMobile ? 'calc(100vw - 32px)' : '420px',
-                height: isMobile ? 'calc(100vh - 32px)' : '500px'
+                width: '420px',
+                height: '500px'
               } : {
-                inset: isMobile ? '8px' : '16px'
+                inset: '16px'
               }),
               transformOrigin: 'bottom right',
               transition: 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)'
