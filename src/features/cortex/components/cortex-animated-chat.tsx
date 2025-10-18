@@ -119,7 +119,7 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
       // Afficher les messages avec leurs délais et simulation de frappe
       const timeouts: NodeJS.Timeout[] = [];
       
-      currentConversation.messages.forEach((message, index) => {
+      currentConversation.messages.forEach((message) => {
         if (!message || typeof message.delay !== 'number') return;
         
         // Si c'est un message utilisateur, simuler la frappe avant
