@@ -235,10 +235,10 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
               right: '16px',
               left: 'auto',
               top: 'auto',
-              width: chatSize === 'small' ? '420px' : 'calc(100% - 32px)',
-              height: chatSize === 'small' ? '500px' : 'calc(100vh - 32px)',
-              maxWidth: chatSize === 'small' ? '420px' : 'calc(100% - 32px)',
-              maxHeight: chatSize === 'small' ? '500px' : 'calc(100vh - 32px)',
+              width: chatSize === 'small' ? '420px' : 'calc(100vw - 32px)',
+              height: chatSize === 'small' ? '500px' : 'calc(100vh - 48px)',
+              maxWidth: chatSize === 'small' ? '420px' : 'calc(100vw - 32px)',
+              maxHeight: chatSize === 'small' ? '500px' : 'calc(100vh - 48px)',
               transformOrigin: 'bottom right',
               transition: 'width 0.5s cubic-bezier(0.22, 1, 0.36, 1), height 0.5s cubic-bezier(0.22, 1, 0.36, 1)'
             }}
