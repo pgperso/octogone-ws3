@@ -238,7 +238,8 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
               left: chatSize === 'small' ? 'auto' : '16px',
               top: chatSize === 'small' ? 'auto' : '16px',
               maxWidth: chatSize === 'small' ? '420px' : '90%',
-              maxHeight: chatSize === 'small' ? '500px' : '85vh'
+              maxHeight: chatSize === 'small' ? '500px' : '85vh',
+              transformOrigin: 'bottom right'
             }}
           >
             {/* Header du chat */}
