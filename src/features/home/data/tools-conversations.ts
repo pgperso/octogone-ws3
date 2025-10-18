@@ -19,6 +19,7 @@ export type ToolMessage = {
   cta?: MessageCTA; // Bouton CTA (optionnel)
   chart?: InlineChart; // Graphique inline (optionnel)
   expandChat?: boolean; // Déclenche l'expansion du chat (optionnel)
+  keyConcept?: string; // Concept clé à afficher en haut (optionnel)
 };
 
 export type ToolConversation = {
@@ -45,7 +46,8 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         {
           type: 'cortex',
           text: 'Bonjour Alexandre ! 👋',
-          delay: 2000
+          delay: 2000,
+          keyConcept: 'Converser naturellement avec Cortex'
         },
         { 
           type: 'user', 
@@ -146,7 +148,8 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         {
           type: 'cortex',
           text: 'Hello Alexandre! 👋',
-          delay: 2000
+          delay: 2000,
+          keyConcept: 'Chat naturally with Cortex'
         },
         { 
           type: 'user', 

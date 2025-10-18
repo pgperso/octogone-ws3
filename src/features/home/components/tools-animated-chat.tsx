@@ -18,6 +18,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
   const [currentConversationIndex, setCurrentConversationIndex] = useState(0);
   const [conversationKey, setConversationKey] = useState(0);
   const [visibleMessages, setVisibleMessages] = useState<ToolMessage[]>([]);
+  const [currentKeyConcept, setCurrentKeyConcept] = useState<string>('');
   const [isPlaying] = useState(true);
   const [, setHasError] = useState(false);
   const [isClient, setIsClient] = useState(false);
@@ -82,6 +83,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
     setIsAnimatingOpen(false);
     setVisibleMessages([]);
     setTypingText('');
+    setCurrentKeyConcept('');
     
     setTimeout(() => {
       setCurrentConversationIndex((prev) => 
@@ -125,6 +127,11 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
               setTypingText('');
               setVisibleMessages(prev => [...prev, message]);
               
+              // Mettre à jour le concept clé si présent
+              if (message.keyConcept) {
+                setCurrentKeyConcept(message.keyConcept);
+              }
+              
               // Expand le chat si le message a le marqueur expandChat (après 3s de pause)
               if (message.expandChat) {
                 setTimeout(() => setChatSize('large'), 3000);
@@ -136,6 +143,11 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
         } else {
           const timeout = setTimeout(() => {
             setVisibleMessages(prev => [...prev, message]);
+            
+            // Mettre à jour le concept clé si présent
+            if (message.keyConcept) {
+              setCurrentKeyConcept(message.keyConcept);
+            }
             
             // Expand le chat si le message a le marqueur expandChat (après 3s de pause)
             if (message.expandChat) {
@@ -197,6 +209,32 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
           backgroundRepeat: 'no-repeat'
         }}
       />
+
+      {/* Concept clé affiché en haut */}
+      <AnimatePresence>
+        {currentKeyConcept && chatSize !== 'closed' && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className="absolute top-8 left-1/2 transform -translate-x-1/2 z-10"
+          >
+            <div 
+              className="px-6 py-3 rounded-full shadow-lg backdrop-blur-sm"
+              style={{
+                backgroundColor: 'rgba(186, 223, 246, 0.9)',
+                border: '2px solid white',
+                color: 'var(--on-primary-container)'
+              }}
+            >
+              <p className="text-sm font-semibold whitespace-nowrap">
+                {currentKeyConcept}
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Bouton flottant Cortex */}
       <AnimatePresence>
