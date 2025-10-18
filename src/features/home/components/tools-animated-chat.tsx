@@ -31,6 +31,17 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
   }, []);
 
   const isEnglish = locale === 'en';
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Détecter si on est sur mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
   
   const currentConversations = useMemo(() => {
     const conversations = toolsConversations?.[isEnglish ? 'en' : 'fr'] || [];
@@ -53,17 +64,17 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
     }
   }, [visibleMessages, chatSize]);
 
-  // Ouvrir le chat automatiquement après un délai (en mode small)
+  // Ouvrir le chat automatiquement après un délai (en mode small sur desktop, large sur mobile)
   useEffect(() => {
     if (!isClient || chatSize !== 'closed') return;
     
     const openTimer = setTimeout(() => {
       setIsAnimatingOpen(true);
-      setTimeout(() => setChatSize('small'), 100);
+      setTimeout(() => setChatSize(isMobile ? 'large' : 'small'), 100);
     }, 2000); // Ouvre après 2 secondes
 
     return () => clearTimeout(openTimer);
-  }, [isClient, currentConversationIndex, chatSize]);
+  }, [isClient, currentConversationIndex, chatSize, isMobile]);
 
   // Fermer le chat et passer à la conversation suivante
   const handleCloseChat = useCallback(() => {
@@ -114,8 +125,8 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
               setTypingText('');
               setVisibleMessages(prev => [...prev, message]);
               
-              // Expand le chat si le message a le marqueur expandChat (après 3s de pause)
-              if (message.expandChat) {
+              // Expand le chat si le message a le marqueur expandChat (après 3s de pause, sauf sur mobile où c'est déjà large)
+              if (message.expandChat && !isMobile) {
                 setTimeout(() => setChatSize('large'), 3000);
               }
             }, typingDuration + 200);
@@ -126,8 +137,8 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
           const timeout = setTimeout(() => {
             setVisibleMessages(prev => [...prev, message]);
             
-            // Expand le chat si le message a le marqueur expandChat (après 3s de pause)
-            if (message.expandChat) {
+            // Expand le chat si le message a le marqueur expandChat (après 3s de pause, sauf sur mobile où c'est déjà large)
+            if (message.expandChat && !isMobile) {
               setTimeout(() => setChatSize('large'), 3000);
             }
           }, Math.max(0, message.delay));
@@ -150,7 +161,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
       console.warn('ToolsAnimatedChat error:', _error);
       setHasError(true);
     }
-  }, [currentConversationIndex, conversationKey, isPlaying, currentConversations, currentConversation, isClient, cleanupTimeouts, handleCloseChat]);
+  }, [currentConversationIndex, conversationKey, isPlaying, currentConversations, currentConversation, isClient, isMobile, cleanupTimeouts, handleCloseChat]);
 
   if (!currentConversation || !currentConversations.length) {
     return (
@@ -281,13 +292,15 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <button
-                  onClick={() => setChatSize(chatSize === 'small' ? 'large' : 'small')}
-                  className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/5 transition-colors cursor-pointer"
-                  style={{ color: 'var(--on-secondary-container)' }}
-                >
-                  {chatSize === 'small' ? <Maximize2 size={18} /> : <Minimize2 size={18} />}
-                </button>
+                {!isMobile && (
+                  <button
+                    onClick={() => setChatSize(chatSize === 'small' ? 'large' : 'small')}
+                    className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/5 transition-colors cursor-pointer"
+                    style={{ color: 'var(--on-secondary-container)' }}
+                  >
+                    {chatSize === 'small' ? <Maximize2 size={18} /> : <Minimize2 size={18} />}
+                  </button>
+                )}
                 <button
                   onClick={handleCloseChat}
                   className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/5 transition-colors cursor-pointer"
