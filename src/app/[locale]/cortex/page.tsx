@@ -408,7 +408,7 @@ export default function CortexPage() {
         </motion.div>
 
         <div className="w-full">
-          <CortexAnimatedChat locale={locale} />
+          <CortexAnimatedChat key={locale} locale={locale} />
         </div>
         
         <motion.div 
