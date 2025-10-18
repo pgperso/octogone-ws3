@@ -79,7 +79,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
   }, [currentConversations.length]);
 
   useEffect(() => {
-    if (!isPlaying || !isClient || !currentConversation?.messages || chatSize === 'closed') return;
+    if (!isPlaying || !isClient || !currentConversation?.messages) return;
 
     try {
       setVisibleMessages([]);
@@ -148,7 +148,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
       console.warn('ToolsAnimatedChat error:', _error);
       setHasError(true);
     }
-  }, [currentConversationIndex, isPlaying, currentConversations, currentConversation, isClient, chatSize, cleanupTimeouts, handleCloseChat]);
+  }, [currentConversationIndex, isPlaying, currentConversations, currentConversation, isClient, cleanupTimeouts, handleCloseChat]);
 
   if (!currentConversation || !currentConversations.length) {
     return (
