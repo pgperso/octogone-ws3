@@ -17,6 +17,10 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
   const isEnglish = locale === "en";
   const [currentKeyConcept, setCurrentKeyConcept] = React.useState<string>('');
 
+  const handleKeyConceptChange = React.useCallback((concept: string) => {
+    setCurrentKeyConcept(concept);
+  }, []);
+
   return (
     <div style={{ backgroundColor: 'var(--background)' }}>
       <ResponsiveSection spacing="xxl" bgColor="">
@@ -101,7 +105,7 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
           <div className="mt-32 mb-32">
             <LaptopFrame>
               <div style={{ height: '600px', position: 'relative' }}>
-                <ToolsAnimatedChat locale={locale} onKeyConceptChange={setCurrentKeyConcept} />
+                <ToolsAnimatedChat locale={locale} onKeyConceptChange={handleKeyConceptChange} />
               </div>
             </LaptopFrame>
           </div>

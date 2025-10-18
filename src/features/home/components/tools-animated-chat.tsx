@@ -19,7 +19,6 @@ export default function ToolsAnimatedChat({ locale, onKeyConceptChange }: ToolsA
   const [currentConversationIndex, setCurrentConversationIndex] = useState(0);
   const [conversationKey, setConversationKey] = useState(0);
   const [visibleMessages, setVisibleMessages] = useState<ToolMessage[]>([]);
-  const [currentKeyConcept, setCurrentKeyConcept] = useState<string>('');
   const [isPlaying] = useState(true);
   const [, setHasError] = useState(false);
   const [isClient, setIsClient] = useState(false);
@@ -84,7 +83,6 @@ export default function ToolsAnimatedChat({ locale, onKeyConceptChange }: ToolsA
     setIsAnimatingOpen(false);
     setVisibleMessages([]);
     setTypingText('');
-    setCurrentKeyConcept('');
     onKeyConceptChange?.('');
     
     setTimeout(() => {
@@ -93,7 +91,7 @@ export default function ToolsAnimatedChat({ locale, onKeyConceptChange }: ToolsA
       );
       setConversationKey((prev) => prev + 1);
     }, 1500);
-  }, [currentConversations.length]);
+  }, [currentConversations.length, onKeyConceptChange]);
 
   useEffect(() => {
     if (!isPlaying || !isClient || !currentConversation?.messages) return;
@@ -131,7 +129,6 @@ export default function ToolsAnimatedChat({ locale, onKeyConceptChange }: ToolsA
               
               // Mettre à jour le concept clé si présent
               if (message.keyConcept) {
-                setCurrentKeyConcept(message.keyConcept);
                 onKeyConceptChange?.(message.keyConcept);
               }
               
@@ -149,7 +146,6 @@ export default function ToolsAnimatedChat({ locale, onKeyConceptChange }: ToolsA
             
             // Mettre à jour le concept clé si présent
             if (message.keyConcept) {
-              setCurrentKeyConcept(message.keyConcept);
               onKeyConceptChange?.(message.keyConcept);
             }
             
@@ -177,7 +173,7 @@ export default function ToolsAnimatedChat({ locale, onKeyConceptChange }: ToolsA
       console.warn('ToolsAnimatedChat error:', _error);
       setHasError(true);
     }
-  }, [currentConversationIndex, conversationKey, isPlaying, currentConversations, currentConversation, isClient, cleanupTimeouts, handleCloseChat]);
+  }, [currentConversationIndex, conversationKey, isPlaying, currentConversations, currentConversation, isClient, onKeyConceptChange, cleanupTimeouts, handleCloseChat]);
 
   if (!currentConversation || !currentConversations.length) {
     return (
