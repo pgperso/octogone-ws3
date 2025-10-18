@@ -80,6 +80,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           type: 'cortex',
           text: 'Voici tes ventes des 7 derniers jours 📊\n\n💰 Total : 8 450 $\n📈 Moyenne/jour : 1 207 $\n🔥 Meilleur jour : Samedi (1 650 $)\n📉 Plus faible : Mardi (850 $)',
           delay: 25500,
+          keyConcept: 'Analysez vos résultats',
           chart: {
             type: 'bar',
             title: 'Ventes quotidiennes - 7 derniers jours ($)',
@@ -183,6 +184,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           type: 'cortex',
           text: 'Here are your sales for the last 7 days 📊\n\n💰 Total: $8,450\n📈 Daily avg: $1,207\n🔥 Best day: Saturday ($1,650)\n📉 Lowest: Tuesday ($850)',
           delay: 25500,
+          keyConcept: 'Analyze your results',
           chart: {
             type: 'bar',
             title: 'Daily Sales - Last 7 Days ($)',
