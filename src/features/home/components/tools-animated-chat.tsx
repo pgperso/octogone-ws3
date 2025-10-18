@@ -32,7 +32,8 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
   const isEnglish = locale === 'en';
   
   const currentConversations = useMemo(() => {
-    return toolsConversations?.[isEnglish ? 'en' : 'fr'] || [];
+    const conversations = toolsConversations?.[isEnglish ? 'en' : 'fr'] || [];
+    return conversations.sort((a, b) => a.id - b.id);
   }, [isEnglish]);
   
   const currentConversation = currentConversations[currentConversationIndex];
