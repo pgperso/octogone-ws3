@@ -86,7 +86,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         {
           type: 'cortex',
-          text: 'Voici tes ventes de la semaine dernière 📊\n\n💰 Total : 8 450 $\n📈 Moyenne/jour : 1 207 $\n🔥 Meilleur jour : Samedi (1 650 $)\n📉 Plus faible : Mardi (850 $)',
+          text: 'Voici tes ventes de la semaine dernière 📊',
           delay: 16000,
           keyConcept: 'Visualisez vos résultats',
           chart: {
@@ -102,6 +102,11 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
               { label: 'Dim', value: 1300 }
             ]
           }
+        },
+        {
+          type: 'cortex',
+          text: '💰 Total : 8 450 $\n📈 Moyenne/jour : 1 207 $\n🔥 Meilleur jour : Samedi (1 650 $)\n📉 Plus faible : Mardi (850 $)',
+          delay: 19000
         },
         { 
           type: 'user', 
@@ -232,7 +237,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         {
           type: 'cortex',
-          text: 'Here are your sales from last week 📊\n\n💰 Total: $8,450\n📈 Daily avg: $1,207\n🔥 Best day: Saturday ($1,650)\n📉 Lowest: Tuesday ($850)',
+          text: 'Here are your sales from last week 📊',
           delay: 16000,
           keyConcept: 'Visualize your results',
           chart: {
@@ -248,6 +253,11 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
               { label: 'Sun', value: 1300 }
             ]
           }
+        },
+        {
+          type: 'cortex',
+          text: '💰 Total: $8,450\n📈 Daily avg: $1,207\n🔥 Best day: Saturday ($1,650)\n📉 Lowest: Tuesday ($850)',
+          delay: 19000
         },
         { 
           type: 'user', 
