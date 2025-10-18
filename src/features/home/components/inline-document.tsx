@@ -46,7 +46,7 @@ export default function InlineDocument({ document }: InlineDocumentProps) {
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.3 }}
-      className="mt-8 p-4 rounded-xl cursor-pointer hover:scale-105 transition-transform"
+      className="mt-12 p-4 rounded-xl cursor-pointer hover:scale-105 transition-transform"
       style={{
         background: 'linear-gradient(135deg, #BADFF6 0%, #E2CDED 100%)',
         border: '2px solid white',

@@ -60,10 +60,15 @@ export default function ToolsAnimatedChat({ locale, onKeyConceptChange }: ToolsA
   // Auto-scroll vers le bas quand un nouveau message apparaît
   useEffect(() => {
     if (chatContainerRef.current && chatSize !== 'closed') {
-      chatContainerRef.current.scrollTo({
-        top: chatContainerRef.current.scrollHeight,
-        behavior: 'smooth'
-      });
+      // Petit délai pour laisser le contenu se rendre avant de scroller
+      setTimeout(() => {
+        if (chatContainerRef.current) {
+          chatContainerRef.current.scrollTo({
+            top: chatContainerRef.current.scrollHeight,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
     }
   }, [visibleMessages, chatSize]);
 
