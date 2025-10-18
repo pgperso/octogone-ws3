@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { conversations, TIMING, type Message, type GeneratedDocument } from "../data/conversations";
@@ -54,6 +54,8 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
   const [, setHasError] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(true);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
+  const chatContainerMobileRef = useRef<HTMLDivElement>(null);
 
   // Images du dashboard
   const dashboardImage = '/dashboard_fr.avif';
@@ -63,6 +65,22 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  // Auto-scroll vers le bas quand un nouveau message apparaît
+  useEffect(() => {
+    if (chatContainerRef.current && isChatOpen) {
+      chatContainerRef.current.scrollTo({
+        top: chatContainerRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
+    if (chatContainerMobileRef.current && isChatOpen) {
+      chatContainerMobileRef.current.scrollTo({
+        top: chatContainerMobileRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
+  }, [visibleMessages, isChatOpen]);
 
   const isEnglish = locale === 'en';
   
@@ -210,6 +228,7 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
 
                 {/* Corps du chat avec scroll */}
                 <div 
+                  ref={chatContainerRef}
                   className="p-4 overflow-y-auto flex-1"
                   style={{ 
                     backgroundColor: 'var(--surface)'
@@ -381,6 +400,7 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
 
                 {/* Corps du chat avec scroll */}
                 <div 
+                  ref={chatContainerMobileRef}
                   className="p-3 overflow-y-auto flex-1"
                   style={{ 
                     backgroundColor: 'var(--surface)'
