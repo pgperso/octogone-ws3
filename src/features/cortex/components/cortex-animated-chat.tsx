@@ -57,11 +57,11 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const chatContainerMobileRef = useRef<HTMLDivElement>(null);
 
-  const isEnglish = locale === 'en';
+  const isEnglish = useMemo(() => locale === 'en', [locale]);
 
   // Images du dashboard
-  const dashboardImage = isEnglish ? '/dashboard_en.avif' : '/dashboard_fr.avif';
-  const dashboardImageMobile = isEnglish ? '/dashboard_mobile_en.avif' : '/dashboard_mobile_fr.avif';
+  const dashboardImage = useMemo(() => isEnglish ? '/dashboard_en.avif' : '/dashboard_fr.avif', [isEnglish]);
+  const dashboardImageMobile = useMemo(() => isEnglish ? '/dashboard_mobile_en.avif' : '/dashboard_mobile_fr.avif', [isEnglish]);
 
   // Vérifier si on est côté client pour éviter l'hydratation mismatch
   useEffect(() => {
@@ -353,7 +353,7 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
       </div>
 
       {/* Mobile - Mode portrait */}
-      <div className="md:hidden relative w-full" style={{ aspectRatio: '9/16' }}>
+      <div className="md:hidden relative w-full" style={{ aspectRatio: '9/16', minHeight: '600px' }}>
         <div 
           className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl"
           style={{
