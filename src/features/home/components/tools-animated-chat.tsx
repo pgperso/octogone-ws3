@@ -64,17 +64,17 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
     }
   }, [visibleMessages, chatSize]);
 
-  // Ouvrir le chat automatiquement après un délai (en mode small sur desktop, large sur mobile)
+  // Ouvrir le chat automatiquement après un délai (en mode small)
   useEffect(() => {
     if (!isClient || chatSize !== 'closed') return;
     
     const openTimer = setTimeout(() => {
       setIsAnimatingOpen(true);
-      setTimeout(() => setChatSize(isMobile ? 'large' : 'small'), 100);
+      setTimeout(() => setChatSize('small'), 100);
     }, 2000); // Ouvre après 2 secondes
 
     return () => clearTimeout(openTimer);
-  }, [isClient, currentConversationIndex, chatSize, isMobile]);
+  }, [isClient, currentConversationIndex, chatSize]);
 
   // Fermer le chat et passer à la conversation suivante
   const handleCloseChat = useCallback(() => {
@@ -248,10 +248,10 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
               ...(chatSize === 'small' ? {
                 bottom: '16px',
                 right: '16px',
-                width: '420px',
-                height: '500px'
+                width: isMobile ? 'calc(100vw - 32px)' : '420px',
+                height: isMobile ? 'calc(100vh - 32px)' : '500px'
               } : {
-                inset: '16px'
+                inset: isMobile ? '8px' : '16px'
               }),
               transformOrigin: 'bottom right',
               transition: 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)'
