@@ -17,7 +17,7 @@ declare global {
  * Optimisé : chargement différé pour ne pas bloquer le LCP
  */
 export const initGA4 = (measurementId: string) => {
-  // Délai de 2 secondes pour ne pas bloquer le LCP
+  // Délai de 1 seconde pour ne pas bloquer le LCP
   setTimeout(() => {
     // Charger le script GA4
     const script = document.createElement('script');
@@ -39,7 +39,7 @@ export const initGA4 = (measurementId: string) => {
     });
 
     console.log('[GA4] Initialized with ID:', measurementId);
-  }, 2000);
+  }, 1000);
 };
 
 /**

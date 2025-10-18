@@ -37,7 +37,7 @@ export function CookiebotBanner({ cbid }: CookiebotBannerProps) {
       
       // Injecter dans le head
       document.head.appendChild(script);
-    }, 2000); // Charger après 2 secondes (au lieu de 1)
+    }, 500); // Charger après 500ms (compromis)
     
     // Cleanup
     return () => {

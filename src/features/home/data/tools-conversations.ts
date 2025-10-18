@@ -14,7 +14,7 @@ export type InlineChart = {
 // Types pour les documents inline
 export type InlineDocument = {
   title: string;
-  type: 'pdf' | 'excel' | 'report';
+  type: 'pdf' | 'excel' | 'report' | 'product';
   size?: string;
   downloadUrl?: string;
   image?: string; // Chemin vers une image (optionnel)
@@ -146,7 +146,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         { 
           type: 'user', 
-          text: 'Tu es parfait Cortex ! Dans un autre ordre d\'idée, j\'aurais besoin du tutoriel pour la prise d\'inventaires, nous avons de nouveaux employés.', 
+          text: 'Parfait Cortex ! J\'aurais besoin du tutoriel pour la prise d\'inventaires, nous avons de nouveaux employés.', 
           delay: 40000 
         },
         {
@@ -167,7 +167,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         { 
           type: 'user', 
-          text: 'Non, c\'est déjà fait. Par contre, j\'aimerais créer une nouvelle recette avec du kiwano. C\'est la première fois qu\'on utilise ce produit au restaurant.', 
+          text: 'Non merci. Par contre, j\'aimerais créer une recette avec du kiwano. C\'est la première fois qu\'on utilise ce produit.', 
           delay: 52000 
         },
         {
@@ -195,7 +195,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           delay: 63000,
           document: {
             title: 'Fiche produit : Kiwano (Melon à cornes)',
-            type: 'report',
+            type: 'product',
             size: '1.2 MB',
             downloadUrl: '/fr/fonctionnalites/octogone-360',
             image: '/images/kiwano.avif'
@@ -301,7 +301,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         { 
           type: 'user', 
-          text: 'You\'re perfect Cortex! On another note, I need the inventory tutorial, we have new employees.', 
+          text: 'Perfect Cortex! I need the inventory tutorial, we have new employees.', 
           delay: 40000 
         },
         {
@@ -322,7 +322,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         { 
           type: 'user', 
-          text: 'No, it\'s already done. But I\'d like to create a new recipe with kiwano. It\'s the first time we\'re using this product at the restaurant.', 
+          text: 'No thanks. But I\'d like to create a recipe with kiwano. It\'s the first time we\'re using this product.', 
           delay: 52000 
         },
         {
@@ -350,7 +350,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           delay: 63000,
           document: {
             title: 'Product Sheet: Kiwano (Horned Melon)',
-            type: 'report',
+            type: 'product',
             size: '1.2 MB',
             downloadUrl: '/en/features/octogone-360',
             image: '/images/kiwano.avif'

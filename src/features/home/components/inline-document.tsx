@@ -19,6 +19,8 @@ export default function InlineDocument({ document }: InlineDocumentProps) {
         return <FileText size={24} />;
       case 'report':
         return <FileText size={24} />;
+      case 'product':
+        return <FileText size={24} />;
       default:
         return <FileText size={24} />;
     }
@@ -32,6 +34,8 @@ export default function InlineDocument({ document }: InlineDocumentProps) {
         return 'Excel';
       case 'report':
         return 'Rapport';
+      case 'product':
+        return 'Fiche produit';
       default:
         return 'Document';
     }

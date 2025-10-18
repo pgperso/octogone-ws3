@@ -13,14 +13,8 @@ import type { Route } from "@/features/navigation/types";
 import { CalculatorProvider, useCalculator } from "@/contexts/calculator-context";
 import { CookiebotBanner } from "@/components/cookiebot/cookiebot-banner";
 import { COOKIEBOT_CONFIG } from "@/config/cookiebot";
-import { enablePassiveListeners } from "@/lib/utils/passive-listeners-polyfill";
 
 const inter = Inter({ subsets: ["latin"] });
-
-// Activer les passive listeners au chargement
-if (typeof window !== 'undefined') {
-  enablePassiveListeners();
-}
 
 export default function LocaleLayout({
   children,

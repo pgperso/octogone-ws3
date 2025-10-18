@@ -1,15 +1,27 @@
 "use client";
 
 import React from "react";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import { useParams } from "next/navigation";
 import { ResponsiveSection } from "@/components/ui/responsive-section";
 import { Brain, Sparkles, MessageSquare, TrendingUp, Clock, Zap } from "lucide-react";
 import { OctogoneButton } from "@/components/ui/octogone-button";
 import { getConceptById } from "@/data/features/features-content";
-import CortexAnimatedChat from '@/features/cortex/components/cortex-animated-chat';
 import Image from "next/image";
 import Head from "next/head";
+
+// Lazy load du chat Cortex (composant lourd avec animations)
+const CortexAnimatedChat = dynamic(() => import('@/features/cortex/components/cortex-animated-chat'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex items-center justify-center h-[600px]">
+      <div className="animate-pulse text-sm" style={{ color: 'var(--on-surface-variant)' }}>
+        Chargement de Cortex...
+      </div>
+    </div>
+  ),
+});
 
 export default function CortexPage() {
   const params = useParams();

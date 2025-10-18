@@ -39,7 +39,7 @@ export function initHubSpot(portalId: string): void {
   // Initialiser la queue HubSpot
   window._hsq = window._hsq || [];
   
-  // Délai de 3 secondes pour ne pas bloquer le LCP
+  // Délai de 1.5 secondes pour ne pas bloquer le LCP
   setTimeout(() => {
     // Charger le script HubSpot
     const script = document.createElement('script');
@@ -49,7 +49,7 @@ export function initHubSpot(portalId: string): void {
     script.defer = true;
     script.src = `//js.hs-scripts.com/${portalId}.js`;
     document.head.appendChild(script);
-  }, 3000);
+  }, 1500);
 }
 
 /**
