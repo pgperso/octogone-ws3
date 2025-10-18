@@ -1,6 +1,6 @@
 {
-  "name": "octogone",
-  "version": "0.1.0",
+  "name": "octogone-website",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
