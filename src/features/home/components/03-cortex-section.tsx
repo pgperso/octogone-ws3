@@ -63,25 +63,29 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
               : "Votre assistant IA qui transforme vos données en décisions."}
           </p>
 
-          {/* Concept clé dynamique */}
-          <div className="flex justify-center items-center max-w-4xl mx-auto mb-16 min-h-[80px]">
+          {/* Concepts clés dynamiques */}
+          <div className="flex flex-wrap justify-center items-center gap-4 max-w-4xl mx-auto mb-16 min-h-[100px]">
             {currentKeyConcept && (
               <motion.div 
                 key={currentKeyConcept}
-                className="relative p-6 rounded-2xl"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.5 }}
+                className="relative px-8 py-4 rounded-2xl"
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9, y: -20 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 style={{ 
-                  backgroundColor: 'var(--secondary-container)',
-                  border: '2px solid var(--outline-variant)',
-                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+                  background: 'linear-gradient(135deg, rgba(186, 223, 246, 0.3) 0%, rgba(226, 205, 237, 0.3) 100%)',
+                  border: '2px solid rgba(186, 223, 246, 0.5)',
+                  boxShadow: '0 8px 24px rgba(186, 223, 246, 0.2), 0 0 40px rgba(226, 205, 237, 0.15)',
+                  backdropFilter: 'blur(10px)'
                 }}
               >
                 <p 
-                  className="text-lg font-semibold text-center"
-                  style={{ color: 'var(--on-secondary-container)' }}
+                  className="text-base md:text-lg font-bold text-center whitespace-nowrap"
+                  style={{ 
+                    color: 'var(--on-background)',
+                    textShadow: '0 2px 4px rgba(0,0,0,0.1)'
+                  }}
                 >
                   {currentKeyConcept}
                 </p>
