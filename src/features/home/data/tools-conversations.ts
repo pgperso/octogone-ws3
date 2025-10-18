@@ -87,7 +87,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         {
           type: 'cortex',
           text: 'Voici tes ventes de la semaine dernière 📊\n\n💰 Total : 8 450 $\n📈 Moyenne/jour : 1 207 $\n🔥 Meilleur jour : Samedi (1 650 $)\n📉 Plus faible : Mardi (850 $)',
-          delay: 16000,
+          delay: 13000,
           keyConcept: 'Visualisez vos résultats',
           chart: {
             type: 'bar',
@@ -165,12 +165,18 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         { 
           type: 'user', 
           text: 'Oui, c\'est ça !', 
-          delay: 58000 
+          delay: 55000 
+        },
+        {
+          type: 'cortex',
+          text: 'Installation de la fiche produit en cours...',
+          delay: 57000,
+          loading: true
         },
         {
           type: 'cortex',
           text: '✅ Fiche produit installée avec succès !',
-          delay: 63000,
+          delay: 60000,
           document: {
             title: 'Fiche produit : Kiwano (Melon à cornes)',
             type: 'report',
@@ -227,7 +233,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         {
           type: 'cortex',
           text: 'Here are your sales from last week 📊\n\n💰 Total: $8,450\n📈 Daily avg: $1,207\n🔥 Best day: Saturday ($1,650)\n📉 Lowest: Tuesday ($850)',
-          delay: 16000,
+          delay: 13000,
           keyConcept: 'Visualize your results',
           chart: {
             type: 'bar',
@@ -310,7 +316,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         {
           type: 'cortex',
           text: 'Installing product sheet...',
-          delay: 60000,
+          delay: 57000,
           loading: true
         },
         {
