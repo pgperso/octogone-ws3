@@ -69,12 +69,13 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
     setChatSize('closed');
     setIsAnimatingOpen(false);
     setVisibleMessages([]);
+    setTypingText('');
     
     setTimeout(() => {
       setCurrentConversationIndex((prev) => 
         (prev + 1) % currentConversations.length
       );
-    }, 1000);
+    }, 1500);
   }, [currentConversations.length]);
 
   useEffect(() => {
