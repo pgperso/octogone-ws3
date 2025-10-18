@@ -210,8 +210,11 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                 >
                   <div className="flex items-center gap-3">
                     <div 
-                      className="w-10 h-10 rounded-full flex items-center justify-center"
-                      style={{ backgroundColor: 'rgba(255, 255, 255, 0.3)' }}
+                      className="w-10 h-10 rounded-lg flex items-center justify-center"
+                      style={{ 
+                        backgroundColor: 'var(--secondary-container)',
+                        border: '2px solid white'
+                      }}
                     >
                       <Image
                         src="/cortex.svg"
@@ -379,7 +382,7 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.9, y: 20 }}
                   transition={{ duration: 0.3 }}
-                  className="absolute bottom-4 left-4 right-4 h-[400px] rounded-2xl shadow-2xl overflow-hidden flex flex-col"
+                  className="absolute inset-4 rounded-2xl shadow-2xl overflow-hidden flex flex-col"
                   style={{
                     backgroundColor: 'var(--surface)',
                     border: '1px solid var(--outline)',
@@ -396,8 +399,11 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                 >
                   <div className="flex items-center gap-2">
                     <div 
-                      className="w-8 h-8 rounded-full flex items-center justify-center"
-                      style={{ backgroundColor: 'rgba(255, 255, 255, 0.3)' }}
+                      className="w-8 h-8 rounded-lg flex items-center justify-center"
+                      style={{ 
+                        backgroundColor: 'var(--secondary-container)',
+                        border: '2px solid white'
+                      }}
                     >
                       <Image
                         src="/cortex.svg"
