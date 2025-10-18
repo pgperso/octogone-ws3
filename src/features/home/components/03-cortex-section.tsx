@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import ToolsAnimatedChat from "./tools-animated-chat";
 import { LaptopFrame } from "@/components/ui/laptop-frame";
 import KeyConceptBadge from "./key-concept-badge";
+import KeyConceptsDisplay from "./key-concepts-display";
 
 interface CortexIntroProps {
   locale?: string;
@@ -96,6 +97,9 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
           }}
         >
           <div className="mt-32 mb-32">
+            {/* Key Concepts Display - Indépendant du chat */}
+            <KeyConceptsDisplay locale={locale} />
+            
             <LaptopFrame>
               <div style={{ height: '600px', position: 'relative' }}>
                 <ToolsAnimatedChat locale={locale} onKeyConceptChange={handleKeyConceptChange} />

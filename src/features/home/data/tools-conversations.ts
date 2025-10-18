@@ -17,6 +17,7 @@ export type InlineDocument = {
   type: 'pdf' | 'excel' | 'report';
   size?: string;
   downloadUrl?: string;
+  image?: string; // Chemin vers une image (optionnel)
 };
 
 // Types pour les vidéos inline
@@ -196,7 +197,8 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
             title: 'Fiche produit : Kiwano (Melon à cornes)',
             type: 'report',
             size: '1.2 MB',
-            downloadUrl: '/fr/fonctionnalites/octogone-360'
+            downloadUrl: '/fr/fonctionnalites/octogone-360',
+            image: '/images/kiwano.avif'
           }
         },
         { 
@@ -350,7 +352,8 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
             title: 'Product Sheet: Kiwano (Horned Melon)',
             type: 'report',
             size: '1.2 MB',
-            downloadUrl: '/en/features/octogone-360'
+            downloadUrl: '/en/features/octogone-360',
+            image: '/images/kiwano.avif'
           }
         },
         { 

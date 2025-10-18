@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { FileText, Download } from "lucide-react";
 import type { InlineDocument } from "../data/tools-conversations";
 
@@ -49,14 +50,25 @@ export default function InlineDocument({ document }: InlineDocumentProps) {
       }}
     >
       <div className="flex items-center gap-3">
-        <div 
-          className="p-3 rounded-lg"
-          style={{ 
-            backgroundColor: 'rgba(255, 255, 255, 0.5)'
-          }}
-        >
-          {getIcon()}
-        </div>
+        {document.image ? (
+          <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+            <Image
+              src={document.image}
+              alt={document.title}
+              fill
+              className="object-cover"
+            />
+          </div>
+        ) : (
+          <div 
+            className="p-3 rounded-lg"
+            style={{ 
+              backgroundColor: 'rgba(255, 255, 255, 0.5)'
+            }}
+          >
+            {getIcon()}
+          </div>
+        )}
         
         <div className="flex-1">
           <p className="font-semibold text-sm" style={{ color: 'var(--on-background)' }}>
