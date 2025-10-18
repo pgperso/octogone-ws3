@@ -65,7 +65,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           type: 'cortex',
           text: 'Bonjour Emma, que puis-je faire pour toi aujourd\'hui ?',
           delay: 2000,
-          keyConcept: 'Posez-lui des questions'
+          keyConcept: 'Discutez naturellement'
         },
         { 
           type: 'user', 
@@ -127,7 +127,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
             title: 'Rapport hebdomadaire - Ventes & Performance',
             type: 'pdf',
             size: '2.4 MB',
-            downloadUrl: '#'
+            downloadUrl: '/fr/fonctionnalites/octogone-360'
           }
         },
         { 
@@ -153,7 +153,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           keyConcept: 'Posez des actions',
           cta: {
             label: 'Découvrir Octogone 360',
-            link: '/octogone360'
+            link: '/fr/fonctionnalites/octogone-360'
           }
         }
       ]
@@ -169,7 +169,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           type: 'cortex',
           text: 'Hello Emma, what can I do for you today?',
           delay: 2000,
-          keyConcept: 'Ask it questions'
+          keyConcept: 'Chat naturally'
         },
         { 
           type: 'user', 
@@ -231,7 +231,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
             title: 'Weekly Report - Sales & Performance',
             type: 'pdf',
             size: '2.4 MB',
-            downloadUrl: '#'
+            downloadUrl: '/en/features/octogone-360'
           }
         },
         { 
@@ -257,7 +257,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           keyConcept: 'Take actions',
           cta: {
             label: 'Discover Octogone 360',
-            link: '/octogone360'
+            link: '/en/features/octogone-360'
           }
         }
       ]
