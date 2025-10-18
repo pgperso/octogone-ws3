@@ -485,14 +485,6 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                       className="flex-1 bg-transparent outline-none text-sm"
                       style={{ color: 'var(--on-surface)' }}
                     />
-                    {isTyping && (
-                      <motion.div
-                        animate={{ opacity: [0.5, 1, 0.5] }}
-                        transition={{ duration: 1, repeat: Infinity }}
-                        className="w-2 h-2 rounded-full"
-                        style={{ backgroundColor: 'var(--primary)' }}
-                      />
-                    )}
                     <button
                       className="w-8 h-8 rounded-full flex items-center justify-center transition-colors"
                       style={{ 
@@ -501,7 +493,7 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                       }}
                       disabled={!typingText}
                     >
-                      <Send size={16} />
+                      <Send size={16} className="-rotate-45" />
                     </button>
                   </div>
                 </div>
@@ -746,14 +738,6 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                       className="flex-1 bg-transparent outline-none text-xs"
                       style={{ color: 'var(--on-surface)' }}
                     />
-                    {isTyping && (
-                      <motion.div
-                        animate={{ opacity: [0.5, 1, 0.5] }}
-                        transition={{ duration: 1, repeat: Infinity }}
-                        className="w-1.5 h-1.5 rounded-full"
-                        style={{ backgroundColor: 'var(--primary)' }}
-                      />
-                    )}
                     <button
                       className="w-7 h-7 rounded-full flex items-center justify-center transition-colors"
                       style={{ 
@@ -762,7 +746,7 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                       }}
                       disabled={!typingText}
                     >
-                      <Send size={14} />
+                      <Send size={14} className="-rotate-45" />
                     </button>
                   </div>
                 </div>
