@@ -64,17 +64,17 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
     }
   }, [visibleMessages, chatSize]);
 
-  // Ouvrir le chat automatiquement après un délai (en mode small)
+  // Ouvrir le chat automatiquement après un délai (small sur desktop, large sur mobile)
   useEffect(() => {
     if (!isClient || chatSize !== 'closed') return;
     
     const openTimer = setTimeout(() => {
       setIsAnimatingOpen(true);
-      setTimeout(() => setChatSize('small'), 100);
+      setTimeout(() => setChatSize(isMobile ? 'large' : 'small'), 100);
     }, 2000); // Ouvre après 2 secondes
 
     return () => clearTimeout(openTimer);
-  }, [isClient, currentConversationIndex, chatSize]);
+  }, [isClient, currentConversationIndex, chatSize, isMobile]);
 
   // Fermer le chat et passer à la conversation suivante
   const handleCloseChat = useCallback(() => {
