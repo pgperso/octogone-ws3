@@ -1,8 +1,10 @@
 export type Route = {
   href: string;
   label: string;
+  labelEn?: string;
   path: string;
   description?: string;
+  descriptionEn?: string;
   children?: Route[];
 };
 

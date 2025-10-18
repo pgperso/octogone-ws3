@@ -3,8 +3,10 @@ export type NavTheme = "light" | "dark" | "transparent";
 export interface Route {
   path: string;
   label: string;
+  labelEn?: string;
   href: string;
   description?: string;
+  descriptionEn?: string;
   children?: Route[];
 }
 
