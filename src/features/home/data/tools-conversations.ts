@@ -47,7 +47,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           type: 'cortex',
           text: 'Bonjour Alexandre ! 👋',
           delay: 2000,
-          keyConcept: 'Conversez naturellement'
+          keyConcept: 'Commandez des tutoriels'
         },
         { 
           type: 'user', 
@@ -154,7 +154,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           type: 'cortex',
           text: 'Hello Alexandre! 👋',
           delay: 2000,
-          keyConcept: 'Chat naturally'
+          keyConcept: 'Request tutorials'
         },
         { 
           type: 'user', 
