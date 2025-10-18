@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Send } from "lucide-react";
 import { toolsConversations, TOOLS_TIMING, type ToolMessage } from "../data/tools-conversations";
+import InlineChart from "./inline-chart";
 
 const FALLBACK_AVATAR = "/images/avatars/marc.avif";
 
@@ -334,6 +335,12 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
                     <span className="text-sm font-semibold">{message.cta.label}</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </Link>
+                )}
+
+                {message.chart && (
+                  <div className="w-full max-w-full">
+                    <InlineChart chart={message.chart} isEnglish={isEnglish} />
+                  </div>
                 )}
                 
                 <span className="text-xs px-2" style={{ color: 'var(--on-surface-variant)' }}>
