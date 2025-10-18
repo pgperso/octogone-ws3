@@ -231,16 +231,16 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
             style={{
               backgroundColor: 'var(--surface)',
               zIndex: 20,
-              bottom: '16px',
-              right: '16px',
-              left: 'auto',
-              top: 'auto',
-              width: chatSize === 'small' ? '420px' : 'calc(100vw - 32px)',
-              height: chatSize === 'small' ? '500px' : 'calc(100vh - 48px)',
-              maxWidth: chatSize === 'small' ? '420px' : 'calc(100vw - 32px)',
-              maxHeight: chatSize === 'small' ? '500px' : 'calc(100vh - 48px)',
+              ...(chatSize === 'small' ? {
+                bottom: '16px',
+                right: '16px',
+                width: '420px',
+                height: '500px'
+              } : {
+                inset: '16px'
+              }),
               transformOrigin: 'bottom right',
-              transition: 'width 0.5s cubic-bezier(0.22, 1, 0.36, 1), height 0.5s cubic-bezier(0.22, 1, 0.36, 1)'
+              transition: 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)'
             }}
           >
             {/* Header du chat */}
