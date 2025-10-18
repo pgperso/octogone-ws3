@@ -36,10 +36,10 @@ export default function InlineChart({ chart, isEnglish }: InlineChartProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
-      className="mt-6 p-5 rounded-xl w-full"
+      className="mt-8 p-5 rounded-xl w-full"
       style={{ 
         backgroundColor: 'white',
-        border: '2px solid #E2CDED',
+        border: '1px solid var(--outline)',
         boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
         maxWidth: '100%'
       }}

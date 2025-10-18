@@ -20,7 +20,7 @@ export default function InlineVideo({ video }: InlineVideoProps) {
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.3 }}
-      className="mt-3 rounded-xl overflow-hidden cursor-pointer hover:scale-105 transition-transform"
+      className="mt-8 rounded-xl overflow-hidden cursor-pointer hover:scale-105 transition-transform"
       style={{
         border: '2px solid white',
         boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
