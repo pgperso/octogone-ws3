@@ -132,17 +132,17 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         { 
           type: 'user', 
-          text: 'Parfait ! Montre-moi un tutoriel pour optimiser mes stocks.', 
+          text: 'Tu es parfait Cortex ! Dans un autre ordre d\'idée, j\'aurais besoin du tutoriel pour la prise d\'inventaires, nous avons de nouveaux employés.', 
           delay: 40000 
         },
         {
           type: 'cortex',
-          text: 'Voici le tutoriel parfait pour toi ! 🎬',
+          text: 'Pas de problème Emma, je t\'envoie ça à l\'instant. 🎬',
           delay: 43000,
           keyConcept: 'Commandez des tutoriels',
           video: {
-            title: 'Comment optimiser vos stocks avec Octogone 360',
-            duration: '3:45',
+            title: 'Tutoriel : Prise d\'inventaire pour nouveaux employés',
+            duration: '4:12',
             videoUrl: '#'
           }
         },
@@ -236,17 +236,17 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         { 
           type: 'user', 
-          text: 'Perfect! Show me a tutorial to optimize my inventory.', 
+          text: 'You\'re perfect Cortex! On another note, I need the inventory tutorial, we have new employees.', 
           delay: 40000 
         },
         {
           type: 'cortex',
-          text: 'Here\'s the perfect tutorial for you! 🎬',
+          text: 'No problem Emma, I\'m sending it right now. 🎬',
           delay: 43000,
           keyConcept: 'Request tutorials',
           video: {
-            title: 'How to optimize your inventory with Octogone 360',
-            duration: '3:45',
+            title: 'Tutorial: Inventory Management for New Employees',
+            duration: '4:12',
             videoUrl: '#'
           }
         },
