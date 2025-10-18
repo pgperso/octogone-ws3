@@ -9,7 +9,6 @@ import { motion } from "framer-motion";
 import ToolsAnimatedChat from "./tools-animated-chat";
 import { LaptopFrame } from "@/components/ui/laptop-frame";
 import KeyConceptBadge from "./key-concept-badge";
-import KeyConceptsDisplay from "./key-concepts-display";
 
 interface CortexIntroProps {
   locale?: string;
@@ -17,21 +16,31 @@ interface CortexIntroProps {
 
 export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
   const isEnglish = locale === "en";
-  const [keyConcepts, setKeyConcepts] = React.useState<string[]>([]);
+  const [visibleConceptsCount, setVisibleConceptsCount] = React.useState(0);
+
+  // Tous les concepts à afficher
+  const allKeyConcepts = isEnglish 
+    ? ['Chat naturally', 'Visualize your results', 'Compare your performance', 'Generate documents', 'Request tutorials', 'Take actions']
+    : ['Discutez naturellement', 'Visualisez vos résultats', 'Comparez vos performances', 'Générez des documents', 'Commandez des tutoriels', 'Posez des actions'];
+
+  // Animation séquentielle des concepts au chargement
+  React.useEffect(() => {
+    const timers: NodeJS.Timeout[] = [];
+    
+    allKeyConcepts.forEach((_, index) => {
+      const timer = setTimeout(() => {
+        setVisibleConceptsCount(index + 1);
+      }, index * 800); // 800ms entre chaque concept
+      timers.push(timer);
+    });
+
+    return () => {
+      timers.forEach(timer => clearTimeout(timer));
+    };
+  }, [allKeyConcepts]);
 
   const handleKeyConceptChange = React.useCallback((concept: string) => {
-    if (concept === '') {
-      // Réinitialiser quand le chat se ferme
-      setKeyConcepts([]);
-    } else {
-      // Ajouter le concept s'il n'existe pas déjà
-      setKeyConcepts(prev => {
-        if (!prev.includes(concept)) {
-          return [...prev, concept];
-        }
-        return prev;
-      });
-    }
+    // Plus besoin de gérer les concepts ici, ils sont affichés indépendamment
   }, []);
 
   return (
@@ -76,9 +85,9 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
               : "Votre assistant IA qui transforme vos données en décisions."}
           </p>
 
-          {/* Concepts clés dynamiques */}
+          {/* Concepts clés dynamiques - Affichage séquentiel indépendant */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto mb-16 min-h-[100px]">
-            {keyConcepts.map((concept) => (
+            {allKeyConcepts.slice(0, visibleConceptsCount).map((concept: string) => (
               <KeyConceptBadge key={concept} concept={concept} />
             ))}
           </div>
@@ -97,9 +106,6 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
           }}
         >
           <div className="mt-32 mb-32">
-            {/* Key Concepts Display - Indépendant du chat */}
-            <KeyConceptsDisplay locale={locale} />
-            
             <LaptopFrame>
               <div style={{ height: '600px', position: 'relative' }}>
                 <ToolsAnimatedChat locale={locale} onKeyConceptChange={handleKeyConceptChange} />
