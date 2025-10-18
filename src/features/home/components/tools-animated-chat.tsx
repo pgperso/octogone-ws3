@@ -16,6 +16,7 @@ interface ToolsAnimatedChatProps {
 
 export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
   const [currentConversationIndex, setCurrentConversationIndex] = useState(0);
+  const [conversationKey, setConversationKey] = useState(0);
   const [visibleMessages, setVisibleMessages] = useState<ToolMessage[]>([]);
   const [isPlaying] = useState(true);
   const [, setHasError] = useState(false);
@@ -75,6 +76,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
       setCurrentConversationIndex((prev) => 
         (prev + 1) % currentConversations.length
       );
+      setConversationKey((prev) => prev + 1);
     }, 1500);
   }, [currentConversations.length]);
 
@@ -148,7 +150,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
       console.warn('ToolsAnimatedChat error:', _error);
       setHasError(true);
     }
-  }, [currentConversationIndex, isPlaying, currentConversations, currentConversation, isClient, cleanupTimeouts, handleCloseChat]);
+  }, [currentConversationIndex, conversationKey, isPlaying, currentConversations, currentConversation, isClient, cleanupTimeouts, handleCloseChat]);
 
   if (!currentConversation || !currentConversations.length) {
     return (
