@@ -34,13 +34,17 @@ export default function LocaleLayout({
   const localizedRoutes = routes.map(route => ({
     href: `/${locale}${route.path}`,
     label: route.label,
+    labelEn: route.labelEn,
     path: route.path,
     description: route.description,
+    descriptionEn: route.descriptionEn,
     children: route.children?.map(child => ({
       href: `/${locale}${child.path}`,
       label: child.label,
+      labelEn: child.labelEn,
       path: child.path,
       description: child.description,
+      descriptionEn: child.descriptionEn,
     }))
   })) as Route[];
 
