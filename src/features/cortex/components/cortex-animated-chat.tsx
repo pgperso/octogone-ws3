@@ -353,12 +353,12 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
       </div>
 
       {/* Mobile - Mode portrait */}
-      <div className="md:hidden relative w-full" style={{ aspectRatio: '9/16', minHeight: '600px' }}>
+      <div className="md:hidden relative w-full" style={{ paddingBottom: '177.78%' }}>
         <div 
           className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl"
           style={{
             backgroundImage: `url('${dashboardImageMobile}')`,
-            backgroundSize: 'cover',
+            backgroundSize: '100% 100%',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat'
           }}
