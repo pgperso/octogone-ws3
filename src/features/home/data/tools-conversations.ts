@@ -47,7 +47,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           type: 'cortex',
           text: 'Bonjour Alexandre ! 👋',
           delay: 2000,
-          keyConcept: 'Conversez naturellement avec Cortex'
+          keyConcept: 'Conversez naturellement'
         },
         { 
           type: 'user', 
@@ -123,7 +123,8 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         {
           type: 'cortex',
           text: 'Tu as 2 alertes actives Alexandre 🔔\n\n⚠️ Stock faible : Bœuf AAA (3 kg restants)\n⚠️ Température : Frigo #2 à 5°C (seuil : 4°C)\n\n✅ Tout le reste est sous contrôle !',
-          delay: 45500
+          delay: 45500,
+          keyConcept: 'Demandez des conseils'
         },
         { 
           type: 'user', 
@@ -153,7 +154,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           type: 'cortex',
           text: 'Hello Alexandre! 👋',
           delay: 2000,
-          keyConcept: 'Chat naturally with Cortex'
+          keyConcept: 'Chat naturally'
         },
         { 
           type: 'user', 
@@ -229,7 +230,8 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         {
           type: 'cortex',
           text: 'You have 2 active alerts Alexandre 🔔\n\n⚠️ Low stock: AAA Beef (3 kg remaining)\n⚠️ Temperature: Fridge #2 at 5°C (threshold: 4°C)\n\n✅ Everything else is under control!',
-          delay: 45500
+          delay: 45500,
+          keyConcept: 'Ask for advice'
         },
         { 
           type: 'user', 
