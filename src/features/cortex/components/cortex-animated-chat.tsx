@@ -460,39 +460,39 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                     </AnimatePresence>
                   </div>
                   </div>
-                  
-                  {/* Champ de saisie simulé */}
+                </div>
+                
+                {/* Champ de saisie simulé - fixe en bas */}
+                <div 
+                  className="p-4 border-t"
+                  style={{ 
+                    backgroundColor: 'var(--surface)',
+                    borderColor: 'var(--outline)'
+                  }}
+                >
                   <div 
-                    className="p-4 border-t"
+                    className="flex items-center gap-2 px-4 py-3 rounded-full"
                     style={{ 
-                      backgroundColor: 'var(--surface)',
-                      borderColor: 'var(--outline)'
+                      backgroundColor: 'var(--surface-container-high)',
+                      border: '1px solid var(--outline)'
                     }}
                   >
-                    <div 
-                      className="flex items-center gap-2 px-4 py-3 rounded-full"
-                      style={{ 
-                        backgroundColor: 'var(--surface-container-high)',
-                        border: '1px solid var(--outline)'
-                      }}
-                    >
-                      <input
-                        type="text"
-                        value={typingText}
-                        readOnly
-                        placeholder={isEnglish ? 'Type a message...' : 'Tapez un message...'}
-                        className="flex-1 bg-transparent outline-none text-sm"
-                        style={{ color: 'var(--on-surface)' }}
+                    <input
+                      type="text"
+                      value={typingText}
+                      readOnly
+                      placeholder={isEnglish ? 'Type a message...' : 'Tapez un message...'}
+                      className="flex-1 bg-transparent outline-none text-sm"
+                      style={{ color: 'var(--on-surface)' }}
+                    />
+                    {isTyping && (
+                      <motion.div
+                        animate={{ opacity: [0.5, 1, 0.5] }}
+                        transition={{ duration: 1, repeat: Infinity }}
+                        className="w-2 h-2 rounded-full"
+                        style={{ backgroundColor: 'var(--primary)' }}
                       />
-                      {isTyping && (
-                        <motion.div
-                          animate={{ opacity: [0.5, 1, 0.5] }}
-                          transition={{ duration: 1, repeat: Infinity }}
-                          className="w-2 h-2 rounded-full"
-                          style={{ backgroundColor: 'var(--primary)' }}
-                        />
-                      )}
-                    </div>
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -711,39 +711,39 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                     </AnimatePresence>
                   </div>
                   </div>
-                  
-                  {/* Champ de saisie simulé mobile */}
+                </div>
+                
+                {/* Champ de saisie simulé mobile - fixe en bas */}
+                <div 
+                  className="p-3 border-t"
+                  style={{ 
+                    backgroundColor: 'var(--surface)',
+                    borderColor: 'var(--outline)'
+                  }}
+                >
                   <div 
-                    className="p-3 border-t"
+                    className="flex items-center gap-2 px-3 py-2 rounded-full"
                     style={{ 
-                      backgroundColor: 'var(--surface)',
-                      borderColor: 'var(--outline)'
+                      backgroundColor: 'var(--surface-container-high)',
+                      border: '1px solid var(--outline)'
                     }}
                   >
-                    <div 
-                      className="flex items-center gap-2 px-3 py-2 rounded-full"
-                      style={{ 
-                        backgroundColor: 'var(--surface-container-high)',
-                        border: '1px solid var(--outline)'
-                      }}
-                    >
-                      <input
-                        type="text"
-                        value={typingText}
-                        readOnly
-                        placeholder={isEnglish ? 'Type a message...' : 'Tapez un message...'}
-                        className="flex-1 bg-transparent outline-none text-xs"
-                        style={{ color: 'var(--on-surface)' }}
+                    <input
+                      type="text"
+                      value={typingText}
+                      readOnly
+                      placeholder={isEnglish ? 'Type a message...' : 'Tapez un message...'}
+                      className="flex-1 bg-transparent outline-none text-xs"
+                      style={{ color: 'var(--on-surface)' }}
+                    />
+                    {isTyping && (
+                      <motion.div
+                        animate={{ opacity: [0.5, 1, 0.5] }}
+                        transition={{ duration: 1, repeat: Infinity }}
+                        className="w-1.5 h-1.5 rounded-full"
+                        style={{ backgroundColor: 'var(--primary)' }}
                       />
-                      {isTyping && (
-                        <motion.div
-                          animate={{ opacity: [0.5, 1, 0.5] }}
-                          transition={{ duration: 1, repeat: Infinity }}
-                          className="w-1.5 h-1.5 rounded-full"
-                          style={{ backgroundColor: 'var(--primary)' }}
-                        />
-                      )}
-                    </div>
+                    )}
                   </div>
                 </div>
               </motion.div>
