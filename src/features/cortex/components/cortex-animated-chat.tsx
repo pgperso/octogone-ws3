@@ -56,6 +56,8 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
   const [isClient, setIsClient] = useState(false);
   const [chatState, setChatState] = useState<'closed' | 'small' | 'large'>('closed');
   const [isAnimatingOpen, setIsAnimatingOpen] = useState(false);
+  const [typingText, setTypingText] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const chatContainerMobileRef = useRef<HTMLDivElement>(null);
 
@@ -114,16 +116,49 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
         return () => clearTimeout(openTimeout);
       }
 
-      // Afficher les messages avec leurs délais
+      // Afficher les messages avec leurs délais et simulation de frappe
       const timeouts: NodeJS.Timeout[] = [];
       
-      currentConversation.messages.forEach((message) => {
+      currentConversation.messages.forEach((message, index) => {
         if (!message || typeof message.delay !== 'number') return;
         
-        const timeout = setTimeout(() => {
-          setVisibleMessages(prev => [...prev, message]);
-        }, Math.max(0, message.delay));
-        timeouts.push(timeout);
+        // Si c'est un message utilisateur, simuler la frappe avant
+        if (message.type === 'user') {
+          const typingDelay = Math.max(0, message.delay - 2000); // Commencer à taper 2s avant
+          const typingDuration = 1500; // Durée de la frappe
+          
+          // Commencer la frappe
+          const startTypingTimeout = setTimeout(() => {
+            setIsTyping(true);
+            setTypingText('');
+            
+            // Simuler la frappe caractère par caractère
+            const text = message.text;
+            const charDelay = typingDuration / text.length;
+            
+            text.split('').forEach((char, charIndex) => {
+              const charTimeout = setTimeout(() => {
+                setTypingText(prev => prev + char);
+              }, charIndex * charDelay);
+              timeouts.push(charTimeout);
+            });
+            
+            // Arrêter la frappe et afficher le message
+            const stopTypingTimeout = setTimeout(() => {
+              setIsTyping(false);
+              setTypingText('');
+              setVisibleMessages(prev => [...prev, message]);
+            }, typingDuration + 200);
+            timeouts.push(stopTypingTimeout);
+          }, typingDelay);
+          timeouts.push(startTypingTimeout);
+        } else {
+          // Message Cortex : afficher normalement
+          const timeout = setTimeout(() => {
+            setVisibleMessages(prev => [...prev, message]);
+          }, Math.max(0, message.delay));
+          timeouts.push(timeout);
+        }
       });
 
       // Calculer le temps total de la conversation
@@ -425,6 +460,40 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                     </AnimatePresence>
                   </div>
                   </div>
+                  
+                  {/* Champ de saisie simulé */}
+                  <div 
+                    className="p-4 border-t"
+                    style={{ 
+                      backgroundColor: 'var(--surface)',
+                      borderColor: 'var(--outline)'
+                    }}
+                  >
+                    <div 
+                      className="flex items-center gap-2 px-4 py-3 rounded-full"
+                      style={{ 
+                        backgroundColor: 'var(--surface-container-high)',
+                        border: '1px solid var(--outline)'
+                      }}
+                    >
+                      <input
+                        type="text"
+                        value={typingText}
+                        readOnly
+                        placeholder={isEnglish ? 'Type a message...' : 'Tapez un message...'}
+                        className="flex-1 bg-transparent outline-none text-sm"
+                        style={{ color: 'var(--on-surface)' }}
+                      />
+                      {isTyping && (
+                        <motion.div
+                          animate={{ opacity: [0.5, 1, 0.5] }}
+                          transition={{ duration: 1, repeat: Infinity }}
+                          className="w-2 h-2 rounded-full"
+                          style={{ backgroundColor: 'var(--primary)' }}
+                        />
+                      )}
+                    </div>
+                  </div>
                 </div>
               </motion.div>
               </>
@@ -641,6 +710,40 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                       </div>
                     </AnimatePresence>
                   </div>
+                  </div>
+                  
+                  {/* Champ de saisie simulé mobile */}
+                  <div 
+                    className="p-3 border-t"
+                    style={{ 
+                      backgroundColor: 'var(--surface)',
+                      borderColor: 'var(--outline)'
+                    }}
+                  >
+                    <div 
+                      className="flex items-center gap-2 px-3 py-2 rounded-full"
+                      style={{ 
+                        backgroundColor: 'var(--surface-container-high)',
+                        border: '1px solid var(--outline)'
+                      }}
+                    >
+                      <input
+                        type="text"
+                        value={typingText}
+                        readOnly
+                        placeholder={isEnglish ? 'Type a message...' : 'Tapez un message...'}
+                        className="flex-1 bg-transparent outline-none text-xs"
+                        style={{ color: 'var(--on-surface)' }}
+                      />
+                      {isTyping && (
+                        <motion.div
+                          animate={{ opacity: [0.5, 1, 0.5] }}
+                          transition={{ duration: 1, repeat: Infinity }}
+                          className="w-1.5 h-1.5 rounded-full"
+                          style={{ backgroundColor: 'var(--primary)' }}
+                        />
+                      )}
+                    </div>
                   </div>
                 </div>
               </motion.div>
