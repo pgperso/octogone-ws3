@@ -162,18 +162,17 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
   };
 
   return (
-    <div className="relative w-full max-w-6xl mx-auto">
-      {/* Desktop - Mode paysage */}
-      <div className="hidden md:block relative w-full" style={{ paddingBottom: '56.25%' }}>
-        <div 
-          className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl"
-          style={{
-            backgroundImage: `url('${dashboardImage}')`,
-            backgroundSize: '100% 100%',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
-        >
+    <div className="relative w-full h-full overflow-hidden max-w-6xl mx-auto">
+      {/* Dashboard desktop en arrière-plan */}
+      <div 
+        className="absolute inset-0 w-full h-full hidden md:block rounded-2xl overflow-hidden shadow-2xl"
+        style={{
+          backgroundImage: `url('${dashboardImage}')`,
+          backgroundSize: '100% 100%',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
           <AnimatePresence>
             {isChatOpen && (
               <>
@@ -349,20 +348,18 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
               </>
             )}
           </AnimatePresence>
-        </div>
       </div>
 
-      {/* Mobile - Mode portrait */}
-      <div className="md:hidden relative w-full" style={{ paddingBottom: '177.78%' }}>
-        <div 
-          className="absolute inset-0 rounded-2xl overflow-hidden shadow-2xl"
-          style={{
-            backgroundImage: `url('${dashboardImageMobile}')`,
-            backgroundSize: '100% 100%',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
-        >
+      {/* Dashboard mobile en arrière-plan */}
+      <div 
+        className="absolute inset-0 w-full h-full md:hidden rounded-2xl overflow-hidden shadow-2xl"
+        style={{
+          backgroundImage: `url('${dashboardImageMobile}')`,
+          backgroundSize: '100% 100%',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
           <AnimatePresence>
             {isChatOpen && (
               <>
@@ -538,7 +535,6 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
               </>
             )}
           </AnimatePresence>
-        </div>
       </div>
     </div>
   );
