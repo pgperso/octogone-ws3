@@ -163,7 +163,7 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
                 transition={{ duration: 0.3 }}
-                className="absolute bottom-4 right-4 w-[420px] rounded-2xl shadow-2xl overflow-hidden"
+                className="absolute bottom-4 right-4 w-[420px] h-[500px] rounded-2xl shadow-2xl overflow-hidden flex flex-col"
                 style={{
                   backgroundColor: 'var(--surface)',
                   border: '1px solid var(--outline)'
@@ -210,9 +210,8 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
 
                 {/* Corps du chat avec scroll */}
                 <div 
-                  className="p-4 overflow-y-auto"
+                  className="p-4 overflow-y-auto flex-1"
                   style={{ 
-                    maxHeight: '400px',
                     backgroundColor: 'var(--surface)'
                   }}
                 >
@@ -335,11 +334,10 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
                 transition={{ duration: 0.3 }}
-                className="absolute bottom-4 left-4 right-4 rounded-2xl shadow-2xl overflow-hidden"
+                className="absolute bottom-4 left-4 right-4 h-[400px] rounded-2xl shadow-2xl overflow-hidden flex flex-col"
                 style={{
                   backgroundColor: 'var(--surface)',
-                  border: '1px solid var(--outline)',
-                  maxHeight: '60%'
+                  border: '1px solid var(--outline)'
                 }}
               >
                 {/* Header du chat */}
@@ -383,9 +381,8 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
 
                 {/* Corps du chat avec scroll */}
                 <div 
-                  className="p-3 overflow-y-auto"
+                  className="p-3 overflow-y-auto flex-1"
                   style={{ 
-                    maxHeight: '300px',
                     backgroundColor: 'var(--surface)'
                   }}
                 >
