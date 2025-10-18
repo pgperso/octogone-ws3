@@ -133,6 +133,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           type: 'cortex',
           text: 'Tout est dans Octogone 360 ! 🎯\n\nTon tableau de bord centralisé avec toutes tes métriques en temps réel. Ventes, stocks, food cost, alertes, performances... Une seule page pour tout piloter !',
           delay: 53000,
+          keyConcept: 'Générer des documents',
           cta: {
             label: 'Découvrir Octogone 360',
             link: '/octogone360'
@@ -237,6 +238,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           type: 'cortex',
           text: 'Everything is in Octogone 360! 🎯\n\nYour centralized dashboard with all your real-time metrics. Sales, inventory, food cost, alerts, performance... One page to manage everything!',
           delay: 53000,
+          keyConcept: 'Generate documents',
           cta: {
             label: 'Discover Octogone 360',
             link: '/octogone360'
