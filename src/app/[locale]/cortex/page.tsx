@@ -7,7 +7,7 @@ import { ResponsiveSection } from "@/components/ui/responsive-section";
 import { Brain, Sparkles, MessageSquare, TrendingUp, Clock, Zap } from "lucide-react";
 import { OctogoneButton } from "@/components/ui/octogone-button";
 import { getConceptById } from "@/data/features/features-content";
-import AnimatedChat from '@/features/cortex/components/animated-chat';
+import CortexAnimatedChat from '@/features/cortex/components/cortex-animated-chat';
 import Image from "next/image";
 import Head from "next/head";
 
@@ -407,14 +407,8 @@ export default function CortexPage() {
           </div>
         </motion.div>
 
-        <div 
-          className="rounded-xl p-4 pt-8"
-          style={{ 
-            border: '1px solid var(--outline)',
-            backgroundColor: 'transparent'
-          }}
-        >
-          <AnimatedChat locale={locale} />
+        <div className="w-full">
+          <CortexAnimatedChat locale={locale} />
         </div>
         
         <motion.div 
