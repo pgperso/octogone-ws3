@@ -57,9 +57,11 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const chatContainerMobileRef = useRef<HTMLDivElement>(null);
 
+  const isEnglish = locale === 'en';
+
   // Images du dashboard
-  const dashboardImage = '/dashboard_fr.avif';
-  const dashboardImageMobile = '/dashboard_fr.avif';
+  const dashboardImage = isEnglish ? '/dashboard_en.avif' : '/dashboard_fr.avif';
+  const dashboardImageMobile = isEnglish ? '/dashboard_mobile_en.avif' : '/dashboard_mobile_fr.avif';
 
   // Vérifier si on est côté client pour éviter l'hydratation mismatch
   useEffect(() => {
@@ -81,8 +83,6 @@ export default function CortexAnimatedChat({ locale }: CortexAnimatedChatProps) 
       });
     }
   }, [visibleMessages, isChatOpen]);
-
-  const isEnglish = locale === 'en';
   
   // Gestion d'erreur robuste (mémorisé pour éviter les recalculs)
   const currentConversations = useMemo(() => {
