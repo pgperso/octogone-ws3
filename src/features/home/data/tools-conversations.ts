@@ -59,7 +59,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         { 
           type: 'user', 
-          text: 'Oui ça va ! Dis-moi, je veux une vue d\'ensemble de mon restaurant. C\'est possible ?', 
+          text: 'Oui ! Je veux une vue d\'ensemble de mon resto.', 
           delay: 12000,
           expandChat: true
         },
@@ -146,38 +146,38 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         {
           type: 'cortex',
           text: 'Hello Alexandre! 👋',
-          delay: 1500
+          delay: 2000
         },
         { 
           type: 'user', 
           text: 'Hi Cortex!', 
-          delay: 3500 
+          delay: 5000 
         },
         {
           type: 'cortex',
           text: 'How are you today? Is your restaurant doing well?',
-          delay: 5000
+          delay: 7500
         },
         { 
           type: 'user', 
-          text: 'Yes, all good! Tell me, I want an overview of my restaurant. Is that possible?', 
-          delay: 8000,
+          text: 'Yes! I want an overview of my restaurant.', 
+          delay: 12000,
           expandChat: true
         },
         {
           type: 'cortex',
           text: 'Absolutely! Octogone 360 gives you a complete real-time view 🎯\n\nHere\'s your dashboard: sales, inventory, food cost, alerts... Everything in one place!',
-          delay: 10000
+          delay: 17500
         },
         { 
           type: 'user', 
           text: 'Great! Can I see my sales evolution this week?', 
-          delay: 14500 
+          delay: 23000 
         },
         {
           type: 'cortex',
           text: 'Here are your sales for the last 7 days 📊\n\n💰 Total: $8,450\n📈 Daily avg: $1,207\n🔥 Best day: Saturday ($1,650)\n📉 Lowest: Tuesday ($850)',
-          delay: 16500,
+          delay: 25500,
           chart: {
             type: 'bar',
             title: 'Daily Sales - Last 7 Days ($)',
@@ -195,12 +195,12 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         { 
           type: 'user', 
           text: 'Perfect! And where\'s my food cost?', 
-          delay: 22500 
+          delay: 33000 
         },
         {
           type: 'cortex',
           text: 'Your food cost is 28.5% this week 👨‍🍳\n\n🎯 Target: 30% → You\'re ahead!\n📊 Evolution: -1.2% vs last week\n💡 Your 3 most profitable dishes: Carpaccio (78%), Caesar Salad (72%), Burger (69%)',
-          delay: 24500,
+          delay: 35500,
           chart: {
             type: 'pie',
             title: 'Cost Breakdown (%)',
@@ -214,22 +214,22 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         { 
           type: 'user', 
           text: 'Excellent! And how many alerts do I have right now?', 
-          delay: 30500 
+          delay: 43000 
         },
         {
           type: 'cortex',
           text: 'You have 2 active alerts Alexandre 🔔\n\n⚠️ Low stock: AAA Beef (3 kg remaining)\n⚠️ Temperature: Fridge #2 at 5°C (threshold: 4°C)\n\n✅ Everything else is under control!',
-          delay: 32500
+          delay: 45500
         },
         { 
           type: 'user', 
           text: 'Thanks Cortex! Where can I see all this in detail?', 
-          delay: 36500 
+          delay: 50500 
         },
         {
           type: 'cortex',
           text: 'Everything is in Octogone 360! 🎯\n\nYour centralized dashboard with all your real-time metrics. Sales, inventory, food cost, alerts, performance... One page to manage everything!',
-          delay: 38500,
+          delay: 53000,
           cta: {
             label: 'Discover Octogone 360',
             link: '/octogone360'

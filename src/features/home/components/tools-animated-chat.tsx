@@ -411,27 +411,22 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
               }}
             >
               <div 
-                className="flex items-start gap-2 px-4 py-3 rounded-2xl"
+                className="flex items-center gap-2 px-4 py-3 rounded-full"
                 style={{ 
                   backgroundColor: 'var(--surface-container-high)',
                   border: '1px solid var(--outline)'
                 }}
               >
-                <textarea
+                <input
+                  type="text"
                   value={typingText}
                   readOnly
                   placeholder={isEnglish ? 'Type a message...' : 'Tapez un message...'}
-                  className="flex-1 bg-transparent outline-none text-sm resize-none"
-                  style={{ 
-                    color: 'var(--on-surface)',
-                    minHeight: '24px',
-                    maxHeight: '120px',
-                    overflow: 'auto'
-                  }}
-                  rows={1}
+                  className="flex-1 bg-transparent outline-none text-sm"
+                  style={{ color: 'var(--on-surface)' }}
                 />
                 <button
-                  className="w-8 h-8 rounded-full flex items-center justify-center transition-colors flex-shrink-0"
+                  className="w-8 h-8 rounded-full flex items-center justify-center transition-colors"
                   style={{ 
                     backgroundColor: typingText ? 'var(--primary)' : 'var(--surface-container-high)',
                     color: typingText ? 'var(--on-primary)' : 'var(--on-surface-variant)',
