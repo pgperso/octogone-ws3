@@ -104,7 +104,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           type: 'cortex',
           text: 'Ton food cost est à 28,5% cette semaine 👨‍🍳\n\n🎯 Objectif : 30% → Tu es en avance !\n📊 Évolution : -1,2% vs semaine dernière\n💡 Tes 3 plats les plus rentables : Carpaccio (78%), Salade César (72%), Burger (69%)',
           delay: 35500,
-          keyConcept: 'Exécuter des commandes',
+          keyConcept: 'Posez des actions',
           chart: {
             type: 'pie',
             title: 'Répartition des coûts (%)',
@@ -134,7 +134,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           type: 'cortex',
           text: 'Tout est dans Octogone 360 ! 🎯\n\nTon tableau de bord centralisé avec toutes tes métriques en temps réel. Ventes, stocks, food cost, alertes, performances... Une seule page pour tout piloter !',
           delay: 53000,
-          keyConcept: 'Générer des documents',
+          keyConcept: 'Générez des documents',
           cta: {
             label: 'Découvrir Octogone 360',
             link: '/octogone360'
@@ -210,7 +210,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           type: 'cortex',
           text: 'Your food cost is 28.5% this week 👨‍🍳\n\n🎯 Target: 30% → You\'re ahead!\n📊 Evolution: -1.2% vs last week\n💡 Your 3 most profitable dishes: Carpaccio (78%), Caesar Salad (72%), Burger (69%)',
           delay: 35500,
-          keyConcept: 'Execute commands',
+          keyConcept: 'Take actions',
           chart: {
             type: 'pie',
             title: 'Cost Breakdown (%)',
