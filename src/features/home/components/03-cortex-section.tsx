@@ -16,10 +16,21 @@ interface CortexIntroProps {
 
 export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
   const isEnglish = locale === "en";
-  const [currentKeyConcept, setCurrentKeyConcept] = React.useState<string>('');
+  const [keyConcepts, setKeyConcepts] = React.useState<string[]>([]);
 
   const handleKeyConceptChange = React.useCallback((concept: string) => {
-    setCurrentKeyConcept(concept);
+    if (concept === '') {
+      // Réinitialiser quand le chat se ferme
+      setKeyConcepts([]);
+    } else {
+      // Ajouter le concept s'il n'existe pas déjà
+      setKeyConcepts(prev => {
+        if (!prev.includes(concept)) {
+          return [...prev, concept];
+        }
+        return prev;
+      });
+    }
   }, []);
 
   return (
@@ -66,9 +77,9 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
 
           {/* Concepts clés dynamiques */}
           <div className="flex flex-wrap justify-center items-center gap-4 max-w-4xl mx-auto mb-16 min-h-[100px]">
-            {currentKeyConcept && (
-              <KeyConceptBadge concept={currentKeyConcept} />
-            )}
+            {keyConcepts.map((concept, index) => (
+              <KeyConceptBadge key={concept} concept={concept} />
+            ))}
           </div>
         </motion.div>
 
