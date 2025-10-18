@@ -16,31 +16,14 @@ interface CortexIntroProps {
 
 export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
   const isEnglish = locale === "en";
-  const [visibleConceptsCount, setVisibleConceptsCount] = React.useState(0);
 
-  // Tous les concepts à afficher - Mémorisé pour éviter les re-renders
+  // Tous les concepts à afficher - Toujours visibles
   const allKeyConcepts = React.useMemo(() => 
     isEnglish 
       ? ['Chat naturally', 'Visualize your results', 'Compare your performance', 'Generate documents', 'Request tutorials', 'Take actions']
       : ['Discutez naturellement', 'Visualisez vos résultats', 'Comparez vos performances', 'Générez des documents', 'Commandez des tutoriels', 'Posez des actions'],
     [isEnglish]
   );
-
-  // Animation séquentielle des concepts au chargement
-  React.useEffect(() => {
-    const timers: NodeJS.Timeout[] = [];
-    
-    allKeyConcepts.forEach((_, index) => {
-      const timer = setTimeout(() => {
-        setVisibleConceptsCount(index + 1);
-      }, index * 800); // 800ms entre chaque concept
-      timers.push(timer);
-    });
-
-    return () => {
-      timers.forEach(timer => clearTimeout(timer));
-    };
-  }, [allKeyConcepts]);
 
   return (
     <div style={{ backgroundColor: 'var(--background)' }}>
@@ -84,9 +67,9 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
               : "Votre assistant IA qui transforme vos données en décisions."}
           </p>
 
-          {/* Concepts clés dynamiques - Affichage séquentiel indépendant */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto mb-16 min-h-[100px]">
-            {allKeyConcepts.slice(0, visibleConceptsCount).map((concept: string) => (
+          {/* Concepts clés - Affichés en tout temps */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto mb-16">
+            {allKeyConcepts.map((concept: string) => (
               <KeyConceptBadge key={concept} concept={concept} />
             ))}
           </div>
