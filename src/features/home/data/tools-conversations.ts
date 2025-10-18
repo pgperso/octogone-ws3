@@ -111,7 +111,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           type: 'cortex',
           text: 'Parfait ! 📈\n\n🔼 Semaine actuelle : 8 450 $\n🔽 Semaine précédente : 7 890 $\n🚀 Augmentation : +7,1% (+560 $)\n\n🎯 Ton meilleur jour : Samedi (+15%)',
           delay: 25000,
-          keyConcept: 'Comparez vos résultats'
+          keyConcept: 'Comparez vos performances'
         },
         { 
           type: 'user', 
@@ -215,7 +215,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           type: 'cortex',
           text: 'Perfect! 📈\n\n🔼 Current week: $8,450\n🔽 Previous week: $7,890\n🚀 Increase: +7.1% (+$560)\n\n🎯 Your best day: Saturday (+15%)',
           delay: 25000,
-          keyConcept: 'Compare your results'
+          keyConcept: 'Compare your performance'
         },
         { 
           type: 'user', 
