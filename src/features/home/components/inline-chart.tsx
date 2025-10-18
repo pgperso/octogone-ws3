@@ -36,17 +36,18 @@ export default function InlineChart({ chart, isEnglish }: InlineChartProps) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
-      className="mt-4 p-4 rounded-xl"
+      className="mt-4 p-4 rounded-xl w-full"
       style={{ 
         backgroundColor: 'var(--surface)',
-        border: '1px solid var(--outline-variant)'
+        border: '1px solid var(--outline-variant)',
+        maxWidth: '100%'
       }}
     >
       <h4 className="text-sm font-semibold mb-3" style={{ color: 'var(--on-surface)' }}>
         {chart.title}
       </h4>
       
-      <div className="h-80 w-full">
+      <div className="w-full" style={{ height: '300px', minHeight: '250px' }}>
         <ResponsiveContainer width="100%" height="100%">
           {chart.type === 'line' ? (
             <LineChart data={chartData}>

@@ -336,7 +336,7 @@ export default function ToolsAnimatedChat({ locale }: ToolsAnimatedChatProps) {
                 </div>
               )}
 
-              <div className={`flex flex-col ${message.type === 'user' ? 'items-end' : 'items-start'} gap-2 max-w-[80%]`}>
+              <div className={`flex flex-col ${message.type === 'user' ? 'items-end' : 'items-start'} gap-2 ${message.chart ? 'max-w-[95%]' : 'max-w-[80%]'}`}>
                 <div 
                   className="rounded-2xl px-4 py-3"
                   style={{ 

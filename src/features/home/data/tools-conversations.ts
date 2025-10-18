@@ -66,17 +66,17 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         {
           type: 'cortex',
           text: 'Absolument ! Octogone 360 te donne une vision complète en temps réel 🎯\n\nVoici ton tableau de bord : ventes, inventaire, food cost, alertes... Tout au même endroit !',
-          delay: 14500
+          delay: 17500
         },
         { 
           type: 'user', 
           text: 'Génial ! Et je peux voir l\'évolution de mes ventes cette semaine ?', 
-          delay: 20000 
+          delay: 23000 
         },
         {
           type: 'cortex',
           text: 'Voici tes ventes des 7 derniers jours 📊\n\n💰 Total : 8 450 $\n📈 Moyenne/jour : 1 207 $\n🔥 Meilleur jour : Samedi (1 650 $)\n📉 Plus faible : Mardi (850 $)',
-          delay: 22500,
+          delay: 25500,
           chart: {
             type: 'bar',
             title: 'Ventes quotidiennes - 7 derniers jours ($)',
@@ -94,12 +94,12 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         { 
           type: 'user', 
           text: 'Parfait ! Et mon food cost, il est où ?', 
-          delay: 30000 
+          delay: 33000 
         },
         {
           type: 'cortex',
           text: 'Ton food cost est à 28,5% cette semaine 👨‍🍳\n\n🎯 Objectif : 30% → Tu es en avance !\n📊 Évolution : -1,2% vs semaine dernière\n💡 Tes 3 plats les plus rentables : Carpaccio (78%), Salade César (72%), Burger (69%)',
-          delay: 32500,
+          delay: 35500,
           chart: {
             type: 'pie',
             title: 'Répartition des coûts (%)',
@@ -113,22 +113,22 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         { 
           type: 'user', 
           text: 'Excellent ! Et les alertes, j\'en ai combien en ce moment ?', 
-          delay: 40000 
+          delay: 43000 
         },
         {
           type: 'cortex',
           text: 'Tu as 2 alertes actives Alexandre 🔔\n\n⚠️ Stock faible : Bœuf AAA (3 kg restants)\n⚠️ Température : Frigo #2 à 5°C (seuil : 4°C)\n\n✅ Tout le reste est sous contrôle !',
-          delay: 42500
+          delay: 45500
         },
         { 
           type: 'user', 
           text: 'Merci Cortex ! Où je peux voir tout ça en détail ?', 
-          delay: 47500 
+          delay: 50500 
         },
         {
           type: 'cortex',
           text: 'Tout est dans Octogone 360 ! 🎯\n\nTon tableau de bord centralisé avec toutes tes métriques en temps réel. Ventes, stocks, food cost, alertes, performances... Une seule page pour tout piloter !',
-          delay: 50000,
+          delay: 53000,
           cta: {
             label: 'Découvrir Octogone 360',
             link: '/octogone360'
