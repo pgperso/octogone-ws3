@@ -454,7 +454,7 @@ export default function CortexPage() {
         spacing="none"
         style={{ backgroundColor: 'transparent' }}
       >
-        <div className="pt-8">
+        <div className="pt-0">
         {/* Chat animé Cortex */}
         <motion.div
           className="max-w-5xl mx-auto"
