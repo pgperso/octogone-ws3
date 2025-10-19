@@ -1,13 +1,42 @@
 'use client';
 
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float } from '@react-three/drei';
 import * as THREE from 'three';
 import { createRhombusBipyramid } from './solids';
 
-// Les couleurs seront lues depuis les variables CSS du thème
-// Pas de palette hardcodée
+// Hook pour lire les couleurs du thème et réagir aux changements
+function useThemeColors() {
+  const [colors, setColors] = useState({
+    background: '#1E1E1E',
+    outline: '#404040',
+  });
+
+  useEffect(() => {
+    const updateColors = () => {
+      const styles = getComputedStyle(document.documentElement);
+      setColors({
+        background: styles.getPropertyValue('--background').trim() || '#1E1E1E',
+        outline: styles.getPropertyValue('--outline').trim() || '#404040',
+      });
+    };
+
+    // Lire les couleurs au montage
+    updateColors();
+
+    // Observer les changements de classe sur <html> (dark/light)
+    const observer = new MutationObserver(updateColors);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  return colors;
+}
 
 const GOLDEN_ANGLE = 137.508;
 
@@ -27,11 +56,8 @@ function seededRandom(seed: number): () => number {
   };
 }
 
-function generateShapeData(count: number, seed: number): { rhombuses: ShapeData[] } {
+function generateShapeData(count: number, seed: number, outlineColor: string): { rhombuses: ShapeData[] } {
   const rand = seededRandom(seed);
-  // Utiliser la couleur outline du thème pour toutes les arêtes
-  // Light: #E5E5E5, Dark: #404040
-  const outlineColor = getComputedStyle(document.documentElement).getPropertyValue('--outline').trim() || '#404040';
   const rhombuses: ShapeData[] = [];
 
   const frontCount = Math.floor(count * 0.15);
@@ -138,16 +164,16 @@ function RhombusInstances({ data }: { data: ShapeData[] }) {
 
 function Scene({ density, seed }: { density: number; seed: number }) {
   const count = Math.floor(60 * density);
-  const { rhombuses } = useMemo(() => generateShapeData(count, seed), [count, seed]);
-
-  // Lire la couleur background du thème (format hex direct)
-  const backgroundColor = typeof window !== 'undefined' 
-    ? getComputedStyle(document.documentElement).getPropertyValue('--background').trim() || '#1E1E1E'
-    : '#1E1E1E';
+  const themeColors = useThemeColors();
+  
+  const { rhombuses } = useMemo(
+    () => generateShapeData(count, seed, themeColors.outline), 
+    [count, seed, themeColors.outline]
+  );
 
   return (
     <>
-      <color attach="background" args={[backgroundColor]} />
+      <color attach="background" args={[themeColors.background]} />
 
       <Float speed={0.5} rotationIntensity={0.2} floatIntensity={0.3}>
         <RhombusInstances data={rhombuses} />
