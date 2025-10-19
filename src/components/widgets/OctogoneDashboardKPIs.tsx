@@ -441,7 +441,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
               <p className="text-sm font-semibold leading-tight" style={{ color: 'var(--primary)' }}>
                 {isEnglish ? 'Restaurant Director' : 'Directeur de restauration'}
               </p>
-              <p className="text-sm leading-tight" style={{ color: 'var(--on-surface-variant)' }}>
+              <p className="text-xs leading-tight" style={{ color: 'var(--on-surface-variant)' }}>
                 {isEnglish ? 'Groupe Resto & Co' : 'Groupe Resto & Co'}
               </p>
             </div>
@@ -449,78 +449,81 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
 
         </div>
         
-        {/* Ligne des périodes : Segmented Button + Dates + Sélecteur */}
-        <div className="flex items-end gap-6">
-          {/* Segmented Button pour les périodes */}
-          <div className="flex flex-col">
+        {/* Ligne des périodes : Groupé à gauche + Sélecteur à droite */}
+        <div className="flex items-end justify-between">
+          {/* Groupe de gauche : Segmented Button + Périodes */}
+          <div className="flex items-end gap-6">
+            {/* Segmented Button pour les périodes */}
+            <div className="flex flex-col">
+              <div 
+                className="inline-flex rounded-lg h-10"
+                style={{ 
+                  backgroundColor: 'transparent',
+                  border: '1px solid var(--outline)'
+                }}
+              >
+                {periods.map((period, index) => (
+                  <div key={period.id} className="flex h-full">
+                    <button
+                      onClick={() => setSelectedPeriod(period.id)}
+                      className={`px-4 py-2 text-sm font-medium transition-all duration-200 cursor-pointer flex items-center h-full ${
+                        index === 0 ? 'rounded-l-lg' : ''
+                      } ${
+                        index === periods.length - 1 ? 'rounded-r-lg' : ''
+                      }`}
+                      style={{
+                        backgroundColor: selectedPeriod === period.id 
+                          ? 'var(--secondary-container)' 
+                          : 'transparent',
+                        color: selectedPeriod === period.id 
+                          ? 'var(--on-secondary-container)' 
+                          : 'var(--on-surface)'
+                      }}
+                    >
+                      {isEnglish ? period.labelEn : period.labelFr}
+                    </button>
+                    {/* Ligne séparatrice verticale pleine hauteur */}
+                    {index < periods.length - 1 && (
+                      <div 
+                        className="w-px h-full"
+                        style={{ backgroundColor: 'var(--outline)' }}
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Affichage des périodes courante et comparative avec bordure */}
             <div 
-              className="inline-flex rounded-lg h-10"
-              style={{ 
-                backgroundColor: 'transparent',
-                border: '1px solid var(--outline)'
-              }}
+              className="flex items-start gap-0 text-sm h-10 rounded-lg"
+              style={{ border: '1px solid var(--outline)' }}
             >
-              {periods.map((period, index) => (
-                <div key={period.id} className="flex h-full">
-                  <button
-                    onClick={() => setSelectedPeriod(period.id)}
-                    className={`px-4 py-2 text-sm font-medium transition-all duration-200 cursor-pointer flex items-center h-full ${
-                      index === 0 ? 'rounded-l-lg' : ''
-                    } ${
-                      index === periods.length - 1 ? 'rounded-r-lg' : ''
-                    }`}
-                    style={{
-                      backgroundColor: selectedPeriod === period.id 
-                        ? 'var(--secondary-container)' 
-                        : 'transparent',
-                      color: selectedPeriod === period.id 
-                        ? 'var(--on-secondary-container)' 
-                        : 'var(--on-surface)'
-                    }}
-                  >
-                    {isEnglish ? period.labelEn : period.labelFr}
-                  </button>
-                  {/* Ligne séparatrice verticale pleine hauteur */}
-                  {index < periods.length - 1 && (
-                    <div 
-                      className="w-px h-full"
-                      style={{ backgroundColor: 'var(--outline)' }}
-                    />
-                  )}
-                </div>
-              ))}
+              <div className="flex flex-col h-full justify-end px-4 py-2">
+                <span className="text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
+                  {isEnglish ? 'Period' : 'Période'}
+                </span>
+                <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
+                  {periodText.current}
+                </span>
+              </div>
+              {/* Séparateur vertical pleine hauteur */}
+              <div 
+                className="w-px h-full"
+                style={{ backgroundColor: 'var(--outline)' }}
+              />
+              <div className="flex flex-col h-full justify-end px-4 py-2">
+                <span className="text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
+                  {isEnglish ? 'Comparative period' : 'Période comparative'}
+                </span>
+                <span style={{ color: 'var(--on-surface-variant)' }}>
+                  {periodText.previous}
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* Affichage des périodes courante et comparative avec bordure */}
-          <div 
-            className="flex items-start gap-0 text-sm h-10 rounded-lg"
-            style={{ border: '1px solid var(--outline)' }}
-          >
-            <div className="flex flex-col h-full justify-end px-4 py-2">
-              <span className="text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
-                {isEnglish ? 'Period' : 'Période'}
-              </span>
-              <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
-                {periodText.current}
-              </span>
-            </div>
-            {/* Séparateur vertical pleine hauteur */}
-            <div 
-              className="w-px h-full"
-              style={{ backgroundColor: 'var(--outline)' }}
-            />
-            <div className="flex flex-col h-full justify-end px-4 py-2">
-              <span className="text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
-                {isEnglish ? 'Comparative period' : 'Période comparative'}
-              </span>
-              <span style={{ color: 'var(--on-surface-variant)' }}>
-                {periodText.previous}
-              </span>
-            </div>
-          </div>
-
-          {/* Sélecteur d'établissements à droite */}
+          {/* Sélecteur d'établissements à la toute droite */}
           <div className="flex flex-col">
             <span className="text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
               {isEnglish ? 'Establishments' : 'Établissements'}
@@ -620,46 +623,51 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                 boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
               }}
             >
-              {/* Header avec titre et icône info */}
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center gap-2">
-                  <Info className="w-4 h-4" style={{ color: 'var(--on-surface-variant)' }} />
-                  <h4 className="text-sm font-semibold" style={{ color: 'var(--on-surface)' }}>
-                    {title}
-                  </h4>
+              <div className="flex items-start justify-between h-full">
+                {/* Contenu principal à gauche */}
+                <div className="flex-1">
+                  {/* Header avec titre et icône info */}
+                  <div className="flex items-center gap-2 mb-3">
+                    <Info className="w-4 h-4" style={{ color: 'var(--on-surface-variant)' }} />
+                    <h4 className="text-sm font-semibold" style={{ color: 'var(--on-surface)' }}>
+                      {title}
+                    </h4>
+                  </div>
+
+                  {/* Valeur principale */}
+                  <div className="mb-2">
+                    <p 
+                      className="text-2xl font-bold"
+                      style={{ 
+                        color: metric.current < 0 ? '#F44336' : 'var(--on-surface)'
+                      }}
+                    >
+                      {formatValue(metric)}
+                    </p>
+                  </div>
+
+                  {/* Valeur précédente */}
+                  <div>
+                    <p className="text-xs" style={{ color: 'var(--on-surface-variant)' }}>
+                      {formatPreviousValue(metric)}
+                    </p>
+                  </div>
                 </div>
-                {metric.delta_pct !== null && (
-                  <TrendIcon 
-                    className="w-5 h-5" 
-                    style={{ color: trendColor }}
-                  />
-                )}
-              </div>
 
-              {/* Valeur principale */}
-              <div className="mb-2">
-                <p 
-                  className="text-2xl font-bold"
-                  style={{ 
-                    color: metric.current < 0 ? '#F44336' : 'var(--on-surface)'
-                  }}
-                >
-                  {formatValue(metric)}
-                </p>
-              </div>
-
-              {/* Comparaison et changement */}
-              <div className="flex items-center justify-between">
-                <p className="text-xs" style={{ color: 'var(--on-surface-variant)' }}>
-                  {formatPreviousValue(metric)}
-                </p>
+                {/* Variation groupée à droite, centrée verticalement */}
                 {metric.delta_pct !== null && (
-                  <p 
-                    className="text-xs font-semibold"
-                    style={{ color: trendColor }}
-                  >
-                    {formatDeltaPct(metric.delta_pct)}
-                  </p>
+                  <div className="flex flex-col items-center justify-center h-full gap-1">
+                    <TrendIcon 
+                      className="w-5 h-5" 
+                      style={{ color: trendColor }}
+                    />
+                    <p 
+                      className="text-xs font-semibold"
+                      style={{ color: trendColor }}
+                    >
+                      {formatDeltaPct(metric.delta_pct)}
+                    </p>
+                  </div>
                 )}
               </div>
             </div>
