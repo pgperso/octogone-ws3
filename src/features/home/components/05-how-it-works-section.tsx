@@ -95,7 +95,9 @@ const HowItWorks = ({ onOpenCalculator }: HowItWorksProps) => {
     <ResponsiveSection
       as="section"
       spacing="xxl"
-      style={{ backgroundColor: 'transparent' }}
+      style={{ 
+        background: 'linear-gradient(to bottom, transparent, var(--background))'
+      }}
     >
       <motion.div 
         className="text-center mb-16"
