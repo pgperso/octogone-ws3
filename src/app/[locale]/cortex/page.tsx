@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useParams } from "next/navigation";
 import { ResponsiveSection } from "@/components/ui/responsive-section";
-import { Brain, MessageSquare, TrendingUp, Clock, Zap, BarChart3, FileText, Video, CheckCircle, Check } from "lucide-react";
+import { Brain, MessageSquare, Clock, Zap, BarChart3, FileText, Video, CheckCircle, Check } from "lucide-react";
 import { OctogoneButton } from "@/components/ui/octogone-button";
 import { getConceptById } from "@/data/features/features-content";
 import Image from "next/image";
@@ -507,7 +507,7 @@ export default function CortexPage() {
                         <Check className="w-3 h-3" style={{ color: 'var(--on-success)', strokeWidth: 3 }} />
                       </div>
                       <p className="text-sm leading-relaxed" style={{ color: 'var(--on-surface-variant)' }}>
-                        "{example}"
+                        &ldquo;{example}&rdquo;
                       </p>
                     </div>
                   ))}
