@@ -12,7 +12,6 @@ const COLORS = {
 };
 
 // Génération déterministe avec angle d'or
-const PHI = 1.618033988749895;
 const GOLDEN_ANGLE = 137.508;
 
 interface Shape {

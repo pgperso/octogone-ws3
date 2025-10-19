@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import ProBackgroundSVG from './ProBackgroundSVG';
 
 export default function ProBackground() {
-  const [Enhanced3D, setEnhanced3D] = useState<React.ComponentType<any> | null>(null);
+  const [Enhanced3D, setEnhanced3D] = useState<React.ComponentType<{ density: number }> | null>(null);
 
   useEffect(() => {
     // Conditions pour charger la version 3D
@@ -26,7 +26,7 @@ export default function ProBackground() {
         // Charger dynamiquement Background3D
         const { default: Background3D } = await import('./Background3D');
         setEnhanced3D(() => Background3D);
-      } catch (error) {
+      } catch {
         // Ignorer silencieusement si les libs ne sont pas disponibles
         // Le SVG reste actif
       }
