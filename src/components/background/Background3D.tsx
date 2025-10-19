@@ -4,11 +4,10 @@ import { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, Environment } from '@react-three/drei';
 import * as THREE from 'three';
+import { createOctagonBipyramid, createRhombusBipyramid } from './solids';
 
-/**
- * Crée un prisme octogonal complet (8 côtés)
- */
-function createOctagonPrismGeometry(opts?: { edge?: number; height?: number }): THREE.BufferGeometry {
+// Anciennes fonctions supprimées - on utilise maintenant solids.ts
+function createOctagonPrismGeometry_OLD(opts?: { edge?: number; height?: number }): THREE.BufferGeometry {
   const edge = opts?.edge ?? 1;
   const height = opts?.height ?? 0.6;
   
@@ -203,8 +202,8 @@ function generateShapeData(count: number, seed: number): { octagons: ShapeData[]
 
 function OctagonInstances({ data }: { data: ShapeData[] }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
-  // Prisme octogonal : volume solide avec 8 faces verticales + dessus/dessous
-  const geometry = useMemo(() => createOctagonPrismGeometry({ edge: 0.8, height: 0.6 }), []);
+  // Bipyramide octogonale : diamant à 8 faces
+  const geometry = useMemo(() => createOctagonBipyramid({ edge: 1, height: 0.8, normalize: true }), []);
 
   const { matrices, colors } = useMemo(() => {
     const matrices = new Float32Array(data.length * 16);
@@ -253,7 +252,7 @@ function RhombusInstances({ data }: { data: ShapeData[] }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   
   // Losange bipyramidal (diamant 3D) : deux pyramides jointes par la base
-  const geometry = useMemo(() => createRhombusBipyramidGeometry({ diagH: 1.8, diagV: 1.2, apex: 0.8 }), []);
+  const geometry = useMemo(() => createRhombusBipyramid({ diagH: 1.8, diagV: 1.2, height: 0.8, normalize: true }), []);
 
   const { matrices, colors } = useMemo(() => {
     const matrices = new Float32Array(data.length * 16);
