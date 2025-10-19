@@ -150,7 +150,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
   const getAggregatedData = () => {
     const establishments = selectedEstablishments.length > 0 ? selectedEstablishments : Object.keys(currentPeriodData.by_establishment);
     
-    let aggregatedCurrent = {
+    const aggregatedCurrent = {
       sales: 0,
       clients: 0,
       spendings: 0,
@@ -165,7 +165,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
       avg_invoice: 0
     };
 
-    let aggregatedPrevious = {
+    const aggregatedPrevious = {
       sales: 0,
       clients: 0,
       spendings: 0,
@@ -529,14 +529,14 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
           </div>
         </div>
         
-        {/* Ligne des périodes : Segmented Button + Dates */}
+        {/* Ligne des périodes : Segmented Button + Dates + Sélecteur */}
         <div className="flex items-end gap-6">
           {/* Segmented Button pour les périodes */}
           <div className="flex flex-col">
             <div 
               className="inline-flex rounded-lg h-10"
               style={{ 
-                backgroundColor: 'var(--surface)',
+                backgroundColor: 'transparent',
                 border: '1px solid var(--outline)'
               }}
             >
@@ -552,7 +552,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                     style={{
                       backgroundColor: selectedPeriod === period.id 
                         ? 'var(--secondary-container)' 
-                        : 'var(--surface)',
+                        : 'transparent',
                       color: selectedPeriod === period.id 
                         ? 'var(--on-secondary-container)' 
                         : 'var(--on-surface)'
@@ -578,7 +578,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
             style={{ border: '1px solid var(--outline)' }}
           >
             <div className="flex flex-col h-full justify-end px-4 py-2">
-              <span className="text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
+              <span className="text-xs font-bold mb-1" style={{ color: 'var(--on-surface-variant)' }}>
                 {isEnglish ? 'Period' : 'Période'}
               </span>
               <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
@@ -591,12 +591,93 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
               style={{ backgroundColor: 'var(--outline)' }}
             />
             <div className="flex flex-col h-full justify-end px-4 py-2">
-              <span className="text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
+              <span className="text-xs font-bold mb-1" style={{ color: 'var(--on-surface-variant)' }}>
                 {isEnglish ? 'Comparative period' : 'Période comparative'}
               </span>
               <span style={{ color: 'var(--on-surface-variant)' }}>
                 {periodText.previous}
               </span>
+            </div>
+          </div>
+
+          {/* Sélecteur d'établissements à droite */}
+          <div className="flex flex-col">
+            <span className="text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
+              {isEnglish ? 'Establishments' : 'Établissements'}
+            </span>
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setIsEstablishmentDropdownOpen(!isEstablishmentDropdownOpen)}
+                className="px-3 py-2 rounded-lg text-sm font-medium border-0 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none cursor-pointer flex items-center gap-2 min-w-48 h-10"
+                style={{ 
+                  backgroundColor: 'var(--surface)',
+                  color: 'var(--on-surface)',
+                  boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
+                }}
+              >
+                <span className="flex-1 text-left">{getEstablishmentDisplayText()}</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {/* Dropdown avec checkboxes */}
+              {isEstablishmentDropdownOpen && (
+                <div 
+                  className="absolute top-full left-0 mt-1 w-full rounded-lg shadow-lg z-50 py-2"
+                  style={{ 
+                    backgroundColor: 'var(--surface)',
+                    border: '1px solid var(--outline)',
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
+                  }}
+                >
+                  {/* Option "Tous les établissements" */}
+                  <div
+                    onClick={handleSelectAll}
+                    className="flex items-center gap-3 px-3 py-2 hover:bg-opacity-50 cursor-pointer"
+                    style={{ backgroundColor: 'transparent' }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--surface-variant)'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={selectedEstablishments.length === establishments.length}
+                      onChange={() => {}}
+                      className="w-4 h-4 rounded cursor-pointer"
+                      style={{ accentColor: 'var(--secondary)' }}
+                    />
+                    <span className="text-sm font-medium" style={{ color: 'var(--on-surface)' }}>
+                      {isEnglish ? 'All establishments' : 'Tous les établissements'}
+                    </span>
+                  </div>
+
+                  {/* Séparateur */}
+                  <div className="h-px mx-2 my-1" style={{ backgroundColor: 'var(--outline-variant)' }} />
+
+                  {/* Options individuelles */}
+                  {establishments.map((establishment) => (
+                    <div
+                      key={establishment.id}
+                      onClick={() => handleEstablishmentToggle(establishment.id)}
+                      className="flex items-center gap-3 px-3 py-2 hover:bg-opacity-50 cursor-pointer"
+                      style={{ backgroundColor: 'transparent' }}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--surface-variant)'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={selectedEstablishments.includes(establishment.id)}
+                        onChange={() => {}}
+                        className="w-4 h-4 rounded cursor-pointer"
+                        style={{ accentColor: 'var(--secondary)' }}
+                      />
+                      <span className="text-sm" style={{ color: 'var(--on-surface)' }}>
+                        {isEnglish ? establishment.nameEn : establishment.nameFr}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
