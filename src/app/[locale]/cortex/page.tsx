@@ -324,13 +324,12 @@ export default function CortexPage() {
                 backgroundColor: 'var(--surface-variant)'
               }}
             >
-              <iframe
-                src={concept.heroImage}
-                className="w-full h-full object-cover"
-                frameBorder="0"
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                allowFullScreen
-                title={locale === 'fr' ? concept.nameFr : concept.nameEn}
+              <Image
+                src="/images/Restaurant 2.avif"
+                alt={isEnglish ? concept.nameEn : concept.nameFr}
+                fill
+                className="object-cover"
+                priority
               />
             </div>
           </div>
@@ -356,10 +355,10 @@ export default function CortexPage() {
             {isEnglish ? 'Your Most Reliable Employee' : 'Votre employé le plus fiable'}
           </h2>
 
-          <p className="text-lg max-w-2xl mx-auto mb-8" style={{ color: 'var(--on-surface-variant)' }}>
+          <p className="text-lg max-w-3xl mx-auto mb-8" style={{ color: 'var(--on-surface-variant)' }}>
             {isEnglish
-              ? 'Always available, Cortex answers your questions 24/7. It learns, knows you, and masters every aspect of your operations. Discover what Cortex can do for you and your business:'
-              : 'Toujours disponible, Cortex répond à vos questions 24 heures sur 24, 7 jours sur 7. Il apprend, il vous connaît et il maîtrise tous les aspects de vos opérations. Découvrez ce que Cortex peut faire pour vous et votre entreprise :'}
+              ? 'Always available, Cortex answers your questions 24/7. Your perfect manager who works tirelessly, analyzes, recommends, and predicts. Nothing escapes him. Soon accessible on the current platform, Cortex will mark the beginning of a new era of intelligent management. Discover what Cortex can do for you:'
+              : 'Toujours disponible, Cortex répond à vos questions 24/7. Votre gestionnaire parfait qui travaille sans relâche, analyse, recommande et prédit. Rien ne lui échappe. Bientôt accessible sur la plateforme actuelle, Cortex marquera le début d\'une nouvelle ère de gestion intelligente. Découvrez ce que Cortex peut faire pour vous :'}
           </p>
 
           {/* Toggle Maintenant/Bientôt */}
@@ -455,25 +454,6 @@ export default function CortexPage() {
         spacing="xxl"
         style={{ backgroundColor: 'transparent' }}
       >
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--on-background)' }}>
-            {isEnglish ? 'Cortex in Action' : 'Cortex en Action'}
-          </h2>
-          <div className="text-lg max-w-3xl mx-auto space-y-4">
-            <p style={{ color: 'var(--on-surface)' }}>
-              {isEnglish
-                ? 'Discover* Octogone\'s new AI assistant in exclusive preview. Cortex is your perfect manager who works tirelessly, analyzes, recommends, and predicts. Nothing escapes him. Soon accessible on the current platform version, Cortex will mark the beginning of a new era of intelligent management. Add Cortex to your plan now and benefit from a price freeze when the new version of Octogone launches.'
-                : 'Découvrez* en primeur le nouvel assistant IA d\'Octogone. Cortex, c\'est votre gestionnaire parfait qui travaille sans relâche, analyse, recommande et prédit. Rien ne lui échappe. Bientôt accessible sur la version actuelle de la plateforme, Cortex marquera le début d\'une nouvelle ère de gestion intelligente. Ajoutez Cortex à votre forfait maintenant et profitez d\'un gel de tarif lors du lancement de la nouvelle version d\'Octogone.'}
-            </p>
-          </div>
-        </motion.div>
-
         {/* Chat animé Cortex */}
         <motion.div
           className="max-w-5xl mx-auto"
