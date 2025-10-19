@@ -29,8 +29,8 @@ function seededRandom(seed: number): () => number {
 
 function generateShapeData(count: number, seed: number): { rhombuses: ShapeData[] } {
   const rand = seededRandom(seed);
-  // Utiliser la couleur on-background du thème pour toutes les arêtes
-  const onBackgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--on-background').trim() || '#ffffff';
+  // Utiliser la couleur outline du thème pour toutes les arêtes
+  const outlineColor = getComputedStyle(document.documentElement).getPropertyValue('--outline').trim() || '#888888';
   const rhombuses: ShapeData[] = [];
 
   const frontCount = Math.floor(count * 0.15);
@@ -78,7 +78,7 @@ function generateShapeData(count: number, seed: number): { rhombuses: ShapeData[
         position: pos!,
         rotation: [rand() * Math.PI, rand() * Math.PI, rand() * Math.PI],
         scale: scaleBase, // Taille fixe par couche (pas de variation aléatoire)
-        color: onBackgroundColor, // Couleur on-background du thème
+        color: outlineColor, // Couleur outline du thème
         layer,
       };
 
@@ -128,8 +128,6 @@ function RhombusInstances({ data }: { data: ShapeData[] }) {
       <meshBasicMaterial 
         vertexColors 
         wireframe={true}
-        transparent
-        opacity={0.5}
       />
       <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
       <instancedBufferAttribute attach="instanceColor" args={[colors, 3]} />
