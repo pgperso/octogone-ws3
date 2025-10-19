@@ -386,33 +386,29 @@ export default function ToolsAnimatedChat({ locale, onKeyConceptChange }: ToolsA
                     </p>
                   </div>
                 )}
-                
+
                 {message.cta && (
                   <Link 
                     href={`/${locale}${message.cta.link}`}
-                    className="group flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 cursor-pointer"
+                    className="group flex items-center justify-center gap-3 px-8 py-4 rounded-xl transition-all duration-200 cursor-pointer shadow-lg hover:shadow-xl"
                     style={{ 
                       backgroundColor: '#DCB26B',
-                      color: '#002236'
+                      color: 'white',
+                      fontSize: '16px',
+                      fontWeight: '600'
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = '#BADFF6';
-                      e.currentTarget.style.transform = 'translateX(4px)';
+                      e.currentTarget.style.backgroundColor = '#C9A05C';
+                      e.currentTarget.style.transform = 'scale(1.05)';
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.backgroundColor = '#DCB26B';
-                      e.currentTarget.style.transform = 'translateX(0)';
+                      e.currentTarget.style.transform = 'scale(1)';
                     }}
                   >
-                    <span className="text-sm font-semibold">{message.cta.label}</span>
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    <span className="font-bold">{message.cta.label}</span>
+                    <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                   </Link>
-                )}
-
-                {message.chart && (
-                  <div className="w-full max-w-full">
-                    <InlineChart chart={message.chart} isEnglish={isEnglish} />
-                  </div>
                 )}
 
                 {message.document && (
@@ -423,7 +419,7 @@ export default function ToolsAnimatedChat({ locale, onKeyConceptChange }: ToolsA
 
                 {message.video && (
                   <div className="w-full max-w-full">
-                    <InlineVideo video={message.video} />
+                    <InlineVideo video={message.video} isEnglish={isEnglish} />
                   </div>
                 )}
 

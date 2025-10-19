@@ -212,8 +212,8 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           delay: 68000,
           keyConcept: 'Posez des actions',
           cta: {
-            label: 'Découvrir Octogone 360',
-            link: '/fr/fonctionnalites/octogone-360'
+            label: 'Réserver une démo',
+            link: '/fr/contact'
           }
         }
       ]
@@ -367,8 +367,8 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           delay: 68000,
           keyConcept: 'Take actions',
           cta: {
-            label: 'Discover Octogone 360',
-            link: '/en/features/octogone-360'
+            label: 'Book a demo',
+            link: '/en/contact'
           }
         }
       ]

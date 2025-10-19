@@ -61,11 +61,11 @@ export default function InlineChart({ chart, isEnglish }: InlineChartProps) {
               <CartesianGrid strokeDasharray="3 3" stroke="var(--outline-variant)" strokeOpacity={0.3} />
               <XAxis 
                 dataKey="name" 
-                tick={{ fontSize: 12, fill: 'var(--on-surface-variant)' }}
+                tick={{ fontSize: 12, fill: 'var(--on-secondary-container)' }}
                 axisLine={{ stroke: 'var(--outline-variant)' }}
               />
               <YAxis 
-                tick={{ fontSize: 12, fill: 'var(--on-surface-variant)' }}
+                tick={{ fontSize: 12, fill: 'var(--on-secondary-container)' }}
                 axisLine={{ stroke: 'var(--outline-variant)' }}
                 tickFormatter={(value) => `${value}$`}
                 width={70}
@@ -106,11 +106,11 @@ export default function InlineChart({ chart, isEnglish }: InlineChartProps) {
               <CartesianGrid strokeDasharray="3 3" stroke="var(--outline-variant)" strokeOpacity={0.3} />
               <XAxis 
                 dataKey="name"
-                tick={{ fontSize: 12, fill: 'var(--on-surface-variant)' }}
+                tick={{ fontSize: 12, fill: 'var(--on-secondary-container)' }}
                 axisLine={{ stroke: 'var(--outline-variant)' }}
               />
               <YAxis 
-                tick={{ fontSize: 12, fill: 'var(--on-surface-variant)' }}
+                tick={{ fontSize: 12, fill: 'var(--on-secondary-container)' }}
                 axisLine={{ stroke: 'var(--outline-variant)' }}
                 tickFormatter={(value) => `${value}$`}
               />
@@ -189,7 +189,7 @@ export default function InlineChart({ chart, isEnglish }: InlineChartProps) {
                 height={36}
                 wrapperStyle={{
                   fontSize: '12px',
-                  color: 'var(--on-surface-variant)'
+                  color: 'var(--on-secondary-container)'
                 }}
               />
             </PieChart>

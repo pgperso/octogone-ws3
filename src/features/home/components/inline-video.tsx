@@ -7,9 +7,10 @@ import type { InlineVideo } from "../data/tools-conversations";
 
 interface InlineVideoProps {
   video: InlineVideo;
+  isEnglish?: boolean;
 }
 
-export default function InlineVideo({ video }: InlineVideoProps) {
+export default function InlineVideo({ video, isEnglish = false }: InlineVideoProps) {
   const content = (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -44,7 +45,7 @@ export default function InlineVideo({ video }: InlineVideoProps) {
               boxShadow: '0 4px 16px rgba(0, 0, 0, 0.3)'
             }}
           >
-            <Play size={28} fill="white" color="white" className="ml-1" />
+            <Play size={28} fill="var(--on-secondary-container)" color="var(--on-secondary-container)" className="ml-1" />
           </div>
         </div>
 
@@ -76,7 +77,7 @@ export default function InlineVideo({ video }: InlineVideoProps) {
           {video.title}
         </p>
         <p className="text-xs mt-1" style={{ color: 'var(--on-secondary-container)', opacity: 0.7 }}>
-          Cliquez pour regarder
+          {isEnglish ? 'Click to watch' : 'Cliquez pour regarder'}
         </p>
       </div>
     </motion.div>
