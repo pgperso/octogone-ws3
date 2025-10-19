@@ -262,7 +262,7 @@ export default function CortexPage() {
         as="section"
         bgColor=""
         spacing="xxl"
-        style={{ backgroundColor: 'var(--background)' }}
+        style={{ backgroundColor: 'transparent' }}
       >
         <motion.div 
           className="text-center mb-16"
@@ -381,7 +381,7 @@ export default function CortexPage() {
         as="section"
         bgColor=""
         spacing="xxl"
-        style={{ backgroundColor: 'var(--background)' }}
+        style={{ backgroundColor: 'transparent' }}
       >
         <motion.div 
           className="text-center mb-16"
@@ -438,7 +438,7 @@ export default function CortexPage() {
         as="section"
         bgColor=""
         spacing="xl"
-        style={{ backgroundColor: 'var(--background)' }}
+        style={{ backgroundColor: 'transparent' }}
       >
         {/* Séparateur */}
         <motion.div 
