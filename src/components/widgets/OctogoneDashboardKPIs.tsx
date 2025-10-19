@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { TrendingUp, TrendingDown, Minus, Info } from 'lucide-react';
 
 interface DashboardKPIsProps {
@@ -19,6 +19,16 @@ interface KPIData {
 
 export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsProps) {
   const isEnglish = locale === 'en';
+  const [selectedPeriod, setSelectedPeriod] = useState('today');
+
+  const periods = [
+    { id: 'today', labelFr: 'Aujourd\'hui', labelEn: 'Today' },
+    { id: 'yesterday', labelFr: 'Hier', labelEn: 'Yesterday' },
+    { id: 'week', labelFr: 'Semaine', labelEn: 'Week' },
+    { id: 'month', labelFr: 'Mois', labelEn: 'Month' },
+    { id: 'quarter', labelFr: 'Trimestre', labelEn: 'Quarter' },
+    { id: 'year', labelFr: 'Année', labelEn: 'Year' }
+  ];
 
   const kpis: KPIData[] = [
     {
@@ -147,25 +157,39 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
         </h2>
         
         <div className="flex items-center gap-2">
-          <span className="text-sm font-medium mr-2" style={{ color: 'var(--on-surface-variant)' }}>
-            {isEnglish ? 'Period:' : 'Période :'}
-          </span>
-          <select 
-            className="px-3 py-2 rounded-lg text-sm font-medium border-0 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+          {/* Segmented Button */}
+          <div 
+            className="flex rounded-lg p-1 shadow-sm"
             style={{ 
-              backgroundColor: 'var(--surface)',
-              color: 'var(--on-surface)',
-              boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
+              backgroundColor: 'var(--surface-variant)',
+              border: '1px solid var(--outline-variant)'
             }}
-            defaultValue="today"
           >
-            <option value="today">{isEnglish ? 'Today' : 'Aujourd\'hui'}</option>
-            <option value="yesterday">{isEnglish ? 'Yesterday' : 'Hier'}</option>
-            <option value="week">{isEnglish ? 'This Week' : 'Cette semaine'}</option>
-            <option value="month">{isEnglish ? 'This Month' : 'Ce mois'}</option>
-            <option value="quarter">{isEnglish ? 'This Quarter' : 'Ce trimestre'}</option>
-            <option value="year">{isEnglish ? 'This Year' : 'Cette année'}</option>
-          </select>
+            {periods.map((period) => (
+              <button
+                key={period.id}
+                onClick={() => setSelectedPeriod(period.id)}
+                className={`px-3 py-1.5 text-xs font-medium rounded-md transition-all duration-200 ${
+                  selectedPeriod === period.id 
+                    ? 'shadow-sm' 
+                    : 'hover:bg-opacity-50'
+                }`}
+                style={{
+                  backgroundColor: selectedPeriod === period.id 
+                    ? 'var(--surface)' 
+                    : 'transparent',
+                  color: selectedPeriod === period.id 
+                    ? 'var(--on-surface)' 
+                    : 'var(--on-surface-variant)',
+                  boxShadow: selectedPeriod === period.id 
+                    ? '0 1px 3px rgba(0, 0, 0, 0.1)' 
+                    : 'none'
+                }}
+              >
+                {isEnglish ? period.labelEn : period.labelFr}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
