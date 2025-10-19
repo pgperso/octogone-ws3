@@ -13,6 +13,7 @@ import type { Route } from "@/features/navigation/types";
 import { CalculatorProvider, useCalculator } from "@/contexts/calculator-context";
 import { CookiebotBanner } from "@/components/cookiebot/cookiebot-banner";
 import { COOKIEBOT_CONFIG } from "@/config/cookiebot";
+import ProBackground from "@/components/background/ProBackground";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -74,6 +75,9 @@ function LayoutContent({
   
   return (
     <div lang={locale} className={inter.className}>
+      {/* Fond 3D avec formes Octogone */}
+      <ProBackground />
+      
       {/* Cookiebot - Gestion des cookies (RGPD, PIPEDA, Loi 25, CCPA) */}
       {COOKIEBOT_CONFIG.enabled && <CookiebotBanner cbid={COOKIEBOT_CONFIG.cbid} />}
       
