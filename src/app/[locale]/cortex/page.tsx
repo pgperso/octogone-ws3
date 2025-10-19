@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useParams } from "next/navigation";
 import { ResponsiveSection } from "@/components/ui/responsive-section";
-import { Brain, MessageSquare, BarChart3, FileText, Video, CheckCircle, Check } from "lucide-react";
+import { Brain, MessageSquare, BarChart3, FileText, Video, Check } from "lucide-react";
 import { OctogoneButton } from "@/components/ui/octogone-button";
 import { getConceptById } from "@/data/features/features-content";
 import Image from "next/image";
@@ -422,13 +422,13 @@ export default function CortexPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                {/* Titre du groupe avec icône */}
+                {/* Titre du groupe avec badge vert */}
                 <div className="flex items-center gap-3 mb-4">
                   <div 
-                    className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
-                    style={{ background: CORTEX_GRADIENT }}
+                    className="w-6 h-6 rounded flex items-center justify-center flex-shrink-0"
+                    style={{ backgroundColor: 'var(--success)' }}
                   >
-                    <Icon className="w-5 h-5" style={{ color: 'var(--on-secondary-container)' }} />
+                    <Check className="w-4 h-4" style={{ color: 'var(--on-success)', strokeWidth: 3 }} />
                   </div>
                   <h3 className="text-base font-bold" style={{ color: 'var(--on-surface)' }}>
                     {isEnglish ? capability.titleEn : capability.titleFr}
@@ -436,19 +436,11 @@ export default function CortexPage() {
                 </div>
 
                 {/* Liste des exemples */}
-                <div className="space-y-2 pl-2">
+                <div className="space-y-2 pl-8">
                   {examples.map((example: string, exIndex: number) => (
-                    <div key={exIndex} className="flex items-start gap-2">
-                      <div 
-                        className="w-5 h-5 rounded flex items-center justify-center flex-shrink-0 mt-0.5"
-                        style={{ backgroundColor: 'var(--success)' }}
-                      >
-                        <Check className="w-3 h-3" style={{ color: 'var(--on-success)', strokeWidth: 3 }} />
-                      </div>
-                      <p className="text-sm leading-relaxed" style={{ color: 'var(--on-surface-variant)' }}>
-                        &ldquo;{example}&rdquo;
-                      </p>
-                    </div>
+                    <p key={exIndex} className="text-sm leading-relaxed" style={{ color: 'var(--on-surface-variant)' }}>
+                      &ldquo;{example}&rdquo;
+                    </p>
                   ))}
                 </div>
               </motion.div>
