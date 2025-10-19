@@ -55,9 +55,9 @@
             "labour_cost": 684.57,
             "food_cost_pct": 26.41,
             "fixed_costs": 55.43,
-            "price_changes": 1,
+            "price_changes": 2,
             "menu_items": 12,
-            "gains_losses": -13.17,
+            "gains_losses": 13.17,
             "profit": 1405.53,
             "food_cost_abs": 695.83,
             "avg_invoice": 50.67
@@ -72,7 +72,7 @@
             "labour_cost": 522.18,
             "food_cost_pct": 24.78,
             "fixed_costs": 42.68,
-            "price_changes": 0,
+            "price_changes": 2,
             "menu_items": 8,
             "gains_losses": 21.34,
             "profit": 1177.93,
@@ -89,7 +89,7 @@
             "fixed_costs": 41.82,
             "price_changes": 1,
             "menu_items": 8,
-            "gains_losses": -9.94,
+            "gains_losses": 9.94,
             "profit": 1066.08,
             "food_cost_abs": 497.01,
             "avg_invoice": 26.15
@@ -119,9 +119,9 @@
             "labour_cost": 467.81,
             "food_cost_pct": 28.45,
             "fixed_costs": 37.77,
-            "price_changes": 0,
+            "price_changes": 2,
             "menu_items": 15,
-            "gains_losses": -8.99,
+            "gains_losses": 8.99,
             "profit": 962.15,
             "food_cost_abs": 511.65,
             "avg_invoice": 35.26
@@ -151,9 +151,9 @@
             "labour_cost": 272.36,
             "food_cost_pct": 24.23,
             "fixed_costs": 22.19,
-            "price_changes": 1,
+            "price_changes": 0,
             "menu_items": 6,
-            "gains_losses": -5.04,
+            "gains_losses": 5.04,
             "profit": 591.24,
             "food_cost_abs": 244.42,
             "avg_invoice": 67.25
@@ -194,7 +194,7 @@
             "fixed_costs": 388.01,
             "price_changes": 7,
             "menu_items": 12,
-            "gains_losses": -92.22,
+            "gains_losses": 92.22,
             "profit": 9839.93,
             "food_cost_abs": 4937.12,
             "avg_invoice": 50.67
@@ -228,7 +228,7 @@
             "fixed_costs": 292.74,
             "price_changes": 7,
             "menu_items": 8,
-            "gains_losses": -69.56,
+            "gains_losses": 69.56,
             "profit": 7462.56,
             "food_cost_abs": 3484.73,
             "avg_invoice": 26.15
@@ -262,7 +262,7 @@
             "fixed_costs": 264.39,
             "price_changes": 0,
             "menu_items": 15,
-            "gains_losses": -62.94,
+            "gains_losses": 62.94,
             "profit": 6730.68,
             "food_cost_abs": 3589.06,
             "avg_invoice": 35.26
@@ -296,7 +296,7 @@
             "fixed_costs": 155.33,
             "price_changes": 7,
             "menu_items": 6,
-            "gains_losses": -35.31,
+            "gains_losses": 35.31,
             "profit": 4136.68,
             "food_cost_abs": 1716.39,
             "avg_invoice": 67.25
@@ -337,7 +337,7 @@
             "fixed_costs": 1004.10,
             "price_changes": 19,
             "menu_items": 12,
-            "gains_losses": -251.59,
+            "gains_losses": 251.59,
             "profit": 26665.17,
             "food_cost_abs": 13530.25,
             "avg_invoice": 50.67
@@ -355,7 +355,7 @@
             "fixed_costs": 847.31,
             "price_changes": 0,
             "menu_items": 8,
-            "gains_losses": -183.76,
+            "gains_losses": 183.76,
             "profit": 18284.82,
             "food_cost_abs": 9165.65,
             "avg_invoice": 24.66
@@ -405,7 +405,7 @@
             "fixed_costs": 720.99,
             "price_changes": 0,
             "menu_items": 15,
-            "gains_losses": -361.43,
+            "gains_losses": 361.43,
             "profit": 19777.36,
             "food_cost_abs": 10061.34,
             "avg_invoice": 33.80
@@ -439,7 +439,7 @@
             "fixed_costs": 382.81,
             "price_changes": 19,
             "menu_items": 6,
-            "gains_losses": -96.34,
+            "gains_losses": 96.34,
             "profit": 12026.38,
             "food_cost_abs": 4684.25,
             "avg_invoice": 67.25
@@ -480,7 +480,7 @@
             "fixed_costs": 526.96,
             "price_changes": 10,
             "menu_items": 12,
-            "gains_losses": -131.74,
+            "gains_losses": 131.74,
             "profit": 14437.39,
             "food_cost_abs": 6958.31,
             "avg_invoice": 50.67
@@ -498,7 +498,7 @@
             "fixed_costs": 446.97,
             "price_changes": 0,
             "menu_items": 8,
-            "gains_losses": -96.17,
+            "gains_losses": 96.17,
             "profit": 9971.13,
             "food_cost_abs": 4786.33,
             "avg_invoice": 24.66
@@ -548,7 +548,7 @@
             "fixed_costs": 356.88,
             "price_changes": 0,
             "menu_items": 15,
-            "gains_losses": -189.28,
+            "gains_losses": 189.28,
             "profit": 10497.81,
             "food_cost_abs": 5238.42,
             "avg_invoice": 33.80
@@ -582,7 +582,7 @@
             "fixed_costs": 201.55,
             "price_changes": 10,
             "menu_items": 6,
-            "gains_losses": -50.44,
+            "gains_losses": 50.44,
             "profit": 6262.86,
             "food_cost_abs": 2444.21,
             "avg_invoice": 67.25
