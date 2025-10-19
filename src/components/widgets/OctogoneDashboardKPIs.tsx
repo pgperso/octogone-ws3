@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { TrendingUp, TrendingDown, Minus, Info } from 'lucide-react';
 import Image from 'next/image';
 import dashboardData from '@/data/dashboard/dashboard-data.json';
@@ -19,23 +19,72 @@ interface Metric {
 
 interface PeriodData {
   label: string;
+  date?: string;
+  start?: string;
+  end?: string;
+  compare_start?: string;
+  compare_end?: string;
   metrics: Metric[];
 }
 
 export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsProps) {
   const isEnglish = locale === 'en';
   const [selectedPeriod, setSelectedPeriod] = useState('day');
-  const [selectedEstablishment, setSelectedEstablishment] = useState('all');
+  const [selectedEstablishments, setSelectedEstablishments] = useState<string[]>(['resto-centre', 'bistro-nord', 'cafe-sud', 'pizzeria-ouest']);
+  const [isEstablishmentDropdownOpen, setIsEstablishmentDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Liste des établissements
+  // Fermer le dropdown quand on clique ailleurs
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsEstablishmentDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Liste des établissements (4 restaurants)
   const establishments = [
-    { id: 'all', nameFr: 'Tous les établissements', nameEn: 'All Establishments' },
     { id: 'resto-centre', nameFr: 'Restaurant Centre-Ville', nameEn: 'Downtown Restaurant' },
     { id: 'bistro-nord', nameFr: 'Bistro du Nord', nameEn: 'North Bistro' },
     { id: 'cafe-sud', nameFr: 'Café du Sud', nameEn: 'South Café' },
-    { id: 'brasserie-est', nameFr: 'Brasserie de l\'Est', nameEn: 'East Brewery' },
     { id: 'pizzeria-ouest', nameFr: 'Pizzeria de l\'Ouest', nameEn: 'West Pizzeria' }
   ];
+
+  // Gestion de la sélection des établissements
+  const handleEstablishmentToggle = (establishmentId: string) => {
+    setSelectedEstablishments(prev => {
+      if (prev.includes(establishmentId)) {
+        return prev.filter(id => id !== establishmentId);
+      } else {
+        return [...prev, establishmentId];
+      }
+    });
+  };
+
+  const handleSelectAll = () => {
+    if (selectedEstablishments.length === establishments.length) {
+      setSelectedEstablishments([]);
+    } else {
+      setSelectedEstablishments(establishments.map(e => e.id));
+    }
+  };
+
+  const getEstablishmentDisplayText = () => {
+    if (selectedEstablishments.length === 0) {
+      return isEnglish ? 'No establishments' : 'Aucun établissement';
+    } else if (selectedEstablishments.length === establishments.length) {
+      return isEnglish ? 'All establishments' : 'Tous les établissements';
+    } else if (selectedEstablishments.length === 1) {
+      const establishment = establishments.find(e => e.id === selectedEstablishments[0]);
+      return establishment ? (isEnglish ? establishment.nameEn : establishment.nameFr) : '';
+    } else {
+      return `${selectedEstablishments.length} ${isEnglish ? 'establishments' : 'établissements'}`;
+    }
+  };
 
   const periods = [
     { id: 'day', labelFr: 'Jour', labelEn: 'Day' },
@@ -119,6 +168,56 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
     return `${sign}${deltaPct.toFixed(2)}%`;
   };
 
+  // Fonction pour formater les dates
+  const formatDate = (dateStr: string): string => {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString(isEnglish ? 'en-CA' : 'fr-CA', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
+  };
+
+  // Fonction pour obtenir les textes de période
+  const getPeriodText = (): { current: string; previous: string } => {
+    const data = currentPeriodData;
+    
+    if (selectedPeriod === 'day') {
+      const currentDate = formatDate(data.date!);
+      return {
+        current: isEnglish ? `Today: ${currentDate}` : `Aujourd'hui : ${currentDate}`,
+        previous: isEnglish ? 'vs Yesterday' : 'vs Hier'
+      };
+    } else if (selectedPeriod === 'week') {
+      const startDate = formatDate(data.start!);
+      const endDate = formatDate(data.end!);
+      return {
+        current: isEnglish ? `${startDate} - ${endDate}` : `${startDate} - ${endDate}`,
+        previous: isEnglish ? 'vs Previous week' : 'vs Semaine précédente'
+      };
+    } else if (selectedPeriod === 'month') {
+      const startDate = formatDate(data.start!);
+      const endDate = formatDate(data.end!);
+      return {
+        current: isEnglish ? `${startDate} - ${endDate}` : `${startDate} - ${endDate}`,
+        previous: isEnglish ? 'vs Previous month' : 'vs Mois précédent'
+      };
+    } else if (selectedPeriod === 'custom') {
+      const startDate = formatDate(data.start!);
+      const endDate = formatDate(data.end!);
+      const compareStart = formatDate(data.compare_start!);
+      const compareEnd = formatDate(data.compare_end!);
+      return {
+        current: `${startDate} - ${endDate}`,
+        previous: isEnglish ? `vs ${compareStart} - ${compareEnd}` : `vs ${compareStart} - ${compareEnd}`
+      };
+    }
+    
+    return { current: '', previous: '' };
+  };
+
+  const periodText = getPeriodText();
+
   return (
     <div className="w-full">
       {/* Header avec avatar et sélecteurs */}
@@ -144,66 +243,141 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
           </div>
 
           {/* Sélecteur d'établissements */}
-          <div className="flex items-center gap-2">
+          <div className="relative flex items-center gap-2">
             <span className="text-sm font-medium" style={{ color: 'var(--on-surface-variant)' }}>
-              {isEnglish ? 'Establishment:' : 'Établissement :'}
+              {isEnglish ? 'Establishments:' : 'Établissements :'}
             </span>
-            <select 
-              value={selectedEstablishment}
-              onChange={(e) => setSelectedEstablishment(e.target.value)}
-              className="px-3 py-2 rounded-lg text-sm font-medium border-0 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none cursor-pointer"
-              style={{ 
-                backgroundColor: 'var(--surface)',
-                color: 'var(--on-surface)',
-                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
-              }}
-            >
-              {establishments.map((establishment) => (
-                <option key={establishment.id} value={establishment.id}>
-                  {isEnglish ? establishment.nameEn : establishment.nameFr}
-                </option>
-              ))}
-            </select>
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setIsEstablishmentDropdownOpen(!isEstablishmentDropdownOpen)}
+                className="px-3 py-2 rounded-lg text-sm font-medium border-0 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none cursor-pointer flex items-center gap-2 min-w-48"
+                style={{ 
+                  backgroundColor: 'var(--surface)',
+                  color: 'var(--on-surface)',
+                  boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
+                }}
+              >
+                <span className="flex-1 text-left">{getEstablishmentDisplayText()}</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {/* Dropdown avec checkboxes */}
+              {isEstablishmentDropdownOpen && (
+                <div 
+                  className="absolute top-full left-0 mt-1 w-full rounded-lg shadow-lg z-50 py-2"
+                  style={{ 
+                    backgroundColor: 'var(--surface)',
+                    border: '1px solid var(--outline)',
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
+                  }}
+                >
+                  {/* Option "Tous les établissements" */}
+                  <div
+                    onClick={handleSelectAll}
+                    className="flex items-center gap-3 px-3 py-2 hover:bg-opacity-50 cursor-pointer"
+                    style={{ backgroundColor: 'transparent' }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--surface-variant)'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={selectedEstablishments.length === establishments.length}
+                      onChange={() => {}}
+                      className="w-4 h-4 rounded cursor-pointer"
+                      style={{ accentColor: 'var(--secondary)' }}
+                    />
+                    <span className="text-sm font-medium" style={{ color: 'var(--on-surface)' }}>
+                      {isEnglish ? 'All establishments' : 'Tous les établissements'}
+                    </span>
+                  </div>
+
+                  {/* Séparateur */}
+                  <div className="h-px mx-2 my-1" style={{ backgroundColor: 'var(--outline-variant)' }} />
+
+                  {/* Options individuelles */}
+                  {establishments.map((establishment) => (
+                    <div
+                      key={establishment.id}
+                      onClick={() => handleEstablishmentToggle(establishment.id)}
+                      className="flex items-center gap-3 px-3 py-2 hover:bg-opacity-50 cursor-pointer"
+                      style={{ backgroundColor: 'transparent' }}
+                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--surface-variant)'}
+                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={selectedEstablishments.includes(establishment.id)}
+                        onChange={() => {}}
+                        className="w-4 h-4 rounded cursor-pointer"
+                        style={{ accentColor: 'var(--secondary)' }}
+                      />
+                      <span className="text-sm" style={{ color: 'var(--on-surface)' }}>
+                        {isEnglish ? establishment.nameEn : establishment.nameFr}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
         
-        {/* Segmented Button pour les périodes */}
-        <div 
-          className="inline-flex rounded-lg"
-          style={{ 
-            backgroundColor: 'var(--surface)',
-            border: '1px solid var(--outline)'
-          }}
-        >
-          {periods.map((period, index) => (
-            <div key={period.id} className="flex">
-              <button
-                onClick={() => setSelectedPeriod(period.id)}
-                className={`px-4 py-2 text-sm font-medium transition-all duration-200 cursor-pointer ${
-                  index === 0 ? 'rounded-l-lg' : ''
-                } ${
-                  index === periods.length - 1 ? 'rounded-r-lg' : ''
-                }`}
-                style={{
-                  backgroundColor: selectedPeriod === period.id 
-                    ? 'var(--secondary-container)' 
-                    : 'var(--surface)',
-                  color: selectedPeriod === period.id 
-                    ? 'var(--on-secondary-container)' 
-                    : 'var(--on-surface)'
-                }}
-              >
-                {isEnglish ? period.labelEn : period.labelFr}
-              </button>
-              {/* Ligne séparatrice verticale */}
-              {index < periods.length - 1 && (
-                <div 
-                  className="w-px h-8 self-center"
-                  style={{ backgroundColor: 'var(--outline)' }}
-                />
-              )}
+        {/* Ligne des périodes : Segmented Button + Dates */}
+        <div className="flex items-center gap-6">
+          {/* Segmented Button pour les périodes */}
+          <div 
+            className="inline-flex rounded-lg"
+            style={{ 
+              backgroundColor: 'var(--surface)',
+              border: '1px solid var(--outline)'
+            }}
+          >
+            {periods.map((period, index) => (
+              <div key={period.id} className="flex">
+                <button
+                  onClick={() => setSelectedPeriod(period.id)}
+                  className={`px-4 py-2 text-sm font-medium transition-all duration-200 cursor-pointer ${
+                    index === 0 ? 'rounded-l-lg' : ''
+                  } ${
+                    index === periods.length - 1 ? 'rounded-r-lg' : ''
+                  }`}
+                  style={{
+                    backgroundColor: selectedPeriod === period.id 
+                      ? 'var(--secondary-container)' 
+                      : 'var(--surface)',
+                    color: selectedPeriod === period.id 
+                      ? 'var(--on-secondary-container)' 
+                      : 'var(--on-surface)'
+                  }}
+                >
+                  {isEnglish ? period.labelEn : period.labelFr}
+                </button>
+                {/* Ligne séparatrice verticale */}
+                {index < periods.length - 1 && (
+                  <div 
+                    className="w-px h-8 self-center"
+                    style={{ backgroundColor: 'var(--outline)' }}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Affichage des périodes courante et comparative */}
+          <div className="flex items-center gap-4 text-sm">
+            <div className="flex items-center gap-2">
+              <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
+                {periodText.current}
+              </span>
             </div>
-          ))}
+            <div className="flex items-center gap-2">
+              <span style={{ color: 'var(--on-surface-variant)' }}>
+                {periodText.previous}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
 
