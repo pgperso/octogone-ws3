@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { TrendingUp, TrendingDown, Minus, Info } from 'lucide-react';
 import Image from 'next/image';
 import dashboardData from '@/data/dashboard/octogone_dashboard_data.json';
+import FloatingCortexCTA from '@/components/ui/floating-cortex-cta';
 
 interface DashboardKPIsProps {
   locale?: 'fr' | 'en';
@@ -760,6 +761,9 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
       </div>
       </>
       )}
+      
+      {/* Floating Cortex CTA */}
+      <FloatingCortexCTA locale={locale} />
     </div>
   );
 }
