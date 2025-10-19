@@ -52,11 +52,12 @@ interface EstablishmentData {
     food_cost_abs: number;
     avg_invoice: number;
   };
-  metrics: Metric[];
 }
 
 interface PeriodData {
   label: string;
+  display_range: string;
+  display_compare_range: string;
   by_establishment: {
     [key: string]: EstablishmentData;
   };
@@ -383,30 +384,10 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
 
   // Fonction pour obtenir les textes de période
   const getPeriodText = (): { current: string; previous: string } => {
-    // Prendre les dates du premier établissement sélectionné pour l'affichage
-    const firstEstablishment = selectedEstablishments[0] || Object.keys(currentPeriodData.by_establishment)[0];
-    const estData = currentPeriodData.by_establishment[firstEstablishment];
-    
-    if (!estData) return { current: '', previous: '' };
-    
-    if (selectedPeriod === 'day') {
-      const currentDate = estData.current.date ? formatDate(estData.current.date) : '';
-      const previousDate = estData.previous.date ? formatDate(estData.previous.date) : '';
-      return {
-        current: currentDate,
-        previous: previousDate
-      };
-    } else {
-      const currentStart = estData.current.start ? formatDate(estData.current.start) : '';
-      const currentEnd = estData.current.end ? formatDate(estData.current.end) : '';
-      const previousStart = estData.previous.start ? formatDate(estData.previous.start) : '';
-      const previousEnd = estData.previous.end ? formatDate(estData.previous.end) : '';
-      
-      return {
-        current: `${currentStart} - ${currentEnd}`,
-        previous: `${previousStart} - ${previousEnd}`
-      };
-    }
+    return {
+      current: currentPeriodData.display_range,
+      previous: currentPeriodData.display_compare_range
+    };
   };
 
   const periodText = getPeriodText();
