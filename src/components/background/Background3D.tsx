@@ -4,7 +4,7 @@ import { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float } from '@react-three/drei';
 import * as THREE from 'three';
-import { createOctagonBipyramid, createRhombusBipyramid } from './solids';
+import { createRhombusBipyramid } from './solids';
 
 // Palette pastel officielle Octogone
 const COLORS = {
@@ -33,10 +33,9 @@ function seededRandom(seed: number): () => number {
   };
 }
 
-function generateShapeData(count: number, seed: number): { octagons: ShapeData[]; rhombuses: ShapeData[] } {
+function generateShapeData(count: number, seed: number): { rhombuses: ShapeData[] } {
   const rand = seededRandom(seed);
   const colors = [COLORS.gold, COLORS.sky, COLORS.mint, COLORS.violet];
-  const octagons: ShapeData[] = [];
   const rhombuses: ShapeData[] = [];
 
   const frontCount = Math.floor(count * 0.15);
@@ -88,61 +87,12 @@ function generateShapeData(count: number, seed: number): { octagons: ShapeData[]
         layer,
       };
 
-      if (rand() > 0.5) {
-        octagons.push(shapeData);
-      } else {
-        rhombuses.push(shapeData);
-      }
+      // Tous les shapes sont des losanges
+      rhombuses.push(shapeData);
     }
   }
 
-  return { octagons, rhombuses };
-}
-
-function OctagonInstances({ data }: { data: ShapeData[] }) {
-  const meshRef = useRef<THREE.InstancedMesh>(null);
-  // Bipyramide octogonale : diamant à 8 faces
-  const geometry = useMemo(() => createOctagonBipyramid({ edge: 1, height: 0.8, normalize: true }), []);
-
-  const { matrices, colors } = useMemo(() => {
-    const matrices = new Float32Array(data.length * 16);
-    const colors = new Float32Array(data.length * 3);
-    const tempMatrix = new THREE.Matrix4();
-    const tempColor = new THREE.Color();
-
-    data.forEach((shape, i) => {
-      tempMatrix.identity();
-      tempMatrix.makeRotationFromEuler(new THREE.Euler(...shape.rotation));
-      tempMatrix.setPosition(...shape.position);
-      tempMatrix.scale(new THREE.Vector3(shape.scale, shape.scale, shape.scale));
-      tempMatrix.toArray(matrices, i * 16);
-
-      tempColor.set(shape.color);
-      tempColor.toArray(colors, i * 3);
-    });
-
-    return { matrices, colors };
-  }, [data]);
-
-  useFrame((state) => {
-    if (!meshRef.current) return;
-    // Rotation continue pour montrer toutes les faces
-    meshRef.current.rotation.y += 0.002;
-    meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.3) * 0.1;
-  });
-
-  return (
-    <instancedMesh ref={meshRef} args={[geometry, undefined, data.length]}>
-      <meshBasicMaterial 
-        vertexColors 
-        wireframe={true}
-        transparent
-        opacity={0.8}
-      />
-      <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
-      <instancedBufferAttribute attach="instanceColor" args={[colors, 3]} />
-    </instancedMesh>
-  );
+  return { rhombuses };
 }
 
 function RhombusInstances({ data }: { data: ShapeData[] }) {
@@ -194,7 +144,7 @@ function RhombusInstances({ data }: { data: ShapeData[] }) {
 
 function Scene({ density, seed }: { density: number; seed: number }) {
   const count = Math.floor(60 * density);
-  const { octagons, rhombuses } = useMemo(() => generateShapeData(count, seed), [count, seed]);
+  const { rhombuses } = useMemo(() => generateShapeData(count, seed), [count, seed]);
 
   return (
     <>
