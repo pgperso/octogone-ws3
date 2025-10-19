@@ -4,7 +4,7 @@ import { useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Float } from '@react-three/drei';
 import * as THREE from 'three';
-import { createRhombusBipyramid } from './solids';
+import { createRhombusBipyramid, createOctagonBipyramid } from './solids';
 
 // Hook pour lire les couleurs du thème et réagir aux changements
 function useThemeColors() {
@@ -58,9 +58,10 @@ function seededRandom(seed: number): () => number {
   };
 }
 
-function generateShapeData(count: number, seed: number, outlineColor: string): { rhombuses: ShapeData[] } {
+function generateShapeData(count: number, seed: number, outlineColor: string): { rhombuses: ShapeData[]; octagons: ShapeData[] } {
   const rand = seededRandom(seed);
   const rhombuses: ShapeData[] = [];
+  const octagons: ShapeData[] = [];
 
   const frontCount = Math.floor(count * 0.15);
   const midCount = Math.floor(count * 0.55);
@@ -111,12 +112,16 @@ function generateShapeData(count: number, seed: number, outlineColor: string): {
         layer,
       };
 
-      // Tous les shapes sont des losanges
-      rhombuses.push(shapeData);
+      // Alterner entre losanges et octogones
+      if (rand() > 0.5) {
+        rhombuses.push(shapeData);
+      } else {
+        octagons.push(shapeData);
+      }
     }
   }
 
-  return { rhombuses };
+  return { rhombuses, octagons };
 }
 
 function RhombusInstances({ data, outlineColor }: { data: ShapeData[]; outlineColor: string }) {
@@ -158,7 +163,7 @@ function RhombusInstances({ data, outlineColor }: { data: ShapeData[]; outlineCo
     <>
       {/* Mesh plein avec couleur outline pour cacher les lignes internes */}
       <instancedMesh ref={meshRef} args={[geometry, undefined, data.length]}>
-        <meshBasicMaterial color={outlineColor} key={outlineColor} />
+        <meshBasicMaterial color={outlineColor} transparent opacity={0.2} key={outlineColor} />
         <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
       </instancedMesh>
       
@@ -168,7 +173,61 @@ function RhombusInstances({ data, outlineColor }: { data: ShapeData[]; outlineCo
           color={outlineColor}
           wireframe={true}
           transparent
-          opacity={0.3}
+          opacity={0.2}
+          key={outlineColor}
+        />
+        <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
+      </instancedMesh>
+    </>
+  );
+}
+
+function OctagonInstances({ data, outlineColor }: { data: ShapeData[]; outlineColor: string }) {
+  const meshRef = useRef<THREE.InstancedMesh>(null);
+  const wireframeRef = useRef<THREE.InstancedMesh>(null);
+  
+  // Octogone plat 2D
+  const geometry = useMemo(() => createOctagonBipyramid({ edge: 1, height: 0.05, normalize: true }), []);
+
+  const matrices = useMemo(() => {
+    const matrices = new Float32Array(data.length * 16);
+    const tempMatrix = new THREE.Matrix4();
+
+    data.forEach((shape, i) => {
+      tempMatrix.identity();
+      tempMatrix.makeRotationFromEuler(new THREE.Euler(...shape.rotation));
+      tempMatrix.setPosition(...shape.position);
+      tempMatrix.scale(new THREE.Vector3(shape.scale, shape.scale, shape.scale));
+      tempMatrix.toArray(matrices, i * 16);
+    });
+
+    return matrices;
+  }, [data]);
+
+  useFrame((state) => {
+    if (!meshRef.current || !wireframeRef.current) return;
+    const rotX = state.clock.elapsedTime * 0.002;
+    const rotZ = Math.sin(state.clock.elapsedTime * 0.3) * 0.1;
+    
+    meshRef.current.rotation.x = rotX;
+    meshRef.current.rotation.z = rotZ;
+    wireframeRef.current.rotation.x = rotX;
+    wireframeRef.current.rotation.z = rotZ;
+  });
+
+  return (
+    <>
+      <instancedMesh ref={meshRef} args={[geometry, undefined, data.length]}>
+        <meshBasicMaterial color={outlineColor} transparent opacity={0.2} key={outlineColor} />
+        <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
+      </instancedMesh>
+      
+      <instancedMesh ref={wireframeRef} args={[geometry, undefined, data.length]}>
+        <meshBasicMaterial 
+          color={outlineColor}
+          wireframe={true}
+          transparent
+          opacity={0.2}
           key={outlineColor}
         />
         <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
@@ -181,7 +240,7 @@ function Scene({ density, seed }: { density: number; seed: number }) {
   const count = Math.floor(60 * density);
   const themeColors = useThemeColors();
   
-  const { rhombuses } = useMemo(
+  const { rhombuses, octagons } = useMemo(
     () => generateShapeData(count, seed, themeColors.outline), 
     [count, seed, themeColors.outline]
   );
@@ -193,6 +252,10 @@ function Scene({ density, seed }: { density: number; seed: number }) {
       <Float speed={0.5} rotationIntensity={0.2} floatIntensity={0.3}>
         <RhombusInstances 
           data={rhombuses} 
+          outlineColor={themeColors.outline}
+        />
+        <OctagonInstances 
+          data={octagons} 
           outlineColor={themeColors.outline}
         />
       </Float>
