@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { TrendingUp, TrendingDown, Minus, Info } from 'lucide-react';
+import Image from 'next/image';
 import dashboardData from '@/data/dashboard/dashboard-data.json';
 
 interface DashboardKPIsProps {
@@ -126,11 +127,14 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
         <div className="flex items-center justify-between mb-4">
           {/* Avatar et salutation */}
           <div className="flex items-center gap-3">
-            <div 
-              className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg"
-              style={{ backgroundColor: '#4CAF50' }}
-            >
-              M
+            <div className="w-12 h-12 rounded-full overflow-hidden">
+              <Image
+                src="/images/avatars/marc.avif"
+                alt="Marc"
+                width={48}
+                height={48}
+                className="w-full h-full object-cover"
+              />
             </div>
             <div>
               <h2 className="text-2xl font-bold" style={{ color: 'var(--on-surface)' }}>
