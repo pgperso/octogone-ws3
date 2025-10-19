@@ -129,7 +129,7 @@ function RhombusInstances({ data }: { data: ShapeData[] }) {
         vertexColors 
         wireframe={true}
         transparent
-        opacity={0.8}
+        opacity={0.5}
       />
       <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
       <instancedBufferAttribute attach="instanceColor" args={[colors, 3]} />
