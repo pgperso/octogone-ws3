@@ -15,10 +15,12 @@ function useThemeColors() {
 
   useEffect(() => {
     const updateColors = () => {
-      const styles = getComputedStyle(document.documentElement);
+      const isDark = document.documentElement.classList.contains('dark');
+      
+      // Utiliser directement les valeurs du thème
       setColors({
-        background: styles.getPropertyValue('--background').trim() || '#1E1E1E',
-        outline: styles.getPropertyValue('--outline').trim() || '#404040',
+        background: isDark ? '#1E1E1E' : '#FAFAFA',
+        outline: isDark ? '#404040' : '#E5E5E5',
       });
     };
 
