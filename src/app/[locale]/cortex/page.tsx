@@ -405,49 +405,29 @@ export default function CortexPage() {
         </div>
 
         {/* Capacités liées aux Key Concepts (selon le toggle) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6 max-w-4xl mx-auto">
           {currentCapabilities.map((capability: Capability, index: number) => {
             const Icon = capability.icon;
             return (
               <motion.div
                 key={index}
-                className="relative rounded-xl p-6"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                className="flex items-start gap-3"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
               >
                 <div 
-                  className="absolute inset-0 rounded-xl p-[2px]"
-                  style={{
-                    background: CORTEX_GRADIENT,
-                    boxShadow: '0 0 10px rgba(186, 223, 246, 0.2), 0 0 20px rgba(226, 205, 237, 0.15)'
-                  }}
+                  className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                  style={{ background: CORTEX_GRADIENT }}
                 >
-                  <div 
-                    className="w-full h-full rounded-xl"
-                    style={{ backgroundColor: 'var(--background)' }}
-                  />
+                  <Icon className="w-4 h-4" style={{ color: 'var(--on-secondary-container)' }} />
                 </div>
-
-                <div className="relative flex items-start gap-4">
-                  <div 
-                    className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
-                    style={{ background: CORTEX_GRADIENT }}
-                  >
-                    <Icon className="w-5 h-5" style={{ color: 'var(--on-secondary-container)' }} />
-                  </div>
-                  
-                  <div className="flex-1">
-                    <h3 className="text-base font-bold mb-2" style={{ color: 'var(--on-surface)' }}>
-                      {isEnglish ? capability.titleEn : capability.titleFr}
-                    </h3>
-                    
-                    <p className="text-sm" style={{ color: 'var(--on-surface-variant)' }}>
-                      {isEnglish ? capability.descEn : capability.descFr}
-                    </p>
-                  </div>
+                
+                <div className="flex-1">
+                  <p className="text-sm font-semibold leading-tight" style={{ color: 'var(--on-surface)' }}>
+                    {isEnglish ? capability.titleEn : capability.titleFr}
+                  </p>
                 </div>
               </motion.div>
             );
