@@ -19,15 +19,13 @@ interface KPIData {
 
 export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsProps) {
   const isEnglish = locale === 'en';
-  const [selectedPeriod, setSelectedPeriod] = useState('today');
+  const [selectedPeriod, setSelectedPeriod] = useState('day');
 
   const periods = [
-    { id: 'today', labelFr: 'Aujourd\'hui', labelEn: 'Today' },
-    { id: 'yesterday', labelFr: 'Hier', labelEn: 'Yesterday' },
+    { id: 'day', labelFr: 'Jour', labelEn: 'Day' },
     { id: 'week', labelFr: 'Semaine', labelEn: 'Week' },
     { id: 'month', labelFr: 'Mois', labelEn: 'Month' },
-    { id: 'quarter', labelFr: 'Trimestre', labelEn: 'Quarter' },
-    { id: 'year', labelFr: 'Année', labelEn: 'Year' }
+    { id: 'custom', labelFr: 'Personnalisé', labelEn: 'Custom' }
   ];
 
   const kpis: KPIData[] = [
@@ -150,46 +148,37 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
 
   return (
     <div className="w-full">
-      {/* Sélecteur de périodes */}
-      <div className="mb-6 flex items-center justify-between">
-        <h2 className="text-2xl font-bold" style={{ color: 'var(--on-surface)' }}>
+      {/* Header avec titre et sélecteur de périodes */}
+      <div className="mb-6">
+        <h2 className="text-2xl font-bold mb-4" style={{ color: 'var(--on-surface)' }}>
           {isEnglish ? 'Performance Dashboard' : 'Tableau de bord de performance'}
         </h2>
         
-        <div className="flex items-center gap-2">
-          {/* Segmented Button */}
-          <div 
-            className="flex rounded-lg p-1 shadow-sm"
-            style={{ 
-              backgroundColor: 'var(--surface-variant)',
-              border: '1px solid var(--outline-variant)'
-            }}
-          >
-            {periods.map((period) => (
-              <button
-                key={period.id}
-                onClick={() => setSelectedPeriod(period.id)}
-                className={`px-3 py-1.5 text-xs font-medium rounded-md transition-all duration-200 ${
-                  selectedPeriod === period.id 
-                    ? 'shadow-sm' 
-                    : 'hover:bg-opacity-50'
-                }`}
-                style={{
-                  backgroundColor: selectedPeriod === period.id 
-                    ? 'var(--surface)' 
-                    : 'transparent',
-                  color: selectedPeriod === period.id 
-                    ? 'var(--on-surface)' 
-                    : 'var(--on-surface-variant)',
-                  boxShadow: selectedPeriod === period.id 
-                    ? '0 1px 3px rgba(0, 0, 0, 0.1)' 
-                    : 'none'
-                }}
-              >
-                {isEnglish ? period.labelEn : period.labelFr}
-              </button>
-            ))}
-          </div>
+        {/* Segmented Button aligné à gauche */}
+        <div 
+          className="inline-flex rounded-lg p-1"
+          style={{ 
+            backgroundColor: 'var(--surface)',
+            border: '1px solid var(--outline)'
+          }}
+        >
+          {periods.map((period) => (
+            <button
+              key={period.id}
+              onClick={() => setSelectedPeriod(period.id)}
+              className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-200`}
+              style={{
+                backgroundColor: selectedPeriod === period.id 
+                  ? 'var(--secondary-container)' 
+                  : 'var(--surface)',
+                color: selectedPeriod === period.id 
+                  ? 'var(--on-secondary-container)' 
+                  : 'var(--on-surface)'
+              }}
+            >
+              {isEnglish ? period.labelEn : period.labelFr}
+            </button>
+          ))}
         </div>
       </div>
 
