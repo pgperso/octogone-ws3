@@ -67,19 +67,8 @@ export default function RecentBlogPosts({ locale }: RecentBlogPostsProps) {
   }
 
   return (
-    <div style={{ position: 'relative' }}>
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        height: '100%',
-        background: 'linear-gradient(to bottom, transparent 0%, var(--background) 100%)',
-        filter: 'blur(1px)',
-        zIndex: 0,
-      }} />
-      <section className="py-16 md:py-24" style={{ position: 'relative', zIndex: 1 }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-16 md:py-24" style={{ backgroundColor: 'transparent' }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--on-surface)' }}>
@@ -177,6 +166,5 @@ export default function RecentBlogPosts({ locale }: RecentBlogPostsProps) {
         </div>
       </div>
     </section>
-    </div>
   );
 }

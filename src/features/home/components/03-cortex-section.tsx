@@ -26,18 +26,8 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
   );
 
   return (
-    <div style={{ position: 'relative' }}>
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        height: '100%',
-        background: 'linear-gradient(to bottom, var(--background) 0%, transparent 100%)',
-        filter: 'blur(1px)',
-        zIndex: 0,
-      }} />
-      <ResponsiveSection spacing="xxl" bgColor="transparent" style={{ position: 'relative', zIndex: 1 }}>
+    <div style={{ backgroundColor: 'transparent' }}>
+      <ResponsiveSection spacing="xxl" bgColor="transparent">
         <div className="max-w-6xl mx-auto motion-container">
         {/* Logo et titre */}
         <motion.div 
