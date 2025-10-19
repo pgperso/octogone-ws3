@@ -120,8 +120,9 @@ function generateShapeData(count: number, seed: number, outlineColor: string): {
 function RhombusInstances({ data, outlineColor }: { data: ShapeData[]; outlineColor: string }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   
-  // Cube (bipyramide carrée) : diagonales égales pour former un carré
-  const geometry = useMemo(() => createRhombusBipyramid({ diagH: 1.4, diagV: 1.4, height: 1.4, normalize: true }), []);
+  // Losange plat 2D (plaque mince) - TEMPORAIRE POUR TEST
+  // Pour revenir au cube 3D, remplacer height: 0.05 par height: 1.4
+  const geometry = useMemo(() => createRhombusBipyramid({ diagH: 1.4, diagV: 1.4, height: 0.05, normalize: true }), []);
 
   const matrices = useMemo(() => {
     const matrices = new Float32Array(data.length * 16);
