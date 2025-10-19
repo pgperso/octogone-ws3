@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Play, Clock } from "lucide-react";
 import type { InlineVideo } from "../data/tools-conversations";
 
@@ -25,10 +26,11 @@ export default function InlineVideo({ video, isEnglish = false }: InlineVideoPro
       {/* Thumbnail avec overlay play */}
       <div className="relative aspect-video bg-gradient-to-br from-gray-800 to-gray-900">
         {video.thumbnail ? (
-          <img 
+          <Image 
             src={video.thumbnail} 
             alt={video.title}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
