@@ -30,7 +30,8 @@ function seededRandom(seed: number): () => number {
 function generateShapeData(count: number, seed: number): { rhombuses: ShapeData[] } {
   const rand = seededRandom(seed);
   // Utiliser la couleur outline du thème pour toutes les arêtes
-  const outlineColor = getComputedStyle(document.documentElement).getPropertyValue('--outline').trim() || '#888888';
+  // Light: #E5E5E5, Dark: #404040
+  const outlineColor = getComputedStyle(document.documentElement).getPropertyValue('--outline').trim() || '#404040';
   const rhombuses: ShapeData[] = [];
 
   const frontCount = Math.floor(count * 0.15);
@@ -139,10 +140,10 @@ function Scene({ density, seed }: { density: number; seed: number }) {
   const count = Math.floor(60 * density);
   const { rhombuses } = useMemo(() => generateShapeData(count, seed), [count, seed]);
 
-  // Lire la couleur background du thème
+  // Lire la couleur background du thème (format hex direct)
   const backgroundColor = typeof window !== 'undefined' 
-    ? getComputedStyle(document.documentElement).getPropertyValue('--background').trim() || '#0B0D12'
-    : '#0B0D12';
+    ? getComputedStyle(document.documentElement).getPropertyValue('--background').trim() || '#1E1E1E'
+    : '#1E1E1E';
 
   return (
     <>
