@@ -24,6 +24,17 @@ interface PeriodData {
 export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsProps) {
   const isEnglish = locale === 'en';
   const [selectedPeriod, setSelectedPeriod] = useState('day');
+  const [selectedEstablishment, setSelectedEstablishment] = useState('all');
+
+  // Liste des établissements
+  const establishments = [
+    { id: 'all', nameFr: 'Tous les établissements', nameEn: 'All Establishments' },
+    { id: 'resto-centre', nameFr: 'Restaurant Centre-Ville', nameEn: 'Downtown Restaurant' },
+    { id: 'bistro-nord', nameFr: 'Bistro du Nord', nameEn: 'North Bistro' },
+    { id: 'cafe-sud', nameFr: 'Café du Sud', nameEn: 'South Café' },
+    { id: 'brasserie-est', nameFr: 'Brasserie de l\'Est', nameEn: 'East Brewery' },
+    { id: 'pizzeria-ouest', nameFr: 'Pizzeria de l\'Ouest', nameEn: 'West Pizzeria' }
+  ];
 
   const periods = [
     { id: 'day', labelFr: 'Jour', labelEn: 'Day' },
@@ -109,36 +120,85 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
 
   return (
     <div className="w-full">
-      {/* Header avec titre et sélecteur de périodes */}
+      {/* Header avec avatar et sélecteurs */}
       <div className="mb-6">
-        <h2 className="text-2xl font-bold mb-4" style={{ color: 'var(--on-surface)' }}>
-          {isEnglish ? 'Performance Dashboard' : 'Tableau de bord de performance'}
-        </h2>
+        {/* Ligne du haut : Avatar + Nom et Sélecteur d'établissements */}
+        <div className="flex items-center justify-between mb-4">
+          {/* Avatar et salutation */}
+          <div className="flex items-center gap-3">
+            <div 
+              className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg"
+              style={{ backgroundColor: '#4CAF50' }}
+            >
+              M
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold" style={{ color: 'var(--on-surface)' }}>
+                {isEnglish ? 'Hello Marc' : 'Bonjour Marc'}
+              </h2>
+            </div>
+          </div>
+
+          {/* Sélecteur d'établissements */}
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-medium" style={{ color: 'var(--on-surface-variant)' }}>
+              {isEnglish ? 'Establishment:' : 'Établissement :'}
+            </span>
+            <select 
+              value={selectedEstablishment}
+              onChange={(e) => setSelectedEstablishment(e.target.value)}
+              className="px-3 py-2 rounded-lg text-sm font-medium border-0 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none cursor-pointer"
+              style={{ 
+                backgroundColor: 'var(--surface)',
+                color: 'var(--on-surface)',
+                boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
+              }}
+            >
+              {establishments.map((establishment) => (
+                <option key={establishment.id} value={establishment.id}>
+                  {isEnglish ? establishment.nameEn : establishment.nameFr}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
         
-        {/* Segmented Button aligné à gauche */}
+        {/* Segmented Button pour les périodes */}
         <div 
-          className="inline-flex rounded-lg p-1"
+          className="inline-flex rounded-lg"
           style={{ 
             backgroundColor: 'var(--surface)',
             border: '1px solid var(--outline)'
           }}
         >
-          {periods.map((period) => (
-            <button
-              key={period.id}
-              onClick={() => setSelectedPeriod(period.id)}
-              className={`px-4 py-2 text-sm font-medium rounded-md transition-all duration-200`}
-              style={{
-                backgroundColor: selectedPeriod === period.id 
-                  ? 'var(--secondary-container)' 
-                  : 'var(--surface)',
-                color: selectedPeriod === period.id 
-                  ? 'var(--on-secondary-container)' 
-                  : 'var(--on-surface)'
-              }}
-            >
-              {isEnglish ? period.labelEn : period.labelFr}
-            </button>
+          {periods.map((period, index) => (
+            <div key={period.id} className="flex">
+              <button
+                onClick={() => setSelectedPeriod(period.id)}
+                className={`px-4 py-2 text-sm font-medium transition-all duration-200 cursor-pointer ${
+                  index === 0 ? 'rounded-l-lg' : ''
+                } ${
+                  index === periods.length - 1 ? 'rounded-r-lg' : ''
+                }`}
+                style={{
+                  backgroundColor: selectedPeriod === period.id 
+                    ? 'var(--secondary-container)' 
+                    : 'var(--surface)',
+                  color: selectedPeriod === period.id 
+                    ? 'var(--on-secondary-container)' 
+                    : 'var(--on-surface)'
+                }}
+              >
+                {isEnglish ? period.labelEn : period.labelFr}
+              </button>
+              {/* Ligne séparatrice verticale */}
+              {index < periods.length - 1 && (
+                <div 
+                  className="w-px h-8 self-center"
+                  style={{ backgroundColor: 'var(--outline)' }}
+                />
+              )}
+            </div>
           ))}
         </div>
       </div>
