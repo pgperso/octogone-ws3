@@ -241,7 +241,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
           {/* Avatar et salutation */}
           <div className="flex items-center gap-3">
             <div 
-              className="w-12 h-12 rounded-full overflow-hidden"
+              className="w-16 h-16 rounded-full overflow-hidden"
               style={{ 
                 border: '2px solid var(--primary)',
                 padding: '2px'
@@ -250,8 +250,8 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
               <Image
                 src="/images/avatars/marc.avif"
                 alt="Marc"
-                width={44}
-                height={44}
+                width={60}
+                height={60}
                 className="w-full h-full object-cover rounded-full"
               />
             </div>
@@ -260,15 +260,15 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                 {isEnglish ? 'Hello Marc' : 'Bonjour Marc'}
               </h2>
               <p className="text-sm" style={{ color: 'var(--on-surface-variant)' }}>
-                {isEnglish ? 'Restaurant Director' : 'Directeur de la restauration'}
+                {isEnglish ? 'Restaurant Director, Restaurant Plus Group' : 'Directeur de la restauration, Groupe Restaurant Plus'}
               </p>
             </div>
           </div>
 
           {/* Sélecteur d'établissements */}
-          <div className="relative flex items-center gap-2">
-            <span className="text-sm font-medium" style={{ color: 'var(--on-surface-variant)' }}>
-              {isEnglish ? 'Establishments:' : 'Établissements :'}
+          <div className="flex flex-col">
+            <span className="text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
+              {isEnglish ? 'Establishments' : 'Établissements'}
             </span>
             <div className="relative" ref={dropdownRef}>
               <button
