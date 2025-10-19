@@ -1,33 +1,31 @@
-import { ElementType, ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-interface ContainerProps<T extends ElementType = "div"> {
+interface ContainerProps {
   children: ReactNode;
   className?: string;
-  as?: T;
+  as?: string;
   fluid?: boolean;
 }
 
-export function Container<T extends ElementType = "div">({
+export function Container({
   children,
   className,
-  as,
+  as = "div",
   fluid = false,
-}: ContainerProps<T>) {
-  const Component = as || "div";
-
-  return (
-    <Component
-      className={cn(
+}: ContainerProps) {
+  return React.createElement(
+    as,
+    {
+      className: cn(
         "w-full mx-auto px-4 sm:px-6 md:px-8",
         {
           "max-w-[450px] sm:max-w-[728px] md:max-w-[984px] lg:max-w-[1240px] xl:max-w-[1496px]":
             !fluid,
         },
         className,
-      )}
-    >
-      {children}
-    </Component>
+      ),
+    },
+    children
   );
 }
