@@ -214,9 +214,58 @@ interface Background3DProps {
 }
 
 export default function Background3D({ density = 1, seed = 8317 }: Background3DProps) {
+  const [hasError, setHasError] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const themeColors = useThemeColors();
+
+  useEffect(() => {
+    // Vérifier si WebGL est disponible
+    const canvas = document.createElement('canvas');
+    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    
+    if (!gl) {
+      console.warn('WebGL not supported, using fallback background');
+      setHasError(true);
+      setIsLoading(false);
+      return;
+    }
+
+    // Timeout pour détecter si le Canvas ne charge pas
+    const timeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timeout);
+  }, []);
+
+  // Fallback: fond simple avec la couleur du thème
+  if (hasError || isLoading) {
+    return (
+      <div 
+        style={{ 
+          position: 'fixed', 
+          top: 0, 
+          left: 0, 
+          width: '100%', 
+          height: '100%', 
+          zIndex: -1,
+          backgroundColor: themeColors.background,
+          transition: 'background-color 0.3s ease'
+        }} 
+      />
+    );
+  }
+
   return (
     <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }}>
-      <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
+      <Canvas 
+        camera={{ position: [0, 0, 10], fov: 50 }}
+        onCreated={() => setIsLoading(false)}
+        onError={() => {
+          console.error('Canvas rendering error, using fallback background');
+          setHasError(true);
+        }}
+      >
         <Scene density={density} seed={seed} />
       </Canvas>
     </div>
