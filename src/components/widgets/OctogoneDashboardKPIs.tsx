@@ -30,7 +30,7 @@ interface PeriodData {
 export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsProps) {
   const isEnglish = locale === 'en';
   const [selectedPeriod, setSelectedPeriod] = useState('day');
-  const [selectedEstablishments, setSelectedEstablishments] = useState<string[]>(['resto-centre', 'bistro-nord', 'cafe-sud', 'pizzeria-ouest']);
+  const [selectedEstablishments, setSelectedEstablishments] = useState<string[]>(['est-bistro8', 'est-taqueria', 'est-roquette', 'est-rioux']);
   const [isEstablishmentDropdownOpen, setIsEstablishmentDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -48,10 +48,10 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
 
   // Liste des établissements (4 restaurants)
   const establishments = [
-    { id: 'resto-centre', nameFr: 'Restaurant Centre-Ville', nameEn: 'Downtown Restaurant' },
-    { id: 'bistro-nord', nameFr: 'Bistro du Nord', nameEn: 'North Bistro' },
-    { id: 'cafe-sud', nameFr: 'Café du Sud', nameEn: 'South Café' },
-    { id: 'pizzeria-ouest', nameFr: 'Pizzeria de l\'Ouest', nameEn: 'West Pizzeria' }
+    { id: 'est-bistro8', nameFr: 'Bistro 8', nameEn: 'Bistro 8' },
+    { id: 'est-taqueria', nameFr: 'Taqueria Norte', nameEn: 'Taqueria Norte' },
+    { id: 'est-roquette', nameFr: 'Roquette', nameEn: 'Roquette' },
+    { id: 'est-rioux', nameFr: 'Chez Rioux', nameEn: 'Chez Rioux' }
   ];
 
   // Gestion de la sélection des établissements
@@ -268,7 +268,11 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
             </div>
           </div>
 
-          {/* Sélecteur d'établissements */}
+        </div>
+        
+        {/* Ligne des périodes : Sélecteur + Segmented Button + Dates */}
+        <div className="flex items-end gap-6">
+          {/* Sélecteur d'établissements déplacé ici */}
           <div className="flex flex-col">
             <span className="text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
               {isEnglish ? 'Establishments' : 'Établissements'}
@@ -276,7 +280,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setIsEstablishmentDropdownOpen(!isEstablishmentDropdownOpen)}
-                className="px-3 py-2 rounded-lg text-sm font-medium border-0 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none cursor-pointer flex items-center gap-2 min-w-48"
+                className="px-3 py-2 rounded-lg text-sm font-medium border-0 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none cursor-pointer flex items-center gap-2 min-w-48 h-10"
                 style={{ 
                   backgroundColor: 'var(--surface)',
                   color: 'var(--on-surface)',
@@ -348,10 +352,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
               )}
             </div>
           </div>
-        </div>
-        
-        {/* Ligne des périodes : Segmented Button + Dates */}
-        <div className="flex items-end gap-6">
+
           {/* Segmented Button pour les périodes */}
           <div className="flex flex-col">
             <div 
@@ -381,14 +382,11 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                   >
                     {isEnglish ? period.labelEn : period.labelFr}
                   </button>
-                  {/* Ligne séparatrice verticale */}
+                  {/* Ligne séparatrice verticale pleine hauteur */}
                   {index < periods.length - 1 && (
                     <div 
-                      className="w-px self-center"
-                      style={{ 
-                        backgroundColor: 'var(--outline)',
-                        height: '24px'
-                      }}
+                      className="w-px h-full"
+                      style={{ backgroundColor: 'var(--outline)' }}
                     />
                   )}
                 </div>
@@ -396,9 +394,12 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
             </div>
           </div>
 
-          {/* Affichage des périodes courante et comparative */}
-          <div className="flex items-start gap-8 text-sm">
-            <div className="flex flex-col h-10 justify-end">
+          {/* Affichage des périodes courante et comparative avec bordure */}
+          <div 
+            className="flex items-start gap-0 text-sm h-10 rounded-lg"
+            style={{ border: '1px solid var(--outline)' }}
+          >
+            <div className="flex flex-col h-full justify-end px-4 py-2">
               <span className="text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
                 {isEnglish ? 'Period' : 'Période'}
               </span>
@@ -406,7 +407,12 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                 {periodText.current}
               </span>
             </div>
-            <div className="flex flex-col h-10 justify-end">
+            {/* Séparateur vertical pleine hauteur */}
+            <div 
+              className="w-px h-full"
+              style={{ backgroundColor: 'var(--outline)' }}
+            />
+            <div className="flex flex-col h-full justify-end px-4 py-2">
               <span className="text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
                 {isEnglish ? 'Comparative period' : 'Période comparative'}
               </span>
