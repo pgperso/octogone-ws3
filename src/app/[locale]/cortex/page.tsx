@@ -130,7 +130,7 @@ export default function CortexPage() {
       ]
     },
     {
-      icon: CheckCircle,
+      icon: Check,
       titleFr: "Poser des actions",
       titleEn: "Take Actions",
       examplesFr: [
@@ -410,7 +410,6 @@ export default function CortexPage() {
         {/* Capacités liées aux Key Concepts (selon le toggle) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {currentCapabilities.map((capability: Capability, index: number) => {
-            const Icon = capability.icon;
             const examples = isEnglish ? capability.examplesEn : capability.examplesFr;
             
             return (
