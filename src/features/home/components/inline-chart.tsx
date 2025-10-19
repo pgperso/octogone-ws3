@@ -19,11 +19,10 @@ import type { InlineChart as InlineChartType } from '../data/tools-conversations
 
 interface InlineChartProps {
   chart: InlineChartType;
-  isEnglish: boolean;
   locale?: string;
 }
 
-export default function InlineChart({ chart, isEnglish, locale = 'fr' }: InlineChartProps) {
+export default function InlineChart({ chart, locale = 'fr' }: InlineChartProps) {
   // Convertir les données de label → name pour recharts
   const chartData = chart.data.map(item => ({
     name: item.label,

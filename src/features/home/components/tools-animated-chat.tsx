@@ -412,7 +412,7 @@ export default function ToolsAnimatedChat({ locale, onKeyConceptChange }: ToolsA
 
                 {message.chart && (
                   <div className="w-full max-w-full">
-                    <InlineChart chart={message.chart} isEnglish={isEnglish} locale={locale} />
+                    <InlineChart chart={message.chart} locale={locale} />
                   </div>
                 )}
 
