@@ -154,7 +154,7 @@ export default function CortexPage() {
           }}
         />
       </Head>
-      <main className="flex min-h-screen flex-col" style={{ backgroundColor: 'var(--background)' }}>
+      <main className="flex min-h-screen flex-col" style={{ backgroundColor: 'transparent' }}>
       {/* Hero Section */}
       <ResponsiveSection
         as="section"
@@ -272,7 +272,7 @@ export default function CortexPage() {
           transition={{ duration: 0.5 }}
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{ color: 'var(--on-background)' }}>
-            {isEnglish ? 'What Cortex Can Do' : 'Ce que Cortex peut faire'}
+            {isEnglish ? 'Your Most Reliable Employee' : 'Votre employé le plus fiable'}
           </h2>
           
           {/* Toggle Maintenant/Bientôt */}
@@ -390,11 +390,6 @@ export default function CortexPage() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-[#BADFF6] to-[#E2CDED] px-4 py-2 rounded-full mb-4">
-            <span className="text-sm font-semibold" style={{ color: 'var(--on-secondary-container)' }}>
-              {isEnglish ? 'Coming Soon in Beta' : 'Bientôt disponible en version Beta'}
-            </span>
-          </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ color: 'var(--on-background)' }}>
             {isEnglish ? 'Cortex in Action' : 'Cortex en Action'}
           </h2>
