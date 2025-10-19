@@ -141,7 +141,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
             title: 'Rapport hebdomadaire - Ventes & Performance',
             type: 'pdf',
             size: '2.4 MB',
-            downloadUrl: '/fr/modules/octogone-360'
+            downloadUrl: '/fr/fonctionnalites/octogone-360'
           }
         },
         { 
@@ -197,7 +197,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
             title: 'Fiche produit : Kiwano (Melon à cornes)',
             type: 'product',
             size: '1.2 MB',
-            downloadUrl: '/fr/modules/octogone-360',
+            downloadUrl: '/fr/fonctionnalites/octogone-360',
             image: '/images/kiwano.avif'
           }
         },
@@ -296,7 +296,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
             title: 'Weekly Report - Sales & Performance',
             type: 'pdf',
             size: '2.4 MB',
-            downloadUrl: '/en/modules/octogone-360'
+            downloadUrl: '/en/fonctionnalites/octogone-360'
           }
         },
         { 
@@ -352,7 +352,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
             title: 'Product Sheet: Kiwano (Horned Melon)',
             type: 'product',
             size: '1.2 MB',
-            downloadUrl: '/en/modules/octogone-360',
+            downloadUrl: '/en/fonctionnalites/octogone-360',
             image: '/images/kiwano.avif'
           }
         },

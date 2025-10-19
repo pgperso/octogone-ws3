@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { 
   LineChart, 
   Line, 
@@ -9,21 +10,20 @@ import {
   XAxis, 
   YAxis, 
   CartesianGrid, 
-  Tooltip, 
   ResponsiveContainer,
   PieChart,
   Pie,
-  Cell,
-  Legend
+  Cell
 } from 'recharts';
 import type { InlineChart as InlineChartType } from '../data/tools-conversations';
 
 interface InlineChartProps {
   chart: InlineChartType;
   isEnglish: boolean;
+  locale?: string;
 }
 
-export default function InlineChart({ chart, isEnglish }: InlineChartProps) {
+export default function InlineChart({ chart, isEnglish, locale = 'fr' }: InlineChartProps) {
   // Convertir les données de label → name pour recharts
   const chartData = chart.data.map(item => ({
     name: item.label,
@@ -31,12 +31,12 @@ export default function InlineChart({ chart, isEnglish }: InlineChartProps) {
     color: item.color
   }));
 
-  return (
+  const content = (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
-      className="mt-12 p-5 rounded-xl w-full"
+      className="mt-12 p-5 rounded-xl w-full cursor-pointer hover:shadow-xl transition-shadow"
       style={{ 
         backgroundColor: 'white',
         border: '1px solid var(--outline)',
@@ -69,16 +69,6 @@ export default function InlineChart({ chart, isEnglish }: InlineChartProps) {
                 axisLine={{ stroke: 'var(--outline-variant)' }}
                 tickFormatter={(value) => `${value}$`}
                 width={70}
-              />
-              <Tooltip 
-                contentStyle={{
-                  backgroundColor: 'var(--surface)',
-                  border: '1px solid var(--outline-variant)',
-                  borderRadius: '12px',
-                  color: 'var(--on-surface)',
-                  boxShadow: '0 8px 32px rgba(0,0,0,0.12)'
-                }}
-                formatter={(value) => [`${value}$`, isEnglish ? 'Sales' : 'Ventes']}
               />
               <Line 
                 type="monotone" 
@@ -113,16 +103,6 @@ export default function InlineChart({ chart, isEnglish }: InlineChartProps) {
                 tick={{ fontSize: 12, fill: 'var(--on-secondary-container)' }}
                 axisLine={{ stroke: 'var(--outline-variant)' }}
                 tickFormatter={(value) => `${value}$`}
-              />
-              <Tooltip 
-                contentStyle={{
-                  backgroundColor: 'var(--surface)',
-                  border: '1px solid var(--outline-variant)',
-                  borderRadius: '12px',
-                  color: 'var(--on-surface)',
-                  boxShadow: '0 8px 32px rgba(0,0,0,0.12)'
-                }}
-                formatter={(value) => [`${value}$`, isEnglish ? 'Sales' : 'Ventes']}
               />
               <Bar 
                 dataKey="value" 
@@ -174,28 +154,16 @@ export default function InlineChart({ chart, isEnglish }: InlineChartProps) {
                   />
                 ))}
               </Pie>
-              <Tooltip 
-                contentStyle={{
-                  backgroundColor: 'var(--surface)',
-                  border: '1px solid var(--outline-variant)',
-                  borderRadius: '12px',
-                  color: 'var(--on-surface)',
-                  boxShadow: '0 8px 32px rgba(0,0,0,0.12)'
-                }}
-                formatter={(value) => [`${value}%`, isEnglish ? 'Share' : 'Part']}
-              />
-              <Legend 
-                verticalAlign="bottom" 
-                height={36}
-                wrapperStyle={{
-                  fontSize: '12px',
-                  color: 'var(--on-secondary-container)'
-                }}
-              />
             </PieChart>
           )}
         </ResponsiveContainer>
       </div>
     </motion.div>
+  );
+
+  return (
+    <Link href={`/${locale}/fonctionnalites/octogone-360`}>
+      {content}
+    </Link>
   );
 }
