@@ -348,49 +348,54 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
         </div>
         
         {/* Ligne des périodes : Segmented Button + Dates */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-end gap-6">
           {/* Segmented Button pour les périodes */}
-          <div 
-            className="inline-flex rounded-lg"
-            style={{ 
-              backgroundColor: 'var(--surface)',
-              border: '1px solid var(--outline)'
-            }}
-          >
-            {periods.map((period, index) => (
-              <div key={period.id} className="flex">
-                <button
-                  onClick={() => setSelectedPeriod(period.id)}
-                  className={`px-4 py-2 text-sm font-medium transition-all duration-200 cursor-pointer ${
-                    index === 0 ? 'rounded-l-lg' : ''
-                  } ${
-                    index === periods.length - 1 ? 'rounded-r-lg' : ''
-                  }`}
-                  style={{
-                    backgroundColor: selectedPeriod === period.id 
-                      ? 'var(--secondary-container)' 
-                      : 'var(--surface)',
-                    color: selectedPeriod === period.id 
-                      ? 'var(--on-secondary-container)' 
-                      : 'var(--on-surface)'
-                  }}
-                >
-                  {isEnglish ? period.labelEn : period.labelFr}
-                </button>
-                {/* Ligne séparatrice verticale */}
-                {index < periods.length - 1 && (
-                  <div 
-                    className="w-px h-8 self-center"
-                    style={{ backgroundColor: 'var(--outline)' }}
-                  />
-                )}
-              </div>
-            ))}
+          <div className="flex flex-col">
+            <div 
+              className="inline-flex rounded-lg h-10"
+              style={{ 
+                backgroundColor: 'var(--surface)',
+                border: '1px solid var(--outline)'
+              }}
+            >
+              {periods.map((period, index) => (
+                <div key={period.id} className="flex h-full">
+                  <button
+                    onClick={() => setSelectedPeriod(period.id)}
+                    className={`px-4 py-2 text-sm font-medium transition-all duration-200 cursor-pointer flex items-center h-full ${
+                      index === 0 ? 'rounded-l-lg' : ''
+                    } ${
+                      index === periods.length - 1 ? 'rounded-r-lg' : ''
+                    }`}
+                    style={{
+                      backgroundColor: selectedPeriod === period.id 
+                        ? 'var(--secondary-container)' 
+                        : 'var(--surface)',
+                      color: selectedPeriod === period.id 
+                        ? 'var(--on-secondary-container)' 
+                        : 'var(--on-surface)'
+                    }}
+                  >
+                    {isEnglish ? period.labelEn : period.labelFr}
+                  </button>
+                  {/* Ligne séparatrice verticale */}
+                  {index < periods.length - 1 && (
+                    <div 
+                      className="w-px self-center"
+                      style={{ 
+                        backgroundColor: 'var(--outline)',
+                        height: '24px'
+                      }}
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Affichage des périodes courante et comparative */}
           <div className="flex items-start gap-8 text-sm">
-            <div className="flex flex-col">
+            <div className="flex flex-col h-10 justify-end">
               <span className="text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
                 {isEnglish ? 'Period' : 'Période'}
               </span>
@@ -398,7 +403,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                 {periodText.current}
               </span>
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col h-10 justify-end">
               <span className="text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
                 {isEnglish ? 'Comparative period' : 'Période comparative'}
               </span>
