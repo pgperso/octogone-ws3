@@ -277,8 +277,8 @@ export default function CortexPage() {
 
           <p className="text-lg max-w-2xl mx-auto mb-8" style={{ color: 'var(--on-surface-variant)' }}>
             {isEnglish
-              ? 'Always available, never tired, infinitely knowledgeable. Cortex masters every aspect of your operations and provides instant answers to all your questions, 24/7.'
-              : 'Toujours disponible, jamais fatigué, infiniment compétent. Cortex maîtrise tous les aspects de vos opérations et répond instantanément à toutes vos questions, 24h/24.'}
+              ? 'Always available, Cortex answers your questions 24/7. It learns, knows you, and masters every aspect of your operations.'
+              : 'Toujours disponible, Cortex répond à vos questions 24 heures sur 24, 7 jours sur 7. Il apprend, il vous connaît et il maîtrise tous les aspects de vos opérations.'}
           </p>
           
           {/* Toggle Maintenant/Bientôt */}
@@ -324,6 +324,13 @@ export default function CortexPage() {
               </button>
             </div>
           </div>
+          
+          {/* Texte de transition vers les capacités */}
+          <p className="text-base max-w-xl mx-auto mt-8" style={{ color: 'var(--on-surface-variant)' }}>
+            {isEnglish
+              ? 'Discover what makes Cortex your most valuable team member:'
+              : 'Découvrez ce qui fait de Cortex votre collaborateur le plus précieux :'}
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
