@@ -9,6 +9,7 @@ import { OctogoneButton } from "@/components/ui/octogone-button";
 import { getConceptById } from "@/data/features/features-content";
 import Image from "next/image";
 import Head from "next/head";
+import ToolsAnimatedChat from "@/features/home/components/tools-animated-chat";
 
 export default function CortexPage() {
   const params = useParams();
@@ -404,6 +405,17 @@ export default function CortexPage() {
                 : 'Découvrez* en primeur le nouvel assistant IA d\'Octogone. Cortex, c\'est votre gestionnaire parfait qui travaille sans relâche, analyse, recommande et prédit. Rien ne lui échappe. Bientôt accessible sur la version actuelle de la plateforme, Cortex marquera le début d\'une nouvelle ère de gestion intelligente. Ajoutez Cortex à votre forfait maintenant et profitez d\'un gel de tarif lors du lancement de la nouvelle version d\'Octogone.'}
             </p>
           </div>
+        </motion.div>
+
+        {/* Chat animé Cortex */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-16"
+        >
+          <ToolsAnimatedChat locale={locale} />
         </motion.div>
         
         <motion.div 
