@@ -325,7 +325,7 @@ export default function CortexPage() {
               }}
             >
               <Image
-                src="/images/Restaurant 2.avif"
+                src="/restaurant2.avif"
                 alt={isEnglish ? concept.nameEn : concept.nameFr}
                 fill
                 className="object-cover"
@@ -355,7 +355,7 @@ export default function CortexPage() {
             {isEnglish ? 'Your Most Reliable Employee' : 'Votre employé le plus fiable'}
           </h2>
 
-          <p className="text-lg max-w-3xl mx-auto mb-8" style={{ color: 'var(--on-surface-variant)' }}>
+          <p className="text-lg max-w-3xl mx-auto mb-12" style={{ color: 'var(--on-surface-variant)' }}>
             {isEnglish
               ? 'Always available, Cortex answers your questions 24/7. Your perfect manager who works tirelessly, analyzes, recommends, and predicts. Nothing escapes him. Soon accessible on the current platform, Cortex will mark the beginning of a new era of intelligent management. Discover what Cortex can do for you:'
               : 'Toujours disponible, Cortex répond à vos questions 24/7. Votre gestionnaire parfait qui travaille sans relâche, analyse, recommande et prédit. Rien ne lui échappe. Bientôt accessible sur la plateforme actuelle, Cortex marquera le début d\'une nouvelle ère de gestion intelligente. Découvrez ce que Cortex peut faire pour vous :'}
@@ -407,7 +407,7 @@ export default function CortexPage() {
         </motion.div>
 
         {/* Capacités liées aux Key Concepts (selon le toggle) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-16">
           {currentCapabilities.map((capability: Capability, index: number) => {
             const examples = isEnglish ? capability.examplesEn : capability.examplesFr;
             
@@ -421,7 +421,7 @@ export default function CortexPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 {/* Titre du groupe avec badge vert */}
-                <div className="flex items-center gap-3 mb-4">
+                <div className="flex items-center gap-3 mb-3">
                   <div 
                     className="w-6 h-6 rounded flex items-center justify-center flex-shrink-0"
                     style={{ backgroundColor: 'var(--success)' }}
@@ -434,7 +434,7 @@ export default function CortexPage() {
                 </div>
 
                 {/* Liste des exemples */}
-                <div className="space-y-2 pl-8">
+                <div className="space-y-1.5 pl-8">
                   {examples.map((example: string, exIndex: number) => (
                     <p key={exIndex} className="text-sm leading-relaxed" style={{ color: 'var(--on-surface-variant)' }}>
                       &ldquo;{example}&rdquo;
