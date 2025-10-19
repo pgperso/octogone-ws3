@@ -372,16 +372,6 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
     return `${sign}${deltaPct.toFixed(2)}%`;
   };
 
-  // Fonction pour formater les dates
-  const formatDate = (dateStr: string): string => {
-    const date = new Date(dateStr);
-    return date.toLocaleDateString(isEnglish ? 'en-CA' : 'fr-CA', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric'
-    });
-  };
-
   // Fonction pour obtenir les textes de période
   const getPeriodText = (): { current: string; previous: string } => {
     return {
