@@ -390,7 +390,7 @@ export default function ToolsAnimatedChat({ locale, onKeyConceptChange }: ToolsA
                 {message.cta && (
                   <Link 
                     href={`/${locale}${message.cta.link}`}
-                    className="group flex items-center justify-center gap-3 px-8 py-4 rounded-xl transition-all duration-200 cursor-pointer shadow-lg hover:shadow-xl"
+                    className="group flex items-center justify-center px-8 py-4 rounded-xl transition-all duration-200 cursor-pointer shadow-lg hover:shadow-xl"
                     style={{ 
                       backgroundColor: '#DCB26B',
                       color: 'white',
@@ -407,7 +407,6 @@ export default function ToolsAnimatedChat({ locale, onKeyConceptChange }: ToolsA
                     }}
                   >
                     <span className="font-bold">{message.cta.label}</span>
-                    <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                   </Link>
                 )}
 

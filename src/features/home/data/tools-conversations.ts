@@ -141,7 +141,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
             title: 'Rapport hebdomadaire - Ventes & Performance',
             type: 'pdf',
             size: '2.4 MB',
-            downloadUrl: '/fr/fonctionnalites/octogone-360'
+            downloadUrl: '/fr/modules/octogone-360'
           }
         },
         { 
@@ -177,7 +177,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         { 
           type: 'user', 
-          text: 'Oui, c\'est ça !', 
+          text: 'Oui, c\'est ça ! Tu peux installer la fiche.', 
           delay: 58000 
         },
         {
@@ -197,7 +197,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
             title: 'Fiche produit : Kiwano (Melon à cornes)',
             type: 'product',
             size: '1.2 MB',
-            downloadUrl: '/fr/fonctionnalites/octogone-360',
+            downloadUrl: '/fr/modules/octogone-360',
             image: '/images/kiwano.avif'
           }
         },
@@ -296,7 +296,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
             title: 'Weekly Report - Sales & Performance',
             type: 'pdf',
             size: '2.4 MB',
-            downloadUrl: '/en/features/octogone-360'
+            downloadUrl: '/en/modules/octogone-360'
           }
         },
         { 
@@ -312,7 +312,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           video: {
             title: 'Tutorial: Inventory Management',
             duration: '4:12',
-            videoUrl: '/en/features/inventory'
+            videoUrl: '/en/fonctionnalites/inventaire'
           }
         },
         {
@@ -332,7 +332,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
         },
         { 
           type: 'user', 
-          text: 'Yes, that\'s it!', 
+          text: 'Yes, that\'s it! You can install the sheet.', 
           delay: 58000 
         },
         {
@@ -352,7 +352,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
             title: 'Product Sheet: Kiwano (Horned Melon)',
             type: 'product',
             size: '1.2 MB',
-            downloadUrl: '/en/features/octogone-360',
+            downloadUrl: '/en/modules/octogone-360',
             image: '/images/kiwano.avif'
           }
         },
