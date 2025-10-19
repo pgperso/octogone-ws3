@@ -151,7 +151,7 @@ function RhombusInstances({ data, outlineColor }: { data: ShapeData[]; outlineCo
         color={outlineColor}
         wireframe={true}
         transparent
-        opacity={0.5}
+        opacity={0.3}
       />
       <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
     </instancedMesh>
