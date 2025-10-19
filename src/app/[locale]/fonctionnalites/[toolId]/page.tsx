@@ -10,6 +10,7 @@ import ToolDetailWidget from "@/components/widgets/tool-detail-widget";
 import { getToolById, getNextTool, getPreviousTool } from "@/data/tools/tools-content";
 import { ToolSEO } from "@/components/seo/tool-seo";
 import { LogoCard } from "@/components/widgets/logo-card";
+import OctogoneDashboardKPIs from "@/components/widgets/OctogoneDashboardKPIs";
 
 // Permettre les paramètres dynamiques
 export const dynamicParams = true;
@@ -144,6 +145,13 @@ export default function ToolPage({
           </motion.div>
         </div>
       </ResponsiveSection>
+
+      {/* Dashboard KPIs - Uniquement pour Octogone 360 */}
+      {toolId === 'octogone-360' && (
+        <ResponsiveSection spacing="xl" bgColor="">
+          <OctogoneDashboardKPIs locale={locale as 'fr' | 'en'} />
+        </ResponsiveSection>
+      )}
 
       {/* Features Section - Widget réutilisable */}
       <ResponsiveSection spacing="xxl" bgColor="">

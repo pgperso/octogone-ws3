@@ -4,7 +4,7 @@ import React from "react";
 import { useParams } from "next/navigation";
 import PageTemplate from "@/components/ui/page-template";
 import PageTransition from "@/components/ui/page-transition";
-import OctogoneDashboard from "@/components/widgets/OctogoneDashboard";
+import OctogoneDashboardKPIs from "@/components/widgets/OctogoneDashboardKPIs";
 
 export default function Octogone360Page() {
   // Récupérer la locale actuelle des paramètres d'URL
@@ -33,9 +33,9 @@ export default function Octogone360Page() {
         title={title}
         description={description}
       >
-        {/* Dashboard Widget */}
+        {/* Dashboard KPIs Widget */}
         <div className="mb-12">
-          <OctogoneDashboard locale={locale as 'fr' | 'en'} />
+          <OctogoneDashboardKPIs locale={locale as 'fr' | 'en'} />
         </div>
 
         {/* Le contenu supplémentaire sera ajouté ultérieurement */}
