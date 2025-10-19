@@ -320,8 +320,8 @@ export default function CortexPage() {
 
           <p className="text-lg max-w-2xl mx-auto mb-8" style={{ color: 'var(--on-surface-variant)' }}>
             {isEnglish
-              ? 'Always available, Cortex answers your questions 24/7. It learns, knows you, and masters every aspect of your operations. Discover what Cortex can do:'
-              : 'Toujours disponible, Cortex répond à vos questions 24 heures sur 24, 7 jours sur 7. Il apprend, il vous connaît et il maîtrise tous les aspects de vos opérations. Découvrez ce que Cortex peut faire :'}
+              ? 'Always available, Cortex answers your questions 24/7. It learns, knows you, and masters every aspect of your operations. Discover what Cortex can do for you and your business:'
+              : 'Toujours disponible, Cortex répond à vos questions 24 heures sur 24, 7 jours sur 7. Il apprend, il vous connaît et il maîtrise tous les aspects de vos opérations. Découvrez ce que Cortex peut faire pour vous et votre entreprise :'}
           </p>
 
           {/* Toggle Maintenant/Bientôt */}
@@ -370,7 +370,7 @@ export default function CortexPage() {
         </motion.div>
 
         {/* Header commun (toujours visible) - Capacités de base */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12 max-w-4xl mx-auto">
+        <div className="flex flex-wrap justify-start gap-4 mb-12 max-w-4xl mx-auto">
           {baseCapabilities.map((capability: Capability, index: number) => {
             const Icon = capability.icon;
             return (
