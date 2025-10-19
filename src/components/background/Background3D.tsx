@@ -82,7 +82,7 @@ function generateShapeData(count: number, seed: number): { rhombuses: ShapeData[
       const shapeData: ShapeData = {
         position: pos!,
         rotation: [rand() * Math.PI, rand() * Math.PI, rand() * Math.PI],
-        scale: scaleBase + rand() * 0.4,
+        scale: scaleBase, // Taille fixe par couche (pas de variation aléatoire)
         color: colors[Math.floor(rand() * colors.length)],
         layer,
       };
