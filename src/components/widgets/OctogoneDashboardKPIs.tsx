@@ -385,6 +385,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
   const periodText = getPeriodText();
 
   return (
+    <>
     <div className="w-full">
       {/* Toggle Version en haut */}
       <div className="flex justify-center mb-6">
@@ -777,9 +778,10 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
       </div>
       </>
       )}
-      
-      {/* Floating Cortex CTA - toujours visible */}
-      <FloatingCortexCTA locale={locale} />
     </div>
+    
+    {/* Floating Cortex CTA - toujours visible, en dehors du container */}
+    <FloatingCortexCTA locale={locale} />
+    </>
   );
 }
