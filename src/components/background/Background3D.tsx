@@ -182,7 +182,7 @@ function Scene({ density, seed }: { density: number; seed: number }) {
 
   // Opacité selon le thème : plus faible en dark mode
   const isDark = document.documentElement.classList.contains('dark');
-  const opacity = isDark ? 0.12 : 0.15;
+  const opacity = isDark ? 0.08 : 0.15;
 
   return (
     <>
