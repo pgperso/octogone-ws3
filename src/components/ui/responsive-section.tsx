@@ -43,7 +43,7 @@ interface ResponsiveSectionProps extends React.HTMLAttributes<HTMLElement> {
  */
 export const ResponsiveSection: React.FC<ResponsiveSectionProps> = ({
   children,
-  as: Component = "section",
+  as = "section",
   fullHeight = false,
   noPadding = false,
   spacing = "md",
@@ -81,9 +81,10 @@ export const ResponsiveSection: React.FC<ResponsiveSectionProps> = ({
     full: "max-w-full",
   };
 
-  return (
-    <Component
-      className={cn(
+  return React.createElement(
+    as,
+    {
+      className: cn(
         // Classes de base
         "w-full relative overflow-hidden",
         // Couleur de fond
@@ -94,19 +95,19 @@ export const ResponsiveSection: React.FC<ResponsiveSectionProps> = ({
         !noPadding ? spacingClasses[spacing] : "",
         // Classes personnalisées
         className,
-      )}
-      style={defaultStyle}
-      {...props}
-    >
-      {/* Conteneur pour limiter la largeur du contenu */}
-      <div
-        className={cn(
+      ),
+      style: defaultStyle,
+      ...props,
+    },
+    React.createElement(
+      "div",
+      {
+        className: cn(
           "mx-auto px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 w-full",
           maxWidth !== "none" ? maxWidthClasses[maxWidth] : "",
-        )}
-      >
-        {children}
-      </div>
-    </Component>
+        ),
+      },
+      children
+    )
   );
 };
