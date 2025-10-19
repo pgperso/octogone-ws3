@@ -201,7 +201,6 @@ function Scene({ density, seed }: { density: number; seed: number }) {
       <color attach="background" args={[COLORS.bg]} />
 
       <Float speed={0.5} rotationIntensity={0.2} floatIntensity={0.3}>
-        <OctagonInstances data={octagons} />
         <RhombusInstances data={rhombuses} />
       </Float>
     </>
