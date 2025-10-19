@@ -127,12 +127,14 @@ function ShapeInstances({
   data, 
   outlineColor, 
   geometry, 
-  rotationSpeed 
+  rotationSpeed,
+  opacity
 }: { 
   data: ShapeData[]; 
   outlineColor: string; 
   geometry: THREE.BufferGeometry;
   rotationSpeed: { x: number; z: number };
+  opacity: number;
 }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
 
@@ -159,7 +161,7 @@ function ShapeInstances({
 
   return (
     <instancedMesh ref={meshRef} args={[geometry, undefined, data.length]}>
-      <meshBasicMaterial color={outlineColor} transparent opacity={0.2} key={outlineColor} />
+      <meshBasicMaterial color={outlineColor} transparent opacity={opacity} key={outlineColor} />
       <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
     </instancedMesh>
   );
@@ -178,6 +180,10 @@ function Scene({ density, seed }: { density: number; seed: number }) {
   const rhombusGeometry = useMemo(() => createRhombusBipyramid({ diagH: 1.4, diagV: 1.4, height: 0.05, normalize: true }), []);
   const octagonGeometry = useMemo(() => createOctagonBipyramid({ edge: 1, height: 0.05, normalize: true }), []);
 
+  // Opacité selon le thème : plus faible en dark mode
+  const isDark = document.documentElement.classList.contains('dark');
+  const opacity = isDark ? 0.12 : 0.15;
+
   return (
     <>
       <color attach="background" args={[themeColors.background]} />
@@ -188,12 +194,14 @@ function Scene({ density, seed }: { density: number; seed: number }) {
           outlineColor={themeColors.outline}
           geometry={rhombusGeometry}
           rotationSpeed={{ x: 0.0015, z: 0.2 }}
+          opacity={opacity}
         />
         <ShapeInstances 
           data={octagons} 
           outlineColor={themeColors.outline}
           geometry={octagonGeometry}
           rotationSpeed={{ x: 0.001, z: 0.3 }}
+          opacity={opacity}
         />
       </Float>
     </>
