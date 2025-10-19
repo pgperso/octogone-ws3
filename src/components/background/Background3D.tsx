@@ -5,6 +5,109 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, Environment } from '@react-three/drei';
 import * as THREE from 'three';
 
+/**
+ * Crée un prisme octogonal complet (8 côtés)
+ */
+function createOctagonPrismGeometry(opts?: { edge?: number; height?: number }): THREE.BufferGeometry {
+  const edge = opts?.edge ?? 1;
+  const height = opts?.height ?? 0.6;
+  
+  // Calculs géométriques pour octogone régulier
+  const radius = edge / (2 * Math.sin(Math.PI / 8));
+  
+  const vertices: number[] = [];
+  const indices: number[] = [];
+  
+  // Générer les 8 sommets du haut et du bas
+  for (let i = 0; i < 8; i++) {
+    const angle = (i * Math.PI) / 4; // 45° entre chaque sommet
+    const x = radius * Math.cos(angle);
+    const y = radius * Math.sin(angle);
+    
+    // Sommet du haut
+    vertices.push(x, y, height / 2);
+    // Sommet du bas
+    vertices.push(x, y, -height / 2);
+  }
+  
+  // Cap supérieur (triangulation en éventail depuis le centre)
+  const topCenterIdx = vertices.length / 3;
+  vertices.push(0, 0, height / 2);
+  for (let i = 0; i < 8; i++) {
+    const next = (i + 1) % 8;
+    indices.push(topCenterIdx, i * 2, next * 2);
+  }
+  
+  // Cap inférieur (triangulation en éventail depuis le centre)
+  const bottomCenterIdx = vertices.length / 3;
+  vertices.push(0, 0, -height / 2);
+  for (let i = 0; i < 8; i++) {
+    const next = (i + 1) % 8;
+    indices.push(bottomCenterIdx, next * 2 + 1, i * 2 + 1);
+  }
+  
+  // Faces latérales (8 rectangles = 16 triangles)
+  for (let i = 0; i < 8; i++) {
+    const next = (i + 1) % 8;
+    const topCurrent = i * 2;
+    const bottomCurrent = i * 2 + 1;
+    const topNext = next * 2;
+    const bottomNext = next * 2 + 1;
+    
+    // Triangle 1
+    indices.push(topCurrent, bottomCurrent, topNext);
+    // Triangle 2
+    indices.push(topNext, bottomCurrent, bottomNext);
+  }
+  
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+  geometry.setIndex(indices);
+  geometry.computeVertexNormals();
+  
+  return geometry;
+}
+
+/**
+ * Crée une bipyramide rhombique complète (diamant losange)
+ */
+function createRhombusBipyramidGeometry(opts?: { diagH?: number; diagV?: number; apex?: number }): THREE.BufferGeometry {
+  const diagH = opts?.diagH ?? 1.8;
+  const diagV = opts?.diagV ?? 1.2;
+  const apex = opts?.apex ?? 0.8;
+  
+  const vertices = new Float32Array([
+    // Base losange (plan Z=0) - 4 sommets
+    diagH / 2, 0, 0,           // 0: droite
+    0, diagV / 2, 0,           // 1: haut
+    -diagH / 2, 0, 0,          // 2: gauche
+    0, -diagV / 2, 0,          // 3: bas
+    // Apex
+    0, 0, apex / 2,            // 4: pointe avant (+Z)
+    0, 0, -apex / 2,           // 5: pointe arrière (-Z)
+  ]);
+  
+  const indices = new Uint16Array([
+    // Pyramide supérieure (apex avant, +Z)
+    4, 0, 1,  // face droite-haut
+    4, 1, 2,  // face haut-gauche
+    4, 2, 3,  // face gauche-bas
+    4, 3, 0,  // face bas-droite
+    // Pyramide inférieure (apex arrière, -Z)
+    5, 1, 0,  // face droite-haut
+    5, 2, 1,  // face haut-gauche
+    5, 3, 2,  // face gauche-bas
+    5, 0, 3,  // face bas-droite
+  ]);
+  
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+  geometry.setIndex(new THREE.BufferAttribute(indices, 1));
+  geometry.computeVertexNormals();
+  
+  return geometry;
+}
+
 // Palette pastel officielle Octogone
 const COLORS = {
   gold: '#DCB26B',
@@ -101,7 +204,7 @@ function generateShapeData(count: number, seed: number): { octagons: ShapeData[]
 function OctagonInstances({ data }: { data: ShapeData[] }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   // Prisme octogonal : volume solide avec 8 faces verticales + dessus/dessous
-  const geometry = useMemo(() => new THREE.CylinderGeometry(0.8, 0.8, 0.6, 8, 1, false), []);
+  const geometry = useMemo(() => createOctagonPrismGeometry({ edge: 0.8, height: 0.6 }), []);
 
   const { matrices, colors } = useMemo(() => {
     const matrices = new Float32Array(data.length * 16);
@@ -150,42 +253,7 @@ function RhombusInstances({ data }: { data: ShapeData[] }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   
   // Losange bipyramidal (diamant 3D) : deux pyramides jointes par la base
-  const geometry = useMemo(() => {
-    const w = 1;    // largeur du losange
-    const h = 0.6;  // hauteur du losange
-    const depth = 0.6; // profondeur (épaisseur du diamant)
-    
-    const vertices = new Float32Array([
-      // Base losange (milieu)
-      0, h, 0,      // 0: haut
-      w, 0, 0,      // 1: droite
-      0, -h, 0,     // 2: bas
-      -w, 0, 0,     // 3: gauche
-      // Sommet pyramide supérieure
-      0, 0, depth,  // 4: pointe avant
-      // Sommet pyramide inférieure
-      0, 0, -depth, // 5: pointe arrière
-    ]);
-
-    const indices = new Uint16Array([
-      // Pyramide supérieure (avant)
-      4, 0, 1,
-      4, 1, 2,
-      4, 2, 3,
-      4, 3, 0,
-      // Pyramide inférieure (arrière)
-      5, 1, 0,
-      5, 2, 1,
-      5, 3, 2,
-      5, 0, 3,
-    ]);
-
-    const geo = new THREE.BufferGeometry();
-    geo.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
-    geo.setIndex(new THREE.BufferAttribute(indices, 1));
-    geo.computeVertexNormals();
-    return geo;
-  }, []);
+  const geometry = useMemo(() => createRhombusBipyramidGeometry({ diagH: 1.8, diagV: 1.2, apex: 0.8 }), []);
 
   const { matrices, colors } = useMemo(() => {
     const matrices = new Float32Array(data.length * 16);
