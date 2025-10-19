@@ -317,24 +317,11 @@ export default function CortexPage() {
             {isEnglish ? 'Your Most Reliable Employee' : 'Votre employé le plus fiable'}
           </h2>
 
-          <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--on-surface-variant)' }}>
+          <p className="text-lg max-w-2xl mx-auto mb-8" style={{ color: 'var(--on-surface-variant)' }}>
             {isEnglish
-              ? 'Always available, Cortex answers your questions 24/7. It learns, knows you, and masters every aspect of your operations.'
-              : 'Toujours disponible, Cortex répond à vos questions 24 heures sur 24, 7 jours sur 7. Il apprend, il vous connaît et il maîtrise tous les aspects de vos opérations.'}
+              ? 'Always available, Cortex answers your questions 24/7. It learns, knows you, and masters every aspect of your operations. Discover what Cortex can do:'
+              : 'Toujours disponible, Cortex répond à vos questions 24 heures sur 24, 7 jours sur 7. Il apprend, il vous connaît et il maîtrise tous les aspects de vos opérations. Découvrez ce que Cortex peut faire :'}
           </p>
-        </motion.div>
-
-        {/* Titre au-dessus du toggle */}
-        <motion.div 
-          className="text-center mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <h3 className="text-2xl font-bold mb-6" style={{ color: 'var(--on-background)' }}>
-            {isEnglish ? 'Discover What Cortex Can Do' : 'Découvrez ce que Cortex peut faire'}
-          </h3>
 
           {/* Toggle Maintenant/Bientôt */}
           <div className="flex items-center justify-center">
