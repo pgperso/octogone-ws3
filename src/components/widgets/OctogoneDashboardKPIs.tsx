@@ -577,6 +577,15 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
         </div>
       </div>
 
+      {/* Petite note de démonstration */}
+      <div className="mb-3 text-center">
+        <p className="text-xs italic" style={{ color: 'var(--on-surface-variant)', opacity: 0.7 }}>
+          {isEnglish 
+            ? '* Demo data for illustration purposes' 
+            : '* Données de démonstration à titre illustratif'}
+        </p>
+      </div>
+
       {/* Grid de KPIs */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {currentMetrics.map((metric: Metric, index: number) => {
