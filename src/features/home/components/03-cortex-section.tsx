@@ -6,9 +6,8 @@ import { ResponsiveSection } from "@/components/ui/responsive-section";
 import OctogoneButton from "@/components/ui/octogone-button";
 import { Sparkles, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { LaptopFrame } from "@/components/ui/laptop-frame";
 import KeyConceptBadge from "./key-concept-badge";
-import ToolsAnimatedChat from "./tools-animated-chat";
+import CortexChatWidget from "./cortex-chat-widget";
 
 interface CortexIntroProps {
   locale?: string;
@@ -88,13 +87,7 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
             if (element) element.classList.add('animation-complete');
           }}
         >
-          <div className="mt-32 mb-32">
-            <LaptopFrame>
-              <div style={{ height: '600px', position: 'relative' }}>
-                <ToolsAnimatedChat locale={locale} />
-              </div>
-            </LaptopFrame>
-          </div>
+          <CortexChatWidget locale={locale} />
         </motion.div>
 
         {/* Texte percutant sous la vidéo */}

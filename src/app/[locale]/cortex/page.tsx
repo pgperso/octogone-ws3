@@ -9,7 +9,7 @@ import { OctogoneButton } from "@/components/ui/octogone-button";
 import { getConceptById } from "@/data/features/features-content";
 import Image from "next/image";
 import Head from "next/head";
-import ToolsAnimatedChat from "@/features/home/components/tools-animated-chat";
+import CortexChatWidget from "@/features/home/components/cortex-chat-widget";
 
 export default function CortexPage() {
   const params = useParams();
@@ -413,9 +413,8 @@ export default function CortexPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-16"
         >
-          <ToolsAnimatedChat locale={locale} />
+          <CortexChatWidget locale={locale} />
         </motion.div>
         
         <motion.div 
