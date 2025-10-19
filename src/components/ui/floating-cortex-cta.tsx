@@ -1,7 +1,9 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Brain, X, Minimize2, Sparkles } from 'lucide-react';
+import { X } from 'lucide-react';
+import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface FloatingCortexCTAProps {
   locale?: string;
@@ -10,9 +12,6 @@ interface FloatingCortexCTAProps {
 export default function FloatingCortexCTA({ locale = 'fr' }: FloatingCortexCTAProps) {
   const isEnglish = locale === 'en';
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isMinimized, setIsMinimized] = useState(true);
-  
-  const CORTEX_GRADIENT = 'linear-gradient(135deg, #BADFF6 0%, #E2CDED 100%)';
   
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -21,97 +20,38 @@ export default function FloatingCortexCTA({ locale = 'fr' }: FloatingCortexCTAPr
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-
-  const handleMinimize = () => {
-    setIsMinimized(true);
-  };
-
-  const handleExpand = () => {
-    setIsMinimized(false);
-  };
   
   return (
     <>
-      {/* Widget flottant */}
-      <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50">
-        {isMinimized ? (
-          // Version minimisée - Juste un cercle avec icône Brain
-          <div
-            className="w-14 h-14 md:w-16 md:h-16 rounded-full cursor-pointer transition-all duration-300 hover:scale-110 flex items-center justify-center animate-pulse"
+      {/* Bouton flottant Cortex - copié exactement du chat animé */}
+      <AnimatePresence>
+        {!isModalOpen && (
+          <motion.button
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={handleOpenModal}
+            className="fixed bottom-6 right-6 w-16 h-16 rounded-2xl shadow-2xl flex items-center justify-center cursor-pointer"
             style={{
-              background: CORTEX_GRADIENT,
-              boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2)'
+              backgroundColor: 'var(--secondary-container)',
+              border: '2px solid white',
+              zIndex: 50
             }}
-            onClick={handleExpand}
           >
-            <Brain className="w-7 h-7 md:w-8 md:h-8" style={{ color: 'var(--on-secondary-container)' }} />
-          </div>
-        ) : (
-          // Version normale
-          <div className="relative group">
-            {/* Bouton minimiser */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                handleMinimize();
-              }}
-              className="absolute -top-2 -right-2 w-6 h-6 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 z-10"
-              style={{
-                backgroundColor: 'var(--primary-container)',
-                color: 'var(--on-primary-container)'
-              }}
-            >
-              <Minimize2 className="w-3 h-3" />
-            </button>
-
-            <div
-              className="rounded-xl md:rounded-2xl p-3 md:p-6 transition-all duration-300 hover:scale-105 cursor-pointer"
-              style={{
-                background: CORTEX_GRADIENT,
-                minWidth: '220px',
-                boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2)'
-              }}
-              onClick={handleOpenModal}
-            >
-              {/* Icône */}
-              <div className="flex items-center justify-center mb-2 md:mb-3">
-                <div
-                  className="w-8 h-8 md:w-12 md:h-12 rounded-full flex items-center justify-center"
-                  style={{ backgroundColor: 'var(--primary-container)' }}
-                >
-                  <Brain className="w-4 h-4 md:w-6 md:h-6" style={{ color: 'var(--on-primary-container)' }} />
-                </div>
-              </div>
-              
-              {/* Titre */}
-              <div className="text-center mb-2">
-                <p className="text-sm md:text-base font-bold mb-1" style={{ color: 'var(--on-secondary-container)' }}>
-                  Cortex AI
-                </p>
-                <p className="text-xs md:text-sm" style={{ color: 'var(--on-secondary-container)', opacity: 0.9 }}>
-                  {isEnglish ? 'Your AI Assistant' : 'Votre assistant IA'}
-                </p>
-              </div>
-              
-              {/* CTA */}
-              <div className="text-center mt-2 md:mt-4">
-                <div
-                  className="inline-flex items-center gap-1 md:gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-lg font-semibold text-xs md:text-sm transition-all duration-200 group-hover:scale-105"
-                  style={{
-                    backgroundColor: 'var(--primary-container)',
-                    color: 'var(--on-primary-container)'
-                  }}
-                >
-                  <Sparkles className="w-3 h-3 md:w-4 md:h-4" />
-                  <span>{isEnglish ? 'Reserve Early Access' : 'Réserver l\'accès anticipé'}</span>
-                </div>
-              </div>
-            </div>
-          </div>
+            <Image
+              src="/cortex.svg"
+              alt="Cortex"
+              width={32}
+              height={32}
+              className="w-8 h-8"
+              style={{ filter: 'brightness(0) saturate(100%)', color: 'var(--on-secondary-container)' }}
+            />
+          </motion.button>
         )}
-      </div>
+      </AnimatePresence>
 
-      {/* Modale */}
+      {/* Modale popup */}
       {isModalOpen && (
         <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4"
@@ -141,16 +81,23 @@ export default function FloatingCortexCTA({ locale = 'fr' }: FloatingCortexCTAPr
               <div className="flex justify-center mb-6">
                 <div
                   className="w-20 h-20 rounded-full flex items-center justify-center"
-                  style={{ background: CORTEX_GRADIENT }}
+                  style={{ background: 'linear-gradient(135deg, #BADFF6 0%, #E2CDED 100%)' }}
                 >
-                  <Brain className="w-10 h-10" style={{ color: 'var(--on-secondary-container)' }} />
+                  <Image
+                    src="/cortex.svg"
+                    alt="Cortex"
+                    width={40}
+                    height={40}
+                    className="w-10 h-10"
+                    style={{ filter: 'brightness(0) saturate(100%)', color: 'var(--on-secondary-container)' }}
+                  />
                 </div>
               </div>
 
               {/* Titre */}
               <h2 
                 className="text-3xl md:text-4xl font-bold mb-4"
-                style={{ color: 'var(--primary)' }}
+                style={{ color: 'var(--on-surface)' }}
               >
                 {isEnglish ? 'Cortex AI is Coming' : 'Cortex IA arrive bientôt'}
               </h2>
@@ -169,19 +116,19 @@ export default function FloatingCortexCTA({ locale = 'fr' }: FloatingCortexCTAPr
               <div 
                 className="p-6 mb-6 rounded-lg"
                 style={{ 
-                  backgroundColor: 'transparent',
-                  border: '2px solid var(--primary)'
+                  backgroundColor: 'var(--secondary-container)',
+                  border: 'none'
                 }}
               >
                 <p 
                   className="text-xl md:text-2xl font-bold mb-3"
-                  style={{ color: 'var(--primary)' }}
+                  style={{ color: 'var(--on-secondary-container)' }}
                 >
                   {isEnglish ? 'Reserve Your Early Access' : 'Réservez votre accès anticipé'}
                 </p>
                 <p 
                   className="text-base md:text-lg"
-                  style={{ color: 'var(--on-surface)' }}
+                  style={{ color: 'var(--on-secondary-container)' }}
                 >
                   {isEnglish 
                     ? 'Subscribe to Octogone now and get Cortex AI included in your current plan when it launches. No additional cost for early subscribers.' 
