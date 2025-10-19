@@ -451,7 +451,7 @@ export default function CortexPage() {
       <ResponsiveSection
         as="section"
         bgColor=""
-        spacing="xxl"
+        spacing="lg"
         style={{ backgroundColor: 'transparent' }}
       >
         {/* Chat animé Cortex */}
