@@ -26,7 +26,7 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
   );
 
   return (
-    <div style={{ backgroundColor: 'transparent' }}>
+    <div className="dark:bg-[rgba(30,30,30,0.2)] bg-[rgba(250,250,250,0.2)]">
       <ResponsiveSection spacing="xxl" bgColor="transparent">
         <div className="max-w-6xl mx-auto motion-container">
         {/* Logo et titre */}
