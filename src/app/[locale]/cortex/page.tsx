@@ -347,7 +347,7 @@ export default function CortexPage() {
                     : 'var(--on-surface-variant)'
                 }}
               >
-                {isEnglish ? 'Now' : 'Maintenant'}
+                {isEnglish ? 'Now (Beta)' : 'Maintenant (Bêta)'}
               </button>
               <button
                 onClick={() => setActiveTab('soon')}
@@ -370,7 +370,7 @@ export default function CortexPage() {
         </motion.div>
 
         {/* Header commun (toujours visible) - Capacités de base */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-4 mb-12 max-w-4xl mx-auto">
           {baseCapabilities.map((capability: Capability, index: number) => {
             const Icon = capability.icon;
             return (
