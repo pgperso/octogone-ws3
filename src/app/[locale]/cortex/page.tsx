@@ -369,97 +369,84 @@ export default function CortexPage() {
         </motion.div>
 
         {/* Header commun (toujours visible) - Capacités de base */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
           {baseCapabilities.map((capability: Capability, index: number) => {
             const Icon = capability.icon;
             return (
               <motion.div
                 key={index}
-                className="relative rounded-2xl p-8"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                className="relative px-6 py-4 rounded-xl flex items-center gap-3"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.05 }}
+                style={{
+                  background: CORTEX_GRADIENT,
+                  border: '2px solid white',
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+                  minWidth: '280px'
+                }}
               >
-                <div 
-                  className="absolute inset-0 rounded-2xl p-[2px]"
-                  style={{
-                    background: CORTEX_GRADIENT,
-                    boxShadow: '0 0 10px rgba(186, 223, 246, 0.2), 0 0 20px rgba(226, 205, 237, 0.15)'
+                <Icon className="w-6 h-6" style={{ color: 'var(--on-secondary-container)' }} />
+                <p 
+                  className="text-sm font-semibold"
+                  style={{ 
+                    color: 'var(--on-secondary-container)',
+                    textShadow: '0 2px 4px rgba(0,0,0,0.1)'
                   }}
                 >
-                  <div 
-                    className="w-full h-full rounded-2xl"
-                    style={{ backgroundColor: 'var(--background)' }}
-                  />
-                </div>
-
-                <div className="relative">
-                  <div 
-                    className="w-14 h-14 rounded-xl flex items-center justify-center mb-6"
-                    style={{ background: CORTEX_GRADIENT }}
-                  >
-                    <Icon className="w-7 h-7" style={{ color: 'var(--on-secondary-container)' }} />
-                  </div>
-                  
-                  <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--on-surface)' }}>
-                    {isEnglish ? capability.titleEn : capability.titleFr}
-                  </h3>
-                  
-                  <p style={{ color: 'var(--on-surface-variant)' }}>
-                    {isEnglish ? capability.descEn : capability.descFr}
-                  </p>
-                </div>
+                  {isEnglish ? capability.titleEn : capability.titleFr}
+                </p>
               </motion.div>
             );
           })}
         </div>
 
         {/* Capacités liées aux Key Concepts (selon le toggle) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {currentCapabilities.map((capability: Capability, index: number) => {
             const Icon = capability.icon;
             return (
               <motion.div
                 key={index}
-                className="relative rounded-2xl p-8"
-                initial={{ opacity: 0, y: 30 }}
+                className="relative rounded-xl p-6"
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ scale: 1.02 }}
               >
-                {/* Bordure en dégradé Cortex avec halo */}
                 <div 
-                  className="absolute inset-0 rounded-2xl p-[2px]"
+                  className="absolute inset-0 rounded-xl p-[2px]"
                   style={{
                     background: CORTEX_GRADIENT,
                     boxShadow: '0 0 10px rgba(186, 223, 246, 0.2), 0 0 20px rgba(226, 205, 237, 0.15)'
                   }}
                 >
                   <div 
-                    className="w-full h-full rounded-2xl"
+                    className="w-full h-full rounded-xl"
                     style={{ backgroundColor: 'var(--background)' }}
                   />
                 </div>
 
-                {/* Contenu */}
-                <div className="relative">
+                <div className="relative flex items-start gap-4">
                   <div 
-                    className="w-14 h-14 rounded-xl flex items-center justify-center mb-6"
+                    className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
                     style={{ background: CORTEX_GRADIENT }}
                   >
-                    <Icon className="w-7 h-7" style={{ color: 'var(--on-secondary-container)' }} />
+                    <Icon className="w-5 h-5" style={{ color: 'var(--on-secondary-container)' }} />
                   </div>
                   
-                  <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--on-surface)' }}>
-                    {isEnglish ? capability.titleEn : capability.titleFr}
-                  </h3>
-                  
-                  <p style={{ color: 'var(--on-surface-variant)' }}>
-                    {isEnglish ? capability.descEn : capability.descFr}
-                  </p>
+                  <div className="flex-1">
+                    <h3 className="text-base font-bold mb-2" style={{ color: 'var(--on-surface)' }}>
+                      {isEnglish ? capability.titleEn : capability.titleFr}
+                    </h3>
+                    
+                    <p className="text-sm" style={{ color: 'var(--on-surface-variant)' }}>
+                      {isEnglish ? capability.descEn : capability.descFr}
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             );
