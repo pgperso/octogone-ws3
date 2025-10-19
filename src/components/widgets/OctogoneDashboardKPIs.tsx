@@ -140,6 +140,35 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
 
   return (
     <div className="w-full">
+      {/* Sélecteur de périodes */}
+      <div className="mb-6 flex items-center justify-between">
+        <h2 className="text-2xl font-bold" style={{ color: 'var(--on-surface)' }}>
+          {isEnglish ? 'Performance Dashboard' : 'Tableau de bord de performance'}
+        </h2>
+        
+        <div className="flex items-center gap-2">
+          <span className="text-sm font-medium mr-2" style={{ color: 'var(--on-surface-variant)' }}>
+            {isEnglish ? 'Period:' : 'Période :'}
+          </span>
+          <select 
+            className="px-3 py-2 rounded-lg text-sm font-medium border-0 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            style={{ 
+              backgroundColor: 'var(--surface)',
+              color: 'var(--on-surface)',
+              boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
+            }}
+            defaultValue="today"
+          >
+            <option value="today">{isEnglish ? 'Today' : 'Aujourd\'hui'}</option>
+            <option value="yesterday">{isEnglish ? 'Yesterday' : 'Hier'}</option>
+            <option value="week">{isEnglish ? 'This Week' : 'Cette semaine'}</option>
+            <option value="month">{isEnglish ? 'This Month' : 'Ce mois'}</option>
+            <option value="quarter">{isEnglish ? 'This Quarter' : 'Ce trimestre'}</option>
+            <option value="year">{isEnglish ? 'This Year' : 'Cette année'}</option>
+          </select>
+        </div>
+      </div>
+
       {/* Grid de KPIs */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {kpis.map((kpi, index) => {
@@ -149,10 +178,10 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
           return (
             <div
               key={index}
-              className="rounded-xl p-5 transition-all duration-300 hover:shadow-lg"
+              className="rounded-xl p-5 transition-all duration-300 hover:shadow-xl"
               style={{ 
                 backgroundColor: 'var(--surface)',
-                border: '1px solid var(--outline-variant)'
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
               }}
             >
               {/* Header avec titre et icône info */}
