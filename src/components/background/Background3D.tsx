@@ -6,14 +6,8 @@ import { Float } from '@react-three/drei';
 import * as THREE from 'three';
 import { createRhombusBipyramid } from './solids';
 
-// Palette pastel officielle Octogone
-const COLORS = {
-  gold: '#DCB26B',
-  sky: '#BADFF6',
-  mint: '#B8E6D5',
-  violet: '#E2CDED',
-  bg: '#0B0D12',
-};
+// Les couleurs seront lues depuis les variables CSS du thème
+// Pas de palette hardcodée
 
 const GOLDEN_ANGLE = 137.508;
 
@@ -35,7 +29,8 @@ function seededRandom(seed: number): () => number {
 
 function generateShapeData(count: number, seed: number): { rhombuses: ShapeData[] } {
   const rand = seededRandom(seed);
-  const colors = [COLORS.gold, COLORS.sky, COLORS.mint, COLORS.violet];
+  // Utiliser la couleur on-background du thème pour toutes les arêtes
+  const onBackgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--on-background').trim() || '#ffffff';
   const rhombuses: ShapeData[] = [];
 
   const frontCount = Math.floor(count * 0.15);
@@ -83,7 +78,7 @@ function generateShapeData(count: number, seed: number): { rhombuses: ShapeData[
         position: pos!,
         rotation: [rand() * Math.PI, rand() * Math.PI, rand() * Math.PI],
         scale: scaleBase, // Taille fixe par couche (pas de variation aléatoire)
-        color: colors[Math.floor(rand() * colors.length)],
+        color: onBackgroundColor, // Couleur on-background du thème
         layer,
       };
 
@@ -146,9 +141,14 @@ function Scene({ density, seed }: { density: number; seed: number }) {
   const count = Math.floor(60 * density);
   const { rhombuses } = useMemo(() => generateShapeData(count, seed), [count, seed]);
 
+  // Lire la couleur background du thème
+  const backgroundColor = typeof window !== 'undefined' 
+    ? getComputedStyle(document.documentElement).getPropertyValue('--background').trim() || '#0B0D12'
+    : '#0B0D12';
+
   return (
     <>
-      <color attach="background" args={[COLORS.bg]} />
+      <color attach="background" args={[backgroundColor]} />
 
       <Float speed={0.5} rotationIntensity={0.2} floatIntensity={0.3}>
         <RhombusInstances data={rhombuses} />
