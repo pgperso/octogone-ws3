@@ -226,19 +226,28 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
         <div className="flex items-center justify-between mb-4">
           {/* Avatar et salutation */}
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-full overflow-hidden">
+            <div 
+              className="w-12 h-12 rounded-full overflow-hidden"
+              style={{ 
+                border: '2px solid var(--primary)',
+                padding: '2px'
+              }}
+            >
               <Image
                 src="/images/avatars/marc.avif"
                 alt="Marc"
-                width={48}
-                height={48}
-                className="w-full h-full object-cover"
+                width={44}
+                height={44}
+                className="w-full h-full object-cover rounded-full"
               />
             </div>
             <div>
               <h2 className="text-2xl font-bold" style={{ color: 'var(--on-surface)' }}>
                 {isEnglish ? 'Hello Marc' : 'Bonjour Marc'}
               </h2>
+              <p className="text-sm" style={{ color: 'var(--on-surface-variant)' }}>
+                {isEnglish ? 'Restaurant Director' : 'Directeur de la restauration'}
+              </p>
             </div>
           </div>
 
