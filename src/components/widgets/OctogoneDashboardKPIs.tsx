@@ -432,53 +432,69 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
 
       {/* Affichage conditionnel selon la version */}
       {activeVersion === 'next' ? (
-        /* Message percutant pour inciter à l'abonnement */
+        /* Message professionnel pour Octogone 360 */
         <div className="flex flex-col items-center justify-center py-20 px-4">
           <div className="text-center max-w-3xl">
             <h2 
               className="text-4xl font-bold mb-6"
-              style={{ color: 'var(--primary)' }}
+              style={{ color: 'var(--on-surface)' }}
             >
-              {isEnglish ? 'The Next Generation is Coming' : 'La prochaine génération arrive'}
+              {isEnglish ? 'Octogone 360: In Development' : 'Octogone 360 : en développement'}
             </h2>
             <p 
-              className="text-xl mb-8 leading-relaxed"
+              className="text-lg mb-6 leading-relaxed"
               style={{ color: 'var(--on-surface)' }}
             >
               {isEnglish 
-                ? 'We are developing an even more powerful version of Octogone with revolutionary features, advanced AI, and unprecedented insights.' 
-                : 'Nous développons une version encore plus puissante d\'Octogone avec des fonctionnalités révolutionnaires, une IA avancée et des insights sans précédent.'}
+                ? 'We are developing Octogone 360, an evolution of the Octogone dashboard that will fully integrate Cortex, our artificial intelligence.' 
+                : 'Nous développons Octogone 360, une évolution du tableau de bord Octogone qui intégrera pleinement Cortex, notre intelligence artificielle.'}
+            </p>
+            <p 
+              className="text-lg mb-6 leading-relaxed"
+              style={{ color: 'var(--on-surface)' }}
+            >
+              {isEnglish 
+                ? 'This new version will expand current analytical capabilities and offer intelligent recommendations generated from your real-time data.' 
+                : 'Cette nouvelle version élargira les capacités d\'analyse actuelles et offrira des recommandations intelligentes, générées à partir de vos données en temps réel.'}
+            </p>
+            <p 
+              className="text-lg mb-10 leading-relaxed"
+              style={{ color: 'var(--on-surface)' }}
+            >
+              {isEnglish 
+                ? 'Cortex will become a true strategic ally—capable of anticipating trends, detecting gaps, and suggesting concrete actions to optimize your operations.' 
+                : 'Cortex deviendra un véritable allié stratégique — capable d\'anticiper les tendances, de détecter les écarts et de suggérer des actions concrètes pour optimiser vos opérations.'}
             </p>
             <div 
-              className="p-6 mb-8 rounded-lg"
+              className="p-8 mb-8 rounded-lg"
               style={{ 
-                backgroundColor: 'transparent',
-                border: '2px solid var(--primary)'
+                backgroundColor: 'var(--surface-variant)',
+                border: 'none'
               }}
             >
               <p 
-                className="text-2xl font-bold mb-3"
-                style={{ color: 'var(--primary)' }}
+                className="text-2xl font-bold mb-4"
+                style={{ color: 'var(--on-surface)' }}
               >
-                {isEnglish ? 'Lock in Your Price Today' : 'Gelez votre prix dès aujourd\'hui'}
+                {isEnglish ? 'Lock in Your Rate Now' : 'Geler votre tarif dès maintenant'}
               </p>
               <p 
-                className="text-lg"
+                className="text-base leading-relaxed mb-3"
                 style={{ color: 'var(--on-surface)' }}
               >
                 {isEnglish 
-                  ? 'Subscribe now and lock in your current rate. When the next generation launches, you\'ll get all the new features at no additional cost.' 
-                  : 'Abonnez-vous maintenant et gelez votre tarif actuel. Lorsque la prochaine génération sera lancée, vous bénéficierez de toutes les nouvelles fonctionnalités sans frais supplémentaires.'}
+                  ? 'Subscribe today and keep your current rate.' 
+                  : 'Abonnez-vous dès aujourd\'hui et conservez votre tarif actuel.'}
+              </p>
+              <p 
+                className="text-base leading-relaxed"
+                style={{ color: 'var(--on-surface)' }}
+              >
+                {isEnglish 
+                  ? 'When Octogone 360 launches, you will automatically benefit from all new features and advanced Cortex recommendations at no additional cost.' 
+                  : 'Lors du lancement d\'Octogone 360, vous profiterez automatiquement de toutes les nouvelles fonctionnalités et des recommandations avancées de Cortex, sans frais supplémentaires.'}
               </p>
             </div>
-            <p 
-              className="text-base"
-              style={{ color: 'var(--on-surface-variant)' }}
-            >
-              {isEnglish 
-                ? 'Early subscribers get lifetime access to all future updates at today\'s price.' 
-                : 'Les premiers abonnés bénéficient d\'un accès à vie à toutes les mises à jour futures au prix d\'aujourd\'hui.'}
-            </p>
           </div>
         </div>
       ) : (
