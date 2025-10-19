@@ -439,7 +439,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
               className="text-4xl font-bold mb-6"
               style={{ color: 'var(--on-surface)' }}
             >
-              {isEnglish ? 'Octogone 360: In Development' : 'Octogone 360 : en développement'}
+              {isEnglish ? 'Octogone 360: New Dashboard in Development' : 'Octogone 360 : Nouveau tableau de bord en développement'}
             </h2>
             <p 
               className="text-lg mb-6 leading-relaxed"
@@ -462,25 +462,25 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
               style={{ color: 'var(--on-surface)' }}
             >
               {isEnglish 
-                ? 'Cortex will become a true strategic ally—capable of anticipating trends, detecting gaps, and suggesting concrete actions to optimize your operations.' 
-                : 'Cortex deviendra un véritable allié stratégique — capable d\'anticiper les tendances, de détecter les écarts et de suggérer des actions concrètes pour optimiser vos opérations.'}
+                ? 'Cortex will become a true strategic ally, capable of anticipating trends, detecting gaps, and suggesting concrete actions to optimize your operations.' 
+                : 'Cortex deviendra un véritable allié stratégique, capable d\'anticiper les tendances, de détecter les écarts et de suggérer des actions concrètes pour optimiser vos opérations.'}
             </p>
             <div 
               className="p-8 mb-8 rounded-lg"
               style={{ 
-                backgroundColor: 'var(--surface-variant)',
+                backgroundColor: 'var(--secondary-container)',
                 border: 'none'
               }}
             >
               <p 
                 className="text-2xl font-bold mb-4"
-                style={{ color: 'var(--on-surface)' }}
+                style={{ color: 'var(--on-secondary-container)' }}
               >
-                {isEnglish ? 'Lock in Your Rate Now' : 'Geler votre tarif dès maintenant'}
+                {isEnglish ? 'Secure Your Current Rate' : 'Sécurisez votre tarif actuel'}
               </p>
               <p 
                 className="text-base leading-relaxed mb-3"
-                style={{ color: 'var(--on-surface)' }}
+                style={{ color: 'var(--on-secondary-container)' }}
               >
                 {isEnglish 
                   ? 'Subscribe today and keep your current rate.' 
@@ -488,7 +488,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
               </p>
               <p 
                 className="text-base leading-relaxed"
-                style={{ color: 'var(--on-surface)' }}
+                style={{ color: 'var(--on-secondary-container)' }}
               >
                 {isEnglish 
                   ? 'When Octogone 360 launches, you will automatically benefit from all new features and advanced Cortex recommendations at no additional cost.' 
@@ -778,7 +778,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
       </>
       )}
       
-      {/* Floating Cortex CTA */}
+      {/* Floating Cortex CTA - toujours visible */}
       <FloatingCortexCTA locale={locale} />
     </div>
   );
