@@ -163,7 +163,7 @@ function RhombusInstances({ data, outlineColor }: { data: ShapeData[]; outlineCo
     <>
       {/* Mesh plein avec couleur outline pour cacher les lignes internes */}
       <instancedMesh ref={meshRef} args={[geometry, undefined, data.length]}>
-        <meshBasicMaterial color={outlineColor} key={outlineColor} />
+        <meshBasicMaterial color={outlineColor} transparent opacity={0.2} key={outlineColor} />
         <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
       </instancedMesh>
       
@@ -172,6 +172,8 @@ function RhombusInstances({ data, outlineColor }: { data: ShapeData[]; outlineCo
         <meshBasicMaterial 
           color={outlineColor}
           wireframe={true}
+          transparent
+          opacity={0.2}
           key={outlineColor}
         />
         <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
@@ -216,7 +218,7 @@ function OctagonInstances({ data, outlineColor }: { data: ShapeData[]; outlineCo
   return (
     <>
       <instancedMesh ref={meshRef} args={[geometry, undefined, data.length]}>
-        <meshBasicMaterial color={outlineColor} key={outlineColor} />
+        <meshBasicMaterial color={outlineColor} transparent opacity={0.2} key={outlineColor} />
         <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
       </instancedMesh>
       
@@ -224,6 +226,8 @@ function OctagonInstances({ data, outlineColor }: { data: ShapeData[]; outlineCo
         <meshBasicMaterial 
           color={outlineColor}
           wireframe={true}
+          transparent
+          opacity={0.2}
           key={outlineColor}
         />
         <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
