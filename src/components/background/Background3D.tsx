@@ -98,8 +98,8 @@ function generateShapeData(count: number, seed: number): { rhombuses: ShapeData[
 function RhombusInstances({ data }: { data: ShapeData[] }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   
-  // Losange bipyramidal (diamant 3D) : deux pyramides jointes par la base
-  const geometry = useMemo(() => createRhombusBipyramid({ diagH: 1.8, diagV: 1.2, height: 0.8, normalize: true }), []);
+  // Cube (bipyramide carrée) : diagonales égales pour former un carré
+  const geometry = useMemo(() => createRhombusBipyramid({ diagH: 1.4, diagV: 1.4, height: 1.4, normalize: true }), []);
 
   const { matrices, colors } = useMemo(() => {
     const matrices = new Float32Array(data.length * 16);
