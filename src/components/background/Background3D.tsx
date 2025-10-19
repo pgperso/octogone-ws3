@@ -46,7 +46,6 @@ interface ShapeData {
   position: [number, number, number];
   rotation: [number, number, number];
   scale: number;
-  color: string;
   layer: 'back' | 'mid' | 'front';
 }
 
@@ -58,7 +57,7 @@ function seededRandom(seed: number): () => number {
   };
 }
 
-function generateShapeData(count: number, seed: number, outlineColor: string): { rhombuses: ShapeData[]; octagons: ShapeData[] } {
+function generateShapeData(count: number, seed: number): { rhombuses: ShapeData[]; octagons: ShapeData[] } {
   const rand = seededRandom(seed);
   const rhombuses: ShapeData[] = [];
   const octagons: ShapeData[] = [];
@@ -107,8 +106,7 @@ function generateShapeData(count: number, seed: number, outlineColor: string): {
       const shapeData: ShapeData = {
         position: pos!,
         rotation: [rand() * Math.PI, rand() * Math.PI, rand() * Math.PI],
-        scale: scaleBase, // Taille fixe par couche (pas de variation aléatoire)
-        color: outlineColor, // Couleur outline du thème
+        scale: scaleBase,
         layer,
       };
 
@@ -124,11 +122,19 @@ function generateShapeData(count: number, seed: number, outlineColor: string): {
   return { rhombuses, octagons };
 }
 
-function RhombusInstances({ data, outlineColor }: { data: ShapeData[]; outlineColor: string }) {
+// Composant générique pour les instances de formes
+function ShapeInstances({ 
+  data, 
+  outlineColor, 
+  geometry, 
+  rotationSpeed 
+}: { 
+  data: ShapeData[]; 
+  outlineColor: string; 
+  geometry: THREE.BufferGeometry;
+  rotationSpeed: { x: number; z: number };
+}) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
-  
-  // Losange plat 2D (plaque mince)
-  const geometry = useMemo(() => createRhombusBipyramid({ diagH: 1.4, diagV: 1.4, height: 0.05, normalize: true }), []);
 
   const matrices = useMemo(() => {
     const matrices = new Float32Array(data.length * 16);
@@ -147,43 +153,8 @@ function RhombusInstances({ data, outlineColor }: { data: ShapeData[]; outlineCo
 
   useFrame((state) => {
     if (!meshRef.current) return;
-    meshRef.current.rotation.x += 0.003;
-    meshRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.2) * 0.1;
-  });
-
-  return (
-    <instancedMesh ref={meshRef} args={[geometry, undefined, data.length]}>
-      <meshBasicMaterial color={outlineColor} transparent opacity={0.2} key={outlineColor} />
-      <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
-    </instancedMesh>
-  );
-}
-
-function OctagonInstances({ data, outlineColor }: { data: ShapeData[]; outlineColor: string }) {
-  const meshRef = useRef<THREE.InstancedMesh>(null);
-  
-  // Octogone plat 2D
-  const geometry = useMemo(() => createOctagonBipyramid({ edge: 1, height: 0.05, normalize: true }), []);
-
-  const matrices = useMemo(() => {
-    const matrices = new Float32Array(data.length * 16);
-    const tempMatrix = new THREE.Matrix4();
-
-    data.forEach((shape, i) => {
-      tempMatrix.identity();
-      tempMatrix.makeRotationFromEuler(new THREE.Euler(...shape.rotation));
-      tempMatrix.setPosition(...shape.position);
-      tempMatrix.scale(new THREE.Vector3(shape.scale, shape.scale, shape.scale));
-      tempMatrix.toArray(matrices, i * 16);
-    });
-
-    return matrices;
-  }, [data]);
-
-  useFrame((state) => {
-    if (!meshRef.current) return;
-    meshRef.current.rotation.x += 0.002;
-    meshRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.3) * 0.1;
+    meshRef.current.rotation.x += rotationSpeed.x;
+    meshRef.current.rotation.z = Math.sin(state.clock.elapsedTime * rotationSpeed.z) * 0.1;
   });
 
   return (
@@ -199,22 +170,30 @@ function Scene({ density, seed }: { density: number; seed: number }) {
   const themeColors = useThemeColors();
   
   const { rhombuses, octagons } = useMemo(
-    () => generateShapeData(count, seed, themeColors.outline), 
-    [count, seed, themeColors.outline]
+    () => generateShapeData(count, seed), 
+    [count, seed]
   );
+
+  // Géométries créées une seule fois
+  const rhombusGeometry = useMemo(() => createRhombusBipyramid({ diagH: 1.4, diagV: 1.4, height: 0.05, normalize: true }), []);
+  const octagonGeometry = useMemo(() => createOctagonBipyramid({ edge: 1, height: 0.05, normalize: true }), []);
 
   return (
     <>
       <color attach="background" args={[themeColors.background]} />
 
       <Float speed={0.5} rotationIntensity={0.2} floatIntensity={0.3}>
-        <RhombusInstances 
+        <ShapeInstances 
           data={rhombuses} 
           outlineColor={themeColors.outline}
+          geometry={rhombusGeometry}
+          rotationSpeed={{ x: 0.003, z: 0.2 }}
         />
-        <OctagonInstances 
+        <ShapeInstances 
           data={octagons} 
           outlineColor={themeColors.outline}
+          geometry={octagonGeometry}
+          rotationSpeed={{ x: 0.002, z: 0.3 }}
         />
       </Float>
     </>
