@@ -119,7 +119,7 @@ function generateShapeData(count: number, seed: number, outlineColor: string): {
   return { rhombuses };
 }
 
-function RhombusInstances({ data, outlineColor, backgroundColor }: { data: ShapeData[]; outlineColor: string; backgroundColor: string }) {
+function RhombusInstances({ data, outlineColor }: { data: ShapeData[]; outlineColor: string }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   const wireframeRef = useRef<THREE.InstancedMesh>(null);
   
@@ -156,9 +156,9 @@ function RhombusInstances({ data, outlineColor, backgroundColor }: { data: Shape
 
   return (
     <>
-      {/* Mesh plein avec couleur background pour cacher les lignes internes */}
+      {/* Mesh plein avec couleur outline pour cacher les lignes internes */}
       <instancedMesh ref={meshRef} args={[geometry, undefined, data.length]}>
-        <meshBasicMaterial color={backgroundColor} key={backgroundColor} />
+        <meshBasicMaterial color={outlineColor} key={outlineColor} />
         <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
       </instancedMesh>
       
@@ -194,7 +194,6 @@ function Scene({ density, seed }: { density: number; seed: number }) {
         <RhombusInstances 
           data={rhombuses} 
           outlineColor={themeColors.outline}
-          backgroundColor={themeColors.background}
         />
       </Float>
     </>
