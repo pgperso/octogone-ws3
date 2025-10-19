@@ -117,17 +117,15 @@ function generateShapeData(count: number, seed: number, outlineColor: string): {
   return { rhombuses };
 }
 
-function RhombusInstances({ data }: { data: ShapeData[] }) {
+function RhombusInstances({ data, outlineColor }: { data: ShapeData[]; outlineColor: string }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   
   // Cube (bipyramide carrée) : diagonales égales pour former un carré
   const geometry = useMemo(() => createRhombusBipyramid({ diagH: 1.4, diagV: 1.4, height: 1.4, normalize: true }), []);
 
-  const { matrices, colors } = useMemo(() => {
+  const matrices = useMemo(() => {
     const matrices = new Float32Array(data.length * 16);
-    const colors = new Float32Array(data.length * 3);
     const tempMatrix = new THREE.Matrix4();
-    const tempColor = new THREE.Color();
 
     data.forEach((shape, i) => {
       tempMatrix.identity();
@@ -135,12 +133,9 @@ function RhombusInstances({ data }: { data: ShapeData[] }) {
       tempMatrix.setPosition(...shape.position);
       tempMatrix.scale(new THREE.Vector3(shape.scale, shape.scale, shape.scale));
       tempMatrix.toArray(matrices, i * 16);
-
-      tempColor.set(shape.color);
-      tempColor.toArray(colors, i * 3);
     });
 
-    return { matrices, colors };
+    return matrices;
   }, [data]);
 
   useFrame((state) => {
@@ -153,11 +148,10 @@ function RhombusInstances({ data }: { data: ShapeData[] }) {
   return (
     <instancedMesh ref={meshRef} args={[geometry, undefined, data.length]}>
       <meshBasicMaterial 
-        vertexColors 
+        color={outlineColor}
         wireframe={true}
       />
       <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
-      <instancedBufferAttribute attach="instanceColor" args={[colors, 3]} />
     </instancedMesh>
   );
 }
@@ -176,7 +170,7 @@ function Scene({ density, seed }: { density: number; seed: number }) {
       <color attach="background" args={[themeColors.background]} />
 
       <Float speed={0.5} rotationIntensity={0.2} floatIntensity={0.3}>
-        <RhombusInstances data={rhombuses} />
+        <RhombusInstances data={rhombuses} outlineColor={themeColors.outline} />
       </Float>
     </>
   );
