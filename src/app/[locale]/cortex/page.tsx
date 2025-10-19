@@ -19,7 +19,6 @@ export default function CortexPage() {
 
   // Constantes pour éviter la duplication
   const CORTEX_GRADIENT = 'linear-gradient(135deg, #BADFF6 0%, #E2CDED 100%)'; // Cortex Light
-  const CORTEX_GRADIENT_DARK = 'linear-gradient(135deg, #BADFF6 0%, #A7D6F3 50%, #94CDF0 100%)'; // Cortex Dark
   const CORTEX_ICON_FILTER = 'brightness(0) saturate(100%) invert(8%) sepia(15%) saturate(3207%) hue-rotate(167deg) brightness(96%) contrast(101%)';
   
   const concept = getConceptById('cortex');
@@ -33,31 +32,6 @@ export default function CortexPage() {
     : 'assistant IA restaurant, intelligence artificielle, Cortex AI, questions naturelles, réponses instantanées, optimisation données, chatbot restaurant';
   const url = `https://octogone.app/${locale}/cortex`;
   const imageUrl = concept.heroImage.startsWith('http') ? concept.heroImage : `https://octogone.app${concept.heroImage}`;
-
-  // Capacités de base (toujours visibles)
-  const baseCapabilities = [
-    {
-      icon: MessageSquare,
-      titleFr: "Conversation naturelle",
-      titleEn: "Natural Conversation",
-      descFr: "Posez vos questions comme à un collègue. Cortex comprend le langage humain et répond instantanément.",
-      descEn: "Ask questions as you would to a colleague. Cortex understands human language and responds instantly."
-    },
-    {
-      icon: Zap,
-      titleFr: "Réponses instantanées",
-      titleEn: "Instant Responses",
-      descFr: "Plus besoin de fouiller dans des rapports. Cortex vous donne la bonne réponse en quelques secondes.",
-      descEn: "No more digging through reports. Cortex gives you the right answer in seconds."
-    },
-    {
-      icon: Clock,
-      titleFr: "Disponible 24/7",
-      titleEn: "Available 24/7",
-      descFr: "Toujours prêt, toujours attentif. Cortex travaille en continu, de jour comme de nuit.",
-      descEn: "Always ready, always attentive. Cortex works continuously, day and night."
-    }
-  ];
 
   // Groupes de capacités avec exemples - Maintenant (version bêta)
   const capabilitiesNow = [
@@ -188,15 +162,6 @@ export default function CortexPage() {
   ];
 
   const currentCapabilities = activeTab === 'now' ? capabilitiesNow : capabilitiesSoon;
-
-  // Type pour les capacités de base
-  type BaseCapability = {
-    icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
-    titleFr: string;
-    titleEn: string;
-    descFr: string;
-    descEn: string;
-  };
 
   // Type pour les capacités avec exemples
   type Capability = {
