@@ -92,13 +92,22 @@ const HowItWorks = ({ onOpenCalculator }: HowItWorksProps) => {
   ];
 
   return (
-    <ResponsiveSection
-      as="section"
-      spacing="xxl"
-      style={{ 
-        background: 'linear-gradient(to bottom, transparent, var(--background))'
-      }}
-    >
+    <div style={{ position: 'relative' }}>
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        height: '100%',
+        background: 'linear-gradient(to bottom, transparent 0%, var(--background) 100%)',
+        filter: 'blur(1px)',
+        zIndex: 0,
+      }} />
+      <ResponsiveSection
+        as="section"
+        spacing="xxl"
+        style={{ position: 'relative', zIndex: 1 }}
+      >
       <motion.div 
         className="text-center mb-16"
         initial={{ opacity: 0, y: 20 }}
@@ -416,6 +425,7 @@ const HowItWorks = ({ onOpenCalculator }: HowItWorksProps) => {
         </OctogoneButton>
       </motion.div>
     </ResponsiveSection>
+    </div>
   );
 };
 
