@@ -100,8 +100,8 @@ function generateShapeData(count: number, seed: number): { octagons: ShapeData[]
 
 function OctagonInstances({ data }: { data: ShapeData[] }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
-  // Octaèdre (8 faces triangulaires) pour un vrai effet 3D multi-faces
-  const geometry = useMemo(() => new THREE.OctahedronGeometry(1, 0), []);
+  // Prisme octogonal : volume solide avec 8 faces verticales + dessus/dessous
+  const geometry = useMemo(() => new THREE.CylinderGeometry(0.8, 0.8, 0.6, 8, 1, false), []);
 
   const { matrices, colors } = useMemo(() => {
     const matrices = new Float32Array(data.length * 16);
@@ -132,7 +132,14 @@ function OctagonInstances({ data }: { data: ShapeData[] }) {
 
   return (
     <instancedMesh ref={meshRef} args={[geometry, undefined, data.length]}>
-      <meshStandardMaterial vertexColors transparent opacity={0.6} />
+      <meshStandardMaterial 
+        vertexColors 
+        transparent 
+        opacity={0.7}
+        metalness={0.3}
+        roughness={0.4}
+        flatShading={false}
+      />
       <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
       <instancedBufferAttribute attach="instanceColor" args={[colors, 3]} />
     </instancedMesh>
@@ -142,30 +149,35 @@ function OctagonInstances({ data }: { data: ShapeData[] }) {
 function RhombusInstances({ data }: { data: ShapeData[] }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   
-  // Rhomboèdre (cube déformé) pour un vrai volume 3D
+  // Losange bipyramidal (diamant 3D) : deux pyramides jointes par la base
   const geometry = useMemo(() => {
+    const w = 1;    // largeur du losange
+    const h = 0.6;  // hauteur du losange
+    const depth = 0.6; // profondeur (épaisseur du diamant)
+    
     const vertices = new Float32Array([
-      // Face avant (losange)
-      0, 1, 0.5,
-      0.7, 0, 0.5,
-      0, -1, 0.5,
-      -0.7, 0, 0.5,
-      // Face arrière (losange)
-      0, 1, -0.5,
-      0.7, 0, -0.5,
-      0, -1, -0.5,
-      -0.7, 0, -0.5,
+      // Base losange (milieu)
+      0, h, 0,      // 0: haut
+      w, 0, 0,      // 1: droite
+      0, -h, 0,     // 2: bas
+      -w, 0, 0,     // 3: gauche
+      // Sommet pyramide supérieure
+      0, 0, depth,  // 4: pointe avant
+      // Sommet pyramide inférieure
+      0, 0, -depth, // 5: pointe arrière
     ]);
 
     const indices = new Uint16Array([
-      // Faces avant et arrière
-      0, 1, 2, 0, 2, 3, // avant
-      4, 6, 5, 4, 7, 6, // arrière
-      // Faces latérales
-      0, 4, 5, 0, 5, 1, // haut-droite
-      1, 5, 6, 1, 6, 2, // bas-droite
-      2, 6, 7, 2, 7, 3, // bas-gauche
-      3, 7, 4, 3, 4, 0, // haut-gauche
+      // Pyramide supérieure (avant)
+      4, 0, 1,
+      4, 1, 2,
+      4, 2, 3,
+      4, 3, 0,
+      // Pyramide inférieure (arrière)
+      5, 1, 0,
+      5, 2, 1,
+      5, 3, 2,
+      5, 0, 3,
     ]);
 
     const geo = new THREE.BufferGeometry();
@@ -204,7 +216,14 @@ function RhombusInstances({ data }: { data: ShapeData[] }) {
 
   return (
     <instancedMesh ref={meshRef} args={[geometry, undefined, data.length]}>
-      <meshStandardMaterial vertexColors transparent opacity={0.6} />
+      <meshStandardMaterial 
+        vertexColors 
+        transparent 
+        opacity={0.7}
+        metalness={0.4}
+        roughness={0.3}
+        flatShading={false}
+      />
       <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
       <instancedBufferAttribute attach="instanceColor" args={[colors, 3]} />
     </instancedMesh>
