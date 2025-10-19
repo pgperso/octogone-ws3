@@ -100,7 +100,8 @@ function generateShapeData(count: number, seed: number): { octagons: ShapeData[]
 
 function OctagonInstances({ data }: { data: ShapeData[] }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
-  const geometry = useMemo(() => new THREE.CylinderGeometry(1, 1, 0.2, 8), []);
+  // Octaèdre (8 faces triangulaires) pour un vrai effet 3D multi-faces
+  const geometry = useMemo(() => new THREE.OctahedronGeometry(1, 0), []);
 
   const { matrices, colors } = useMemo(() => {
     const matrices = new Float32Array(data.length * 16);
@@ -124,7 +125,9 @@ function OctagonInstances({ data }: { data: ShapeData[] }) {
 
   useFrame((state) => {
     if (!meshRef.current) return;
-    meshRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.1) * 0.05;
+    // Rotation continue pour montrer toutes les faces
+    meshRef.current.rotation.y += 0.002;
+    meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.3) * 0.1;
   });
 
   return (
@@ -139,18 +142,37 @@ function OctagonInstances({ data }: { data: ShapeData[] }) {
 function RhombusInstances({ data }: { data: ShapeData[] }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   
+  // Rhomboèdre (cube déformé) pour un vrai volume 3D
   const geometry = useMemo(() => {
-    const shape = new THREE.Shape();
-    shape.moveTo(0, 1);
-    shape.lineTo(0.7, 0);
-    shape.lineTo(0, -1);
-    shape.lineTo(-0.7, 0);
-    shape.closePath();
+    const vertices = new Float32Array([
+      // Face avant (losange)
+      0, 1, 0.5,
+      0.7, 0, 0.5,
+      0, -1, 0.5,
+      -0.7, 0, 0.5,
+      // Face arrière (losange)
+      0, 1, -0.5,
+      0.7, 0, -0.5,
+      0, -1, -0.5,
+      -0.7, 0, -0.5,
+    ]);
 
-    return new THREE.ExtrudeGeometry(shape, {
-      depth: 0.1,
-      bevelEnabled: false,
-    });
+    const indices = new Uint16Array([
+      // Faces avant et arrière
+      0, 1, 2, 0, 2, 3, // avant
+      4, 6, 5, 4, 7, 6, // arrière
+      // Faces latérales
+      0, 4, 5, 0, 5, 1, // haut-droite
+      1, 5, 6, 1, 6, 2, // bas-droite
+      2, 6, 7, 2, 7, 3, // bas-gauche
+      3, 7, 4, 3, 4, 0, // haut-gauche
+    ]);
+
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
+    geo.setIndex(new THREE.BufferAttribute(indices, 1));
+    geo.computeVertexNormals();
+    return geo;
   }, []);
 
   const { matrices, colors } = useMemo(() => {
@@ -175,7 +197,9 @@ function RhombusInstances({ data }: { data: ShapeData[] }) {
 
   useFrame((state) => {
     if (!meshRef.current) return;
-    meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.15) * 0.05;
+    // Rotation continue pour montrer toutes les faces du rhomboèdre
+    meshRef.current.rotation.x += 0.003;
+    meshRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.2) * 0.1;
   });
 
   return (
