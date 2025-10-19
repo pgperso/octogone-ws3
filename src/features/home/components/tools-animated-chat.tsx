@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useMemo, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Send, Maximize2, Minimize2 } from "lucide-react";
+import { Send, Maximize2, Minimize2 } from "lucide-react";
 import { toolsConversations, TOOLS_TIMING, type ToolMessage } from "../data/tools-conversations";
 import InlineChart from "./inline-chart";
 import InlineDocument from "./inline-document";
