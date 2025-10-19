@@ -255,24 +255,20 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                 className="w-full h-full object-cover rounded-full"
               />
             </div>
-            <div>
-              <h2 className="text-2xl font-bold" style={{ color: 'var(--on-surface)' }}>
+            <div className="flex flex-col justify-center h-16">
+              <h2 className="text-2xl font-bold leading-tight" style={{ color: 'var(--on-surface)' }}>
                 {isEnglish ? 'Hello Marc' : 'Bonjour Marc'}
               </h2>
-              <p className="text-lg font-semibold" style={{ color: 'var(--on-surface)' }}>
+              <p className="text-lg font-semibold leading-tight" style={{ color: 'var(--on-surface)' }}>
                 {isEnglish ? 'Restaurant Director' : 'Directeur de restauration'}
               </p>
-              <p className="text-sm" style={{ color: 'var(--on-surface-variant)' }}>
+              <p className="text-sm leading-tight" style={{ color: 'var(--on-surface-variant)' }}>
                 {isEnglish ? 'Saveur & Co' : 'Saveur & Co'}
               </p>
             </div>
           </div>
 
-        </div>
-        
-        {/* Ligne des périodes : Sélecteur + Segmented Button + Dates */}
-        <div className="flex items-end gap-6">
-          {/* Sélecteur d'établissements déplacé ici */}
+          {/* Sélecteur d'établissements */}
           <div className="flex flex-col">
             <span className="text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
               {isEnglish ? 'Establishments' : 'Établissements'}
@@ -352,7 +348,10 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
               )}
             </div>
           </div>
-
+        </div>
+        
+        {/* Ligne des périodes : Segmented Button + Dates */}
+        <div className="flex items-end gap-6">
           {/* Segmented Button pour les périodes */}
           <div className="flex flex-col">
             <div 

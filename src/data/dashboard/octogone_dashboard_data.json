@@ -1,0 +1,2306 @@
+{
+  "currency": "CAD",
+  "generated_at": "2025-10-19",
+  "multi_establishment": true,
+  "combinable_selection": true,
+  "establishments": [
+    {
+      "id": "est-bistro8",
+      "name": "Bistro 8",
+      "style": "Brasserie"
+    },
+    {
+      "id": "est-taqueria",
+      "name": "Taqueria Norte",
+      "style": "QSR mexicain (tacos, burritos, bols)"
+    },
+    {
+      "id": "est-roquette",
+      "name": "Roquette",
+      "style": "Casse-Croûte moderne"
+    },
+    {
+      "id": "est-rioux",
+      "name": "Chez Rioux",
+      "style": "Gastronomique (fine dining)"
+    }
+  ],
+  "filters": {
+    "day": {
+      "label": "Jour",
+      "by_establishment": {
+        "est-bistro8": {
+          "current": {
+            "date": "2025-10-19",
+            "sales": 4409.66,
+            "clients": 69,
+            "spendings": 300.59,
+            "labour_cost": 272.61,
+            "food_cost_pct": 26.23,
+            "fixed_costs": 15.39,
+            "price_changes": 0,
+            "menu_items": 1,
+            "gains_losses": -1.93,
+            "profit": 2662.49,
+            "food_cost_abs": 1156.65,
+            "avg_invoice": 63.91
+          },
+          "previous": {
+            "date": "2025-10-18",
+            "sales": 4671.97,
+            "clients": 73,
+            "spendings": 92.93,
+            "labour_cost": 272.37,
+            "food_cost_pct": 26.24,
+            "fixed_costs": 15.39,
+            "price_changes": 0,
+            "menu_items": 1,
+            "gains_losses": -8.17,
+            "profit": 3057.19,
+            "food_cost_abs": 1225.92,
+            "avg_invoice": 64.0
+          },
+          "metrics": [
+            {
+              "name": "Sales",
+              "unit": "CAD",
+              "current": 4409.66,
+              "previous": 4671.97,
+              "delta_pct": -5.61
+            },
+            {
+              "name": "Client traffic",
+              "unit": "clients",
+              "current": 69,
+              "previous": 73,
+              "delta_pct": -5.48
+            },
+            {
+              "name": "Profits",
+              "unit": "CAD",
+              "current": 2662.49,
+              "previous": 3057.19,
+              "delta_pct": -12.91
+            },
+            {
+              "name": "Spendings",
+              "unit": "CAD",
+              "current": 300.59,
+              "previous": 92.93,
+              "delta_pct": 223.46
+            },
+            {
+              "name": "Gains and losses",
+              "unit": "CAD",
+              "current": -1.93,
+              "previous": -8.17,
+              "delta_pct": -76.38
+            },
+            {
+              "name": "Price monitoring",
+              "unit": "changes",
+              "current": 0,
+              "previous": 0,
+              "delta_pct": null
+            },
+            {
+              "name": "Labour cost",
+              "unit": "CAD",
+              "current": 272.61,
+              "previous": 272.37,
+              "delta_pct": 0.09
+            },
+            {
+              "name": "Food cost",
+              "unit": "%",
+              "current": 26.23,
+              "previous": 26.24,
+              "delta_pct": -0.04
+            },
+            {
+              "name": "Menu engineering",
+              "unit": "items",
+              "current": 1,
+              "previous": 1,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Fixed costs",
+              "unit": "CAD",
+              "current": 15.39,
+              "previous": 15.39,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Average invoice per client",
+              "unit": "CAD",
+              "current": 63.91,
+              "previous": 64.0,
+              "delta_pct": -0.14
+            }
+          ]
+        },
+        "est-taqueria": {
+          "current": {
+            "date": "2025-10-19",
+            "sales": 3858.46,
+            "clients": 104,
+            "spendings": 263.02,
+            "labour_cost": 238.54,
+            "food_cost_pct": 25.13,
+            "fixed_costs": 13.47,
+            "price_changes": 0,
+            "menu_items": 1,
+            "gains_losses": -1.69,
+            "profit": 2372.11,
+            "food_cost_abs": 969.63,
+            "avg_invoice": 37.1
+          },
+          "previous": {
+            "date": "2025-10-18",
+            "sales": 4087.97,
+            "clients": 110,
+            "spendings": 81.31,
+            "labour_cost": 238.32,
+            "food_cost_pct": 25.14,
+            "fixed_costs": 13.47,
+            "price_changes": 0,
+            "menu_items": 1,
+            "gains_losses": -7.15,
+            "profit": 2720.0,
+            "food_cost_abs": 1027.72,
+            "avg_invoice": 37.16
+          },
+          "metrics": [
+            {
+              "name": "Sales",
+              "unit": "CAD",
+              "current": 3858.46,
+              "previous": 4087.97,
+              "delta_pct": -5.61
+            },
+            {
+              "name": "Client traffic",
+              "unit": "clients",
+              "current": 104,
+              "previous": 110,
+              "delta_pct": -5.45
+            },
+            {
+              "name": "Profits",
+              "unit": "CAD",
+              "current": 2372.11,
+              "previous": 2720.0,
+              "delta_pct": -12.79
+            },
+            {
+              "name": "Spendings",
+              "unit": "CAD",
+              "current": 263.02,
+              "previous": 81.31,
+              "delta_pct": 223.48
+            },
+            {
+              "name": "Gains and losses",
+              "unit": "CAD",
+              "current": -1.69,
+              "previous": -7.15,
+              "delta_pct": -76.36
+            },
+            {
+              "name": "Price monitoring",
+              "unit": "changes",
+              "current": 0,
+              "previous": 0,
+              "delta_pct": null
+            },
+            {
+              "name": "Labour cost",
+              "unit": "CAD",
+              "current": 238.54,
+              "previous": 238.32,
+              "delta_pct": 0.09
+            },
+            {
+              "name": "Food cost",
+              "unit": "%",
+              "current": 25.13,
+              "previous": 25.14,
+              "delta_pct": -0.04
+            },
+            {
+              "name": "Menu engineering",
+              "unit": "items",
+              "current": 1,
+              "previous": 1,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Fixed costs",
+              "unit": "CAD",
+              "current": 13.47,
+              "previous": 13.47,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Average invoice per client",
+              "unit": "CAD",
+              "current": 37.1,
+              "previous": 37.16,
+              "delta_pct": -0.16
+            }
+          ]
+        },
+        "est-roquette": {
+          "current": {
+            "date": "2025-10-19",
+            "sales": 3582.85,
+            "clients": 98,
+            "spendings": 244.23,
+            "labour_cost": 221.5,
+            "food_cost_pct": 27.03,
+            "fixed_costs": 12.51,
+            "price_changes": 0,
+            "menu_items": 1,
+            "gains_losses": -1.57,
+            "profit": 2134.6,
+            "food_cost_abs": 968.44,
+            "avg_invoice": 36.56
+          },
+          "previous": {
+            "date": "2025-10-18",
+            "sales": 3795.97,
+            "clients": 104,
+            "spendings": 75.51,
+            "labour_cost": 221.3,
+            "food_cost_pct": 27.04,
+            "fixed_costs": 12.51,
+            "price_changes": 0,
+            "menu_items": 1,
+            "gains_losses": -6.64,
+            "profit": 2453.58,
+            "food_cost_abs": 1026.43,
+            "avg_invoice": 36.5
+          },
+          "metrics": [
+            {
+              "name": "Sales",
+              "unit": "CAD",
+              "current": 3582.85,
+              "previous": 3795.97,
+              "delta_pct": -5.61
+            },
+            {
+              "name": "Client traffic",
+              "unit": "clients",
+              "current": 98,
+              "previous": 104,
+              "delta_pct": -5.77
+            },
+            {
+              "name": "Profits",
+              "unit": "CAD",
+              "current": 2134.6,
+              "previous": 2453.58,
+              "delta_pct": -13.0
+            },
+            {
+              "name": "Spendings",
+              "unit": "CAD",
+              "current": 244.23,
+              "previous": 75.51,
+              "delta_pct": 223.44
+            },
+            {
+              "name": "Gains and losses",
+              "unit": "CAD",
+              "current": -1.57,
+              "previous": -6.64,
+              "delta_pct": -76.36
+            },
+            {
+              "name": "Price monitoring",
+              "unit": "changes",
+              "current": 0,
+              "previous": 0,
+              "delta_pct": null
+            },
+            {
+              "name": "Labour cost",
+              "unit": "CAD",
+              "current": 221.5,
+              "previous": 221.3,
+              "delta_pct": 0.09
+            },
+            {
+              "name": "Food cost",
+              "unit": "%",
+              "current": 27.03,
+              "previous": 27.04,
+              "delta_pct": -0.04
+            },
+            {
+              "name": "Menu engineering",
+              "unit": "items",
+              "current": 1,
+              "previous": 1,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Fixed costs",
+              "unit": "CAD",
+              "current": 12.51,
+              "previous": 12.51,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Average invoice per client",
+              "unit": "CAD",
+              "current": 36.56,
+              "previous": 36.5,
+              "delta_pct": 0.16
+            }
+          ]
+        },
+        "est-rioux": {
+          "current": {
+            "date": "2025-10-19",
+            "sales": 1929.23,
+            "clients": 17,
+            "spendings": 131.51,
+            "labour_cost": 119.27,
+            "food_cost_pct": 25.33,
+            "fixed_costs": 6.73,
+            "price_changes": 0,
+            "menu_items": 1,
+            "gains_losses": -0.85,
+            "profit": 1182.2,
+            "food_cost_abs": 488.67,
+            "avg_invoice": 113.48
+          },
+          "previous": {
+            "date": "2025-10-18",
+            "sales": 2043.99,
+            "clients": 18,
+            "spendings": 40.66,
+            "labour_cost": 119.16,
+            "food_cost_pct": 25.34,
+            "fixed_costs": 6.73,
+            "price_changes": 0,
+            "menu_items": 1,
+            "gains_losses": -3.57,
+            "profit": 1355.92,
+            "food_cost_abs": 517.95,
+            "avg_invoice": 113.56
+          },
+          "metrics": [
+            {
+              "name": "Sales",
+              "unit": "CAD",
+              "current": 1929.23,
+              "previous": 2043.99,
+              "delta_pct": -5.61
+            },
+            {
+              "name": "Client traffic",
+              "unit": "clients",
+              "current": 17,
+              "previous": 18,
+              "delta_pct": -5.56
+            },
+            {
+              "name": "Profits",
+              "unit": "CAD",
+              "current": 1182.2,
+              "previous": 1355.92,
+              "delta_pct": -12.81
+            },
+            {
+              "name": "Spendings",
+              "unit": "CAD",
+              "current": 131.51,
+              "previous": 40.66,
+              "delta_pct": 223.44
+            },
+            {
+              "name": "Gains and losses",
+              "unit": "CAD",
+              "current": -0.85,
+              "previous": -3.57,
+              "delta_pct": -76.19
+            },
+            {
+              "name": "Price monitoring",
+              "unit": "changes",
+              "current": 0,
+              "previous": 0,
+              "delta_pct": null
+            },
+            {
+              "name": "Labour cost",
+              "unit": "CAD",
+              "current": 119.27,
+              "previous": 119.16,
+              "delta_pct": 0.09
+            },
+            {
+              "name": "Food cost",
+              "unit": "%",
+              "current": 25.33,
+              "previous": 25.34,
+              "delta_pct": -0.04
+            },
+            {
+              "name": "Menu engineering",
+              "unit": "items",
+              "current": 1,
+              "previous": 1,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Fixed costs",
+              "unit": "CAD",
+              "current": 6.73,
+              "previous": 6.73,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Average invoice per client",
+              "unit": "CAD",
+              "current": 113.48,
+              "previous": 113.56,
+              "delta_pct": -0.07
+            }
+          ]
+        }
+      },
+      "all": {
+        "current": {
+          "sales": 13780.2,
+          "clients": 288,
+          "spendings": 939.35,
+          "labour_cost": 851.92,
+          "food_cost_pct": 26.0,
+          "fixed_costs": 48.1,
+          "price_changes": 0,
+          "menu_items": 4,
+          "gains_losses": -6.04,
+          "profit": 8351.4,
+          "food_cost_abs": 3583.3900000000003,
+          "avg_invoice": 47.85,
+          "date": "2025-10-19"
+        },
+        "previous": {
+          "sales": 14599.9,
+          "clients": 305,
+          "spendings": 290.41,
+          "labour_cost": 851.15,
+          "food_cost_pct": 26.01,
+          "fixed_costs": 48.1,
+          "price_changes": 0,
+          "menu_items": 4,
+          "gains_losses": -25.53,
+          "profit": 9586.69,
+          "food_cost_abs": 3798.0200000000004,
+          "avg_invoice": 47.87,
+          "date": "2025-10-18"
+        },
+        "metrics": [
+          {
+            "name": "Sales",
+            "unit": "CAD",
+            "current": 13780.2,
+            "previous": 14599.9,
+            "delta_pct": -5.61
+          },
+          {
+            "name": "Client traffic",
+            "unit": "clients",
+            "current": 288,
+            "previous": 305,
+            "delta_pct": -5.57
+          },
+          {
+            "name": "Profits",
+            "unit": "CAD",
+            "current": 8351.4,
+            "previous": 9586.69,
+            "delta_pct": -12.89
+          },
+          {
+            "name": "Spendings",
+            "unit": "CAD",
+            "current": 939.35,
+            "previous": 290.41,
+            "delta_pct": 223.46
+          },
+          {
+            "name": "Gains and losses",
+            "unit": "CAD",
+            "current": -6.04,
+            "previous": -25.53,
+            "delta_pct": -76.34
+          },
+          {
+            "name": "Price monitoring",
+            "unit": "changes",
+            "current": 0,
+            "previous": 0,
+            "delta_pct": null
+          },
+          {
+            "name": "Labour cost",
+            "unit": "CAD",
+            "current": 851.92,
+            "previous": 851.15,
+            "delta_pct": 0.09
+          },
+          {
+            "name": "Food cost",
+            "unit": "%",
+            "current": 26.0,
+            "previous": 26.01,
+            "delta_pct": -0.04
+          },
+          {
+            "name": "Menu engineering",
+            "unit": "items",
+            "current": 4,
+            "previous": 4,
+            "delta_pct": 0.0
+          },
+          {
+            "name": "Fixed costs",
+            "unit": "CAD",
+            "current": 48.1,
+            "previous": 48.1,
+            "delta_pct": 0.0
+          },
+          {
+            "name": "Average invoice per client",
+            "unit": "CAD",
+            "current": 47.85,
+            "previous": 47.87,
+            "delta_pct": -0.04
+          }
+        ]
+      }
+    },
+    "week": {
+      "label": "Semaine",
+      "by_establishment": {
+        "est-bistro8": {
+          "current": {
+            "sales": 30262.4,
+            "clients": 475,
+            "spendings": 2104.13,
+            "labour_cost": 1908.29,
+            "food_cost_pct": 26.23,
+            "fixed_costs": 468.21,
+            "price_changes": 1,
+            "menu_items": 3,
+            "gains_losses": -13.52,
+            "profit": 17830.42,
+            "food_cost_abs": 7937.83,
+            "avg_invoice": 63.71,
+            "start": "2025-10-13",
+            "end": "2025-10-19"
+          },
+          "previous": {
+            "sales": 33371.2,
+            "clients": 523,
+            "spendings": 650.51,
+            "labour_cost": 1906.59,
+            "food_cost_pct": 26.24,
+            "fixed_costs": 468.21,
+            "price_changes": 0,
+            "menu_items": 3,
+            "gains_losses": -57.17,
+            "profit": 21532.12,
+            "food_cost_abs": 8756.6,
+            "avg_invoice": 63.81,
+            "start": "2025-10-06",
+            "end": "2025-10-12"
+          },
+          "metrics": [
+            {
+              "name": "Sales",
+              "unit": "CAD",
+              "current": 30262.4,
+              "previous": 33371.2,
+              "delta_pct": -9.32
+            },
+            {
+              "name": "Client traffic",
+              "unit": "clients",
+              "current": 475,
+              "previous": 523,
+              "delta_pct": -9.18
+            },
+            {
+              "name": "Profits",
+              "unit": "CAD",
+              "current": 17830.42,
+              "previous": 21532.12,
+              "delta_pct": -17.19
+            },
+            {
+              "name": "Spendings",
+              "unit": "CAD",
+              "current": 2104.13,
+              "previous": 650.51,
+              "delta_pct": 223.46
+            },
+            {
+              "name": "Gains and losses",
+              "unit": "CAD",
+              "current": -13.52,
+              "previous": -57.17,
+              "delta_pct": -76.35
+            },
+            {
+              "name": "Price monitoring",
+              "unit": "changes",
+              "current": 1,
+              "previous": 0,
+              "delta_pct": null
+            },
+            {
+              "name": "Labour cost",
+              "unit": "CAD",
+              "current": 1908.29,
+              "previous": 1906.59,
+              "delta_pct": 0.09
+            },
+            {
+              "name": "Food cost",
+              "unit": "%",
+              "current": 26.23,
+              "previous": 26.24,
+              "delta_pct": -0.04
+            },
+            {
+              "name": "Menu engineering",
+              "unit": "items",
+              "current": 3,
+              "previous": 3,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Fixed costs",
+              "unit": "CAD",
+              "current": 468.21,
+              "previous": 468.21,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Average invoice per client",
+              "unit": "CAD",
+              "current": 63.71,
+              "previous": 63.81,
+              "delta_pct": -0.16
+            }
+          ]
+        },
+        "est-taqueria": {
+          "current": {
+            "sales": 26479.6,
+            "clients": 713,
+            "spendings": 1841.12,
+            "labour_cost": 1669.76,
+            "food_cost_pct": 25.13,
+            "fixed_costs": 409.68,
+            "price_changes": 1,
+            "menu_items": 2,
+            "gains_losses": -11.83,
+            "profit": 15892.89,
+            "food_cost_abs": 6654.32,
+            "avg_invoice": 37.14,
+            "start": "2025-10-13",
+            "end": "2025-10-19"
+          },
+          "previous": {
+            "sales": 29199.8,
+            "clients": 785,
+            "spendings": 569.19,
+            "labour_cost": 1668.26,
+            "food_cost_pct": 25.14,
+            "fixed_costs": 409.68,
+            "price_changes": 0,
+            "menu_items": 2,
+            "gains_losses": -50.03,
+            "profit": 19161.81,
+            "food_cost_abs": 7340.83,
+            "avg_invoice": 37.2,
+            "start": "2025-10-06",
+            "end": "2025-10-12"
+          },
+          "metrics": [
+            {
+              "name": "Sales",
+              "unit": "CAD",
+              "current": 26479.6,
+              "previous": 29199.8,
+              "delta_pct": -9.32
+            },
+            {
+              "name": "Client traffic",
+              "unit": "clients",
+              "current": 713,
+              "previous": 785,
+              "delta_pct": -9.17
+            },
+            {
+              "name": "Profits",
+              "unit": "CAD",
+              "current": 15892.89,
+              "previous": 19161.81,
+              "delta_pct": -17.06
+            },
+            {
+              "name": "Spendings",
+              "unit": "CAD",
+              "current": 1841.12,
+              "previous": 569.19,
+              "delta_pct": 223.46
+            },
+            {
+              "name": "Gains and losses",
+              "unit": "CAD",
+              "current": -11.83,
+              "previous": -50.03,
+              "delta_pct": -76.35
+            },
+            {
+              "name": "Price monitoring",
+              "unit": "changes",
+              "current": 1,
+              "previous": 0,
+              "delta_pct": null
+            },
+            {
+              "name": "Labour cost",
+              "unit": "CAD",
+              "current": 1669.76,
+              "previous": 1668.26,
+              "delta_pct": 0.09
+            },
+            {
+              "name": "Food cost",
+              "unit": "%",
+              "current": 25.13,
+              "previous": 25.14,
+              "delta_pct": -0.04
+            },
+            {
+              "name": "Menu engineering",
+              "unit": "items",
+              "current": 2,
+              "previous": 2,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Fixed costs",
+              "unit": "CAD",
+              "current": 409.68,
+              "previous": 409.68,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Average invoice per client",
+              "unit": "CAD",
+              "current": 37.14,
+              "previous": 37.2,
+              "delta_pct": -0.16
+            }
+          ]
+        },
+        "est-roquette": {
+          "current": {
+            "sales": 24588.2,
+            "clients": 673,
+            "spendings": 1709.61,
+            "labour_cost": 1550.49,
+            "food_cost_pct": 27.03,
+            "fixed_costs": 380.42,
+            "price_changes": 1,
+            "menu_items": 2,
+            "gains_losses": -10.99,
+            "profit": 14290.5,
+            "food_cost_abs": 6646.19,
+            "avg_invoice": 36.54,
+            "start": "2025-10-13",
+            "end": "2025-10-19"
+          },
+          "previous": {
+            "sales": 27114.1,
+            "clients": 741,
+            "spendings": 528.54,
+            "labour_cost": 1549.1,
+            "food_cost_pct": 27.04,
+            "fixed_costs": 380.42,
+            "price_changes": 0,
+            "menu_items": 2,
+            "gains_losses": -46.45,
+            "profit": 17277.94,
+            "food_cost_abs": 7331.65,
+            "avg_invoice": 36.59,
+            "start": "2025-10-06",
+            "end": "2025-10-12"
+          },
+          "metrics": [
+            {
+              "name": "Sales",
+              "unit": "CAD",
+              "current": 24588.2,
+              "previous": 27114.1,
+              "delta_pct": -9.32
+            },
+            {
+              "name": "Client traffic",
+              "unit": "clients",
+              "current": 673,
+              "previous": 741,
+              "delta_pct": -9.18
+            },
+            {
+              "name": "Profits",
+              "unit": "CAD",
+              "current": 14290.5,
+              "previous": 17277.94,
+              "delta_pct": -17.29
+            },
+            {
+              "name": "Spendings",
+              "unit": "CAD",
+              "current": 1709.61,
+              "previous": 528.54,
+              "delta_pct": 223.46
+            },
+            {
+              "name": "Gains and losses",
+              "unit": "CAD",
+              "current": -10.99,
+              "previous": -46.45,
+              "delta_pct": -76.34
+            },
+            {
+              "name": "Price monitoring",
+              "unit": "changes",
+              "current": 1,
+              "previous": 0,
+              "delta_pct": null
+            },
+            {
+              "name": "Labour cost",
+              "unit": "CAD",
+              "current": 1550.49,
+              "previous": 1549.1,
+              "delta_pct": 0.09
+            },
+            {
+              "name": "Food cost",
+              "unit": "%",
+              "current": 27.03,
+              "previous": 27.04,
+              "delta_pct": -0.04
+            },
+            {
+              "name": "Menu engineering",
+              "unit": "items",
+              "current": 2,
+              "previous": 2,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Fixed costs",
+              "unit": "CAD",
+              "current": 380.42,
+              "previous": 380.42,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Average invoice per client",
+              "unit": "CAD",
+              "current": 36.54,
+              "previous": 36.59,
+              "delta_pct": -0.14
+            }
+          ]
+        },
+        "est-rioux": {
+          "current": {
+            "sales": 13239.8,
+            "clients": 119,
+            "spendings": 920.56,
+            "labour_cost": 834.88,
+            "food_cost_pct": 25.33,
+            "fixed_costs": 204.84,
+            "price_changes": 0,
+            "menu_items": 1,
+            "gains_losses": -5.92,
+            "profit": 7919.96,
+            "food_cost_abs": 3353.64,
+            "avg_invoice": 111.26,
+            "start": "2025-10-13",
+            "end": "2025-10-19"
+          },
+          "previous": {
+            "sales": 14599.9,
+            "clients": 131,
+            "spendings": 284.6,
+            "labour_cost": 834.13,
+            "food_cost_pct": 25.34,
+            "fixed_costs": 204.84,
+            "price_changes": 0,
+            "menu_items": 1,
+            "gains_losses": -25.01,
+            "profit": 9551.71,
+            "food_cost_abs": 3699.61,
+            "avg_invoice": 111.45,
+            "start": "2025-10-06",
+            "end": "2025-10-12"
+          },
+          "metrics": [
+            {
+              "name": "Sales",
+              "unit": "CAD",
+              "current": 13239.8,
+              "previous": 14599.9,
+              "delta_pct": -9.32
+            },
+            {
+              "name": "Client traffic",
+              "unit": "clients",
+              "current": 119,
+              "previous": 131,
+              "delta_pct": -9.16
+            },
+            {
+              "name": "Profits",
+              "unit": "CAD",
+              "current": 7919.96,
+              "previous": 9551.71,
+              "delta_pct": -17.08
+            },
+            {
+              "name": "Spendings",
+              "unit": "CAD",
+              "current": 920.56,
+              "previous": 284.6,
+              "delta_pct": 223.46
+            },
+            {
+              "name": "Gains and losses",
+              "unit": "CAD",
+              "current": -5.92,
+              "previous": -25.01,
+              "delta_pct": -76.33
+            },
+            {
+              "name": "Price monitoring",
+              "unit": "changes",
+              "current": 0,
+              "previous": 0,
+              "delta_pct": null
+            },
+            {
+              "name": "Labour cost",
+              "unit": "CAD",
+              "current": 834.88,
+              "previous": 834.13,
+              "delta_pct": 0.09
+            },
+            {
+              "name": "Food cost",
+              "unit": "%",
+              "current": 25.33,
+              "previous": 25.34,
+              "delta_pct": -0.04
+            },
+            {
+              "name": "Menu engineering",
+              "unit": "items",
+              "current": 1,
+              "previous": 1,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Fixed costs",
+              "unit": "CAD",
+              "current": 204.84,
+              "previous": 204.84,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Average invoice per client",
+              "unit": "CAD",
+              "current": 111.26,
+              "previous": 111.45,
+              "delta_pct": -0.17
+            }
+          ]
+        }
+      },
+      "all": {
+        "current": {
+          "sales": 94570.0,
+          "clients": 1980,
+          "spendings": 6575.42,
+          "labour_cost": 5963.42,
+          "food_cost_pct": 26.0,
+          "fixed_costs": 1463.15,
+          "price_changes": 3,
+          "menu_items": 8,
+          "gains_losses": -42.26,
+          "profit": 55933.77,
+          "food_cost_abs": 24591.98,
+          "avg_invoice": 47.76,
+          "start": "2025-10-13",
+          "end": "2025-10-19"
+        },
+        "previous": {
+          "sales": 104285.0,
+          "clients": 2180,
+          "spendings": 2032.84,
+          "labour_cost": 5958.08,
+          "food_cost_pct": 26.01,
+          "fixed_costs": 1463.15,
+          "price_changes": 0,
+          "menu_items": 8,
+          "gains_losses": -178.66,
+          "profit": 67523.58,
+          "food_cost_abs": 27128.690000000002,
+          "avg_invoice": 47.84,
+          "start": "2025-10-06",
+          "end": "2025-10-12"
+        },
+        "metrics": [
+          {
+            "name": "Sales",
+            "unit": "CAD",
+            "current": 94570.0,
+            "previous": 104285.0,
+            "delta_pct": -9.32
+          },
+          {
+            "name": "Client traffic",
+            "unit": "clients",
+            "current": 1980,
+            "previous": 2180,
+            "delta_pct": -9.17
+          },
+          {
+            "name": "Profits",
+            "unit": "CAD",
+            "current": 55933.77,
+            "previous": 67523.58,
+            "delta_pct": -17.16
+          },
+          {
+            "name": "Spendings",
+            "unit": "CAD",
+            "current": 6575.42,
+            "previous": 2032.84,
+            "delta_pct": 223.46
+          },
+          {
+            "name": "Gains and losses",
+            "unit": "CAD",
+            "current": -42.26,
+            "previous": -178.66,
+            "delta_pct": -76.35
+          },
+          {
+            "name": "Price monitoring",
+            "unit": "changes",
+            "current": 3,
+            "previous": 0,
+            "delta_pct": null
+          },
+          {
+            "name": "Labour cost",
+            "unit": "CAD",
+            "current": 5963.42,
+            "previous": 5958.08,
+            "delta_pct": 0.09
+          },
+          {
+            "name": "Food cost",
+            "unit": "%",
+            "current": 26.0,
+            "previous": 26.01,
+            "delta_pct": -0.04
+          },
+          {
+            "name": "Menu engineering",
+            "unit": "items",
+            "current": 8,
+            "previous": 8,
+            "delta_pct": 0.0
+          },
+          {
+            "name": "Fixed costs",
+            "unit": "CAD",
+            "current": 1463.15,
+            "previous": 1463.15,
+            "delta_pct": 0.0
+          },
+          {
+            "name": "Average invoice per client",
+            "unit": "CAD",
+            "current": 47.76,
+            "previous": 47.84,
+            "delta_pct": -0.17
+          }
+        ]
+      }
+    },
+    "month": {
+      "label": "Mois",
+      "by_establishment": {
+        "est-bistro8": {
+          "current": {
+            "start": "2025-10-01",
+            "end": "2025-10-19",
+            "sales": 131490.13,
+            "clients": 2063,
+            "spendings": 9142.44,
+            "labour_cost": 8291.52,
+            "food_cost_pct": 26.23,
+            "fixed_costs": 468.21,
+            "price_changes": 3,
+            "menu_items": 4,
+            "gains_losses": -58.74,
+            "profit": 79039.36,
+            "food_cost_abs": 34489.86,
+            "avg_invoice": 63.74
+          },
+          "previous": {
+            "start": "2025-10-01",
+            "end": "2025-10-19",
+            "sales": 144997.86,
+            "clients": 2272,
+            "spendings": 2826.47,
+            "labour_cost": 8284.13,
+            "food_cost_pct": 26.24,
+            "fixed_costs": 468.21,
+            "price_changes": 1,
+            "menu_items": 4,
+            "gains_losses": -248.4,
+            "profit": 95123.21,
+            "food_cost_abs": 38047.44,
+            "avg_invoice": 63.82
+          },
+          "metrics": [
+            {
+              "name": "Sales",
+              "unit": "CAD",
+              "current": 131490.13,
+              "previous": 144997.86,
+              "delta_pct": -9.32
+            },
+            {
+              "name": "Client traffic",
+              "unit": "clients",
+              "current": 2063,
+              "previous": 2272,
+              "delta_pct": -9.2
+            },
+            {
+              "name": "Profits",
+              "unit": "CAD",
+              "current": 79039.36,
+              "previous": 95123.21,
+              "delta_pct": -16.91
+            },
+            {
+              "name": "Spendings",
+              "unit": "CAD",
+              "current": 9142.44,
+              "previous": 2826.47,
+              "delta_pct": 223.46
+            },
+            {
+              "name": "Gains and losses",
+              "unit": "CAD",
+              "current": -58.74,
+              "previous": -248.4,
+              "delta_pct": -76.35
+            },
+            {
+              "name": "Price monitoring",
+              "unit": "changes",
+              "current": 3,
+              "previous": 1,
+              "delta_pct": 200.0
+            },
+            {
+              "name": "Labour cost",
+              "unit": "CAD",
+              "current": 8291.52,
+              "previous": 8284.13,
+              "delta_pct": 0.09
+            },
+            {
+              "name": "Food cost",
+              "unit": "%",
+              "current": 26.23,
+              "previous": 26.24,
+              "delta_pct": -0.04
+            },
+            {
+              "name": "Menu engineering",
+              "unit": "items",
+              "current": 4,
+              "previous": 4,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Fixed costs",
+              "unit": "CAD",
+              "current": 468.21,
+              "previous": 468.21,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Average invoice per client",
+              "unit": "CAD",
+              "current": 63.74,
+              "previous": 63.82,
+              "delta_pct": -0.13
+            }
+          ]
+        },
+        "est-taqueria": {
+          "current": {
+            "start": "2025-10-01",
+            "end": "2025-10-19",
+            "sales": 115053.86,
+            "clients": 3097,
+            "spendings": 7999.67,
+            "labour_cost": 7255.11,
+            "food_cost_pct": 25.13,
+            "fixed_costs": 409.68,
+            "price_changes": 3,
+            "menu_items": 2,
+            "gains_losses": -51.4,
+            "profit": 70424.96,
+            "food_cost_abs": 28913.04,
+            "avg_invoice": 37.15
+          },
+          "previous": {
+            "start": "2025-10-01",
+            "end": "2025-10-19",
+            "sales": 126873.13,
+            "clients": 3410,
+            "spendings": 2473.13,
+            "labour_cost": 7248.59,
+            "food_cost_pct": 25.14,
+            "fixed_costs": 409.68,
+            "price_changes": 1,
+            "menu_items": 2,
+            "gains_losses": -217.38,
+            "profit": 84628.45,
+            "food_cost_abs": 31895.9,
+            "avg_invoice": 37.21
+          },
+          "metrics": [
+            {
+              "name": "Sales",
+              "unit": "CAD",
+              "current": 115053.86,
+              "previous": 126873.13,
+              "delta_pct": -9.32
+            },
+            {
+              "name": "Client traffic",
+              "unit": "clients",
+              "current": 3097,
+              "previous": 3410,
+              "delta_pct": -9.18
+            },
+            {
+              "name": "Profits",
+              "unit": "CAD",
+              "current": 70424.96,
+              "previous": 84628.45,
+              "delta_pct": -16.78
+            },
+            {
+              "name": "Spendings",
+              "unit": "CAD",
+              "current": 7999.67,
+              "previous": 2473.13,
+              "delta_pct": 223.46
+            },
+            {
+              "name": "Gains and losses",
+              "unit": "CAD",
+              "current": -51.4,
+              "previous": -217.38,
+              "delta_pct": -76.35
+            },
+            {
+              "name": "Price monitoring",
+              "unit": "changes",
+              "current": 3,
+              "previous": 1,
+              "delta_pct": 200.0
+            },
+            {
+              "name": "Labour cost",
+              "unit": "CAD",
+              "current": 7255.11,
+              "previous": 7248.59,
+              "delta_pct": 0.09
+            },
+            {
+              "name": "Food cost",
+              "unit": "%",
+              "current": 25.13,
+              "previous": 25.14,
+              "delta_pct": -0.04
+            },
+            {
+              "name": "Menu engineering",
+              "unit": "items",
+              "current": 2,
+              "previous": 2,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Fixed costs",
+              "unit": "CAD",
+              "current": 409.68,
+              "previous": 409.68,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Average invoice per client",
+              "unit": "CAD",
+              "current": 37.15,
+              "previous": 37.21,
+              "delta_pct": -0.16
+            }
+          ]
+        },
+        "est-roquette": {
+          "current": {
+            "start": "2025-10-01",
+            "end": "2025-10-19",
+            "sales": 106835.73,
+            "clients": 2924,
+            "spendings": 7428.26,
+            "labour_cost": 6736.88,
+            "food_cost_pct": 27.03,
+            "fixed_costs": 380.42,
+            "price_changes": 3,
+            "menu_items": 2,
+            "gains_losses": -47.75,
+            "profit": 63364.72,
+            "food_cost_abs": 28877.7,
+            "avg_invoice": 36.54
+          },
+          "previous": {
+            "start": "2025-10-01",
+            "end": "2025-10-19",
+            "sales": 117810.76,
+            "clients": 3219,
+            "spendings": 2296.51,
+            "labour_cost": 6730.84,
+            "food_cost_pct": 27.04,
+            "fixed_costs": 380.42,
+            "price_changes": 1,
+            "menu_items": 2,
+            "gains_losses": -201.83,
+            "profit": 76345.13,
+            "food_cost_abs": 31856.03,
+            "avg_invoice": 36.6
+          },
+          "metrics": [
+            {
+              "name": "Sales",
+              "unit": "CAD",
+              "current": 106835.73,
+              "previous": 117810.76,
+              "delta_pct": -9.32
+            },
+            {
+              "name": "Client traffic",
+              "unit": "clients",
+              "current": 2924,
+              "previous": 3219,
+              "delta_pct": -9.16
+            },
+            {
+              "name": "Profits",
+              "unit": "CAD",
+              "current": 63364.72,
+              "previous": 76345.13,
+              "delta_pct": -17.0
+            },
+            {
+              "name": "Spendings",
+              "unit": "CAD",
+              "current": 7428.26,
+              "previous": 2296.51,
+              "delta_pct": 223.46
+            },
+            {
+              "name": "Gains and losses",
+              "unit": "CAD",
+              "current": -47.75,
+              "previous": -201.83,
+              "delta_pct": -76.34
+            },
+            {
+              "name": "Price monitoring",
+              "unit": "changes",
+              "current": 3,
+              "previous": 1,
+              "delta_pct": 200.0
+            },
+            {
+              "name": "Labour cost",
+              "unit": "CAD",
+              "current": 6736.88,
+              "previous": 6730.84,
+              "delta_pct": 0.09
+            },
+            {
+              "name": "Food cost",
+              "unit": "%",
+              "current": 27.03,
+              "previous": 27.04,
+              "delta_pct": -0.04
+            },
+            {
+              "name": "Menu engineering",
+              "unit": "items",
+              "current": 2,
+              "previous": 2,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Fixed costs",
+              "unit": "CAD",
+              "current": 380.42,
+              "previous": 380.42,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Average invoice per client",
+              "unit": "CAD",
+              "current": 36.54,
+              "previous": 36.6,
+              "delta_pct": -0.16
+            }
+          ]
+        },
+        "est-rioux": {
+          "current": {
+            "start": "2025-10-01",
+            "end": "2025-10-19",
+            "sales": 57526.93,
+            "clients": 517,
+            "spendings": 3999.83,
+            "labour_cost": 3627.55,
+            "food_cost_pct": 25.33,
+            "fixed_costs": 204.84,
+            "price_changes": 1,
+            "menu_items": 1,
+            "gains_losses": -25.72,
+            "profit": 35097.42,
+            "food_cost_abs": 14571.57,
+            "avg_invoice": 111.27
+          },
+          "previous": {
+            "start": "2025-10-01",
+            "end": "2025-10-19",
+            "sales": 63436.57,
+            "clients": 569,
+            "spendings": 1236.59,
+            "labour_cost": 3624.29,
+            "food_cost_pct": 25.34,
+            "fixed_costs": 204.84,
+            "price_changes": 1,
+            "menu_items": 1,
+            "gains_losses": -108.67,
+            "profit": 42187.35,
+            "food_cost_abs": 16074.83,
+            "avg_invoice": 111.49
+          },
+          "metrics": [
+            {
+              "name": "Sales",
+              "unit": "CAD",
+              "current": 57526.93,
+              "previous": 63436.57,
+              "delta_pct": -9.32
+            },
+            {
+              "name": "Client traffic",
+              "unit": "clients",
+              "current": 517,
+              "previous": 569,
+              "delta_pct": -9.14
+            },
+            {
+              "name": "Profits",
+              "unit": "CAD",
+              "current": 35097.42,
+              "previous": 42187.35,
+              "delta_pct": -16.81
+            },
+            {
+              "name": "Spendings",
+              "unit": "CAD",
+              "current": 3999.83,
+              "previous": 1236.59,
+              "delta_pct": 223.46
+            },
+            {
+              "name": "Gains and losses",
+              "unit": "CAD",
+              "current": -25.72,
+              "previous": -108.67,
+              "delta_pct": -76.33
+            },
+            {
+              "name": "Price monitoring",
+              "unit": "changes",
+              "current": 1,
+              "previous": 1,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Labour cost",
+              "unit": "CAD",
+              "current": 3627.55,
+              "previous": 3624.29,
+              "delta_pct": 0.09
+            },
+            {
+              "name": "Food cost",
+              "unit": "%",
+              "current": 25.33,
+              "previous": 25.34,
+              "delta_pct": -0.04
+            },
+            {
+              "name": "Menu engineering",
+              "unit": "items",
+              "current": 1,
+              "previous": 1,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Fixed costs",
+              "unit": "CAD",
+              "current": 204.84,
+              "previous": 204.84,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Average invoice per client",
+              "unit": "CAD",
+              "current": 111.27,
+              "previous": 111.49,
+              "delta_pct": -0.2
+            }
+          ]
+        }
+      },
+      "all": {
+        "current": {
+          "sales": 410906.65,
+          "clients": 8601,
+          "spendings": 28570.2,
+          "labour_cost": 25911.06,
+          "food_cost_pct": 26.0,
+          "fixed_costs": 1463.15,
+          "price_changes": 10,
+          "menu_items": 9,
+          "gains_losses": -183.61,
+          "profit": 247926.46,
+          "food_cost_abs": 106852.17000000001,
+          "avg_invoice": 47.77,
+          "start": "2025-10-01",
+          "end": "2025-10-19"
+        },
+        "previous": {
+          "sales": 453118.32,
+          "clients": 9470,
+          "spendings": 8832.7,
+          "labour_cost": 25887.85,
+          "food_cost_pct": 26.01,
+          "fixed_costs": 1463.15,
+          "price_changes": 4,
+          "menu_items": 9,
+          "gains_losses": -776.28,
+          "profit": 298284.14,
+          "food_cost_abs": 117874.2,
+          "avg_invoice": 47.85,
+          "start": "2025-10-01",
+          "end": "2025-10-19"
+        },
+        "metrics": [
+          {
+            "name": "Sales",
+            "unit": "CAD",
+            "current": 410906.65,
+            "previous": 453118.32,
+            "delta_pct": -9.32
+          },
+          {
+            "name": "Client traffic",
+            "unit": "clients",
+            "current": 8601,
+            "previous": 9470,
+            "delta_pct": -9.18
+          },
+          {
+            "name": "Profits",
+            "unit": "CAD",
+            "current": 247926.46,
+            "previous": 298284.14,
+            "delta_pct": -16.88
+          },
+          {
+            "name": "Spendings",
+            "unit": "CAD",
+            "current": 28570.2,
+            "previous": 8832.7,
+            "delta_pct": 223.46
+          },
+          {
+            "name": "Gains and losses",
+            "unit": "CAD",
+            "current": -183.61,
+            "previous": -776.28,
+            "delta_pct": -76.35
+          },
+          {
+            "name": "Price monitoring",
+            "unit": "changes",
+            "current": 10,
+            "previous": 4,
+            "delta_pct": 150.0
+          },
+          {
+            "name": "Labour cost",
+            "unit": "CAD",
+            "current": 25911.06,
+            "previous": 25887.85,
+            "delta_pct": 0.09
+          },
+          {
+            "name": "Food cost",
+            "unit": "%",
+            "current": 26.0,
+            "previous": 26.01,
+            "delta_pct": -0.04
+          },
+          {
+            "name": "Menu engineering",
+            "unit": "items",
+            "current": 9,
+            "previous": 9,
+            "delta_pct": 0.0
+          },
+          {
+            "name": "Fixed costs",
+            "unit": "CAD",
+            "current": 1463.15,
+            "previous": 1463.15,
+            "delta_pct": 0.0
+          },
+          {
+            "name": "Average invoice per client",
+            "unit": "CAD",
+            "current": 47.77,
+            "previous": 47.85,
+            "delta_pct": -0.17
+          }
+        ]
+      }
+    },
+    "custom": {
+      "label": "Personnalisé",
+      "by_establishment": {
+        "est-bistro8": {
+          "current": {
+            "start": "2025-10-10",
+            "end": "2025-10-19",
+            "sales": 44528.96,
+            "clients": 692,
+            "spendings": 3005.9,
+            "labour_cost": 2726.13,
+            "food_cost_pct": 26.23,
+            "fixed_costs": 35.92,
+            "price_changes": 1,
+            "menu_items": 3,
+            "gains_losses": -19.31,
+            "profit": 27061.75,
+            "food_cost_abs": 11679.95,
+            "avg_invoice": 64.35
+          },
+          "previous": {
+            "start": "2025-09-30",
+            "end": "2025-10-09",
+            "sales": 46242.95,
+            "clients": 732,
+            "spendings": 929.3,
+            "labour_cost": 2723.7,
+            "food_cost_pct": 26.24,
+            "fixed_costs": 35.92,
+            "price_changes": 0,
+            "menu_items": 3,
+            "gains_losses": -81.67,
+            "profit": 30338.21,
+            "food_cost_abs": 12134.15,
+            "avg_invoice": 63.17
+          },
+          "metrics": [
+            {
+              "name": "Sales",
+              "unit": "CAD",
+              "current": 44528.96,
+              "previous": 46242.95,
+              "delta_pct": -3.71
+            },
+            {
+              "name": "Client traffic",
+              "unit": "clients",
+              "current": 692,
+              "previous": 732,
+              "delta_pct": -5.46
+            },
+            {
+              "name": "Profits",
+              "unit": "CAD",
+              "current": 27061.75,
+              "previous": 30338.21,
+              "delta_pct": -10.8
+            },
+            {
+              "name": "Spendings",
+              "unit": "CAD",
+              "current": 3005.9,
+              "previous": 929.3,
+              "delta_pct": 223.46
+            },
+            {
+              "name": "Gains and losses",
+              "unit": "CAD",
+              "current": -19.31,
+              "previous": -81.67,
+              "delta_pct": -76.36
+            },
+            {
+              "name": "Price monitoring",
+              "unit": "changes",
+              "current": 1,
+              "previous": 0,
+              "delta_pct": null
+            },
+            {
+              "name": "Labour cost",
+              "unit": "CAD",
+              "current": 2726.13,
+              "previous": 2723.7,
+              "delta_pct": 0.09
+            },
+            {
+              "name": "Food cost",
+              "unit": "%",
+              "current": 26.23,
+              "previous": 26.24,
+              "delta_pct": -0.04
+            },
+            {
+              "name": "Menu engineering",
+              "unit": "items",
+              "current": 3,
+              "previous": 3,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Fixed costs",
+              "unit": "CAD",
+              "current": 35.92,
+              "previous": 35.92,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Average invoice per client",
+              "unit": "CAD",
+              "current": 64.35,
+              "previous": 63.17,
+              "delta_pct": 1.87
+            }
+          ]
+        },
+        "est-taqueria": {
+          "current": {
+            "start": "2025-10-10",
+            "end": "2025-10-19",
+            "sales": 38962.84,
+            "clients": 1039,
+            "spendings": 2630.17,
+            "labour_cost": 2385.37,
+            "food_cost_pct": 25.13,
+            "fixed_costs": 31.43,
+            "price_changes": 1,
+            "menu_items": 2,
+            "gains_losses": -16.9,
+            "profit": 24107.61,
+            "food_cost_abs": 9791.36,
+            "avg_invoice": 37.5
+          },
+          "previous": {
+            "start": "2025-09-30",
+            "end": "2025-10-09",
+            "sales": 40462.58,
+            "clients": 1099,
+            "spendings": 813.13,
+            "labour_cost": 2383.23,
+            "food_cost_pct": 25.14,
+            "fixed_costs": 31.43,
+            "price_changes": 0,
+            "menu_items": 2,
+            "gains_losses": -71.47,
+            "profit": 26991.03,
+            "food_cost_abs": 10172.29,
+            "avg_invoice": 36.82
+          },
+          "metrics": [
+            {
+              "name": "Sales",
+              "unit": "CAD",
+              "current": 38962.84,
+              "previous": 40462.58,
+              "delta_pct": -3.71
+            },
+            {
+              "name": "Client traffic",
+              "unit": "clients",
+              "current": 1039,
+              "previous": 1099,
+              "delta_pct": -5.46
+            },
+            {
+              "name": "Profits",
+              "unit": "CAD",
+              "current": 24107.61,
+              "previous": 26991.03,
+              "delta_pct": -10.68
+            },
+            {
+              "name": "Spendings",
+              "unit": "CAD",
+              "current": 2630.17,
+              "previous": 813.13,
+              "delta_pct": 223.46
+            },
+            {
+              "name": "Gains and losses",
+              "unit": "CAD",
+              "current": -16.9,
+              "previous": -71.47,
+              "delta_pct": -76.35
+            },
+            {
+              "name": "Price monitoring",
+              "unit": "changes",
+              "current": 1,
+              "previous": 0,
+              "delta_pct": null
+            },
+            {
+              "name": "Labour cost",
+              "unit": "CAD",
+              "current": 2385.37,
+              "previous": 2383.23,
+              "delta_pct": 0.09
+            },
+            {
+              "name": "Food cost",
+              "unit": "%",
+              "current": 25.13,
+              "previous": 25.14,
+              "delta_pct": -0.04
+            },
+            {
+              "name": "Menu engineering",
+              "unit": "items",
+              "current": 2,
+              "previous": 2,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Fixed costs",
+              "unit": "CAD",
+              "current": 31.43,
+              "previous": 31.43,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Average invoice per client",
+              "unit": "CAD",
+              "current": 37.5,
+              "previous": 36.82,
+              "delta_pct": 1.85
+            }
+          ]
+        },
+        "est-roquette": {
+          "current": {
+            "start": "2025-10-10",
+            "end": "2025-10-19",
+            "sales": 36179.78,
+            "clients": 981,
+            "spendings": 2442.3,
+            "labour_cost": 2214.99,
+            "food_cost_pct": 27.03,
+            "fixed_costs": 29.18,
+            "price_changes": 1,
+            "menu_items": 2,
+            "gains_losses": -15.7,
+            "profit": 21698.22,
+            "food_cost_abs": 9779.39,
+            "avg_invoice": 36.88
+          },
+          "previous": {
+            "start": "2025-09-30",
+            "end": "2025-10-09",
+            "sales": 37572.4,
+            "clients": 1037,
+            "spendings": 755.06,
+            "labour_cost": 2213.0,
+            "food_cost_pct": 27.04,
+            "fixed_costs": 29.18,
+            "price_changes": 0,
+            "menu_items": 2,
+            "gains_losses": -66.36,
+            "profit": 24349.22,
+            "food_cost_abs": 10159.58,
+            "avg_invoice": 36.23
+          },
+          "metrics": [
+            {
+              "name": "Sales",
+              "unit": "CAD",
+              "current": 36179.78,
+              "previous": 37572.4,
+              "delta_pct": -3.71
+            },
+            {
+              "name": "Client traffic",
+              "unit": "clients",
+              "current": 981,
+              "previous": 1037,
+              "delta_pct": -5.4
+            },
+            {
+              "name": "Profits",
+              "unit": "CAD",
+              "current": 21698.22,
+              "previous": 24349.22,
+              "delta_pct": -10.89
+            },
+            {
+              "name": "Spendings",
+              "unit": "CAD",
+              "current": 2442.3,
+              "previous": 755.06,
+              "delta_pct": 223.46
+            },
+            {
+              "name": "Gains and losses",
+              "unit": "CAD",
+              "current": -15.7,
+              "previous": -66.36,
+              "delta_pct": -76.34
+            },
+            {
+              "name": "Price monitoring",
+              "unit": "changes",
+              "current": 1,
+              "previous": 0,
+              "delta_pct": null
+            },
+            {
+              "name": "Labour cost",
+              "unit": "CAD",
+              "current": 2214.99,
+              "previous": 2213.0,
+              "delta_pct": 0.09
+            },
+            {
+              "name": "Food cost",
+              "unit": "%",
+              "current": 27.03,
+              "previous": 27.04,
+              "delta_pct": -0.04
+            },
+            {
+              "name": "Menu engineering",
+              "unit": "items",
+              "current": 2,
+              "previous": 2,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Fixed costs",
+              "unit": "CAD",
+              "current": 29.18,
+              "previous": 29.18,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Average invoice per client",
+              "unit": "CAD",
+              "current": 36.88,
+              "previous": 36.23,
+              "delta_pct": 1.79
+            }
+          ]
+        },
+        "est-rioux": {
+          "current": {
+            "start": "2025-10-10",
+            "end": "2025-10-19",
+            "sales": 19481.42,
+            "clients": 173,
+            "spendings": 1315.09,
+            "labour_cost": 1192.69,
+            "food_cost_pct": 25.33,
+            "fixed_costs": 15.71,
+            "price_changes": 0,
+            "menu_items": 1,
+            "gains_losses": -8.46,
+            "profit": 12014.83,
+            "food_cost_abs": 4934.64,
+            "avg_invoice": 112.61
+          },
+          "previous": {
+            "start": "2025-09-30",
+            "end": "2025-10-09",
+            "sales": 20231.29,
+            "clients": 183,
+            "spendings": 406.57,
+            "labour_cost": 1191.61,
+            "food_cost_pct": 25.34,
+            "fixed_costs": 15.71,
+            "price_changes": 0,
+            "menu_items": 1,
+            "gains_losses": -35.73,
+            "profit": 13455.06,
+            "food_cost_abs": 5126.61,
+            "avg_invoice": 110.55
+          },
+          "metrics": [
+            {
+              "name": "Sales",
+              "unit": "CAD",
+              "current": 19481.42,
+              "previous": 20231.29,
+              "delta_pct": -3.71
+            },
+            {
+              "name": "Client traffic",
+              "unit": "clients",
+              "current": 173,
+              "previous": 183,
+              "delta_pct": -5.46
+            },
+            {
+              "name": "Profits",
+              "unit": "CAD",
+              "current": 12014.83,
+              "previous": 13455.06,
+              "delta_pct": -10.7
+            },
+            {
+              "name": "Spendings",
+              "unit": "CAD",
+              "current": 1315.09,
+              "previous": 406.57,
+              "delta_pct": 223.46
+            },
+            {
+              "name": "Gains and losses",
+              "unit": "CAD",
+              "current": -8.46,
+              "previous": -35.73,
+              "delta_pct": -76.32
+            },
+            {
+              "name": "Price monitoring",
+              "unit": "changes",
+              "current": 0,
+              "previous": 0,
+              "delta_pct": null
+            },
+            {
+              "name": "Labour cost",
+              "unit": "CAD",
+              "current": 1192.69,
+              "previous": 1191.61,
+              "delta_pct": 0.09
+            },
+            {
+              "name": "Food cost",
+              "unit": "%",
+              "current": 25.33,
+              "previous": 25.34,
+              "delta_pct": -0.04
+            },
+            {
+              "name": "Menu engineering",
+              "unit": "items",
+              "current": 1,
+              "previous": 1,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Fixed costs",
+              "unit": "CAD",
+              "current": 15.71,
+              "previous": 15.71,
+              "delta_pct": 0.0
+            },
+            {
+              "name": "Average invoice per client",
+              "unit": "CAD",
+              "current": 112.61,
+              "previous": 110.55,
+              "delta_pct": 1.86
+            }
+          ]
+        }
+      },
+      "all": {
+        "current": {
+          "sales": 139153.0,
+          "clients": 2885,
+          "spendings": 9393.46,
+          "labour_cost": 8519.18,
+          "food_cost_pct": 26.0,
+          "fixed_costs": 112.24,
+          "price_changes": 3,
+          "menu_items": 8,
+          "gains_losses": -60.37,
+          "profit": 84882.41,
+          "food_cost_abs": 36185.340000000004,
+          "avg_invoice": 48.23,
+          "start": "2025-10-10",
+          "end": "2025-10-19"
+        },
+        "previous": {
+          "sales": 144509.22,
+          "clients": 3051,
+          "spendings": 2904.06,
+          "labour_cost": 8511.54,
+          "food_cost_pct": 26.01,
+          "fixed_costs": 112.24,
+          "price_changes": 0,
+          "menu_items": 8,
+          "gains_losses": -255.23,
+          "profit": 95133.52,
+          "food_cost_abs": 37592.630000000005,
+          "avg_invoice": 47.36,
+          "start": "2025-09-30",
+          "end": "2025-10-09"
+        },
+        "metrics": [
+          {
+            "name": "Sales",
+            "unit": "CAD",
+            "current": 139153.0,
+            "previous": 144509.22,
+            "delta_pct": -3.71
+          },
+          {
+            "name": "Client traffic",
+            "unit": "clients",
+            "current": 2885,
+            "previous": 3051,
+            "delta_pct": -5.44
+          },
+          {
+            "name": "Profits",
+            "unit": "CAD",
+            "current": 84882.41,
+            "previous": 95133.52,
+            "delta_pct": -10.78
+          },
+          {
+            "name": "Spendings",
+            "unit": "CAD",
+            "current": 9393.46,
+            "previous": 2904.06,
+            "delta_pct": 223.46
+          },
+          {
+            "name": "Gains and losses",
+            "unit": "CAD",
+            "current": -60.37,
+            "previous": -255.23,
+            "delta_pct": -76.35
+          },
+          {
+            "name": "Price monitoring",
+            "unit": "changes",
+            "current": 3,
+            "previous": 0,
+            "delta_pct": null
+          },
+          {
+            "name": "Labour cost",
+            "unit": "CAD",
+            "current": 8519.18,
+            "previous": 8511.54,
+            "delta_pct": 0.09
+          },
+          {
+            "name": "Food cost",
+            "unit": "%",
+            "current": 26.0,
+            "previous": 26.01,
+            "delta_pct": -0.04
+          },
+          {
+            "name": "Menu engineering",
+            "unit": "items",
+            "current": 8,
+            "previous": 8,
+            "delta_pct": 0.0
+          },
+          {
+            "name": "Fixed costs",
+            "unit": "CAD",
+            "current": 112.24,
+            "previous": 112.24,
+            "delta_pct": 0.0
+          },
+          {
+            "name": "Average invoice per client",
+            "unit": "CAD",
+            "current": 48.23,
+            "previous": 47.36,
+            "delta_pct": 1.84
+          }
+        ]
+      }
+    }
+  },
+  "notes": [
+    "Supports ANY combination of establishments; totals = sum of selected establishments.",
+    "Profits = Sales - (Food cost $ + Labour cost + Fixed costs + Spendings) + Gains and losses.",
+    "Food cost % per store is style-adjusted; aggregate food% recomputed from summed food $ / summed sales.",
+    "Average invoice per client = Sales / Client traffic."
+  ]
+}
