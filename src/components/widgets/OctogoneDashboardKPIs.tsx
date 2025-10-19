@@ -184,23 +184,37 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
     
     if (selectedPeriod === 'day') {
       const currentDate = formatDate(data.date!);
+      // Pour le jour, la période comparative est la veille (calculée)
+      const yesterday = new Date(data.date!);
+      yesterday.setDate(yesterday.getDate() - 1);
+      const previousDate = formatDate(yesterday.toISOString().split('T')[0]);
       return {
-        current: isEnglish ? `Today: ${currentDate}` : `Aujourd'hui : ${currentDate}`,
-        previous: isEnglish ? 'vs Yesterday' : 'vs Hier'
+        current: currentDate,
+        previous: previousDate
       };
     } else if (selectedPeriod === 'week') {
       const startDate = formatDate(data.start!);
       const endDate = formatDate(data.end!);
+      // Pour la semaine, calculer la semaine précédente
+      const prevWeekStart = new Date(data.start!);
+      prevWeekStart.setDate(prevWeekStart.getDate() - 7);
+      const prevWeekEnd = new Date(data.end!);
+      prevWeekEnd.setDate(prevWeekEnd.getDate() - 7);
       return {
-        current: isEnglish ? `${startDate} - ${endDate}` : `${startDate} - ${endDate}`,
-        previous: isEnglish ? 'vs Previous week' : 'vs Semaine précédente'
+        current: `${startDate} - ${endDate}`,
+        previous: `${formatDate(prevWeekStart.toISOString().split('T')[0])} - ${formatDate(prevWeekEnd.toISOString().split('T')[0])}`
       };
     } else if (selectedPeriod === 'month') {
       const startDate = formatDate(data.start!);
       const endDate = formatDate(data.end!);
+      // Pour le mois, calculer le mois précédent
+      const prevMonthStart = new Date(data.start!);
+      prevMonthStart.setMonth(prevMonthStart.getMonth() - 1);
+      const prevMonthEnd = new Date(data.end!);
+      prevMonthEnd.setMonth(prevMonthEnd.getMonth() - 1);
       return {
-        current: isEnglish ? `${startDate} - ${endDate}` : `${startDate} - ${endDate}`,
-        previous: isEnglish ? 'vs Previous month' : 'vs Mois précédent'
+        current: `${startDate} - ${endDate}`,
+        previous: `${formatDate(prevMonthStart.toISOString().split('T')[0])} - ${formatDate(prevMonthEnd.toISOString().split('T')[0])}`
       };
     } else if (selectedPeriod === 'custom') {
       const startDate = formatDate(data.start!);
@@ -209,7 +223,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
       const compareEnd = formatDate(data.compare_end!);
       return {
         current: `${startDate} - ${endDate}`,
-        previous: isEnglish ? `vs ${compareStart} - ${compareEnd}` : `vs ${compareStart} - ${compareEnd}`
+        previous: `${compareStart} - ${compareEnd}`
       };
     }
     
@@ -375,13 +389,19 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
           </div>
 
           {/* Affichage des périodes courante et comparative */}
-          <div className="flex items-center gap-4 text-sm">
-            <div className="flex items-center gap-2">
+          <div className="flex items-start gap-8 text-sm">
+            <div className="flex flex-col">
+              <span className="text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
+                {isEnglish ? 'Period' : 'Période'}
+              </span>
               <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
                 {periodText.current}
               </span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col">
+              <span className="text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
+                {isEnglish ? 'Comparative period' : 'Période comparative'}
+              </span>
               <span style={{ color: 'var(--on-surface-variant)' }}>
                 {periodText.previous}
               </span>
