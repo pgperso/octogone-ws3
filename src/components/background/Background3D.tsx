@@ -126,10 +126,8 @@ function generateShapeData(count: number, seed: number, outlineColor: string): {
 
 function RhombusInstances({ data, outlineColor }: { data: ShapeData[]; outlineColor: string }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
-  const wireframeRef = useRef<THREE.InstancedMesh>(null);
   
-  // Losange plat 2D (plaque mince) - TEMPORAIRE POUR TEST
-  // Pour revenir au cube 3D, remplacer height: 0.05 par height: 1.4
+  // Losange plat 2D (plaque mince)
   const geometry = useMemo(() => createRhombusBipyramid({ diagH: 1.4, diagV: 1.4, height: 0.05, normalize: true }), []);
 
   const matrices = useMemo(() => {
@@ -148,41 +146,21 @@ function RhombusInstances({ data, outlineColor }: { data: ShapeData[]; outlineCo
   }, [data]);
 
   useFrame((state) => {
-    if (!meshRef.current || !wireframeRef.current) return;
-    // Rotation continue pour montrer toutes les faces
-    const rotX = state.clock.elapsedTime * 0.003;
-    const rotZ = Math.sin(state.clock.elapsedTime * 0.2) * 0.1;
-    
-    meshRef.current.rotation.x = rotX;
-    meshRef.current.rotation.z = rotZ;
-    wireframeRef.current.rotation.x = rotX;
-    wireframeRef.current.rotation.z = rotZ;
+    if (!meshRef.current) return;
+    meshRef.current.rotation.x += 0.003;
+    meshRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.2) * 0.1;
   });
 
   return (
-    <>
-      {/* Mesh plein avec couleur outline pour cacher les lignes internes */}
-      <instancedMesh ref={meshRef} args={[geometry, undefined, data.length]}>
-        <meshBasicMaterial color={outlineColor} key={outlineColor} />
-        <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
-      </instancedMesh>
-      
-      {/* Wireframe par-dessus pour les contours */}
-      <instancedMesh ref={wireframeRef} args={[geometry, undefined, data.length]}>
-        <meshBasicMaterial 
-          color={outlineColor}
-          wireframe={true}
-          key={outlineColor}
-        />
-        <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
-      </instancedMesh>
-    </>
+    <instancedMesh ref={meshRef} args={[geometry, undefined, data.length]}>
+      <meshBasicMaterial color={outlineColor} transparent opacity={0.2} key={outlineColor} />
+      <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
+    </instancedMesh>
   );
 }
 
 function OctagonInstances({ data, outlineColor }: { data: ShapeData[]; outlineColor: string }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
-  const wireframeRef = useRef<THREE.InstancedMesh>(null);
   
   // Octogone plat 2D
   const geometry = useMemo(() => createOctagonBipyramid({ edge: 1, height: 0.05, normalize: true }), []);
@@ -203,32 +181,16 @@ function OctagonInstances({ data, outlineColor }: { data: ShapeData[]; outlineCo
   }, [data]);
 
   useFrame((state) => {
-    if (!meshRef.current || !wireframeRef.current) return;
-    const rotX = state.clock.elapsedTime * 0.002;
-    const rotZ = Math.sin(state.clock.elapsedTime * 0.3) * 0.1;
-    
-    meshRef.current.rotation.x = rotX;
-    meshRef.current.rotation.z = rotZ;
-    wireframeRef.current.rotation.x = rotX;
-    wireframeRef.current.rotation.z = rotZ;
+    if (!meshRef.current) return;
+    meshRef.current.rotation.x += 0.002;
+    meshRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.3) * 0.1;
   });
 
   return (
-    <>
-      <instancedMesh ref={meshRef} args={[geometry, undefined, data.length]}>
-        <meshBasicMaterial color={outlineColor} key={outlineColor} />
-        <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
-      </instancedMesh>
-      
-      <instancedMesh ref={wireframeRef} args={[geometry, undefined, data.length]}>
-        <meshBasicMaterial 
-          color={outlineColor}
-          wireframe={true}
-          key={outlineColor}
-        />
-        <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
-      </instancedMesh>
-    </>
+    <instancedMesh ref={meshRef} args={[geometry, undefined, data.length]}>
+      <meshBasicMaterial color={outlineColor} transparent opacity={0.2} key={outlineColor} />
+      <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
+    </instancedMesh>
   );
 }
 
