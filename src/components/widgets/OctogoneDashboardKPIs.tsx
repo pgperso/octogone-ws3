@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { TrendingUp, TrendingDown, Minus, Info } from 'lucide-react';
 import Image from 'next/image';
-import dashboardData from '@/data/dashboard/dashboard-data.json';
+import dashboardData from '@/data/dashboard/octogone_dashboard_data.json';
 
 interface DashboardKPIsProps {
   locale?: 'fr' | 'en';
@@ -17,14 +17,49 @@ interface Metric {
   delta_pct: number | null;
 }
 
+interface EstablishmentData {
+  current: {
+    date?: string;
+    start?: string;
+    end?: string;
+    sales: number;
+    clients: number;
+    spendings: number;
+    labour_cost: number;
+    food_cost_pct: number;
+    fixed_costs: number;
+    price_changes: number;
+    menu_items: number;
+    gains_losses: number;
+    profit: number;
+    food_cost_abs: number;
+    avg_invoice: number;
+  };
+  previous: {
+    date?: string;
+    start?: string;
+    end?: string;
+    sales: number;
+    clients: number;
+    spendings: number;
+    labour_cost: number;
+    food_cost_pct: number;
+    fixed_costs: number;
+    price_changes: number;
+    menu_items: number;
+    gains_losses: number;
+    profit: number;
+    food_cost_abs: number;
+    avg_invoice: number;
+  };
+  metrics: Metric[];
+}
+
 interface PeriodData {
   label: string;
-  date?: string;
-  start?: string;
-  end?: string;
-  compare_start?: string;
-  compare_end?: string;
-  metrics: Metric[];
+  by_establishment: {
+    [key: string]: EstablishmentData;
+  };
 }
 
 export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsProps) {
@@ -111,6 +146,174 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
   // Obtenir les données pour la période sélectionnée
   const currentPeriodData = dashboardData.filters[selectedPeriod as keyof typeof dashboardData.filters] as PeriodData;
 
+  // Fonction pour agréger les données des établissements sélectionnés
+  const getAggregatedData = () => {
+    const establishments = selectedEstablishments.length > 0 ? selectedEstablishments : Object.keys(currentPeriodData.by_establishment);
+    
+    let aggregatedCurrent = {
+      sales: 0,
+      clients: 0,
+      spendings: 0,
+      labour_cost: 0,
+      food_cost_pct: 0,
+      fixed_costs: 0,
+      price_changes: 0,
+      menu_items: 0,
+      gains_losses: 0,
+      profit: 0,
+      food_cost_abs: 0,
+      avg_invoice: 0
+    };
+
+    let aggregatedPrevious = {
+      sales: 0,
+      clients: 0,
+      spendings: 0,
+      labour_cost: 0,
+      food_cost_pct: 0,
+      fixed_costs: 0,
+      price_changes: 0,
+      menu_items: 0,
+      gains_losses: 0,
+      profit: 0,
+      food_cost_abs: 0,
+      avg_invoice: 0
+    };
+
+    // Agréger les données de tous les établissements sélectionnés
+    establishments.forEach(estId => {
+      const estData = currentPeriodData.by_establishment[estId];
+      if (estData) {
+        // Current
+        aggregatedCurrent.sales += estData.current.sales;
+        aggregatedCurrent.clients += estData.current.clients;
+        aggregatedCurrent.spendings += estData.current.spendings;
+        aggregatedCurrent.labour_cost += estData.current.labour_cost;
+        aggregatedCurrent.fixed_costs += estData.current.fixed_costs;
+        aggregatedCurrent.price_changes += estData.current.price_changes;
+        aggregatedCurrent.menu_items += estData.current.menu_items;
+        aggregatedCurrent.gains_losses += estData.current.gains_losses;
+        aggregatedCurrent.profit += estData.current.profit;
+        aggregatedCurrent.food_cost_abs += estData.current.food_cost_abs;
+
+        // Previous
+        aggregatedPrevious.sales += estData.previous.sales;
+        aggregatedPrevious.clients += estData.previous.clients;
+        aggregatedPrevious.spendings += estData.previous.spendings;
+        aggregatedPrevious.labour_cost += estData.previous.labour_cost;
+        aggregatedPrevious.fixed_costs += estData.previous.fixed_costs;
+        aggregatedPrevious.price_changes += estData.previous.price_changes;
+        aggregatedPrevious.menu_items += estData.previous.menu_items;
+        aggregatedPrevious.gains_losses += estData.previous.gains_losses;
+        aggregatedPrevious.profit += estData.previous.profit;
+        aggregatedPrevious.food_cost_abs += estData.previous.food_cost_abs;
+      }
+    });
+
+    // Calculer les moyennes pondérées pour food_cost_pct et avg_invoice
+    aggregatedCurrent.food_cost_pct = aggregatedCurrent.sales > 0 ? (aggregatedCurrent.food_cost_abs / aggregatedCurrent.sales) * 100 : 0;
+    aggregatedPrevious.food_cost_pct = aggregatedPrevious.sales > 0 ? (aggregatedPrevious.food_cost_abs / aggregatedPrevious.sales) * 100 : 0;
+    
+    aggregatedCurrent.avg_invoice = aggregatedCurrent.clients > 0 ? aggregatedCurrent.sales / aggregatedCurrent.clients : 0;
+    aggregatedPrevious.avg_invoice = aggregatedPrevious.clients > 0 ? aggregatedPrevious.sales / aggregatedPrevious.clients : 0;
+
+    return { current: aggregatedCurrent, previous: aggregatedPrevious };
+  };
+
+  const aggregatedData = getAggregatedData();
+
+  // Convertir les données agrégées en métriques
+  const getMetricsFromAggregatedData = (): Metric[] => {
+    const { current, previous } = aggregatedData;
+
+    const calculateDelta = (curr: number, prev: number): number | null => {
+      if (prev === 0) return curr === 0 ? null : 100;
+      return ((curr - prev) / prev) * 100;
+    };
+
+    return [
+      {
+        name: 'Sales',
+        unit: 'CAD',
+        current: current.sales,
+        previous: previous.sales,
+        delta_pct: calculateDelta(current.sales, previous.sales)
+      },
+      {
+        name: 'Client traffic',
+        unit: 'clients',
+        current: current.clients,
+        previous: previous.clients,
+        delta_pct: calculateDelta(current.clients, previous.clients)
+      },
+      {
+        name: 'Profits',
+        unit: 'CAD',
+        current: current.profit,
+        previous: previous.profit,
+        delta_pct: calculateDelta(current.profit, previous.profit)
+      },
+      {
+        name: 'Spendings',
+        unit: 'CAD',
+        current: current.spendings,
+        previous: previous.spendings,
+        delta_pct: calculateDelta(current.spendings, previous.spendings)
+      },
+      {
+        name: 'Gains and losses',
+        unit: 'CAD',
+        current: current.gains_losses,
+        previous: previous.gains_losses,
+        delta_pct: calculateDelta(current.gains_losses, previous.gains_losses)
+      },
+      {
+        name: 'Price monitoring',
+        unit: 'changes',
+        current: current.price_changes,
+        previous: previous.price_changes,
+        delta_pct: calculateDelta(current.price_changes, previous.price_changes)
+      },
+      {
+        name: 'Labour cost',
+        unit: 'CAD',
+        current: current.labour_cost,
+        previous: previous.labour_cost,
+        delta_pct: calculateDelta(current.labour_cost, previous.labour_cost)
+      },
+      {
+        name: 'Food cost',
+        unit: '%',
+        current: current.food_cost_pct,
+        previous: previous.food_cost_pct,
+        delta_pct: calculateDelta(current.food_cost_pct, previous.food_cost_pct)
+      },
+      {
+        name: 'Menu engineering',
+        unit: 'items',
+        current: current.menu_items,
+        previous: previous.menu_items,
+        delta_pct: calculateDelta(current.menu_items, previous.menu_items)
+      },
+      {
+        name: 'Fixed costs',
+        unit: 'CAD',
+        current: current.fixed_costs,
+        previous: previous.fixed_costs,
+        delta_pct: calculateDelta(current.fixed_costs, previous.fixed_costs)
+      },
+      {
+        name: 'Average invoice per client',
+        unit: 'CAD',
+        current: current.avg_invoice,
+        previous: previous.avg_invoice,
+        delta_pct: calculateDelta(current.avg_invoice, previous.avg_invoice)
+      }
+    ];
+  };
+
+  const currentMetrics = getMetricsFromAggregatedData();
+
   // Fonction pour formater les valeurs
   const formatValue = (metric: Metric): string => {
     const { current, unit } = metric;
@@ -180,54 +383,30 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
 
   // Fonction pour obtenir les textes de période
   const getPeriodText = (): { current: string; previous: string } => {
-    const data = currentPeriodData;
+    // Prendre les dates du premier établissement sélectionné pour l'affichage
+    const firstEstablishment = selectedEstablishments[0] || Object.keys(currentPeriodData.by_establishment)[0];
+    const estData = currentPeriodData.by_establishment[firstEstablishment];
+    
+    if (!estData) return { current: '', previous: '' };
     
     if (selectedPeriod === 'day') {
-      const currentDate = formatDate(data.date!);
-      // Pour le jour, la période comparative est la veille (calculée)
-      const yesterday = new Date(data.date!);
-      yesterday.setDate(yesterday.getDate() - 1);
-      const previousDate = formatDate(yesterday.toISOString().split('T')[0]);
+      const currentDate = estData.current.date ? formatDate(estData.current.date) : '';
+      const previousDate = estData.previous.date ? formatDate(estData.previous.date) : '';
       return {
         current: currentDate,
         previous: previousDate
       };
-    } else if (selectedPeriod === 'week') {
-      const startDate = formatDate(data.start!);
-      const endDate = formatDate(data.end!);
-      // Pour la semaine, calculer la semaine précédente
-      const prevWeekStart = new Date(data.start!);
-      prevWeekStart.setDate(prevWeekStart.getDate() - 7);
-      const prevWeekEnd = new Date(data.end!);
-      prevWeekEnd.setDate(prevWeekEnd.getDate() - 7);
+    } else {
+      const currentStart = estData.current.start ? formatDate(estData.current.start) : '';
+      const currentEnd = estData.current.end ? formatDate(estData.current.end) : '';
+      const previousStart = estData.previous.start ? formatDate(estData.previous.start) : '';
+      const previousEnd = estData.previous.end ? formatDate(estData.previous.end) : '';
+      
       return {
-        current: `${startDate} - ${endDate}`,
-        previous: `${formatDate(prevWeekStart.toISOString().split('T')[0])} - ${formatDate(prevWeekEnd.toISOString().split('T')[0])}`
-      };
-    } else if (selectedPeriod === 'month') {
-      const startDate = formatDate(data.start!);
-      const endDate = formatDate(data.end!);
-      // Pour le mois, calculer le mois précédent
-      const prevMonthStart = new Date(data.start!);
-      prevMonthStart.setMonth(prevMonthStart.getMonth() - 1);
-      const prevMonthEnd = new Date(data.end!);
-      prevMonthEnd.setMonth(prevMonthEnd.getMonth() - 1);
-      return {
-        current: `${startDate} - ${endDate}`,
-        previous: `${formatDate(prevMonthStart.toISOString().split('T')[0])} - ${formatDate(prevMonthEnd.toISOString().split('T')[0])}`
-      };
-    } else if (selectedPeriod === 'custom') {
-      const startDate = formatDate(data.start!);
-      const endDate = formatDate(data.end!);
-      const compareStart = formatDate(data.compare_start!);
-      const compareEnd = formatDate(data.compare_end!);
-      return {
-        current: `${startDate} - ${endDate}`,
-        previous: `${compareStart} - ${compareEnd}`
+        current: `${currentStart} - ${currentEnd}`,
+        previous: `${previousStart} - ${previousEnd}`
       };
     }
-    
-    return { current: '', previous: '' };
   };
 
   const periodText = getPeriodText();
@@ -425,7 +604,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
 
       {/* Grid de KPIs */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {currentPeriodData.metrics.map((metric: Metric, index: number) => {
+        {currentMetrics.map((metric: Metric, index: number) => {
           const TrendIcon = getTrendIcon(metric.delta_pct);
           const trendColor = getTrendColor(metric);
           const translation = metricTranslations[metric.name];
