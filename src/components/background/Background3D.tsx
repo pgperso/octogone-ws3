@@ -117,8 +117,9 @@ function generateShapeData(count: number, seed: number, outlineColor: string): {
   return { rhombuses };
 }
 
-function RhombusInstances({ data, outlineColor }: { data: ShapeData[]; outlineColor: string }) {
+function RhombusInstances({ data, outlineColor, backgroundColor }: { data: ShapeData[]; outlineColor: string; backgroundColor: string }) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
+  const wireframeRef = useRef<THREE.InstancedMesh>(null);
   
   // Losange plat 2D (plaque mince) - TEMPORAIRE POUR TEST
   // Pour revenir au cube 3D, remplacer height: 0.05 par height: 1.4
@@ -140,22 +141,36 @@ function RhombusInstances({ data, outlineColor }: { data: ShapeData[]; outlineCo
   }, [data]);
 
   useFrame((state) => {
-    if (!meshRef.current) return;
-    // Rotation continue pour montrer toutes les faces du rhomboèdre
-    meshRef.current.rotation.x += 0.003;
-    meshRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.2) * 0.1;
+    if (!meshRef.current || !wireframeRef.current) return;
+    // Rotation continue pour montrer toutes les faces
+    const rotX = state.clock.elapsedTime * 0.003;
+    const rotZ = Math.sin(state.clock.elapsedTime * 0.2) * 0.1;
+    
+    meshRef.current.rotation.x = rotX;
+    meshRef.current.rotation.z = rotZ;
+    wireframeRef.current.rotation.x = rotX;
+    wireframeRef.current.rotation.z = rotZ;
   });
 
   return (
-    <instancedMesh ref={meshRef} args={[geometry, undefined, data.length]}>
-      <meshBasicMaterial 
-        color={outlineColor}
-        wireframe={true}
-        transparent
-        opacity={0.3}
-      />
-      <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
-    </instancedMesh>
+    <>
+      {/* Mesh plein avec couleur background pour cacher les lignes internes */}
+      <instancedMesh ref={meshRef} args={[geometry, undefined, data.length]}>
+        <meshBasicMaterial color={backgroundColor} />
+        <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
+      </instancedMesh>
+      
+      {/* Wireframe par-dessus pour les contours */}
+      <instancedMesh ref={wireframeRef} args={[geometry, undefined, data.length]}>
+        <meshBasicMaterial 
+          color={outlineColor}
+          wireframe={true}
+          transparent
+          opacity={0.3}
+        />
+        <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
+      </instancedMesh>
+    </>
   );
 }
 
@@ -173,7 +188,11 @@ function Scene({ density, seed }: { density: number; seed: number }) {
       <color attach="background" args={[themeColors.background]} />
 
       <Float speed={0.5} rotationIntensity={0.2} floatIntensity={0.3}>
-        <RhombusInstances data={rhombuses} outlineColor={themeColors.outline} />
+        <RhombusInstances 
+          data={rhombuses} 
+          outlineColor={themeColors.outline}
+          backgroundColor={themeColors.background}
+        />
       </Float>
     </>
   );
