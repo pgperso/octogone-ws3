@@ -189,7 +189,16 @@ export default function CortexPage() {
 
   const currentCapabilities = activeTab === 'now' ? capabilitiesNow : capabilitiesSoon;
 
-  // Type pour les capacités
+  // Type pour les capacités de base
+  type BaseCapability = {
+    icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
+    titleFr: string;
+    titleEn: string;
+    descFr: string;
+    descEn: string;
+  };
+
+  // Type pour les capacités avec exemples
   type Capability = {
     icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
     titleFr: string;
@@ -435,7 +444,7 @@ export default function CortexPage() {
 
         {/* Header commun (toujours visible) - Capacités de base */}
         <div className="flex flex-wrap justify-start gap-4 mb-12 max-w-4xl mx-auto">
-          {baseCapabilities.map((capability: Capability, index: number) => {
+          {baseCapabilities.map((capability: BaseCapability, index: number) => {
             const Icon = capability.icon;
             return (
               <motion.div
