@@ -213,7 +213,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           keyConcept: 'Posez des actions',
           cta: {
             label: 'Réserver une démo',
-            link: '/fr/contact'
+            link: '/contact'
           }
         }
       ]
@@ -368,7 +368,7 @@ export const toolsConversations: Record<string, ToolConversation[]> = {
           keyConcept: 'Take actions',
           cta: {
             label: 'Book a demo',
-            link: '/en/contact'
+            link: '/contact'
           }
         }
       ]

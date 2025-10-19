@@ -41,7 +41,8 @@ export default function InlineChart({ chart, locale = 'fr' }: InlineChartProps) 
         border: '1px solid var(--outline)',
         boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
         maxWidth: '100%',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        pointerEvents: 'none'
       }}
     >
       <h4 className="text-sm font-semibold mb-3" style={{ color: 'var(--on-secondary-container)' }}>
@@ -162,7 +163,11 @@ export default function InlineChart({ chart, locale = 'fr' }: InlineChartProps) 
   );
 
   return (
-    <Link href={`/${locale}/fonctionnalites/octogone-360`}>
+    <Link 
+      href={`/${locale}/fonctionnalites/octogone-360`}
+      className="block focus:outline-none"
+      style={{ pointerEvents: 'auto' }}
+    >
       {content}
     </Link>
   );
