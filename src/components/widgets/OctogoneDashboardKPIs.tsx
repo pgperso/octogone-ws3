@@ -577,15 +577,6 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
         </div>
       </div>
 
-      {/* Petite note de démonstration */}
-      <div className="mb-3 text-center">
-        <p className="text-xs italic" style={{ color: 'var(--on-surface-variant)', opacity: 0.7 }}>
-          {isEnglish 
-            ? '* Demo data for illustration purposes' 
-            : '* Données de démonstration à titre illustratif'}
-        </p>
-      </div>
-
       {/* Grid de KPIs */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {currentMetrics.map((metric: Metric, index: number) => {
@@ -653,6 +644,15 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
             </div>
           );
         })}
+      </div>
+
+      {/* Note de démonstration en bas */}
+      <div className="mt-8 text-center px-4">
+        <p className="text-xs" style={{ color: 'var(--on-surface-variant)', opacity: 0.8, lineHeight: '1.6' }}>
+          {isEnglish 
+            ? '* This dashboard uses fictional data to demonstrate its features and capabilities. The full platform version offers advanced analytics and real-time insights. Contact us for more information.' 
+            : '* Ce tableau de bord utilise des données fictives pour démontrer ses fonctionnalités. La version complète sur la plateforme offre des analyses avancées et des insights en temps réel. Contactez-nous pour plus d\'informations.'}
+        </p>
       </div>
     </div>
   );
