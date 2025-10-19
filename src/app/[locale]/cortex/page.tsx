@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useParams } from "next/navigation";
 import { ResponsiveSection } from "@/components/ui/responsive-section";
-import { Brain, Sparkles, MessageSquare, TrendingUp, Clock, Zap } from "lucide-react";
+import { Brain, Sparkles, MessageSquare, TrendingUp, Clock, Zap, BarChart3, FileText, Video, CheckCircle } from "lucide-react";
 import { OctogoneButton } from "@/components/ui/octogone-button";
 import { getConceptById } from "@/data/features/features-content";
 import Image from "next/image";
@@ -33,51 +33,92 @@ export default function CortexPage() {
   const url = `https://octogone.app/${locale}/cortex`;
   const imageUrl = concept.heroImage.startsWith('http') ? concept.heroImage : `https://octogone.app${concept.heroImage}`;
 
-  const capabilitiesNow = [
+  // Capacités de base (toujours visibles)
+  const baseCapabilities = [
     {
       icon: MessageSquare,
       titleFr: "Conversation naturelle",
       titleEn: "Natural Conversation",
-      descFr: "Posez vos questions comme à un collègue. Cortex comprend le langage humain, interprète vos intentions et vous répond instantanément, sans détour.",
-      descEn: "Ask questions as you would to a colleague. Cortex understands human language, interprets your intentions and responds instantly, without detours."
+      descFr: "Posez vos questions comme à un collègue. Cortex comprend le langage humain et répond instantanément.",
+      descEn: "Ask questions as you would to a colleague. Cortex understands human language and responds instantly."
     },
     {
       icon: Zap,
       titleFr: "Réponses instantanées",
       titleEn: "Instant Responses",
-      descFr: "Plus besoin de fouiller dans des rapports. Cortex vous donne la bonne réponse, au bon moment, en quelques secondes.",
-      descEn: "No more digging through reports. Cortex gives you the right answer, at the right time, in seconds."
+      descFr: "Plus besoin de fouiller dans des rapports. Cortex vous donne la bonne réponse en quelques secondes.",
+      descEn: "No more digging through reports. Cortex gives you the right answer in seconds."
     },
     {
       icon: Clock,
       titleFr: "Disponible 24/7",
       titleEn: "Available 24/7",
-      descFr: "Toujours prêt, toujours attentif. Cortex travaille en continu, de jour comme de nuit, pour que vous ne perdiez jamais une occasion d'agir.",
-      descEn: "Always ready, always attentive. Cortex works continuously, day and night, so you never miss an opportunity to act."
+      descFr: "Toujours prêt, toujours attentif. Cortex travaille en continu, de jour comme de nuit.",
+      descEn: "Always ready, always attentive. Cortex works continuously, day and night."
     }
   ];
 
-  const capabilitiesSoon = [
+  // Capacités liées aux Key Concepts - Maintenant (version bêta)
+  const capabilitiesNow = [
     {
-      icon: Brain,
-      titleFr: "Analyse intelligente",
-      titleEn: "Intelligent Analysis",
-      descFr: "Cortex transforme vos données en insights clairs et actionnables : comprenez ce qui se passe, pourquoi et ce qu'il faut faire ensuite.",
-      descEn: "Cortex transforms your data into clear and actionable insights: understand what's happening, why, and what to do next."
+      icon: BarChart3,
+      titleFr: "Visualisez vos résultats",
+      titleEn: "Visualize Your Results",
+      descFr: "Cortex génère des graphiques et tableaux instantanés pour visualiser vos données de performance.",
+      descEn: "Cortex generates instant charts and tables to visualize your performance data."
     },
     {
       icon: TrendingUp,
-      titleFr: "Prédictions précises",
-      titleEn: "Accurate Predictions",
-      descFr: "Anticipez les ventes, les besoins en stock et les fluctuations de coûts. Cortex vous aide à toujours avoir une longueur d'avance.",
-      descEn: "Anticipate sales, inventory needs and cost fluctuations. Cortex helps you stay one step ahead."
+      titleFr: "Comparez vos performances",
+      titleEn: "Compare Your Performance",
+      descFr: "Analysez vos résultats par période, par établissement ou par catégorie en un instant.",
+      descEn: "Analyze your results by period, establishment, or category in an instant."
+    }
+  ];
+
+  // Capacités liées aux Key Concepts - Bientôt (nouvelle version)
+  const capabilitiesSoon = [
+    {
+      icon: BarChart3,
+      titleFr: "Visualisez vos résultats",
+      titleEn: "Visualize Your Results",
+      descFr: "Cortex génère des graphiques et tableaux instantanés pour visualiser vos données de performance.",
+      descEn: "Cortex generates instant charts and tables to visualize your performance data."
     },
     {
-      icon: Sparkles,
-      titleFr: "Apprentissage continu",
-      titleEn: "Continuous Learning",
-      descFr: "Chaque utilisation rend Cortex plus intelligent. Plus vous l'utilisez, plus il comprend votre établissement et ses particularités.",
-      descEn: "Every use makes Cortex smarter. The more you use it, the better it understands your establishment and its particularities."
+      icon: TrendingUp,
+      titleFr: "Comparez vos performances",
+      titleEn: "Compare Your Performance",
+      descFr: "Analysez vos résultats par période, par établissement ou par catégorie en un instant.",
+      descEn: "Analyze your results by period, establishment, or category in an instant."
+    },
+    {
+      icon: FileText,
+      titleFr: "Générez des documents",
+      titleEn: "Generate Documents",
+      descFr: "Créez des rapports personnalisés, des analyses détaillées et des présentations en quelques secondes.",
+      descEn: "Create custom reports, detailed analyses, and presentations in seconds."
+    },
+    {
+      icon: Video,
+      titleFr: "Commandez des tutoriels",
+      titleEn: "Request Tutorials",
+      descFr: "Cortex vous guide étape par étape avec des tutoriels personnalisés pour maîtriser chaque fonctionnalité.",
+      descEn: "Cortex guides you step by step with personalized tutorials to master every feature."
+    },
+    {
+      icon: CheckCircle,
+      titleFr: "Posez des actions",
+      titleEn: "Take Actions",
+      descFr: "Cortex peut exécuter des tâches pour vous : créer des commandes, ajuster des prix, envoyer des notifications.",
+      descEn: "Cortex can execute tasks for you: create orders, adjust prices, send notifications."
+    },
+    {
+      icon: Brain,
+      titleFr: "Analyse prédictive",
+      titleEn: "Predictive Analysis",
+      descFr: "Anticipez les ventes, les besoins en stock et les fluctuations de coûts avec l'IA.",
+      descEn: "Anticipate sales, inventory needs, and cost fluctuations with AI."
     }
   ];
 
@@ -275,13 +316,69 @@ export default function CortexPage() {
             {isEnglish ? 'Your Most Reliable Employee' : 'Votre employé le plus fiable'}
           </h2>
 
-          <p className="text-lg max-w-2xl mx-auto mb-8" style={{ color: 'var(--on-surface-variant)' }}>
+          <p className="text-lg max-w-2xl mx-auto mb-12" style={{ color: 'var(--on-surface-variant)' }}>
             {isEnglish
               ? 'Always available, Cortex answers your questions 24/7. It learns, knows you, and masters every aspect of your operations.'
               : 'Toujours disponible, Cortex répond à vos questions 24 heures sur 24, 7 jours sur 7. Il apprend, il vous connaît et il maîtrise tous les aspects de vos opérations.'}
           </p>
-          
-          {/* Toggle Maintenant/Bientôt */}
+        </motion.div>
+
+        {/* Capacités de base (toujours visibles) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          {baseCapabilities.map((capability: Capability, index: number) => {
+            const Icon = capability.icon;
+            return (
+              <motion.div
+                key={index}
+                className="relative rounded-2xl p-8"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ scale: 1.02 }}
+              >
+                <div 
+                  className="absolute inset-0 rounded-2xl p-[2px]"
+                  style={{
+                    background: CORTEX_GRADIENT,
+                    boxShadow: '0 0 10px rgba(186, 223, 246, 0.2), 0 0 20px rgba(226, 205, 237, 0.15)'
+                  }}
+                >
+                  <div 
+                    className="w-full h-full rounded-2xl"
+                    style={{ backgroundColor: 'var(--background)' }}
+                  />
+                </div>
+
+                <div className="relative">
+                  <div 
+                    className="w-14 h-14 rounded-xl flex items-center justify-center mb-6"
+                    style={{ background: CORTEX_GRADIENT }}
+                  >
+                    <Icon className="w-7 h-7" style={{ color: 'var(--on-secondary-container)' }} />
+                  </div>
+                  
+                  <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--on-surface)' }}>
+                    {isEnglish ? capability.titleEn : capability.titleFr}
+                  </h3>
+                  
+                  <p style={{ color: 'var(--on-surface-variant)' }}>
+                    {isEnglish ? capability.descEn : capability.descFr}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Toggle Maintenant/Bientôt */}
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
           <div className="flex items-center justify-center">
             <div 
               className="relative flex rounded-lg p-1"
@@ -292,7 +389,7 @@ export default function CortexPage() {
             >
               <button
                 onClick={() => setActiveTab('now')}
-                className={`px-6 py-2 rounded-md text-sm font-semibold transition-all duration-300 ${
+                className={`px-6 py-2 rounded-md text-sm font-semibold transition-all duration-300 cursor-pointer ${
                   activeTab === 'now' 
                     ? 'text-white shadow-lg' 
                     : 'hover:bg-opacity-50'
@@ -304,11 +401,11 @@ export default function CortexPage() {
                     : 'var(--on-surface-variant)'
                 }}
               >
-                {isEnglish ? 'Now' : 'Maintenant'}
+                {isEnglish ? 'Now (Beta)' : 'Maintenant (Bêta)'}
               </button>
               <button
                 onClick={() => setActiveTab('soon')}
-                className={`px-6 py-2 rounded-md text-sm font-semibold transition-all duration-300 ${
+                className={`px-6 py-2 rounded-md text-sm font-semibold transition-all duration-300 cursor-pointer ${
                   activeTab === 'soon' 
                     ? 'text-white shadow-lg' 
                     : 'hover:bg-opacity-50'
@@ -320,19 +417,13 @@ export default function CortexPage() {
                     : 'var(--on-surface-variant)'
                 }}
               >
-                {isEnglish ? 'Soon' : 'Bientôt'}
+                {isEnglish ? 'Soon (Full Version)' : 'Bientôt (Version complète)'}
               </button>
             </div>
           </div>
-          
-          {/* Texte de transition vers les capacités */}
-          <p className="text-base max-w-xl mx-auto mt-8" style={{ color: 'var(--on-surface-variant)' }}>
-            {isEnglish
-              ? 'Discover what makes Cortex your most valuable team member:'
-              : 'Découvrez ce qui fait de Cortex votre collaborateur le plus précieux :'}
-          </p>
         </motion.div>
 
+        {/* Capacités spécifiques selon le toggle */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {currentCapabilities.map((capability: Capability, index: number) => {
             const Icon = capability.icon;
