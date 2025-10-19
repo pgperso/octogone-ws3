@@ -158,7 +158,7 @@ function RhombusInstances({ data, outlineColor, backgroundColor }: { data: Shape
     <>
       {/* Mesh plein avec couleur background pour cacher les lignes internes */}
       <instancedMesh ref={meshRef} args={[geometry, undefined, data.length]}>
-        <meshBasicMaterial color={backgroundColor} />
+        <meshBasicMaterial color={backgroundColor} key={backgroundColor} />
         <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
       </instancedMesh>
       
@@ -169,6 +169,7 @@ function RhombusInstances({ data, outlineColor, backgroundColor }: { data: Shape
           wireframe={true}
           transparent
           opacity={0.3}
+          key={outlineColor}
         />
         <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
       </instancedMesh>
