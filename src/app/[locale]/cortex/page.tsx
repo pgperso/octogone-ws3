@@ -451,9 +451,10 @@ export default function CortexPage() {
       <ResponsiveSection
         as="section"
         bgColor=""
-        spacing="lg"
+        spacing="none"
         style={{ backgroundColor: 'transparent' }}
       >
+        <div className="pt-8">
         {/* Chat animé Cortex */}
         <motion.div
           className="max-w-5xl mx-auto"
@@ -478,6 +479,7 @@ export default function CortexPage() {
               : '* Les interactions et données présentées ci-dessus sont des démonstrations simulées conçues pour illustrer les capacités potentielles de Cortex. Les résultats et l\'interface réels peuvent différer dans la version finale.'}
           </p>
         </motion.div>
+        </div>
       </ResponsiveSection>
 
       {/* Section CTA finale */}
