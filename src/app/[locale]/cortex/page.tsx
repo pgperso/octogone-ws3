@@ -414,14 +414,14 @@ export default function CortexPage() {
             return (
               <motion.div
                 key={index}
-                className="space-y-3"
+                className="space-y-2"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 {/* Titre du groupe avec badge vert */}
-                <div className="flex items-center gap-3 mb-3">
+                <div className="flex items-center gap-3 mb-2">
                   <div 
                     className="w-6 h-6 rounded flex items-center justify-center flex-shrink-0"
                     style={{ backgroundColor: 'var(--success)' }}
@@ -434,7 +434,7 @@ export default function CortexPage() {
                 </div>
 
                 {/* Liste des exemples */}
-                <div className="space-y-1.5 pl-8">
+                <div className="space-y-1 pl-8">
                   {examples.map((example: string, exIndex: number) => (
                     <p key={exIndex} className="text-sm leading-relaxed" style={{ color: 'var(--on-surface-variant)' }}>
                       &ldquo;{example}&rdquo;
