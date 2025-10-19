@@ -59,67 +59,131 @@ export default function CortexPage() {
     }
   ];
 
-  // Capacités liées aux Key Concepts - Maintenant (version bêta)
+  // Groupes de capacités avec exemples - Maintenant (version bêta)
   const capabilitiesNow = [
     {
-      icon: BarChart3,
-      titleFr: "Visualisez vos résultats",
-      titleEn: "Visualize Your Results",
-      descFr: "Cortex génère des graphiques et tableaux instantanés pour visualiser vos données de performance.",
-      descEn: "Cortex generates instant charts and tables to visualize your performance data."
+      icon: MessageSquare,
+      titleFr: "Converser naturellement",
+      titleEn: "Natural Conversation",
+      examplesFr: [
+        "Comment ça va Cortex ?",
+        "Raconte-moi une blague",
+        "Explique-moi comment fonctionne cette fonctionnalité"
+      ],
+      examplesEn: [
+        "How are you Cortex?",
+        "Tell me a joke",
+        "Explain how this feature works"
+      ]
     },
     {
-      icon: TrendingUp,
-      titleFr: "Comparez vos performances",
-      titleEn: "Compare Your Performance",
-      descFr: "Analysez vos résultats par période, par établissement ou par catégorie en un instant.",
-      descEn: "Analyze your results by period, establishment, or category in an instant."
+      icon: BarChart3,
+      titleFr: "Visualiser vos résultats",
+      titleEn: "Visualize Your Results",
+      examplesFr: [
+        "Montre-moi les ventes de la semaine",
+        "Affiche un graphique des performances",
+        "Compare mes résultats avec le mois dernier"
+      ],
+      examplesEn: [
+        "Show me this week's sales",
+        "Display a performance chart",
+        "Compare my results with last month"
+      ]
     }
   ];
 
-  // Capacités liées aux Key Concepts - Bientôt (nouvelle version)
+  // Groupes de capacités avec exemples - Bientôt (nouvelle version)
   const capabilitiesSoon = [
     {
-      icon: BarChart3,
-      titleFr: "Visualisez vos résultats",
-      titleEn: "Visualize Your Results",
-      descFr: "Cortex génère des graphiques et tableaux instantanés pour visualiser vos données de performance.",
-      descEn: "Cortex generates instant charts and tables to visualize your performance data."
+      icon: MessageSquare,
+      titleFr: "Converser naturellement",
+      titleEn: "Natural Conversation",
+      examplesFr: [
+        "Comment ça va Cortex ?",
+        "Raconte-moi une blague",
+        "Explique-moi comment fonctionne cette fonctionnalité"
+      ],
+      examplesEn: [
+        "How are you Cortex?",
+        "Tell me a joke",
+        "Explain how this feature works"
+      ]
     },
     {
-      icon: TrendingUp,
-      titleFr: "Comparez vos performances",
-      titleEn: "Compare Your Performance",
-      descFr: "Analysez vos résultats par période, par établissement ou par catégorie en un instant.",
-      descEn: "Analyze your results by period, establishment, or category in an instant."
+      icon: BarChart3,
+      titleFr: "Visualiser vos résultats",
+      titleEn: "Visualize Your Results",
+      examplesFr: [
+        "Montre-moi les ventes de la semaine",
+        "Affiche un graphique des performances",
+        "Compare mes résultats avec le mois dernier"
+      ],
+      examplesEn: [
+        "Show me this week's sales",
+        "Display a performance chart",
+        "Compare my results with last month"
+      ]
     },
     {
       icon: FileText,
-      titleFr: "Générez des documents",
+      titleFr: "Générer des documents",
       titleEn: "Generate Documents",
-      descFr: "Créez des rapports personnalisés, des analyses détaillées et des présentations en quelques secondes.",
-      descEn: "Create custom reports, detailed analyses, and presentations in seconds."
+      examplesFr: [
+        "Génère-moi un rapport en PDF",
+        "Crée un fichier Excel des ventes",
+        "Génère une image de mes statistiques"
+      ],
+      examplesEn: [
+        "Generate a PDF report for me",
+        "Create an Excel file of sales",
+        "Generate an image of my statistics"
+      ]
     },
     {
       icon: Video,
-      titleFr: "Commandez des tutoriels",
+      titleFr: "Commander des tutoriels",
       titleEn: "Request Tutorials",
-      descFr: "Cortex vous guide étape par étape avec des tutoriels personnalisés pour maîtriser chaque fonctionnalité.",
-      descEn: "Cortex guides you step by step with personalized tutorials to master every feature."
+      examplesFr: [
+        "Montre-moi comment créer une commande",
+        "Explique-moi la gestion des stocks",
+        "Guide-moi pour configurer les prix"
+      ],
+      examplesEn: [
+        "Show me how to create an order",
+        "Explain inventory management to me",
+        "Guide me to configure prices"
+      ]
     },
     {
       icon: CheckCircle,
-      titleFr: "Posez des actions",
+      titleFr: "Poser des actions",
       titleEn: "Take Actions",
-      descFr: "Cortex peut exécuter des tâches pour vous : créer des commandes, ajuster des prix, envoyer des notifications.",
-      descEn: "Cortex can execute tasks for you: create orders, adjust prices, send notifications."
+      examplesFr: [
+        "Crée une commande pour demain",
+        "Ajuste le prix de ce produit",
+        "Envoie une notification à l'équipe"
+      ],
+      examplesEn: [
+        "Create an order for tomorrow",
+        "Adjust the price of this product",
+        "Send a notification to the team"
+      ]
     },
     {
       icon: Brain,
-      titleFr: "Analyse prédictive",
-      titleEn: "Predictive Analysis",
-      descFr: "Anticipez les ventes, les besoins en stock et les fluctuations de coûts avec l'IA.",
-      descEn: "Anticipate sales, inventory needs, and cost fluctuations with AI."
+      titleFr: "Analyser et prédire",
+      titleEn: "Analyze and Predict",
+      examplesFr: [
+        "Prévois les ventes du mois prochain",
+        "Anticipe mes besoins en stock",
+        "Analyse les tendances de coûts"
+      ],
+      examplesEn: [
+        "Forecast next month's sales",
+        "Anticipate my inventory needs",
+        "Analyze cost trends"
+      ]
     }
   ];
 
@@ -130,8 +194,8 @@ export default function CortexPage() {
     icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
     titleFr: string;
     titleEn: string;
-    descFr: string;
-    descEn: string;
+    examplesFr: string[];
+    examplesEn: string[];
   };
 
   return (
@@ -405,28 +469,48 @@ export default function CortexPage() {
         </div>
 
         {/* Capacités liées aux Key Concepts (selon le toggle) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {currentCapabilities.map((capability: Capability, index: number) => {
+            const Icon = capability.icon;
+            const examples = isEnglish ? capability.examplesEn : capability.examplesFr;
+            
             return (
               <motion.div
                 key={index}
-                className="flex items-center gap-3"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                className="space-y-3"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div 
-                  className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 p-1.5"
-                  style={{ backgroundColor: 'var(--success)' }}
-                >
-                  <Check className="w-full h-full" style={{ color: 'var(--on-success)', strokeWidth: 3 }} />
-                </div>
-                
-                <div className="flex-1">
-                  <p className="text-sm font-semibold leading-tight" style={{ color: 'var(--on-surface)' }}>
+                {/* Titre du groupe avec icône */}
+                <div className="flex items-center gap-3 mb-4">
+                  <div 
+                    className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
+                    style={{ background: CORTEX_GRADIENT }}
+                  >
+                    <Icon className="w-5 h-5" style={{ color: 'var(--on-secondary-container)' }} />
+                  </div>
+                  <h3 className="text-base font-bold" style={{ color: 'var(--on-surface)' }}>
                     {isEnglish ? capability.titleEn : capability.titleFr}
-                  </p>
+                  </h3>
+                </div>
+
+                {/* Liste des exemples */}
+                <div className="space-y-2 pl-2">
+                  {examples.map((example: string, exIndex: number) => (
+                    <div key={exIndex} className="flex items-start gap-2">
+                      <div 
+                        className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                        style={{ backgroundColor: 'var(--success)' }}
+                      >
+                        <Check className="w-3 h-3" style={{ color: 'var(--on-success)', strokeWidth: 3 }} />
+                      </div>
+                      <p className="text-sm leading-relaxed" style={{ color: 'var(--on-surface-variant)' }}>
+                        "{example}"
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
             );
