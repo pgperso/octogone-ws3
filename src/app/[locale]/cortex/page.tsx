@@ -18,8 +18,8 @@ export default function CortexPage() {
   const [activeTab, setActiveTab] = React.useState<'now' | 'soon'>('now');
 
   // Constantes pour éviter la duplication
-  const CORTEX_GRADIENT = 'linear-gradient(135deg, #BADFF6 0%, #E2CDED 100%)';
-  const CORTEX_GRADIENT_REVERSE = 'linear-gradient(135deg, #E2CDED 0%, #BADFF6 100%)';
+  const CORTEX_GRADIENT = 'linear-gradient(135deg, #BADFF6 0%, #E2CDED 100%)'; // Cortex Light
+  const CORTEX_GRADIENT_DARK = 'linear-gradient(135deg, #BADFF6 0%, #A7D6F3 50%, #94CDF0 100%)'; // Cortex Dark
   const CORTEX_ICON_FILTER = 'brightness(0) saturate(100%) invert(8%) sepia(15%) saturate(3207%) hue-rotate(167deg) brightness(96%) contrast(101%)';
   
   const concept = getConceptById('cortex');
@@ -383,7 +383,7 @@ export default function CortexPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
                 style={{
-                  background: CORTEX_GRADIENT_REVERSE,
+                  background: CORTEX_GRADIENT_DARK,
                   border: '2px solid white',
                   boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
                   minWidth: '280px'
