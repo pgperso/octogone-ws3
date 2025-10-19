@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import Hero from "@/features/home/components/00-hero-section";
 import PartnersSection from "@/features/home/components/02-clients-section";
+import ProBackground from "@/components/background/ProBackground";
 import { useRef, useState, useEffect } from "react";
 import * as React from "react";
 import { useCalculator } from "@/contexts/calculator-context";
@@ -56,6 +57,9 @@ export default function HomePage({ params }: { params: Promise<{ locale: string 
 
   return (
     <>
+      {/* Fond 3D avec formes Octogone */}
+      <ProBackground />
+      
       {/* Hero section avec centrage ajusté pour la barre de navigation */}
       <div className="w-full">
         <Hero />
