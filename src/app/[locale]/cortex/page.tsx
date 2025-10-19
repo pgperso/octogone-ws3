@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useParams } from "next/navigation";
 import { ResponsiveSection } from "@/components/ui/responsive-section";
-import { Brain, Sparkles, MessageSquare, TrendingUp, Clock, Zap, BarChart3, FileText, Video, CheckCircle } from "lucide-react";
+import { Brain, MessageSquare, TrendingUp, Clock, Zap, BarChart3, FileText, Video, CheckCircle } from "lucide-react";
 import { OctogoneButton } from "@/components/ui/octogone-button";
 import { getConceptById } from "@/data/features/features-content";
 import Image from "next/image";
