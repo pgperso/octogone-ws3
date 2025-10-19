@@ -2,7 +2,7 @@
 
 import { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, Environment } from '@react-three/drei';
+import { Float } from '@react-three/drei';
 import * as THREE from 'three';
 import { createOctagonBipyramid, createRhombusBipyramid } from './solids';
 
@@ -133,13 +133,11 @@ function OctagonInstances({ data }: { data: ShapeData[] }) {
 
   return (
     <instancedMesh ref={meshRef} args={[geometry, undefined, data.length]}>
-      <meshStandardMaterial 
+      <meshBasicMaterial 
         vertexColors 
-        transparent 
-        opacity={0.7}
-        metalness={0.3}
-        roughness={0.4}
-        flatShading={false}
+        wireframe={true}
+        transparent
+        opacity={0.8}
       />
       <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
       <instancedBufferAttribute attach="instanceColor" args={[colors, 3]} />
@@ -182,13 +180,11 @@ function RhombusInstances({ data }: { data: ShapeData[] }) {
 
   return (
     <instancedMesh ref={meshRef} args={[geometry, undefined, data.length]}>
-      <meshStandardMaterial 
+      <meshBasicMaterial 
         vertexColors 
-        transparent 
-        opacity={0.7}
-        metalness={0.4}
-        roughness={0.3}
-        flatShading={false}
+        wireframe={true}
+        transparent
+        opacity={0.8}
       />
       <instancedBufferAttribute attach="instanceMatrix" args={[matrices, 16]} />
       <instancedBufferAttribute attach="instanceColor" args={[colors, 3]} />
@@ -203,18 +199,11 @@ function Scene({ density, seed }: { density: number; seed: number }) {
   return (
     <>
       <color attach="background" args={[COLORS.bg]} />
-      <fog attach="fog" args={[COLORS.bg, 6, 26]} />
-      
-      <ambientLight intensity={0.3} />
-      <directionalLight position={[5, 5, 5]} intensity={0.5} />
-      <pointLight position={[-5, -5, -5]} intensity={0.3} color={COLORS.sky} />
 
       <Float speed={0.5} rotationIntensity={0.2} floatIntensity={0.3}>
         <OctagonInstances data={octagons} />
         <RhombusInstances data={rhombuses} />
       </Float>
-
-      <Environment preset="city" />
     </>
   );
 }
