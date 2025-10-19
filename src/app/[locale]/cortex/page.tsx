@@ -305,8 +305,9 @@ export default function CortexPage() {
         spacing="xxl"
         style={{ backgroundColor: 'transparent' }}
       >
+        {/* Titre principal */}
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -316,15 +317,72 @@ export default function CortexPage() {
             {isEnglish ? 'Your Most Reliable Employee' : 'Votre employé le plus fiable'}
           </h2>
 
-          <p className="text-lg max-w-2xl mx-auto mb-12" style={{ color: 'var(--on-surface-variant)' }}>
+          <p className="text-lg max-w-2xl mx-auto" style={{ color: 'var(--on-surface-variant)' }}>
             {isEnglish
               ? 'Always available, Cortex answers your questions 24/7. It learns, knows you, and masters every aspect of your operations.'
               : 'Toujours disponible, Cortex répond à vos questions 24 heures sur 24, 7 jours sur 7. Il apprend, il vous connaît et il maîtrise tous les aspects de vos opérations.'}
           </p>
         </motion.div>
 
-        {/* Capacités de base (toujours visibles) */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        {/* Titre au-dessus du toggle */}
+        <motion.div 
+          className="text-center mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <h3 className="text-2xl font-bold mb-6" style={{ color: 'var(--on-background)' }}>
+            {isEnglish ? 'Discover What Cortex Can Do' : 'Découvrez ce que Cortex peut faire'}
+          </h3>
+
+          {/* Toggle Maintenant/Bientôt */}
+          <div className="flex items-center justify-center">
+            <div 
+              className="relative flex rounded-lg p-1"
+              style={{ 
+                backgroundColor: 'var(--surface-variant)',
+                border: '1px solid var(--outline-variant)'
+              }}
+            >
+              <button
+                onClick={() => setActiveTab('now')}
+                className={`px-6 py-2 rounded-md text-sm font-semibold transition-all duration-300 cursor-pointer ${
+                  activeTab === 'now' 
+                    ? 'text-white shadow-lg' 
+                    : 'hover:bg-opacity-50'
+                }`}
+                style={{
+                  background: activeTab === 'now' ? CORTEX_GRADIENT : 'transparent',
+                  color: activeTab === 'now' 
+                    ? 'var(--on-secondary-container)' 
+                    : 'var(--on-surface-variant)'
+                }}
+              >
+                {isEnglish ? 'Now' : 'Maintenant'}
+              </button>
+              <button
+                onClick={() => setActiveTab('soon')}
+                className={`px-6 py-2 rounded-md text-sm font-semibold transition-all duration-300 cursor-pointer ${
+                  activeTab === 'soon' 
+                    ? 'text-white shadow-lg' 
+                    : 'hover:bg-opacity-50'
+                }`}
+                style={{
+                  background: activeTab === 'soon' ? CORTEX_GRADIENT : 'transparent',
+                  color: activeTab === 'soon' 
+                    ? 'var(--on-secondary-container)' 
+                    : 'var(--on-surface-variant)'
+                }}
+              >
+                {isEnglish ? 'Soon' : 'Bientôt'}
+              </button>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Header commun (toujours visible) - Capacités de base */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {baseCapabilities.map((capability: Capability, index: number) => {
             const Icon = capability.icon;
             return (
@@ -371,59 +429,7 @@ export default function CortexPage() {
           })}
         </div>
 
-        {/* Toggle Maintenant/Bientôt */}
-        <motion.div 
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="flex items-center justify-center">
-            <div 
-              className="relative flex rounded-lg p-1"
-              style={{ 
-                backgroundColor: 'var(--surface-variant)',
-                border: '1px solid var(--outline-variant)'
-              }}
-            >
-              <button
-                onClick={() => setActiveTab('now')}
-                className={`px-6 py-2 rounded-md text-sm font-semibold transition-all duration-300 cursor-pointer ${
-                  activeTab === 'now' 
-                    ? 'text-white shadow-lg' 
-                    : 'hover:bg-opacity-50'
-                }`}
-                style={{
-                  background: activeTab === 'now' ? CORTEX_GRADIENT : 'transparent',
-                  color: activeTab === 'now' 
-                    ? 'var(--on-secondary-container)' 
-                    : 'var(--on-surface-variant)'
-                }}
-              >
-                {isEnglish ? 'Now (Beta)' : 'Maintenant (Bêta)'}
-              </button>
-              <button
-                onClick={() => setActiveTab('soon')}
-                className={`px-6 py-2 rounded-md text-sm font-semibold transition-all duration-300 cursor-pointer ${
-                  activeTab === 'soon' 
-                    ? 'text-white shadow-lg' 
-                    : 'hover:bg-opacity-50'
-                }`}
-                style={{
-                  background: activeTab === 'soon' ? CORTEX_GRADIENT : 'transparent',
-                  color: activeTab === 'soon' 
-                    ? 'var(--on-secondary-container)' 
-                    : 'var(--on-surface-variant)'
-                }}
-              >
-                {isEnglish ? 'Soon (Full Version)' : 'Bientôt (Version complète)'}
-              </button>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Capacités spécifiques selon le toggle */}
+        {/* Capacités liées aux Key Concepts (selon le toggle) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {currentCapabilities.map((capability: Capability, index: number) => {
             const Icon = capability.icon;
