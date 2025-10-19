@@ -35,12 +35,13 @@ export default function InlineChart({ chart, locale = 'fr' }: InlineChartProps) 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.2 }}
-      className="mt-12 p-5 rounded-xl w-full cursor-pointer hover:shadow-xl transition-shadow"
+      className="mt-12 p-5 rounded-xl w-full hover:shadow-xl transition-shadow"
       style={{ 
         backgroundColor: 'white',
         border: '1px solid var(--outline)',
         boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-        maxWidth: '100%'
+        maxWidth: '100%',
+        cursor: 'pointer'
       }}
     >
       <h4 className="text-sm font-semibold mb-3" style={{ color: 'var(--on-secondary-container)' }}>
