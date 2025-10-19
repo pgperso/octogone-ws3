@@ -187,13 +187,13 @@ function Scene({ density, seed }: { density: number; seed: number }) {
           data={rhombuses} 
           outlineColor={themeColors.outline}
           geometry={rhombusGeometry}
-          rotationSpeed={{ x: 0.003, z: 0.2 }}
+          rotationSpeed={{ x: 0.0015, z: 0.2 }}
         />
         <ShapeInstances 
           data={octagons} 
           outlineColor={themeColors.outline}
           geometry={octagonGeometry}
-          rotationSpeed={{ x: 0.002, z: 0.3 }}
+          rotationSpeed={{ x: 0.001, z: 0.3 }}
         />
       </Float>
     </>
