@@ -2,19 +2,23 @@
 
 import React, { useState } from 'react';
 import { TrendingUp, TrendingDown, Minus, Info } from 'lucide-react';
+import dashboardData from '@/data/dashboard/dashboard-data.json';
 
 interface DashboardKPIsProps {
   locale?: 'fr' | 'en';
 }
 
-interface KPIData {
-  titleFr: string;
-  titleEn: string;
-  value: string;
-  previousValue: string;
-  change: string;
-  trend: 'up' | 'down' | 'neutral';
-  isPositive: boolean;
+interface Metric {
+  name: string;
+  unit: string;
+  current: number;
+  previous: number;
+  delta_pct: number | null;
+}
+
+interface PeriodData {
+  label: string;
+  metrics: Metric[];
 }
 
 export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsProps) {
@@ -28,122 +32,79 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
     { id: 'custom', labelFr: 'Personnalisé', labelEn: 'Custom' }
   ];
 
-  const kpis: KPIData[] = [
-    {
-      titleFr: 'Ventes',
-      titleEn: 'Sales',
-      value: '94,570.00 $',
-      previousValue: '104,285.00 $',
-      change: '-10.27%',
-      trend: 'down',
-      isPositive: false
-    },
-    {
-      titleFr: 'Achalandage',
-      titleEn: 'Customer Traffic',
-      value: '1980 clients',
-      previousValue: '2180 clients',
-      change: '-10.10%',
-      trend: 'down',
-      isPositive: false
-    },
-    {
-      titleFr: 'Bénéfices',
-      titleEn: 'Profits',
-      value: '80,525.74 $',
-      previousValue: '94,652.25 $',
-      change: '-17.54%',
-      trend: 'down',
-      isPositive: false
-    },
-    {
-      titleFr: 'Achats',
-      titleEn: 'Purchases',
-      value: '6,575.42 $',
-      previousValue: '2,032.83 $',
-      change: '69.08%',
-      trend: 'up',
-      isPositive: false
-    },
-    {
-      titleFr: 'Gains et pertes',
-      titleEn: 'Profit & Loss',
-      value: '-42.26 $',
-      previousValue: '-178.67 $',
-      change: '-322.78%',
-      trend: 'up',
-      isPositive: true
-    },
-    {
-      titleFr: 'Surveillance des prix',
-      titleEn: 'Price Monitoring',
-      value: '2 changements',
-      previousValue: '1 changement',
-      change: '',
-      trend: 'neutral',
-      isPositive: true
-    },
-    {
-      titleFr: 'Coûts main d\'oeuvre',
-      titleEn: 'Labor Costs',
-      value: '5,963.42 $',
-      previousValue: '5,958.08 $',
-      change: '0.09%',
-      trend: 'up',
-      isPositive: false
-    },
-    {
-      titleFr: 'Food cost',
-      titleEn: 'Food Cost',
-      value: '25.93 %',
-      previousValue: '25.94 %',
-      change: '-0.05%',
-      trend: 'down',
-      isPositive: true
-    },
-    {
-      titleFr: 'Ingénierie de menu',
-      titleEn: 'Menu Engineering',
-      value: '8 items',
-      previousValue: '8 items',
-      change: '',
-      trend: 'neutral',
-      isPositive: true
-    },
-    {
-      titleFr: 'Coûts fixes',
-      titleEn: 'Fixed Costs',
-      value: '1,463.16 $',
-      previousValue: '1,463.16 $',
-      change: '',
-      trend: 'neutral',
-      isPositive: true
-    },
-    {
-      titleFr: 'Facture moyenne client',
-      titleEn: 'Average Customer Bill',
-      value: '47.95 $',
-      previousValue: '48.05 $',
-      change: '-0.22%',
-      trend: 'down',
-      isPositive: false
-    }
-  ];
-
-  const getTrendIcon = (trend: 'up' | 'down' | 'neutral') => {
-    switch (trend) {
-      case 'up':
-        return TrendingUp;
-      case 'down':
-        return TrendingDown;
-      case 'neutral':
-        return Minus;
-    }
+  // Traductions des noms de métriques
+  const metricTranslations: { [key: string]: { fr: string; en: string } } = {
+    'Sales': { fr: 'Ventes', en: 'Sales' },
+    'Client traffic': { fr: 'Achalandage', en: 'Client Traffic' },
+    'Profits': { fr: 'Bénéfices', en: 'Profits' },
+    'Spendings': { fr: 'Achats', en: 'Spendings' },
+    'Gains and losses': { fr: 'Gains et pertes', en: 'Gains and Losses' },
+    'Price monitoring': { fr: 'Surveillance des prix', en: 'Price Monitoring' },
+    'Labour cost': { fr: 'Coûts main d\'oeuvre', en: 'Labour Cost' },
+    'Food cost': { fr: 'Food cost', en: 'Food Cost' },
+    'Menu engineering': { fr: 'Ingénierie de menu', en: 'Menu Engineering' },
+    'Fixed costs': { fr: 'Coûts fixes', en: 'Fixed Costs' },
+    'Average invoice per client': { fr: 'Facture moyenne client', en: 'Average Invoice per Client' }
   };
 
-  const getTrendColor = (isPositive: boolean, trend: 'up' | 'down' | 'neutral') => {
-    if (trend === 'neutral') return 'var(--on-surface-variant)';
+  // Obtenir les données pour la période sélectionnée
+  const currentPeriodData = dashboardData.filters[selectedPeriod as keyof typeof dashboardData.filters] as PeriodData;
+
+  // Fonction pour formater les valeurs
+  const formatValue = (metric: Metric): string => {
+    const { current, unit } = metric;
+    
+    if (unit === 'CAD') {
+      return `${current.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} $`;
+    } else if (unit === '%') {
+      return `${current.toFixed(2)} %`;
+    } else if (unit === 'clients') {
+      return `${current.toLocaleString()} clients`;
+    } else if (unit === 'items') {
+      return `${current} items`;
+    } else if (unit === 'changes') {
+      return `${current} ${isEnglish ? 'changes' : 'changements'}`;
+    }
+    return current.toString();
+  };
+
+  const formatPreviousValue = (metric: Metric): string => {
+    const { previous, unit } = metric;
+    
+    if (unit === 'CAD') {
+      return `${previous.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} $`;
+    } else if (unit === '%') {
+      return `${previous.toFixed(2)} %`;
+    } else if (unit === 'clients') {
+      return `${previous.toLocaleString()} clients`;
+    } else if (unit === 'items') {
+      return `${previous} items`;
+    } else if (unit === 'changes') {
+      return `${previous} ${isEnglish ? 'changes' : 'changements'}`;
+    }
+    return previous.toString();
+  };
+
+  const getTrendIcon = (deltaPct: number | null) => {
+    if (deltaPct === null || deltaPct === 0) return Minus;
+    return deltaPct > 0 ? TrendingUp : TrendingDown;
+  };
+
+  const getTrendColor = (metric: Metric) => {
+    const { delta_pct, name } = metric;
+    if (delta_pct === null || delta_pct === 0) return 'var(--on-surface-variant)';
+    
+    // Pour certaines métriques, une diminution est positive
+    const isDecreasePositive = ['Food cost', 'Labour cost', 'Fixed costs', 'Spendings'].includes(name);
+    const isPositive = isDecreasePositive ? delta_pct < 0 : delta_pct > 0;
+    
     return isPositive ? '#4CAF50' : '#F44336';
+  };
+
+  const formatDeltaPct = (deltaPct: number | null): string => {
+    if (deltaPct === null) return '';
+    const sign = deltaPct > 0 ? '+' : '';
+    return `${sign}${deltaPct.toFixed(2)}%`;
   };
 
   return (
@@ -184,9 +145,11 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
 
       {/* Grid de KPIs */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {kpis.map((kpi, index) => {
-          const TrendIcon = getTrendIcon(kpi.trend);
-          const trendColor = getTrendColor(kpi.isPositive, kpi.trend);
+        {currentPeriodData.metrics.map((metric: Metric, index: number) => {
+          const TrendIcon = getTrendIcon(metric.delta_pct);
+          const trendColor = getTrendColor(metric);
+          const translation = metricTranslations[metric.name];
+          const title = translation ? (isEnglish ? translation.en : translation.fr) : metric.name;
 
           return (
             <div
@@ -202,10 +165,10 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                 <div className="flex items-center gap-2">
                   <Info className="w-4 h-4" style={{ color: 'var(--on-surface-variant)' }} />
                   <h4 className="text-sm font-semibold" style={{ color: 'var(--on-surface)' }}>
-                    {isEnglish ? kpi.titleEn : kpi.titleFr}
+                    {title}
                   </h4>
                 </div>
-                {kpi.change && (
+                {metric.delta_pct !== null && (
                   <TrendIcon 
                     className="w-5 h-5" 
                     style={{ color: trendColor }}
@@ -218,24 +181,24 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                 <p 
                   className="text-2xl font-bold"
                   style={{ 
-                    color: kpi.value.startsWith('-') ? '#F44336' : 'var(--on-surface)'
+                    color: metric.current < 0 ? '#F44336' : 'var(--on-surface)'
                   }}
                 >
-                  {kpi.value}
+                  {formatValue(metric)}
                 </p>
               </div>
 
               {/* Comparaison et changement */}
               <div className="flex items-center justify-between">
                 <p className="text-xs" style={{ color: 'var(--on-surface-variant)' }}>
-                  {kpi.previousValue}
+                  {formatPreviousValue(metric)}
                 </p>
-                {kpi.change && (
+                {metric.delta_pct !== null && (
                   <p 
                     className="text-xs font-semibold"
                     style={{ color: trendColor }}
                   >
-                    {kpi.change}
+                    {formatDeltaPct(metric.delta_pct)}
                   </p>
                 )}
               </div>
