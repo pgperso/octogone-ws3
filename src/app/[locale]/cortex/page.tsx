@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useParams } from "next/navigation";
 import { ResponsiveSection } from "@/components/ui/responsive-section";
-import { Brain, MessageSquare, TrendingUp, Clock, Zap, BarChart3, FileText, Video, CheckCircle } from "lucide-react";
+import { Brain, MessageSquare, TrendingUp, Clock, Zap, BarChart3, FileText, Video, CheckCircle, Check } from "lucide-react";
 import { OctogoneButton } from "@/components/ui/octogone-button";
 import { getConceptById } from "@/data/features/features-content";
 import Image from "next/image";
@@ -407,21 +407,20 @@ export default function CortexPage() {
         {/* Capacités liées aux Key Concepts (selon le toggle) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6 max-w-4xl mx-auto">
           {currentCapabilities.map((capability: Capability, index: number) => {
-            const Icon = capability.icon;
             return (
               <motion.div
                 key={index}
-                className="flex items-start gap-3"
+                className="flex items-center gap-3"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
               >
                 <div 
-                  className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                  style={{ background: CORTEX_GRADIENT }}
+                  className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 p-1.5"
+                  style={{ backgroundColor: 'var(--success)' }}
                 >
-                  <Icon className="w-4 h-4" style={{ color: 'var(--on-secondary-container)' }} />
+                  <Check className="w-full h-full" style={{ color: 'var(--on-success)', strokeWidth: 3 }} />
                 </div>
                 
                 <div className="flex-1">
