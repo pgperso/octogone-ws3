@@ -442,41 +442,6 @@ export default function CortexPage() {
           </div>
         </motion.div>
 
-        {/* Header commun (toujours visible) - Capacités de base */}
-        <div className="flex flex-wrap justify-start gap-4 mb-12 max-w-4xl mx-auto">
-          {baseCapabilities.map((capability: BaseCapability, index: number) => {
-            const Icon = capability.icon;
-            return (
-              <motion.div
-                key={index}
-                className="relative px-6 py-4 rounded-xl flex items-center gap-3"
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                style={{
-                  background: CORTEX_GRADIENT_DARK,
-                  border: '2px solid white',
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-                  minWidth: '280px'
-                }}
-              >
-                <Icon className="w-6 h-6" style={{ color: 'var(--on-secondary-container)' }} />
-                <p 
-                  className="text-sm font-semibold"
-                  style={{ 
-                    color: 'var(--on-secondary-container)',
-                    textShadow: '0 2px 4px rgba(0,0,0,0.1)'
-                  }}
-                >
-                  {isEnglish ? capability.titleEn : capability.titleFr}
-                </p>
-              </motion.div>
-            );
-          })}
-        </div>
-
         {/* Capacités liées aux Key Concepts (selon le toggle) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {currentCapabilities.map((capability: Capability, index: number) => {
@@ -510,7 +475,7 @@ export default function CortexPage() {
                   {examples.map((example: string, exIndex: number) => (
                     <div key={exIndex} className="flex items-start gap-2">
                       <div 
-                        className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                        className="w-5 h-5 rounded flex items-center justify-center flex-shrink-0 mt-0.5"
                         style={{ backgroundColor: 'var(--success)' }}
                       >
                         <Check className="w-3 h-3" style={{ color: 'var(--on-success)', strokeWidth: 3 }} />
