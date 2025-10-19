@@ -68,6 +68,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
   const [selectedPeriod, setSelectedPeriod] = useState('day');
   const [selectedEstablishments, setSelectedEstablishments] = useState<string[]>(['est-bistro8', 'est-taqueria', 'est-roquette', 'est-rioux']);
   const [isEstablishmentDropdownOpen, setIsEstablishmentDropdownOpen] = useState(false);
+  const [activeVersion, setActiveVersion] = useState<'current' | 'next'>('current');
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Fermer le dropdown quand on clique ailleurs
@@ -384,6 +385,86 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
 
   return (
     <div className="w-full">
+      {/* Toggle Version en haut */}
+      <div className="flex justify-center mb-6">
+        <div 
+          className="inline-flex rounded-lg p-1"
+          style={{ 
+            backgroundColor: 'var(--surface-variant)',
+            border: '1px solid var(--outline-variant)'
+          }}
+        >
+          <button
+            onClick={() => setActiveVersion('current')}
+            className={`px-6 py-2 rounded-md text-sm font-semibold transition-all duration-300 cursor-pointer ${
+              activeVersion === 'current' 
+                ? 'shadow-lg' 
+                : 'hover:bg-opacity-50'
+            }`}
+            style={{
+              background: activeVersion === 'current' ? 'var(--primary)' : 'transparent',
+              color: activeVersion === 'current' 
+                ? 'var(--on-primary)' 
+                : 'var(--on-surface-variant)'
+            }}
+          >
+            {isEnglish ? 'Current Version' : 'Version actuelle'}
+          </button>
+          <button
+            onClick={() => setActiveVersion('next')}
+            className={`px-6 py-2 rounded-md text-sm font-semibold transition-all duration-300 cursor-pointer ${
+              activeVersion === 'next' 
+                ? 'shadow-lg' 
+                : 'hover:bg-opacity-50'
+            }`}
+            style={{
+              background: activeVersion === 'next' ? 'var(--primary)' : 'transparent',
+              color: activeVersion === 'next' 
+                ? 'var(--on-primary)' 
+                : 'var(--on-surface-variant)'
+            }}
+          >
+            {isEnglish ? 'Coming Soon' : 'Prochainement'}
+          </button>
+        </div>
+      </div>
+
+      {/* Affichage conditionnel selon la version */}
+      {activeVersion === 'next' ? (
+        /* Message "En développement" pour la prochaine version */
+        <div className="flex flex-col items-center justify-center py-20 px-4">
+          <div 
+            className="text-center max-w-2xl p-8 rounded-2xl"
+            style={{ 
+              backgroundColor: 'var(--surface-variant)',
+              border: '2px solid var(--outline-variant)'
+            }}
+          >
+            <h3 
+              className="text-2xl font-bold mb-4"
+              style={{ color: 'var(--primary)' }}
+            >
+              {isEnglish ? '🚀 Next Generation Dashboard' : '🚀 Tableau de bord nouvelle génération'}
+            </h3>
+            <p 
+              className="text-lg mb-2"
+              style={{ color: 'var(--on-surface)' }}
+            >
+              {isEnglish 
+                ? 'We are working on an even more powerful version of the dashboard with advanced features and enhanced visualizations.' 
+                : 'Nous travaillons sur une version encore plus puissante du tableau de bord avec des fonctionnalités avancées et des visualisations améliorées.'}
+            </p>
+            <p 
+              className="text-sm mt-4"
+              style={{ color: 'var(--on-surface-variant)', opacity: 0.8 }}
+            >
+              {isEnglish ? 'Stay tuned for updates!' : 'Restez à l\'affût des mises à jour !'}
+            </p>
+          </div>
+        </div>
+      ) : (
+        /* Dashboard actuel */
+        <>
       {/* Header avec avatar et sélecteurs */}
       <div className="mb-6">
         {/* Ligne du haut : Avatar + Nom et Sélecteur d'établissements */}
@@ -659,6 +740,8 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
             : 'Pour en savoir plus, contactez notre équipe.'}
         </p>
       </div>
+      </>
+      )}
     </div>
   );
 }
