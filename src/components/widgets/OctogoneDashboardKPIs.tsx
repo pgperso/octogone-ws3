@@ -553,7 +553,8 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                         : 'transparent',
                       color: selectedPeriod === period.id 
                         ? 'var(--on-secondary-container)' 
-                        : 'var(--on-surface)'
+                        : 'var(--on-surface)',
+                      fontWeight: '500'
                     }}
                   >
                     {/* Texte complet sur desktop, première lettre sur mobile */}
