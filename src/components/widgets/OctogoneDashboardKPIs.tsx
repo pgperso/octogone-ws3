@@ -65,10 +65,48 @@ interface PeriodData {
   };
 }
 
+// ============================================================================
+// CONSTANTS
+// ============================================================================
+
+const ESTABLISHMENTS = [
+  { id: 'est-bistro8', nameFr: 'Bistro 8', nameEn: 'Bistro 8' },
+  { id: 'est-taqueria', nameFr: 'Taqueria Norte', nameEn: 'Taqueria Norte' },
+  { id: 'est-roquette', nameFr: 'Roquette', nameEn: 'Roquette' },
+  { id: 'est-rioux', nameFr: 'Chez Rioux', nameEn: 'Chez Rioux' }
+];
+
+const PERIODS = [
+  { id: 'day', labelFr: 'Jour', labelEn: 'Day' },
+  { id: 'week', labelFr: 'Semaine', labelEn: 'Week' },
+  { id: 'month', labelFr: 'Mois', labelEn: 'Month' },
+  { id: 'custom', labelFr: 'Personnalisé', labelEn: 'Custom' }
+];
+
+const METRIC_TRANSLATIONS: Record<string, { fr: string; en: string }> = {
+  'Sales': { fr: 'Ventes', en: 'Sales' },
+  'Client traffic': { fr: 'Achalandage', en: 'Client Traffic' },
+  'Profits': { fr: 'Bénéfices', en: 'Profits' },
+  'Spendings': { fr: 'Achats', en: 'Spendings' },
+  'Gains and losses': { fr: 'Gains et pertes', en: 'Gains and Losses' },
+  'Price monitoring': { fr: 'Surveillance des prix', en: 'Price Monitoring' },
+  'Labour cost': { fr: 'Coûts main d\'oeuvre', en: 'Labour Cost' },
+  'Food cost': { fr: 'Food cost', en: 'Food Cost' },
+  'Menu engineering': { fr: 'Ingénierie de menu', en: 'Menu Engineering' },
+  'Fixed costs': { fr: 'Coûts fixes', en: 'Fixed Costs' },
+  'Average invoice per client': { fr: 'Facture moyenne client', en: 'Average Invoice per Client' }
+};
+
+const DECREASE_POSITIVE_METRICS = ['Food cost', 'Labour cost', 'Fixed costs', 'Spendings'];
+
+// ============================================================================
+// COMPONENT
+// ============================================================================
+
 export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsProps) {
   const isEnglish = locale === 'en';
   const [selectedPeriod, setSelectedPeriod] = useState('day');
-  const [selectedEstablishments, setSelectedEstablishments] = useState<string[]>(['est-bistro8', 'est-taqueria', 'est-roquette', 'est-rioux']);
+  const [selectedEstablishments, setSelectedEstablishments] = useState<string[]>(ESTABLISHMENTS.map(e => e.id));
   const [isEstablishmentDropdownOpen, setIsEstablishmentDropdownOpen] = useState(false);
   const [activeVersion, setActiveVersion] = useState<'current' | 'next'>('current');
   const [isCortexModalOpen, setIsCortexModalOpen] = useState(false);
@@ -86,14 +124,6 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Liste des établissements (4 restaurants)
-  const establishments = [
-    { id: 'est-bistro8', nameFr: 'Bistro 8', nameEn: 'Bistro 8' },
-    { id: 'est-taqueria', nameFr: 'Taqueria Norte', nameEn: 'Taqueria Norte' },
-    { id: 'est-roquette', nameFr: 'Roquette', nameEn: 'Roquette' },
-    { id: 'est-rioux', nameFr: 'Chez Rioux', nameEn: 'Chez Rioux' }
-  ];
-
   // Gestion de la sélection des établissements
   const handleEstablishmentToggle = (establishmentId: string) => {
     setSelectedEstablishments(prev => {
@@ -106,33 +136,9 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
   };
 
   const handleSelectAll = () => {
-    if (selectedEstablishments.length === establishments.length) {
-      setSelectedEstablishments([]);
-    } else {
-      setSelectedEstablishments(establishments.map(e => e.id));
-    }
-  };
-
-  const periods = [
-    { id: 'day', labelFr: 'Jour', labelEn: 'Day' },
-    { id: 'week', labelFr: 'Semaine', labelEn: 'Week' },
-    { id: 'month', labelFr: 'Mois', labelEn: 'Month' },
-    { id: 'custom', labelFr: 'Personnalisé', labelEn: 'Custom' }
-  ];
-
-  // Traductions des noms de métriques
-  const metricTranslations: { [key: string]: { fr: string; en: string } } = {
-    'Sales': { fr: 'Ventes', en: 'Sales' },
-    'Client traffic': { fr: 'Achalandage', en: 'Client Traffic' },
-    'Profits': { fr: 'Bénéfices', en: 'Profits' },
-    'Spendings': { fr: 'Achats', en: 'Spendings' },
-    'Gains and losses': { fr: 'Gains et pertes', en: 'Gains and Losses' },
-    'Price monitoring': { fr: 'Surveillance des prix', en: 'Price Monitoring' },
-    'Labour cost': { fr: 'Coûts main d\'oeuvre', en: 'Labour Cost' },
-    'Food cost': { fr: 'Food cost', en: 'Food Cost' },
-    'Menu engineering': { fr: 'Ingénierie de menu', en: 'Menu Engineering' },
-    'Fixed costs': { fr: 'Coûts fixes', en: 'Fixed Costs' },
-    'Average invoice per client': { fr: 'Facture moyenne client', en: 'Average Invoice per Client' }
+    setSelectedEstablishments(
+      selectedEstablishments.length === ESTABLISHMENTS.length ? [] : ESTABLISHMENTS.map(e => e.id)
+    );
   };
 
   // Obtenir les données pour la période sélectionnée
@@ -306,40 +312,26 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
 
   const currentMetrics = getMetricsFromAggregatedData();
 
-  // Fonction pour formater les valeurs
-  const formatValue = (metric: Metric): string => {
-    const { current, unit } = metric;
-    
-    if (unit === 'CAD') {
-      return `${current.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} $`;
-    } else if (unit === '%') {
-      return `${current.toFixed(2)} %`;
-    } else if (unit === 'clients') {
-      return `${current.toLocaleString()} clients`;
-    } else if (unit === 'items') {
-      return `${current} items`;
-    } else if (unit === 'changes') {
-      return `${current} ${isEnglish ? 'changes' : 'changements'}`;
+  // Fonction pour formater les valeurs (unifié pour current et previous)
+  const formatMetricValue = (value: number, unit: string): string => {
+    switch (unit) {
+      case 'CAD':
+        return `${value.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} $`;
+      case '%':
+        return `${value.toFixed(2)} %`;
+      case 'clients':
+        return `${value.toLocaleString()} clients`;
+      case 'items':
+        return `${value} items`;
+      case 'changes':
+        return `${value} ${isEnglish ? 'changes' : 'changements'}`;
+      default:
+        return value.toString();
     }
-    return current.toString();
   };
 
-  const formatPreviousValue = (metric: Metric): string => {
-    const { previous, unit } = metric;
-    
-    if (unit === 'CAD') {
-      return `${previous.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} $`;
-    } else if (unit === '%') {
-      return `${previous.toFixed(2)} %`;
-    } else if (unit === 'clients') {
-      return `${previous.toLocaleString()} clients`;
-    } else if (unit === 'items') {
-      return `${previous} items`;
-    } else if (unit === 'changes') {
-      return `${previous} ${isEnglish ? 'changes' : 'changements'}`;
-    }
-    return previous.toString();
-  };
+  const formatValue = (metric: Metric) => formatMetricValue(metric.current, metric.unit);
+  const formatPreviousValue = (metric: Metric) => formatMetricValue(metric.previous, metric.unit);
 
   const getTrendIcon = (deltaPct: number | null) => {
     if (deltaPct === null || deltaPct === 0) return Minus;
@@ -350,8 +342,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
     const { delta_pct, name } = metric;
     if (delta_pct === null || delta_pct === 0) return 'var(--on-surface-variant)';
     
-    // Pour certaines métriques, une diminution est positive
-    const isDecreasePositive = ['Food cost', 'Labour cost', 'Fixed costs', 'Spendings'].includes(name);
+    const isDecreasePositive = DECREASE_POSITIVE_METRICS.includes(name);
     const isPositive = isDecreasePositive ? delta_pct < 0 : delta_pct > 0;
     
     return isPositive ? '#4CAF50' : '#F44336';
@@ -543,14 +534,14 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                 border: '1px solid var(--outline)'
               }}
             >
-              {periods.map((period, index) => (
+              {PERIODS.map((period, index) => (
                 <div key={period.id} className="flex h-full">
                   <button
                     onClick={() => setSelectedPeriod(period.id)}
                     className={`px-3 md:px-4 py-2 text-sm font-medium transition-all duration-200 cursor-pointer flex items-center justify-center h-full ${
                       index === 0 ? 'rounded-l-lg' : ''
                     } ${
-                      index === periods.length - 1 ? 'rounded-r-lg' : ''
+                      index === PERIODS.length - 1 ? 'rounded-r-lg' : ''
                     }`}
                     style={{
                       backgroundColor: selectedPeriod === period.id 
@@ -585,7 +576,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                     </span>
                   </button>
                   {/* Ligne séparatrice verticale pleine hauteur */}
-                  {index < periods.length - 1 && (
+                  {index < PERIODS.length - 1 && (
                     <div 
                       className="w-px h-full"
                       style={{ backgroundColor: 'var(--outline)' }}
@@ -649,7 +640,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
               </svg>
               {/* Texte sur desktop */}
               <span className="hidden md:inline text-sm font-medium">
-                {selectedEstablishments.length === establishments.length
+                {selectedEstablishments.length === ESTABLISHMENTS.length
                   ? (isEnglish ? 'All Establishments' : 'Tous les établissements')
                   : `${selectedEstablishments.length} ${isEnglish ? 'selected' : 'sélectionné(s)'}` 
                 }
@@ -686,7 +677,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                   >
                     <input
                       type="checkbox"
-                      checked={selectedEstablishments.length === establishments.length}
+                      checked={selectedEstablishments.length === ESTABLISHMENTS.length}
                       onChange={() => {}}
                       className="w-4 h-4 rounded cursor-pointer"
                       style={{ accentColor: 'var(--secondary)' }}
@@ -700,7 +691,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                   <div className="h-px mx-2 my-1" style={{ backgroundColor: 'var(--outline-variant)' }} />
 
                   {/* Options individuelles */}
-                  {establishments.map((establishment) => (
+                  {ESTABLISHMENTS.map((establishment) => (
                     <div
                       key={establishment.id}
                       onClick={() => handleEstablishmentToggle(establishment.id)}
@@ -760,7 +751,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
         {currentMetrics.map((metric: Metric, index: number) => {
           const TrendIcon = getTrendIcon(metric.delta_pct);
           const trendColor = getTrendColor(metric);
-          const translation = metricTranslations[metric.name];
+          const translation = METRIC_TRANSLATIONS[metric.name];
           const title = translation ? (isEnglish ? translation.en : translation.fr) : metric.name;
 
           return (
