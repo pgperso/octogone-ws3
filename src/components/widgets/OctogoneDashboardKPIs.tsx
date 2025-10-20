@@ -113,19 +113,6 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
     }
   };
 
-  const getEstablishmentDisplayText = () => {
-    if (selectedEstablishments.length === 0) {
-      return isEnglish ? 'No establishments' : 'Aucun établissement';
-    } else if (selectedEstablishments.length === establishments.length) {
-      return isEnglish ? 'All establishments' : 'Tous les établissements';
-    } else if (selectedEstablishments.length === 1) {
-      const establishment = establishments.find(e => e.id === selectedEstablishments[0]);
-      return establishment ? (isEnglish ? establishment.nameEn : establishment.nameFr) : '';
-    } else {
-      return `${selectedEstablishments.length} ${isEnglish ? 'establishments' : 'établissements'}`;
-    }
-  };
-
   const periods = [
     { id: 'day', labelFr: 'Jour', labelEn: 'Day' },
     { id: 'week', labelFr: 'Semaine', labelEn: 'Week' },
