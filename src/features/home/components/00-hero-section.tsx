@@ -570,11 +570,12 @@ const Hero = () => {
                 >
                   {locale === "fr" ? (
                     <>
-                      La plateforme qui optimise <span className="text-gold-500">vraiment</span> la gestion de{" "}
+                      La plateforme qui optimise <span className="text-gold-500">vraiment</span> la gestion des{" "}
                       <span 
-                        className="inline-block transition-all duration-300 font-bold text-gold-500"
+                        className="inline-block transition-all duration-300 font-bold"
                         style={{ 
-                          opacity: isTextTransitioning ? 0 : 1
+                          opacity: isTextTransitioning ? 0 : 1,
+                          color: ['#B8E0D2', '#B4D4FF', '#FFE5B4', '#C8B6FF', '#B8E0D2', '#B4D4FF', '#FFE5B4'][currentRestaurantText]
                         }}
                       >
                         {restaurantTexts.fr[currentRestaurantText]}
@@ -584,9 +585,10 @@ const Hero = () => {
                     <>
                       The platform that <span className="text-gold-500">truly</span> optimizes{" "}
                       <span 
-                        className="inline-block transition-all duration-300 font-bold text-gold-500"
+                        className="inline-block transition-all duration-300 font-bold"
                         style={{ 
-                          opacity: isTextTransitioning ? 0 : 1
+                          opacity: isTextTransitioning ? 0 : 1,
+                          color: ['#B8E0D2', '#B4D4FF', '#FFE5B4', '#C8B6FF', '#B8E0D2', '#B4D4FF', '#FFE5B4'][currentRestaurantText]
                         }}
                       >
                         {restaurantTexts.en[currentRestaurantText]}
