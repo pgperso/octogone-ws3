@@ -1,5 +1,10 @@
 {
   "_comment": "Force deployment - 2025-10-20 18:31",
+  "functions": {
+    "src/app/api/**/*.ts": {
+      "maxDuration": 10
+    }
+  },
   "headers": [
     {
       "source": "/(.*)",

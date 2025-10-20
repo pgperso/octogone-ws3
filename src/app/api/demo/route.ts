@@ -3,8 +3,12 @@ import { demoSchema } from '@/lib/validation/schemas';
 import { ZodError } from 'zod';
 
 export async function POST(request: NextRequest) {
+  const startTime = Date.now();
+  console.log('[DEMO API] Starting request processing...');
+  
   try {
     const body = await request.json();
+    console.log('[DEMO API] Request body parsed successfully');
     
     // Validation avec Zod
     const validatedData = demoSchema.parse(body);
@@ -71,6 +75,9 @@ Soumis le: ${new Date().toLocaleString('fr-FR', { timeZone: 'America/Toronto' })
     // Vous pouvez aussi sauvegarder dans une base de données ici
     // Par exemple avec Prisma, Supabase, MongoDB, etc.
 
+    const duration = Date.now() - startTime;
+    console.log(`[DEMO API] Request completed successfully in ${duration}ms`);
+    
     return NextResponse.json(
       { 
         success: true,
