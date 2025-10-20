@@ -764,20 +764,6 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
         })}
       </div>
 
-      {/* Note de démonstration en bas */}
-      <div className="mt-8 text-center px-4 max-w-4xl mx-auto">
-        <p className="text-xs" style={{ color: 'var(--on-surface-variant)', opacity: 0.8, lineHeight: '1.7' }}>
-          {isEnglish 
-            ? 'The data presented in this dashboard is fictional and used for demonstration purposes only. The full Octogone platform offers advanced analytics, real-time insights, and complete integration with your operations.' 
-            : 'Les données présentées dans ce tableau de bord sont fictives et utilisées uniquement à des fins de démonstration. La version complète de la plateforme Octogone offre des analyses avancées, des insights en temps réel et une intégration complète avec vos opérations.'}
-        </p>
-        <p className="text-xs mt-1" style={{ color: 'var(--on-surface-variant)', opacity: 0.8, lineHeight: '1.7' }}>
-          {isEnglish 
-            ? 'To learn more, contact our team.' 
-            : 'Pour en savoir plus, contactez notre équipe.'}
-        </p>
-      </div>
-
       {/* Bouton Cortex flottant DANS le widget */}
       <AnimatePresence>
         {!isCortexModalOpen && (
@@ -806,6 +792,20 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
       </AnimatePresence>
       </>
       )}
+    </div>
+
+    {/* Note de démonstration sous le widget */}
+    <div className="mt-8 text-center px-4 max-w-4xl mx-auto">
+      <p className="text-xs" style={{ color: 'var(--on-surface-variant)', opacity: 0.8, lineHeight: '1.7' }}>
+        {isEnglish 
+          ? 'The data presented in this dashboard is fictional and used for demonstration purposes only. The full Octogone platform offers advanced analytics, real-time insights, and complete integration with your operations.' 
+          : 'Les données présentées dans ce tableau de bord sont fictives et utilisées uniquement à des fins de démonstration. La version complète de la plateforme Octogone offre des analyses avancées, des insights en temps réel et une intégration complète avec vos opérations.'}
+      </p>
+      <p className="text-xs mt-1" style={{ color: 'var(--on-surface-variant)', opacity: 0.8, lineHeight: '1.7' }}>
+        {isEnglish 
+          ? 'To learn more, contact our team.' 
+          : 'Pour en savoir plus, contactez notre équipe.'}
+      </p>
     </div>
 
     {/* Modal Cortex */}
