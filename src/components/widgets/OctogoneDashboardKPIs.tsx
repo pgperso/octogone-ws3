@@ -3,8 +3,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { TrendingUp, TrendingDown, Minus, Info, X } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import dashboardData from '@/data/dashboard/octogone_dashboard_data.json';
+import { OctogoneButton } from '@/components/ui/octogone-button';
 
 interface DashboardKPIsProps {
   locale?: 'fr' | 'en';
@@ -888,13 +890,36 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
             </div>
 
             <p
-              className="text-sm"
+              className="text-sm mb-6"
               style={{ color: 'var(--on-surface-variant)' }}
             >
               {isEnglish
                 ? 'Early access is limited. Contact our team to reserve your spot.'
                 : 'Les accès anticipés sont limités. Contactez notre équipe pour réserver votre place.'}
             </p>
+
+            {/* Bouton CTA */}
+            <OctogoneButton
+              href={`/${locale}/contact`}
+              variant="cortex"
+              size="lg"
+              icon={
+                <Image 
+                  src="/cortex.svg" 
+                  alt="Cortex" 
+                  width={20} 
+                  height={20}
+                  className="inline-block"
+                  style={{ 
+                    filter: 'brightness(0) saturate(100%) invert(8%) sepia(15%) saturate(3207%) hue-rotate(167deg) brightness(96%) contrast(101%)'
+                  }}
+                />
+              }
+            >
+              {isEnglish
+                ? 'Reserve Your Access to Cortex'
+                : 'Réserver votre accès à Cortex'}
+            </OctogoneButton>
           </div>
         </div>
       </div>
