@@ -540,53 +540,53 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
         </div>
         
         {/* Ligne des périodes : Groupé à gauche + Sélecteur à droite */}
-        <div className="flex items-end justify-between">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
           {/* Groupe de gauche : Segmented Button + Périodes */}
-          <div className="flex items-end gap-6">
+          <div className="flex flex-col gap-3">
             {/* Segmented Button pour les périodes */}
-            <div className="flex flex-col">
-              <div 
-                className="inline-flex rounded-lg h-10"
-                style={{ 
-                  backgroundColor: 'transparent',
-                  border: '1px solid var(--outline)'
-                }}
-              >
-                {periods.map((period, index) => (
-                  <div key={period.id} className="flex h-full">
-                    <button
-                      onClick={() => setSelectedPeriod(period.id)}
-                      className={`px-4 py-2 text-sm font-medium transition-all duration-200 cursor-pointer flex items-center h-full ${
-                        index === 0 ? 'rounded-l-lg' : ''
-                      } ${
-                        index === periods.length - 1 ? 'rounded-r-lg' : ''
-                      }`}
-                      style={{
-                        backgroundColor: selectedPeriod === period.id 
-                          ? 'var(--secondary-container)' 
-                          : 'transparent',
-                        color: selectedPeriod === period.id 
-                          ? 'var(--on-secondary-container)' 
-                          : 'var(--on-surface)'
-                      }}
-                    >
-                      {isEnglish ? period.labelEn : period.labelFr}
-                    </button>
-                    {/* Ligne séparatrice verticale pleine hauteur */}
-                    {index < periods.length - 1 && (
-                      <div 
-                        className="w-px h-full"
-                        style={{ backgroundColor: 'var(--outline)' }}
-                      />
-                    )}
-                  </div>
-                ))}
-              </div>
+            <div 
+              className="inline-flex rounded-lg h-10 w-full md:w-auto"
+              style={{ 
+                backgroundColor: 'transparent',
+                border: '1px solid var(--outline)'
+              }}
+            >
+              {periods.map((period, index) => (
+                <div key={period.id} className="flex h-full flex-1 md:flex-initial">
+                  <button
+                    onClick={() => setSelectedPeriod(period.id)}
+                    className={`px-2 md:px-4 py-2 text-sm font-medium transition-all duration-200 cursor-pointer flex items-center justify-center h-full flex-1 md:flex-initial ${
+                      index === 0 ? 'rounded-l-lg' : ''
+                    } ${
+                      index === periods.length - 1 ? 'rounded-r-lg' : ''
+                    }`}
+                    style={{
+                      backgroundColor: selectedPeriod === period.id 
+                        ? 'var(--secondary-container)' 
+                        : 'transparent',
+                      color: selectedPeriod === period.id 
+                        ? 'var(--on-secondary-container)' 
+                        : 'var(--on-surface)'
+                    }}
+                  >
+                    {/* Texte complet sur desktop, première lettre sur mobile */}
+                    <span className="hidden md:inline">{isEnglish ? period.labelEn : period.labelFr}</span>
+                    <span className="md:hidden">{(isEnglish ? period.labelEn : period.labelFr).charAt(0)}</span>
+                  </button>
+                  {/* Ligne séparatrice verticale pleine hauteur */}
+                  {index < periods.length - 1 && (
+                    <div 
+                      className="w-px h-full"
+                      style={{ backgroundColor: 'var(--outline)' }}
+                    />
+                  )}
+                </div>
+              ))}
             </div>
 
-            {/* Affichage des périodes courante et comparative avec bordure */}
+            {/* Affichage des périodes courante et comparative avec bordure - Sous le segmented button sur mobile */}
             <div 
-              className="flex items-start gap-0 text-sm h-10 rounded-lg"
+              className="flex items-start gap-0 text-sm h-10 rounded-lg w-full md:w-auto"
               style={{ border: '1px solid var(--outline)' }}
             >
               <div className="flex flex-col h-full justify-end px-4 py-2">
@@ -613,26 +613,48 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
             </div>
           </div>
 
-          {/* Sélecteur d'établissements à la toute droite */}
-          <div className="flex flex-col">
+          {/* Sélecteur d'établissements - Icône sur mobile, complet sur desktop */}
+          <div className="relative self-end" ref={dropdownRef}>
             <span className="text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
               {isEnglish ? 'Establishments' : 'Établissements'}
             </span>
             <div className="relative" ref={dropdownRef}>
               <button
-                onClick={() => setIsEstablishmentDropdownOpen(!isEstablishmentDropdownOpen)}
-                className="px-3 py-2 rounded-lg text-sm font-medium border-0 shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none cursor-pointer flex items-center gap-2 min-w-48 h-10"
-                style={{ 
-                  backgroundColor: 'var(--surface)',
-                  color: 'var(--on-surface)',
-                  boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
-                }}
+              onClick={() => setIsEstablishmentDropdownOpen(!isEstablishmentDropdownOpen)}
+              className="flex items-center gap-2 px-3 md:px-4 py-2 rounded-lg transition-all duration-200 hover:shadow-md h-10"
+              style={{
+                backgroundColor: 'var(--surface)',
+                border: '1px solid var(--outline)',
+                color: 'var(--on-surface)'
+              }}
+            >
+              {/* Icône seule sur mobile */}
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                <span className="flex-1 text-left">{getEstablishmentDisplayText()}</span>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+              </svg>
+              {/* Texte sur desktop */}
+              <span className="hidden md:inline text-sm font-medium">
+                {selectedEstablishments.length === establishments.length
+                  ? (isEnglish ? 'All Establishments' : 'Tous les établissements')
+                  : `${selectedEstablishments.length} ${isEnglish ? 'selected' : 'sélectionné(s)'}` 
+                }
+              </span>
+              <svg
+                className={`w-4 h-4 transition-transform duration-200 hidden md:block ${
+                  isEstablishmentDropdownOpen ? 'rotate-180' : ''
+                }`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
 
               {/* Dropdown avec checkboxes */}
               {isEstablishmentDropdownOpen && (
