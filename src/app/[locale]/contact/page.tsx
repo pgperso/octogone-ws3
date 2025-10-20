@@ -19,19 +19,20 @@ export default function ContactPage() {
     script.src = 'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
     script.async = true;
     script.onload = () => {
-      setIsLoading(false);
-      // Initialiser le widget HubSpot
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      if ((window as any).HubSpotConversations) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (window as any).HubSpotConversations.widget.load();
-      }
+      // Attendre un peu pour que le script soit complètement chargé
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
     };
-    document.body.appendChild(script);
+    script.onerror = () => {
+      console.error('Erreur lors du chargement du script HubSpot');
+      setIsLoading(false);
+    };
+    document.head.appendChild(script);
 
     return () => {
-      if (document.body.contains(script)) {
-        document.body.removeChild(script);
+      if (document.head.contains(script)) {
+        document.head.removeChild(script);
       }
     };
   }, []);
@@ -170,11 +171,13 @@ export default function ContactPage() {
             )}
 
             {/* HubSpot Meetings Embed */}
-            <div 
-              className="meetings-iframe-container" 
-              data-src="https://meetings.hubspot.com/caroline-bourbeau/ventes-octogone?embed=true"
-              style={{ minHeight: '600px' }}
-            />
+            {!isLoading && (
+              <div 
+                className="meetings-iframe-container" 
+                data-src="https://meetings.hubspot.com/caroline-bourbeau/ventes-octogone?embed=true"
+                style={{ minHeight: '600px', width: '100%' }}
+              />
+            )}
           </div>
           </div>
         </ResponsiveSection>
