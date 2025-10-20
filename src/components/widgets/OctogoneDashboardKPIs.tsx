@@ -527,22 +527,22 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
         </div>
         
         {/* Ligne des périodes : Groupé à gauche + Sélecteur à droite */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+        <div className="flex items-end justify-between gap-3">
           {/* Groupe de gauche : Segmented Button + Périodes */}
-          <div className="flex flex-col gap-3">
-            {/* Segmented Button pour les périodes */}
+          <div className="flex flex-col md:flex-row md:items-end gap-3">
+            {/* Segmented Button pour les périodes - Compact sur mobile */}
             <div 
-              className="inline-flex rounded-lg h-10 w-full md:w-auto"
+              className="inline-flex rounded-lg h-10"
               style={{ 
                 backgroundColor: 'transparent',
                 border: '1px solid var(--outline)'
               }}
             >
               {periods.map((period, index) => (
-                <div key={period.id} className="flex h-full flex-1 md:flex-initial">
+                <div key={period.id} className="flex h-full">
                   <button
                     onClick={() => setSelectedPeriod(period.id)}
-                    className={`px-2 md:px-4 py-2 text-sm font-medium transition-all duration-200 cursor-pointer flex items-center justify-center h-full flex-1 md:flex-initial ${
+                    className={`px-3 md:px-4 py-2 text-sm font-medium transition-all duration-200 cursor-pointer flex items-center justify-center h-full ${
                       index === 0 ? 'rounded-l-lg' : ''
                     } ${
                       index === periods.length - 1 ? 'rounded-r-lg' : ''
@@ -553,7 +553,8 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                         : 'transparent',
                       color: selectedPeriod === period.id 
                         ? 'var(--on-secondary-container)' 
-                        : 'var(--on-surface)'
+                        : 'var(--on-surface)',
+                      minWidth: '32px'
                     }}
                   >
                     {/* Texte complet sur desktop, première lettre sur mobile */}
@@ -571,9 +572,9 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
               ))}
             </div>
 
-            {/* Affichage des périodes courante et comparative avec bordure - Sous le segmented button sur mobile */}
+            {/* Affichage des périodes courante et comparative avec bordure */}
             <div 
-              className="flex items-start gap-0 text-sm h-10 rounded-lg w-full md:w-auto"
+              className="hidden md:flex items-start gap-0 text-sm h-10 rounded-lg"
               style={{ border: '1px solid var(--outline)' }}
             >
               <div className="flex flex-col h-full justify-end px-4 py-2">
@@ -600,15 +601,14 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
             </div>
           </div>
 
-          {/* Sélecteur d'établissements - Icône sur mobile, complet sur desktop */}
-          <div className="relative self-end" ref={dropdownRef}>
-            <span className="text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
+          {/* Sélecteur d'établissements - Icône seule sur mobile, avec label sur desktop */}
+          <div className="relative" ref={dropdownRef}>
+            <span className="hidden md:block text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
               {isEnglish ? 'Establishments' : 'Établissements'}
             </span>
-            <div className="relative" ref={dropdownRef}>
-              <button
+            <button
               onClick={() => setIsEstablishmentDropdownOpen(!isEstablishmentDropdownOpen)}
-              className="flex items-center gap-2 px-3 md:px-4 py-2 rounded-lg transition-all duration-200 hover:shadow-md h-10"
+              className="flex items-center gap-2 px-2 md:px-4 py-2 rounded-lg transition-all duration-200 hover:shadow-md h-10"
               style={{
                 backgroundColor: 'var(--surface)',
                 border: '1px solid var(--outline)',
@@ -700,7 +700,34 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                   ))}
                 </div>
               )}
-            </div>
+          </div>
+        </div>
+
+        {/* Périodes courante et comparative - Affichées sous le segmented button sur mobile uniquement */}
+        <div 
+          className="flex md:hidden items-start gap-0 text-sm h-10 rounded-lg mt-3"
+          style={{ border: '1px solid var(--outline)' }}
+        >
+          <div className="flex flex-col h-full justify-end px-4 py-2">
+            <span className="text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
+              {isEnglish ? 'Period' : 'Période'}
+            </span>
+            <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
+              {periodText.current}
+            </span>
+          </div>
+          {/* Séparateur vertical pleine hauteur */}
+          <div 
+            className="w-px h-full"
+            style={{ backgroundColor: 'var(--outline)' }}
+          />
+          <div className="flex flex-col h-full justify-end px-4 py-2">
+            <span className="text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
+              {isEnglish ? 'Comparative period' : 'Période comparative'}
+            </span>
+            <span style={{ color: 'var(--on-surface-variant)' }}>
+              {periodText.previous}
+            </span>
           </div>
         </div>
       </div>
