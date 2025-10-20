@@ -176,33 +176,41 @@ const Hero = () => {
     }
   ];
 
-  // Textes alternatifs pour les restaurants
+  // Textes alternatifs pour les secteurs d'activité
   const restaurantTexts = {
     fr: [
-      "votre ou vos restaurants",
-      "votre ou vos hôtels", 
-      "votre ou vos services de traiteur",
-      "votre ou vos commerces de détail"
+      "restaurants",
+      "groupes & franchises", 
+      "hôtels",
+      "services de traiteurs",
+      "cafétérias",
+      "centres de personnes âgées",
+      "commerces de détail"
     ],
     en: [
-      "your restaurant(s)",
-      "your hotel(s)",
-      "your catering service(s)", 
-      "your retail business(es)"
+      "restaurants",
+      "groups & franchises",
+      "hotels", 
+      "catering services",
+      "cafeterias",
+      "senior care centers",
+      "retail businesses"
     ]
   };
 
-  // Synchroniser le texte avec l'octogone actif
+  // Animation indépendante du texte des secteurs
   useEffect(() => {
-    if (activeOctogone !== null) {
+    const textInterval = setInterval(() => {
       setIsTextTransitioning(true);
       
       setTimeout(() => {
-        setCurrentRestaurantText(activeOctogone);
+        setCurrentRestaurantText(prev => (prev + 1) % restaurantTexts.fr.length);
         setIsTextTransitioning(false);
       }, 300); // Durée du fade out
-    }
-  }, [activeOctogone]);
+    }, 3000); // Change tous les 3 secondes
+
+    return () => clearInterval(textInterval);
+  }, []);
 
   return (
     <section 
@@ -564,10 +572,9 @@ const Hero = () => {
                     <>
                       La plateforme qui optimise <span className="text-gold-500">vraiment</span> la gestion de{" "}
                       <span 
-                        className="inline-block transition-all duration-300 font-bold"
+                        className="inline-block transition-all duration-300 font-bold text-gold-500"
                         style={{ 
-                          opacity: isTextTransitioning ? 0 : 1,
-                          color: activeOctogone !== null ? getColorValue(octogones[activeOctogone].pastelColor) : 'var(--on-surface)'
+                          opacity: isTextTransitioning ? 0 : 1
                         }}
                       >
                         {restaurantTexts.fr[currentRestaurantText]}
@@ -577,10 +584,9 @@ const Hero = () => {
                     <>
                       The platform that <span className="text-gold-500">truly</span> optimizes{" "}
                       <span 
-                        className="inline-block transition-all duration-300 font-bold"
+                        className="inline-block transition-all duration-300 font-bold text-gold-500"
                         style={{ 
-                          opacity: isTextTransitioning ? 0 : 1,
-                          color: activeOctogone !== null ? getColorValue(octogones[activeOctogone].pastelColor) : 'var(--on-surface)'
+                          opacity: isTextTransitioning ? 0 : 1
                         }}
                       >
                         {restaurantTexts.en[currentRestaurantText]}
