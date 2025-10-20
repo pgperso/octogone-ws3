@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import { TrendingUp, TrendingDown, Minus, Info } from 'lucide-react';
+import { TrendingUp, TrendingDown, Minus, Info, X } from 'lucide-react';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 import dashboardData from '@/data/dashboard/octogone_dashboard_data.json';
-import FloatingCortexCTA from '@/components/ui/floating-cortex-cta';
 
 interface DashboardKPIsProps {
   locale?: 'fr' | 'en';
@@ -70,6 +70,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
   const [selectedEstablishments, setSelectedEstablishments] = useState<string[]>(['est-bistro8', 'est-taqueria', 'est-roquette', 'est-rioux']);
   const [isEstablishmentDropdownOpen, setIsEstablishmentDropdownOpen] = useState(false);
   const [activeVersion, setActiveVersion] = useState<'current' | 'next'>('current');
+  const [isCortexModalOpen, setIsCortexModalOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Fermer le dropdown quand on clique ailleurs
@@ -386,7 +387,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
 
   return (
     <>
-    <div className="w-full">
+    <div className="w-full relative">
       {/* Toggle Version en haut */}
       <div className="flex justify-center mb-6">
         <div 
@@ -776,12 +777,128 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
             : 'Pour en savoir plus, contactez notre équipe.'}
         </p>
       </div>
+
+      {/* Bouton Cortex flottant DANS le widget */}
+      <AnimatePresence>
+        {!isCortexModalOpen && (
+          <motion.button
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={() => setIsCortexModalOpen(true)}
+            className="absolute bottom-6 right-6 w-16 h-16 rounded-2xl shadow-2xl flex items-center justify-center cursor-pointer z-10"
+            style={{
+              backgroundColor: 'var(--secondary-container)',
+              border: '2px solid white'
+            }}
+          >
+            <Image
+              src="/cortex.svg"
+              alt="Cortex"
+              width={32}
+              height={32}
+              className="w-8 h-8"
+              style={{ filter: 'brightness(0) saturate(100%)', color: 'var(--on-secondary-container)' }}
+            />
+          </motion.button>
+        )}
+      </AnimatePresence>
       </>
       )}
     </div>
-    
-    {/* Floating Cortex CTA - toujours visible, en dehors du container */}
-    <FloatingCortexCTA locale={locale} />
+
+    {/* Modal Cortex */}
+    {isCortexModalOpen && (
+      <div
+        className="fixed inset-0 z-[70] flex items-center justify-center p-4"
+        style={{ backgroundColor: 'rgba(0, 0, 0, 0.75)' }}
+        onClick={() => setIsCortexModalOpen(false)}
+      >
+        <div
+          className="relative w-full max-w-2xl rounded-2xl shadow-2xl p-8 md:p-12"
+          style={{ backgroundColor: 'var(--background)' }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <button
+            onClick={() => setIsCortexModalOpen(false)}
+            className="absolute top-4 right-4 z-10 p-2 rounded-full transition-all duration-200 hover:scale-110"
+            style={{
+              backgroundColor: 'var(--surface)',
+              color: 'var(--on-surface)'
+            }}
+          >
+            <X className="w-6 h-6" />
+          </button>
+
+          <div className="text-center">
+            <div className="flex justify-center mb-6">
+              <div
+                className="w-20 h-20 rounded-full flex items-center justify-center"
+                style={{ background: 'linear-gradient(135deg, #BADFF6 0%, #E2CDED 100%)' }}
+              >
+                <Image
+                  src="/cortex.svg"
+                  alt="Cortex"
+                  width={40}
+                  height={40}
+                  className="w-10 h-10"
+                  style={{ filter: 'brightness(0) saturate(100%)', color: 'var(--on-secondary-container)' }}
+                />
+              </div>
+            </div>
+
+            <h2
+              className="text-3xl md:text-4xl font-bold mb-4"
+              style={{ color: 'var(--on-surface)' }}
+            >
+              {isEnglish ? 'Add Cortex to Your Dashboard' : 'Ajoutez Cortex à votre tableau de bord'}
+            </h2>
+
+            <p
+              className="text-lg md:text-xl mb-6 leading-relaxed"
+              style={{ color: 'var(--on-surface)' }}
+            >
+              {isEnglish
+                ? 'Cortex is our AI assistant designed to integrate directly with your Octogone dashboard. Reserve early access to activate it as soon as it becomes available.'
+                : 'Cortex est notre assistant IA conçu pour s\'intégrer directement à votre tableau de bord Octogone. Réservez l\'accès anticipé pour l\'activer dès qu\'il sera disponible.'}
+            </p>
+
+            <div
+              className="p-6 mb-6 rounded-lg"
+              style={{
+                backgroundColor: 'var(--secondary-container)',
+                border: 'none'
+              }}
+            >
+              <p
+                className="text-xl md:text-2xl font-bold mb-3"
+                style={{ color: 'var(--on-secondary-container)' }}
+              >
+                {isEnglish ? 'Secure Your Early Access' : 'Sécurisez votre accès anticipé'}
+              </p>
+              <p
+                className="text-base md:text-lg"
+                style={{ color: 'var(--on-secondary-container)' }}
+              >
+                {isEnglish
+                  ? 'Subscribe now and get Cortex included at your current rate when it launches.'
+                  : 'Abonnez-vous maintenant et bénéficiez de Cortex inclus à votre tarif actuel lors du lancement.'}
+              </p>
+            </div>
+
+            <p
+              className="text-sm"
+              style={{ color: 'var(--on-surface-variant)' }}
+            >
+              {isEnglish
+                ? 'Early access is limited. Contact our team to reserve your spot.'
+                : 'Les accès anticipés sont limités. Contactez notre équipe pour réserver votre place.'}
+            </p>
+          </div>
+        </div>
+      </div>
+    )}
     </>
   );
 }
