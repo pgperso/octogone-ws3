@@ -363,11 +363,16 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
     return `${sign}${deltaPct.toFixed(2)}%`;
   };
 
-  // Fonction pour obtenir les textes de période
+  // Fonction pour obtenir les textes de période (sans année)
   const getPeriodText = (): { current: string; previous: string } => {
+    // Retirer l'année des dates affichées
+    const removeYear = (dateStr: string) => {
+      return dateStr.replace(/\s*\d{4}\s*$/, '').trim();
+    };
+    
     return {
-      current: currentPeriodData.display_range,
-      previous: currentPeriodData.display_compare_range
+      current: removeYear(currentPeriodData.display_range),
+      previous: removeYear(currentPeriodData.display_compare_range)
     };
   };
 
