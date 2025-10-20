@@ -39,6 +39,9 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
   // Vérifier si la bannière a été fermée manuellement
   const [manuallyDismissed, setManuallyDismissed] = React.useState(false);
 
+  // État pour la hauteur dynamique de la bannière
+  const [bannerHeight, setBannerHeight] = React.useState(60);
+
   React.useEffect(() => {
     if (typeof window !== "undefined") {
       // Effacer le localStorage au chargement de la page
@@ -99,6 +102,39 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
     };
   }, [manuallyDismissed]);
 
+  // Mesurer la hauteur de la bannière dynamiquement
+  React.useEffect(() => {
+    const measureBannerHeight = () => {
+      const bannerElement = document.querySelector('.announcement-banner');
+      if (bannerElement) {
+        const height = bannerElement.getBoundingClientRect().height;
+        setBannerHeight(height);
+      }
+    };
+
+    // Mesurer au montage
+    measureBannerHeight();
+    
+    // Mesurer lors du redimensionnement
+    window.addEventListener('resize', measureBannerHeight);
+    
+    // Observer les changements de la bannière
+    const observer = new MutationObserver(measureBannerHeight);
+    const bannerElement = document.querySelector('.announcement-banner');
+    if (bannerElement) {
+      observer.observe(bannerElement, { 
+        attributes: true, 
+        childList: true, 
+        subtree: true 
+      });
+    }
+
+    return () => {
+      window.removeEventListener('resize', measureBannerHeight);
+      observer.disconnect();
+    };
+  }, [isAnnouncementVisible]);
+
   // Framer Motion scroll animations
   const { scrollYProgress } = useScroll();
   // Variable commentée car non utilisée actuellement
@@ -135,7 +171,7 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
             : "bg-transparent"
         )}
         style={{
-          top: isAnnouncementVisible ? '60px' : '0px', // Ajuster selon la hauteur de la bannière
+          top: isAnnouncementVisible ? `${bannerHeight}px` : '0px', // Hauteur dynamique de la bannière
           ...(isScrolled ? {
             backgroundColor: 'var(--surface)',
             opacity: 0.95,

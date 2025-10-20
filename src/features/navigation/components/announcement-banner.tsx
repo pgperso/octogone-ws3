@@ -52,7 +52,7 @@ export const AnnouncementBanner: React.FC<AnnouncementBannerProps> = ({
           exit={{ y: -40, opacity: 0 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
           className="announcement-banner fixed top-0 left-0 right-0 z-[70] overflow-hidden"
-          style={{ backgroundColor: '#C8B6FF' }}
+          style={{ backgroundColor: '#C8B6FF', margin: 0, padding: 0 }}
         >
           <div className="container mx-auto px-3 py-3 sm:py-4 flex items-center justify-center relative">
             {/* Contenu principal centré */}

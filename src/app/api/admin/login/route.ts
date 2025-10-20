@@ -4,7 +4,8 @@ import bcrypt from 'bcrypt';
 
 // Hash du mot de passe admin (généré avec bcrypt)
 // Pour générer: await bcrypt.hash('votre_mot_de_passe', 12)
-const ADMIN_PASSWORD_HASH = process.env.ADMIN_PASSWORD_HASH || '$2b$12$LQ7JXw7gGZ5YZ5YZ5YZ5YeO7JXw7gGZ5YZ5YZ5YZ5YeO7JXw7gGZ5Y';
+// Hash pour "160200": $2b$12$ee4hhgPCpDM1Y5mqz0ZsiOl.Y6PdkEZ9thSpVgJ1twlbd60DnIlOe
+const ADMIN_PASSWORD_HASH = process.env.ADMIN_PASSWORD_HASH || '$2b$12$ee4hhgPCpDM1Y5mqz0ZsiOl.Y6PdkEZ9thSpVgJ1twlbd60DnIlOe';
 
 // Rate limiting simple (en mémoire)
 const loginAttempts = new Map<string, { count: number; lastAttempt: number }>();
