@@ -553,8 +553,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                         : 'transparent',
                       color: selectedPeriod === period.id 
                         ? 'var(--on-secondary-container)' 
-                        : 'var(--on-surface)',
-                      minWidth: '32px'
+                        : 'var(--on-surface)'
                     }}
                   >
                     {/* Texte complet sur desktop, première lettre sur mobile */}
@@ -705,7 +704,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
 
         {/* Périodes courante et comparative - Affichées sous le segmented button sur mobile uniquement */}
         <div 
-          className="flex md:hidden items-start gap-0 text-sm h-10 rounded-lg mt-3"
+          className="flex md:hidden items-start gap-0 text-sm h-10 rounded-lg mt-4"
           style={{ border: '1px solid var(--outline)' }}
         >
           <div className="flex flex-col h-full justify-end px-4 py-2">
