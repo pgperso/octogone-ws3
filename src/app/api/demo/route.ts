@@ -1,33 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { demoSchema } from '@/lib/validation/schemas';
+import { ZodError } from 'zod';
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     
-    // Validation des données
-    const { firstName, lastName, email, phone, company, message, requestedVersion } = body;
-    
-    if (!firstName || !lastName || !email || !company) {
-      return NextResponse.json(
-        { error: 'Champs requis manquants' },
-        { status: 400 }
-      );
-    }
-
-    // Validation email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { error: 'Email invalide' },
-        { status: 400 }
-      );
-    }
+    // Validation avec Zod
+    const validatedData = demoSchema.parse(body);
+    const { email, firstName, lastName, company, phone, restaurantCount } = validatedData;
 
     // Préparer le contenu de l'email
     const emailContent = `
 Nouvelle demande de démo Octogone
-
-Version demandée: ${requestedVersion === 'octogone-ai' ? 'Octogone.ai (IA)' : 'Octogone'}
 
 Informations du contact:
 - Prénom: ${firstName}
@@ -35,9 +20,7 @@ Informations du contact:
 - Email: ${email}
 - Téléphone: ${phone || 'Non fourni'}
 - Entreprise: ${company}
-
-Message:
-${message || 'Aucun message'}
+- Nombre de restaurants: ${restaurantCount}
 
 ---
 Soumis le: ${new Date().toLocaleString('fr-FR', { timeZone: 'America/Toronto' })}
@@ -97,6 +80,20 @@ Soumis le: ${new Date().toLocaleString('fr-FR', { timeZone: 'America/Toronto' })
     );
 
   } catch (error) {
+    // Gestion des erreurs de validation Zod
+    if (error instanceof ZodError) {
+      return NextResponse.json(
+        { 
+          error: 'Données invalides',
+          details: error.errors.map(e => ({
+            field: e.path.join('.'),
+            message: e.message
+          }))
+        },
+        { status: 400 }
+      );
+    }
+    
     console.error('Erreur lors du traitement de la demande:', error);
     return NextResponse.json(
       { error: 'Erreur serveur lors du traitement de la demande' },

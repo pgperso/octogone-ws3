@@ -5,8 +5,8 @@ import { NextRequest } from 'next/server';
  */
 export function validateAdminAuth(request: NextRequest): { valid: boolean; error?: string } {
   try {
-    // Vérifier le cookie de session
-    const sessionCookie = request.cookies.get('admin-session');
+    // Vérifier le cookie de session sécurisé
+    const sessionCookie = request.cookies.get('__Secure-admin-session');
     
     if (!sessionCookie?.value) {
       return { valid: false, error: 'Non authentifié' };

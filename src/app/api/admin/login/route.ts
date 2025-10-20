@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import crypto from 'crypto';
+import bcrypt from 'bcrypt';
 
-// Mot de passe admin (à définir dans les variables d'environnement)
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '160200';
+// Hash du mot de passe admin (généré avec bcrypt)
+// Pour générer: await bcrypt.hash('votre_mot_de_passe', 12)
+const ADMIN_PASSWORD_HASH = process.env.ADMIN_PASSWORD_HASH || '$2b$12$LQ7JXw7gGZ5YZ5YZ5YZ5YeO7JXw7gGZ5YZ5YZ5YZ5YeO7JXw7gGZ5Y';
 
 // Rate limiting simple (en mémoire)
 const loginAttempts = new Map<string, { count: number; lastAttempt: number }>();
@@ -29,8 +31,9 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Vérifier le mot de passe
-    if (password !== ADMIN_PASSWORD) {
+    // Vérifier le mot de passe avec bcrypt
+    const isValidPassword = await bcrypt.compare(password, ADMIN_PASSWORD_HASH);
+    if (!isValidPassword) {
       // Enregistrer la tentative échouée
       const currentAttempts = loginAttempts.get(clientIP) || { count: 0, lastAttempt: 0 };
       loginAttempts.set(clientIP, {
@@ -52,12 +55,13 @@ export async function POST(request: NextRequest) {
     
     const response = NextResponse.json({ success: true });
     
-    // Cookie qui expire dans 24 heures
-    response.cookies.set('admin-session', sessionToken, {
+    // Cookie sécurisé qui expire dans 24 heures
+    response.cookies.set('__Secure-admin-session', sessionToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      maxAge: 24 * 60 * 60 // 24 heures
+      secure: true,
+      sameSite: 'strict',
+      maxAge: 24 * 60 * 60, // 24 heures
+      path: '/admin'
     });
 
     return response;
