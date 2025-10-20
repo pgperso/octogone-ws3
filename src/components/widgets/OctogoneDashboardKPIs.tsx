@@ -645,7 +645,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
               {/* Dropdown avec checkboxes */}
               {isEstablishmentDropdownOpen && (
                 <div 
-                  className="absolute top-full left-0 mt-1 w-full rounded-lg shadow-lg z-50 py-2"
+                  className="absolute top-full right-0 mt-1 w-64 rounded-lg shadow-lg z-50 py-2"
                   style={{ 
                     backgroundColor: 'var(--surface)',
                     border: '1px solid var(--outline)',
