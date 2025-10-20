@@ -558,13 +558,31 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                         : 'transparent',
                       color: selectedPeriod === period.id 
                         ? 'var(--on-secondary-container)' 
-                        : 'var(--on-surface)',
+                        : 'var(--on-surface-variant)',
                       fontWeight: '500'
                     }}
                   >
                     {/* Texte complet sur desktop, première lettre sur mobile */}
-                    <span className="hidden md:inline">{isEnglish ? period.labelEn : period.labelFr}</span>
-                    <span className="md:hidden">{(isEnglish ? period.labelEn : period.labelFr).charAt(0)}</span>
+                    <span 
+                      className="hidden md:inline"
+                      style={{ 
+                        color: selectedPeriod === period.id 
+                          ? 'var(--on-secondary-container)' 
+                          : 'var(--on-surface-variant)' 
+                      }}
+                    >
+                      {isEnglish ? period.labelEn : period.labelFr}
+                    </span>
+                    <span 
+                      className="md:hidden"
+                      style={{ 
+                        color: selectedPeriod === period.id 
+                          ? 'var(--on-secondary-container)' 
+                          : 'var(--on-surface-variant)' 
+                      }}
+                    >
+                      {(isEnglish ? period.labelEn : period.labelFr).charAt(0)}
+                    </span>
                   </button>
                   {/* Ligne séparatrice verticale pleine hauteur */}
                   {index < periods.length - 1 && (
