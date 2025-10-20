@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { TrendingUp, TrendingDown, Minus, Info, X } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import dashboardData from '@/data/dashboard/octogone_dashboard_data.json';
 import { OctogoneButton } from '@/components/ui/octogone-button';
