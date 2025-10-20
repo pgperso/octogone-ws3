@@ -588,7 +588,9 @@ const Hero = () => {
                         className="inline-block transition-all duration-300 font-bold"
                         style={{ 
                           opacity: isTextTransitioning ? 0 : 1,
-                          color: ['#B8E0D2', '#B4D4FF', '#FFE5B4', '#C8B6FF', '#B8E0D2', '#B4D4FF', '#FFE5B4'][currentRestaurantText]
+                          color: ['#B8E0D2', '#B4D4FF', '#FFE5B4', '#C8B6FF', '#B8E0D2', '#B4D4FF', '#FFE5B4'][currentRestaurantText],
+                          minWidth: '200px',
+                          textAlign: 'left'
                         }}
                       >
                         {restaurantTexts.en[currentRestaurantText]}
