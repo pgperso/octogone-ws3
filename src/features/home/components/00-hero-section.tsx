@@ -179,16 +179,16 @@ const Hero = () => {
   // Textes alternatifs pour les restaurants
   const restaurantTexts = {
     fr: [
-      "votre restaurant",
-      "vos restaurants", 
-      "votre groupe de restaurants",
-      "votre franchise de restaurants"
+      "votre ou vos restaurants",
+      "votre ou vos hôtels", 
+      "votre ou vos services de traiteur",
+      "votre ou vos commerces de détail"
     ],
     en: [
-      "your restaurant",
-      "your restaurants",
-      "your restaurant group", 
-      "your restaurant franchise"
+      "your restaurant(s)",
+      "your hotel(s)",
+      "your catering service(s)", 
+      "your retail business(es)"
     ]
   };
 
