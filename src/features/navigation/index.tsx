@@ -183,13 +183,16 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
 
       <motion.header
         className={cn(
-          "fixed left-0 right-0 z-40 transition-all duration-300 motion-element",
+          "fixed left-0 right-0 z-40",
           isScrolled
             ? "bg-background/95 backdrop-blur-md border-b border-border/50 shadow-sm"
             : "bg-transparent"
         )}
         style={{
-          top: isAnnouncementVisible ? `${bannerHeight}px` : '0px', // Hauteur dynamique de la bannière
+          top: isAnnouncementVisible ? `${bannerHeight}px` : '0px',
+          transition: 'top 0.3s ease-out, background-color 0.3s ease-out, border-color 0.3s ease-out',
+          willChange: 'transform, opacity',
+          transform: 'translateZ(0)', // Force GPU acceleration
           ...(isScrolled ? {
             backgroundColor: 'var(--surface)',
             opacity: 0.95,
@@ -198,13 +201,12 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
             backgroundColor: 'var(--background)'
           })
         }}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        onAnimationComplete={() => {
-          // Nettoyage GPU - Technique Netflix
-          const element = document.querySelector('header.motion-element');
-          if (element) element.classList.add('animation-complete');
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ 
+          duration: 0.35, 
+          ease: [0.4, 0, 0.2, 1],
+          type: "tween"
         }}
       >
         {/* Progress bar */}
