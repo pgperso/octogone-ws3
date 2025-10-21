@@ -87,7 +87,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
       >
         <div className="col-span-5">Produit</div>
         <div className="col-span-3 text-center">Quantité</div>
-        <div className="col-span-4 text-right">Prix coûtant</div>
+        <div className="col-span-4 text-right">Total</div>
       </div>
 
       {/* Liste scrollable */}
@@ -102,6 +102,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
         ) : (
           filteredProducts.map((product) => {
             const quantity = getQuantity(product.id);
+            const totalCost = quantity * product.unitCost;
             const isSelected = selectedProductId === product.id;
             
             return (
@@ -129,13 +130,13 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 </div>
                 <div className="col-span-4 text-right">
                   <div className="font-semibold">
-                    {product.unitCost.toFixed(2)} $
+                    {quantity > 0 ? `${totalCost.toFixed(2)} $` : '-'}
                   </div>
                   <div 
                     className="text-xs mt-0.5"
                     style={{ color: 'var(--on-surface-variant)' }}
                   >
-                    par {product.unit}
+                    {quantity > 0 ? `${quantity} × ${product.unitCost.toFixed(2)} $` : `${product.unitCost.toFixed(2)} $ / ${product.unit}`}
                   </div>
                 </div>
               </div>

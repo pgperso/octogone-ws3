@@ -55,11 +55,6 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
     }
   };
 
-  const handleClear = () => {
-    setDisplayValue('0');
-    setIsEditing(true);
-  };
-
   const handleBackspace = () => {
     if (displayValue.length > 1) {
       setDisplayValue(displayValue.slice(0, -1));
