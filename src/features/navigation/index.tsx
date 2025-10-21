@@ -142,13 +142,19 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
       const navHeight = 80; // Hauteur fixe de la navigation
       const totalHeight = (isAnnouncementVisible ? bannerHeight : 0) + navHeight;
       
-      // Définir la variable CSS
+      // Définir la variable CSS immédiatement
       document.documentElement.style.setProperty('--nav-total-height', `${totalHeight}px`);
-      
-      // Debug pour vérifier
-      console.log('Nav total height set to:', totalHeight + 'px');
     }
   }, [isAnnouncementVisible, bannerHeight]);
+
+  // Initialiser la variable CSS dès le montage
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      // Définir une valeur initiale immédiatement
+      const initialHeight = SHOW_ANNOUNCEMENT_BANNER ? 128 : 80;
+      document.documentElement.style.setProperty('--nav-total-height', `${initialHeight}px`);
+    }
+  }, []);
 
   // Framer Motion scroll animations
   const { scrollYProgress } = useScroll();
@@ -190,9 +196,10 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
           transition: 'top 0.3s ease-out, background-color 0.2s ease-out, border-color 0.2s ease-out, opacity 0.2s ease-out',
           willChange: 'transform',
           transform: 'translateZ(0)',
-          backgroundColor: isScrolled ? 'var(--surface)' : 'var(--background)',
+          backgroundColor: 'var(--background)', // Toujours background pendant l'animation
           opacity: isScrolled ? 0.95 : 1,
           ...(isScrolled ? {
+            backgroundColor: 'var(--surface)',
             borderColor: 'var(--outline)'
           } : {})
         }}
