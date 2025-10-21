@@ -951,7 +951,13 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                 </h4>
                 
                 {/* Graphique en barres animé */}
-                <div className="flex items-end justify-center gap-3 h-32 mb-4">
+                <motion.div 
+                  className="flex items-end justify-center gap-3 h-32 mb-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4 }}
+                >
                   {/* Génération de données fictives pour le graphique */}
                   {Array.from({ length: 7 }, (_, i) => {
                     const baseValue = selectedKPI.metric.previous;
@@ -965,20 +971,18 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                       <motion.div
                         key={i}
                         className="flex flex-col items-center"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        transition={{ duration: 0.8, delay: i * 0.1 }}
+                        initial={{ opacity: 0, scaleY: 0 }}
+                        whileInView={{ opacity: 1, scaleY: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.3, delay: i * 0.05 }}
                       >
-                        <motion.div
+                        <div
                           className="w-8 rounded-t-md"
                           style={{ 
                             backgroundColor: i === 6 ? 'var(--primary)' : 'var(--primary-container)',
                             height: `${Math.max(heightPercent, 10)}%`,
                             transformOrigin: 'bottom'
                           }}
-                          initial={{ scaleY: 0 }}
-                          animate={{ scaleY: 1 }}
-                          transition={{ duration: 0.6, delay: i * 0.1 + 0.2 }}
                         />
                         <span 
                           className="text-xs mt-2"
@@ -990,13 +994,14 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                       </motion.div>
                     );
                   })}
-                </div>
+                </motion.div>
 
                 {/* Valeur actuelle */}
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 1 }}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: 0.2 }}
                 >
                   <p 
                     className="text-2xl font-bold mb-2"
