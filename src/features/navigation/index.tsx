@@ -199,8 +199,16 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
             borderColor: 'var(--outline)'
           } : {})
         }}
-        initial={{ y: -100, opacity: 1 }}
-        animate={{ y: 0, opacity: 1 }}
+        initial={{ 
+          y: -100, 
+          opacity: 1,
+          backgroundColor: 'var(--background)'
+        }}
+        animate={{ 
+          y: 0, 
+          opacity: 1,
+          backgroundColor: isScrolled ? 'var(--surface)' : 'var(--background)'
+        }}
         transition={{ 
           duration: 0.8, 
           ease: [0.22, 1, 0.36, 1],

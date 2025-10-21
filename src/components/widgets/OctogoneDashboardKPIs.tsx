@@ -275,13 +275,13 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
             <div class="cta-title">
               ${isEnglish ? 'Want to Learn More?' : 'Vous voulez en savoir plus ?'}
             </div>
-            <p>
+            <p style="color: #000;">
               ${isEnglish 
                 ? 'This dashboard shows just a glimpse of what Octogone 360 can do. The complete platform offers advanced analytics, detailed reports, predictive insights, and much more to transform your restaurant management.'
                 : 'Ce tableau de bord ne montre qu\'un aperçu de ce qu\'Octogone 360 peut faire. La plateforme complète offre des analyses avancées, des rapports détaillés, des insights prédictifs, et bien plus encore pour transformer la gestion de votre restaurant.'
               }
             </p>
-            <p style="margin-top: 15px; font-weight: 600;">
+            <p style="margin-top: 15px; font-weight: 600; color: #000;">
               ${isEnglish 
                 ? 'Contact our team to explore all the features and see how Octogone 360 can revolutionize your business.'
                 : 'Contactez notre équipe pour explorer toutes les fonctionnalités et voir comment Octogone 360 peut révolutionner votre entreprise.'
