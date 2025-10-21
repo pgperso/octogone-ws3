@@ -218,8 +218,7 @@ const Hero = () => {
       aria-labelledby="hero-title"
       style={{ 
         backgroundColor: 'pink', // TEMPORAIRE - pour debug
-        gridColumnStart: 1,
-        gridRowStart: 2
+        minHeight: 'calc(100vh - var(--nav-total-height, 128px))'
       }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 w-full motion-container">

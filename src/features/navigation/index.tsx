@@ -192,8 +192,6 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
           willChange: 'transform',
           transform: 'translateZ(0)',
           backgroundColor: isScrolled ? 'var(--surface)' : 'var(--background)',
-          gridColumnStart: 1,
-          gridRowStart: 1,
           ...(isScrolled ? {
             borderColor: 'var(--outline)'
           } : {})
