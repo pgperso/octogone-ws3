@@ -218,7 +218,9 @@ const Hero = () => {
       aria-labelledby="hero-title"
       style={{ 
         backgroundColor: 'var(--background)',
-        minHeight: 'calc(100vh - var(--nav-total-height, 128px))'
+        minHeight: '100vh',
+        paddingTop: 'var(--nav-total-height, 128px)',
+        boxSizing: 'border-box'
       }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full motion-container">
