@@ -205,7 +205,7 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
         }}
         initial={{ 
           y: -100, 
-          opacity: 0
+          opacity: 1
         }}
         animate={{ 
           y: 0, 
