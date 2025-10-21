@@ -74,7 +74,7 @@ function LayoutContent({
   const { isCalculatorMinimized, expandCalculator, minimizeCalculator } = useCalculator();
   
   return (
-    <div lang={locale} className={inter.className}>
+    <div lang={locale} className={inter.className} style={{ display: 'grid', gridTemplateRows: 'min-content 1fr' }}>
       {/* Fond 3D avec formes Octogone */}
       <ProBackground />
       
@@ -84,8 +84,15 @@ function LayoutContent({
       {/* Schema.org simple et fiable pour SEO IA */}
       <SimpleSchema locale={locale} />
       
+      {/* Spacer invisible pour CSS Grid - prend 100vh et span 2 rows */}
+      <div style={{ 
+        height: '100vh', 
+        gridColumn: '1 / -1', 
+        gridRow: '1 / span 2' 
+      }} aria-hidden="true" />
+      
       <Navigation routes={localizedRoutes} activeRoute={activeRoute} theme="light" locale={locale} />
-      <main className="min-h-screen pt-32">{children}</main>
+      <main className="min-h-screen">{children}</main>
       <Footer />
       
       {/* Widget flottant ROI */}
