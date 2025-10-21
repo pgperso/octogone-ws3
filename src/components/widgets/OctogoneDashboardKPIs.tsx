@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import dashboardData from '@/data/dashboard/octogone_dashboard_data.json';
 import { OctogoneButton } from '@/components/ui/octogone-button';
+import ContactButton from '@/components/widgets/ContactButton';
 
 interface DashboardKPIsProps {
   locale?: 'fr' | 'en';
@@ -992,13 +993,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
               </p>
 
               {/* CTA Button */}
-              <OctogoneButton
-                href={`/${locale}/contact`}
-                variant="primary"
-                size="lg"
-              >
-                {isEnglish ? 'Contact Our Team' : 'Contacter notre équipe'}
-              </OctogoneButton>
+              <ContactButton locale={locale} />
             </div>
           </div>
         </div>
