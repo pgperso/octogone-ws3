@@ -44,28 +44,12 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
 
   React.useEffect(() => {
     if (typeof window !== "undefined") {
-      // Effacer le localStorage au chargement de la page
+      // Vérifier si la bannière a été fermée dans cette session
       const dismissKey = "announcement-dismissed";
-
-      // Vérifier si nous sommes dans une nouvelle session de navigation
-      const lastSession = localStorage.getItem("last-session-time");
-      const currentTime = Date.now();
-
-      // Mettre à jour le timestamp de la session
-      localStorage.setItem("last-session-time", currentTime.toString());
-
-      // Si la dernière session était il y a plus de 2 secondes, c'est un refresh ou une nouvelle visite
-      if (!lastSession || currentTime - parseInt(lastSession) > 2000) {
-        // C'est un refresh ou une nouvelle session, réinitialiser l'état
-        localStorage.removeItem(dismissKey);
-        setIsAnnouncementVisible(true);
-        setManuallyDismissed(false);
-      } else {
-        // Même session, vérifier si la bannière a été fermée
-        const isDismissed = localStorage.getItem(dismissKey) === "true";
-        setIsAnnouncementVisible(!isDismissed);
-        setManuallyDismissed(isDismissed);
-      }
+      const isDismissed = sessionStorage.getItem(dismissKey) === "true";
+      
+      setIsAnnouncementVisible(!isDismissed);
+      setManuallyDismissed(isDismissed);
     }
   }, []);
 
@@ -174,7 +158,7 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
             setIsAnnouncementVisible(false);
             setManuallyDismissed(true);
             // Marquer comme fermée dans cette session
-            localStorage.setItem("announcement-dismissed", "true");
+            sessionStorage.setItem("announcement-dismissed", "true");
           }}
         />
       )}
