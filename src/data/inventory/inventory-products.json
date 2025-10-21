@@ -4,35 +4,45 @@
       "id": "prod-001",
       "name": "Ail frais",
       "category": "Légumes",
+      "brand": "Ferme locale",
       "unit": "kg",
+      "availableUnits": ["kg", "g", "unité"],
       "unitCost": 8.50
     },
     {
       "id": "prod-002",
       "name": "Ananas",
       "category": "Fruits",
+      "brand": "Del Monte",
       "unit": "unité",
+      "availableUnits": ["unité"],
       "unitCost": 3.25
     },
     {
       "id": "prod-003",
       "name": "Asperges",
       "category": "Légumes",
+      "brand": "Ferme locale",
       "unit": "kg",
+      "availableUnits": ["kg", "g", "botte"],
       "unitCost": 12.75
     },
     {
       "id": "prod-004",
       "name": "Avocat",
       "category": "Fruits",
+      "brand": "Hass",
       "unit": "unité",
+      "availableUnits": ["unité", "kg"],
       "unitCost": 2.50
     },
     {
       "id": "prod-005",
       "name": "Bacon",
       "category": "Viandes",
+      "brand": "Olymel",
       "unit": "kg",
+      "availableUnits": ["kg", "g", "tranche"],
       "unitCost": 15.99
     },
     {

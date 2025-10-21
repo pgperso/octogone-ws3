@@ -9,8 +9,11 @@ interface Product {
   id: string;
   name: string;
   category: string;
+  brand?: string;
   unit: string;
+  availableUnits?: string[];
   unitCost: number;
+  image?: string;
 }
 
 interface InventoryItem {

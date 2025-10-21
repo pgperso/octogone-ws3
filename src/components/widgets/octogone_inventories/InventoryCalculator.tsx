@@ -2,13 +2,17 @@
 
 import React, { useState, useEffect } from 'react';
 import { Delete, Check } from 'lucide-react';
+import { ProductCard } from './ProductCard';
 
 interface Product {
   id: string;
   name: string;
   category: string;
+  brand?: string;
   unit: string;
+  availableUnits?: string[];
   unitCost: number;
+  image?: string;
 }
 
 interface InventoryCalculatorProps {
@@ -24,11 +28,13 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
 }) => {
   const [displayValue, setDisplayValue] = useState('0');
   const [isEditing, setIsEditing] = useState(false);
+  const [selectedUnit, setSelectedUnit] = useState<string>('');
 
   // Réinitialiser quand le produit change
   useEffect(() => {
     if (selectedProduct) {
       setDisplayValue(currentQuantity > 0 ? currentQuantity.toString() : '0');
+      setSelectedUnit(selectedProduct.unit);
       setIsEditing(false);
     }
   }, [selectedProduct, currentQuantity]);
@@ -84,46 +90,58 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
 
   return (
     <div className="flex flex-col h-full p-6">
-      {/* Produit sélectionné */}
-      <div className="mb-6">
-        {selectedProduct ? (
-          <div>
-            <h3 
-              className="text-lg font-semibold mb-1"
-              style={{ color: 'var(--on-surface)' }}
-            >
-              {selectedProduct.name}
-            </h3>
-            <p 
-              className="text-sm"
-              style={{ color: 'var(--on-surface-variant)' }}
-            >
-              {selectedProduct.category} • {selectedProduct.unitCost.toFixed(2)} $ / {selectedProduct.unit}
-            </p>
-          </div>
-        ) : (
+      {/* Carte produit */}
+      {selectedProduct ? (
+        <ProductCard product={selectedProduct} />
+      ) : (
+        <div className="mb-6">
           <p 
-            className="text-sm"
+            className="text-sm text-center py-8"
             style={{ color: 'var(--on-surface-variant)' }}
           >
             Sélectionnez un produit pour commencer
           </p>
-        )}
-      </div>
+        </div>
+      )}
 
-      {/* Affichage */}
+      {/* Affichage quantité avec sélecteur d'unités */}
       <div 
-        className="mb-6 p-4 rounded-lg text-right"
+        className="mb-6 p-4 rounded-lg"
         style={{ backgroundColor: 'var(--surface-variant)' }}
       >
-        <div 
-          className="text-4xl font-bold mb-2"
-          style={{ color: 'var(--on-surface)' }}
-        >
-          {displayValue} {selectedProduct?.unit || ''}
+        <div className="flex items-center justify-between mb-2">
+          <div 
+            className="text-4xl font-bold"
+            style={{ color: 'var(--on-surface)' }}
+          >
+            {displayValue}
+          </div>
+          {selectedProduct && selectedProduct.availableUnits && selectedProduct.availableUnits.length > 1 && (
+            <select
+              value={selectedUnit}
+              onChange={(e) => setSelectedUnit(e.target.value)}
+              className="ml-4 px-3 py-2 rounded-lg text-lg font-semibold border-2 focus:outline-none"
+              style={{
+                backgroundColor: 'var(--surface)',
+                borderColor: 'var(--primary)',
+                color: 'var(--on-surface)'
+              }}
+            >
+              {selectedProduct.availableUnits.map((unit) => (
+                <option key={unit} value={unit}>
+                  {unit}
+                </option>
+              ))}
+            </select>
+          )}
+          {selectedProduct && (!selectedProduct.availableUnits || selectedProduct.availableUnits.length <= 1) && (
+            <span className="ml-4 text-2xl font-semibold" style={{ color: 'var(--on-surface-variant)' }}>
+              {selectedUnit}
+            </span>
+          )}
         </div>
         <div 
-          className="text-lg"
+          className="text-lg text-right"
           style={{ color: 'var(--on-surface-variant)' }}
         >
           Valeur: {totalValue.toFixed(2)} $
