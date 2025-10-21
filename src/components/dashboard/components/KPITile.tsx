@@ -13,7 +13,6 @@ export const KPITile: React.FC<KPITileProps> = ({
   value,
   previousValue,
   change,
-  unit: _unit,
   icon: Icon,
   onClick,
   className = '',

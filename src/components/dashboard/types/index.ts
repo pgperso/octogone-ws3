@@ -82,7 +82,6 @@ export interface KPITileProps {
   value: string;
   previousValue: string;
   change: number | null;
-  unit: string;
   icon?: React.ComponentType<{ className?: string }>;
   onClick?: () => void;
   className?: string;

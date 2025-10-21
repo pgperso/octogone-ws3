@@ -205,7 +205,6 @@ export const OctogoneDashboardKPIs: React.FC<DashboardKPIsProps> = ({
               value={formatMetricValue(current as number, metric.unit, currency)}
               previousValue={formatMetricValue(previous as number, metric.unit, currency)}
               change={metric.delta_pct}
-              unit={metric.unit}
               icon={IconComponent}
               onClick={() => openModal(metricKey)}
             />
