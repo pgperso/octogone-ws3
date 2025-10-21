@@ -765,18 +765,19 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
           return (
             <div
               key={index}
-              className="rounded-xl p-5 transition-all duration-300 hover:shadow-xl cursor-pointer hover:scale-105 group"
+              className="rounded-xl p-5 transition-all duration-200 cursor-pointer group"
               style={{ 
                 backgroundColor: 'var(--surface)',
                 boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
               }}
               onClick={() => handleKPIClick(metric, title)}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'var(--primary)';
-                e.currentTarget.style.border = '1px solid var(--primary)';
+                e.currentTarget.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.15)';
+                e.currentTarget.style.transform = 'translateY(-2px)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.border = 'none';
+                e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
+                e.currentTarget.style.transform = 'translateY(0px)';
               }}
             >
               <div className="flex items-start justify-between h-full">
@@ -932,72 +933,71 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
 
           {/* Content */}
           <div className="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
-            <div className="text-center py-12">
-              {/* Placeholder content */}
-              <div 
-                className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
-                style={{ backgroundColor: 'var(--surface-variant)' }}
-              >
-                <TrendingUp 
-                  className="w-8 h-8" 
-                  style={{ color: 'var(--on-surface-variant)' }} 
-                />
-              </div>
-              
-              <h3 
-                className="text-lg font-semibold mb-2"
-                style={{ color: 'var(--on-surface)' }}
-              >
-                {isEnglish ? 'Widget in Development' : 'Widget en développement'}
-              </h3>
-              
-              <p 
-                className="text-sm mb-6 max-w-md mx-auto"
-                style={{ color: 'var(--on-surface-variant)' }}
-              >
-                {isEnglish 
-                  ? 'This detailed widget will soon be available with charts, analytics, and personalized recommendations.'
-                  : 'Ce widget détaillé sera bientôt disponible avec des graphiques, des analyses et des recommandations personnalisées.'
-                }
-              </p>
-
+            <div className="text-center py-8">
               {/* Current metric info */}
               <div 
-                className="p-4 rounded-xl border max-w-sm mx-auto mb-6"
+                className="p-6 rounded-xl border max-w-md mx-auto mb-8"
                 style={{ 
-                  backgroundColor: 'var(--surface-variant)',
-                  borderColor: 'var(--outline-variant)'
+                  backgroundColor: 'var(--surface)',
+                  borderColor: 'var(--outline)'
                 }}
               >
                 <h4 
-                  className="text-sm font-medium mb-2"
-                  style={{ color: 'var(--on-surface)' }}
+                  className="text-sm font-medium mb-3"
+                  style={{ color: 'var(--on-surface-variant)' }}
                 >
                   {isEnglish ? 'Current Value' : 'Valeur actuelle'}
                 </h4>
                 <p 
-                  className="text-2xl font-bold"
-                  style={{ color: 'var(--primary)' }}
+                  className="text-3xl font-bold mb-2"
+                  style={{ color: 'var(--on-surface)' }}
                 >
                   {formatMetricValue(selectedKPI.metric.current, selectedKPI.metric.unit)}
                 </p>
                 {selectedKPI.metric.delta_pct !== null && (
                   <p 
-                    className="text-sm mt-1"
+                    className="text-sm"
                     style={{ color: getTrendColor(selectedKPI.metric) }}
                   >
                     {formatDeltaPct(selectedKPI.metric.delta_pct)} vs {isEnglish ? 'previous period' : 'période précédente'}
                   </p>
                 )}
               </div>
+              
+              <h3 
+                className="text-xl font-semibold mb-4"
+                style={{ color: 'var(--on-surface)' }}
+              >
+                {isEnglish ? 'Want to Learn More?' : 'Vous voulez en savoir plus ?'}
+              </h3>
+              
+              <p 
+                className="text-base mb-6 max-w-lg mx-auto leading-relaxed"
+                style={{ color: 'var(--on-surface-variant)' }}
+              >
+                {isEnglish 
+                  ? 'Our team can provide you with detailed insights about this KPI and show you how the complete Octogone dashboard can transform your restaurant management.'
+                  : 'Notre équipe peut vous fournir des informations détaillées sur ce KPI et vous montrer comment le tableau de bord complet d\'Octogone peut transformer la gestion de votre restaurant.'
+                }
+              </p>
+
+              <p 
+                className="text-sm mb-8"
+                style={{ color: 'var(--on-surface-variant)' }}
+              >
+                {isEnglish 
+                  ? 'Contact us to discover the full potential of your data.'
+                  : 'Contactez-nous pour découvrir le plein potentiel de vos données.'
+                }
+              </p>
 
               {/* CTA Button */}
               <OctogoneButton
-                href={`/${locale}/demo`}
+                href={`/${locale}/contact`}
                 variant="primary"
-                size="md"
+                size="lg"
               >
-                {isEnglish ? 'See Full Demo' : 'Voir la démo complète'}
+                {isEnglish ? 'Contact Our Team' : 'Contacter notre équipe'}
               </OctogoneButton>
             </div>
           </div>
