@@ -214,11 +214,12 @@ const Hero = () => {
 
   return (
     <section 
-      className="relative overflow-hidden flex items-center min-h-0"
+      className="relative overflow-hidden flex items-center"
       aria-labelledby="hero-title"
       style={{ 
         backgroundColor: 'var(--background)',
-        minHeight: 'calc(100vh - var(--nav-total-height, 80px))' // Hauteur dynamique de navigation
+        minHeight: '100vh',
+        paddingTop: 'var(--nav-total-height, 80px)' // Padding au lieu de minHeight
       }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 w-full motion-container">

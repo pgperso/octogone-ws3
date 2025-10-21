@@ -135,23 +135,20 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
     };
   }, [isAnnouncementVisible]);
 
-  // Effet pour ajuster la hauteur de la bannière
+  // Effet pour ajuster la hauteur de la bannière et la variable CSS
   React.useEffect(() => {
     if (typeof window !== "undefined") {
-      // Définir la variable CSS pour la hauteur totale de navigation
-      const totalNavHeight = (isAnnouncementVisible ? bannerHeight : 0) + 80; // 80px pour la nav
-      document.documentElement.style.setProperty('--nav-total-height', `${totalNavHeight}px`);
+      // Calculer la hauteur totale réelle
+      const navHeight = 80; // Hauteur fixe de la navigation
+      const totalHeight = (isAnnouncementVisible ? bannerHeight : 0) + navHeight;
+      
+      // Définir la variable CSS
+      document.documentElement.style.setProperty('--nav-total-height', `${totalHeight}px`);
+      
+      // Debug pour vérifier
+      console.log('Nav total height set to:', totalHeight + 'px');
     }
   }, [isAnnouncementVisible, bannerHeight]);
-
-  // Initialiser la variable CSS au montage
-  React.useEffect(() => {
-    if (typeof window !== "undefined") {
-      // S'assurer que la variable CSS est définie dès le début
-      const initialHeight = SHOW_ANNOUNCEMENT_BANNER ? 128 : 80; // 80px nav + 48px banner estimé
-      document.documentElement.style.setProperty('--nav-total-height', `${initialHeight}px`);
-    }
-  }, []);
 
   // Framer Motion scroll animations
   const { scrollYProgress } = useScroll();
