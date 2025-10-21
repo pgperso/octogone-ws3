@@ -49,6 +49,9 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
   // Vérifier au montage si la bannière a été fermée
   React.useEffect(() => {
     if (typeof window !== "undefined") {
+      // Nettoyer le sessionStorage au chargement pour toujours afficher la bannière
+      sessionStorage.removeItem("announcement-dismissed");
+      
       const isDismissed = sessionStorage.getItem("announcement-dismissed") === "true";
       if (isDismissed) {
         setIsAnnouncementVisible(false);
