@@ -85,7 +85,7 @@ function LayoutContent({
       <SimpleSchema locale={locale} />
       
       <Navigation routes={localizedRoutes} activeRoute={activeRoute} theme="light" locale={locale} />
-      <main className="min-h-screen">{children}</main>
+      <main className="min-h-screen" style={{ paddingTop: 'var(--nav-total-height, 128px)' }}>{children}</main>
       <Footer />
       
       {/* Widget flottant ROI */}
