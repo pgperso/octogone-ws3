@@ -222,7 +222,7 @@ const Hero = () => {
         marginTop: 'var(--nav-total-height, 128px)'
       }}
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 w-full motion-container">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full motion-container">
         {/* Fond décoratif */}
         <div className="absolute inset-0 z-0">
           <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-marine-50 rounded-bl-[100px] opacity-70" />
