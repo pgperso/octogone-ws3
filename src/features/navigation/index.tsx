@@ -36,29 +36,10 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
   const [isAnnouncementVisible, setIsAnnouncementVisible] = React.useState(true);
 
   // Vérifier si la bannière a été fermée manuellement
-  const [manuallyDismissed, setManuallyDismissed] = React.useState(() => {
-    if (typeof window !== "undefined") {
-      return sessionStorage.getItem("announcement-dismissed") === "true";
-    }
-    return false;
-  });
+  const [manuallyDismissed, setManuallyDismissed] = React.useState(false);
 
   // État pour la hauteur dynamique de la bannière
   const [bannerHeight, setBannerHeight] = React.useState(60);
-
-  // Vérifier au montage si la bannière a été fermée
-  React.useEffect(() => {
-    if (typeof window !== "undefined") {
-      // Nettoyer le sessionStorage au chargement pour toujours afficher la bannière
-      sessionStorage.removeItem("announcement-dismissed");
-      
-      const isDismissed = sessionStorage.getItem("announcement-dismissed") === "true";
-      if (isDismissed) {
-        setIsAnnouncementVisible(false);
-        setManuallyDismissed(true);
-      }
-    }
-  }, []);
 
   // Gérer la visibilité de la bannière en fonction du défilement
   React.useEffect(() => {
@@ -177,8 +158,6 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
           onDismiss={() => {
             setIsAnnouncementVisible(false);
             setManuallyDismissed(true);
-            // Marquer comme fermée dans cette session
-            sessionStorage.setItem("announcement-dismissed", "true");
           }}
         />
       )}
