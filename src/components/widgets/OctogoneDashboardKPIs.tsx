@@ -977,8 +977,8 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                 style={{ color: 'var(--on-surface-variant)' }}
               >
                 {isEnglish 
-                  ? 'Our team can provide you with detailed insights about this KPI and show you how the complete Octogone dashboard can transform your restaurant management.'
-                  : 'Notre équipe peut vous fournir des informations détaillées sur ce KPI et vous montrer comment le tableau de bord complet d\'Octogone peut transformer la gestion de votre restaurant.'
+                  ? 'This dashboard shows just a glimpse of what Octogone 360 can do. The complete platform offers advanced analytics, detailed reports, predictive insights, and much more to transform your restaurant management.'
+                  : 'Ce tableau de bord ne montre qu\'un aperçu de ce qu\'Octogone 360 peut faire. La plateforme complète offre des analyses avancées, des rapports détaillés, des insights prédictifs, et bien plus encore pour transformer la gestion de votre restaurant.'
                 }
               </p>
 
@@ -987,8 +987,8 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                 style={{ color: 'var(--on-surface-variant)' }}
               >
                 {isEnglish 
-                  ? 'Contact us to discover the full potential of your data.'
-                  : 'Contactez-nous pour découvrir le plein potentiel de vos données.'
+                  ? 'Contact our team to explore all the features and see how Octogone 360 can revolutionize your business.'
+                  : 'Contactez notre équipe pour explorer toutes les fonctionnalités et voir comment Octogone 360 peut révolutionner votre entreprise.'
                 }
               </p>
 

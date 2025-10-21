@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ResponsiveSection } from "@/components/ui/responsive-section";
-import { OctogoneButton } from "@/components/ui/octogone-button";
 import ContactButton from "@/components/widgets/ContactButton";
 import Image from "next/image";
 import { targetSectors, restaurantStyles } from "@/data/sectors-data";
