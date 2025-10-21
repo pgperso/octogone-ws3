@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
-import { TrendingUp, TrendingDown, Minus, Info, X } from 'lucide-react';
+import { TrendingUp, TrendingDown, Minus, Info, X, Download } from 'lucide-react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import dashboardData from '@/data/dashboard/octogone_dashboard_data.json';
@@ -531,7 +531,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
 
         </div>
         
-        {/* Ligne des périodes : Groupé à gauche + Sélecteur à droite */}
+        {/* Ligne des périodes : Groupé à gauche + Export + Sélecteur à droite */}
         <div className="flex items-end justify-between gap-3">
           {/* Groupe de gauche : Segmented Button + Périodes */}
           <div className="flex flex-col md:flex-row md:items-end gap-3">
@@ -624,8 +624,35 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
             </div>
           </div>
 
-          {/* Sélecteur d'établissements - Icône seule sur mobile, avec label sur desktop */}
-          <div className="relative" ref={dropdownRef}>
+          {/* Groupe de droite : Bouton Export + Sélecteur d'établissements */}
+          <div className="flex items-end gap-3">
+            {/* Bouton d'export des données */}
+            <div>
+              <span className="hidden md:block text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
+                {isEnglish ? 'Export' : 'Exporter'}
+              </span>
+              <button
+                onClick={() => {
+                  // Fonction d'export à implémenter
+                  console.log('Export dashboard data');
+                }}
+                className="flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 hover:shadow-md h-10 cursor-pointer"
+                style={{
+                  backgroundColor: 'var(--surface)',
+                  border: '1px solid var(--outline)',
+                  color: 'var(--on-surface)'
+                }}
+                title={isEnglish ? 'Export dashboard data' : 'Exporter les données du tableau de bord'}
+              >
+                <Download className="w-4 h-4" />
+                <span className="hidden md:inline text-sm font-medium">
+                  {isEnglish ? 'Export' : 'Exporter'}
+                </span>
+              </button>
+            </div>
+
+            {/* Sélecteur d'établissements - Icône seule sur mobile, avec label sur desktop */}
+            <div className="relative" ref={dropdownRef}>
             <span className="hidden md:block text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
               {isEnglish ? 'Establishments' : 'Établissements'}
             </span>
@@ -723,6 +750,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                   ))}
                 </div>
               )}
+          </div>
           </div>
         </div>
 
@@ -922,7 +950,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
 
             <button
               onClick={() => setIsKPIModalOpen(false)}
-              className="p-2 rounded-lg transition-colors hover:bg-opacity-80"
+              className="p-2 rounded-lg transition-colors hover:bg-opacity-80 cursor-pointer"
               style={{ backgroundColor: 'var(--surface-variant)' }}
             >
               <X 
