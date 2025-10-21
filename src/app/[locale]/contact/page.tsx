@@ -14,27 +14,12 @@ export default function ContactPage() {
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
-    // Charger le script HubSpot Meetings
-    const script = document.createElement('script');
-    script.src = 'https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js';
-    script.async = true;
-    script.onload = () => {
-      // Attendre un peu pour que le script soit complètement chargé
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 1000);
-    };
-    script.onerror = () => {
-      console.error('Erreur lors du chargement du script HubSpot');
+    // Simuler un petit délai de chargement pour l'UX
+    const timer = setTimeout(() => {
       setIsLoading(false);
-    };
-    document.head.appendChild(script);
+    }, 1500);
 
-    return () => {
-      if (document.head.contains(script)) {
-        document.head.removeChild(script);
-      }
-    };
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -148,12 +133,24 @@ export default function ContactPage() {
         >
           <div className="max-w-5xl mx-auto">
             {/* Calendrier HubSpot */}
-          <div className="rounded-2xl p-8 bg-white shadow-xl border border-gray-200">
+          <div 
+            className="rounded-2xl p-8 shadow-xl border"
+            style={{ 
+              backgroundColor: 'var(--surface)',
+              borderColor: 'var(--outline)'
+            }}
+          >
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-marine-900 mb-4">
+              <h2 
+                className="text-3xl font-bold mb-4"
+                style={{ color: 'var(--on-surface)' }}
+              >
                 {locale === "fr" ? "Réservez votre démo" : "Book your demo"}
               </h2>
-              <p className="text-lg text-marine-700">
+              <p 
+                className="text-lg"
+                style={{ color: 'var(--on-surface-variant)' }}
+              >
                 {locale === "fr" 
                   ? "Choisissez un créneau qui vous convient et discutons de vos besoins."
                   : "Choose a time slot that suits you and let's discuss your needs."}
@@ -164,7 +161,7 @@ export default function ContactPage() {
             {isLoading && (
               <div className="flex flex-col items-center justify-center py-12">
                 <div className="w-12 h-12 border-4 border-gold-500 border-t-transparent rounded-full animate-spin mb-4" />
-                <p className="text-gray-600">
+                <p style={{ color: 'var(--on-surface-variant)' }}>
                   {locale === "fr" ? "Chargement du calendrier..." : "Loading calendar..."}
                 </p>
               </div>
@@ -172,10 +169,16 @@ export default function ContactPage() {
 
             {/* HubSpot Meetings Embed */}
             {!isLoading && (
-              <div 
-                className="meetings-iframe-container" 
-                data-src="https://meetings.hubspot.com/caroline-bourbeau/ventes-octogone?embed=true"
-                style={{ minHeight: '600px', width: '100%' }}
+              <iframe
+                src="https://meetings.hubspot.com/caroline-bourbeau/ventes-octogone?embed=true"
+                style={{ 
+                  minHeight: '600px', 
+                  width: '100%', 
+                  border: 'none',
+                  borderRadius: '8px'
+                }}
+                title="Réserver une démo Octogone"
+                loading="lazy"
               />
             )}
           </div>

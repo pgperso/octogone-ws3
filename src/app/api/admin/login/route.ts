@@ -59,10 +59,10 @@ export async function POST(request: NextRequest) {
     // Cookie sécurisé qui expire dans 24 heures
     response.cookies.set('__Secure-admin-session', sessionToken, {
       httpOnly: true,
-      secure: true,
+      secure: process.env.NODE_ENV === 'production', // Seulement en production
       sameSite: 'strict',
       maxAge: 24 * 60 * 60, // 24 heures
-      path: '/admin'
+      path: '/' // Disponible sur tout le site
     });
 
     return response;
