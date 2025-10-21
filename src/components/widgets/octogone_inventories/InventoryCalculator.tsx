@@ -15,14 +15,12 @@ interface InventoryCalculatorProps {
   selectedProduct: Product | null;
   currentQuantity: number;
   onSave: (productId: string, quantity: number) => void;
-  onCancel: () => void;
 }
 
 export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
   selectedProduct,
   currentQuantity,
-  onSave,
-  onCancel
+  onSave
 }) => {
   const [displayValue, setDisplayValue] = useState('0');
   const [isEditing, setIsEditing] = useState(false);

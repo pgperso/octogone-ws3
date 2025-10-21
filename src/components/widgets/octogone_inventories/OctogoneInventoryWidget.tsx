@@ -57,10 +57,10 @@ export const OctogoneInventoryWidget: React.FC = () => {
     });
   };
 
-  // Annuler la sélection
-  const handleCancel = () => {
-    setSelectedProduct(null);
-  };
+  // Fonction pour annuler la sélection (non utilisée pour l'instant)
+  // const handleCancel = () => {
+  //   setSelectedProduct(null);
+  // };
 
   // Calculer les totaux
   const totalItems = inventory.reduce((sum, item) => sum + item.quantity, 0);
@@ -125,7 +125,6 @@ export const OctogoneInventoryWidget: React.FC = () => {
             selectedProduct={selectedProduct}
             currentQuantity={selectedProduct ? getCurrentQuantity(selectedProduct.id) : 0}
             onSave={handleSaveQuantity}
-            onCancel={handleCancel}
           />
         </div>
       </div>
