@@ -150,6 +150,183 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
     setIsKPIModalOpen(true);
   };
 
+  // Fonction d'export PDF du dashboard
+  const handleExportPDF = () => {
+    const printWindow = window.open('', '_blank');
+    if (!printWindow) return;
+
+    const currentDate = new Date().toLocaleDateString(isEnglish ? 'en-US' : 'fr-FR');
+    const establishmentNames = selectedEstablishments.map(id => {
+      const establishment = ESTABLISHMENTS.find(est => est.id === id);
+      return establishment ? (isEnglish ? establishment.nameEn : establishment.nameFr) : id;
+    }).join(', ');
+
+    const htmlContent = `
+      <!DOCTYPE html>
+      <html lang="${isEnglish ? 'en' : 'fr'}">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>${isEnglish ? 'Octogone Dashboard Export' : 'Export Tableau de Bord Octogone'}</title>
+        <style>
+          @page { margin: 2cm; size: A4; }
+          body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6; 
+            color: #333; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 20px;
+          }
+          .header { 
+            text-align: center; 
+            margin-bottom: 40px; 
+            border-bottom: 2px solid #dcb26b; 
+            padding-bottom: 20px; 
+          }
+          .logo { 
+            font-size: 24px; 
+            font-weight: bold; 
+            color: #1a365d; 
+            margin-bottom: 10px; 
+          }
+          .subtitle { 
+            color: #666; 
+            font-size: 14px; 
+          }
+          .content { 
+            margin: 30px 0; 
+          }
+          .section { 
+            margin-bottom: 25px; 
+          }
+          .section-title { 
+            font-size: 18px; 
+            font-weight: 600; 
+            color: #1a365d; 
+            margin-bottom: 15px; 
+            border-left: 4px solid #dcb26b; 
+            padding-left: 15px; 
+          }
+          .info-box { 
+            background: #f8fafc; 
+            border: 1px solid #e2e8f0; 
+            border-radius: 8px; 
+            padding: 20px; 
+            margin: 20px 0; 
+          }
+          .cta-box { 
+            background: linear-gradient(135deg, #1a365d 0%, #2d5a87 100%); 
+            color: white; 
+            border-radius: 12px; 
+            padding: 25px; 
+            text-align: center; 
+            margin: 30px 0; 
+          }
+          .cta-title { 
+            font-size: 20px; 
+            font-weight: bold; 
+            margin-bottom: 15px; 
+          }
+          .contact-info { 
+            background: #fff7ed; 
+            border: 1px solid #fed7aa; 
+            border-radius: 8px; 
+            padding: 20px; 
+            margin-top: 20px; 
+          }
+          .footer { 
+            text-align: center; 
+            margin-top: 40px; 
+            padding-top: 20px; 
+            border-top: 1px solid #e2e8f0; 
+            color: #666; 
+            font-size: 12px; 
+          }
+        </style>
+      </head>
+      <body>
+        <div class="header">
+          <div class="logo">OCTOGONE 360</div>
+          <div class="subtitle">
+            ${isEnglish ? 'Dashboard Export Report' : 'Rapport d\'Export du Tableau de Bord'}
+          </div>
+          <div class="subtitle">
+            ${currentDate} | ${establishmentNames}
+          </div>
+        </div>
+
+        <div class="content">
+          <div class="section">
+            <div class="section-title">
+              ${isEnglish ? 'About This Export' : 'À propos de cet export'}
+            </div>
+            <div class="info-box">
+              <p>
+                ${isEnglish 
+                  ? 'This export provides an overview of your dashboard data and information about the complete Octogone 360 platform capabilities.'
+                  : 'Cet export fournit un aperçu de vos données de tableau de bord et des informations sur les capacités complètes de la plateforme Octogone 360.'
+                }
+              </p>
+            </div>
+          </div>
+
+          <div class="cta-box">
+            <div class="cta-title">
+              ${isEnglish ? 'Want to Learn More?' : 'Vous voulez en savoir plus ?'}
+            </div>
+            <p>
+              ${isEnglish 
+                ? 'This dashboard shows just a glimpse of what Octogone 360 can do. The complete platform offers advanced analytics, detailed reports, predictive insights, and much more to transform your restaurant management.'
+                : 'Ce tableau de bord ne montre qu\'un aperçu de ce qu\'Octogone 360 peut faire. La plateforme complète offre des analyses avancées, des rapports détaillés, des insights prédictifs, et bien plus encore pour transformer la gestion de votre restaurant.'
+              }
+            </p>
+            <p style="margin-top: 15px; font-weight: 600;">
+              ${isEnglish 
+                ? 'Contact our team to explore all the features and see how Octogone 360 can revolutionize your business.'
+                : 'Contactez notre équipe pour explorer toutes les fonctionnalités et voir comment Octogone 360 peut révolutionner votre entreprise.'
+              }
+            </p>
+          </div>
+
+          <div class="contact-info">
+            <div class="section-title">
+              ${isEnglish ? 'Contact Information' : 'Informations de Contact'}
+            </div>
+            <p><strong>Email:</strong> info@octogone.ca</p>
+            <p><strong>Website:</strong> www.octogone.ca</p>
+            <p>
+              ${isEnglish 
+                ? 'Schedule a personalized demo to discover how Octogone 360 can transform your restaurant operations.'
+                : 'Planifiez une démonstration personnalisée pour découvrir comment Octogone 360 peut transformer vos opérations de restaurant.'
+              }
+            </p>
+          </div>
+        </div>
+
+        <div class="footer">
+          <p>
+            ${isEnglish 
+              ? 'This document was generated from your Octogone 360 dashboard'
+              : 'Ce document a été généré depuis votre tableau de bord Octogone 360'
+            }
+          </p>
+          <p>© ${new Date().getFullYear()} Octogone. ${isEnglish ? 'All rights reserved.' : 'Tous droits réservés.'}</p>
+        </div>
+      </body>
+      </html>
+    `;
+
+    printWindow.document.write(htmlContent);
+    printWindow.document.close();
+    
+    // Attendre que le contenu soit chargé avant d'imprimer
+    printWindow.onload = () => {
+      printWindow.print();
+      printWindow.close();
+    };
+  };
+
   // Obtenir les données pour la période sélectionnée
   const currentPeriodData = dashboardData.filters[selectedPeriod as keyof typeof dashboardData.filters] as PeriodData;
 
@@ -632,10 +809,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                 {isEnglish ? 'Export' : 'Exporter'}
               </span>
               <button
-                onClick={() => {
-                  // Fonction d'export à implémenter
-                  console.log('Export dashboard data');
-                }}
+                onClick={handleExportPDF}
                 className="flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 hover:shadow-md h-10 cursor-pointer"
                 style={{
                   backgroundColor: 'var(--surface)',
