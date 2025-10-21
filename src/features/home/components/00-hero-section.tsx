@@ -210,7 +210,7 @@ const Hero = () => {
     }, 3000); // Change tous les 3 secondes
 
     return () => clearInterval(textInterval);
-  }, []);
+  }, [restaurantTexts.fr.length]);
 
   return (
     <section 

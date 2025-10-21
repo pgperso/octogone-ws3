@@ -2,8 +2,6 @@
 
 import React from 'react';
 import { DollarSign, Users, TrendingUp, ShoppingCart, Utensils, Building, Receipt, Target } from 'lucide-react';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { 
   useDashboardData, 
