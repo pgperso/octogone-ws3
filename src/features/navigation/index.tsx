@@ -32,26 +32,25 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
   // État pour la modale de démo
   const [isDemoModalOpen, setIsDemoModalOpen] = React.useState(false);
 
-  // État pour la bannière d'annonce
-  const [isAnnouncementVisible, setIsAnnouncementVisible] =
-    React.useState(true);
+  // État pour la bannière d'annonce - initialiser avec la valeur du sessionStorage
+  const [isAnnouncementVisible, setIsAnnouncementVisible] = React.useState(() => {
+    if (typeof window !== "undefined") {
+      const isDismissed = sessionStorage.getItem("announcement-dismissed") === "true";
+      return !isDismissed;
+    }
+    return true;
+  });
 
   // Vérifier si la bannière a été fermée manuellement
-  const [manuallyDismissed, setManuallyDismissed] = React.useState(false);
+  const [manuallyDismissed, setManuallyDismissed] = React.useState(() => {
+    if (typeof window !== "undefined") {
+      return sessionStorage.getItem("announcement-dismissed") === "true";
+    }
+    return false;
+  });
 
   // État pour la hauteur dynamique de la bannière
   const [bannerHeight, setBannerHeight] = React.useState(60);
-
-  React.useEffect(() => {
-    if (typeof window !== "undefined") {
-      // Vérifier si la bannière a été fermée dans cette session
-      const dismissKey = "announcement-dismissed";
-      const isDismissed = sessionStorage.getItem(dismissKey) === "true";
-      
-      setIsAnnouncementVisible(!isDismissed);
-      setManuallyDismissed(isDismissed);
-    }
-  }, []);
 
   // Gérer la visibilité de la bannière en fonction du défilement
   React.useEffect(() => {

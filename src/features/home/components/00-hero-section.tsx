@@ -217,7 +217,7 @@ const Hero = () => {
       className="relative overflow-hidden flex items-center"
       aria-labelledby="hero-title"
       style={{ 
-        backgroundColor: 'pink', // TEMPORAIRE - pour debug
+        backgroundColor: 'var(--background)',
         minHeight: '100vh',
         marginTop: 'var(--nav-total-height, 128px)'
       }}
