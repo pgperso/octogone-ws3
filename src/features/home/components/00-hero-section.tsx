@@ -218,7 +218,7 @@ const Hero = () => {
       aria-labelledby="hero-title"
       style={{ 
         backgroundColor: 'var(--background)',
-        minHeight: 'calc(100vh - 128px)' // 80px nav + 48px banner en desktop
+        minHeight: 'calc(100vh - var(--nav-total-height, 80px))' // Hauteur dynamique de navigation
       }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 w-full motion-container">

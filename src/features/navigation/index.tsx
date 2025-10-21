@@ -135,11 +135,29 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
     };
   }, [isAnnouncementVisible]);
 
+  // Effet pour ajuster la hauteur de la bannière
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      // Définir la variable CSS pour la hauteur totale de navigation
+      const totalNavHeight = (isAnnouncementVisible ? bannerHeight : 0) + 80; // 80px pour la nav
+      document.documentElement.style.setProperty('--nav-total-height', `${totalNavHeight}px`);
+    }
+  }, [isAnnouncementVisible, bannerHeight]);
+
+  // Initialiser la variable CSS au montage
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      // S'assurer que la variable CSS est définie dès le début
+      const initialHeight = SHOW_ANNOUNCEMENT_BANNER ? 128 : 80; // 80px nav + 48px banner estimé
+      document.documentElement.style.setProperty('--nav-total-height', `${initialHeight}px`);
+    }
+  }, []);
+
   // Framer Motion scroll animations
   const { scrollYProgress } = useScroll();
   // Variable commentée car non utilisée actuellement
   // const headerOpacity = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
-  
+
   // Pour les traductions côté client, nous utilisons des textes codés en dur
   // Les traductions seront gérées côté serveur dans le layout
 
