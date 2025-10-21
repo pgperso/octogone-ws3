@@ -231,7 +231,7 @@ const Hero = () => {
 
         <div className="relative z-10 w-full flex flex-col lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center">
             {/* Version mobile compacte - Octogones superposés */}
-            <div className="flex lg:hidden justify-center items-start h-[320px] mb-8 order-first pt-2">
+            <div className="flex lg:hidden justify-center items-start h-[320px] order-first">
               <div className="relative w-[320px] h-[320px] flex justify-center items-center">
                 {/* Octogone central avec image dynamique */}
                 <div 
@@ -347,7 +347,7 @@ const Hero = () => {
             </div>
 
             {/* Version desktop - Octogones interconnectés */}
-            <div className="hidden lg:flex justify-center items-center h-full mt-0 pt-0 mb-2 xs:mb-4 lg:mb-8 order-first lg:order-last">
+            <div className="hidden lg:flex justify-center items-center h-full order-first lg:order-last">
               <div className="relative w-full max-w-[220px] xs:max-w-[280px] sm:max-w-[340px] md:max-w-[400px] lg:max-w-[480px] xl:max-w-[580px] h-[220px] xs:h-[280px] sm:h-[340px] md:h-[400px] lg:h-[480px] xl:h-[580px] flex justify-center items-center overflow-visible">
                 
                 {/* Lignes de connexion - Derrière tout (4 lignes pour 4 octogones) */}
