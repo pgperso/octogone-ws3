@@ -89,7 +89,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
           className="text-2xl font-bold mb-2"
           style={{ color: 'var(--on-primary-container)' }}
         >
-          Prise d'inventaire
+          Prise d&apos;inventaire
         </h2>
         <div 
           className="flex gap-6 text-sm"

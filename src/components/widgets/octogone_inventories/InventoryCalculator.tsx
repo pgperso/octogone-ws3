@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Delete, Check, X } from 'lucide-react';
+import { Delete, Check } from 'lucide-react';
 
 interface Product {
   id: string;
@@ -73,11 +73,12 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
     }
   };
 
-  const handleCancel = () => {
-    setDisplayValue(currentQuantity > 0 ? currentQuantity.toString() : '0');
-    setIsEditing(false);
-    onCancel();
-  };
+  // Fonction pour annuler - utilisée si besoin
+  // const handleCancel = () => {
+  //   setDisplayValue(currentQuantity > 0 ? currentQuantity.toString() : '0');
+  //   setIsEditing(false);
+  //   onCancel();
+  // };
 
   const totalValue = selectedProduct 
     ? (parseFloat(displayValue) || 0) * selectedProduct.unitCost 
