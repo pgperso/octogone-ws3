@@ -11,6 +11,7 @@ import { getToolById, getNextTool, getPreviousTool } from "@/data/tools/tools-co
 import { ToolSEO } from "@/components/seo/tool-seo";
 import { LogoCard } from "@/components/widgets/logo-card";
 import OctogoneDashboardKPIs from "@/components/widgets/OctogoneDashboardKPIs";
+import { OctogoneInventoryWidget } from "@/components/widgets/octogone_inventories";
 
 // Permettre les paramètres dynamiques
 export const dynamicParams = true;
@@ -150,6 +151,13 @@ export default function ToolPage({
       {toolId === 'octogone-360' && (
         <ResponsiveSection spacing="xl" bgColor="">
           <OctogoneDashboardKPIs locale={locale as 'fr' | 'en'} />
+        </ResponsiveSection>
+      )}
+
+      {/* Widget Inventaire - Uniquement pour Inventaire */}
+      {toolId === 'inventaire' && (
+        <ResponsiveSection spacing="xl" bgColor="">
+          <OctogoneInventoryWidget />
         </ResponsiveSection>
       )}
 
