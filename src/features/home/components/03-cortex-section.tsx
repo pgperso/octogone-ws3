@@ -64,7 +64,7 @@ export default function CortexIntro({ locale = "fr" }: CortexIntroProps) {
           >
             {isEnglish 
               ? "Your AI assistant that transforms data into decisions." 
-              : "Votre assistant IA qui transforme vos données en décisions."}
+              : "L'assistant IA d'Octogone qui transformera vos données en décisions."}
           </p>
 
           {/* Concepts clés - Affichés en tout temps */}

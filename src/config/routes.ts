@@ -63,7 +63,7 @@ export const routes: Route[] = [
     path: "/cortex",
     label: "Cortex IA",
     labelEn: "Cortex AI",
-    description: "Votre assistant IA qui transforme vos données en décisions",
+    description: "L'assistant IA d'Octogone qui transformera vos données en décisions",
     descriptionEn: "Your AI assistant that transforms data into decisions",
   },
   {

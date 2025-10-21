@@ -1,0 +1,340 @@
+{
+  "products": [
+    {
+      "id": "prod-001",
+      "name": "Ail frais",
+      "category": "Légumes",
+      "unit": "kg",
+      "unitCost": 8.50
+    },
+    {
+      "id": "prod-002",
+      "name": "Ananas",
+      "category": "Fruits",
+      "unit": "unité",
+      "unitCost": 3.25
+    },
+    {
+      "id": "prod-003",
+      "name": "Asperges",
+      "category": "Légumes",
+      "unit": "kg",
+      "unitCost": 12.75
+    },
+    {
+      "id": "prod-004",
+      "name": "Avocat",
+      "category": "Fruits",
+      "unit": "unité",
+      "unitCost": 2.50
+    },
+    {
+      "id": "prod-005",
+      "name": "Bacon",
+      "category": "Viandes",
+      "unit": "kg",
+      "unitCost": 15.99
+    },
+    {
+      "id": "prod-006",
+      "name": "Baguette",
+      "category": "Boulangerie",
+      "unit": "unité",
+      "unitCost": 1.50
+    },
+    {
+      "id": "prod-007",
+      "name": "Basilic frais",
+      "category": "Herbes",
+      "unit": "botte",
+      "unitCost": 2.99
+    },
+    {
+      "id": "prod-008",
+      "name": "Beurre",
+      "category": "Produits laitiers",
+      "unit": "kg",
+      "unitCost": 9.50
+    },
+    {
+      "id": "prod-009",
+      "name": "Bière blonde",
+      "category": "Boissons",
+      "unit": "caisse 24",
+      "unitCost": 42.00
+    },
+    {
+      "id": "prod-010",
+      "name": "Bœuf haché",
+      "category": "Viandes",
+      "unit": "kg",
+      "unitCost": 18.50
+    },
+    {
+      "id": "prod-011",
+      "name": "Brocoli",
+      "category": "Légumes",
+      "unit": "kg",
+      "unitCost": 5.25
+    },
+    {
+      "id": "prod-012",
+      "name": "Café en grains",
+      "category": "Boissons",
+      "unit": "kg",
+      "unitCost": 28.00
+    },
+    {
+      "id": "prod-013",
+      "name": "Carottes",
+      "category": "Légumes",
+      "unit": "kg",
+      "unitCost": 3.50
+    },
+    {
+      "id": "prod-014",
+      "name": "Champignons blancs",
+      "category": "Légumes",
+      "unit": "kg",
+      "unitCost": 8.99
+    },
+    {
+      "id": "prod-015",
+      "name": "Cheddar",
+      "category": "Produits laitiers",
+      "unit": "kg",
+      "unitCost": 14.50
+    },
+    {
+      "id": "prod-016",
+      "name": "Citrons",
+      "category": "Fruits",
+      "unit": "kg",
+      "unitCost": 4.25
+    },
+    {
+      "id": "prod-017",
+      "name": "Coca-Cola",
+      "category": "Boissons",
+      "unit": "caisse 24",
+      "unitCost": 18.50
+    },
+    {
+      "id": "prod-018",
+      "name": "Concombre",
+      "category": "Légumes",
+      "unit": "kg",
+      "unitCost": 3.75
+    },
+    {
+      "id": "prod-019",
+      "name": "Coriandre fraîche",
+      "category": "Herbes",
+      "unit": "botte",
+      "unitCost": 2.50
+    },
+    {
+      "id": "prod-020",
+      "name": "Crème 35%",
+      "category": "Produits laitiers",
+      "unit": "L",
+      "unitCost": 6.50
+    },
+    {
+      "id": "prod-021",
+      "name": "Crevettes",
+      "category": "Fruits de mer",
+      "unit": "kg",
+      "unitCost": 32.00
+    },
+    {
+      "id": "prod-022",
+      "name": "Farine tout usage",
+      "category": "Épicerie",
+      "unit": "kg",
+      "unitCost": 2.25
+    },
+    {
+      "id": "prod-023",
+      "name": "Frites surgelées",
+      "category": "Surgelés",
+      "unit": "kg",
+      "unitCost": 4.50
+    },
+    {
+      "id": "prod-024",
+      "name": "Fromage mozzarella",
+      "category": "Produits laitiers",
+      "unit": "kg",
+      "unitCost": 12.00
+    },
+    {
+      "id": "prod-025",
+      "name": "Huile d'olive",
+      "category": "Épicerie",
+      "unit": "L",
+      "unitCost": 18.00
+    },
+    {
+      "id": "prod-026",
+      "name": "Huile végétale",
+      "category": "Épicerie",
+      "unit": "L",
+      "unitCost": 8.50
+    },
+    {
+      "id": "prod-027",
+      "name": "Jus d'orange",
+      "category": "Boissons",
+      "unit": "L",
+      "unitCost": 5.25
+    },
+    {
+      "id": "prod-028",
+      "name": "Lait 3.25%",
+      "category": "Produits laitiers",
+      "unit": "L",
+      "unitCost": 3.50
+    },
+    {
+      "id": "prod-029",
+      "name": "Laitue romaine",
+      "category": "Légumes",
+      "unit": "kg",
+      "unitCost": 4.50
+    },
+    {
+      "id": "prod-030",
+      "name": "Oignons jaunes",
+      "category": "Légumes",
+      "unit": "kg",
+      "unitCost": 2.75
+    },
+    {
+      "id": "prod-031",
+      "name": "Œufs",
+      "category": "Produits laitiers",
+      "unit": "douzaine",
+      "unitCost": 4.25
+    },
+    {
+      "id": "prod-032",
+      "name": "Pâtes sèches",
+      "category": "Épicerie",
+      "unit": "kg",
+      "unitCost": 3.50
+    },
+    {
+      "id": "prod-033",
+      "name": "Persil frais",
+      "category": "Herbes",
+      "unit": "botte",
+      "unitCost": 2.25
+    },
+    {
+      "id": "prod-034",
+      "name": "Poitrine de poulet",
+      "category": "Viandes",
+      "unit": "kg",
+      "unitCost": 14.50
+    },
+    {
+      "id": "prod-035",
+      "name": "Poivrons rouges",
+      "category": "Légumes",
+      "unit": "kg",
+      "unitCost": 6.50
+    },
+    {
+      "id": "prod-036",
+      "name": "Pommes de terre",
+      "category": "Légumes",
+      "unit": "kg",
+      "unitCost": 2.50
+    },
+    {
+      "id": "prod-037",
+      "name": "Riz blanc",
+      "category": "Épicerie",
+      "unit": "kg",
+      "unitCost": 3.25
+    },
+    {
+      "id": "prod-038",
+      "name": "Saumon frais",
+      "category": "Fruits de mer",
+      "unit": "kg",
+      "unitCost": 38.00
+    },
+    {
+      "id": "prod-039",
+      "name": "Sel",
+      "category": "Épicerie",
+      "unit": "kg",
+      "unitCost": 1.50
+    },
+    {
+      "id": "prod-040",
+      "name": "Sirop d'érable",
+      "category": "Épicerie",
+      "unit": "L",
+      "unitCost": 45.00
+    },
+    {
+      "id": "prod-041",
+      "name": "Sucre blanc",
+      "category": "Épicerie",
+      "unit": "kg",
+      "unitCost": 2.00
+    },
+    {
+      "id": "prod-042",
+      "name": "Thon en conserve",
+      "category": "Épicerie",
+      "unit": "boîte",
+      "unitCost": 3.50
+    },
+    {
+      "id": "prod-043",
+      "name": "Tomates",
+      "category": "Légumes",
+      "unit": "kg",
+      "unitCost": 5.50
+    },
+    {
+      "id": "prod-044",
+      "name": "Tortillas",
+      "category": "Boulangerie",
+      "unit": "paquet 12",
+      "unitCost": 4.25
+    },
+    {
+      "id": "prod-045",
+      "name": "Vinaigre balsamique",
+      "category": "Épicerie",
+      "unit": "L",
+      "unitCost": 12.00
+    },
+    {
+      "id": "prod-046",
+      "name": "Vin blanc",
+      "category": "Boissons",
+      "unit": "bouteille",
+      "unitCost": 15.00
+    },
+    {
+      "id": "prod-047",
+      "name": "Vin rouge",
+      "category": "Boissons",
+      "unit": "bouteille",
+      "unitCost": 18.00
+    },
+    {
+      "id": "prod-048",
+      "name": "Yogourt nature",
+      "category": "Produits laitiers",
+      "unit": "kg",
+      "unitCost": 5.50
+    }
+  ]
+}

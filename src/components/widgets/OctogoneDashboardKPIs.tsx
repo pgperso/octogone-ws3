@@ -581,7 +581,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                 : 'var(--on-surface-variant)'
             }}
           >
-            {isEnglish ? 'Current Version' : 'Version actuelle'}
+            {isEnglish ? 'Try it' : 'Testez-le'}
           </button>
           <button
             onClick={() => setActiveVersion('next')}

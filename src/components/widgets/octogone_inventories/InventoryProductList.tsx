@@ -1,0 +1,145 @@
+"use client";
+
+import React, { useState, useMemo } from 'react';
+import { Search } from 'lucide-react';
+
+interface Product {
+  id: string;
+  name: string;
+  category: string;
+  unit: string;
+  unitCost: number;
+}
+
+interface InventoryItem {
+  productId: string;
+  quantity: number;
+}
+
+interface InventoryProductListProps {
+  products: Product[];
+  inventory: InventoryItem[];
+  onProductSelect: (product: Product) => void;
+  selectedProductId: string | null;
+}
+
+export const InventoryProductList: React.FC<InventoryProductListProps> = ({
+  products,
+  inventory,
+  onProductSelect,
+  selectedProductId
+}) => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  // Filtrer les produits selon la recherche
+  const filteredProducts = useMemo(() => {
+    if (!searchTerm.trim()) return products;
+    
+    const term = searchTerm.toLowerCase();
+    return products.filter(product => 
+      product.name.toLowerCase().includes(term) ||
+      product.category.toLowerCase().includes(term)
+    );
+  }, [products, searchTerm]);
+
+  // Obtenir la quantité d'un produit
+  const getQuantity = (productId: string): number => {
+    const item = inventory.find(i => i.productId === productId);
+    return item?.quantity || 0;
+  };
+
+  return (
+    <div className="flex flex-col h-full">
+      {/* Barre de recherche */}
+      <div className="p-4 border-b" style={{ borderColor: 'var(--outline)' }}>
+        <div className="relative">
+          <Search 
+            className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5" 
+            style={{ color: 'var(--on-surface-variant)' }}
+          />
+          <input
+            type="text"
+            placeholder="Rechercher un produit..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full pl-10 pr-4 py-2 rounded-lg border focus:outline-none focus:ring-2"
+            style={{
+              backgroundColor: 'var(--surface)',
+              borderColor: 'var(--outline)',
+              color: 'var(--on-surface)',
+              '--tw-ring-color': 'var(--primary)'
+            } as React.CSSProperties}
+          />
+        </div>
+      </div>
+
+      {/* En-têtes de colonnes */}
+      <div 
+        className="grid grid-cols-12 gap-2 px-4 py-3 text-sm font-semibold border-b"
+        style={{ 
+          backgroundColor: 'var(--surface-variant)',
+          color: 'var(--on-surface-variant)',
+          borderColor: 'var(--outline)'
+        }}
+      >
+        <div className="col-span-5">Produit</div>
+        <div className="col-span-3 text-center">Quantité</div>
+        <div className="col-span-4 text-right">Prix coûtant</div>
+      </div>
+
+      {/* Liste scrollable */}
+      <div className="flex-1 overflow-y-auto">
+        {filteredProducts.length === 0 ? (
+          <div 
+            className="flex items-center justify-center h-32 text-sm"
+            style={{ color: 'var(--on-surface-variant)' }}
+          >
+            Aucun produit trouvé
+          </div>
+        ) : (
+          filteredProducts.map((product) => {
+            const quantity = getQuantity(product.id);
+            const isSelected = selectedProductId === product.id;
+            
+            return (
+              <div
+                key={product.id}
+                onClick={() => onProductSelect(product)}
+                className="grid grid-cols-12 gap-2 px-4 py-3 cursor-pointer border-b transition-colors"
+                style={{
+                  backgroundColor: isSelected ? 'var(--primary-container)' : 'transparent',
+                  borderColor: 'var(--outline)',
+                  color: isSelected ? 'var(--on-primary-container)' : 'var(--on-surface)'
+                }}
+              >
+                <div className="col-span-5">
+                  <div className="font-medium">{product.name}</div>
+                  <div 
+                    className="text-xs mt-0.5"
+                    style={{ color: 'var(--on-surface-variant)' }}
+                  >
+                    {product.category}
+                  </div>
+                </div>
+                <div className="col-span-3 text-center font-semibold">
+                  {quantity > 0 ? `${quantity} ${product.unit}` : '-'}
+                </div>
+                <div className="col-span-4 text-right">
+                  <div className="font-semibold">
+                    {product.unitCost.toFixed(2)} $
+                  </div>
+                  <div 
+                    className="text-xs mt-0.5"
+                    style={{ color: 'var(--on-surface-variant)' }}
+                  >
+                    par {product.unit}
+                  </div>
+                </div>
+              </div>
+            );
+          })
+        )}
+      </div>
+    </div>
+  );
+};

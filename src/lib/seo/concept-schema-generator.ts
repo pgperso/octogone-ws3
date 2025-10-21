@@ -37,7 +37,7 @@ export function generateConceptSchema(concept: ConceptFeature, locale: string) {
       en: 'Anticipate with artificial intelligence. Demand forecasting, anomaly detection, intelligent recommendations with Cortex AI.'
     },
     cortex: {
-      fr: 'Votre assistant IA qui transforme vos données en décisions. Posez des questions, obtenez des réponses instantanées et optimisez vos opérations sans effort.',
+      fr: 'L’assistant IA d’Octogone qui transformera vos données en décisions. Posez des questions, obtenez des réponses instantanées et optimisez vos opérations sans effort.',
       en: 'Your AI assistant that transforms data into decisions. Ask questions, get instant answers, and optimize your restaurant operations effortlessly.'
     }
   };

@@ -172,7 +172,7 @@ Predicting is the future. And this future, we're building it together. With Octo
     
     heroTitleFr: 'Voici Cortex',
     heroTitleEn: 'Meet Cortex',
-    heroDescriptionFr: 'Votre assistant IA qui transforme vos données en décisions. Posez des questions, obtenez des réponses instantanées et optimisez vos opérations sans effort.',
+    heroDescriptionFr: 'L’assistant IA d’Octogone qui transformera vos données en décisions. Posez des questions, obtenez des réponses instantanées et optimisez vos opérations sans effort.',
     heroDescriptionEn: 'Your AI assistant that transforms data into decisions. Ask questions, get instant answers, and optimize your restaurant operations effortlessly.',
     heroImage: 'https://player.vimeo.com/video/1126878170?badge=0&autopause=0&player_id=0&app_id=58479&title=0&byline=0&portrait=0&autoplay=1&loop=1&muted=1&controls=0&background=1',
     
