@@ -190,9 +190,9 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
         )}
         style={{
           top: isAnnouncementVisible ? `${bannerHeight}px` : '0px',
-          transition: 'top 0.3s ease-out, background-color 0.3s ease-out, border-color 0.3s ease-out',
+          transition: 'top 0.3s ease-out, background-color 0.2s ease-out, border-color 0.2s ease-out, opacity 0.2s ease-out',
           willChange: 'transform',
-          transform: 'translateZ(0)', // Force GPU acceleration
+          transform: 'translateZ(0)',
           backgroundColor: isScrolled ? 'var(--surface)' : 'var(--background)',
           opacity: isScrolled ? 0.95 : 1,
           ...(isScrolled ? {
@@ -201,18 +201,15 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
         }}
         initial={{ 
           y: -100, 
-          opacity: 1,
-          backgroundColor: 'var(--background)'
+          opacity: 0
         }}
         animate={{ 
           y: 0, 
-          opacity: 1,
-          backgroundColor: isScrolled ? 'var(--surface)' : 'var(--background)'
+          opacity: 1
         }}
         transition={{ 
-          duration: 0.8, 
-          ease: [0.22, 1, 0.36, 1],
-          type: "tween"
+          duration: 0.6, 
+          ease: "easeOut"
         }}
       >
         {/* Progress bar */}
