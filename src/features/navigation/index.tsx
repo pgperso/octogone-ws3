@@ -144,6 +144,19 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
 
   return (
     <>
+      {/* Fond fixe pour éviter le noir pendant l'animation de navigation */}
+      <div 
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '200px',
+          backgroundColor: 'var(--background)',
+          zIndex: 39
+        }}
+      />
+      
       {/* Bannière d'annonce */}
       {SHOW_ANNOUNCEMENT_BANNER && (
         <AnnouncementBanner

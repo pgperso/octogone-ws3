@@ -218,7 +218,7 @@ const Hero = () => {
       aria-labelledby="hero-title"
       style={{ 
         backgroundColor: 'var(--background)',
-        minHeight: '100vh',
+        height: '100vh',
         marginTop: 'var(--nav-total-height, 128px)'
       }}
     >
