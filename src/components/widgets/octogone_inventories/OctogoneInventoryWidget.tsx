@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { InventoryProductList } from './InventoryProductList';
 import { InventoryCalculator } from './InventoryCalculator';
 import inventoryData from '@/data/inventory/inventory-products.json';
@@ -80,38 +81,74 @@ export const OctogoneInventoryWidget: React.FC = () => {
         border: '1px solid var(--outline)'
       }}
     >
-      {/* En-tête */}
+      {/* En-tête avec avatar */}
       <div 
         className="p-6 border-b"
         style={{ 
-          backgroundColor: 'var(--primary-container)',
+          backgroundColor: 'var(--surface)',
           borderColor: 'var(--outline)'
         }}
       >
-        <h2 
-          className="text-2xl font-bold mb-2"
-          style={{ color: 'var(--on-primary-container)' }}
-        >
-          Prise d&apos;inventaire
-        </h2>
-        <div 
-          className="flex gap-6 text-sm"
-          style={{ color: 'var(--on-primary-container)' }}
-        >
-          <div>
-            <span className="font-semibold">{inventory.length}</span> produits comptés
+        <div className="flex items-center justify-between mb-4">
+          {/* Avatar et informations */}
+          <div className="flex items-center gap-3">
+            <div 
+              className="w-16 h-16 rounded-full overflow-hidden"
+              style={{ 
+                border: '2px solid var(--primary)',
+                padding: '2px'
+              }}
+            >
+              <Image
+                src="/images/avatars/marc.avif"
+                alt="Marc"
+                width={60}
+                height={60}
+                className="w-full h-full object-cover rounded-full"
+              />
+            </div>
+            <div className="flex flex-col justify-center h-16">
+              <h2 className="text-2xl font-bold leading-tight" style={{ color: 'var(--on-surface)' }}>
+                Prise d&apos;inventaire
+              </h2>
+              <p className="text-sm font-semibold leading-tight" style={{ color: 'var(--primary)' }}>
+                Marc Tremblay
+              </p>
+              <p className="text-xs leading-tight" style={{ color: 'var(--on-surface-variant)' }}>
+                Directeur de restauration
+              </p>
+            </div>
           </div>
-          <div>
-            <span className="font-semibold">{totalItems.toFixed(1)}</span> unités totales
-          </div>
-          <div>
-            <span className="font-semibold">{totalValue.toFixed(2)} $</span> valeur totale
+
+          {/* Statistiques à droite */}
+          <div 
+            className="flex gap-6 text-sm"
+            style={{ color: 'var(--on-surface-variant)' }}
+          >
+            <div className="text-center">
+              <div className="text-2xl font-bold" style={{ color: 'var(--primary)' }}>
+                {inventory.length}
+              </div>
+              <div className="text-xs">produits</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold" style={{ color: 'var(--primary)' }}>
+                {totalItems.toFixed(0)}
+              </div>
+              <div className="text-xs">unités</div>
+            </div>
+            <div className="text-center">
+              <div className="text-2xl font-bold" style={{ color: 'var(--primary)' }}>
+                {totalValue.toFixed(0)} $
+              </div>
+              <div className="text-xs">valeur</div>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Contenu principal */}
-      <div className="grid grid-cols-1 lg:grid-cols-2" style={{ height: '600px' }}>
+      <div className="grid grid-cols-1 lg:grid-cols-2" style={{ minHeight: '700px', height: 'auto' }}>
         {/* Liste de produits (gauche) */}
         <div className="border-r" style={{ borderColor: 'var(--outline)' }}>
           <InventoryProductList

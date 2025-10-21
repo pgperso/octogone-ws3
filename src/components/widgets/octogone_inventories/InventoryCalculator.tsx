@@ -202,31 +202,19 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
         </button>
       </div>
 
-      {/* Boutons d'action */}
-      <div className="grid grid-cols-2 gap-3 mt-auto">
-        <button
-          onClick={handleClear}
-          disabled={!selectedProduct}
-          className="p-3 rounded-lg font-semibold transition-colors disabled:opacity-50"
-          style={{
-            backgroundColor: 'var(--surface-variant)',
-            color: 'var(--on-surface)'
-          }}
-        >
-          Effacer
-        </button>
-        
+      {/* Bouton Ajouter */}
+      <div className="mt-auto">
         <button
           onClick={handleSave}
           disabled={!selectedProduct || !isEditing}
-          className="p-3 rounded-lg font-semibold transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+          className="w-full p-4 rounded-lg font-bold text-lg transition-all disabled:opacity-50 flex items-center justify-center gap-3 shadow-lg"
           style={{
             backgroundColor: 'var(--primary)',
             color: 'var(--on-primary)'
           }}
         >
-          <Check className="w-5 h-5" />
-          Enregistrer
+          <Check className="w-6 h-6" />
+          Ajouter
         </button>
       </div>
     </div>
