@@ -362,7 +362,7 @@ const TargetSectors = () => {
                 
                 {/* Bouton Nous contacter */}
                 <div className="mt-8">
-                  <ContactButton locale={locale} />
+                  <ContactButton locale={locale as 'fr' | 'en'} />
                 </div>
               </div>
             </div>

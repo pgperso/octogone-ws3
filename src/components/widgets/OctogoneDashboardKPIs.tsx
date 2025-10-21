@@ -935,34 +935,84 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
           {/* Content */}
           <div className="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
             <div className="text-center py-8">
-              {/* Current metric info */}
+              {/* Graphique animé */}
               <div 
-                className="p-6 rounded-xl border max-w-md mx-auto mb-8"
+                className="p-6 rounded-xl border max-w-2xl mx-auto mb-8"
                 style={{ 
                   backgroundColor: 'var(--surface)',
                   borderColor: 'var(--outline)'
                 }}
               >
                 <h4 
-                  className="text-sm font-medium mb-3"
+                  className="text-sm font-medium mb-6"
                   style={{ color: 'var(--on-surface-variant)' }}
                 >
-                  {isEnglish ? 'Current Value' : 'Valeur actuelle'}
+                  {isEnglish ? 'Trend Analysis' : 'Analyse de tendance'}
                 </h4>
-                <p 
-                  className="text-3xl font-bold mb-2"
-                  style={{ color: 'var(--on-surface)' }}
+                
+                {/* Graphique en barres animé */}
+                <div className="flex items-end justify-center gap-3 h-32 mb-4">
+                  {/* Génération de données fictives pour le graphique */}
+                  {Array.from({ length: 7 }, (_, i) => {
+                    const baseValue = selectedKPI.metric.previous;
+                    const currentValue = selectedKPI.metric.current;
+                    const variation = (currentValue - baseValue) / 6;
+                    const barValue = baseValue + (variation * i);
+                    const maxValue = Math.max(baseValue, currentValue) * 1.2;
+                    const heightPercent = (barValue / maxValue) * 100;
+                    
+                    return (
+                      <motion.div
+                        key={i}
+                        className="flex flex-col items-center"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        transition={{ duration: 0.8, delay: i * 0.1 }}
+                      >
+                        <motion.div
+                          className="w-8 rounded-t-md"
+                          style={{ 
+                            backgroundColor: i === 6 ? 'var(--primary)' : 'var(--primary-container)',
+                            height: `${Math.max(heightPercent, 10)}%`,
+                            transformOrigin: 'bottom'
+                          }}
+                          initial={{ scaleY: 0 }}
+                          animate={{ scaleY: 1 }}
+                          transition={{ duration: 0.6, delay: i * 0.1 + 0.2 }}
+                        />
+                        <span 
+                          className="text-xs mt-2"
+                          style={{ color: 'var(--on-surface-variant)' }}
+                        >
+                          {i === 0 ? (isEnglish ? 'Past' : 'Passé') : 
+                           i === 6 ? (isEnglish ? 'Now' : 'Actuel') : ''}
+                        </span>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+
+                {/* Valeur actuelle */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 1 }}
                 >
-                  {formatMetricValue(selectedKPI.metric.current, selectedKPI.metric.unit)}
-                </p>
-                {selectedKPI.metric.delta_pct !== null && (
                   <p 
-                    className="text-sm"
-                    style={{ color: getTrendColor(selectedKPI.metric) }}
+                    className="text-2xl font-bold mb-2"
+                    style={{ color: 'var(--primary)' }}
                   >
-                    {formatDeltaPct(selectedKPI.metric.delta_pct)} vs {isEnglish ? 'previous period' : 'période précédente'}
+                    {formatMetricValue(selectedKPI.metric.current, selectedKPI.metric.unit)}
                   </p>
-                )}
+                  {selectedKPI.metric.delta_pct !== null && (
+                    <p 
+                      className="text-sm"
+                      style={{ color: getTrendColor(selectedKPI.metric) }}
+                    >
+                      {formatDeltaPct(selectedKPI.metric.delta_pct)} vs {isEnglish ? 'previous period' : 'période précédente'}
+                    </p>
+                  )}
+                </motion.div>
               </div>
               
               <h3 
@@ -993,7 +1043,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
               </p>
 
               {/* CTA Button */}
-              <ContactButton locale={locale} />
+              <ContactButton locale={locale as 'fr' | 'en'} />
             </div>
           </div>
         </div>
