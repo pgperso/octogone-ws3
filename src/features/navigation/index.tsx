@@ -185,8 +185,8 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
         className={cn(
           "fixed left-0 right-0 z-40",
           isScrolled
-            ? "bg-background/95 backdrop-blur-md border-b border-border/50 shadow-sm"
-            : "bg-transparent"
+            ? "backdrop-blur-md border-b border-border/50 shadow-sm"
+            : ""
         )}
         style={{
           top: isAnnouncementVisible ? `${bannerHeight}px` : '0px',
@@ -194,8 +194,8 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
           willChange: 'transform',
           transform: 'translateZ(0)', // Force GPU acceleration
           backgroundColor: isScrolled ? 'var(--surface)' : 'var(--background)',
+          opacity: isScrolled ? 0.95 : 1,
           ...(isScrolled ? {
-            opacity: 0.95,
             borderColor: 'var(--outline)'
           } : {})
         }}
