@@ -110,6 +110,8 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
   const [isEstablishmentDropdownOpen, setIsEstablishmentDropdownOpen] = useState(false);
   const [activeVersion, setActiveVersion] = useState<'current' | 'next'>('current');
   const [isCortexModalOpen, setIsCortexModalOpen] = useState(false);
+  const [isKPIModalOpen, setIsKPIModalOpen] = useState(false);
+  const [selectedKPI, setSelectedKPI] = useState<{ metric: Metric; name: string } | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Fermer le dropdown quand on clique ailleurs
@@ -139,6 +141,12 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
     setSelectedEstablishments(
       selectedEstablishments.length === ESTABLISHMENTS.length ? [] : ESTABLISHMENTS.map(e => e.id)
     );
+  };
+
+  // Gestion de l'ouverture de la modale KPI
+  const handleKPIClick = (metric: Metric, metricName: string) => {
+    setSelectedKPI({ metric, name: metricName });
+    setIsKPIModalOpen(true);
   };
 
   // Obtenir les données pour la période sélectionnée
@@ -757,10 +765,18 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
           return (
             <div
               key={index}
-              className="rounded-xl p-5 transition-all duration-300 hover:shadow-xl"
+              className="rounded-xl p-5 transition-all duration-300 hover:shadow-xl cursor-pointer hover:scale-105 group"
               style={{ 
                 backgroundColor: 'var(--surface)',
                 boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)'
+              }}
+              onClick={() => handleKPIClick(metric, title)}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'var(--primary)';
+                e.currentTarget.style.border = '1px solid var(--primary)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.border = 'none';
               }}
             >
               <div className="flex items-start justify-between h-full">
@@ -858,6 +874,136 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
           : 'Pour en savoir plus, contactez notre équipe.'}
       </p>
     </div>
+
+    {/* Modal KPI */}
+    {isKPIModalOpen && selectedKPI && (
+      <div
+        className="fixed inset-0 z-[70] flex items-center justify-center p-4"
+        style={{ backgroundColor: 'rgba(0, 0, 0, 0.75)' }}
+        onClick={() => setIsKPIModalOpen(false)}
+      >
+        <div
+          className="relative w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-2xl shadow-2xl"
+          style={{ backgroundColor: 'var(--background)' }}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Header */}
+          <div 
+            className="flex items-center justify-between p-6 border-b"
+            style={{ borderColor: 'var(--outline)' }}
+          >
+            <div className="flex items-center gap-4">
+              <div 
+                className="p-3 rounded-xl"
+                style={{ backgroundColor: 'var(--primary-container)' }}
+              >
+                <TrendingUp 
+                  className="w-6 h-6" 
+                  style={{ color: 'var(--on-primary-container)' }} 
+                />
+              </div>
+              <div>
+                <h2 
+                  className="text-xl font-bold"
+                  style={{ color: 'var(--on-surface)' }}
+                >
+                  {selectedKPI.name}
+                </h2>
+                <p 
+                  className="text-sm"
+                  style={{ color: 'var(--on-surface-variant)' }}
+                >
+                  {isEnglish ? 'Detailed Analysis' : 'Analyse détaillée'}
+                </p>
+              </div>
+            </div>
+
+            <button
+              onClick={() => setIsKPIModalOpen(false)}
+              className="p-2 rounded-lg transition-colors hover:bg-opacity-80"
+              style={{ backgroundColor: 'var(--surface-variant)' }}
+            >
+              <X 
+                className="w-5 h-5" 
+                style={{ color: 'var(--on-surface-variant)' }} 
+              />
+            </button>
+          </div>
+
+          {/* Content */}
+          <div className="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
+            <div className="text-center py-12">
+              {/* Placeholder content */}
+              <div 
+                className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
+                style={{ backgroundColor: 'var(--surface-variant)' }}
+              >
+                <TrendingUp 
+                  className="w-8 h-8" 
+                  style={{ color: 'var(--on-surface-variant)' }} 
+                />
+              </div>
+              
+              <h3 
+                className="text-lg font-semibold mb-2"
+                style={{ color: 'var(--on-surface)' }}
+              >
+                {isEnglish ? 'Widget in Development' : 'Widget en développement'}
+              </h3>
+              
+              <p 
+                className="text-sm mb-6 max-w-md mx-auto"
+                style={{ color: 'var(--on-surface-variant)' }}
+              >
+                {isEnglish 
+                  ? 'This detailed widget will soon be available with charts, analytics, and personalized recommendations.'
+                  : 'Ce widget détaillé sera bientôt disponible avec des graphiques, des analyses et des recommandations personnalisées.'
+                }
+              </p>
+
+              {/* Current metric info */}
+              <div 
+                className="p-4 rounded-xl border max-w-sm mx-auto mb-6"
+                style={{ 
+                  backgroundColor: 'var(--surface-variant)',
+                  borderColor: 'var(--outline-variant)'
+                }}
+              >
+                <h4 
+                  className="text-sm font-medium mb-2"
+                  style={{ color: 'var(--on-surface)' }}
+                >
+                  {isEnglish ? 'Current Value' : 'Valeur actuelle'}
+                </h4>
+                <p 
+                  className="text-2xl font-bold"
+                  style={{ color: 'var(--primary)' }}
+                >
+                  {formatMetricValue(selectedKPI.metric.current, selectedKPI.metric.unit)}
+                </p>
+                {selectedKPI.metric.delta_pct !== null && (
+                  <p 
+                    className="text-sm mt-1"
+                    style={{ color: getTrendColor(selectedKPI.metric) }}
+                  >
+                    {formatDeltaPct(selectedKPI.metric.delta_pct)} vs {isEnglish ? 'previous period' : 'période précédente'}
+                  </p>
+                )}
+              </div>
+
+              {/* CTA Button */}
+              <OctogoneButton
+                href={`/${locale}/demo`}
+                variant="primary"
+                size="md"
+              >
+                {isEnglish ? 'See Full Demo' : 'Voir la démo complète'}
+              </OctogoneButton>
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
 
     {/* Modal Cortex */}
     {isCortexModalOpen && (
