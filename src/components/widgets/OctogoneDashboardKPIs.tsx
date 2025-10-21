@@ -173,7 +173,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
           body { 
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6; 
-            color: #333; 
+            color: #000; 
             max-width: 800px; 
             margin: 0 auto; 
             padding: 20px;
@@ -191,7 +191,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
             margin-bottom: 10px; 
           }
           .subtitle { 
-            color: #666; 
+            color: #000; 
             font-size: 14px; 
           }
           .content { 
@@ -209,8 +209,8 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
             padding-left: 15px; 
           }
           .info-box { 
-            background: #f8fafc; 
-            border: 1px solid #e2e8f0; 
+            background: #ffffff; 
+            border: 2px solid #000; 
             border-radius: 8px; 
             padding: 20px; 
             margin: 20px 0; 
@@ -229,8 +229,8 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
             margin-bottom: 15px; 
           }
           .contact-info { 
-            background: #fff7ed; 
-            border: 1px solid #fed7aa; 
+            background: #ffffff; 
+            border: 2px solid #dcb26b; 
             border-radius: 8px; 
             padding: 20px; 
             margin-top: 20px; 
@@ -239,8 +239,8 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
             text-align: center; 
             margin-top: 40px; 
             padding-top: 20px; 
-            border-top: 1px solid #e2e8f0; 
-            color: #666; 
+            border-top: 2px solid #000; 
+            color: #000; 
             font-size: 12px; 
           }
         </style>
