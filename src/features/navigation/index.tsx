@@ -158,11 +158,6 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
 
   // Framer Motion scroll animations
   const { scrollYProgress } = useScroll();
-  // Variable commentée car non utilisée actuellement
-  // const headerOpacity = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
-
-  // Pour les traductions côté client, nous utilisons des textes codés en dur
-  // Les traductions seront gérées côté serveur dans le layout
 
   return (
     <>
@@ -193,24 +188,16 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
         )}
         style={{
           top: isAnnouncementVisible ? `${bannerHeight}px` : '0px',
-          transition: 'top 0.3s ease-out, background-color 0.2s ease-out, border-color 0.2s ease-out, opacity 0.2s ease-out',
+          transition: 'top 0.3s ease-out, background-color 0.2s ease-out, border-color 0.2s ease-out',
           willChange: 'transform',
           transform: 'translateZ(0)',
-          backgroundColor: 'var(--background)', // Toujours background pendant l'animation
-          opacity: isScrolled ? 0.95 : 1,
+          backgroundColor: isScrolled ? 'var(--surface)' : 'var(--background)',
           ...(isScrolled ? {
-            backgroundColor: 'var(--surface)',
             borderColor: 'var(--outline)'
           } : {})
         }}
-        initial={{ 
-          y: -100, 
-          opacity: 1
-        }}
-        animate={{ 
-          y: 0, 
-          opacity: 1
-        }}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
         transition={{ 
           duration: 0.6, 
           ease: "easeOut"
