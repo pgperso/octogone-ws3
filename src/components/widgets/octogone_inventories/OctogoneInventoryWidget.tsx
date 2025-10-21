@@ -148,9 +148,9 @@ export const OctogoneInventoryWidget: React.FC = () => {
       </div>
 
       {/* Contenu principal */}
-      <div className="grid grid-cols-1 lg:grid-cols-2" style={{ minHeight: '700px', height: 'auto' }}>
-        {/* Liste de produits (gauche) */}
-        <div className="border-r" style={{ borderColor: 'var(--outline)' }}>
+      <div className="grid grid-cols-1 lg:grid-cols-2" style={{ height: '750px' }}>
+        {/* Liste de produits (gauche) - scrollable */}
+        <div className="border-r overflow-hidden" style={{ borderColor: 'var(--outline)' }}>
           <InventoryProductList
             products={products}
             inventory={inventory}
@@ -159,8 +159,8 @@ export const OctogoneInventoryWidget: React.FC = () => {
           />
         </div>
 
-        {/* Calculatrice (droite) */}
-        <div>
+        {/* Calculatrice (droite) - définit la hauteur */}
+        <div className="overflow-auto">
           <InventoryCalculator
             selectedProduct={selectedProduct}
             currentQuantity={selectedProduct ? getCurrentQuantity(selectedProduct.id) : 0}
