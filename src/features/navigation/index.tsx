@@ -191,21 +191,19 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
         style={{
           top: isAnnouncementVisible ? `${bannerHeight}px` : '0px',
           transition: 'top 0.3s ease-out, background-color 0.3s ease-out, border-color 0.3s ease-out',
-          willChange: 'transform, opacity',
+          willChange: 'transform',
           transform: 'translateZ(0)', // Force GPU acceleration
+          backgroundColor: isScrolled ? 'var(--surface)' : 'var(--background)',
           ...(isScrolled ? {
-            backgroundColor: 'var(--surface)',
             opacity: 0.95,
             borderColor: 'var(--outline)'
-          } : {
-            backgroundColor: 'var(--background)'
-          })
+          } : {})
         }}
-        initial={{ y: -100, opacity: 0 }}
+        initial={{ y: -100, opacity: 1 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ 
-          duration: 0.35, 
-          ease: [0.4, 0, 0.2, 1],
+          duration: 0.8, 
+          ease: [0.22, 1, 0.36, 1],
           type: "tween"
         }}
       >
