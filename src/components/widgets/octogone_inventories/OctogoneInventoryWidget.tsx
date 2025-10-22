@@ -112,28 +112,20 @@ export const OctogoneInventoryWidget: React.FC = () => {
       const existingIndex = prev.findIndex(i => i.productId === productId);
       
       if (quantity === 0) {
-        // Supprimer si quantité = 0
         return prev.filter(i => i.productId !== productId);
       }
       
       if (existingIndex >= 0) {
-        // Mettre à jour
         const updated = [...prev];
         updated[existingIndex] = { productId, quantity };
         return updated;
-      } else {
-        // Ajouter
-        return [...prev, { productId, quantity }];
       }
+      
+      return [...prev, { productId, quantity }];
     });
   };
 
-  // Fonction pour annuler la sélection (non utilisée pour l'instant)
-  // const handleCancel = () => {
-  //   setSelectedProduct(null);
-  // };
-
-  // Navigation entre produits (dans l'emplacement actuel)
+  // Navigation entre produits
   const handleNavigateNext = () => {
     if (!selectedProduct) return;
     const currentIndex = filteredProducts.findIndex(p => p.id === selectedProduct.id);

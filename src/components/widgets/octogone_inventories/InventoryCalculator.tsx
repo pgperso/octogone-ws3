@@ -76,13 +76,6 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
     }
   };
 
-  // Fonction pour annuler - utilisée si besoin
-  // const handleCancel = () => {
-  //   setDisplayValue(currentQuantity > 0 ? currentQuantity.toString() : '0');
-  //   setIsEditing(false);
-  //   onCancel();
-  // };
-
   const totalValue = selectedProduct 
     ? (parseFloat(displayValue) || 0) * selectedProduct.unitCost 
     : 0;
