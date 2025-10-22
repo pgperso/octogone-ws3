@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import { Clock } from 'lucide-react';
 import { translateCategory, translateProduct, translateUnit } from '@/data/inventory/inventory-translations';
 
@@ -61,84 +62,58 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, history = [],
 
   return (
     <div 
-      className="rounded-lg p-4 mb-4"
+      className="rounded-lg mb-4 overflow-hidden flex"
       style={{ 
         backgroundColor: 'var(--surface-variant)',
-        border: '1px solid var(--outline)'
+        border: '1px solid var(--outline)',
+        height: '200px'
       }}
     >
-      {/* Rangée 1: Nom + Image */}
-      <div className="flex items-center justify-between mb-3">
-        <div className="flex-1">
+      {/* Photo à gauche - 1:1 pleine hauteur */}
+      <div className="relative w-[200px] h-full flex-shrink-0">
+        <Image
+          src="/images/products/bread.avif"
+          alt={product.name}
+          fill
+          className="object-cover"
+        />
+      </div>
+
+      {/* Infos à droite */}
+      <div className="flex-1 p-4 flex flex-col justify-between">
+        {/* Nom du produit */}
+        <div>
           <h3 
-            className="text-lg font-bold"
+            className="text-xl font-bold mb-2"
             style={{ color: 'var(--on-surface)' }}
           >
             {translateProduct(product.name, locale)}
           </h3>
+          
+          {/* Catégorie + Marque */}
+          <div className="flex gap-4 mb-3 text-sm">
+            <div style={{ color: 'var(--on-surface-variant)' }}>
+              <span className="font-semibold">{isEnglish ? 'Category:' : 'Catégorie:'}</span> {translateCategory(product.category, locale)}
+            </div>
+            <div style={{ color: 'var(--on-surface-variant)' }}>
+              <span className="font-semibold">{isEnglish ? 'Brand:' : 'Marque:'}</span> {displayBrand}
+            </div>
+          </div>
         </div>
+
+        {/* Prix coûtant */}
         <div 
-          className="w-16 h-16 rounded-lg flex items-center justify-center text-white font-bold text-xl ml-4"
-          style={{ backgroundColor: avatarColor }}
+          className="p-3 rounded"
+          style={{ backgroundColor: 'var(--primary-container)' }}
         >
-          {initials}
-        </div>
-      </div>
-
-      {/* Rangée 2: Catégorie + Marque */}
-      <div 
-        className="grid grid-cols-2 gap-4 mb-3 text-sm"
-      >
-        <div style={{ color: 'var(--on-surface-variant)' }}>
-          <span className="font-semibold" style={{ color: 'var(--on-surface-variant)' }}>{isEnglish ? 'Category:' : 'Catégorie:'}</span> {translateCategory(product.category, locale)}
-        </div>
-        <div style={{ color: 'var(--on-surface-variant)' }}>
-          <span className="font-semibold" style={{ color: 'var(--on-surface-variant)' }}>{isEnglish ? 'Brand:' : 'Marque:'}</span> {displayBrand}
-        </div>
-      </div>
-
-      {/* Rangée 3: Prix coûtant */}
-      <div 
-        className="mb-3 p-2 rounded"
-        style={{ backgroundColor: 'var(--primary-container)' }}
-      >
-        <div 
-          className="text-sm font-semibold"
-          style={{ color: 'var(--on-primary-container)' }}
-        >
-          {isEnglish ? 'Unit cost:' : 'Prix coûtant:'} <span className="text-lg">{product.unitCost.toFixed(2)} $</span> / {translateUnit(product.unit, locale)}
-        </div>
-      </div>
-
-      {/* Rangée 4: Historique */}
-      {history.length > 0 && (
-        <div>
           <div 
-            className="flex items-center gap-2 mb-2 text-sm font-semibold"
-            style={{ color: 'var(--on-surface-variant)' }}
+            className="text-sm font-semibold"
+            style={{ color: 'var(--on-primary-container)' }}
           >
-            <Clock className="w-4 h-4" />
-            {isEnglish ? 'Entry history' : 'Historique de saisie'}
-          </div>
-          <div className="space-y-1">
-            {history.slice(0, 3).map((entry, index) => (
-              <div 
-                key={index}
-                className="text-xs flex justify-between p-1 rounded"
-                style={{ 
-                  backgroundColor: 'var(--surface)',
-                  color: 'var(--on-surface-variant)'
-                }}
-              >
-                <span>{entry.date}</span>
-                <span className="font-semibold">
-                  {entry.quantity} {entry.unit}
-                </span>
-              </div>
-            ))}
+            {isEnglish ? 'Unit cost:' : 'Prix coûtant:'} <span className="text-lg">{product.unitCost.toFixed(2)} $</span> / {translateUnit(product.unit, locale)}
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };
