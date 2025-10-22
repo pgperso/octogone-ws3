@@ -66,6 +66,23 @@ export const OctogoneInventoryWidget: React.FC = () => {
   //   setSelectedProduct(null);
   // };
 
+  // Navigation entre produits
+  const handleNavigateNext = () => {
+    if (!selectedProduct) return;
+    const currentIndex = products.findIndex(p => p.id === selectedProduct.id);
+    if (currentIndex < products.length - 1) {
+      setSelectedProduct(products[currentIndex + 1]);
+    }
+  };
+
+  const handleNavigatePrevious = () => {
+    if (!selectedProduct) return;
+    const currentIndex = products.findIndex(p => p.id === selectedProduct.id);
+    if (currentIndex > 0) {
+      setSelectedProduct(products[currentIndex - 1]);
+    }
+  };
+
   // Calculer les totaux
   const totalItems = inventory.reduce((sum, item) => sum + item.quantity, 0);
   const totalValue = inventory.reduce((sum, item) => {
@@ -194,6 +211,8 @@ export const OctogoneInventoryWidget: React.FC = () => {
             selectedProduct={selectedProduct}
             currentQuantity={selectedProduct ? getCurrentQuantity(selectedProduct.id) : 0}
             onSave={handleSaveQuantity}
+            onNavigateNext={selectedProduct && products.findIndex(p => p.id === selectedProduct.id) < products.length - 1 ? handleNavigateNext : undefined}
+            onNavigatePrevious={selectedProduct && products.findIndex(p => p.id === selectedProduct.id) > 0 ? handleNavigatePrevious : undefined}
           />
         </div>
       </div>

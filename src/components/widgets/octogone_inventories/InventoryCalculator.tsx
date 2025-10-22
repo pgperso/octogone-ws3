@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Delete, Check } from 'lucide-react';
+import { Delete, Check, ChevronUp, ChevronDown } from 'lucide-react';
 import { ProductCard } from './ProductCard';
 
 interface Product {
@@ -19,12 +19,16 @@ interface InventoryCalculatorProps {
   selectedProduct: Product | null;
   currentQuantity: number;
   onSave: (productId: string, quantity: number) => void;
+  onNavigateNext?: () => void;
+  onNavigatePrevious?: () => void;
 }
 
 export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
   selectedProduct,
   currentQuantity,
-  onSave
+  onSave,
+  onNavigateNext,
+  onNavigatePrevious
 }) => {
   const [displayValue, setDisplayValue] = useState('0');
   const [isEditing, setIsEditing] = useState(false);
@@ -115,7 +119,7 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
             <select
               value={selectedUnit}
               onChange={(e) => setSelectedUnit(e.target.value)}
-              className="ml-4 px-3 py-2 rounded-lg text-lg font-semibold border-2 focus:outline-none"
+              className="ml-4 px-3 py-2 rounded-lg text-lg font-semibold border-2 focus:outline-none cursor-pointer"
               style={{
                 backgroundColor: 'var(--surface)',
                 borderColor: 'var(--primary)',
@@ -150,7 +154,7 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
             key={num}
             onClick={() => handleNumberClick(num)}
             disabled={!selectedProduct}
-            className="p-4 rounded-lg text-xl font-semibold transition-colors disabled:opacity-50"
+            className="p-4 rounded-lg text-xl font-semibold transition-colors disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
             style={{
               backgroundColor: 'var(--surface-variant)',
               color: 'var(--on-surface)'
@@ -187,7 +191,7 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
         <button
           onClick={handleBackspace}
           disabled={!selectedProduct}
-          className="p-4 rounded-lg transition-colors disabled:opacity-50"
+          className="p-4 rounded-lg transition-colors disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
           style={{
             backgroundColor: 'var(--error-container)',
             color: 'var(--on-error-container)'
@@ -197,12 +201,13 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
         </button>
       </div>
 
-      {/* Bouton Ajouter */}
-      <div className="mt-auto">
+      {/* Boutons d'action */}
+      <div className="mt-auto grid grid-cols-3 gap-3">
+        {/* Bouton Ajouter */}
         <button
           onClick={handleSave}
           disabled={!selectedProduct || !isEditing}
-          className="w-full p-4 rounded-lg font-bold text-lg transition-all disabled:opacity-50 flex items-center justify-center gap-3 shadow-lg"
+          className="col-span-1 p-4 rounded-lg font-bold text-lg transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-lg cursor-pointer disabled:cursor-not-allowed"
           style={{
             backgroundColor: 'var(--primary)',
             color: 'var(--on-primary)'
@@ -210,6 +215,32 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
         >
           <Check className="w-6 h-6" />
           Ajouter
+        </button>
+
+        {/* Bouton Précédent */}
+        <button
+          onClick={onNavigatePrevious}
+          disabled={!onNavigatePrevious}
+          className="p-4 rounded-lg font-semibold transition-all disabled:opacity-50 flex items-center justify-center shadow-lg cursor-pointer disabled:cursor-not-allowed"
+          style={{
+            backgroundColor: 'var(--secondary-container)',
+            color: 'var(--on-secondary-container)'
+          }}
+        >
+          <ChevronUp className="w-6 h-6" />
+        </button>
+
+        {/* Bouton Suivant */}
+        <button
+          onClick={onNavigateNext}
+          disabled={!onNavigateNext}
+          className="p-4 rounded-lg font-semibold transition-all disabled:opacity-50 flex items-center justify-center shadow-lg cursor-pointer disabled:cursor-not-allowed"
+          style={{
+            backgroundColor: 'var(--secondary-container)',
+            color: 'var(--on-secondary-container)'
+          }}
+        >
+          <ChevronDown className="w-6 h-6" />
         </button>
       </div>
     </div>
