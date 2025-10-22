@@ -40,14 +40,14 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
   const [isEditing, setIsEditing] = useState(false);
   const [selectedUnit, setSelectedUnit] = useState<string>('');
 
-  // Réinitialiser quand le produit change
+  // Réinitialiser quand le produit change (pas quand currentQuantity change)
   useEffect(() => {
     if (selectedProduct) {
-      setDisplayValue(currentQuantity > 0 ? currentQuantity.toString() : '0');
+      setDisplayValue('0');
       setSelectedUnit(selectedProduct.unit);
       setIsEditing(false);
     }
-  }, [selectedProduct, currentQuantity]);
+  }, [selectedProduct?.id]); // Seulement quand le produit change, pas la quantité
 
   const handleNumberClick = (num: string) => {
     setIsEditing(true);
@@ -78,6 +78,8 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
     if (selectedProduct) {
       const quantity = parseFloat(displayValue) || 0;
       onSave(selectedProduct.id, quantity);
+      // Reset de la calculatrice après l'ajout
+      setDisplayValue('0');
       setIsEditing(false);
     }
   };
@@ -93,7 +95,7 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
         <ProductCard 
           product={selectedProduct} 
           locale={locale}
-          currentQuantity={parseFloat(displayValue) || 0}
+          currentQuantity={isEditing ? parseFloat(displayValue) || 0 : 0}
           onAddToOrder={() => {
             // Fonction pour ajouter à la commande (à implémenter)
             console.log('Ajouter à la commande:', selectedProduct.name);
