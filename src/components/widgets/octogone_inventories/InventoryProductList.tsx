@@ -26,6 +26,7 @@ interface InventoryProductListProps {
   selectedProductId: string | null;
   searchTerm: string;
   onSearchChange: (term: string) => void;
+  locale?: 'fr' | 'en';
 }
 
 export const InventoryProductList: React.FC<InventoryProductListProps> = ({
@@ -34,8 +35,10 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
   onProductSelect,
   selectedProductId,
   searchTerm,
-  onSearchChange
+  onSearchChange,
+  locale = 'fr'
 }) => {
+  const isEnglish = locale === 'en';
 
   // Filtrer les produits selon la recherche
   const filteredProducts = useMemo(() => {
@@ -65,7 +68,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
           />
           <input
             type="text"
-            placeholder="Rechercher un produit..."
+            placeholder={isEnglish ? 'Search for a product...' : 'Rechercher un produit...'}
             value={searchTerm}
             onChange={(e) => onSearchChange(e.target.value)}
             className="w-full pl-10 pr-4 py-2 rounded-lg border focus:outline-none focus:ring-2"
@@ -88,9 +91,9 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
           borderColor: 'var(--outline)'
         }}
       >
-        <div className="col-span-4">Produit</div>
-        <div className="col-span-3 text-center">Quantité</div>
-        <div className="col-span-4 text-right pr-2">Total</div>
+        <div className="col-span-4">{isEnglish ? 'Product' : 'Produit'}</div>
+        <div className="col-span-3 text-center">{isEnglish ? 'Quantity' : 'Quantité'}</div>
+        <div className="col-span-4 text-right pr-2">{isEnglish ? 'Total' : 'Total'}</div>
         <div className="col-span-1 text-center"></div>
       </div>
 
@@ -101,7 +104,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
             className="flex items-center justify-center h-32 text-sm"
             style={{ color: 'var(--on-surface-variant)' }}
           >
-            Aucun produit trouvé
+            {isEnglish ? 'No product found' : 'Aucun produit trouvé'}
           </div>
         ) : (
           filteredProducts.map((product) => {

@@ -589,6 +589,7 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
             selectedProductId={selectedProduct?.id || null}
             searchTerm={searchTerm}
             onSearchChange={setSearchTerm}
+            locale={locale}
           />
         </div>
 
@@ -600,6 +601,7 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
             onSave={handleSaveQuantity}
             onNavigateNext={selectedProduct && filteredProducts.findIndex(p => p.id === selectedProduct.id) < filteredProducts.length - 1 ? handleNavigateNext : undefined}
             onNavigatePrevious={selectedProduct && filteredProducts.findIndex(p => p.id === selectedProduct.id) > 0 ? handleNavigatePrevious : undefined}
+            locale={locale}
           />
         </div>
       </div>

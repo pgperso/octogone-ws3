@@ -23,9 +23,11 @@ interface InventoryHistory {
 interface ProductCardProps {
   product: Product;
   history?: InventoryHistory[];
+  locale?: 'fr' | 'en';
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product, history = [] }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product, history = [], locale = 'fr' }) => {
+  const isEnglish = locale === 'en';
   // Générer des initiales pour l'avatar
   const getInitials = (name: string): string => {
     const words = name.split(' ');
@@ -52,7 +54,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, history = [] 
     return colorMap[category] || '#607D8B';
   };
 
-  const displayBrand = product.brand || 'Sans marque';
+  const displayBrand = product.brand || (isEnglish ? 'No brand' : 'Sans marque');
   const initials = getInitials(product.name);
   const avatarColor = getCategoryColor(product.category);
 
@@ -87,10 +89,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, history = [] 
         className="grid grid-cols-2 gap-4 mb-3 text-sm"
       >
         <div style={{ color: 'var(--on-surface-variant)' }}>
-          <span className="font-semibold" style={{ color: 'var(--on-surface-variant)' }}>Catégorie:</span> {product.category}
+          <span className="font-semibold" style={{ color: 'var(--on-surface-variant)' }}>{isEnglish ? 'Category:' : 'Catégorie:'}</span> {product.category}
         </div>
         <div style={{ color: 'var(--on-surface-variant)' }}>
-          <span className="font-semibold" style={{ color: 'var(--on-surface-variant)' }}>Marque:</span> {displayBrand}
+          <span className="font-semibold" style={{ color: 'var(--on-surface-variant)' }}>{isEnglish ? 'Brand:' : 'Marque:'}</span> {displayBrand}
         </div>
       </div>
 
@@ -103,7 +105,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, history = [] 
           className="text-sm font-semibold"
           style={{ color: 'var(--on-primary-container)' }}
         >
-          Prix coûtant: <span className="text-lg">{product.unitCost.toFixed(2)} $</span> / {product.unit}
+          {isEnglish ? 'Unit cost:' : 'Prix coûtant:'} <span className="text-lg">{product.unitCost.toFixed(2)} $</span> / {product.unit}
         </div>
       </div>
 
@@ -115,7 +117,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, history = [] 
             style={{ color: 'var(--on-surface-variant)' }}
           >
             <Clock className="w-4 h-4" />
-            Historique de saisie
+            {isEnglish ? 'Entry history' : 'Historique de saisie'}
           </div>
           <div className="space-y-1">
             {history.slice(0, 3).map((entry, index) => (

@@ -21,6 +21,7 @@ interface InventoryCalculatorProps {
   onSave: (productId: string, quantity: number) => void;
   onNavigateNext?: () => void;
   onNavigatePrevious?: () => void;
+  locale?: 'fr' | 'en';
 }
 
 export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
@@ -28,8 +29,10 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
   currentQuantity,
   onSave,
   onNavigateNext,
-  onNavigatePrevious
+  onNavigatePrevious,
+  locale = 'fr'
 }) => {
+  const isEnglish = locale === 'en';
   const [displayValue, setDisplayValue] = useState('0');
   const [isEditing, setIsEditing] = useState(false);
   const [selectedUnit, setSelectedUnit] = useState<string>('');
@@ -84,14 +87,14 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
     <div className="flex flex-col h-full p-6">
       {/* Carte produit */}
       {selectedProduct ? (
-        <ProductCard product={selectedProduct} />
+        <ProductCard product={selectedProduct} locale={locale} />
       ) : (
         <div className="mb-6">
           <p 
             className="text-sm text-center py-8"
             style={{ color: 'var(--on-surface-variant)' }}
           >
-            Sélectionnez un produit pour commencer
+            {isEnglish ? 'Select a product to start' : 'Sélectionnez un produit pour commencer'}
           </p>
         </div>
       )}
