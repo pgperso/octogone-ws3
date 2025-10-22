@@ -716,6 +716,7 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
         <div>
           <InventoryCalculator
             selectedProduct={selectedProduct}
+            hasExistingEntry={selectedProduct ? inventory.some(i => i.productId === selectedProduct.id && i.quantity > 0) : false}
             onSave={handleSaveQuantity}
             onNavigateNext={selectedProduct && filteredProducts.findIndex(p => p.id === selectedProduct.id) < filteredProducts.length - 1 ? handleNavigateNext : undefined}
             onNavigatePrevious={selectedProduct && filteredProducts.findIndex(p => p.id === selectedProduct.id) > 0 ? handleNavigatePrevious : undefined}

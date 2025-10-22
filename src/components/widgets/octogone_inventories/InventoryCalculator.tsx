@@ -20,6 +20,7 @@ interface Product {
 
 interface InventoryCalculatorProps {
   selectedProduct: Product | null;
+  hasExistingEntry: boolean;
   onSave: (productId: string, quantity: number) => void;
   onNavigateNext?: () => void;
   onNavigatePrevious?: () => void;
@@ -28,6 +29,7 @@ interface InventoryCalculatorProps {
 
 export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
   selectedProduct,
+  hasExistingEntry,
   onSave,
   onNavigateNext,
   onNavigatePrevious,
@@ -260,7 +262,10 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
           ) : (
             <>
               <Check className="w-6 h-6" />
-              {isEnglish ? 'Add' : 'Ajouter'}
+              {hasExistingEntry 
+                ? (isEnglish ? 'Update entry' : 'Modifier la saisie')
+                : (isEnglish ? 'Add entry' : 'Ajouter une saisie')
+              }
             </>
           )}
         </button>
