@@ -202,12 +202,12 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
       </div>
 
       {/* Boutons d'action */}
-      <div className="mt-auto grid grid-cols-3 gap-3">
-        {/* Bouton Ajouter */}
+      <div className="mt-auto flex gap-3">
+        {/* Bouton Ajouter - prend tout l'espace disponible */}
         <button
           onClick={handleSave}
           disabled={!selectedProduct || !isEditing}
-          className="col-span-1 p-4 rounded-lg font-bold text-lg transition-all disabled:opacity-50 flex items-center justify-center gap-2 shadow-lg cursor-pointer disabled:cursor-not-allowed"
+          className="flex-1 p-4 rounded-lg font-bold text-lg transition-all disabled:opacity-50 flex items-center justify-center gap-3 shadow-lg cursor-pointer disabled:cursor-not-allowed"
           style={{
             backgroundColor: 'var(--primary)',
             color: 'var(--on-primary)'
@@ -217,31 +217,34 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
           Ajouter
         </button>
 
-        {/* Bouton Précédent */}
-        <button
-          onClick={onNavigatePrevious}
-          disabled={!onNavigatePrevious}
-          className="p-4 rounded-lg font-semibold transition-all disabled:opacity-50 flex items-center justify-center shadow-lg cursor-pointer disabled:cursor-not-allowed"
-          style={{
-            backgroundColor: 'var(--secondary-container)',
-            color: 'var(--on-secondary-container)'
-          }}
-        >
-          <ChevronUp className="w-6 h-6" />
-        </button>
+        {/* Boutons de navigation - carrés */}
+        <div className="flex flex-col gap-3">
+          {/* Bouton Précédent */}
+          <button
+            onClick={onNavigatePrevious}
+            disabled={!onNavigatePrevious}
+            className="w-12 h-12 rounded-lg font-semibold transition-all disabled:opacity-50 flex items-center justify-center shadow-lg cursor-pointer disabled:cursor-not-allowed"
+            style={{
+              backgroundColor: 'var(--secondary-container)',
+              color: 'var(--on-secondary-container)'
+            }}
+          >
+            <ChevronUp className="w-5 h-5" />
+          </button>
 
-        {/* Bouton Suivant */}
-        <button
-          onClick={onNavigateNext}
-          disabled={!onNavigateNext}
-          className="p-4 rounded-lg font-semibold transition-all disabled:opacity-50 flex items-center justify-center shadow-lg cursor-pointer disabled:cursor-not-allowed"
-          style={{
-            backgroundColor: 'var(--secondary-container)',
-            color: 'var(--on-secondary-container)'
-          }}
-        >
-          <ChevronDown className="w-6 h-6" />
-        </button>
+          {/* Bouton Suivant */}
+          <button
+            onClick={onNavigateNext}
+            disabled={!onNavigateNext}
+            className="w-12 h-12 rounded-lg font-semibold transition-all disabled:opacity-50 flex items-center justify-center shadow-lg cursor-pointer disabled:cursor-not-allowed"
+            style={{
+              backgroundColor: 'var(--secondary-container)',
+              color: 'var(--on-secondary-container)'
+            }}
+          >
+            <ChevronDown className="w-5 h-5" />
+          </button>
+        </div>
       </div>
     </div>
   );

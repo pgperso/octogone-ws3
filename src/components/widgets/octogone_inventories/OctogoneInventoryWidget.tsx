@@ -15,7 +15,10 @@ interface Product {
   availableUnits?: string[];
   unitCost: number;
   image?: string;
+  storage?: 'sec' | 'congelateur' | 'frigidaire';
 }
+
+type StorageType = 'sec' | 'congelateur' | 'frigidaire';
 
 interface InventoryItem {
   productId: string;
@@ -25,8 +28,12 @@ interface InventoryItem {
 export const OctogoneInventoryWidget: React.FC = () => {
   const [inventory, setInventory] = useState<InventoryItem[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [selectedStorage, setSelectedStorage] = useState<StorageType>('sec');
 
   const products = inventoryData.products as Product[];
+  
+  // Filtrer les produits par emplacement
+  const filteredProducts = products.filter(p => (p.storage || 'sec') === selectedStorage);
 
   // Obtenir la quantité actuelle d'un produit
   const getCurrentQuantity = (productId: string): number => {
@@ -66,20 +73,20 @@ export const OctogoneInventoryWidget: React.FC = () => {
   //   setSelectedProduct(null);
   // };
 
-  // Navigation entre produits
+  // Navigation entre produits (dans l'emplacement actuel)
   const handleNavigateNext = () => {
     if (!selectedProduct) return;
-    const currentIndex = products.findIndex(p => p.id === selectedProduct.id);
-    if (currentIndex < products.length - 1) {
-      setSelectedProduct(products[currentIndex + 1]);
+    const currentIndex = filteredProducts.findIndex(p => p.id === selectedProduct.id);
+    if (currentIndex < filteredProducts.length - 1) {
+      setSelectedProduct(filteredProducts[currentIndex + 1]);
     }
   };
 
   const handleNavigatePrevious = () => {
     if (!selectedProduct) return;
-    const currentIndex = products.findIndex(p => p.id === selectedProduct.id);
+    const currentIndex = filteredProducts.findIndex(p => p.id === selectedProduct.id);
     if (currentIndex > 0) {
-      setSelectedProduct(products[currentIndex - 1]);
+      setSelectedProduct(filteredProducts[currentIndex - 1]);
     }
   };
 
@@ -90,10 +97,23 @@ export const OctogoneInventoryWidget: React.FC = () => {
     return sum + (product ? product.unitCost * item.quantity : 0);
   }, 0);
 
-  // Calculer la progression
-  const totalProducts = products.length;
-  const enteredProducts = inventory.filter(item => item.quantity > 0).length;
-  const progressPercentage = totalProducts > 0 ? (enteredProducts / totalProducts) * 100 : 0;
+  // Calculer la progression par emplacement
+  const getStorageProgress = (storage: StorageType) => {
+    const storageProducts = products.filter(p => (p.storage || 'sec') === storage);
+    const totalProducts = storageProducts.length;
+    const enteredProducts = storageProducts.filter(p => 
+      inventory.find(i => i.productId === p.id && i.quantity > 0)
+    ).length;
+    return {
+      total: totalProducts,
+      entered: enteredProducts,
+      percentage: totalProducts > 0 ? (enteredProducts / totalProducts) * 100 : 0
+    };
+  };
+
+  const secProgress = getStorageProgress('sec');
+  const congelateurProgress = getStorageProgress('congelateur');
+  const frigidaireProgress = getStorageProgress('frigidaire');
 
   return (
     <div 
@@ -149,7 +169,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
           >
             <div className="text-center">
               <div className="text-2xl font-bold" style={{ color: 'var(--primary)' }}>
-                {enteredProducts}
+                {selectedStorage === 'sec' ? secProgress.entered : selectedStorage === 'congelateur' ? congelateurProgress.entered : frigidaireProgress.entered}
               </div>
               <div className="text-xs">produits</div>
             </div>
@@ -168,27 +188,114 @@ export const OctogoneInventoryWidget: React.FC = () => {
           </div>
         </div>
 
-        {/* Barre de progression */}
-        <div className="mt-4">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-semibold" style={{ color: 'var(--on-surface-variant)' }}>
-              Progression de l&apos;inventaire
-            </span>
-            <span className="text-sm font-bold" style={{ color: 'var(--on-surface)' }}>
-              {enteredProducts} / {totalProducts} ({progressPercentage.toFixed(0)}%)
-            </span>
-          </div>
-          <div 
-            className="w-full h-2 rounded-full overflow-hidden"
-            style={{ backgroundColor: 'var(--surface-variant)' }}
-          >
-            <div 
-              className="h-full transition-all duration-500 ease-out rounded-full"
-              style={{ 
-                width: `${progressPercentage}%`,
-                backgroundColor: 'var(--success)'
-              }}
+        {/* Barres de progression par emplacement */}
+        <div className="mt-4 space-y-3">
+          {/* Garde-manger */}
+          <div className="flex items-center gap-3">
+            <input
+              type="radio"
+              id="storage-sec"
+              name="storage"
+              value="sec"
+              checked={selectedStorage === 'sec'}
+              onChange={() => setSelectedStorage('sec')}
+              className="w-5 h-5 cursor-pointer"
+              style={{ accentColor: 'var(--primary)' }}
             />
+            <div className="flex-1">
+              <div className="flex items-center justify-between mb-1">
+                <label htmlFor="storage-sec" className="text-sm font-semibold cursor-pointer" style={{ color: 'var(--on-surface-variant)' }}>
+                  Garde-manger
+                </label>
+                <span className="text-sm font-bold" style={{ color: 'var(--on-surface)' }}>
+                  {secProgress.entered} / {secProgress.total} ({secProgress.percentage.toFixed(0)}%)
+                </span>
+              </div>
+              <div 
+                className="w-full h-2 rounded-full overflow-hidden"
+                style={{ backgroundColor: 'var(--surface-variant)' }}
+              >
+                <div 
+                  className="h-full transition-all duration-500 ease-out rounded-full"
+                  style={{ 
+                    width: `${secProgress.percentage}%`,
+                    backgroundColor: 'var(--success)'
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Inventaire congélateur */}
+          <div className="flex items-center gap-3">
+            <input
+              type="radio"
+              id="storage-congelateur"
+              name="storage"
+              value="congelateur"
+              checked={selectedStorage === 'congelateur'}
+              onChange={() => setSelectedStorage('congelateur')}
+              className="w-5 h-5 cursor-pointer"
+              style={{ accentColor: 'var(--primary)' }}
+            />
+            <div className="flex-1">
+              <div className="flex items-center justify-between mb-1">
+                <label htmlFor="storage-congelateur" className="text-sm font-semibold cursor-pointer" style={{ color: 'var(--on-surface-variant)' }}>
+                  Inventaire congélateur
+                </label>
+                <span className="text-sm font-bold" style={{ color: 'var(--on-surface)' }}>
+                  {congelateurProgress.entered} / {congelateurProgress.total} ({congelateurProgress.percentage.toFixed(0)}%)
+                </span>
+              </div>
+              <div 
+                className="w-full h-2 rounded-full overflow-hidden"
+                style={{ backgroundColor: 'var(--surface-variant)' }}
+              >
+                <div 
+                  className="h-full transition-all duration-500 ease-out rounded-full"
+                  style={{ 
+                    width: `${congelateurProgress.percentage}%`,
+                    backgroundColor: 'var(--success)'
+                  }}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Inventaire frigidaire */}
+          <div className="flex items-center gap-3">
+            <input
+              type="radio"
+              id="storage-frigidaire"
+              name="storage"
+              value="frigidaire"
+              checked={selectedStorage === 'frigidaire'}
+              onChange={() => setSelectedStorage('frigidaire')}
+              className="w-5 h-5 cursor-pointer"
+              style={{ accentColor: 'var(--primary)' }}
+            />
+            <div className="flex-1">
+              <div className="flex items-center justify-between mb-1">
+                <label htmlFor="storage-frigidaire" className="text-sm font-semibold cursor-pointer" style={{ color: 'var(--on-surface-variant)' }}>
+                  Inventaire frigidaire
+                </label>
+                <span className="text-sm font-bold" style={{ color: 'var(--on-surface)' }}>
+                  {frigidaireProgress.entered} / {frigidaireProgress.total} ({frigidaireProgress.percentage.toFixed(0)}%)
+                </span>
+              </div>
+              <div 
+                className="w-full h-2 rounded-full overflow-hidden"
+                style={{ backgroundColor: 'var(--surface-variant)' }}
+              >
+                <div 
+                  className="h-full transition-all duration-500 ease-out rounded-full"
+                  style={{ 
+                    width: `${frigidaireProgress.percentage}%`,
+                    backgroundColor: 'var(--success)'
+                  }}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -198,7 +305,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
         {/* Liste de produits (gauche) - scrollable */}
         <div className="border-r overflow-hidden" style={{ borderColor: 'var(--outline)' }}>
           <InventoryProductList
-            products={products}
+            products={filteredProducts}
             inventory={inventory}
             onProductSelect={handleProductSelect}
             selectedProductId={selectedProduct?.id || null}
@@ -211,8 +318,8 @@ export const OctogoneInventoryWidget: React.FC = () => {
             selectedProduct={selectedProduct}
             currentQuantity={selectedProduct ? getCurrentQuantity(selectedProduct.id) : 0}
             onSave={handleSaveQuantity}
-            onNavigateNext={selectedProduct && products.findIndex(p => p.id === selectedProduct.id) < products.length - 1 ? handleNavigateNext : undefined}
-            onNavigatePrevious={selectedProduct && products.findIndex(p => p.id === selectedProduct.id) > 0 ? handleNavigatePrevious : undefined}
+            onNavigateNext={selectedProduct && filteredProducts.findIndex(p => p.id === selectedProduct.id) < filteredProducts.length - 1 ? handleNavigateNext : undefined}
+            onNavigatePrevious={selectedProduct && filteredProducts.findIndex(p => p.id === selectedProduct.id) > 0 ? handleNavigatePrevious : undefined}
           />
         </div>
       </div>

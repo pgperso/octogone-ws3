@@ -7,7 +7,8 @@
       "brand": "Ferme locale",
       "unit": "kg",
       "availableUnits": ["kg", "g", "un"],
-      "unitCost": 8.50
+      "unitCost": 8.50,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-002",
@@ -16,7 +17,8 @@
       "brand": "Del Monte",
       "unit": "un",
       "availableUnits": ["un"],
-      "unitCost": 3.25
+      "unitCost": 3.25,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-003",
@@ -25,7 +27,8 @@
       "brand": "Ferme locale",
       "unit": "kg",
       "availableUnits": ["kg", "g"],
-      "unitCost": 12.75
+      "unitCost": 12.75,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-004",
@@ -34,7 +37,8 @@
       "brand": "Hass",
       "unit": "un",
       "availableUnits": ["un", "kg"],
-      "unitCost": 2.50
+      "unitCost": 2.50,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-005",
@@ -43,308 +47,352 @@
       "brand": "Olymel",
       "unit": "kg",
       "availableUnits": ["kg", "g", "lb"],
-      "unitCost": 15.99
+      "unitCost": 15.99,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-006",
       "name": "Baguette",
       "category": "Boulangerie",
       "unit": "un",
-      "unitCost": 1.50
+      "unitCost": 1.50,
+      "storage": "sec"
     },
     {
       "id": "prod-007",
       "name": "Basilic frais",
       "category": "Herbes",
       "unit": "un",
-      "unitCost": 2.99
+      "unitCost": 2.99,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-008",
       "name": "Beurre",
       "category": "Produits laitiers",
       "unit": "kg",
-      "unitCost": 9.50
+      "unitCost": 9.50,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-009",
       "name": "Bière blonde",
       "category": "Boissons",
       "unit": "caisse",
-      "unitCost": 42.00
+      "unitCost": 42.00,
+      "storage": "sec"
     },
     {
       "id": "prod-010",
       "name": "Bœuf haché",
       "category": "Viandes",
       "unit": "kg",
-      "unitCost": 18.50
+      "unitCost": 18.50,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-011",
       "name": "Brocoli",
       "category": "Légumes",
       "unit": "kg",
-      "unitCost": 5.25
+      "unitCost": 5.25,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-012",
       "name": "Café en grains",
       "category": "Boissons",
       "unit": "kg",
-      "unitCost": 28.00
+      "unitCost": 28.00,
+      "storage": "sec"
     },
     {
       "id": "prod-013",
       "name": "Carottes",
       "category": "Légumes",
       "unit": "kg",
-      "unitCost": 3.50
+      "unitCost": 3.50,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-014",
       "name": "Champignons blancs",
       "category": "Légumes",
       "unit": "kg",
-      "unitCost": 8.99
+      "unitCost": 8.99,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-015",
       "name": "Cheddar",
       "category": "Produits laitiers",
       "unit": "kg",
-      "unitCost": 14.50
+      "unitCost": 14.50,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-016",
       "name": "Citrons",
       "category": "Fruits",
       "unit": "kg",
-      "unitCost": 4.25
+      "unitCost": 4.25,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-017",
       "name": "Coca-Cola",
       "category": "Boissons",
       "unit": "caisse",
-      "unitCost": 18.50
+      "unitCost": 18.50,
+      "storage": "sec"
     },
     {
       "id": "prod-018",
       "name": "Concombre",
       "category": "Légumes",
       "unit": "kg",
-      "unitCost": 3.75
+      "unitCost": 3.75,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-019",
       "name": "Coriandre fraîche",
       "category": "Herbes",
       "unit": "un",
-      "unitCost": 2.50
+      "unitCost": 2.50,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-020",
       "name": "Crème 35%",
       "category": "Produits laitiers",
       "unit": "L",
-      "unitCost": 6.50
+      "unitCost": 6.50,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-021",
       "name": "Crevettes",
       "category": "Fruits de mer",
       "unit": "kg",
-      "unitCost": 32.00
+      "unitCost": 32.00,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-022",
       "name": "Farine tout usage",
       "category": "Épicerie",
       "unit": "kg",
-      "unitCost": 2.25
+      "unitCost": 2.25,
+      "storage": "sec"
     },
     {
       "id": "prod-023",
       "name": "Frites surgelées",
       "category": "Surgelés",
       "unit": "kg",
-      "unitCost": 4.50
+      "unitCost": 4.50,
+      "storage": "congelateur"
     },
     {
       "id": "prod-024",
       "name": "Fromage mozzarella",
       "category": "Produits laitiers",
       "unit": "kg",
-      "unitCost": 12.00
+      "unitCost": 12.00,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-025",
       "name": "Huile d'olive",
       "category": "Épicerie",
       "unit": "L",
-      "unitCost": 18.00
+      "unitCost": 18.00,
+      "storage": "sec"
     },
     {
       "id": "prod-026",
       "name": "Huile végétale",
       "category": "Épicerie",
       "unit": "L",
-      "unitCost": 8.50
+      "unitCost": 8.50,
+      "storage": "sec"
     },
     {
       "id": "prod-027",
       "name": "Jus d'orange",
       "category": "Boissons",
       "unit": "L",
-      "unitCost": 5.25
+      "unitCost": 5.25,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-028",
       "name": "Lait 3.25%",
       "category": "Produits laitiers",
       "unit": "L",
-      "unitCost": 3.50
+      "unitCost": 3.50,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-029",
       "name": "Laitue romaine",
       "category": "Légumes",
       "unit": "kg",
-      "unitCost": 4.50
+      "unitCost": 4.50,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-030",
       "name": "Oignons jaunes",
       "category": "Légumes",
       "unit": "kg",
-      "unitCost": 2.75
+      "unitCost": 2.75,
+      "storage": "sec"
     },
     {
       "id": "prod-031",
       "name": "Œufs",
       "category": "Produits laitiers",
       "unit": "un",
-      "unitCost": 4.25
+      "unitCost": 4.25,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-032",
       "name": "Pâtes sèches",
       "category": "Épicerie",
       "unit": "kg",
-      "unitCost": 3.50
+      "unitCost": 3.50,
+      "storage": "sec"
     },
     {
       "id": "prod-033",
       "name": "Persil frais",
       "category": "Herbes",
       "unit": "un",
-      "unitCost": 2.25
+      "unitCost": 2.25,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-034",
       "name": "Poitrine de poulet",
       "category": "Viandes",
       "unit": "kg",
-      "unitCost": 14.50
+      "unitCost": 14.50,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-035",
       "name": "Poivrons rouges",
       "category": "Légumes",
       "unit": "kg",
-      "unitCost": 6.50
+      "unitCost": 6.50,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-036",
       "name": "Pommes de terre",
       "category": "Légumes",
       "unit": "kg",
-      "unitCost": 2.50
+      "unitCost": 2.50,
+      "storage": "sec"
     },
     {
       "id": "prod-037",
       "name": "Riz blanc",
       "category": "Épicerie",
       "unit": "kg",
-      "unitCost": 3.25
+      "unitCost": 3.25,
+      "storage": "sec"
     },
     {
       "id": "prod-038",
       "name": "Saumon frais",
       "category": "Fruits de mer",
       "unit": "kg",
-      "unitCost": 38.00
+      "unitCost": 38.00,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-039",
       "name": "Sel",
       "category": "Épicerie",
       "unit": "kg",
-      "unitCost": 1.50
+      "unitCost": 1.50,
+      "storage": "sec"
     },
     {
       "id": "prod-040",
       "name": "Sirop d'érable",
       "category": "Épicerie",
       "unit": "L",
-      "unitCost": 45.00
+      "unitCost": 45.00,
+      "storage": "sec"
     },
     {
       "id": "prod-041",
       "name": "Sucre blanc",
       "category": "Épicerie",
       "unit": "kg",
-      "unitCost": 2.00
+      "unitCost": 2.00,
+      "storage": "sec"
     },
     {
       "id": "prod-042",
       "name": "Thon en conserve",
       "category": "Épicerie",
       "unit": "un",
-      "unitCost": 3.50
+      "unitCost": 3.50,
+      "storage": "sec"
     },
     {
       "id": "prod-043",
       "name": "Tomates",
       "category": "Légumes",
       "unit": "kg",
-      "unitCost": 5.50
+      "unitCost": 5.50,
+      "storage": "frigidaire"
     },
     {
       "id": "prod-044",
       "name": "Tortillas",
       "category": "Boulangerie",
       "unit": "paquet",
-      "unitCost": 4.25
+      "unitCost": 4.25,
+      "storage": "sec"
     },
     {
       "id": "prod-045",
       "name": "Vinaigre balsamique",
       "category": "Épicerie",
       "unit": "L",
-      "unitCost": 12.00
+      "unitCost": 12.00,
+      "storage": "sec"
     },
     {
       "id": "prod-046",
       "name": "Vin blanc",
       "category": "Boissons",
       "unit": "un",
-      "unitCost": 15.00
+      "unitCost": 15.00,
+      "storage": "sec"
     },
     {
       "id": "prod-047",
       "name": "Vin rouge",
       "category": "Boissons",
       "unit": "un",
-      "unitCost": 18.00
+      "unitCost": 18.00,
+      "storage": "sec"
     },
     {
       "id": "prod-048",
       "name": "Yogourt nature",
       "category": "Produits laitiers",
       "unit": "kg",
-      "unitCost": 5.50
+      "unitCost": 5.50,
+      "storage": "frigidaire"
     }
   ]
 }
