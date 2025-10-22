@@ -26,7 +26,35 @@ interface InventoryItem {
 }
 
 export const OctogoneInventoryWidget: React.FC = () => {
-  const [inventory, setInventory] = useState<InventoryItem[]>([]);
+  // Inventaire initial avec quelques produits déjà saisis
+  const initialInventory: InventoryItem[] = [
+    // Garde-manger (sec)
+    { productId: 'prod-022', quantity: 25 }, // Farine
+    { productId: 'prod-032', quantity: 15 }, // Pâtes
+    { productId: 'prod-037', quantity: 20 }, // Riz
+    { productId: 'prod-025', quantity: 5 }, // Huile d'olive
+    { productId: 'prod-039', quantity: 2 }, // Sel
+    { productId: 'prod-041', quantity: 10 }, // Sucre
+    { productId: 'prod-009', quantity: 3 }, // Bière
+    { productId: 'prod-017', quantity: 2 }, // Coca-Cola
+    
+    // Congélateur
+    { productId: 'prod-023', quantity: 30 }, // Frites surgelées
+    { productId: 'prod-049', quantity: 8 }, // Pizza surgelée
+    { productId: 'prod-050', quantity: 12 }, // Légumes mélangés
+    { productId: 'prod-057', quantity: 5 }, // Crème glacée
+    
+    // Frigidaire
+    { productId: 'prod-008', quantity: 8 }, // Beurre
+    { productId: 'prod-028', quantity: 20 }, // Lait
+    { productId: 'prod-031', quantity: 15 }, // Œufs
+    { productId: 'prod-013', quantity: 10 }, // Carottes
+    { productId: 'prod-043', quantity: 8 }, // Tomates
+    { productId: 'prod-029', quantity: 5 }, // Laitue
+    { productId: 'prod-004', quantity: 12 }, // Avocat
+  ];
+
+  const [inventory, setInventory] = useState<InventoryItem[]>(initialInventory);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [selectedStorage, setSelectedStorage] = useState<StorageType>('sec');
   const [searchTerm, setSearchTerm] = useState('');
