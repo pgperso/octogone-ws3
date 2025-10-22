@@ -109,12 +109,6 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
     setSearchTerm('');
   }, [selectedStorage]);
 
-  // Obtenir la quantité actuelle d'un produit
-  const getCurrentQuantity = (productId: string): number => {
-    const item = inventory.find(i => i.productId === productId);
-    return item?.quantity || 0;
-  };
-
   // Gérer la sélection d'un produit
   const handleProductSelect = (product: Product) => {
     setSelectedProduct(product);
