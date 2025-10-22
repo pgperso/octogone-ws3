@@ -89,8 +89,8 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
       {/* En-tête des colonnes */}
       <div className="grid grid-cols-12 gap-2 px-6 py-3 border-b font-semibold text-sm" style={{ backgroundColor: 'var(--surface-container)', borderColor: 'var(--outline)', color: 'var(--on-surface-variant)' }}>
         <div className="col-span-3">{isEnglish ? 'Product' : 'Produit'}</div>
-        <div className="col-span-2 text-center">{isEnglish ? 'Previous inventory' : 'Inventaire précédent'}</div>
-        <div className="col-span-2 text-center">{isEnglish ? 'Current inventory' : 'Inventaire en cours'}</div>
+        <div className="col-span-2">{isEnglish ? 'Previous inventory' : 'Inventaire précédent'}</div>
+        <div className="col-span-2">{isEnglish ? 'Current inventory' : 'Inventaire en cours'}</div>
         <div className="col-span-4 text-right pr-2">{isEnglish ? 'Total value' : 'Valeur totale'}</div>
         <div className="col-span-1"></div>
       </div>
@@ -143,13 +143,14 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 </div>
                 
                 {/* Colonne Inventaire précédent */}
-                <div className="col-span-2 flex items-center justify-center">
+                <div className="col-span-2 flex items-center">
                   <div 
-                    className="px-3 py-2 rounded text-center text-xs"
+                    className="w-full px-3 py-2 rounded text-xs"
                     style={{
-                      backgroundColor: 'var(--surface)',
-                      color: 'var(--on-surface-variant)',
-                      border: '1px solid var(--outline)'
+                      backgroundColor: quantity === 0 ? 'var(--secondary-container)' : 'var(--surface)',
+                      color: quantity === 0 ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)',
+                      border: quantity === 0 ? '2px solid var(--secondary)' : '1px solid var(--outline)',
+                      fontWeight: quantity === 0 ? 'bold' : 'normal'
                     }}
                   >
                     <div className="font-semibold text-sm">
@@ -159,9 +160,9 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 </div>
                 
                 {/* Colonne Inventaire en cours */}
-                <div className="col-span-2 flex items-center justify-center">
+                <div className="col-span-2 flex items-center">
                   <div 
-                    className="px-3 py-2 rounded text-center text-xs"
+                    className="w-full px-3 py-2 rounded text-xs"
                     style={{
                       backgroundColor: quantity > 0 ? 'var(--secondary-container)' : 'var(--surface)',
                       color: quantity > 0 ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)',
