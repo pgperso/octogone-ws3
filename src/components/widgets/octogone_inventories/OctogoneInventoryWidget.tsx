@@ -188,7 +188,13 @@ export const OctogoneInventoryWidget: React.FC = () => {
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
+            <div 
+              className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0"
+              style={{ 
+                border: '2px solid var(--primary)',
+                padding: '2px'
+              }}
+            >
               <Image
                 src="/images/avatars/marc.avif"
                 alt="Marc"
@@ -330,7 +336,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
               {/* Avatar Julie - Apparaît après 10 secondes, devient inactif après 30s */}
               {showSecondUser && (
                 <div className="relative group animate-fadeIn">
-                  <div className="w-10 h-10 rounded-full overflow-hidden border-2" style={{ borderColor: 'var(--outline)' }}>
+                  <div className="w-10 h-10 rounded-full overflow-hidden border-2" style={{ borderColor: 'var(--primary)' }}>
                     <Image
                       src="/images/avatars/julie.avif"
                       alt="Julie"
@@ -363,7 +369,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
               {/* Avatar Marie - Apparaît après 20 secondes */}
               {showThirdUser && (
                 <div className="relative group animate-fadeIn">
-                  <div className="w-10 h-10 rounded-full overflow-hidden border-2" style={{ borderColor: 'var(--outline)' }}>
+                  <div className="w-10 h-10 rounded-full overflow-hidden border-2" style={{ borderColor: 'var(--primary)' }}>
                     <Image
                       src="/images/avatars/marie.avif"
                       alt="Marie"
@@ -425,7 +431,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
                 >
                   Garde-manger ({secProgress.entered}/{secProgress.total})
                 </label>
-                <span className="text-sm font-bold" style={{ color: 'var(--primary)' }}>
+                <span className="text-sm font-bold" style={{ color: 'var(--on-surface)' }}>
                   {formatCurrency(secValue)} $
                 </span>
               </div>
@@ -471,7 +477,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
                 >
                   Congélateur ({congelateurProgress.entered}/{congelateurProgress.total})
                 </label>
-                <span className="text-sm font-bold" style={{ color: 'var(--primary)' }}>
+                <span className="text-sm font-bold" style={{ color: 'var(--on-surface)' }}>
                   {formatCurrency(congelateurValue)} $
                 </span>
               </div>
@@ -517,7 +523,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
                 >
                   Frigidaire ({frigidaireProgress.entered}/{frigidaireProgress.total})
                 </label>
-                <span className="text-sm font-bold" style={{ color: 'var(--primary)' }}>
+                <span className="text-sm font-bold" style={{ color: 'var(--on-surface)' }}>
                   {formatCurrency(frigidaireValue)} $
                 </span>
               </div>
