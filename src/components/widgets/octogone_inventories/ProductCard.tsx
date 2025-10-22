@@ -54,6 +54,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
       'Sel': '/products/salt.avif',
       "Sirop d'érable": '/products/maple-syrup.avif',
       'Sucre blanc': '/products/white-sugar.avif',
+      'Thon en conserve': '/products/canned-tuna.png',
       'Tortillas': '/products/tortillas.avif',
       'Vinaigre balsamique': '/products/balsamic-vinegar.avif',
       'Vin blanc': '/products/white-wine.avif',

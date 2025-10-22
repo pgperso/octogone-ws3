@@ -88,8 +88,9 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
 
       {/* En-tête des colonnes */}
       <div className="grid grid-cols-12 gap-2 px-6 py-3 border-b font-semibold text-sm" style={{ backgroundColor: 'var(--surface-container)', borderColor: 'var(--outline)', color: 'var(--on-surface-variant)' }}>
-        <div className="col-span-4">{isEnglish ? 'Product' : 'Produit'}</div>
-        <div className="col-span-3 text-left">{isEnglish ? 'Entry' : 'Saisie'}</div>
+        <div className="col-span-3">{isEnglish ? 'Product' : 'Produit'}</div>
+        <div className="col-span-2 text-center">{isEnglish ? 'Previous inventory' : 'Inventaire précédent'}</div>
+        <div className="col-span-2 text-center">{isEnglish ? 'Current inventory' : 'Inventaire en cours'}</div>
         <div className="col-span-4 text-right pr-2">{isEnglish ? 'Total value' : 'Valeur totale'}</div>
         <div className="col-span-1"></div>
       </div>
@@ -131,7 +132,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                   }
                 }}
               >
-                <div className="col-span-4">
+                <div className="col-span-3">
                   <div className="font-medium">{translateProduct(product.name, locale)}</div>
                   <div 
                     className="text-xs mt-0.5"
@@ -140,38 +141,37 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                     {translateCategory(product.category, locale)}
                   </div>
                 </div>
-                {/* Colonne Saisie - 2 cases côte à côte */}
-                <div className="col-span-3 flex items-center gap-2">
-                  {/* Case Précédent */}
+                
+                {/* Colonne Inventaire précédent */}
+                <div className="col-span-2 flex items-center justify-center">
                   <div 
-                    className="flex-1 px-2 py-2 rounded text-center text-xs"
+                    className="px-3 py-2 rounded text-center text-xs"
                     style={{
                       backgroundColor: 'var(--surface)',
-                      color: quantity === 0 ? 'var(--on-surface)' : 'var(--on-surface-variant)',
-                      border: '1px solid var(--outline)',
-                      fontWeight: quantity === 0 ? 'bold' : 'normal'
+                      color: 'var(--on-surface-variant)',
+                      border: '1px solid var(--outline)'
                     }}
                   >
-                    <div className="font-bold text-sm">
+                    <div className="font-semibold text-sm">
                       {product.initialQuantity || 0} {translateUnit(product.unit, locale)}
                     </div>
-                    <div className="text-[9px] mt-1 opacity-60">{isEnglish ? 'Previous' : 'Précédent'}</div>
                   </div>
-                  
-                  {/* Case Nouveau */}
+                </div>
+                
+                {/* Colonne Inventaire en cours */}
+                <div className="col-span-2 flex items-center justify-center">
                   <div 
-                    className="flex-1 px-2 py-2 rounded text-center text-xs"
+                    className="px-3 py-2 rounded text-center text-xs"
                     style={{
-                      backgroundColor: 'var(--surface)',
-                      color: quantity > 0 ? 'var(--on-surface)' : 'var(--on-surface-variant)',
-                      border: '1px solid var(--outline)',
+                      backgroundColor: quantity > 0 ? 'var(--secondary-container)' : 'var(--surface)',
+                      color: quantity > 0 ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)',
+                      border: quantity > 0 ? '2px solid var(--secondary)' : '1px solid var(--outline)',
                       fontWeight: quantity > 0 ? 'bold' : 'normal'
                     }}
                   >
                     <div className="font-bold text-sm">
                       {quantity > 0 ? `${quantity} ${translateUnit(product.unit, locale)}` : '-'}
                     </div>
-                    <div className="text-[9px] mt-1 opacity-60">{isEnglish ? 'New' : 'Nouveau'}</div>
                   </div>
                 </div>
                 <div className="col-span-4 text-right pr-2">
