@@ -117,11 +117,22 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
               <div
                 key={product.id}
                 onClick={() => onProductSelect(product)}
-                className="grid grid-cols-12 gap-2 px-6 py-3 cursor-pointer border-b transition-colors"
+                className="grid grid-cols-12 gap-2 px-6 py-3 cursor-pointer border-b transition-all hover:bg-opacity-50"
                 style={{
                   backgroundColor: isSelected ? 'var(--secondary-container)' : 'transparent',
                   borderColor: 'var(--outline)',
-                  color: isSelected ? 'var(--on-secondary-container)' : 'var(--on-surface)'
+                  color: isSelected ? 'var(--on-secondary-container)' : 'var(--on-surface)',
+                  cursor: 'pointer'
+                }}
+                onMouseEnter={(e) => {
+                  if (!isSelected) {
+                    e.currentTarget.style.backgroundColor = 'var(--surface-variant)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isSelected) {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                  }
                 }}
               >
                 <div className="col-span-4">

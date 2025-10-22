@@ -27,10 +27,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
   // Mapper le nom du produit à son image
   const getProductImage = (productName: string): string => {
     const imageMap: Record<string, string> = {
-      'Baguette': '/images/products/bread.avif',
+      'Baguette': '/products/bread.avif',
       // Ajouter d'autres mappings ici au fur et à mesure
     };
-    return imageMap[productName] || '/images/products/default.avif';
+    return imageMap[productName] || '/products/default.avif';
   };
 
   return (
