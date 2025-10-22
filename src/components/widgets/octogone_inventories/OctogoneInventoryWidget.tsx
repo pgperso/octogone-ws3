@@ -96,14 +96,6 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
   // Filtrer les produits par emplacement
   const filteredProducts = products.filter(p => (p.storage || 'sec') === selectedStorage);
 
-  // Sélectionner le premier produit du garde-manger au chargement
-  useEffect(() => {
-    const firstPantryProduct = products.find(p => (p.storage || 'sec') === 'sec');
-    if (firstPantryProduct && !selectedProduct) {
-      setSelectedProduct(firstPantryProduct);
-    }
-  }, [products, selectedProduct]);
-
   // Réinitialiser la recherche et sélectionner le premier produit quand on change d'emplacement
   useEffect(() => {
     setSearchTerm('');
@@ -202,6 +194,54 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
     return `${integerPart}.${parts[1]}`;
   };
 
+  // Fonction d'export CSV (évite la duplication de code)
+  const handleExportCSV = () => {
+    const exportData = products.map(product => {
+      const item = inventory.find(i => i.productId === product.id);
+      const quantity = item?.quantity || 0;
+      const totalCost = quantity * product.unitCost;
+      const storageLabel = product.storage === 'sec' 
+        ? (isEnglish ? 'Pantry' : 'Garde-manger')
+        : product.storage === 'congelateur' 
+          ? (isEnglish ? 'Freezer' : 'Congélateur')
+          : (isEnglish ? 'Fridge' : 'Frigidaire');
+      
+      return isEnglish ? {
+        Location: storageLabel,
+        Product: product.name,
+        Category: product.category,
+        Brand: product.brand || 'No brand',
+        Quantity: quantity,
+        Unit: product.unit,
+        'Unit price': product.unitCost.toFixed(2),
+        'Total value': totalCost.toFixed(2)
+      } : {
+        Emplacement: storageLabel,
+        Produit: product.name,
+        Catégorie: product.category,
+        Marque: product.brand || 'Sans marque',
+        Quantité: quantity,
+        Unité: product.unit,
+        'Prix unitaire': product.unitCost.toFixed(2),
+        'Valeur totale': totalCost.toFixed(2)
+      };
+    });
+
+    const headers = Object.keys(exportData[0]).join(',');
+    const rows = exportData.map(row => Object.values(row).join(',')).join('\n');
+    const csv = `${headers}\n${rows}`;
+
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    link.setAttribute('href', url);
+    link.setAttribute('download', `inventaire_${capitalizedMonth}_${new Date().getFullYear()}.csv`);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div 
       className="w-full rounded-xl shadow-2xl overflow-hidden"
@@ -255,55 +295,7 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
               <OctogoneButton
                 variant="secondary"
                 size="md"
-                onClick={() => {
-                  // Préparer les données pour l'export
-                  const exportData = products.map(product => {
-                    const item = inventory.find(i => i.productId === product.id);
-                    const quantity = item?.quantity || 0;
-                    const totalCost = quantity * product.unitCost;
-                    const storageLabel = product.storage === 'sec' 
-                      ? (isEnglish ? 'Pantry' : 'Garde-manger')
-                      : product.storage === 'congelateur' 
-                        ? (isEnglish ? 'Freezer' : 'Congélateur')
-                        : (isEnglish ? 'Fridge' : 'Frigidaire');
-                    
-                    return isEnglish ? {
-                      Location: storageLabel,
-                      Product: product.name,
-                      Category: product.category,
-                      Brand: product.brand || 'No brand',
-                      Quantity: quantity,
-                      Unit: product.unit,
-                      'Unit price': product.unitCost.toFixed(2),
-                      'Total value': totalCost.toFixed(2)
-                    } : {
-                      Emplacement: storageLabel,
-                      Produit: product.name,
-                      Catégorie: product.category,
-                      Marque: product.brand || 'Sans marque',
-                      Quantité: quantity,
-                      Unité: product.unit,
-                      'Prix unitaire': product.unitCost.toFixed(2),
-                      'Valeur totale': totalCost.toFixed(2)
-                    };
-                  });
-
-                  // Créer le CSV
-                  const headers = Object.keys(exportData[0]).join(',');
-                  const rows = exportData.map(row => Object.values(row).join(',')).join('\n');
-                  const csv = `${headers}\n${rows}`;
-
-                  // Télécharger le fichier
-                  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-                  const link = document.createElement('a');
-                  const url = URL.createObjectURL(blob);
-                  link.setAttribute('href', url);
-                  link.setAttribute('download', `inventaire_${capitalizedMonth}_${new Date().getFullYear()}.csv`);
-                  link.style.visibility = 'hidden';
-                  document.body.appendChild(link);
-                  link.click();
-                  document.body.removeChild(link);
-                }}
+                onClick={handleExportCSV}
                 icon={
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>

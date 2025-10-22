@@ -38,6 +38,11 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
   const isEnglish = locale === 'en';
   const [displayValue, setDisplayValue] = useState('0');
   const [isEditing, setIsEditing] = useState(false);
+  // TODO: selectedUnit n'est pas encore utilisé dans la sauvegarde
+  // Pour l'implémenter correctement, il faudra :
+  // 1. Modifier InventoryItem pour inclure l'unité
+  // 2. Passer l'unité à onSave(productId, quantity, unit)
+  // 3. Ajouter un système de conversion d'unités
   const [selectedUnit, setSelectedUnit] = useState<string>('');
   const [isSaving, setIsSaving] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
