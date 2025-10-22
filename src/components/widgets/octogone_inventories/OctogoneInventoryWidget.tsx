@@ -200,7 +200,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
               checked={selectedStorage === 'sec'}
               onChange={() => setSelectedStorage('sec')}
               className="w-5 h-5 cursor-pointer"
-              style={{ accentColor: 'var(--primary)' }}
+              style={{ accentColor: 'var(--secondary-container)' }}
             />
             <div className="flex-1">
               <div className="flex items-center justify-between mb-1">
@@ -236,7 +236,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
               checked={selectedStorage === 'congelateur'}
               onChange={() => setSelectedStorage('congelateur')}
               className="w-5 h-5 cursor-pointer"
-              style={{ accentColor: 'var(--primary)' }}
+              style={{ accentColor: 'var(--secondary-container)' }}
             />
             <div className="flex-1">
               <div className="flex items-center justify-between mb-1">
@@ -272,7 +272,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
               checked={selectedStorage === 'frigidaire'}
               onChange={() => setSelectedStorage('frigidaire')}
               className="w-5 h-5 cursor-pointer"
-              style={{ accentColor: 'var(--primary)' }}
+              style={{ accentColor: 'var(--secondary-container)' }}
             />
             <div className="flex-1">
               <div className="flex items-center justify-between mb-1">
@@ -301,9 +301,9 @@ export const OctogoneInventoryWidget: React.FC = () => {
       </div>
 
       {/* Contenu principal */}
-      <div className="grid grid-cols-1 lg:grid-cols-2" style={{ height: '750px' }}>
+      <div className="grid grid-cols-1 lg:grid-cols-2">
         {/* Liste de produits (gauche) - scrollable */}
-        <div className="border-r overflow-hidden" style={{ borderColor: 'var(--outline)' }}>
+        <div className="border-r flex" style={{ borderColor: 'var(--outline)' }}>
           <InventoryProductList
             products={filteredProducts}
             inventory={inventory}
@@ -313,7 +313,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
         </div>
 
         {/* Calculatrice (droite) - définit la hauteur */}
-        <div className="overflow-auto">
+        <div>
           <InventoryCalculator
             selectedProduct={selectedProduct}
             currentQuantity={selectedProduct ? getCurrentQuantity(selectedProduct.id) : 0}

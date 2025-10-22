@@ -393,6 +393,102 @@
       "unit": "kg",
       "unitCost": 5.50,
       "storage": "frigidaire"
+    },
+    {
+      "id": "prod-049",
+      "name": "Pizza surgelée",
+      "category": "Surgelés",
+      "unit": "un",
+      "unitCost": 6.99,
+      "storage": "congelateur"
+    },
+    {
+      "id": "prod-050",
+      "name": "Légumes mélangés surgelés",
+      "category": "Surgelés",
+      "unit": "kg",
+      "unitCost": 4.25,
+      "storage": "congelateur"
+    },
+    {
+      "id": "prod-051",
+      "name": "Pois verts surgelés",
+      "category": "Surgelés",
+      "unit": "kg",
+      "unitCost": 3.75,
+      "storage": "congelateur"
+    },
+    {
+      "id": "prod-052",
+      "name": "Maïs en grains surgelé",
+      "category": "Surgelés",
+      "unit": "kg",
+      "unitCost": 3.50,
+      "storage": "congelateur"
+    },
+    {
+      "id": "prod-053",
+      "name": "Haricots verts surgelés",
+      "category": "Surgelés",
+      "unit": "kg",
+      "unitCost": 4.00,
+      "storage": "congelateur"
+    },
+    {
+      "id": "prod-054",
+      "name": "Épinards surgelés",
+      "category": "Surgelés",
+      "unit": "kg",
+      "unitCost": 5.25,
+      "storage": "congelateur"
+    },
+    {
+      "id": "prod-055",
+      "name": "Bâtonnets de poisson surgelés",
+      "category": "Surgelés",
+      "unit": "kg",
+      "unitCost": 8.99,
+      "storage": "congelateur"
+    },
+    {
+      "id": "prod-056",
+      "name": "Croquettes de poulet surgelées",
+      "category": "Surgelés",
+      "unit": "kg",
+      "unitCost": 9.50,
+      "storage": "congelateur"
+    },
+    {
+      "id": "prod-057",
+      "name": "Crème glacée vanille",
+      "category": "Surgelés",
+      "unit": "L",
+      "unitCost": 7.99,
+      "storage": "congelateur"
+    },
+    {
+      "id": "prod-058",
+      "name": "Sorbet aux fruits",
+      "category": "Surgelés",
+      "unit": "L",
+      "unitCost": 6.50,
+      "storage": "congelateur"
+    },
+    {
+      "id": "prod-059",
+      "name": "Pâte feuilletée surgelée",
+      "category": "Surgelés",
+      "unit": "kg",
+      "unitCost": 5.75,
+      "storage": "congelateur"
+    },
+    {
+      "id": "prod-060",
+      "name": "Fruits rouges surgelés",
+      "category": "Surgelés",
+      "unit": "kg",
+      "unitCost": 8.25,
+      "storage": "congelateur"
     }
   ]
 }
