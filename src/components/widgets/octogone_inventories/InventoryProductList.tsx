@@ -151,11 +151,10 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                       fontWeight: quantity === 0 ? 'bold' : 'normal'
                     }}
                   >
-                    <div className="font-bold text-sm">{product.initialQuantity || 0}</div>
-                    <div className="text-[10px] mt-0.5" style={{ color: 'var(--on-surface-variant)' }}>
-                      {translateUnit(product.unit, locale)}
+                    <div className="font-bold text-sm">
+                      {product.initialQuantity || 0} {translateUnit(product.unit, locale)}
                     </div>
-                    <div className="text-[9px] mt-0.5 opacity-60">{isEnglish ? 'Previous' : 'Précédent'}</div>
+                    <div className="text-[9px] mt-1 opacity-60">{isEnglish ? 'Previous' : 'Précédent'}</div>
                   </div>
                   
                   {/* Case Nouveau */}
@@ -168,11 +167,10 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                       fontWeight: quantity > 0 ? 'bold' : 'normal'
                     }}
                   >
-                    <div className="font-bold text-sm">{quantity > 0 ? quantity : '-'}</div>
-                    <div className="text-[10px] mt-0.5" style={{ color: 'var(--on-surface-variant)' }}>
-                      {quantity > 0 ? translateUnit(product.unit, locale) : '-'}
+                    <div className="font-bold text-sm">
+                      {quantity > 0 ? `${quantity} ${translateUnit(product.unit, locale)}` : '-'}
                     </div>
-                    <div className="text-[9px] mt-0.5 opacity-60">{isEnglish ? 'New' : 'Nouveau'}</div>
+                    <div className="text-[9px] mt-1 opacity-60">{isEnglish ? 'New' : 'Nouveau'}</div>
                   </div>
                 </div>
                 <div className="col-span-4 text-right pr-2">
