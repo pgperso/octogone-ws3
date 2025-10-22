@@ -219,7 +219,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
                   htmlFor="storage-sec" 
                   className="text-sm font-semibold cursor-pointer" 
                   onClick={() => setSelectedStorage('sec')}
-                  style={{ color: selectedStorage === 'sec' ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)' }}
+                  style={{ color: 'var(--on-surface)' }}
                 >
                   Garde-manger
                 </label>
@@ -265,7 +265,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
                   htmlFor="storage-congelateur" 
                   className="text-sm font-semibold cursor-pointer" 
                   onClick={() => setSelectedStorage('congelateur')}
-                  style={{ color: selectedStorage === 'congelateur' ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)' }}
+                  style={{ color: 'var(--on-surface)' }}
                 >
                   Inventaire congélateur
                 </label>
@@ -311,7 +311,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
                   htmlFor="storage-frigidaire" 
                   className="text-sm font-semibold cursor-pointer" 
                   onClick={() => setSelectedStorage('frigidaire')}
-                  style={{ color: selectedStorage === 'frigidaire' ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)' }}
+                  style={{ color: 'var(--on-surface)' }}
                 >
                   Inventaire frigidaire
                 </label>

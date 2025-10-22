@@ -124,7 +124,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                   <div className="font-medium">{product.name}</div>
                   <div 
                     className="text-xs mt-0.5"
-                    style={{ color: 'var(--on-surface-variant)' }}
+                    style={{ color: isSelected ? 'var(--on-primary-container)' : 'var(--on-surface-variant)' }}
                   >
                     {product.category}
                   </div>
@@ -138,7 +138,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                   </div>
                   <div 
                     className="text-xs mt-0.5"
-                    style={{ color: 'var(--on-surface-variant)' }}
+                    style={{ color: isSelected ? 'var(--on-primary-container)' : 'var(--on-surface-variant)' }}
                   >
                     {quantity > 0 ? `${quantity} × ${product.unitCost.toFixed(2)} $` : `${product.unitCost.toFixed(2)} $ / ${product.unit}`}
                   </div>
