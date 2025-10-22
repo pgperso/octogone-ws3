@@ -20,7 +20,6 @@ interface Product {
 
 interface InventoryCalculatorProps {
   selectedProduct: Product | null;
-  currentQuantity: number;
   onSave: (productId: string, quantity: number) => void;
   onNavigateNext?: () => void;
   onNavigatePrevious?: () => void;
@@ -29,7 +28,6 @@ interface InventoryCalculatorProps {
 
 export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
   selectedProduct,
-  currentQuantity,
   onSave,
   onNavigateNext,
   onNavigatePrevious,
@@ -40,14 +38,14 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
   const [isEditing, setIsEditing] = useState(false);
   const [selectedUnit, setSelectedUnit] = useState<string>('');
 
-  // Réinitialiser quand le produit change (pas quand currentQuantity change)
+  // Réinitialiser quand le produit change
   useEffect(() => {
     if (selectedProduct) {
       setDisplayValue('0');
       setSelectedUnit(selectedProduct.unit);
       setIsEditing(false);
     }
-  }, [selectedProduct?.id]); // Seulement quand le produit change, pas la quantité
+  }, [selectedProduct]); // Dépendance complète pour éviter les warnings
 
   const handleNumberClick = (num: string) => {
     setIsEditing(true);
