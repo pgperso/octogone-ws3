@@ -290,24 +290,16 @@ export const OctogoneInventoryWidget: React.FC = () => {
 
             {/* Total global */}
             <div 
-              className="flex-1 flex items-center justify-between p-3 rounded-lg"
+              className="flex items-center gap-4 px-6 py-3 rounded-lg"
               style={{ 
                 border: '1px solid var(--outline)'
               }}
             >
-              <div>
-                <div className="text-sm font-semibold mb-1" style={{ color: 'var(--on-surface-variant)' }}>
-                  Valeur totale de l&apos;inventaire
-                </div>
-                <div className="font-bold text-3xl" style={{ color: 'var(--primary)' }}>
-                  {formatCurrency(totalValue)} $
-                </div>
+              <div className="text-sm font-semibold" style={{ color: 'var(--on-surface-variant)' }}>
+                Total inventaire :
               </div>
-              <div className="text-right text-sm" style={{ color: 'var(--on-surface-variant)' }}>
-                <div className="font-semibold">
-                  {secProgress.entered + congelateurProgress.entered + frigidaireProgress.entered}/{secProgress.total + congelateurProgress.total + frigidaireProgress.total}
-                </div>
-                <div className="text-xs opacity-80">produits saisis</div>
+              <div className="font-bold text-2xl" style={{ color: 'var(--on-surface)' }}>
+                {formatCurrency(totalValue)} $
               </div>
             </div>
           </div>
