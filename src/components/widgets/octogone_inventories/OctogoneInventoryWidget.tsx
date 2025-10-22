@@ -121,6 +121,10 @@ export const OctogoneInventoryWidget: React.FC = () => {
   const congelateurProgress = getStorageProgress('congelateur');
   const frigidaireProgress = getStorageProgress('frigidaire');
 
+  // Obtenir le mois actuel en français
+  const currentMonth = new Date().toLocaleDateString('fr-CA', { month: 'long' });
+  const capitalizedMonth = currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1);
+
   return (
     <div 
       className="w-full rounded-xl shadow-2xl overflow-hidden"
@@ -157,7 +161,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
             </div>
             <div className="flex flex-col justify-center h-16">
               <h2 className="text-2xl font-bold leading-tight" style={{ color: 'var(--on-surface)' }}>
-                Bonjour Marc
+                Inventaire {capitalizedMonth}
               </h2>
               <p className="text-sm font-semibold leading-tight" style={{ color: 'var(--primary)' }}>
                 Directeur de la restauration
@@ -168,28 +172,89 @@ export const OctogoneInventoryWidget: React.FC = () => {
             </div>
           </div>
 
-          {/* Statistiques à droite */}
-          <div 
-            className="flex gap-6 text-sm"
-            style={{ color: 'var(--on-surface-variant)' }}
-          >
-            <div className="text-center">
-              <div className="text-2xl font-bold" style={{ color: 'var(--primary)' }}>
-                {selectedStorage === 'sec' ? secProgress.entered : selectedStorage === 'congelateur' ? congelateurProgress.entered : frigidaireProgress.entered}
+          {/* Totaux par emplacement + Total global */}
+          <div className="flex flex-col gap-3">
+            {/* Ligne 1: Sous-totaux des 3 emplacements */}
+            <div className="flex gap-4 text-xs">
+              {/* Garde-manger */}
+              <div 
+                className="flex-1 p-2 rounded-lg"
+                style={{ 
+                  backgroundColor: selectedStorage === 'sec' ? 'var(--secondary-container)' : 'var(--surface-variant)',
+                  border: `1px solid ${selectedStorage === 'sec' ? 'var(--secondary)' : 'var(--outline)'}`
+                }}
+              >
+                <div className="font-semibold mb-1" style={{ color: 'var(--on-surface-variant)' }}>
+                  🏺 Garde-manger
+                </div>
+                <div className="font-bold text-lg" style={{ color: 'var(--primary)' }}>
+                  {secProgress.entered}/{secProgress.total}
+                </div>
               </div>
-              <div className="text-xs">produits</div>
+
+              {/* Congélateur */}
+              <div 
+                className="flex-1 p-2 rounded-lg"
+                style={{ 
+                  backgroundColor: selectedStorage === 'congelateur' ? 'var(--secondary-container)' : 'var(--surface-variant)',
+                  border: `1px solid ${selectedStorage === 'congelateur' ? 'var(--secondary)' : 'var(--outline)'}`
+                }}
+              >
+                <div className="font-semibold mb-1" style={{ color: 'var(--on-surface-variant)' }}>
+                  ❄️ Congélateur
+                </div>
+                <div className="font-bold text-lg" style={{ color: 'var(--primary)' }}>
+                  {congelateurProgress.entered}/{congelateurProgress.total}
+                </div>
+              </div>
+
+              {/* Frigidaire */}
+              <div 
+                className="flex-1 p-2 rounded-lg"
+                style={{ 
+                  backgroundColor: selectedStorage === 'frigidaire' ? 'var(--secondary-container)' : 'var(--surface-variant)',
+                  border: `1px solid ${selectedStorage === 'frigidaire' ? 'var(--secondary)' : 'var(--outline)'}`
+                }}
+              >
+                <div className="font-semibold mb-1" style={{ color: 'var(--on-surface-variant)' }}>
+                  🧊 Frigidaire
+                </div>
+                <div className="font-bold text-lg" style={{ color: 'var(--primary)' }}>
+                  {frigidaireProgress.entered}/{frigidaireProgress.total}
+                </div>
+              </div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold" style={{ color: 'var(--primary)' }}>
-                {totalItems.toFixed(0)}
+
+            {/* Ligne 2: Total global */}
+            <div 
+              className="p-3 rounded-lg"
+              style={{ 
+                backgroundColor: 'var(--primary-container)',
+                border: '2px solid var(--primary)'
+              }}
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-bold" style={{ color: 'var(--on-primary-container)' }}>
+                  📊 TOTAL INVENTAIRE
+                </span>
+                <div className="flex gap-6 text-sm">
+                  <div>
+                    <span className="font-semibold" style={{ color: 'var(--on-primary-container)' }}>
+                      {secProgress.entered + congelateurProgress.entered + frigidaireProgress.entered}/{secProgress.total + congelateurProgress.total + frigidaireProgress.total} produits
+                    </span>
+                  </div>
+                  <div>
+                    <span className="font-semibold" style={{ color: 'var(--on-primary-container)' }}>
+                      {totalItems.toFixed(0)} unités
+                    </span>
+                  </div>
+                  <div>
+                    <span className="font-bold text-lg" style={{ color: 'var(--on-primary-container)' }}>
+                      {totalValue.toFixed(0)} $
+                    </span>
+                  </div>
+                </div>
               </div>
-              <div className="text-xs">unités</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold" style={{ color: 'var(--primary)' }}>
-                {totalValue.toFixed(0)} $
-              </div>
-              <div className="text-xs">valeur</div>
             </div>
           </div>
         </div>
@@ -267,7 +332,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
                   onClick={() => setSelectedStorage('congelateur')}
                   style={{ color: 'var(--on-surface)' }}
                 >
-                  Inventaire congélateur
+                  Congélateur
                 </label>
                 <span className="text-sm font-bold" style={{ color: 'var(--on-surface)' }}>
                   {congelateurProgress.entered} / {congelateurProgress.total} ({congelateurProgress.percentage.toFixed(0)}%)
@@ -313,7 +378,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
                   onClick={() => setSelectedStorage('frigidaire')}
                   style={{ color: 'var(--on-surface)' }}
                 >
-                  Inventaire frigidaire
+                  Frigidaire
                 </label>
                 <span className="text-sm font-bold" style={{ color: 'var(--on-surface)' }}>
                   {frigidaireProgress.entered} / {frigidaireProgress.total} ({frigidaireProgress.percentage.toFixed(0)}%)
