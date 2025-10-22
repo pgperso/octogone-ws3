@@ -96,8 +96,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
     }
   };
 
-  // Calculer les totaux
-  const totalItems = inventory.reduce((sum, item) => sum + item.quantity, 0);
+  // Calculer le total de la valeur
   const totalValue = inventory.reduce((sum, item) => {
     const product = products.find(p => p.id === item.productId);
     return sum + (product ? product.unitCost * item.quantity : 0);
