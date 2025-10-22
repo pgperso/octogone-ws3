@@ -98,7 +98,7 @@ export const unitTranslations: Record<string, { fr: string; en: string }> = {
   'g': { fr: 'g', en: 'g' },
   'L': { fr: 'L', en: 'L' },
   'mL': { fr: 'mL', en: 'mL' },
-  'un': { fr: 'un', en: 'unit' },
+  'un': { fr: 'un', en: 'un' },
   'lb': { fr: 'lb', en: 'lb' },
   'oz': { fr: 'oz', en: 'oz' },
   'caisse': { fr: 'caisse', en: 'case' },
