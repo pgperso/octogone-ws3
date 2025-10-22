@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { InventoryProductList } from './InventoryProductList';
 import { InventoryCalculator } from './InventoryCalculator';
+import { OctogoneButton } from '@/components/ui/octogone-button';
 import inventoryData from '@/data/inventory/inventory-products.json';
 
 interface Product {
@@ -239,12 +240,9 @@ export const OctogoneInventoryWidget: React.FC = () => {
             {/* Bouton export et Total global */}
             <div className="flex items-center gap-4">
               {/* Bouton Export */}
-              <button
-                className="px-6 py-3 rounded-lg font-semibold transition-all hover:shadow-lg flex items-center gap-2"
-                style={{ 
-                  backgroundColor: 'var(--secondary)',
-                  color: 'var(--on-secondary)'
-                }}
+              <OctogoneButton
+                variant="secondary"
+                size="md"
                 onClick={() => {
                   // Préparer les données pour l'export
                   const exportData = products.map(product => {
@@ -264,29 +262,31 @@ export const OctogoneInventoryWidget: React.FC = () => {
                   });
 
                   // Créer le CSV
-                const headers = Object.keys(exportData[0]).join(',');
-                const rows = exportData.map(row => Object.values(row).join(',')).join('\n');
-                const csv = `${headers}\n${rows}`;
+                  const headers = Object.keys(exportData[0]).join(',');
+                  const rows = exportData.map(row => Object.values(row).join(',')).join('\n');
+                  const csv = `${headers}\n${rows}`;
 
-                // Télécharger le fichier
-                const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-                const link = document.createElement('a');
-                const url = URL.createObjectURL(blob);
-                link.setAttribute('href', url);
-                link.setAttribute('download', `inventaire_${capitalizedMonth}_${new Date().getFullYear()}.csv`);
-                link.style.visibility = 'hidden';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-              }}
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="7 10 12 15 17 10"/>
-                <line x1="12" y1="15" x2="12" y2="3"/>
-              </svg>
-              Exporter CSV
-            </button>
+                  // Télécharger le fichier
+                  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+                  const link = document.createElement('a');
+                  const url = URL.createObjectURL(blob);
+                  link.setAttribute('href', url);
+                  link.setAttribute('download', `inventaire_${capitalizedMonth}_${new Date().getFullYear()}.csv`);
+                  link.style.visibility = 'hidden';
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                }}
+                icon={
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                }
+              >
+                Exporter CSV
+              </OctogoneButton>
 
             {/* Total global */}
             <div 
