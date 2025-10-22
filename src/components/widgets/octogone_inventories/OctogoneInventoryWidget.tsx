@@ -30,6 +30,15 @@ export const OctogoneInventoryWidget: React.FC = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [selectedStorage, setSelectedStorage] = useState<StorageType>('sec');
   const [searchTerm, setSearchTerm] = useState('');
+  const [showSecondUser, setShowSecondUser] = useState(false);
+
+  // Afficher le deuxième utilisateur après 10 secondes
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowSecondUser(true);
+    }, 10000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const products = inventoryData.products as Product[];
   
@@ -145,80 +154,114 @@ export const OctogoneInventoryWidget: React.FC = () => {
   };
 
   return (
-    <div 
-      className="w-full rounded-xl shadow-2xl overflow-hidden"
-      style={{ 
-        backgroundColor: 'var(--surface)',
-        border: '1px solid var(--outline)'
-      }}
-    >
-      {/* En-tête avec avatar */}
-      <div 
-        className="p-6 border-b"
-        style={{ 
-          backgroundColor: 'var(--surface)',
-          borderColor: 'var(--outline)'
-        }}
-      >
-        <div className="flex items-center justify-between mb-4">
-          {/* Avatar et informations */}
-          <div className="flex items-center gap-3">
-            <div 
-              className="w-16 h-16 rounded-full overflow-hidden"
-              style={{ 
-                border: '2px solid var(--primary)',
-                padding: '2px'
-              }}
-            >
+    <div className="w-full">
+      {/* Avatars multi-utilisateurs au-dessus */}
+      <div className="flex items-center gap-4 mb-4">
+        {/* Avatar Marc - Actif */}
+        <div className="relative">
+          <div className="w-16 h-16 rounded-full overflow-hidden border-2" style={{ borderColor: 'var(--primary)' }}>
+            <Image
+              src="/images/avatars/marc.avif"
+              alt="Marc"
+              width={64}
+              height={64}
+              className="w-full h-full object-cover"
+            />
+          </div>
+          {/* Indicateur actif */}
+          <div 
+            className="absolute bottom-0 right-0 w-5 h-5 rounded-full border-2"
+            style={{ 
+              backgroundColor: 'var(--success)',
+              borderColor: 'var(--surface)'
+            }}
+          />
+          <div className="text-xs font-semibold mt-1 text-center" style={{ color: 'var(--on-surface)' }}>
+            Marc
+          </div>
+        </div>
+
+        {/* Avatar Julie - Apparaît après 10 secondes */}
+        {showSecondUser && (
+          <div className="relative animate-fadeIn">
+            <div className="w-16 h-16 rounded-full overflow-hidden border-2" style={{ borderColor: 'var(--outline)' }}>
               <Image
-                src="/images/avatars/marc.avif"
-                alt="Marc"
-                width={60}
-                height={60}
-                className="w-full h-full object-cover rounded-full"
+                src="/images/avatars/julie.avif"
+                alt="Julie"
+                width={64}
+                height={64}
+                className="w-full h-full object-cover"
               />
             </div>
-            <div className="flex flex-col justify-center h-16">
-              <h2 className="text-2xl font-bold leading-tight" style={{ color: 'var(--on-surface)' }}>
-                Inventaire {capitalizedMonth}
-              </h2>
-              <p className="text-sm font-semibold leading-tight" style={{ color: 'var(--primary)' }}>
-                Directeur de la restauration
-              </p>
-              <p className="text-xs leading-tight" style={{ color: 'var(--on-surface-variant)' }}>
-                Groupe Resto & Co
-              </p>
+            {/* Indicateur actif */}
+            <div 
+              className="absolute bottom-0 right-0 w-5 h-5 rounded-full border-2"
+              style={{ 
+                backgroundColor: 'var(--success)',
+                borderColor: 'var(--surface)'
+              }}
+            />
+            <div className="text-xs font-semibold mt-1 text-center" style={{ color: 'var(--on-surface)' }}>
+              Julie
             </div>
           </div>
+        )}
+      </div>
 
-          {/* Bouton export et Total global */}
-          <div className="flex items-center gap-4">
-            {/* Bouton Export */}
-            <button
-              className="px-6 py-3 rounded-lg font-semibold transition-all hover:shadow-lg flex items-center gap-2"
-              style={{ 
-                backgroundColor: 'var(--secondary)',
-                color: 'var(--on-secondary)'
-              }}
-              onClick={() => {
-                // Préparer les données pour l'export
-                const exportData = products.map(product => {
-                  const item = inventory.find(i => i.productId === product.id);
-                  const quantity = item?.quantity || 0;
-                  const totalCost = quantity * product.unitCost;
-                  return {
-                    Emplacement: product.storage === 'sec' ? 'Garde-manger' : product.storage === 'congelateur' ? 'Congélateur' : 'Frigidaire',
-                    Produit: product.name,
-                    Catégorie: product.category,
-                    Marque: product.brand || 'Sans marque',
-                    Quantité: quantity,
-                    Unité: product.unit,
-                    'Prix unitaire': product.unitCost.toFixed(2),
-                    'Valeur totale': totalCost.toFixed(2)
-                  };
-                });
+      {/* Widget principal */}
+      <div 
+        className="w-full rounded-xl shadow-2xl overflow-hidden"
+        style={{ 
+          backgroundColor: 'var(--surface)',
+          border: '1px solid var(--outline)'
+        }}
+      >
+        {/* En-tête */}
+        <div 
+          className="px-6 py-6"
+          style={{ 
+            backgroundColor: 'var(--surface-container)',
+            borderBottom: '1px solid var(--outline)'
+          }}
+        >
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-2xl font-bold leading-tight mb-1" style={{ color: 'var(--on-surface)' }}>
+                Inventaire {capitalizedMonth}
+              </h2>
+              <p className="text-sm" style={{ color: 'var(--on-surface-variant)' }}>
+                Prise d&apos;inventaire collaborative
+              </p>
+            </div>
 
-                // Créer le CSV
+            {/* Bouton export et Total global */}
+            <div className="flex items-center gap-4">
+              {/* Bouton Export */}
+              <button
+                className="px-6 py-3 rounded-lg font-semibold transition-all hover:shadow-lg flex items-center gap-2"
+                style={{ 
+                  backgroundColor: 'var(--secondary)',
+                  color: 'var(--on-secondary)'
+                }}
+                onClick={() => {
+                  // Préparer les données pour l'export
+                  const exportData = products.map(product => {
+                    const item = inventory.find(i => i.productId === product.id);
+                    const quantity = item?.quantity || 0;
+                    const totalCost = quantity * product.unitCost;
+                    return {
+                      Emplacement: product.storage === 'sec' ? 'Garde-manger' : product.storage === 'congelateur' ? 'Congélateur' : 'Frigidaire',
+                      Produit: product.name,
+                      Catégorie: product.category,
+                      Marque: product.brand || 'Sans marque',
+                      Quantité: quantity,
+                      Unité: product.unit,
+                      'Prix unitaire': product.unitCost.toFixed(2),
+                      'Valeur totale': totalCost.toFixed(2)
+                    };
+                  });
+
+                  // Créer le CSV
                 const headers = Object.keys(exportData[0]).join(',');
                 const rows = exportData.map(row => Object.values(row).join(',')).join('\n');
                 const csv = `${headers}\n${rows}`;
@@ -434,6 +477,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
             onNavigatePrevious={selectedProduct && filteredProducts.findIndex(p => p.id === selectedProduct.id) > 0 ? handleNavigatePrevious : undefined}
           />
         </div>
+      </div>
       </div>
     </div>
   );

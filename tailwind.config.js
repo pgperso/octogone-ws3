@@ -127,13 +127,18 @@ module.exports = {
         'pulse-scale': {
           '0%, 100%': { transform: 'scale(1)' },
           '50%': { transform: 'scale(1.1)' }
+        },
+        fadeIn: {
+          '0%': { opacity: '0', transform: 'translateX(-20px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' }
         }
       },
       animation: {
         marquee: 'marquee 25s linear infinite',
         marquee2: 'marquee2 25s linear infinite',
         'shrink-on-scroll': 'scroll-shrink 1s ease-out forwards',
-        'pulse-scale': 'pulse-scale 2s ease-in-out infinite'
+        'pulse-scale': 'pulse-scale 2s ease-in-out infinite',
+        fadeIn: 'fadeIn 0.5s ease-out'
       },
     },
   },
