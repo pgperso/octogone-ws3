@@ -54,7 +54,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
   return (
     <div className="flex flex-col h-full">
       {/* Barre de recherche */}
-      <div className="p-4 border-b" style={{ borderColor: 'var(--outline)' }}>
+      <div className="p-6 border-b" style={{ borderColor: 'var(--outline)' }}>
         <div className="relative">
           <Search 
             className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5" 
@@ -78,7 +78,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
 
       {/* En-têtes de colonnes */}
       <div 
-        className="grid grid-cols-12 gap-2 px-4 py-3 text-sm font-semibold border-b"
+        className="grid grid-cols-12 gap-2 px-6 py-3 text-sm font-semibold border-b"
         style={{ 
           backgroundColor: 'var(--surface-variant)',
           color: 'var(--on-surface-variant)',
@@ -110,7 +110,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
               <div
                 key={product.id}
                 onClick={() => onProductSelect(product)}
-                className="grid grid-cols-12 gap-2 px-4 py-3 cursor-pointer border-b transition-colors"
+                className="grid grid-cols-12 gap-2 px-6 py-3 cursor-pointer border-b transition-colors"
                 style={{
                   backgroundColor: isSelected ? 'var(--primary-container)' : 'transparent',
                   borderColor: 'var(--outline)',
@@ -143,11 +143,11 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 <div className="col-span-1 flex items-center justify-center">
                   {quantity > 0 && (
                     <div 
-                      className="w-6 h-6 rounded-full flex items-center justify-center"
+                      className="w-7 h-7 rounded-lg flex items-center justify-center"
                       style={{ backgroundColor: 'var(--success-container)' }}
                     >
                       <Check 
-                        className="w-4 h-4" 
+                        className="w-5 h-5" 
                         style={{ color: 'var(--on-success-container)' }}
                       />
                     </div>
