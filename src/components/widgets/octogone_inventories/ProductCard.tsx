@@ -218,10 +218,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
         {onAddToOrder && (
           <OctogoneButton
             variant={isBelowMinimum ? 'primary' : 'secondary'}
-            size="md"
+            size="lg"
             onClick={onAddToOrder}
             className="w-full"
-            icon={<ShoppingCart size={18} />}
+            icon={<ShoppingCart size={20} />}
           >
             {isEnglish ? 'Add to my order' : 'Ajouter à ma commande'}
           </OctogoneButton>
