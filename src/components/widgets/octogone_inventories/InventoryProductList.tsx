@@ -52,9 +52,9 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
   };
 
   return (
-    <div className="flex flex-col h-full px-6">
+    <div className="flex flex-col h-full">
       {/* Barre de recherche */}
-      <div className="py-6 border-b" style={{ borderColor: 'var(--outline)' }}>
+      <div className="px-6 py-6 border-b" style={{ borderColor: 'var(--outline)' }}>
         <div className="relative">
           <Search 
             className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5" 
@@ -78,7 +78,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
 
       {/* En-têtes de colonnes */}
       <div 
-        className="grid grid-cols-12 gap-2 py-3 text-sm font-semibold border-b"
+        className="grid grid-cols-12 gap-2 px-6 py-3 text-sm font-semibold border-b"
         style={{ 
           backgroundColor: 'var(--surface-variant)',
           color: 'var(--on-surface-variant)',
@@ -110,7 +110,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
               <div
                 key={product.id}
                 onClick={() => onProductSelect(product)}
-                className="grid grid-cols-12 gap-2 py-3 cursor-pointer border-b transition-colors"
+                className="grid grid-cols-12 gap-2 px-6 py-3 cursor-pointer border-b transition-colors"
                 style={{
                   backgroundColor: isSelected ? 'var(--primary-container)' : 'transparent',
                   borderColor: 'var(--outline)',
