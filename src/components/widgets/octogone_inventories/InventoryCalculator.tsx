@@ -38,6 +38,7 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
   const [isEditing, setIsEditing] = useState(false);
   const [selectedUnit, setSelectedUnit] = useState<string>('');
   const [isSaving, setIsSaving] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   // Réinitialiser quand le produit change
   useEffect(() => {
@@ -77,20 +78,21 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
     if (selectedProduct && !isSaving) {
       const quantity = parseFloat(displayValue) || 0;
       
-      // Animation de feedback - montrer le loading
+      // Étape 1: Montrer le spinner (600ms)
       setIsSaving(true);
       
-      // Sauvegarder après un délai pour montrer l'animation
       setTimeout(() => {
+        // Étape 2: Sauvegarder et montrer la confirmation (800ms)
         onSave(selectedProduct.id, quantity);
-        // Reset de la calculatrice après l'ajout
         setDisplayValue('0');
         setIsEditing(false);
+        setIsSaving(false);
+        setShowSuccess(true);
         
-        // Retour à l'état normal après l'animation
+        // Étape 3: Retour à l'état normal (800ms après)
         setTimeout(() => {
-          setIsSaving(false);
-        }, 400);
+          setShowSuccess(false);
+        }, 800);
       }, 600);
     }
   };
@@ -226,22 +228,31 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
         {/* Bouton Ajouter - prend tout l'espace disponible */}
         <button
           onClick={handleSave}
-          disabled={!selectedProduct || !isEditing}
+          disabled={!selectedProduct || !isEditing || isSaving || showSuccess}
           className="flex-1 p-4 rounded-lg font-bold text-lg flex items-center justify-center gap-3 shadow-lg cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
           style={{
-            backgroundColor: isSaving ? 'var(--success)' : 'var(--primary)',
-            color: isSaving ? 'var(--on-success)' : 'var(--on-primary)',
+            backgroundColor: (isSaving || showSuccess) ? 'var(--success)' : 'var(--primary)',
+            color: (isSaving || showSuccess) ? 'var(--on-success)' : 'var(--on-primary)',
             transition: 'all 0.3s ease',
-            transform: isSaving ? 'scale(1.05)' : 'scale(1)',
             opacity: (!selectedProduct || !isEditing) ? 0.5 : 1
           }}
         >
           {isSaving ? (
-            <Loader2 className="w-6 h-6 animate-spin" />
+            <>
+              <Loader2 className="w-6 h-6 animate-spin" />
+              {isEnglish ? 'Adding...' : 'Ajout...'}
+            </>
+          ) : showSuccess ? (
+            <>
+              <Check className="w-6 h-6" />
+              {isEnglish ? 'Added!' : 'Ajouté !'}
+            </>
           ) : (
-            <Check className="w-6 h-6" />
+            <>
+              <Check className="w-6 h-6" />
+              {isEnglish ? 'Add' : 'Ajouter'}
+            </>
           )}
-          {isEnglish ? 'Add' : 'Ajouter'}
         </button>
 
         {/* Boutons de navigation - carrés */}
