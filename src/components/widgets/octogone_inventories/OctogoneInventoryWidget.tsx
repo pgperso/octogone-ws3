@@ -26,7 +26,12 @@ interface InventoryItem {
   quantity: number;
 }
 
-export const OctogoneInventoryWidget: React.FC = () => {
+interface OctogoneInventoryWidgetProps {
+  locale?: 'fr' | 'en';
+}
+
+export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = ({ locale = 'fr' }) => {
+  const isEnglish = locale === 'en';
   // Inventaire initial avec quelques produits déjà saisis
   const initialInventory: InventoryItem[] = [
     // Garde-manger (sec)
@@ -180,8 +185,8 @@ export const OctogoneInventoryWidget: React.FC = () => {
   const congelateurProgress = getStorageProgress('congelateur');
   const frigidaireProgress = getStorageProgress('frigidaire');
 
-  // Obtenir le mois actuel en français
-  const currentMonth = new Date().toLocaleDateString('fr-CA', { month: 'long' });
+  // Obtenir le mois actuel
+  const currentMonth = new Date().toLocaleDateString(isEnglish ? 'en-US' : 'fr-CA', { month: 'long' });
   const capitalizedMonth = currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1);
 
   // Formater les valeurs monétaires avec espaces pour les milliers et point pour les décimales
@@ -226,10 +231,10 @@ export const OctogoneInventoryWidget: React.FC = () => {
             </div>
             <div className="flex flex-col justify-center h-16">
               <h2 className="text-2xl font-bold leading-tight" style={{ color: 'var(--on-surface)' }}>
-                Bonjour Marc
+                {isEnglish ? 'Hello Marc' : 'Bonjour Marc'}
               </h2>
               <p className="text-sm font-semibold leading-tight" style={{ color: 'var(--primary)' }}>
-                Directeur de la restauration
+                {isEnglish ? 'Restaurant Director' : 'Directeur de la restauration'}
               </p>
               <p className="text-xs leading-tight" style={{ color: 'var(--on-surface-variant)' }}>
                 Groupe Resto & Co
@@ -249,8 +254,23 @@ export const OctogoneInventoryWidget: React.FC = () => {
                     const item = inventory.find(i => i.productId === product.id);
                     const quantity = item?.quantity || 0;
                     const totalCost = quantity * product.unitCost;
-                    return {
-                      Emplacement: product.storage === 'sec' ? 'Garde-manger' : product.storage === 'congelateur' ? 'Congélateur' : 'Frigidaire',
+                    const storageLabel = product.storage === 'sec' 
+                      ? (isEnglish ? 'Pantry' : 'Garde-manger')
+                      : product.storage === 'congelateur' 
+                        ? (isEnglish ? 'Freezer' : 'Congélateur')
+                        : (isEnglish ? 'Fridge' : 'Frigidaire');
+                    
+                    return isEnglish ? {
+                      Location: storageLabel,
+                      Product: product.name,
+                      Category: product.category,
+                      Brand: product.brand || 'No brand',
+                      Quantity: quantity,
+                      Unit: product.unit,
+                      'Unit price': product.unitCost.toFixed(2),
+                      'Total value': totalCost.toFixed(2)
+                    } : {
+                      Emplacement: storageLabel,
                       Produit: product.name,
                       Catégorie: product.category,
                       Marque: product.brand || 'Sans marque',
@@ -285,7 +305,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
                   </svg>
                 }
               >
-                Exporter CSV
+                {isEnglish ? 'Export CSV' : 'Exporter CSV'}
               </OctogoneButton>
 
             {/* Total global */}
@@ -296,7 +316,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
               }}
             >
               <div className="text-sm font-semibold" style={{ color: 'var(--on-surface-variant)' }}>
-                Total inventaire :
+                {isEnglish ? 'Total inventory:' : 'Total inventaire :'}
               </div>
               <div className="font-bold text-2xl" style={{ color: 'var(--on-surface)' }}>
                 {formatCurrency(totalValue)} $
@@ -309,7 +329,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
         <div className="mt-6 mb-4">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xl font-bold" style={{ color: 'var(--on-surface)' }}>
-              Inventaire {capitalizedMonth}
+              {isEnglish ? `${capitalizedMonth} Inventory` : `Inventaire ${capitalizedMonth}`}
             </h3>
             
             {/* Avatars des utilisateurs actifs */}
@@ -341,7 +361,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
                     color: 'var(--inverse-on-surface)'
                   }}
                 >
-                  Vincent - Actif
+                  {isEnglish ? 'Vincent - Active' : 'Vincent - Actif'}
                 </div>
               </div>
 
@@ -373,7 +393,9 @@ export const OctogoneInventoryWidget: React.FC = () => {
                       color: 'var(--inverse-on-surface)'
                     }}
                   >
-                    Julie - {secondUserActive ? 'Active' : 'Déconnectée'}
+                    {isEnglish 
+                      ? `Julie - ${secondUserActive ? 'Active' : 'Disconnected'}` 
+                      : `Julie - ${secondUserActive ? 'Active' : 'Déconnectée'}`}
                   </div>
                 </div>
               )}
@@ -406,7 +428,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
                       color: 'var(--inverse-on-surface)'
                     }}
                   >
-                    Marie - Active
+                    {isEnglish ? 'Marie - Active' : 'Marie - Active'}
                   </div>
                 </div>
               )}
@@ -441,7 +463,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
                   onClick={() => setSelectedStorage('sec')}
                   style={{ color: 'var(--on-surface)' }}
                 >
-                  Garde-manger ({secProgress.entered}/{secProgress.total})
+                  {isEnglish ? `Pantry (${secProgress.entered}/${secProgress.total})` : `Garde-manger (${secProgress.entered}/${secProgress.total})`}
                 </label>
                 <span className="text-sm font-bold" style={{ color: 'var(--on-surface)' }}>
                   {formatCurrency(secValue)} $
@@ -487,7 +509,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
                   onClick={() => setSelectedStorage('congelateur')}
                   style={{ color: 'var(--on-surface)' }}
                 >
-                  Congélateur ({congelateurProgress.entered}/{congelateurProgress.total})
+                  {isEnglish ? `Freezer (${congelateurProgress.entered}/${congelateurProgress.total})` : `Congélateur (${congelateurProgress.entered}/${congelateurProgress.total})`}
                 </label>
                 <span className="text-sm font-bold" style={{ color: 'var(--on-surface)' }}>
                   {formatCurrency(congelateurValue)} $
@@ -533,7 +555,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
                   onClick={() => setSelectedStorage('frigidaire')}
                   style={{ color: 'var(--on-surface)' }}
                 >
-                  Frigidaire ({frigidaireProgress.entered}/{frigidaireProgress.total})
+                  {isEnglish ? `Fridge (${frigidaireProgress.entered}/${frigidaireProgress.total})` : `Frigidaire (${frigidaireProgress.entered}/${frigidaireProgress.total})`}
                 </label>
                 <span className="text-sm font-bold" style={{ color: 'var(--on-surface)' }}>
                   {formatCurrency(frigidaireValue)} $
