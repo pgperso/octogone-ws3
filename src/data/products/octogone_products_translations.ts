@@ -8,7 +8,8 @@ export const categoryTranslations: Record<string, { fr: string; en: string }> = 
   'Herbes': { fr: 'Herbes', en: 'Herbs' },
   'Boissons': { fr: 'Boissons', en: 'Beverages' },
   'Surgelés': { fr: 'Surgelés', en: 'Frozen' },
-  'Épicerie': { fr: 'Épicerie', en: 'Grocery' }
+  'Épicerie': { fr: 'Épicerie', en: 'Grocery' },
+  'Condiments': { fr: 'Condiments', en: 'Condiments' }
 };
 
 export const productTranslations: Record<string, { fr: string; en: string }> = {
@@ -90,7 +91,21 @@ export const productTranslations: Record<string, { fr: string; en: string }> = {
   
   // Boulangerie
   'Baguette': { fr: 'Baguette', en: 'Baguette' },
-  'Tortillas': { fr: 'Tortillas', en: 'Tortillas' }
+  'Pain à burger': { fr: 'Pain à burger', en: 'Burger bun' },
+  'Tortillas': { fr: 'Tortillas', en: 'Tortillas' },
+  
+  // Nouveaux produits
+  'Parmesan': { fr: 'Parmesan', en: 'Parmesan' },
+  'Poivre noir': { fr: 'Poivre noir', en: 'Black pepper' },
+  'Limes': { fr: 'Limes', en: 'Limes' },
+  'Menthe fraîche': { fr: 'Menthe fraîche', en: 'Fresh mint' },
+  'Rhum blanc': { fr: 'Rhum blanc', en: 'White rum' },
+  'Eau gazeuse': { fr: 'Eau gazeuse', en: 'Sparkling water' },
+  'Extrait de vanille': { fr: 'Extrait de vanille', en: 'Vanilla extract' },
+  'Ketchup': { fr: 'Ketchup', en: 'Ketchup' },
+  'Mayonnaise': { fr: 'Mayonnaise', en: 'Mayonnaise' },
+  'Moutarde': { fr: 'Moutarde', en: 'Mustard' },
+  'Cornichons': { fr: 'Cornichons', en: 'Pickles' }
 };
 
 export const unitTranslations: Record<string, { fr: string; en: string }> = {

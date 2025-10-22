@@ -2,7 +2,7 @@
 
 import React, { useMemo } from 'react';
 import { Search, Check, History } from 'lucide-react';
-import { translateCategory, translateProduct, translateUnit } from '@/data/inventory/inventory-translations';
+import { translateCategory, translateProduct, translateUnit } from '@/data/products/octogone_products_translations';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 
 interface Product {

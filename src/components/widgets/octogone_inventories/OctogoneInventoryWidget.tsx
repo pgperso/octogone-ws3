@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { InventoryProductList } from './InventoryProductList';
 import { InventoryCalculator } from './InventoryCalculator';
 import { OctogoneButton } from '@/components/ui/octogone-button';
-import inventoryData from '@/data/inventory/inventory-products.json';
+import inventoryData from '@/data/products/octogone_products_data.json';
 
 interface Product {
   id: string;

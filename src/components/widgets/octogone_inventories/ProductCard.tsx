@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { ImageIcon } from 'lucide-react';
-import { translateCategory, translateProduct, translateUnit } from '@/data/inventory/inventory-translations';
+import { translateCategory, translateProduct, translateUnit } from '@/data/products/octogone_products_translations';
 
 interface Product {
   id: string;

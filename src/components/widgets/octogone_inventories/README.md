@@ -39,10 +39,10 @@ octogone_inventories/
 
 ## 📊 Données
 
-### Fichier JSON (`/data/inventory/inventory-products.json`)
-- **48 produits** de restauration réalistes
-- **Catégories** : Légumes, Fruits, Viandes, Produits laitiers, Épicerie, etc.
-- **Unités variées** : kg, L, unité, botte, caisse, etc.
+### Fichier JSON (`/data/products/octogone_products_data.json`)
+- **49 produits** de restauration optimisés
+- **Catégories** : Légumes, Fruits, Viandes, Produits laitiers, Épicerie, Condiments, etc.
+- **Unités variées** : kg, g, L, mL, un, lb, oz
 - **Prix réalistes** : Basés sur les coûts réels au Québec
 
 ### Structure d'un produit
