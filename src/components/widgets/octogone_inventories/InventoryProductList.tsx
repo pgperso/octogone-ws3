@@ -15,6 +15,7 @@ interface Product {
   image?: string;
   minInventory?: number;
   initialQuantity?: number;
+  theoreticalQuantity?: number;
 }
 
 interface InventoryItem {

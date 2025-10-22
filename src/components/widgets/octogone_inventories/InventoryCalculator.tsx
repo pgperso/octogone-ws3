@@ -13,6 +13,9 @@ interface Product {
   availableUnits?: string[];
   unitCost: number;
   image?: string;
+  minInventory?: number;
+  initialQuantity?: number;
+  theoreticalQuantity?: number;
 }
 
 interface InventoryCalculatorProps {

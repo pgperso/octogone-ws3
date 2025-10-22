@@ -15,12 +15,13 @@ interface Product {
   image?: string;
   minInventory?: number;
   initialQuantity?: number;
+  theoreticalQuantity?: number;
 }
 
 interface ProductCardProps {
   product: Product;
   locale?: 'fr' | 'en';
-  currentQuantity?: number;
+  currentQuantity?: number; // Nouvelle saisie de l'utilisateur
   onAddToOrder?: () => void;
 }
 
@@ -28,8 +29,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
   const isEnglish = locale === 'en';
   const displayBrand = product.brand || (isEnglish ? 'No brand' : 'Sans marque');
   const minInventory = product.minInventory || 0;
-  const isBelowMinimum = currentQuantity < minInventory;
-  const percentage = minInventory > 0 ? Math.min((currentQuantity / minInventory) * 100, 100) : 100;
+  
+  // Stock actuel = nouvelle saisie si elle existe, sinon inventaire théorique du POS
+  const actualStock = currentQuantity > 0 ? currentQuantity : (product.theoreticalQuantity || 0);
+  const isBelowMinimum = actualStock < minInventory;
+  const percentage = minInventory > 0 ? Math.min((actualStock / minInventory) * 100, 100) : 100;
+  const difference = actualStock - minInventory;
   
   // Mapper le nom du produit à son image
   const getProductImage = (productName: string): string => {
@@ -120,15 +125,28 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                 {isEnglish ? 'Stock actuel' : 'Stock actuel'}
               </span>
               <span className="text-sm font-bold" style={{ color: isBelowMinimum ? 'var(--error)' : 'var(--on-surface)' }}>
-                {currentQuantity} {translateUnit(product.unit, locale)}
+                {actualStock} {translateUnit(product.unit, locale)}
               </span>
             </div>
-            <div className="flex items-baseline justify-between mb-3">
+            <div className="flex items-baseline justify-between mb-2">
               <span className="text-xs font-medium" style={{ color: 'var(--on-surface-variant)' }}>
                 {isEnglish ? 'Minimum requis' : 'Minimum requis'}
               </span>
               <span className="text-sm font-medium" style={{ color: 'var(--on-surface-variant)' }}>
                 {minInventory} {translateUnit(product.unit, locale)}
+              </span>
+            </div>
+            <div className="flex items-baseline justify-between mb-3">
+              <span className="text-xs font-medium" style={{ color: 'var(--on-surface-variant)' }}>
+                {isEnglish ? 'Différence' : 'Différence'}
+              </span>
+              <span 
+                className="text-sm font-bold"
+                style={{ 
+                  color: difference >= 0 ? 'var(--success)' : 'var(--error)'
+                }}
+              >
+                {difference >= 0 ? '+' : ''}{difference} {translateUnit(product.unit, locale)}
               </span>
             </div>
           </div>
