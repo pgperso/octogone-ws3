@@ -154,85 +154,44 @@ export const OctogoneInventoryWidget: React.FC = () => {
   };
 
   return (
-    <div className="w-full">
-      {/* Avatars multi-utilisateurs au-dessus */}
-      <div className="flex items-center gap-4 mb-4">
-        {/* Avatar Marc - Actif */}
-        <div className="relative">
-          <div className="w-16 h-16 rounded-full overflow-hidden border-2" style={{ borderColor: 'var(--primary)' }}>
-            <Image
-              src="/images/avatars/marc.avif"
-              alt="Marc"
-              width={64}
-              height={64}
-              className="w-full h-full object-cover"
-            />
-          </div>
-          {/* Indicateur actif */}
-          <div 
-            className="absolute bottom-0 right-0 w-5 h-5 rounded-full border-2"
-            style={{ 
-              backgroundColor: 'var(--success)',
-              borderColor: 'var(--surface)'
-            }}
-          />
-          <div className="text-xs font-semibold mt-1 text-center" style={{ color: 'var(--on-surface)' }}>
-            Marc
-          </div>
-        </div>
-
-        {/* Avatar Julie - Apparaît après 10 secondes */}
-        {showSecondUser && (
-          <div className="relative animate-fadeIn">
-            <div className="w-16 h-16 rounded-full overflow-hidden border-2" style={{ borderColor: 'var(--outline)' }}>
-              <Image
-                src="/images/avatars/julie.avif"
-                alt="Julie"
-                width={64}
-                height={64}
-                className="w-full h-full object-cover"
-              />
-            </div>
-            {/* Indicateur actif */}
-            <div 
-              className="absolute bottom-0 right-0 w-5 h-5 rounded-full border-2"
-              style={{ 
-                backgroundColor: 'var(--success)',
-                borderColor: 'var(--surface)'
-              }}
-            />
-            <div className="text-xs font-semibold mt-1 text-center" style={{ color: 'var(--on-surface)' }}>
-              Julie
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Widget principal */}
+    <div 
+      className="w-full rounded-xl shadow-2xl overflow-hidden"
+      style={{ 
+        backgroundColor: 'var(--surface)',
+        border: '1px solid var(--outline)'
+      }}
+    >
+      {/* En-tête avec avatar utilisateur connecté */}
       <div 
-        className="w-full rounded-xl shadow-2xl overflow-hidden"
+        className="px-6 py-6"
         style={{ 
-          backgroundColor: 'var(--surface)',
-          border: '1px solid var(--outline)'
+          backgroundColor: 'var(--surface-container)',
+          borderBottom: '1px solid var(--outline)'
         }}
       >
-        {/* En-tête */}
-        <div 
-          className="px-6 py-6"
-          style={{ 
-            backgroundColor: 'var(--surface-container)',
-            borderBottom: '1px solid var(--outline)'
-          }}
-        >
-          <div className="flex items-center justify-between">
-            <div>
-              <h2 className="text-2xl font-bold leading-tight mb-1" style={{ color: 'var(--on-surface)' }}>
-                Inventaire {capitalizedMonth}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
+              <Image
+                src="/images/avatars/marc.avif"
+                alt="Marc"
+                width={60}
+                height={60}
+                className="w-full h-full object-cover rounded-full"
+              />
+            </div>
+            <div className="flex flex-col justify-center h-16">
+              <h2 className="text-2xl font-bold leading-tight" style={{ color: 'var(--on-surface)' }}>
+                Bonjour Marc
               </h2>
-              <p className="text-sm" style={{ color: 'var(--on-surface-variant)' }}>
-                Prise d&apos;inventaire collaborative
+              <p className="text-sm font-semibold leading-tight" style={{ color: 'var(--primary)' }}>
+                Directeur de la restauration
+              </p>
+              <p className="text-xs leading-tight" style={{ color: 'var(--on-surface-variant)' }}>
+                Groupe Resto & Co
               </p>
             </div>
+          </div>
 
             {/* Bouton export et Total global */}
             <div className="flex items-center gap-4">
@@ -311,8 +270,68 @@ export const OctogoneInventoryWidget: React.FC = () => {
           </div>
         </div>
 
+        {/* Titre de l'inventaire avec avatars actifs */}
+        <div className="mt-6 mb-4">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-xl font-bold" style={{ color: 'var(--on-surface)' }}>
+              Inventaire {capitalizedMonth}
+            </h3>
+            
+            {/* Avatars des utilisateurs actifs */}
+            <div className="flex items-center gap-3">
+              <span className="text-sm font-semibold" style={{ color: 'var(--on-surface-variant)' }}>
+                Utilisateurs actifs :
+              </span>
+              
+              {/* Avatar Marc - Actif */}
+              <div className="relative">
+                <div className="w-10 h-10 rounded-full overflow-hidden border-2" style={{ borderColor: 'var(--primary)' }}>
+                  <Image
+                    src="/images/avatars/marc.avif"
+                    alt="Marc"
+                    width={40}
+                    height={40}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {/* Indicateur actif */}
+                <div 
+                  className="absolute bottom-0 right-0 w-3 h-3 rounded-full border-2"
+                  style={{ 
+                    backgroundColor: 'var(--success)',
+                    borderColor: 'var(--surface)'
+                  }}
+                />
+              </div>
+
+              {/* Avatar Julie - Apparaît après 10 secondes */}
+              {showSecondUser && (
+                <div className="relative animate-fadeIn">
+                  <div className="w-10 h-10 rounded-full overflow-hidden border-2" style={{ borderColor: 'var(--outline)' }}>
+                    <Image
+                      src="/images/avatars/julie.avif"
+                      alt="Julie"
+                      width={40}
+                      height={40}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  {/* Indicateur actif */}
+                  <div 
+                    className="absolute bottom-0 right-0 w-3 h-3 rounded-full border-2"
+                    style={{ 
+                      backgroundColor: 'var(--success)',
+                      borderColor: 'var(--surface)'
+                    }}
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
         {/* Barres de progression par emplacement */}
-        <div className="mt-4 space-y-3">
+        <div className="space-y-3">
           {/* Garde-manger */}
           <div className="flex items-center gap-3">
             <div 
@@ -477,7 +496,6 @@ export const OctogoneInventoryWidget: React.FC = () => {
             onNavigatePrevious={selectedProduct && filteredProducts.findIndex(p => p.id === selectedProduct.id) > 0 ? handleNavigatePrevious : undefined}
           />
         </div>
-      </div>
       </div>
     </div>
   );
