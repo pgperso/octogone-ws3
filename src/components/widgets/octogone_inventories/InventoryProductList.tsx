@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo } from 'react';
-import { Search, Check } from 'lucide-react';
+import { Search, Check, History } from 'lucide-react';
 import { translateCategory, translateProduct, translateUnit } from '@/data/inventory/inventory-translations';
 
 interface Product {
@@ -65,24 +65,42 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
     <div className="flex flex-col w-full" style={{ maxHeight: '750px' }}>
       {/* Barre de recherche */}
       <div className="px-6 py-6 border-b" style={{ borderColor: 'var(--outline)' }}>
-        <div className="relative">
-          <Search 
-            className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5" 
-            style={{ color: 'var(--on-surface-variant)' }}
-          />
-          <input
-            type="text"
-            placeholder={isEnglish ? 'Search for a product...' : 'Rechercher un produit...'}
-            value={searchTerm}
-            onChange={(e) => onSearchChange(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 rounded-lg border focus:outline-none focus:ring-2"
+        <div className="flex gap-3">
+          <div className="relative flex-1">
+            <Search 
+              className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5" 
+              style={{ color: 'var(--on-surface-variant)' }}
+            />
+            <input
+              type="text"
+              placeholder={isEnglish ? 'Search for a product...' : 'Rechercher un produit...'}
+              value={searchTerm}
+              onChange={(e) => onSearchChange(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 rounded-lg border focus:outline-none focus:ring-2"
+              style={{
+                backgroundColor: 'var(--surface)',
+                borderColor: 'var(--outline)',
+                color: 'var(--on-surface)',
+                '--tw-ring-color': 'var(--primary)'
+              } as React.CSSProperties}
+            />
+          </div>
+          
+          {/* Bouton Historique */}
+          <button
+            onClick={() => {
+              // TODO: Implémenter l'affichage de l'historique
+              console.log('Afficher l\'historique');
+            }}
+            className="px-4 py-2 rounded-lg font-medium text-sm flex items-center gap-2 transition-all hover:opacity-80"
             style={{
-              backgroundColor: 'var(--surface)',
-              borderColor: 'var(--outline)',
-              color: 'var(--on-surface)',
-              '--tw-ring-color': 'var(--primary)'
-            } as React.CSSProperties}
-          />
+              backgroundColor: 'var(--secondary-container)',
+              color: 'var(--on-secondary-container)'
+            }}
+          >
+            <History className="w-5 h-5" />
+            {isEnglish ? 'History' : 'Historique'}
+          </button>
         </div>
       </div>
 
