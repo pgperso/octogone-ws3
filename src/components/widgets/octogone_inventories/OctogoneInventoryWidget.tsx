@@ -31,13 +31,30 @@ export const OctogoneInventoryWidget: React.FC = () => {
   const [selectedStorage, setSelectedStorage] = useState<StorageType>('sec');
   const [searchTerm, setSearchTerm] = useState('');
   const [showSecondUser, setShowSecondUser] = useState(false);
+  const [showThirdUser, setShowThirdUser] = useState(false);
+  const [secondUserActive, setSecondUserActive] = useState(true);
 
   // Afficher le deuxième utilisateur après 10 secondes
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const timer1 = setTimeout(() => {
       setShowSecondUser(true);
     }, 10000);
-    return () => clearTimeout(timer);
+    
+    // Afficher le troisième utilisateur après 20 secondes
+    const timer2 = setTimeout(() => {
+      setShowThirdUser(true);
+    }, 20000);
+    
+    // Désactiver le deuxième utilisateur après 30 secondes
+    const timer3 = setTimeout(() => {
+      setSecondUserActive(false);
+    }, 30000);
+    
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+    };
   }, []);
 
   const products = inventoryData.products as Product[];
@@ -278,17 +295,13 @@ export const OctogoneInventoryWidget: React.FC = () => {
             </h3>
             
             {/* Avatars des utilisateurs actifs */}
-            <div className="flex items-center gap-3">
-              <span className="text-sm font-semibold" style={{ color: 'var(--on-surface-variant)' }}>
-                Utilisateurs actifs :
-              </span>
-              
-              {/* Avatar Marc - Actif */}
-              <div className="relative">
+            <div className="flex items-center gap-2">
+              {/* Avatar Vincent - Toujours actif */}
+              <div className="relative group">
                 <div className="w-10 h-10 rounded-full overflow-hidden border-2" style={{ borderColor: 'var(--primary)' }}>
                   <Image
-                    src="/images/avatars/marc.avif"
-                    alt="Marc"
+                    src="/images/avatars/vincent.avif"
+                    alt="Vincent"
                     width={40}
                     height={40}
                     className="w-full h-full object-cover"
@@ -302,15 +315,58 @@ export const OctogoneInventoryWidget: React.FC = () => {
                     borderColor: 'var(--surface)'
                   }}
                 />
+                {/* Tooltip */}
+                <div 
+                  className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 px-2 py-1 rounded text-xs font-semibold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
+                  style={{ 
+                    backgroundColor: 'var(--inverse-surface)',
+                    color: 'var(--inverse-on-surface)'
+                  }}
+                >
+                  Vincent - Actif
+                </div>
               </div>
 
-              {/* Avatar Julie - Apparaît après 10 secondes */}
+              {/* Avatar Julie - Apparaît après 10 secondes, devient inactif après 30s */}
               {showSecondUser && (
-                <div className="relative animate-fadeIn">
+                <div className="relative group animate-fadeIn">
                   <div className="w-10 h-10 rounded-full overflow-hidden border-2" style={{ borderColor: 'var(--outline)' }}>
                     <Image
                       src="/images/avatars/julie.avif"
                       alt="Julie"
+                      width={40}
+                      height={40}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  {/* Indicateur actif/inactif */}
+                  <div 
+                    className="absolute bottom-0 right-0 w-3 h-3 rounded-full border-2 transition-colors"
+                    style={{ 
+                      backgroundColor: secondUserActive ? 'var(--success)' : 'var(--error)',
+                      borderColor: 'var(--surface)'
+                    }}
+                  />
+                  {/* Tooltip */}
+                  <div 
+                    className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 px-2 py-1 rounded text-xs font-semibold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
+                    style={{ 
+                      backgroundColor: 'var(--inverse-surface)',
+                      color: 'var(--inverse-on-surface)'
+                    }}
+                  >
+                    Julie - {secondUserActive ? 'Active' : 'Déconnectée'}
+                  </div>
+                </div>
+              )}
+
+              {/* Avatar Marie - Apparaît après 20 secondes */}
+              {showThirdUser && (
+                <div className="relative group animate-fadeIn">
+                  <div className="w-10 h-10 rounded-full overflow-hidden border-2" style={{ borderColor: 'var(--outline)' }}>
+                    <Image
+                      src="/images/avatars/marie.avif"
+                      alt="Marie"
                       width={40}
                       height={40}
                       className="w-full h-full object-cover"
@@ -324,6 +380,16 @@ export const OctogoneInventoryWidget: React.FC = () => {
                       borderColor: 'var(--surface)'
                     }}
                   />
+                  {/* Tooltip */}
+                  <div 
+                    className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 px-2 py-1 rounded text-xs font-semibold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
+                    style={{ 
+                      backgroundColor: 'var(--inverse-surface)',
+                      color: 'var(--inverse-on-surface)'
+                    }}
+                  >
+                    Marie - Active
+                  </div>
                 </div>
               )}
             </div>
