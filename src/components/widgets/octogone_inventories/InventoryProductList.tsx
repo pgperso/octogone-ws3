@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from 'react';
-import { Search } from 'lucide-react';
+import { Search, Check } from 'lucide-react';
 
 interface Product {
   id: string;
@@ -85,9 +85,10 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
           borderColor: 'var(--outline)'
         }}
       >
-        <div className="col-span-5">Produit</div>
+        <div className="col-span-4">Produit</div>
         <div className="col-span-3 text-center">Quantité</div>
         <div className="col-span-4 text-right">Total</div>
+        <div className="col-span-1 text-center"></div>
       </div>
 
       {/* Liste scrollable */}
@@ -116,7 +117,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                   color: isSelected ? 'var(--on-primary-container)' : 'var(--on-surface)'
                 }}
               >
-                <div className="col-span-5">
+                <div className="col-span-4">
                   <div className="font-medium">{product.name}</div>
                   <div 
                     className="text-xs mt-0.5"
@@ -138,6 +139,19 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                   >
                     {quantity > 0 ? `${quantity} × ${product.unitCost.toFixed(2)} $` : `${product.unitCost.toFixed(2)} $ / ${product.unit}`}
                   </div>
+                </div>
+                <div className="col-span-1 flex items-center justify-center">
+                  {quantity > 0 && (
+                    <div 
+                      className="w-6 h-6 rounded-full flex items-center justify-center"
+                      style={{ backgroundColor: 'var(--success-container)' }}
+                    >
+                      <Check 
+                        className="w-4 h-4" 
+                        style={{ color: 'var(--on-success-container)' }}
+                      />
+                    </div>
+                  )}
                 </div>
               </div>
             );
