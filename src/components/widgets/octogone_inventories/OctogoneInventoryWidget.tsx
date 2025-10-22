@@ -109,13 +109,13 @@ export const OctogoneInventoryWidget: React.FC = () => {
             </div>
             <div className="flex flex-col justify-center h-16">
               <h2 className="text-2xl font-bold leading-tight" style={{ color: 'var(--on-surface)' }}>
-                Prise d&apos;inventaire
+                Bonjour Marc
               </h2>
               <p className="text-sm font-semibold leading-tight" style={{ color: 'var(--primary)' }}>
-                Marc Tremblay
+                Directeur de restauration
               </p>
               <p className="text-xs leading-tight" style={{ color: 'var(--on-surface-variant)' }}>
-                Directeur de restauration
+                Groupe Resto & Co
               </p>
             </div>
           </div>

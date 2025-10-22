@@ -6,7 +6,7 @@
       "category": "Légumes",
       "brand": "Ferme locale",
       "unit": "kg",
-      "availableUnits": ["kg", "g", "unité"],
+      "availableUnits": ["kg", "g", "un"],
       "unitCost": 8.50
     },
     {
@@ -14,8 +14,8 @@
       "name": "Ananas",
       "category": "Fruits",
       "brand": "Del Monte",
-      "unit": "unité",
-      "availableUnits": ["unité"],
+      "unit": "un",
+      "availableUnits": ["un"],
       "unitCost": 3.25
     },
     {
@@ -24,7 +24,7 @@
       "category": "Légumes",
       "brand": "Ferme locale",
       "unit": "kg",
-      "availableUnits": ["kg", "g", "botte"],
+      "availableUnits": ["kg", "g"],
       "unitCost": 12.75
     },
     {
@@ -32,8 +32,8 @@
       "name": "Avocat",
       "category": "Fruits",
       "brand": "Hass",
-      "unit": "unité",
-      "availableUnits": ["unité", "kg"],
+      "unit": "un",
+      "availableUnits": ["un", "kg"],
       "unitCost": 2.50
     },
     {
@@ -42,21 +42,21 @@
       "category": "Viandes",
       "brand": "Olymel",
       "unit": "kg",
-      "availableUnits": ["kg", "g", "tranche"],
+      "availableUnits": ["kg", "g", "lb"],
       "unitCost": 15.99
     },
     {
       "id": "prod-006",
       "name": "Baguette",
       "category": "Boulangerie",
-      "unit": "unité",
+      "unit": "un",
       "unitCost": 1.50
     },
     {
       "id": "prod-007",
       "name": "Basilic frais",
       "category": "Herbes",
-      "unit": "botte",
+      "unit": "un",
       "unitCost": 2.99
     },
     {
@@ -70,7 +70,7 @@
       "id": "prod-009",
       "name": "Bière blonde",
       "category": "Boissons",
-      "unit": "caisse 24",
+      "unit": "caisse",
       "unitCost": 42.00
     },
     {
@@ -126,7 +126,7 @@
       "id": "prod-017",
       "name": "Coca-Cola",
       "category": "Boissons",
-      "unit": "caisse 24",
+      "unit": "caisse",
       "unitCost": 18.50
     },
     {
@@ -140,7 +140,7 @@
       "id": "prod-019",
       "name": "Coriandre fraîche",
       "category": "Herbes",
-      "unit": "botte",
+      "unit": "un",
       "unitCost": 2.50
     },
     {
@@ -224,7 +224,7 @@
       "id": "prod-031",
       "name": "Œufs",
       "category": "Produits laitiers",
-      "unit": "douzaine",
+      "unit": "un",
       "unitCost": 4.25
     },
     {
@@ -238,7 +238,7 @@
       "id": "prod-033",
       "name": "Persil frais",
       "category": "Herbes",
-      "unit": "botte",
+      "unit": "un",
       "unitCost": 2.25
     },
     {
@@ -301,7 +301,7 @@
       "id": "prod-042",
       "name": "Thon en conserve",
       "category": "Épicerie",
-      "unit": "boîte",
+      "unit": "un",
       "unitCost": 3.50
     },
     {
@@ -315,7 +315,7 @@
       "id": "prod-044",
       "name": "Tortillas",
       "category": "Boulangerie",
-      "unit": "paquet 12",
+      "unit": "paquet",
       "unitCost": 4.25
     },
     {
@@ -329,14 +329,14 @@
       "id": "prod-046",
       "name": "Vin blanc",
       "category": "Boissons",
-      "unit": "bouteille",
+      "unit": "un",
       "unitCost": 15.00
     },
     {
       "id": "prod-047",
       "name": "Vin rouge",
       "category": "Boissons",
-      "unit": "bouteille",
+      "unit": "un",
       "unitCost": 18.00
     },
     {
