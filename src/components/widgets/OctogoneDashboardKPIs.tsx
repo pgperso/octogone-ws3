@@ -698,7 +698,7 @@ export default function OctogoneDashboardKPIs({ locale = 'fr' }: DashboardKPIsPr
                 {isEnglish ? 'Hello Marc' : 'Bonjour Marc'}
               </h2>
               <p className="text-sm font-semibold leading-tight" style={{ color: 'var(--primary)' }}>
-                {isEnglish ? 'Restaurant Director' : 'Directeur de restauration'}
+                {isEnglish ? 'Restaurant Director' : 'Directeur de la restauration'}
               </p>
               <p className="text-xs leading-tight" style={{ color: 'var(--on-surface-variant)' }}>
                 {isEnglish ? 'Groupe Resto & Co' : 'Groupe Resto & Co'}

@@ -85,13 +85,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, history = [] 
       {/* Rangée 2: Catégorie + Marque */}
       <div 
         className="grid grid-cols-2 gap-4 mb-3 text-sm"
-        style={{ color: 'var(--on-surface-variant)' }}
       >
-        <div>
-          <span className="font-semibold">Catégorie:</span> {product.category}
+        <div style={{ color: 'var(--on-surface-variant)' }}>
+          <span className="font-semibold" style={{ color: 'var(--on-surface-variant)' }}>Catégorie:</span> {product.category}
         </div>
-        <div>
-          <span className="font-semibold">Marque:</span> {displayBrand}
+        <div style={{ color: 'var(--on-surface-variant)' }}>
+          <span className="font-semibold" style={{ color: 'var(--on-surface-variant)' }}>Marque:</span> {displayBrand}
         </div>
       </div>
 

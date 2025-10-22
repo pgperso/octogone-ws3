@@ -160,7 +160,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
                 Bonjour Marc
               </h2>
               <p className="text-sm font-semibold leading-tight" style={{ color: 'var(--primary)' }}>
-                Directeur de restauration
+                Directeur de la restauration
               </p>
               <p className="text-xs leading-tight" style={{ color: 'var(--on-surface-variant)' }}>
                 Groupe Resto & Co
@@ -197,16 +197,10 @@ export const OctogoneInventoryWidget: React.FC = () => {
         {/* Barres de progression par emplacement */}
         <div className="mt-4 space-y-3">
           {/* Garde-manger */}
-          <div 
-            className="flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all"
-            onClick={() => setSelectedStorage('sec')}
-            style={{ 
-              backgroundColor: selectedStorage === 'sec' ? 'var(--secondary-container)' : 'transparent',
-              border: `2px solid ${selectedStorage === 'sec' ? 'var(--secondary)' : 'var(--outline)'}`
-            }}
-          >
+          <div className="flex items-center gap-3">
             <div 
-              className="w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all"
+              className="w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all cursor-pointer flex-shrink-0"
+              onClick={() => setSelectedStorage('sec')}
               style={{ 
                 borderColor: selectedStorage === 'sec' ? 'var(--secondary)' : 'var(--outline)',
                 backgroundColor: 'var(--surface)'
@@ -221,7 +215,12 @@ export const OctogoneInventoryWidget: React.FC = () => {
             </div>
             <div className="flex-1">
               <div className="flex items-center justify-between mb-1">
-                <label htmlFor="storage-sec" className="text-sm font-semibold cursor-pointer" style={{ color: 'var(--on-surface-variant)' }}>
+                <label 
+                  htmlFor="storage-sec" 
+                  className="text-sm font-semibold cursor-pointer" 
+                  onClick={() => setSelectedStorage('sec')}
+                  style={{ color: selectedStorage === 'sec' ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)' }}
+                >
                   Garde-manger
                 </label>
                 <span className="text-sm font-bold" style={{ color: 'var(--on-surface)' }}>
@@ -244,16 +243,10 @@ export const OctogoneInventoryWidget: React.FC = () => {
           </div>
 
           {/* Inventaire congélateur */}
-          <div 
-            className="flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all"
-            onClick={() => setSelectedStorage('congelateur')}
-            style={{ 
-              backgroundColor: selectedStorage === 'congelateur' ? 'var(--secondary-container)' : 'transparent',
-              border: `2px solid ${selectedStorage === 'congelateur' ? 'var(--secondary)' : 'var(--outline)'}`
-            }}
-          >
+          <div className="flex items-center gap-3">
             <div 
-              className="w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all"
+              className="w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all cursor-pointer flex-shrink-0"
+              onClick={() => setSelectedStorage('congelateur')}
               style={{ 
                 borderColor: selectedStorage === 'congelateur' ? 'var(--secondary)' : 'var(--outline)',
                 backgroundColor: 'var(--surface)'
@@ -268,7 +261,12 @@ export const OctogoneInventoryWidget: React.FC = () => {
             </div>
             <div className="flex-1">
               <div className="flex items-center justify-between mb-1">
-                <label htmlFor="storage-congelateur" className="text-sm font-semibold cursor-pointer" style={{ color: 'var(--on-surface-variant)' }}>
+                <label 
+                  htmlFor="storage-congelateur" 
+                  className="text-sm font-semibold cursor-pointer" 
+                  onClick={() => setSelectedStorage('congelateur')}
+                  style={{ color: selectedStorage === 'congelateur' ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)' }}
+                >
                   Inventaire congélateur
                 </label>
                 <span className="text-sm font-bold" style={{ color: 'var(--on-surface)' }}>
@@ -291,16 +289,10 @@ export const OctogoneInventoryWidget: React.FC = () => {
           </div>
 
           {/* Inventaire frigidaire */}
-          <div 
-            className="flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all"
-            onClick={() => setSelectedStorage('frigidaire')}
-            style={{ 
-              backgroundColor: selectedStorage === 'frigidaire' ? 'var(--secondary-container)' : 'transparent',
-              border: `2px solid ${selectedStorage === 'frigidaire' ? 'var(--secondary)' : 'var(--outline)'}`
-            }}
-          >
+          <div className="flex items-center gap-3">
             <div 
-              className="w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all"
+              className="w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all cursor-pointer flex-shrink-0"
+              onClick={() => setSelectedStorage('frigidaire')}
               style={{ 
                 borderColor: selectedStorage === 'frigidaire' ? 'var(--secondary)' : 'var(--outline)',
                 backgroundColor: 'var(--surface)'
@@ -315,7 +307,12 @@ export const OctogoneInventoryWidget: React.FC = () => {
             </div>
             <div className="flex-1">
               <div className="flex items-center justify-between mb-1">
-                <label htmlFor="storage-frigidaire" className="text-sm font-semibold cursor-pointer" style={{ color: 'var(--on-surface-variant)' }}>
+                <label 
+                  htmlFor="storage-frigidaire" 
+                  className="text-sm font-semibold cursor-pointer" 
+                  onClick={() => setSelectedStorage('frigidaire')}
+                  style={{ color: selectedStorage === 'frigidaire' ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)' }}
+                >
                   Inventaire frigidaire
                 </label>
                 <span className="text-sm font-bold" style={{ color: 'var(--on-surface)' }}>
