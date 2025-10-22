@@ -116,8 +116,8 @@ export const OctogoneButton: React.FC<OctogoneButtonProps> = ({
   const commonProps = {
     className: baseClasses,
     style: variant === 'cortex' 
-      ? { background: disabled ? '#9CA3AF' : colors.normal }
-      : { backgroundColor: disabled ? '#9CA3AF' : colors.normal },
+      ? { background: disabled ? '#9CA3AF' : colors.normal, cursor: disabled ? 'not-allowed' : 'pointer' }
+      : { backgroundColor: disabled ? '#9CA3AF' : colors.normal, cursor: disabled ? 'not-allowed' : 'pointer' },
     onMouseEnter: handleMouseEnter,
     onMouseLeave: handleMouseLeave,
     onClick: handleClick

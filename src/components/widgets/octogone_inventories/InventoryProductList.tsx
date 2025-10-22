@@ -3,6 +3,7 @@
 import React, { useMemo } from 'react';
 import { Search, Check, History } from 'lucide-react';
 import { translateCategory, translateProduct, translateUnit } from '@/data/inventory/inventory-translations';
+import { OctogoneButton } from '@/components/ui/octogone-button';
 
 interface Product {
   id: string;
@@ -87,20 +88,17 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
           </div>
           
           {/* Bouton Historique */}
-          <button
+          <OctogoneButton
+            variant="secondary"
+            size="sm"
+            icon={<History className="w-5 h-5" />}
             onClick={() => {
               // TODO: Implémenter l'affichage de l'historique
               console.log('Afficher l\'historique');
             }}
-            className="px-4 py-2 rounded-lg font-medium text-sm flex items-center gap-2 transition-all hover:opacity-80"
-            style={{
-              backgroundColor: 'var(--secondary-container)',
-              color: 'var(--on-secondary-container)'
-            }}
           >
-            <History className="w-5 h-5" />
             {isEnglish ? 'History' : 'Historique'}
-          </button>
+          </OctogoneButton>
         </div>
       </div>
 
