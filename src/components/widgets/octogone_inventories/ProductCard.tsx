@@ -45,7 +45,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
       'Café en grains': '/products/coffee_beans.avif',
       'Coca-Cola': '/products/coca-cola.avif',
       'Farine tout usage': '/products/all-purpose-flour.avif',
-      // Ajouter d'autres mappings ici au fur et à mesure
+      "Huile d'olive": '/products/olive-oil.avif',
+      'Huile végétale': '/products/vegetable-oil.avif',
+      'Oignons jaunes': '/products/yellow-onions.avif',
+      'Pâtes sèches': '/products/dry-pasta.avif',
+      'Pommes de terre': '/products/potatoes.avif',
+      'Riz blanc': '/products/white-rice.avif',
+      'Sel': '/products/salt.avif',
+      "Sirop d'érable": '/products/maple-syrup.avif',
+      'Sucre blanc': '/products/white-sugar.avif',
+      'Tortillas': '/products/tortillas.avif',
+      'Vinaigre balsamique': '/products/balsamic-vinegar.avif',
+      'Vin blanc': '/products/white-wine.avif',
+      'Vin rouge': '/products/red-wine.avif',
     };
     return imageMap[productName] || null;
   };
