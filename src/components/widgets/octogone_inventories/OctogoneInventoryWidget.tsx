@@ -212,7 +212,8 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
           borderBottom: '1px solid var(--outline)'
         }}
       >
-        <div className="flex items-center justify-between">
+        {/* Desktop: Avatar + Boutons en ligne */}
+        <div className="hidden lg:flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div 
               className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0"
@@ -325,8 +326,124 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
           </div>
         </div>
 
+        {/* Mobile: Avatar en haut, boutons en dessous */}
+        <div className="lg:hidden">
+          {/* Avatar */}
+          <div className="flex items-center gap-4 mb-4">
+            <div 
+              className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0"
+              style={{ 
+                border: '2px solid var(--primary)',
+                padding: '2px'
+              }}
+            >
+              <Image
+                src="/images/avatars/marc.avif"
+                alt="Marc"
+                width={60}
+                height={60}
+                className="w-full h-full object-cover rounded-full"
+              />
+            </div>
+            <div className="flex flex-col justify-center h-16">
+              <h2 className="text-2xl font-bold leading-tight" style={{ color: 'var(--on-surface)' }}>
+                {isEnglish ? 'Hello Marc' : 'Bonjour Marc'}
+              </h2>
+              <p className="text-sm font-semibold leading-tight" style={{ color: 'var(--primary)' }}>
+                {isEnglish ? 'Restaurant Director' : 'Directeur de la restauration'}
+              </p>
+              <p className="text-xs leading-tight" style={{ color: 'var(--on-surface-variant)' }}>
+                Groupe Resto & Co
+              </p>
+            </div>
+          </div>
+
+          {/* Boutons en row */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            {/* Bouton Export */}
+            <OctogoneButton
+              variant="secondary"
+              size="md"
+              className="flex-1"
+              onClick={() => {
+                // Préparer les données pour l'export
+                const exportData = products.map(product => {
+                  const item = inventory.find(i => i.productId === product.id);
+                  const quantity = item?.quantity || 0;
+                  const totalCost = quantity * product.unitCost;
+                  const storageLabel = product.storage === 'sec' 
+                    ? (isEnglish ? 'Pantry' : 'Garde-manger')
+                    : product.storage === 'congelateur' 
+                      ? (isEnglish ? 'Freezer' : 'Congélateur')
+                      : (isEnglish ? 'Fridge' : 'Frigidaire');
+                  
+                  return isEnglish ? {
+                    Location: storageLabel,
+                    Product: product.name,
+                    Category: product.category,
+                    Brand: product.brand || 'No brand',
+                    Quantity: quantity,
+                    Unit: product.unit,
+                    'Unit price': product.unitCost.toFixed(2),
+                    'Total value': totalCost.toFixed(2)
+                  } : {
+                    Emplacement: storageLabel,
+                    Produit: product.name,
+                    Catégorie: product.category,
+                    Marque: product.brand || 'Sans marque',
+                    Quantité: quantity,
+                    Unité: product.unit,
+                    'Prix unitaire': product.unitCost.toFixed(2),
+                    'Valeur totale': totalCost.toFixed(2)
+                  };
+                });
+
+                // Créer le CSV
+                const headers = Object.keys(exportData[0]).join(',');
+                const rows = exportData.map(row => Object.values(row).join(',')).join('\n');
+                const csv = `${headers}\n${rows}`;
+
+                // Télécharger le fichier
+                const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+                const link = document.createElement('a');
+                const url = URL.createObjectURL(blob);
+                link.setAttribute('href', url);
+                link.setAttribute('download', `inventaire_${capitalizedMonth}_${new Date().getFullYear()}.csv`);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
+              icon={
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+              }
+            >
+              {isEnglish ? 'Export CSV' : 'Exporter CSV'}
+            </OctogoneButton>
+
+            {/* Total global */}
+            <div 
+              className="flex items-center justify-between gap-4 px-4 py-3 rounded-lg flex-1"
+              style={{ 
+                border: '1px solid var(--outline)'
+              }}
+            >
+              <div className="text-sm font-semibold whitespace-nowrap" style={{ color: 'var(--on-surface-variant)' }}>
+                {isEnglish ? 'Total:' : 'Total :'}
+              </div>
+              <div className="font-bold text-xl" style={{ color: 'var(--on-surface)' }}>
+                {formatCurrency(totalValue)} $
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Titre de l'inventaire avec avatars actifs */}
-        <div className="mt-6 mb-4">
+        <div className="mt-6 mb-4 px-6">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-xl font-bold" style={{ color: 'var(--on-surface)' }}>
               {isEnglish ? `${capitalizedMonth} Inventory` : `Inventaire ${capitalizedMonth}`}
