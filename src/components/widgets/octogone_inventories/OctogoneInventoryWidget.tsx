@@ -201,7 +201,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
             >
               <div>
                 <div className="text-sm font-semibold mb-1" style={{ color: 'var(--on-primary-container)' }}>
-                  Valeur totale de l'inventaire
+                  Valeur totale de l&apos;inventaire
                 </div>
                 <div className="font-bold text-3xl" style={{ color: 'var(--on-primary-container)' }}>
                   {formatCurrency(totalValue)} $
