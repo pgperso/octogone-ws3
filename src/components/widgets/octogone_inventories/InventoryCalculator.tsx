@@ -229,12 +229,21 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
         <button
           onClick={handleSave}
           disabled={!selectedProduct || !isEditing || isSaving || showSuccess}
-          className="flex-1 p-4 rounded-lg font-bold text-lg flex items-center justify-center gap-3 shadow-lg cursor-pointer disabled:cursor-not-allowed disabled:opacity-50"
+          className="flex-1 p-4 rounded-lg font-bold text-lg flex items-center justify-center gap-3 shadow-lg cursor-pointer"
           style={{
-            backgroundColor: (isSaving || showSuccess) ? 'var(--success)' : 'var(--primary)',
-            color: (isSaving || showSuccess) ? 'var(--on-success)' : 'var(--on-primary)',
+            backgroundColor: (isSaving || showSuccess) 
+              ? 'var(--success)' 
+              : (!selectedProduct || !isEditing) 
+                ? '#f2f2f2' 
+                : 'var(--primary)',
+            color: (isSaving || showSuccess) 
+              ? 'var(--on-success)' 
+              : (!selectedProduct || !isEditing) 
+                ? '#999999' 
+                : 'var(--on-primary)',
             transition: 'all 0.3s ease',
-            opacity: (!selectedProduct || !isEditing) ? 0.5 : 1
+            cursor: (!selectedProduct || !isEditing) ? 'not-allowed' : 'pointer',
+            opacity: 1
           }}
         >
           {isSaving ? (
