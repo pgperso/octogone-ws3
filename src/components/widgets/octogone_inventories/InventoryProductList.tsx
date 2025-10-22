@@ -89,7 +89,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
           
           {/* Bouton Historique */}
           <OctogoneButton
-            variant="secondary"
+            variant="primary"
             size="sm"
             icon={<History className="w-5 h-5" />}
             onClick={() => {
