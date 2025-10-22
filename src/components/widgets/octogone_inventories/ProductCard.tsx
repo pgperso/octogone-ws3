@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { ImageIcon } from 'lucide-react';
 import { translateCategory, translateProduct, translateUnit } from '@/data/products/octogone_products_translations';
+import { OctogoneButton } from '@/components/ui/octogone-button';
 
 interface Product {
   id: string;
@@ -215,16 +216,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
 
         {/* Bouton Ajouter à ma commande - Toujours visible */}
         {onAddToOrder && (
-          <button
+          <OctogoneButton
+            variant={isBelowMinimum ? 'primary' : 'secondary'}
+            size="md"
             onClick={onAddToOrder}
-            className="w-full py-2 px-4 rounded-lg font-medium text-sm transition-all"
-            style={{
-              backgroundColor: isBelowMinimum ? 'var(--primary)' : 'var(--secondary)',
-              color: isBelowMinimum ? 'var(--on-primary)' : 'var(--on-secondary)'
-            }}
+            className="w-full"
           >
             {isEnglish ? 'Add to my order' : 'Ajouter à ma commande'}
-          </button>
+          </OctogoneButton>
         )}
       </div>
     </div>
