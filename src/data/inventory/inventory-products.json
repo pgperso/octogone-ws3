@@ -6,9 +6,14 @@
       "category": "Légumes",
       "brand": "Ferme locale",
       "unit": "kg",
-      "availableUnits": ["kg", "g", "un"],
-      "unitCost": 8.50,
-      "storage": "frigidaire"
+      "availableUnits": [
+        "kg",
+        "g",
+        "un"
+      ],
+      "unitCost": 8.5,
+      "storage": "frigidaire",
+      "minInventory": 6
     },
     {
       "id": "prod-002",
@@ -16,9 +21,12 @@
       "category": "Fruits",
       "brand": "Del Monte",
       "unit": "un",
-      "availableUnits": ["un"],
+      "availableUnits": [
+        "un"
+      ],
       "unitCost": 3.25,
-      "storage": "frigidaire"
+      "storage": "frigidaire",
+      "minInventory": 10
     },
     {
       "id": "prod-003",
@@ -26,9 +34,13 @@
       "category": "Légumes",
       "brand": "Ferme locale",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
       "unitCost": 12.75,
-      "storage": "frigidaire"
+      "storage": "frigidaire",
+      "minInventory": 10
     },
     {
       "id": "prod-004",
@@ -36,9 +48,13 @@
       "category": "Fruits",
       "brand": "Hass",
       "unit": "un",
-      "availableUnits": ["un", "kg"],
-      "unitCost": 2.50,
-      "storage": "frigidaire"
+      "availableUnits": [
+        "un",
+        "kg"
+      ],
+      "unitCost": 2.5,
+      "storage": "frigidaire",
+      "minInventory": 27
     },
     {
       "id": "prod-005",
@@ -46,17 +62,23 @@
       "category": "Viandes",
       "brand": "Olymel",
       "unit": "kg",
-      "availableUnits": ["kg", "g", "lb"],
+      "availableUnits": [
+        "kg",
+        "g",
+        "lb"
+      ],
       "unitCost": 15.99,
-      "storage": "frigidaire"
+      "storage": "frigidaire",
+      "minInventory": 14
     },
     {
       "id": "prod-006",
       "name": "Baguette",
       "category": "Boulangerie",
       "unit": "un",
-      "unitCost": 1.50,
-      "storage": "sec"
+      "unitCost": 1.5,
+      "storage": "sec",
+      "minInventory": 11
     },
     {
       "id": "prod-007",
@@ -64,31 +86,35 @@
       "category": "Herbes",
       "unit": "un",
       "unitCost": 2.99,
-      "storage": "frigidaire"
+      "storage": "frigidaire",
+      "minInventory": 24
     },
     {
       "id": "prod-008",
       "name": "Beurre",
       "category": "Produits laitiers",
       "unit": "kg",
-      "unitCost": 9.50,
-      "storage": "frigidaire"
+      "unitCost": 9.5,
+      "storage": "frigidaire",
+      "minInventory": 11
     },
     {
       "id": "prod-009",
       "name": "Bière blonde",
       "category": "Boissons",
       "unit": "caisse",
-      "unitCost": 42.00,
-      "storage": "sec"
+      "unitCost": 42,
+      "storage": "sec",
+      "minInventory": 3
     },
     {
       "id": "prod-010",
       "name": "Bœuf haché",
       "category": "Viandes",
       "unit": "kg",
-      "unitCost": 18.50,
-      "storage": "frigidaire"
+      "unitCost": 18.5,
+      "storage": "frigidaire",
+      "minInventory": 8
     },
     {
       "id": "prod-011",
@@ -96,23 +122,26 @@
       "category": "Légumes",
       "unit": "kg",
       "unitCost": 5.25,
-      "storage": "frigidaire"
+      "storage": "frigidaire",
+      "minInventory": 6
     },
     {
       "id": "prod-012",
       "name": "Café en grains",
       "category": "Boissons",
       "unit": "kg",
-      "unitCost": 28.00,
-      "storage": "sec"
+      "unitCost": 28,
+      "storage": "sec",
+      "minInventory": 13
     },
     {
       "id": "prod-013",
       "name": "Carottes",
       "category": "Légumes",
       "unit": "kg",
-      "unitCost": 3.50,
-      "storage": "frigidaire"
+      "unitCost": 3.5,
+      "storage": "frigidaire",
+      "minInventory": 6
     },
     {
       "id": "prod-014",
@@ -120,15 +149,17 @@
       "category": "Légumes",
       "unit": "kg",
       "unitCost": 8.99,
-      "storage": "frigidaire"
+      "storage": "frigidaire",
+      "minInventory": 14
     },
     {
       "id": "prod-015",
       "name": "Cheddar",
       "category": "Produits laitiers",
       "unit": "kg",
-      "unitCost": 14.50,
-      "storage": "frigidaire"
+      "unitCost": 14.5,
+      "storage": "frigidaire",
+      "minInventory": 12
     },
     {
       "id": "prod-016",
@@ -136,15 +167,17 @@
       "category": "Fruits",
       "unit": "kg",
       "unitCost": 4.25,
-      "storage": "frigidaire"
+      "storage": "frigidaire",
+      "minInventory": 13
     },
     {
       "id": "prod-017",
       "name": "Coca-Cola",
       "category": "Boissons",
       "unit": "caisse",
-      "unitCost": 18.50,
-      "storage": "sec"
+      "unitCost": 18.5,
+      "storage": "sec",
+      "minInventory": 4
     },
     {
       "id": "prod-018",
@@ -152,31 +185,35 @@
       "category": "Légumes",
       "unit": "kg",
       "unitCost": 3.75,
-      "storage": "frigidaire"
+      "storage": "frigidaire",
+      "minInventory": 10
     },
     {
       "id": "prod-019",
       "name": "Coriandre fraîche",
       "category": "Herbes",
       "unit": "un",
-      "unitCost": 2.50,
-      "storage": "frigidaire"
+      "unitCost": 2.5,
+      "storage": "frigidaire",
+      "minInventory": 11
     },
     {
       "id": "prod-020",
       "name": "Crème 35%",
       "category": "Produits laitiers",
       "unit": "L",
-      "unitCost": 6.50,
-      "storage": "frigidaire"
+      "unitCost": 6.5,
+      "storage": "frigidaire",
+      "minInventory": 5
     },
     {
       "id": "prod-021",
       "name": "Crevettes",
       "category": "Fruits de mer",
       "unit": "kg",
-      "unitCost": 32.00,
-      "storage": "frigidaire"
+      "unitCost": 32,
+      "storage": "frigidaire",
+      "minInventory": 13
     },
     {
       "id": "prod-022",
@@ -184,39 +221,44 @@
       "category": "Épicerie",
       "unit": "kg",
       "unitCost": 2.25,
-      "storage": "sec"
+      "storage": "sec",
+      "minInventory": 8
     },
     {
       "id": "prod-023",
       "name": "Frites surgelées",
       "category": "Surgelés",
       "unit": "kg",
-      "unitCost": 4.50,
-      "storage": "congelateur"
+      "unitCost": 4.5,
+      "storage": "congelateur",
+      "minInventory": 11
     },
     {
       "id": "prod-024",
       "name": "Fromage mozzarella",
       "category": "Produits laitiers",
       "unit": "kg",
-      "unitCost": 12.00,
-      "storage": "frigidaire"
+      "unitCost": 12,
+      "storage": "frigidaire",
+      "minInventory": 13
     },
     {
       "id": "prod-025",
       "name": "Huile d'olive",
       "category": "Épicerie",
       "unit": "L",
-      "unitCost": 18.00,
-      "storage": "sec"
+      "unitCost": 18,
+      "storage": "sec",
+      "minInventory": 10
     },
     {
       "id": "prod-026",
       "name": "Huile végétale",
       "category": "Épicerie",
       "unit": "L",
-      "unitCost": 8.50,
-      "storage": "sec"
+      "unitCost": 8.5,
+      "storage": "sec",
+      "minInventory": 8
     },
     {
       "id": "prod-027",
@@ -224,23 +266,26 @@
       "category": "Boissons",
       "unit": "L",
       "unitCost": 5.25,
-      "storage": "frigidaire"
+      "storage": "frigidaire",
+      "minInventory": 10
     },
     {
       "id": "prod-028",
       "name": "Lait 3.25%",
       "category": "Produits laitiers",
       "unit": "L",
-      "unitCost": 3.50,
-      "storage": "frigidaire"
+      "unitCost": 3.5,
+      "storage": "frigidaire",
+      "minInventory": 4
     },
     {
       "id": "prod-029",
       "name": "Laitue romaine",
       "category": "Légumes",
       "unit": "kg",
-      "unitCost": 4.50,
-      "storage": "frigidaire"
+      "unitCost": 4.5,
+      "storage": "frigidaire",
+      "minInventory": 7
     },
     {
       "id": "prod-030",
@@ -248,7 +293,8 @@
       "category": "Légumes",
       "unit": "kg",
       "unitCost": 2.75,
-      "storage": "sec"
+      "storage": "sec",
+      "minInventory": 11
     },
     {
       "id": "prod-031",
@@ -256,15 +302,17 @@
       "category": "Produits laitiers",
       "unit": "un",
       "unitCost": 4.25,
-      "storage": "frigidaire"
+      "storage": "frigidaire",
+      "minInventory": 22
     },
     {
       "id": "prod-032",
       "name": "Pâtes sèches",
       "category": "Épicerie",
       "unit": "kg",
-      "unitCost": 3.50,
-      "storage": "sec"
+      "unitCost": 3.5,
+      "storage": "sec",
+      "minInventory": 11
     },
     {
       "id": "prod-033",
@@ -272,31 +320,35 @@
       "category": "Herbes",
       "unit": "un",
       "unitCost": 2.25,
-      "storage": "frigidaire"
+      "storage": "frigidaire",
+      "minInventory": 12
     },
     {
       "id": "prod-034",
       "name": "Poitrine de poulet",
       "category": "Viandes",
       "unit": "kg",
-      "unitCost": 14.50,
-      "storage": "frigidaire"
+      "unitCost": 14.5,
+      "storage": "frigidaire",
+      "minInventory": 8
     },
     {
       "id": "prod-035",
       "name": "Poivrons rouges",
       "category": "Légumes",
       "unit": "kg",
-      "unitCost": 6.50,
-      "storage": "frigidaire"
+      "unitCost": 6.5,
+      "storage": "frigidaire",
+      "minInventory": 9
     },
     {
       "id": "prod-036",
       "name": "Pommes de terre",
       "category": "Légumes",
       "unit": "kg",
-      "unitCost": 2.50,
-      "storage": "sec"
+      "unitCost": 2.5,
+      "storage": "sec",
+      "minInventory": 6
     },
     {
       "id": "prod-037",
@@ -304,55 +356,62 @@
       "category": "Épicerie",
       "unit": "kg",
       "unitCost": 3.25,
-      "storage": "sec"
+      "storage": "sec",
+      "minInventory": 9
     },
     {
       "id": "prod-038",
       "name": "Saumon frais",
       "category": "Fruits de mer",
       "unit": "kg",
-      "unitCost": 38.00,
-      "storage": "frigidaire"
+      "unitCost": 38,
+      "storage": "frigidaire",
+      "minInventory": 13
     },
     {
       "id": "prod-039",
       "name": "Sel",
       "category": "Épicerie",
       "unit": "kg",
-      "unitCost": 1.50,
-      "storage": "sec"
+      "unitCost": 1.5,
+      "storage": "sec",
+      "minInventory": 10
     },
     {
       "id": "prod-040",
       "name": "Sirop d'érable",
       "category": "Épicerie",
       "unit": "L",
-      "unitCost": 45.00,
-      "storage": "sec"
+      "unitCost": 45,
+      "storage": "sec",
+      "minInventory": 4
     },
     {
       "id": "prod-041",
       "name": "Sucre blanc",
       "category": "Épicerie",
       "unit": "kg",
-      "unitCost": 2.00,
-      "storage": "sec"
+      "unitCost": 2,
+      "storage": "sec",
+      "minInventory": 7
     },
     {
       "id": "prod-042",
       "name": "Thon en conserve",
       "category": "Épicerie",
       "unit": "un",
-      "unitCost": 3.50,
-      "storage": "sec"
+      "unitCost": 3.5,
+      "storage": "sec",
+      "minInventory": 21
     },
     {
       "id": "prod-043",
       "name": "Tomates",
       "category": "Légumes",
       "unit": "kg",
-      "unitCost": 5.50,
-      "storage": "frigidaire"
+      "unitCost": 5.5,
+      "storage": "frigidaire",
+      "minInventory": 11
     },
     {
       "id": "prod-044",
@@ -360,39 +419,44 @@
       "category": "Boulangerie",
       "unit": "paquet",
       "unitCost": 4.25,
-      "storage": "sec"
+      "storage": "sec",
+      "minInventory": 7
     },
     {
       "id": "prod-045",
       "name": "Vinaigre balsamique",
       "category": "Épicerie",
       "unit": "L",
-      "unitCost": 12.00,
-      "storage": "sec"
+      "unitCost": 12,
+      "storage": "sec",
+      "minInventory": 4
     },
     {
       "id": "prod-046",
       "name": "Vin blanc",
       "category": "Boissons",
       "unit": "un",
-      "unitCost": 15.00,
-      "storage": "sec"
+      "unitCost": 15,
+      "storage": "sec",
+      "minInventory": 27
     },
     {
       "id": "prod-047",
       "name": "Vin rouge",
       "category": "Boissons",
       "unit": "un",
-      "unitCost": 18.00,
-      "storage": "sec"
+      "unitCost": 18,
+      "storage": "sec",
+      "minInventory": 18
     },
     {
       "id": "prod-048",
       "name": "Yogourt nature",
       "category": "Produits laitiers",
       "unit": "kg",
-      "unitCost": 5.50,
-      "storage": "frigidaire"
+      "unitCost": 5.5,
+      "storage": "frigidaire",
+      "minInventory": 5
     },
     {
       "id": "prod-049",
@@ -400,7 +464,8 @@
       "category": "Surgelés",
       "unit": "un",
       "unitCost": 6.99,
-      "storage": "congelateur"
+      "storage": "congelateur",
+      "minInventory": 19
     },
     {
       "id": "prod-050",
@@ -408,7 +473,8 @@
       "category": "Surgelés",
       "unit": "kg",
       "unitCost": 4.25,
-      "storage": "congelateur"
+      "storage": "congelateur",
+      "minInventory": 13
     },
     {
       "id": "prod-051",
@@ -416,23 +482,26 @@
       "category": "Surgelés",
       "unit": "kg",
       "unitCost": 3.75,
-      "storage": "congelateur"
+      "storage": "congelateur",
+      "minInventory": 14
     },
     {
       "id": "prod-052",
       "name": "Maïs en grains surgelé",
       "category": "Surgelés",
       "unit": "kg",
-      "unitCost": 3.50,
-      "storage": "congelateur"
+      "unitCost": 3.5,
+      "storage": "congelateur",
+      "minInventory": 5
     },
     {
       "id": "prod-053",
       "name": "Haricots verts surgelés",
       "category": "Surgelés",
       "unit": "kg",
-      "unitCost": 4.00,
-      "storage": "congelateur"
+      "unitCost": 4,
+      "storage": "congelateur",
+      "minInventory": 7
     },
     {
       "id": "prod-054",
@@ -440,7 +509,8 @@
       "category": "Surgelés",
       "unit": "kg",
       "unitCost": 5.25,
-      "storage": "congelateur"
+      "storage": "congelateur",
+      "minInventory": 12
     },
     {
       "id": "prod-055",
@@ -448,15 +518,17 @@
       "category": "Surgelés",
       "unit": "kg",
       "unitCost": 8.99,
-      "storage": "congelateur"
+      "storage": "congelateur",
+      "minInventory": 13
     },
     {
       "id": "prod-056",
       "name": "Croquettes de poulet surgelées",
       "category": "Surgelés",
       "unit": "kg",
-      "unitCost": 9.50,
-      "storage": "congelateur"
+      "unitCost": 9.5,
+      "storage": "congelateur",
+      "minInventory": 9
     },
     {
       "id": "prod-057",
@@ -464,15 +536,17 @@
       "category": "Surgelés",
       "unit": "L",
       "unitCost": 7.99,
-      "storage": "congelateur"
+      "storage": "congelateur",
+      "minInventory": 9
     },
     {
       "id": "prod-058",
       "name": "Sorbet aux fruits",
       "category": "Surgelés",
       "unit": "L",
-      "unitCost": 6.50,
-      "storage": "congelateur"
+      "unitCost": 6.5,
+      "storage": "congelateur",
+      "minInventory": 3
     },
     {
       "id": "prod-059",
@@ -480,7 +554,8 @@
       "category": "Surgelés",
       "unit": "kg",
       "unitCost": 5.75,
-      "storage": "congelateur"
+      "storage": "congelateur",
+      "minInventory": 10
     },
     {
       "id": "prod-060",
@@ -488,7 +563,8 @@
       "category": "Surgelés",
       "unit": "kg",
       "unitCost": 8.25,
-      "storage": "congelateur"
+      "storage": "congelateur",
+      "minInventory": 9
     }
   ]
 }

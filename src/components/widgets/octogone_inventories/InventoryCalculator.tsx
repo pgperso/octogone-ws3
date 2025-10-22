@@ -87,7 +87,15 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
     <div className="flex flex-col h-full p-6">
       {/* Carte produit */}
       {selectedProduct ? (
-        <ProductCard product={selectedProduct} locale={locale} />
+        <ProductCard 
+          product={selectedProduct} 
+          locale={locale}
+          currentQuantity={parseFloat(displayValue) || 0}
+          onAddToOrder={() => {
+            // Fonction pour ajouter à la commande (à implémenter)
+            console.log('Ajouter à la commande:', selectedProduct.name);
+          }}
+        />
       ) : (
         <div className="mb-6">
           <p 

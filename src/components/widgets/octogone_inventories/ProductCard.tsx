@@ -13,16 +13,22 @@ interface Product {
   availableUnits?: string[];
   unitCost: number;
   image?: string;
+  minInventory?: number;
 }
 
 interface ProductCardProps {
   product: Product;
   locale?: 'fr' | 'en';
+  currentQuantity?: number;
+  onAddToOrder?: () => void;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr' }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr', currentQuantity = 0, onAddToOrder }) => {
   const isEnglish = locale === 'en';
   const displayBrand = product.brand || (isEnglish ? 'No brand' : 'Sans marque');
+  const minInventory = product.minInventory || 0;
+  const isBelowMinimum = currentQuantity < minInventory;
+  const percentage = minInventory > 0 ? Math.min((currentQuantity / minInventory) * 100, 100) : 100;
   
   // Mapper le nom du produit à son image
   const getProductImage = (productName: string): string => {
@@ -39,7 +45,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
       style={{ 
         backgroundColor: 'var(--surface-variant)',
         border: '1px solid var(--outline)',
-        height: '200px'
+        minHeight: '200px'
       }}
     >
       {/* Photo à gauche - 1:1 pleine hauteur */}
@@ -66,7 +72,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
           {/* Catégorie + Marque - Layout vertical sobre */}
           <div className="space-y-2 text-sm">
             <div className="flex items-baseline gap-2">
-              <span className="text-xs uppercase tracking-wider font-medium" style={{ color: 'var(--on-surface-variant)', opacity: 0.7 }}>
+              <span className="text-xs font-medium" style={{ color: 'var(--on-surface-variant)', opacity: 0.7 }}>
                 {isEnglish ? 'Category' : 'Catégorie'}
               </span>
               <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
@@ -74,7 +80,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               </span>
             </div>
             <div className="flex items-baseline gap-2">
-              <span className="text-xs uppercase tracking-wider font-medium" style={{ color: 'var(--on-surface-variant)', opacity: 0.7 }}>
+              <span className="text-xs font-medium" style={{ color: 'var(--on-surface-variant)', opacity: 0.7 }}>
                 {isEnglish ? 'Brand' : 'Marque'}
               </span>
               <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
@@ -87,10 +93,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
         {/* Prix coûtant - Design minimaliste */}
         <div className="pt-4 border-t" style={{ borderColor: 'var(--outline-variant)' }}>
           <div className="flex items-baseline gap-2">
-            <span className="text-xs uppercase tracking-wider font-medium" style={{ color: 'var(--on-surface-variant)', opacity: 0.7 }}>
-              {isEnglish ? 'Unit cost' : 'Prix unitaire'}
+            <span className="text-sm font-medium" style={{ color: 'var(--on-surface-variant)' }}>
+              {isEnglish ? 'Prix unitaire' : 'Prix unitaire'}
             </span>
-            <span className="text-2xl font-bold" style={{ color: 'var(--primary)' }}>
+            <span className="text-sm font-bold" style={{ color: 'var(--on-surface)' }}>
               {product.unitCost.toFixed(2)} $
             </span>
             <span className="text-sm" style={{ color: 'var(--on-surface-variant)' }}>
@@ -98,6 +104,61 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
             </span>
           </div>
         </div>
+      </div>
+
+      {/* Troisième colonne - Graphique et bouton */}
+      <div className="w-[220px] p-6 border-l flex flex-col justify-between" style={{ borderColor: 'var(--outline)' }}>
+        {/* Graphique de stock */}
+        <div>
+          <div className="mb-3">
+            <div className="flex items-baseline justify-between mb-2">
+              <span className="text-xs font-medium" style={{ color: 'var(--on-surface-variant)' }}>
+                {isEnglish ? 'Stock actuel' : 'Stock actuel'}
+              </span>
+              <span className="text-sm font-bold" style={{ color: isBelowMinimum ? 'var(--error)' : 'var(--on-surface)' }}>
+                {currentQuantity} {translateUnit(product.unit, locale)}
+              </span>
+            </div>
+            <div className="flex items-baseline justify-between mb-3">
+              <span className="text-xs font-medium" style={{ color: 'var(--on-surface-variant)' }}>
+                {isEnglish ? 'Minimum requis' : 'Minimum requis'}
+              </span>
+              <span className="text-sm font-medium" style={{ color: 'var(--on-surface-variant)' }}>
+                {minInventory} {translateUnit(product.unit, locale)}
+              </span>
+            </div>
+          </div>
+
+          {/* Barre de progression */}
+          <div className="mb-4">
+            <div className="h-2 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--surface)' }}>
+              <div 
+                className="h-full transition-all duration-300"
+                style={{ 
+                  width: `${percentage}%`,
+                  backgroundColor: isBelowMinimum ? 'var(--error)' : 'var(--success)'
+                }}
+              />
+            </div>
+            <div className="text-xs text-center mt-1" style={{ color: 'var(--on-surface-variant)' }}>
+              {percentage.toFixed(0)}%
+            </div>
+          </div>
+        </div>
+
+        {/* Bouton Ajouter à ma commande */}
+        {isBelowMinimum && onAddToOrder && (
+          <button
+            onClick={onAddToOrder}
+            className="w-full py-2 px-4 rounded-lg font-medium text-sm transition-all"
+            style={{
+              backgroundColor: 'var(--primary)',
+              color: 'var(--on-primary)'
+            }}
+          >
+            {isEnglish ? 'Ajouter à ma commande' : 'Ajouter à ma commande'}
+          </button>
+        )}
       </div>
     </div>
   );
