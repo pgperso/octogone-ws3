@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { ImageIcon } from 'lucide-react';
 import { translateCategory, translateProduct, translateUnit } from '@/data/inventory/inventory-translations';
 
 interface Product {
@@ -37,15 +38,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
   const difference = actualStock - minInventory;
   
   // Mapper le nom du produit à son image
-  const getProductImage = (productName: string): string => {
+  const getProductImage = (productName: string): string | null => {
     const imageMap: Record<string, string> = {
       'Baguette': '/products/bread.avif',
       'Bière blonde': '/products/blond_beer.avif',
       'Café en grains': '/products/coffee_beans.avif',
+      'Coca-Cola': '/products/coca-cola.avif',
+      'Farine tout usage': '/products/all-purpose-flour.avif',
       // Ajouter d'autres mappings ici au fur et à mesure
     };
-    return imageMap[productName] || '/products/default.avif';
+    return imageMap[productName] || null;
   };
+  
+  const productImage = getProductImage(product.name);
 
   return (
     <div 
@@ -57,13 +62,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
       }}
     >
       {/* Photo à gauche - 1:1 pleine hauteur */}
-      <div className="relative w-[200px] h-full flex-shrink-0" style={{ backgroundColor: 'var(--surface)' }}>
-        <Image
-          src={getProductImage(product.name)}
-          alt={product.name}
-          fill
-          className="object-cover"
-        />
+      <div className="relative w-[200px] h-full flex-shrink-0" style={{ backgroundColor: 'var(--surface-variant)' }}>
+        {productImage ? (
+          <Image
+            src={productImage}
+            alt={product.name}
+            fill
+            className="object-cover"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center">
+            <ImageIcon size={48} style={{ color: 'var(--on-surface-variant)', opacity: 0.3 }} />
+          </div>
+        )}
       </div>
 
       {/* Infos à droite - Design sobre et professionnel */}
@@ -105,7 +116,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
             </div>
             <div className="flex items-baseline gap-2 mt-1">
               <span className="text-xs font-medium" style={{ color: 'var(--on-surface-variant)', opacity: 0.7 }}>
-                {isEnglish ? 'Inventaire minimum' : 'Inventaire minimum'}
+                {isEnglish ? 'Minimum inventory' : 'Inventaire minimum'}
               </span>
               <span className="text-sm font-medium" style={{ color: 'var(--on-surface)' }}>
                 {minInventory} {translateUnit(product.unit, locale)}
@@ -122,7 +133,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
           <div className="mb-3">
             <div className="flex items-baseline justify-between mb-2">
               <span className="text-xs font-medium" style={{ color: 'var(--on-surface-variant)' }}>
-                {isEnglish ? 'Stock actuel' : 'Stock actuel'}
+                {isEnglish ? 'Current stock' : 'Stock actuel'}
               </span>
               <span className="text-sm font-bold" style={{ color: isBelowMinimum ? 'var(--error)' : 'var(--on-surface)' }}>
                 {actualStock} {translateUnit(product.unit, locale)}
@@ -130,7 +141,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
             </div>
             <div className="flex items-baseline justify-between mb-2">
               <span className="text-xs font-medium" style={{ color: 'var(--on-surface-variant)' }}>
-                {isEnglish ? 'Minimum requis' : 'Minimum requis'}
+                {isEnglish ? 'Required minimum' : 'Minimum requis'}
               </span>
               <span className="text-sm font-medium" style={{ color: 'var(--on-surface-variant)' }}>
                 {minInventory} {translateUnit(product.unit, locale)}
@@ -138,7 +149,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
             </div>
             <div className="flex items-baseline justify-between mb-3">
               <span className="text-xs font-medium" style={{ color: 'var(--on-surface-variant)' }}>
-                {isEnglish ? 'Différence' : 'Différence'}
+                {isEnglish ? 'Difference' : 'Différence'}
               </span>
               <span 
                 className="text-sm font-bold"
@@ -178,7 +189,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               color: isBelowMinimum ? 'var(--on-primary)' : 'var(--on-secondary)'
             }}
           >
-            {isEnglish ? 'Ajouter à ma commande' : 'Ajouter à ma commande'}
+            {isEnglish ? 'Add to my order' : 'Ajouter à ma commande'}
           </button>
         )}
       </div>
