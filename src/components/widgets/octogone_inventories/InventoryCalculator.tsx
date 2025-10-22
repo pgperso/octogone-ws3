@@ -232,12 +232,12 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
           className="flex-1 p-4 rounded-lg font-bold text-lg flex items-center justify-center gap-3 cursor-pointer"
           style={{
             backgroundColor: (isSaving || showSuccess) 
-              ? 'var(--secondary-container)' 
+              ? 'var(--success)' 
               : (!selectedProduct || !isEditing) 
                 ? '#f2f2f2' 
                 : 'var(--primary)',
             color: (isSaving || showSuccess) 
-              ? 'var(--on-secondary-container)' 
+              ? 'var(--on-success)' 
               : (!selectedProduct || !isEditing) 
                 ? '#999999' 
                 : 'var(--on-primary)',
