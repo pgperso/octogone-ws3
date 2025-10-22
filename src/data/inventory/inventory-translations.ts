@@ -15,69 +15,82 @@ export const productTranslations: Record<string, { fr: string; en: string }> = {
   // Légumes
   'Ail frais': { fr: 'Ail frais', en: 'Fresh garlic' },
   'Asperges': { fr: 'Asperges', en: 'Asparagus' },
+  'Brocoli': { fr: 'Brocoli', en: 'Broccoli' },
   'Carottes': { fr: 'Carottes', en: 'Carrots' },
-  'Champignons': { fr: 'Champignons', en: 'Mushrooms' },
+  'Champignons blancs': { fr: 'Champignons blancs', en: 'White mushrooms' },
   'Concombre': { fr: 'Concombre', en: 'Cucumber' },
-  'Laitue': { fr: 'Laitue', en: 'Lettuce' },
-  'Oignons': { fr: 'Oignons', en: 'Onions' },
-  'Poivrons': { fr: 'Poivrons', en: 'Bell peppers' },
+  'Laitue romaine': { fr: 'Laitue romaine', en: 'Romaine lettuce' },
+  'Oignons jaunes': { fr: 'Oignons jaunes', en: 'Yellow onions' },
+  'Poivrons rouges': { fr: 'Poivrons rouges', en: 'Red bell peppers' },
   'Pommes de terre': { fr: 'Pommes de terre', en: 'Potatoes' },
   'Tomates': { fr: 'Tomates', en: 'Tomatoes' },
   
   // Fruits
   'Ananas': { fr: 'Ananas', en: 'Pineapple' },
   'Avocat': { fr: 'Avocat', en: 'Avocado' },
-  'Bananes': { fr: 'Bananes', en: 'Bananas' },
   'Citrons': { fr: 'Citrons', en: 'Lemons' },
-  'Fraises': { fr: 'Fraises', en: 'Strawberries' },
-  'Pommes': { fr: 'Pommes', en: 'Apples' },
   
   // Viandes
   'Bacon': { fr: 'Bacon', en: 'Bacon' },
   'Bœuf haché': { fr: 'Bœuf haché', en: 'Ground beef' },
-  'Côtelettes de porc': { fr: 'Côtelettes de porc', en: 'Pork chops' },
-  'Poulet entier': { fr: 'Poulet entier', en: 'Whole chicken' },
-  'Saucisses': { fr: 'Saucisses', en: 'Sausages' },
+  'Poitrine de poulet': { fr: 'Poitrine de poulet', en: 'Chicken breast' },
   
   // Produits laitiers
   'Beurre': { fr: 'Beurre', en: 'Butter' },
+  'Cheddar': { fr: 'Cheddar', en: 'Cheddar' },
   'Crème 35%': { fr: 'Crème 35%', en: '35% cream' },
-  'Fromage cheddar': { fr: 'Fromage cheddar', en: 'Cheddar cheese' },
-  'Lait': { fr: 'Lait', en: 'Milk' },
+  'Fromage mozzarella': { fr: 'Fromage mozzarella', en: 'Mozzarella cheese' },
+  'Lait 3.25%': { fr: 'Lait 3.25%', en: '3.25% milk' },
   'Œufs': { fr: 'Œufs', en: 'Eggs' },
-  'Yogourt': { fr: 'Yogourt', en: 'Yogurt' },
+  'Yogourt nature': { fr: 'Yogourt nature', en: 'Plain yogurt' },
   
   // Boissons
-  'Bière': { fr: 'Bière', en: 'Beer' },
-  'Café': { fr: 'Café', en: 'Coffee' },
+  'Bière blonde': { fr: 'Bière blonde', en: 'Blonde beer' },
+  'Café en grains': { fr: 'Café en grains', en: 'Coffee beans' },
   'Coca-Cola': { fr: 'Coca-Cola', en: 'Coca-Cola' },
   'Jus d\'orange': { fr: 'Jus d\'orange', en: 'Orange juice' },
+  'Vin blanc': { fr: 'Vin blanc', en: 'White wine' },
   'Vin rouge': { fr: 'Vin rouge', en: 'Red wine' },
   
   // Épicerie
-  'Farine': { fr: 'Farine', en: 'Flour' },
+  'Farine tout usage': { fr: 'Farine tout usage', en: 'All-purpose flour' },
   'Huile d\'olive': { fr: 'Huile d\'olive', en: 'Olive oil' },
-  'Pâtes': { fr: 'Pâtes', en: 'Pasta' },
-  'Riz': { fr: 'Riz', en: 'Rice' },
+  'Huile végétale': { fr: 'Huile végétale', en: 'Vegetable oil' },
+  'Pâtes sèches': { fr: 'Pâtes sèches', en: 'Dry pasta' },
+  'Riz blanc': { fr: 'Riz blanc', en: 'White rice' },
   'Sel': { fr: 'Sel', en: 'Salt' },
-  'Sucre': { fr: 'Sucre', en: 'Sugar' },
+  'Sirop d\'érable': { fr: 'Sirop d\'érable', en: 'Maple syrup' },
+  'Sucre blanc': { fr: 'Sucre blanc', en: 'White sugar' },
+  'Thon en conserve': { fr: 'Thon en conserve', en: 'Canned tuna' },
+  'Vinaigre balsamique': { fr: 'Vinaigre balsamique', en: 'Balsamic vinegar' },
   
   // Surgelés
-  'Crème glacée': { fr: 'Crème glacée', en: 'Ice cream' },
+  'Bâtonnets de poisson surgelés': { fr: 'Bâtonnets de poisson surgelés', en: 'Frozen fish sticks' },
+  'Crème glacée vanille': { fr: 'Crème glacée vanille', en: 'Vanilla ice cream' },
+  'Croquettes de poulet surgelées': { fr: 'Croquettes de poulet surgelées', en: 'Frozen chicken nuggets' },
+  'Épinards surgelés': { fr: 'Épinards surgelés', en: 'Frozen spinach' },
   'Frites surgelées': { fr: 'Frites surgelées', en: 'Frozen fries' },
-  'Légumes mélangés': { fr: 'Légumes mélangés', en: 'Mixed vegetables' },
+  'Fruits rouges surgelés': { fr: 'Fruits rouges surgelés', en: 'Frozen berries' },
+  'Haricots verts surgelés': { fr: 'Haricots verts surgelés', en: 'Frozen green beans' },
+  'Légumes mélangés surgelés': { fr: 'Légumes mélangés surgelés', en: 'Frozen mixed vegetables' },
+  'Maïs en grains surgelé': { fr: 'Maïs en grains surgelé', en: 'Frozen corn kernels' },
+  'Pâte feuilletée surgelée': { fr: 'Pâte feuilletée surgelée', en: 'Frozen puff pastry' },
   'Pizza surgelée': { fr: 'Pizza surgelée', en: 'Frozen pizza' },
+  'Pois verts surgelés': { fr: 'Pois verts surgelés', en: 'Frozen green peas' },
+  'Sorbet aux fruits': { fr: 'Sorbet aux fruits', en: 'Fruit sorbet' },
   
   // Fruits de mer
   'Crevettes': { fr: 'Crevettes', en: 'Shrimp' },
-  'Saumon': { fr: 'Saumon', en: 'Salmon' },
+  'Saumon frais': { fr: 'Saumon frais', en: 'Fresh salmon' },
   
   // Herbes
-  'Basilic': { fr: 'Basilic', en: 'Basil' },
-  'Persil': { fr: 'Persil', en: 'Parsley' },
+  'Basilic frais': { fr: 'Basilic frais', en: 'Fresh basil' },
+  'Coriandre fraîche': { fr: 'Coriandre fraîche', en: 'Fresh cilantro' },
+  'Persil frais': { fr: 'Persil frais', en: 'Fresh parsley' },
   
   // Boulangerie
-  'Pain': { fr: 'Pain', en: 'Bread' }
+  'Baguette': { fr: 'Baguette', en: 'Baguette' },
+  'Tortillas': { fr: 'Tortillas', en: 'Tortillas' }
 };
 
 export const unitTranslations: Record<string, { fr: string; en: string }> = {
@@ -87,7 +100,9 @@ export const unitTranslations: Record<string, { fr: string; en: string }> = {
   'mL': { fr: 'mL', en: 'mL' },
   'un': { fr: 'un', en: 'unit' },
   'lb': { fr: 'lb', en: 'lb' },
-  'oz': { fr: 'oz', en: 'oz' }
+  'oz': { fr: 'oz', en: 'oz' },
+  'caisse': { fr: 'caisse', en: 'case' },
+  'paquet': { fr: 'paquet', en: 'package' }
 };
 
 export function translateCategory(category: string, locale: 'fr' | 'en'): string {
