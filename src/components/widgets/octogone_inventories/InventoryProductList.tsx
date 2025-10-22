@@ -87,7 +87,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
       >
         <div className="col-span-4">Produit</div>
         <div className="col-span-3 text-center">Quantité</div>
-        <div className="col-span-4 text-right">Total</div>
+        <div className="col-span-4 text-right pr-2">Total</div>
         <div className="col-span-1 text-center"></div>
       </div>
 
@@ -129,7 +129,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 <div className="col-span-3 text-center font-semibold">
                   {quantity > 0 ? `${quantity} ${product.unit}` : '-'}
                 </div>
-                <div className="col-span-4 text-right">
+                <div className="col-span-4 text-right pr-2">
                   <div className="font-semibold">
                     {quantity > 0 ? `${totalCost.toFixed(2)} $` : '-'}
                   </div>
@@ -148,7 +148,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                     >
                       <Check 
                         className="w-5 h-5" 
-                        style={{ color: 'var(--primary-container)' }}
+                        style={{ color: 'var(--on-primary-container)' }}
                       />
                     </div>
                   )}

@@ -73,6 +73,11 @@ export const OctogoneInventoryWidget: React.FC = () => {
     return sum + (product ? product.unitCost * item.quantity : 0);
   }, 0);
 
+  // Calculer la progression
+  const totalProducts = products.length;
+  const enteredProducts = inventory.filter(item => item.quantity > 0).length;
+  const progressPercentage = totalProducts > 0 ? (enteredProducts / totalProducts) * 100 : 0;
+
   return (
     <div 
       className="w-full rounded-xl shadow-2xl overflow-hidden"
@@ -127,7 +132,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
           >
             <div className="text-center">
               <div className="text-2xl font-bold" style={{ color: 'var(--primary)' }}>
-                {inventory.length}
+                {enteredProducts}
               </div>
               <div className="text-xs">produits</div>
             </div>
@@ -143,6 +148,30 @@ export const OctogoneInventoryWidget: React.FC = () => {
               </div>
               <div className="text-xs">valeur</div>
             </div>
+          </div>
+        </div>
+
+        {/* Barre de progression */}
+        <div className="mt-4">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-sm font-semibold" style={{ color: 'var(--on-surface-variant)' }}>
+              Progression de l&apos;inventaire
+            </span>
+            <span className="text-sm font-bold" style={{ color: 'var(--primary)' }}>
+              {enteredProducts} / {totalProducts} ({progressPercentage.toFixed(0)}%)
+            </span>
+          </div>
+          <div 
+            className="w-full h-2 rounded-full overflow-hidden"
+            style={{ backgroundColor: 'var(--surface-variant)' }}
+          >
+            <div 
+              className="h-full transition-all duration-500 ease-out rounded-full"
+              style={{ 
+                width: `${progressPercentage}%`,
+                backgroundColor: 'var(--primary)'
+              }}
+            />
           </div>
         </div>
       </div>
