@@ -137,9 +137,11 @@ export const OctogoneInventoryWidget: React.FC = () => {
   const currentMonth = new Date().toLocaleDateString('fr-CA', { month: 'long' });
   const capitalizedMonth = currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1);
 
-  // Formater les valeurs monétaires avec espaces pour les milliers
+  // Formater les valeurs monétaires avec espaces pour les milliers et point pour les décimales
   const formatCurrency = (value: number): string => {
-    return value.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).replace(/,/g, ' ');
+    const parts = value.toFixed(2).split('.');
+    const integerPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    return `${integerPart}.${parts[1]}`;
   };
 
   return (
@@ -189,32 +191,8 @@ export const OctogoneInventoryWidget: React.FC = () => {
             </div>
           </div>
 
-          {/* Total global et bouton export */}
+          {/* Bouton export et Total global */}
           <div className="flex items-center gap-4">
-            {/* Total global */}
-            <div 
-              className="flex-1 flex items-center justify-between p-3 rounded-lg"
-              style={{ 
-                backgroundColor: 'var(--primary-container)',
-                border: '2px solid var(--primary)'
-              }}
-            >
-              <div>
-                <div className="text-sm font-semibold mb-1" style={{ color: 'var(--on-primary-container)' }}>
-                  Valeur totale de l&apos;inventaire
-                </div>
-                <div className="font-bold text-3xl" style={{ color: 'var(--on-primary-container)' }}>
-                  {formatCurrency(totalValue)} $
-                </div>
-              </div>
-              <div className="text-right text-sm" style={{ color: 'var(--on-primary-container)' }}>
-                <div className="font-semibold">
-                  {secProgress.entered + congelateurProgress.entered + frigidaireProgress.entered}/{secProgress.total + congelateurProgress.total + frigidaireProgress.total}
-                </div>
-                <div className="text-xs opacity-80">produits saisis</div>
-              </div>
-            </div>
-
             {/* Bouton Export */}
             <button
               className="px-6 py-3 rounded-lg font-semibold transition-all hover:shadow-lg flex items-center gap-2"
@@ -264,6 +242,29 @@ export const OctogoneInventoryWidget: React.FC = () => {
               </svg>
               Exporter CSV
             </button>
+
+            {/* Total global */}
+            <div 
+              className="flex-1 flex items-center justify-between p-3 rounded-lg"
+              style={{ 
+                border: '1px solid var(--outline)'
+              }}
+            >
+              <div>
+                <div className="text-sm font-semibold mb-1" style={{ color: 'var(--on-surface-variant)' }}>
+                  Valeur totale de l&apos;inventaire
+                </div>
+                <div className="font-bold text-3xl" style={{ color: 'var(--primary)' }}>
+                  {formatCurrency(totalValue)} $
+                </div>
+              </div>
+              <div className="text-right text-sm" style={{ color: 'var(--on-surface-variant)' }}>
+                <div className="font-semibold">
+                  {secProgress.entered + congelateurProgress.entered + frigidaireProgress.entered}/{secProgress.total + congelateurProgress.total + frigidaireProgress.total}
+                </div>
+                <div className="text-xs opacity-80">produits saisis</div>
+              </div>
+            </div>
           </div>
         </div>
 
