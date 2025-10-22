@@ -13,6 +13,8 @@ interface Product {
   availableUnits?: string[];
   unitCost: number;
   image?: string;
+  minInventory?: number;
+  initialQuantity?: number;
 }
 
 interface InventoryItem {
@@ -83,19 +85,12 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
         </div>
       </div>
 
-      {/* En-têtes de colonnes */}
-      <div 
-        className="grid grid-cols-12 gap-2 px-6 py-3 text-sm font-semibold border-b"
-        style={{ 
-          backgroundColor: 'var(--surface-variant)',
-          color: 'var(--on-surface-variant)',
-          borderColor: 'var(--outline)'
-        }}
-      >
+      {/* En-tête des colonnes */}
+      <div className="grid grid-cols-12 gap-2 px-6 py-3 border-b font-semibold text-sm" style={{ backgroundColor: 'var(--surface-container)', borderColor: 'var(--outline)', color: 'var(--on-surface-variant)' }}>
         <div className="col-span-4">{isEnglish ? 'Product' : 'Produit'}</div>
-        <div className="col-span-3 text-center">{isEnglish ? 'Quantity' : 'Quantité'}</div>
-        <div className="col-span-4 text-right pr-2">{isEnglish ? 'Total' : 'Total'}</div>
-        <div className="col-span-1 text-center"></div>
+        <div className="col-span-3 text-center">{isEnglish ? 'Entry' : 'Saisie'}</div>
+        <div className="col-span-4 text-right pr-2">{isEnglish ? 'Total value' : 'Valeur totale'}</div>
+        <div className="col-span-1"></div>
       </div>
 
       {/* Liste scrollable */}
@@ -144,8 +139,33 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                     {translateCategory(product.category, locale)}
                   </div>
                 </div>
-                <div className="col-span-3 text-center font-semibold">
-                  {quantity > 0 ? `${quantity} ${translateUnit(product.unit, locale)}` : '-'}
+                {/* Colonne Saisie - 2 cases côte à côte */}
+                <div className="col-span-3 flex items-center justify-center gap-2">
+                  {/* Case Précédent */}
+                  <div 
+                    className="flex-1 px-2 py-1.5 rounded text-center text-xs"
+                    style={{
+                      backgroundColor: quantity === 0 ? 'var(--secondary-container)' : 'var(--surface-variant)',
+                      color: quantity === 0 ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)',
+                      border: quantity === 0 ? '1px solid var(--secondary)' : '1px solid transparent'
+                    }}
+                  >
+                    <div className="font-bold">{product.initialQuantity || 0}</div>
+                    <div className="text-[10px] opacity-70">{isEnglish ? 'Previous' : 'Précédent'}</div>
+                  </div>
+                  
+                  {/* Case Nouveau */}
+                  <div 
+                    className="flex-1 px-2 py-1.5 rounded text-center text-xs"
+                    style={{
+                      backgroundColor: quantity > 0 ? 'var(--secondary-container)' : 'var(--surface-variant)',
+                      color: quantity > 0 ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)',
+                      border: quantity > 0 ? '1px solid var(--secondary)' : '1px solid transparent'
+                    }}
+                  >
+                    <div className="font-bold">{quantity > 0 ? quantity : '-'}</div>
+                    <div className="text-[10px] opacity-70">{isEnglish ? 'New' : 'Nouveau'}</div>
+                  </div>
                 </div>
                 <div className="col-span-4 text-right pr-2">
                   <div className="font-semibold">

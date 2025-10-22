@@ -13,7 +13,8 @@
       ],
       "unitCost": 8.5,
       "storage": "frigidaire",
-      "minInventory": 6
+      "minInventory": 6,
+      "initialQuantity": 10
     },
     {
       "id": "prod-002",
@@ -26,7 +27,8 @@
       ],
       "unitCost": 3.25,
       "storage": "frigidaire",
-      "minInventory": 10
+      "minInventory": 10,
+      "initialQuantity": 10
     },
     {
       "id": "prod-003",
@@ -40,7 +42,8 @@
       ],
       "unitCost": 12.75,
       "storage": "frigidaire",
-      "minInventory": 10
+      "minInventory": 10,
+      "initialQuantity": 10
     },
     {
       "id": "prod-004",
@@ -54,7 +57,8 @@
       ],
       "unitCost": 2.5,
       "storage": "frigidaire",
-      "minInventory": 27
+      "minInventory": 27,
+      "initialQuantity": 45
     },
     {
       "id": "prod-005",
@@ -69,7 +73,8 @@
       ],
       "unitCost": 15.99,
       "storage": "frigidaire",
-      "minInventory": 14
+      "minInventory": 14,
+      "initialQuantity": 12
     },
     {
       "id": "prod-006",
@@ -78,7 +83,8 @@
       "unit": "un",
       "unitCost": 1.5,
       "storage": "sec",
-      "minInventory": 11
+      "minInventory": 11,
+      "initialQuantity": 13
     },
     {
       "id": "prod-007",
@@ -87,7 +93,8 @@
       "unit": "un",
       "unitCost": 2.99,
       "storage": "frigidaire",
-      "minInventory": 24
+      "minInventory": 24,
+      "initialQuantity": 44
     },
     {
       "id": "prod-008",
@@ -96,7 +103,8 @@
       "unit": "kg",
       "unitCost": 9.5,
       "storage": "frigidaire",
-      "minInventory": 11
+      "minInventory": 11,
+      "initialQuantity": 21
     },
     {
       "id": "prod-009",
@@ -105,7 +113,8 @@
       "unit": "caisse",
       "unitCost": 42,
       "storage": "sec",
-      "minInventory": 3
+      "minInventory": 3,
+      "initialQuantity": 4
     },
     {
       "id": "prod-010",
@@ -114,7 +123,8 @@
       "unit": "kg",
       "unitCost": 18.5,
       "storage": "frigidaire",
-      "minInventory": 8
+      "minInventory": 8,
+      "initialQuantity": 8
     },
     {
       "id": "prod-011",
@@ -123,7 +133,8 @@
       "unit": "kg",
       "unitCost": 5.25,
       "storage": "frigidaire",
-      "minInventory": 6
+      "minInventory": 6,
+      "initialQuantity": 7
     },
     {
       "id": "prod-012",
@@ -132,7 +143,8 @@
       "unit": "kg",
       "unitCost": 28,
       "storage": "sec",
-      "minInventory": 13
+      "minInventory": 13,
+      "initialQuantity": 21
     },
     {
       "id": "prod-013",
@@ -141,7 +153,8 @@
       "unit": "kg",
       "unitCost": 3.5,
       "storage": "frigidaire",
-      "minInventory": 6
+      "minInventory": 6,
+      "initialQuantity": 7
     },
     {
       "id": "prod-014",
@@ -150,7 +163,8 @@
       "unit": "kg",
       "unitCost": 8.99,
       "storage": "frigidaire",
-      "minInventory": 14
+      "minInventory": 14,
+      "initialQuantity": 18
     },
     {
       "id": "prod-015",
@@ -159,7 +173,8 @@
       "unit": "kg",
       "unitCost": 14.5,
       "storage": "frigidaire",
-      "minInventory": 12
+      "minInventory": 12,
+      "initialQuantity": 15
     },
     {
       "id": "prod-016",
@@ -168,7 +183,8 @@
       "unit": "kg",
       "unitCost": 4.25,
       "storage": "frigidaire",
-      "minInventory": 13
+      "minInventory": 13,
+      "initialQuantity": 15
     },
     {
       "id": "prod-017",
@@ -177,7 +193,8 @@
       "unit": "caisse",
       "unitCost": 18.5,
       "storage": "sec",
-      "minInventory": 4
+      "minInventory": 4,
+      "initialQuantity": 4
     },
     {
       "id": "prod-018",
@@ -186,7 +203,8 @@
       "unit": "kg",
       "unitCost": 3.75,
       "storage": "frigidaire",
-      "minInventory": 10
+      "minInventory": 10,
+      "initialQuantity": 19
     },
     {
       "id": "prod-019",
@@ -195,7 +213,8 @@
       "unit": "un",
       "unitCost": 2.5,
       "storage": "frigidaire",
-      "minInventory": 11
+      "minInventory": 11,
+      "initialQuantity": 16
     },
     {
       "id": "prod-020",
@@ -204,7 +223,8 @@
       "unit": "L",
       "unitCost": 6.5,
       "storage": "frigidaire",
-      "minInventory": 5
+      "minInventory": 5,
+      "initialQuantity": 3
     },
     {
       "id": "prod-021",
@@ -213,7 +233,8 @@
       "unit": "kg",
       "unitCost": 32,
       "storage": "frigidaire",
-      "minInventory": 13
+      "minInventory": 13,
+      "initialQuantity": 11
     },
     {
       "id": "prod-022",
@@ -222,7 +243,8 @@
       "unit": "kg",
       "unitCost": 2.25,
       "storage": "sec",
-      "minInventory": 8
+      "minInventory": 8,
+      "initialQuantity": 10
     },
     {
       "id": "prod-023",
@@ -231,7 +253,8 @@
       "unit": "kg",
       "unitCost": 4.5,
       "storage": "congelateur",
-      "minInventory": 11
+      "minInventory": 11,
+      "initialQuantity": 6
     },
     {
       "id": "prod-024",
@@ -240,7 +263,8 @@
       "unit": "kg",
       "unitCost": 12,
       "storage": "frigidaire",
-      "minInventory": 13
+      "minInventory": 13,
+      "initialQuantity": 13
     },
     {
       "id": "prod-025",
@@ -249,7 +273,8 @@
       "unit": "L",
       "unitCost": 18,
       "storage": "sec",
-      "minInventory": 10
+      "minInventory": 10,
+      "initialQuantity": 11
     },
     {
       "id": "prod-026",
@@ -258,7 +283,8 @@
       "unit": "L",
       "unitCost": 8.5,
       "storage": "sec",
-      "minInventory": 8
+      "minInventory": 8,
+      "initialQuantity": 15
     },
     {
       "id": "prod-027",
@@ -267,7 +293,8 @@
       "unit": "L",
       "unitCost": 5.25,
       "storage": "frigidaire",
-      "minInventory": 10
+      "minInventory": 10,
+      "initialQuantity": 17
     },
     {
       "id": "prod-028",
@@ -276,7 +303,8 @@
       "unit": "L",
       "unitCost": 3.5,
       "storage": "frigidaire",
-      "minInventory": 4
+      "minInventory": 4,
+      "initialQuantity": 5
     },
     {
       "id": "prod-029",
@@ -285,7 +313,8 @@
       "unit": "kg",
       "unitCost": 4.5,
       "storage": "frigidaire",
-      "minInventory": 7
+      "minInventory": 7,
+      "initialQuantity": 12
     },
     {
       "id": "prod-030",
@@ -294,7 +323,8 @@
       "unit": "kg",
       "unitCost": 2.75,
       "storage": "sec",
-      "minInventory": 11
+      "minInventory": 11,
+      "initialQuantity": 13
     },
     {
       "id": "prod-031",
@@ -303,7 +333,8 @@
       "unit": "un",
       "unitCost": 4.25,
       "storage": "frigidaire",
-      "minInventory": 22
+      "minInventory": 22,
+      "initialQuantity": 36
     },
     {
       "id": "prod-032",
@@ -312,7 +343,8 @@
       "unit": "kg",
       "unitCost": 3.5,
       "storage": "sec",
-      "minInventory": 11
+      "minInventory": 11,
+      "initialQuantity": 19
     },
     {
       "id": "prod-033",
@@ -321,7 +353,8 @@
       "unit": "un",
       "unitCost": 2.25,
       "storage": "frigidaire",
-      "minInventory": 12
+      "minInventory": 12,
+      "initialQuantity": 20
     },
     {
       "id": "prod-034",
@@ -330,7 +363,8 @@
       "unit": "kg",
       "unitCost": 14.5,
       "storage": "frigidaire",
-      "minInventory": 8
+      "minInventory": 8,
+      "initialQuantity": 5
     },
     {
       "id": "prod-035",
@@ -339,7 +373,8 @@
       "unit": "kg",
       "unitCost": 6.5,
       "storage": "frigidaire",
-      "minInventory": 9
+      "minInventory": 9,
+      "initialQuantity": 15
     },
     {
       "id": "prod-036",
@@ -348,7 +383,8 @@
       "unit": "kg",
       "unitCost": 2.5,
       "storage": "sec",
-      "minInventory": 6
+      "minInventory": 6,
+      "initialQuantity": 9
     },
     {
       "id": "prod-037",
@@ -357,7 +393,8 @@
       "unit": "kg",
       "unitCost": 3.25,
       "storage": "sec",
-      "minInventory": 9
+      "minInventory": 9,
+      "initialQuantity": 14
     },
     {
       "id": "prod-038",
@@ -366,7 +403,8 @@
       "unit": "kg",
       "unitCost": 38,
       "storage": "frigidaire",
-      "minInventory": 13
+      "minInventory": 13,
+      "initialQuantity": 19
     },
     {
       "id": "prod-039",
@@ -375,7 +413,8 @@
       "unit": "kg",
       "unitCost": 1.5,
       "storage": "sec",
-      "minInventory": 10
+      "minInventory": 10,
+      "initialQuantity": 17
     },
     {
       "id": "prod-040",
@@ -384,7 +423,8 @@
       "unit": "L",
       "unitCost": 45,
       "storage": "sec",
-      "minInventory": 4
+      "minInventory": 4,
+      "initialQuantity": 6
     },
     {
       "id": "prod-041",
@@ -393,7 +433,8 @@
       "unit": "kg",
       "unitCost": 2,
       "storage": "sec",
-      "minInventory": 7
+      "minInventory": 7,
+      "initialQuantity": 13
     },
     {
       "id": "prod-042",
@@ -402,7 +443,8 @@
       "unit": "un",
       "unitCost": 3.5,
       "storage": "sec",
-      "minInventory": 21
+      "minInventory": 21,
+      "initialQuantity": 18
     },
     {
       "id": "prod-043",
@@ -411,7 +453,8 @@
       "unit": "kg",
       "unitCost": 5.5,
       "storage": "frigidaire",
-      "minInventory": 11
+      "minInventory": 11,
+      "initialQuantity": 13
     },
     {
       "id": "prod-044",
@@ -420,7 +463,8 @@
       "unit": "paquet",
       "unitCost": 4.25,
       "storage": "sec",
-      "minInventory": 7
+      "minInventory": 7,
+      "initialQuantity": 8
     },
     {
       "id": "prod-045",
@@ -429,7 +473,8 @@
       "unit": "L",
       "unitCost": 12,
       "storage": "sec",
-      "minInventory": 4
+      "minInventory": 4,
+      "initialQuantity": 5
     },
     {
       "id": "prod-046",
@@ -438,7 +483,8 @@
       "unit": "un",
       "unitCost": 15,
       "storage": "sec",
-      "minInventory": 27
+      "minInventory": 27,
+      "initialQuantity": 23
     },
     {
       "id": "prod-047",
@@ -447,7 +493,8 @@
       "unit": "un",
       "unitCost": 18,
       "storage": "sec",
-      "minInventory": 18
+      "minInventory": 18,
+      "initialQuantity": 30
     },
     {
       "id": "prod-048",
@@ -456,7 +503,8 @@
       "unit": "kg",
       "unitCost": 5.5,
       "storage": "frigidaire",
-      "minInventory": 5
+      "minInventory": 5,
+      "initialQuantity": 2
     },
     {
       "id": "prod-049",
@@ -465,7 +513,8 @@
       "unit": "un",
       "unitCost": 6.99,
       "storage": "congelateur",
-      "minInventory": 19
+      "minInventory": 19,
+      "initialQuantity": 25
     },
     {
       "id": "prod-050",
@@ -474,7 +523,8 @@
       "unit": "kg",
       "unitCost": 4.25,
       "storage": "congelateur",
-      "minInventory": 13
+      "minInventory": 13,
+      "initialQuantity": 14
     },
     {
       "id": "prod-051",
@@ -483,7 +533,8 @@
       "unit": "kg",
       "unitCost": 3.75,
       "storage": "congelateur",
-      "minInventory": 14
+      "minInventory": 14,
+      "initialQuantity": 14
     },
     {
       "id": "prod-052",
@@ -492,7 +543,8 @@
       "unit": "kg",
       "unitCost": 3.5,
       "storage": "congelateur",
-      "minInventory": 5
+      "minInventory": 5,
+      "initialQuantity": 8
     },
     {
       "id": "prod-053",
@@ -501,7 +553,8 @@
       "unit": "kg",
       "unitCost": 4,
       "storage": "congelateur",
-      "minInventory": 7
+      "minInventory": 7,
+      "initialQuantity": 8
     },
     {
       "id": "prod-054",
@@ -510,7 +563,8 @@
       "unit": "kg",
       "unitCost": 5.25,
       "storage": "congelateur",
-      "minInventory": 12
+      "minInventory": 12,
+      "initialQuantity": 9
     },
     {
       "id": "prod-055",
@@ -519,7 +573,8 @@
       "unit": "kg",
       "unitCost": 8.99,
       "storage": "congelateur",
-      "minInventory": 13
+      "minInventory": 13,
+      "initialQuantity": 14
     },
     {
       "id": "prod-056",
@@ -528,7 +583,8 @@
       "unit": "kg",
       "unitCost": 9.5,
       "storage": "congelateur",
-      "minInventory": 9
+      "minInventory": 9,
+      "initialQuantity": 11
     },
     {
       "id": "prod-057",
@@ -537,7 +593,8 @@
       "unit": "L",
       "unitCost": 7.99,
       "storage": "congelateur",
-      "minInventory": 9
+      "minInventory": 9,
+      "initialQuantity": 17
     },
     {
       "id": "prod-058",
@@ -546,7 +603,8 @@
       "unit": "L",
       "unitCost": 6.5,
       "storage": "congelateur",
-      "minInventory": 3
+      "minInventory": 3,
+      "initialQuantity": 4
     },
     {
       "id": "prod-059",
@@ -555,7 +613,8 @@
       "unit": "kg",
       "unitCost": 5.75,
       "storage": "congelateur",
-      "minInventory": 10
+      "minInventory": 10,
+      "initialQuantity": 17
     },
     {
       "id": "prod-060",
@@ -564,7 +623,8 @@
       "unit": "kg",
       "unitCost": 8.25,
       "storage": "congelateur",
-      "minInventory": 9
+      "minInventory": 9,
+      "initialQuantity": 12
     }
   ]
 }

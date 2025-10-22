@@ -14,6 +14,7 @@ interface Product {
   unitCost: number;
   image?: string;
   minInventory?: number;
+  initialQuantity?: number;
 }
 
 interface ProductCardProps {
@@ -34,6 +35,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
   const getProductImage = (productName: string): string => {
     const imageMap: Record<string, string> = {
       'Baguette': '/products/bread.avif',
+      'Bière blonde': '/products/blond_beer.avif',
       // Ajouter d'autres mappings ici au fur et à mesure
     };
     return imageMap[productName] || '/products/default.avif';
@@ -43,7 +45,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
     <div 
       className="rounded-lg mb-4 overflow-hidden flex"
       style={{ 
-        backgroundColor: 'var(--surface-variant)',
+        backgroundColor: 'transparent',
         border: '1px solid var(--outline)',
         minHeight: '200px'
       }}
@@ -70,7 +72,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
           </h3>
           
           {/* Catégorie + Marque - Layout vertical sobre */}
-          <div className="space-y-2 text-sm">
+          <div className="space-y-1 text-sm">
             <div className="flex items-baseline gap-2">
               <span className="text-xs font-medium" style={{ color: 'var(--on-surface-variant)', opacity: 0.7 }}>
                 {isEnglish ? 'Category' : 'Catégorie'}
@@ -87,21 +89,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                 {displayBrand}
               </span>
             </div>
-          </div>
-        </div>
-
-        {/* Prix coûtant - Design minimaliste */}
-        <div className="pt-4 border-t" style={{ borderColor: 'var(--outline-variant)' }}>
-          <div className="flex items-baseline gap-2">
-            <span className="text-sm font-medium" style={{ color: 'var(--on-surface-variant)' }}>
-              {isEnglish ? 'Prix unitaire' : 'Prix unitaire'}
-            </span>
-            <span className="text-sm font-bold" style={{ color: 'var(--on-surface)' }}>
-              {product.unitCost.toFixed(2)} $
-            </span>
-            <span className="text-sm" style={{ color: 'var(--on-surface-variant)' }}>
-              / {translateUnit(product.unit, locale)}
-            </span>
+            <div className="flex items-baseline gap-2">
+              <span className="text-xs font-medium" style={{ color: 'var(--on-surface-variant)', opacity: 0.7 }}>
+                {isEnglish ? 'Prix unitaire' : 'Prix unitaire'}
+              </span>
+              <span className="text-sm font-medium" style={{ color: 'var(--on-surface)' }}>
+                {product.unitCost.toFixed(2)} $ / {translateUnit(product.unit, locale)}
+              </span>
+            </div>
           </div>
         </div>
       </div>
