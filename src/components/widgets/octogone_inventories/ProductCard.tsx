@@ -98,6 +98,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                 {product.unitCost.toFixed(2)} $ / {translateUnit(product.unit, locale)}
               </span>
             </div>
+            <div className="flex items-baseline gap-2 mt-1">
+              <span className="text-xs font-medium" style={{ color: 'var(--on-surface-variant)', opacity: 0.7 }}>
+                {isEnglish ? 'Inventaire minimum' : 'Inventaire minimum'}
+              </span>
+              <span className="text-sm font-medium" style={{ color: 'var(--on-surface)' }}>
+                {minInventory} {translateUnit(product.unit, locale)}
+              </span>
+            </div>
           </div>
         </div>
       </div>
