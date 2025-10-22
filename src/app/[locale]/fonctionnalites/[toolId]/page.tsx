@@ -157,7 +157,7 @@ export default function ToolPage({
       {/* Widget Inventaire - Uniquement pour Inventaire */}
       {toolId === 'inventaire' && (
         <ResponsiveSection spacing="xl" bgColor="">
-          <OctogoneInventoryWidget />
+          <OctogoneInventoryWidget locale={locale as 'fr' | 'en'} />
         </ResponsiveSection>
       )}
 
