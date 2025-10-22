@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { ImageIcon } from 'lucide-react';
+import { ImageIcon, ShoppingCart } from 'lucide-react';
 import { translateCategory, translateProduct, translateUnit } from '@/data/products/octogone_products_translations';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 
@@ -221,6 +221,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
             size="md"
             onClick={onAddToOrder}
             className="w-full"
+            icon={<ShoppingCart size={18} />}
           >
             {isEnglish ? 'Add to my order' : 'Ajouter à ma commande'}
           </OctogoneButton>

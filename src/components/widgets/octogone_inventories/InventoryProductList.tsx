@@ -107,8 +107,8 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
         <div className="col-span-3">{isEnglish ? 'Product' : 'Produit'}</div>
         <div className="col-span-2">{isEnglish ? 'Previous inventory' : 'Inventaire précédent'}</div>
         <div className="col-span-2">{isEnglish ? 'Current inventory' : 'Inventaire en cours'}</div>
-        <div className="col-span-4 text-right pr-2">{isEnglish ? 'Total value' : 'Valeur totale'}</div>
-        <div className="col-span-1"></div>
+        <div className="col-span-3 text-right pr-2">{isEnglish ? 'Total value' : 'Valeur totale'}</div>
+        <div className="col-span-2"></div>
       </div>
 
       {/* Liste scrollable */}
@@ -191,7 +191,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                     </div>
                   </div>
                 </div>
-                <div className="col-span-4 text-right pr-2">
+                <div className="col-span-3 text-right pr-2">
                   <div className="font-semibold">
                     {quantity > 0 ? `${totalCost.toFixed(2)} $` : '-'}
                   </div>
@@ -202,7 +202,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                     {quantity > 0 ? `${quantity} × ${product.unitCost.toFixed(2)} $` : `${product.unitCost.toFixed(2)} $ / ${translateUnit(product.unit, locale)}`}
                   </div>
                 </div>
-                <div className="col-span-1 flex items-center justify-center">
+                <div className="col-span-2 flex items-center justify-center">
                   {quantity > 0 && (
                     <div 
                       className="w-7 h-7 rounded-lg flex items-center justify-center"
