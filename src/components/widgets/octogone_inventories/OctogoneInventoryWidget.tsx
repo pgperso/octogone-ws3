@@ -157,7 +157,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
             <span className="text-sm font-semibold" style={{ color: 'var(--on-surface-variant)' }}>
               Progression de l&apos;inventaire
             </span>
-            <span className="text-sm font-bold" style={{ color: 'var(--primary)' }}>
+            <span className="text-sm font-bold" style={{ color: 'var(--on-surface)' }}>
               {enteredProducts} / {totalProducts} ({progressPercentage.toFixed(0)}%)
             </span>
           </div>
@@ -169,7 +169,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
               className="h-full transition-all duration-500 ease-out rounded-full"
               style={{ 
                 width: `${progressPercentage}%`,
-                backgroundColor: 'var(--primary)'
+                backgroundColor: 'var(--success)'
               }}
             />
           </div>
