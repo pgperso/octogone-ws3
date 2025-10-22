@@ -137,6 +137,11 @@ export const OctogoneInventoryWidget: React.FC = () => {
   const currentMonth = new Date().toLocaleDateString('fr-CA', { month: 'long' });
   const capitalizedMonth = currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1);
 
+  // Formater les valeurs monétaires avec espaces pour les milliers
+  const formatCurrency = (value: number): string => {
+    return value.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).replace(/,/g, ' ');
+  };
+
   return (
     <div 
       className="w-full rounded-xl shadow-2xl overflow-hidden"
@@ -184,53 +189,81 @@ export const OctogoneInventoryWidget: React.FC = () => {
             </div>
           </div>
 
-          {/* Totaux par emplacement */}
-          <div className="flex gap-4 text-sm">
-            {/* Garde-manger */}
-            <div className="flex-1 text-center">
-              <div className="font-semibold mb-1" style={{ color: 'var(--on-surface-variant)' }}>
-                Garde-manger
-              </div>
-              <div className="font-bold text-xl" style={{ color: 'var(--primary)' }}>
-                {secValue.toFixed(0)} $
-              </div>
-            </div>
-
-            {/* Congélateur */}
-            <div className="flex-1 text-center">
-              <div className="font-semibold mb-1" style={{ color: 'var(--on-surface-variant)' }}>
-                Congélateur
-              </div>
-              <div className="font-bold text-xl" style={{ color: 'var(--primary)' }}>
-                {congelateurValue.toFixed(0)} $
-              </div>
-            </div>
-
-            {/* Frigidaire */}
-            <div className="flex-1 text-center">
-              <div className="font-semibold mb-1" style={{ color: 'var(--on-surface-variant)' }}>
-                Frigidaire
-              </div>
-              <div className="font-bold text-xl" style={{ color: 'var(--primary)' }}>
-                {frigidaireValue.toFixed(0)} $
-              </div>
-            </div>
-
-            {/* Total */}
+          {/* Total global et bouton export */}
+          <div className="flex items-center gap-4">
+            {/* Total global */}
             <div 
-              className="flex-1 text-center p-2 rounded-lg"
+              className="flex-1 flex items-center justify-between p-3 rounded-lg"
               style={{ 
                 backgroundColor: 'var(--primary-container)',
                 border: '2px solid var(--primary)'
               }}
             >
-              <div className="font-semibold mb-1" style={{ color: 'var(--on-primary-container)' }}>
-                TOTAL
+              <div>
+                <div className="text-sm font-semibold mb-1" style={{ color: 'var(--on-primary-container)' }}>
+                  Valeur totale de l'inventaire
+                </div>
+                <div className="font-bold text-3xl" style={{ color: 'var(--on-primary-container)' }}>
+                  {formatCurrency(totalValue)} $
+                </div>
               </div>
-              <div className="font-bold text-2xl" style={{ color: 'var(--on-primary-container)' }}>
-                {totalValue.toFixed(0)} $
+              <div className="text-right text-sm" style={{ color: 'var(--on-primary-container)' }}>
+                <div className="font-semibold">
+                  {secProgress.entered + congelateurProgress.entered + frigidaireProgress.entered}/{secProgress.total + congelateurProgress.total + frigidaireProgress.total}
+                </div>
+                <div className="text-xs opacity-80">produits saisis</div>
               </div>
             </div>
+
+            {/* Bouton Export */}
+            <button
+              className="px-6 py-3 rounded-lg font-semibold transition-all hover:shadow-lg flex items-center gap-2"
+              style={{ 
+                backgroundColor: 'var(--secondary)',
+                color: 'var(--on-secondary)'
+              }}
+              onClick={() => {
+                // Préparer les données pour l'export
+                const exportData = products.map(product => {
+                  const item = inventory.find(i => i.productId === product.id);
+                  const quantity = item?.quantity || 0;
+                  const totalCost = quantity * product.unitCost;
+                  return {
+                    Emplacement: product.storage === 'sec' ? 'Garde-manger' : product.storage === 'congelateur' ? 'Congélateur' : 'Frigidaire',
+                    Produit: product.name,
+                    Catégorie: product.category,
+                    Marque: product.brand || 'Sans marque',
+                    Quantité: quantity,
+                    Unité: product.unit,
+                    'Prix unitaire': product.unitCost.toFixed(2),
+                    'Valeur totale': totalCost.toFixed(2)
+                  };
+                });
+
+                // Créer le CSV
+                const headers = Object.keys(exportData[0]).join(',');
+                const rows = exportData.map(row => Object.values(row).join(',')).join('\n');
+                const csv = `${headers}\n${rows}`;
+
+                // Télécharger le fichier
+                const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+                const link = document.createElement('a');
+                const url = URL.createObjectURL(blob);
+                link.setAttribute('href', url);
+                link.setAttribute('download', `inventaire_${capitalizedMonth}_${new Date().getFullYear()}.csv`);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Exporter CSV
+            </button>
           </div>
         </div>
 
@@ -264,7 +297,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
                   Garde-manger ({secProgress.entered}/{secProgress.total})
                 </label>
                 <span className="text-sm font-bold" style={{ color: 'var(--primary)' }}>
-                  {secValue.toFixed(2)} $
+                  {formatCurrency(secValue)} $
                 </span>
               </div>
               <div 
@@ -310,7 +343,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
                   Congélateur ({congelateurProgress.entered}/{congelateurProgress.total})
                 </label>
                 <span className="text-sm font-bold" style={{ color: 'var(--primary)' }}>
-                  {congelateurValue.toFixed(2)} $
+                  {formatCurrency(congelateurValue)} $
                 </span>
               </div>
               <div 
@@ -356,7 +389,7 @@ export const OctogoneInventoryWidget: React.FC = () => {
                   Frigidaire ({frigidaireProgress.entered}/{frigidaireProgress.total})
                 </label>
                 <span className="text-sm font-bold" style={{ color: 'var(--primary)' }}>
-                  {frigidaireValue.toFixed(2)} $
+                  {formatCurrency(frigidaireValue)} $
                 </span>
               </div>
               <div 
