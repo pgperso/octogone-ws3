@@ -144,11 +144,11 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                   {quantity > 0 && (
                     <div 
                       className="w-7 h-7 rounded-lg flex items-center justify-center"
-                      style={{ backgroundColor: 'var(--success-container)' }}
+                      style={{ backgroundColor: 'var(--success)' }}
                     >
                       <Check 
                         className="w-5 h-5" 
-                        style={{ color: 'var(--on-success-container)' }}
+                        style={{ color: 'var(--primary-container)' }}
                       />
                     </div>
                   )}
