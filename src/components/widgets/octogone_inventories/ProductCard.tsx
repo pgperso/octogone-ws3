@@ -36,6 +36,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
     const imageMap: Record<string, string> = {
       'Baguette': '/products/bread.avif',
       'Bière blonde': '/products/blond_beer.avif',
+      'Café en grains': '/products/coffee_beans.avif',
       // Ajouter d'autres mappings ici au fur et à mesure
     };
     return imageMap[productName] || '/products/default.avif';
