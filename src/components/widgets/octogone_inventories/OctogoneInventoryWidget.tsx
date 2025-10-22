@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { InventoryProductList } from './InventoryProductList';
 import { InventoryCalculator } from './InventoryCalculator';
@@ -29,11 +29,17 @@ export const OctogoneInventoryWidget: React.FC = () => {
   const [inventory, setInventory] = useState<InventoryItem[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [selectedStorage, setSelectedStorage] = useState<StorageType>('sec');
+  const [searchTerm, setSearchTerm] = useState('');
 
   const products = inventoryData.products as Product[];
   
   // Filtrer les produits par emplacement
   const filteredProducts = products.filter(p => (p.storage || 'sec') === selectedStorage);
+
+  // Réinitialiser la recherche quand on change d'emplacement
+  useEffect(() => {
+    setSearchTerm('');
+  }, [selectedStorage]);
 
   // Obtenir la quantité actuelle d'un produit
   const getCurrentQuantity = (productId: string): number => {
@@ -191,17 +197,28 @@ export const OctogoneInventoryWidget: React.FC = () => {
         {/* Barres de progression par emplacement */}
         <div className="mt-4 space-y-3">
           {/* Garde-manger */}
-          <div className="flex items-center gap-3">
-            <input
-              type="radio"
-              id="storage-sec"
-              name="storage"
-              value="sec"
-              checked={selectedStorage === 'sec'}
-              onChange={() => setSelectedStorage('sec')}
-              className="w-5 h-5 cursor-pointer"
-              style={{ accentColor: 'var(--secondary-container)' }}
-            />
+          <div 
+            className="flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all"
+            onClick={() => setSelectedStorage('sec')}
+            style={{ 
+              backgroundColor: selectedStorage === 'sec' ? 'var(--secondary-container)' : 'transparent',
+              border: `2px solid ${selectedStorage === 'sec' ? 'var(--secondary)' : 'var(--outline)'}`
+            }}
+          >
+            <div 
+              className="w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all"
+              style={{ 
+                borderColor: selectedStorage === 'sec' ? 'var(--secondary)' : 'var(--outline)',
+                backgroundColor: 'var(--surface)'
+              }}
+            >
+              {selectedStorage === 'sec' && (
+                <div 
+                  className="w-3 h-3 rounded-full"
+                  style={{ backgroundColor: 'var(--secondary)' }}
+                />
+              )}
+            </div>
             <div className="flex-1">
               <div className="flex items-center justify-between mb-1">
                 <label htmlFor="storage-sec" className="text-sm font-semibold cursor-pointer" style={{ color: 'var(--on-surface-variant)' }}>
@@ -227,17 +244,28 @@ export const OctogoneInventoryWidget: React.FC = () => {
           </div>
 
           {/* Inventaire congélateur */}
-          <div className="flex items-center gap-3">
-            <input
-              type="radio"
-              id="storage-congelateur"
-              name="storage"
-              value="congelateur"
-              checked={selectedStorage === 'congelateur'}
-              onChange={() => setSelectedStorage('congelateur')}
-              className="w-5 h-5 cursor-pointer"
-              style={{ accentColor: 'var(--secondary-container)' }}
-            />
+          <div 
+            className="flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all"
+            onClick={() => setSelectedStorage('congelateur')}
+            style={{ 
+              backgroundColor: selectedStorage === 'congelateur' ? 'var(--secondary-container)' : 'transparent',
+              border: `2px solid ${selectedStorage === 'congelateur' ? 'var(--secondary)' : 'var(--outline)'}`
+            }}
+          >
+            <div 
+              className="w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all"
+              style={{ 
+                borderColor: selectedStorage === 'congelateur' ? 'var(--secondary)' : 'var(--outline)',
+                backgroundColor: 'var(--surface)'
+              }}
+            >
+              {selectedStorage === 'congelateur' && (
+                <div 
+                  className="w-3 h-3 rounded-full"
+                  style={{ backgroundColor: 'var(--secondary)' }}
+                />
+              )}
+            </div>
             <div className="flex-1">
               <div className="flex items-center justify-between mb-1">
                 <label htmlFor="storage-congelateur" className="text-sm font-semibold cursor-pointer" style={{ color: 'var(--on-surface-variant)' }}>
@@ -263,17 +291,28 @@ export const OctogoneInventoryWidget: React.FC = () => {
           </div>
 
           {/* Inventaire frigidaire */}
-          <div className="flex items-center gap-3">
-            <input
-              type="radio"
-              id="storage-frigidaire"
-              name="storage"
-              value="frigidaire"
-              checked={selectedStorage === 'frigidaire'}
-              onChange={() => setSelectedStorage('frigidaire')}
-              className="w-5 h-5 cursor-pointer"
-              style={{ accentColor: 'var(--secondary-container)' }}
-            />
+          <div 
+            className="flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all"
+            onClick={() => setSelectedStorage('frigidaire')}
+            style={{ 
+              backgroundColor: selectedStorage === 'frigidaire' ? 'var(--secondary-container)' : 'transparent',
+              border: `2px solid ${selectedStorage === 'frigidaire' ? 'var(--secondary)' : 'var(--outline)'}`
+            }}
+          >
+            <div 
+              className="w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all"
+              style={{ 
+                borderColor: selectedStorage === 'frigidaire' ? 'var(--secondary)' : 'var(--outline)',
+                backgroundColor: 'var(--surface)'
+              }}
+            >
+              {selectedStorage === 'frigidaire' && (
+                <div 
+                  className="w-3 h-3 rounded-full"
+                  style={{ backgroundColor: 'var(--secondary)' }}
+                />
+              )}
+            </div>
             <div className="flex-1">
               <div className="flex items-center justify-between mb-1">
                 <label htmlFor="storage-frigidaire" className="text-sm font-semibold cursor-pointer" style={{ color: 'var(--on-surface-variant)' }}>
@@ -303,12 +342,14 @@ export const OctogoneInventoryWidget: React.FC = () => {
       {/* Contenu principal */}
       <div className="grid grid-cols-1 lg:grid-cols-2">
         {/* Liste de produits (gauche) - scrollable */}
-        <div className="border-r flex" style={{ borderColor: 'var(--outline)' }}>
+        <div className="border-r w-full" style={{ borderColor: 'var(--outline)' }}>
           <InventoryProductList
             products={filteredProducts}
             inventory={inventory}
             onProductSelect={handleProductSelect}
             selectedProductId={selectedProduct?.id || null}
+            searchTerm={searchTerm}
+            onSearchChange={setSearchTerm}
           />
         </div>
 

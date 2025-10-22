@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { Search, Check } from 'lucide-react';
 
 interface Product {
@@ -24,15 +24,18 @@ interface InventoryProductListProps {
   inventory: InventoryItem[];
   onProductSelect: (product: Product) => void;
   selectedProductId: string | null;
+  searchTerm: string;
+  onSearchChange: (term: string) => void;
 }
 
 export const InventoryProductList: React.FC<InventoryProductListProps> = ({
   products,
   inventory,
   onProductSelect,
-  selectedProductId
+  selectedProductId,
+  searchTerm,
+  onSearchChange
 }) => {
-  const [searchTerm, setSearchTerm] = useState('');
 
   // Filtrer les produits selon la recherche
   const filteredProducts = useMemo(() => {
@@ -52,7 +55,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col w-full" style={{ maxHeight: '750px' }}>
       {/* Barre de recherche */}
       <div className="px-6 py-6 border-b" style={{ borderColor: 'var(--outline)' }}>
         <div className="relative">
@@ -64,7 +67,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
             type="text"
             placeholder="Rechercher un produit..."
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(e) => onSearchChange(e.target.value)}
             className="w-full pl-10 pr-4 py-2 rounded-lg border focus:outline-none focus:ring-2"
             style={{
               backgroundColor: 'var(--surface)',
