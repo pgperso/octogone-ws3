@@ -96,6 +96,14 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
   // Filtrer les produits par emplacement
   const filteredProducts = products.filter(p => (p.storage || 'sec') === selectedStorage);
 
+  // Sélectionner le premier produit du garde-manger au chargement
+  useEffect(() => {
+    const firstPantryProduct = products.find(p => (p.storage || 'sec') === 'sec');
+    if (firstPantryProduct && !selectedProduct) {
+      setSelectedProduct(firstPantryProduct);
+    }
+  }, [products, selectedProduct]);
+
   // Réinitialiser la recherche quand on change d'emplacement
   useEffect(() => {
     setSearchTerm('');

@@ -119,16 +119,16 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 onClick={() => onProductSelect(product)}
                 className="grid grid-cols-12 gap-2 px-6 py-3 cursor-pointer border-b transition-colors"
                 style={{
-                  backgroundColor: isSelected ? 'var(--primary-container)' : 'transparent',
+                  backgroundColor: isSelected ? 'var(--secondary-container)' : 'transparent',
                   borderColor: 'var(--outline)',
-                  color: isSelected ? 'var(--on-primary-container)' : 'var(--on-surface)'
+                  color: isSelected ? 'var(--on-secondary-container)' : 'var(--on-surface)'
                 }}
               >
                 <div className="col-span-4">
                   <div className="font-medium">{translateProduct(product.name, locale)}</div>
                   <div 
                     className="text-xs mt-0.5"
-                    style={{ color: isSelected ? 'var(--on-primary-container)' : 'var(--on-surface-variant)' }}
+                    style={{ color: isSelected ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)' }}
                   >
                     {translateCategory(product.category, locale)}
                   </div>
@@ -142,7 +142,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                   </div>
                   <div 
                     className="text-xs mt-0.5"
-                    style={{ color: isSelected ? 'var(--on-primary-container)' : 'var(--on-surface-variant)' }}
+                    style={{ color: isSelected ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)' }}
                   >
                     {quantity > 0 ? `${quantity} × ${product.unitCost.toFixed(2)} $` : `${product.unitCost.toFixed(2)} $ / ${translateUnit(product.unit, locale)}`}
                   </div>
