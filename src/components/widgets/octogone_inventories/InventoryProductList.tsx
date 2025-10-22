@@ -2,6 +2,7 @@
 
 import React, { useMemo } from 'react';
 import { Search, Check } from 'lucide-react';
+import { translateCategory, translateProduct, translateUnit } from '@/data/inventory/inventory-translations';
 
 interface Product {
   id: string;
@@ -124,16 +125,16 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 }}
               >
                 <div className="col-span-4">
-                  <div className="font-medium">{product.name}</div>
+                  <div className="font-medium">{translateProduct(product.name, locale)}</div>
                   <div 
                     className="text-xs mt-0.5"
                     style={{ color: isSelected ? 'var(--on-primary-container)' : 'var(--on-surface-variant)' }}
                   >
-                    {product.category}
+                    {translateCategory(product.category, locale)}
                   </div>
                 </div>
                 <div className="col-span-3 text-center font-semibold">
-                  {quantity > 0 ? `${quantity} ${product.unit}` : '-'}
+                  {quantity > 0 ? `${quantity} ${translateUnit(product.unit, locale)}` : '-'}
                 </div>
                 <div className="col-span-4 text-right pr-2">
                   <div className="font-semibold">
@@ -143,7 +144,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                     className="text-xs mt-0.5"
                     style={{ color: isSelected ? 'var(--on-primary-container)' : 'var(--on-surface-variant)' }}
                   >
-                    {quantity > 0 ? `${quantity} × ${product.unitCost.toFixed(2)} $` : `${product.unitCost.toFixed(2)} $ / ${product.unit}`}
+                    {quantity > 0 ? `${quantity} × ${product.unitCost.toFixed(2)} $` : `${product.unitCost.toFixed(2)} $ / ${translateUnit(product.unit, locale)}`}
                   </div>
                 </div>
                 <div className="col-span-1 flex items-center justify-center">

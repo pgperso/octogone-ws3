@@ -139,7 +139,7 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
           className="text-lg text-right"
           style={{ color: 'var(--on-surface-variant)' }}
         >
-          Valeur: {totalValue.toFixed(2)} $
+          {isEnglish ? 'Value:' : 'Valeur:'} {totalValue.toFixed(2)} $
         </div>
       </div>
 
@@ -210,7 +210,7 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
           }}
         >
           <Check className="w-6 h-6" />
-          Ajouter
+          {isEnglish ? 'Add' : 'Ajouter'}
         </button>
 
         {/* Boutons de navigation - carrés */}

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Clock } from 'lucide-react';
+import { translateCategory, translateProduct, translateUnit } from '@/data/inventory/inventory-translations';
 
 interface Product {
   id: string;
@@ -73,7 +74,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, history = [],
             className="text-lg font-bold"
             style={{ color: 'var(--on-surface)' }}
           >
-            {product.name}
+            {translateProduct(product.name, locale)}
           </h3>
         </div>
         <div 
@@ -89,7 +90,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, history = [],
         className="grid grid-cols-2 gap-4 mb-3 text-sm"
       >
         <div style={{ color: 'var(--on-surface-variant)' }}>
-          <span className="font-semibold" style={{ color: 'var(--on-surface-variant)' }}>{isEnglish ? 'Category:' : 'Catégorie:'}</span> {product.category}
+          <span className="font-semibold" style={{ color: 'var(--on-surface-variant)' }}>{isEnglish ? 'Category:' : 'Catégorie:'}</span> {translateCategory(product.category, locale)}
         </div>
         <div style={{ color: 'var(--on-surface-variant)' }}>
           <span className="font-semibold" style={{ color: 'var(--on-surface-variant)' }}>{isEnglish ? 'Brand:' : 'Marque:'}</span> {displayBrand}
@@ -105,7 +106,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, history = [],
           className="text-sm font-semibold"
           style={{ color: 'var(--on-primary-container)' }}
         >
-          {isEnglish ? 'Unit cost:' : 'Prix coûtant:'} <span className="text-lg">{product.unitCost.toFixed(2)} $</span> / {product.unit}
+          {isEnglish ? 'Unit cost:' : 'Prix coûtant:'} <span className="text-lg">{product.unitCost.toFixed(2)} $</span> / {translateUnit(product.unit, locale)}
         </div>
       </div>
 
