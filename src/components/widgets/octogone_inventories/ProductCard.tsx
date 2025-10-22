@@ -46,6 +46,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
       'Avocat': '/products/avocado.avif',
       'Bacon': '/products/bacon.png',
       'Baguette': '/products/bread.avif',
+      'Bœuf haché': '/products/ground-beef.avif',
       'Basilic frais': '/products/fresh-basil.avif',
       'Beurre': '/products/butter.avif',
       'Bière blonde': '/products/blond_beer.avif',
