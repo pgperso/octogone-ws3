@@ -88,7 +88,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
       {/* En-tête des colonnes */}
       <div className="grid grid-cols-12 gap-2 px-6 py-3 border-b font-semibold text-sm" style={{ backgroundColor: 'var(--surface-container)', borderColor: 'var(--outline)', color: 'var(--on-surface-variant)' }}>
         <div className="col-span-4">{isEnglish ? 'Product' : 'Produit'}</div>
-        <div className="col-span-3 text-center">{isEnglish ? 'Entry' : 'Saisie'}</div>
+        <div className="col-span-3 text-left">{isEnglish ? 'Entry' : 'Saisie'}</div>
         <div className="col-span-4 text-right pr-2">{isEnglish ? 'Total value' : 'Valeur totale'}</div>
         <div className="col-span-1"></div>
       </div>
@@ -140,31 +140,39 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                   </div>
                 </div>
                 {/* Colonne Saisie - 2 cases côte à côte */}
-                <div className="col-span-3 flex items-center justify-center gap-2">
+                <div className="col-span-3 flex items-center gap-2">
                   {/* Case Précédent */}
                   <div 
-                    className="flex-1 px-2 py-1.5 rounded text-center text-xs"
+                    className="flex-1 px-2 py-2 rounded text-center text-xs"
                     style={{
-                      backgroundColor: quantity === 0 ? 'var(--secondary-container)' : 'var(--surface-variant)',
-                      color: quantity === 0 ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)',
-                      border: quantity === 0 ? '1px solid var(--secondary)' : '1px solid transparent'
+                      backgroundColor: 'var(--surface)',
+                      color: quantity === 0 ? 'var(--on-surface)' : 'var(--on-surface-variant)',
+                      border: '1px solid var(--outline)',
+                      fontWeight: quantity === 0 ? 'bold' : 'normal'
                     }}
                   >
-                    <div className="font-bold">{product.initialQuantity || 0}</div>
-                    <div className="text-[10px] opacity-70">{isEnglish ? 'Previous' : 'Précédent'}</div>
+                    <div className="font-bold text-sm">{product.initialQuantity || 0}</div>
+                    <div className="text-[10px] mt-0.5" style={{ color: 'var(--on-surface-variant)' }}>
+                      {translateUnit(product.unit, locale)}
+                    </div>
+                    <div className="text-[9px] mt-0.5 opacity-60">{isEnglish ? 'Previous' : 'Précédent'}</div>
                   </div>
                   
                   {/* Case Nouveau */}
                   <div 
-                    className="flex-1 px-2 py-1.5 rounded text-center text-xs"
+                    className="flex-1 px-2 py-2 rounded text-center text-xs"
                     style={{
-                      backgroundColor: quantity > 0 ? 'var(--secondary-container)' : 'var(--surface-variant)',
-                      color: quantity > 0 ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)',
-                      border: quantity > 0 ? '1px solid var(--secondary)' : '1px solid transparent'
+                      backgroundColor: 'var(--surface)',
+                      color: quantity > 0 ? 'var(--on-surface)' : 'var(--on-surface-variant)',
+                      border: '1px solid var(--outline)',
+                      fontWeight: quantity > 0 ? 'bold' : 'normal'
                     }}
                   >
-                    <div className="font-bold">{quantity > 0 ? quantity : '-'}</div>
-                    <div className="text-[10px] opacity-70">{isEnglish ? 'New' : 'Nouveau'}</div>
+                    <div className="font-bold text-sm">{quantity > 0 ? quantity : '-'}</div>
+                    <div className="text-[10px] mt-0.5" style={{ color: 'var(--on-surface-variant)' }}>
+                      {quantity > 0 ? translateUnit(product.unit, locale) : '-'}
+                    </div>
+                    <div className="text-[9px] mt-0.5 opacity-60">{isEnglish ? 'New' : 'Nouveau'}</div>
                   </div>
                 </div>
                 <div className="col-span-4 text-right pr-2">

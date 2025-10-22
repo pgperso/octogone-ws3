@@ -141,14 +141,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
           </div>
         </div>
 
-        {/* Bouton Ajouter à ma commande */}
-        {isBelowMinimum && onAddToOrder && (
+        {/* Bouton Ajouter à ma commande - Toujours visible */}
+        {onAddToOrder && (
           <button
             onClick={onAddToOrder}
             className="w-full py-2 px-4 rounded-lg font-medium text-sm transition-all"
             style={{
-              backgroundColor: 'var(--primary)',
-              color: 'var(--on-primary)'
+              backgroundColor: isBelowMinimum ? 'var(--primary)' : 'var(--secondary)',
+              color: isBelowMinimum ? 'var(--on-primary)' : 'var(--on-secondary)'
             }}
           >
             {isEnglish ? 'Ajouter à ma commande' : 'Ajouter à ma commande'}
