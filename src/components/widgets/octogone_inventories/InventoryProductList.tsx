@@ -149,7 +149,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                     style={{
                       backgroundColor: quantity === 0 ? 'var(--secondary-container)' : 'var(--surface)',
                       color: quantity === 0 ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)',
-                      border: quantity === 0 ? '2px solid var(--secondary)' : '1px solid var(--outline)',
+                      border: quantity === 0 ? '3px solid white' : '2px solid var(--outline)',
                       fontWeight: quantity === 0 ? 'bold' : 'normal'
                     }}
                   >
@@ -166,7 +166,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                     style={{
                       backgroundColor: quantity > 0 ? 'var(--secondary-container)' : 'var(--surface)',
                       color: quantity > 0 ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)',
-                      border: quantity > 0 ? '2px solid var(--secondary)' : '1px solid var(--outline)',
+                      border: quantity > 0 ? '3px solid white' : '2px solid var(--outline)',
                       fontWeight: quantity > 0 ? 'bold' : 'normal'
                     }}
                   >
