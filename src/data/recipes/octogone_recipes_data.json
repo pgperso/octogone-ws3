@@ -1,0 +1,340 @@
+{
+  "recipes": [
+    {
+      "id": "recipe-001",
+      "name": "Cheeseburger Suprême",
+      "name_en": "Supreme Cheeseburger",
+      "category": "Plats principaux",
+      "category_en": "Main dishes",
+      "type": "burger",
+      "difficulty": "facile",
+      "difficulty_en": "easy",
+      "prep_time_minutes": 15,
+      "cook_time_minutes": 10,
+      "servings": 1,
+      "description_fr": "Burger classique avec bœuf haché, cheddar fondant, bacon croustillant et garnitures fraîches.",
+      "description_en": "Classic burger with ground beef, melted cheddar, crispy bacon, and fresh toppings.",
+      "ingredients": [
+        {
+          "product_id": "prod-001",
+          "quantity": 150,
+          "unit": "g",
+          "preparation": "Former une galette"
+        },
+        {
+          "product_id": "prod-002",
+          "quantity": 30,
+          "unit": "g",
+          "preparation": "Grillé croustillant"
+        },
+        {
+          "product_id": "prod-006",
+          "quantity": 30,
+          "unit": "g",
+          "preparation": "Tranché"
+        },
+        {
+          "product_id": "prod-012",
+          "quantity": 20,
+          "unit": "g",
+          "preparation": "Feuilles lavées"
+        },
+        {
+          "product_id": "prod-013",
+          "quantity": 30,
+          "unit": "g",
+          "preparation": "Tranches"
+        },
+        {
+          "product_id": "prod-014",
+          "quantity": 20,
+          "unit": "g",
+          "preparation": "Émincé"
+        },
+        {
+          "product_id": "prod-029",
+          "quantity": 1,
+          "unit": "un",
+          "preparation": "Grillé"
+        },
+        {
+          "product_id": "prod-036",
+          "quantity": 2,
+          "unit": "g",
+          "preparation": ""
+        },
+        {
+          "product_id": "prod-037",
+          "quantity": 1,
+          "unit": "g",
+          "preparation": "Fraîchement moulu"
+        },
+        {
+          "product_id": "prod-039",
+          "quantity": 15,
+          "unit": "mL",
+          "preparation": ""
+        },
+        {
+          "product_id": "prod-040",
+          "quantity": 15,
+          "unit": "mL",
+          "preparation": ""
+        },
+        {
+          "product_id": "prod-041",
+          "quantity": 10,
+          "unit": "mL",
+          "preparation": ""
+        },
+        {
+          "product_id": "prod-042",
+          "quantity": 20,
+          "unit": "g",
+          "preparation": "Tranches"
+        }
+      ],
+      "instructions_fr": [
+        "Former une galette avec le bœuf haché, assaisonner de sel et poivre",
+        "Griller le bacon jusqu'à ce qu'il soit croustillant",
+        "Cuire la galette de bœuf 4-5 minutes de chaque côté",
+        "Ajouter le cheddar sur la galette en fin de cuisson",
+        "Griller légèrement le pain à burger",
+        "Assembler : pain, mayonnaise, laitue, galette, bacon, tomates, oignons, cornichons, ketchup, moutarde"
+      ],
+      "instructions_en": [
+        "Form a patty with ground beef, season with salt and pepper",
+        "Grill bacon until crispy",
+        "Cook beef patty 4-5 minutes per side",
+        "Add cheddar on patty at end of cooking",
+        "Lightly toast burger bun",
+        "Assemble: bun, mayo, lettuce, patty, bacon, tomatoes, onions, pickles, ketchup, mustard"
+      ],
+      "tags": ["burger", "bœuf", "fromage", "classique"],
+      "allergens": ["Gluten", "Lait", "Œufs (mayonnaise)"],
+      "diet_tags": []
+    },
+    {
+      "id": "recipe-002",
+      "name": "Pâtes Carbonara",
+      "name_en": "Carbonara Pasta",
+      "category": "Plats principaux",
+      "category_en": "Main dishes",
+      "type": "pasta",
+      "difficulty": "moyen",
+      "difficulty_en": "medium",
+      "prep_time_minutes": 10,
+      "cook_time_minutes": 15,
+      "servings": 4,
+      "description_fr": "Pâtes crémeuses au bacon, œufs et parmesan, recette italienne authentique.",
+      "description_en": "Creamy pasta with bacon, eggs, and parmesan, authentic Italian recipe.",
+      "ingredients": [
+        {
+          "product_id": "prod-031",
+          "quantity": 400,
+          "unit": "g",
+          "preparation": "Cuites al dente"
+        },
+        {
+          "product_id": "prod-002",
+          "quantity": 200,
+          "unit": "g",
+          "preparation": "Coupé en lardons"
+        },
+        {
+          "product_id": "prod-005",
+          "quantity": 4,
+          "unit": "un",
+          "preparation": "Jaunes seulement"
+        },
+        {
+          "product_id": "prod-007",
+          "quantity": 100,
+          "unit": "g",
+          "preparation": "Râpé"
+        },
+        {
+          "product_id": "prod-010",
+          "quantity": 100,
+          "unit": "mL",
+          "preparation": ""
+        },
+        {
+          "product_id": "prod-015",
+          "quantity": 10,
+          "unit": "g",
+          "preparation": "Haché"
+        },
+        {
+          "product_id": "prod-036",
+          "quantity": 5,
+          "unit": "g",
+          "preparation": ""
+        },
+        {
+          "product_id": "prod-037",
+          "quantity": 3,
+          "unit": "g",
+          "preparation": "Fraîchement moulu"
+        }
+      ],
+      "instructions_fr": [
+        "Cuire les pâtes dans l'eau bouillante salée selon les instructions",
+        "Faire revenir les lardons avec l'ail haché jusqu'à ce qu'ils soient dorés",
+        "Mélanger les jaunes d'œufs, la crème et le parmesan râpé",
+        "Égoutter les pâtes en réservant un peu d'eau de cuisson",
+        "Mélanger les pâtes chaudes avec les lardons",
+        "Retirer du feu et incorporer le mélange œufs-crème-parmesan",
+        "Ajouter de l'eau de cuisson si nécessaire pour la consistance",
+        "Assaisonner de poivre noir fraîchement moulu"
+      ],
+      "instructions_en": [
+        "Cook pasta in salted boiling water according to instructions",
+        "Sauté bacon with minced garlic until golden",
+        "Mix egg yolks, cream, and grated parmesan",
+        "Drain pasta, reserving some cooking water",
+        "Mix hot pasta with bacon",
+        "Remove from heat and incorporate egg-cream-parmesan mixture",
+        "Add cooking water if needed for consistency",
+        "Season with freshly ground black pepper"
+      ],
+      "tags": ["pâtes", "italien", "crémeux", "bacon"],
+      "allergens": ["Gluten", "Œufs", "Lait"],
+      "diet_tags": []
+    },
+    {
+      "id": "recipe-003",
+      "name": "Mojito",
+      "name_en": "Mojito",
+      "category": "Cocktails",
+      "category_en": "Cocktails",
+      "type": "cocktail",
+      "difficulty": "facile",
+      "difficulty_en": "easy",
+      "prep_time_minutes": 5,
+      "cook_time_minutes": 0,
+      "servings": 1,
+      "description_fr": "Cocktail cubain rafraîchissant à base de rhum, menthe fraîche et lime.",
+      "description_en": "Refreshing Cuban cocktail with rum, fresh mint, and lime.",
+      "ingredients": [
+        {
+          "product_id": "prod-025",
+          "quantity": 1,
+          "unit": "un",
+          "preparation": "Feuilles fraîches"
+        },
+        {
+          "product_id": "prod-027",
+          "quantity": 2,
+          "unit": "un",
+          "preparation": "Coupées en quartiers"
+        },
+        {
+          "product_id": "prod-038",
+          "quantity": 20,
+          "unit": "g",
+          "preparation": "Sucre blanc"
+        },
+        {
+          "product_id": "prod-044",
+          "quantity": 60,
+          "unit": "mL",
+          "preparation": ""
+        },
+        {
+          "product_id": "prod-046",
+          "quantity": 150,
+          "unit": "mL",
+          "preparation": "Bien froide"
+        }
+      ],
+      "instructions_fr": [
+        "Placer les feuilles de menthe et les quartiers de lime dans un verre",
+        "Ajouter le sucre",
+        "Piler doucement pour libérer les arômes",
+        "Ajouter le rhum blanc",
+        "Remplir le verre de glace pilée",
+        "Compléter avec l'eau gazeuse",
+        "Mélanger délicatement",
+        "Garnir avec une branche de menthe et une rondelle de lime"
+      ],
+      "instructions_en": [
+        "Place mint leaves and lime wedges in a glass",
+        "Add sugar",
+        "Muddle gently to release aromas",
+        "Add white rum",
+        "Fill glass with crushed ice",
+        "Top with sparkling water",
+        "Stir gently",
+        "Garnish with mint sprig and lime wheel"
+      ],
+      "tags": ["cocktail", "rhum", "menthe", "rafraîchissant"],
+      "allergens": [],
+      "diet_tags": ["Végétalien", "Sans gluten"]
+    },
+    {
+      "id": "recipe-004",
+      "name": "Crème Brûlée",
+      "name_en": "Crème Brûlée",
+      "category": "Desserts",
+      "category_en": "Desserts",
+      "type": "dessert",
+      "difficulty": "moyen",
+      "difficulty_en": "medium",
+      "prep_time_minutes": 20,
+      "cook_time_minutes": 45,
+      "servings": 6,
+      "description_fr": "Dessert français classique avec crème onctueuse à la vanille et croûte caramélisée.",
+      "description_en": "Classic French dessert with smooth vanilla custard and caramelized crust.",
+      "ingredients": [
+        {
+          "product_id": "prod-010",
+          "quantity": 500,
+          "unit": "mL",
+          "preparation": ""
+        },
+        {
+          "product_id": "prod-005",
+          "quantity": 4,
+          "unit": "un",
+          "preparation": "Jaunes seulement"
+        },
+        {
+          "product_id": "prod-038",
+          "quantity": 100,
+          "unit": "g",
+          "preparation": "Pour la crème + caramélisation"
+        },
+        {
+          "product_id": "prod-048",
+          "quantity": 5,
+          "unit": "mL",
+          "preparation": ""
+        }
+      ],
+      "instructions_fr": [
+        "Préchauffer le four à 150°C",
+        "Faire chauffer la crème avec l'extrait de vanille sans bouillir",
+        "Fouetter les jaunes d'œufs avec 50g de sucre jusqu'à blanchiment",
+        "Incorporer progressivement la crème chaude aux jaunes",
+        "Filtrer le mélange et répartir dans des ramequins",
+        "Cuire au bain-marie 40-45 minutes jusqu'à ce que la crème soit prise",
+        "Laisser refroidir puis réfrigérer minimum 2 heures",
+        "Saupoudrer de sucre et caraméliser au chalumeau juste avant de servir"
+      ],
+      "instructions_en": [
+        "Preheat oven to 150°C (300°F)",
+        "Heat cream with vanilla extract without boiling",
+        "Whisk egg yolks with 50g sugar until pale",
+        "Gradually incorporate hot cream into yolks",
+        "Strain mixture and divide into ramekins",
+        "Bake in water bath 40-45 minutes until custard is set",
+        "Cool then refrigerate minimum 2 hours",
+        "Sprinkle with sugar and caramelize with torch before serving"
+      ],
+      "tags": ["dessert", "français", "vanille", "caramélisé"],
+      "allergens": ["Œufs", "Lait"],
+      "diet_tags": ["Végétarien", "Sans gluten"]
+    }
+  ]
+}

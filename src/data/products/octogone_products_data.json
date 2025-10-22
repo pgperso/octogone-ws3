@@ -11,7 +11,12 @@
       "storage": "frigidaire",
       "minInventory": 8,
       "initialQuantity": 8,
-      "theoreticalQuantity": 6
+      "theoreticalQuantity": 6,
+      "enrichment": {
+        "recipes": ["recipe-001"],
+        "recipe_role": "protein",
+        "pairs_well_with": ["prod-006", "prod-012", "prod-013", "prod-029", "prod-039", "prod-040"]
+      }
     },
     {
       "id": "prod-002",
@@ -24,7 +29,12 @@
       "storage": "frigidaire",
       "minInventory": 14,
       "initialQuantity": 12,
-      "theoreticalQuantity": 12
+      "theoreticalQuantity": 12,
+      "enrichment": {
+        "recipes": ["recipe-001", "recipe-002"],
+        "recipe_role": "protein",
+        "pairs_well_with": ["prod-005", "prod-007", "prod-031"]
+      }
     },
     {
       "id": "prod-003",
@@ -63,7 +73,12 @@
       "storage": "frigidaire",
       "minInventory": 22,
       "initialQuantity": 36,
-      "theoreticalQuantity": 33
+      "theoreticalQuantity": 33,
+      "enrichment": {
+        "recipes": ["recipe-002", "recipe-004"],
+        "recipe_role": "dairy",
+        "pairs_well_with": ["prod-002", "prod-007", "prod-010", "prod-031"]
+      }
     },
     {
       "id": "prod-006",
@@ -76,7 +91,12 @@
       "storage": "frigidaire",
       "minInventory": 12,
       "initialQuantity": 15,
-      "theoreticalQuantity": 15
+      "theoreticalQuantity": 15,
+      "enrichment": {
+        "recipes": ["recipe-001"],
+        "recipe_role": "dairy",
+        "pairs_well_with": ["prod-001", "prod-029"]
+      }
     },
     {
       "id": "prod-007",
@@ -89,7 +109,12 @@
       "storage": "frigidaire",
       "minInventory": 5,
       "initialQuantity": 3,
-      "theoreticalQuantity": 2
+      "theoreticalQuantity": 2,
+      "enrichment": {
+        "recipes": ["recipe-002"],
+        "recipe_role": "dairy",
+        "pairs_well_with": ["prod-002", "prod-005", "prod-031"]
+      }
     },
     {
       "id": "prod-008",
@@ -128,7 +153,12 @@
       "storage": "frigidaire",
       "minInventory": 5,
       "initialQuantity": 3,
-      "theoreticalQuantity": 2
+      "theoreticalQuantity": 2,
+      "enrichment": {
+        "recipes": ["recipe-002", "recipe-004"],
+        "recipe_role": "dairy",
+        "pairs_well_with": ["prod-005", "prod-038", "prod-048"]
+      }
     },
     {
       "id": "prod-011",
@@ -193,7 +223,12 @@
       "storage": "frigidaire",
       "minInventory": 6,
       "initialQuantity": 10,
-      "theoreticalQuantity": 7
+      "theoreticalQuantity": 7,
+      "enrichment": {
+        "recipes": ["recipe-002"],
+        "recipe_role": "seasoning",
+        "pairs_well_with": ["prod-002", "prod-031", "prod-034"]
+      }
     },
     {
       "id": "prod-016",
@@ -323,7 +358,12 @@
       "storage": "frigidaire",
       "minInventory": 8,
       "initialQuantity": 10,
-      "theoreticalQuantity": 8
+      "theoreticalQuantity": 8,
+      "enrichment": {
+        "recipes": ["recipe-003"],
+        "recipe_role": "herb",
+        "pairs_well_with": ["prod-027", "prod-038", "prod-044", "prod-046"]
+      }
     },
     {
       "id": "prod-026",
@@ -349,7 +389,12 @@
       "storage": "frigidaire",
       "minInventory": 8,
       "initialQuantity": 10,
-      "theoreticalQuantity": 9
+      "theoreticalQuantity": 9,
+      "enrichment": {
+        "recipes": ["recipe-003"],
+        "recipe_role": "garnish",
+        "pairs_well_with": ["prod-025", "prod-038", "prod-044"]
+      }
     },
     {
       "id": "prod-028",
@@ -375,7 +420,12 @@
       "storage": "sec",
       "minInventory": 15,
       "initialQuantity": 20,
-      "theoreticalQuantity": 18
+      "theoreticalQuantity": 18,
+      "enrichment": {
+        "recipes": ["recipe-001"],
+        "recipe_role": "carb",
+        "pairs_well_with": ["prod-001", "prod-006", "prod-012", "prod-013"]
+      }
     },
     {
       "id": "prod-030",
@@ -401,7 +451,12 @@
       "storage": "sec",
       "minInventory": 11,
       "initialQuantity": 19,
-      "theoreticalQuantity": 19
+      "theoreticalQuantity": 19,
+      "enrichment": {
+        "recipes": ["recipe-002"],
+        "recipe_role": "carb",
+        "pairs_well_with": ["prod-002", "prod-005", "prod-007", "prod-015"]
+      }
     },
     {
       "id": "prod-032",
@@ -479,7 +534,12 @@
       "storage": "sec",
       "minInventory": 3,
       "initialQuantity": 2,
-      "theoreticalQuantity": 2
+      "theoreticalQuantity": 2,
+      "enrichment": {
+        "recipes": ["recipe-001", "recipe-002"],
+        "recipe_role": "seasoning",
+        "pairs_well_with": ["prod-001", "prod-002", "prod-031"]
+      }
     },
     {
       "id": "prod-038",
@@ -492,7 +552,12 @@
       "storage": "sec",
       "minInventory": 7,
       "initialQuantity": 13,
-      "theoreticalQuantity": 13
+      "theoreticalQuantity": 13,
+      "enrichment": {
+        "recipes": ["recipe-003", "recipe-004"],
+        "recipe_role": "sweetener",
+        "pairs_well_with": ["prod-005", "prod-010", "prod-025", "prod-027", "prod-048"]
+      }
     },
     {
       "id": "prod-039",
@@ -570,7 +635,12 @@
       "storage": "sec",
       "minInventory": 3,
       "initialQuantity": 2,
-      "theoreticalQuantity": 2
+      "theoreticalQuantity": 2,
+      "enrichment": {
+        "recipes": ["recipe-003"],
+        "recipe_role": "alcohol",
+        "pairs_well_with": ["prod-025", "prod-027", "prod-038", "prod-046"]
+      }
     },
     {
       "id": "prod-045",
@@ -596,7 +666,12 @@
       "storage": "sec",
       "minInventory": 20,
       "initialQuantity": 30,
-      "theoreticalQuantity": 25
+      "theoreticalQuantity": 25,
+      "enrichment": {
+        "recipes": ["recipe-003"],
+        "recipe_role": "mixer",
+        "pairs_well_with": ["prod-025", "prod-027", "prod-044"]
+      }
     },
     {
       "id": "prod-047",
@@ -622,7 +697,12 @@
       "storage": "sec",
       "minInventory": 100,
       "initialQuantity": 250,
-      "theoreticalQuantity": 200
+      "theoreticalQuantity": 200,
+      "enrichment": {
+        "recipes": ["recipe-004"],
+        "recipe_role": "seasoning",
+        "pairs_well_with": ["prod-005", "prod-010", "prod-038"]
+      }
     },
     {
       "id": "prod-049",
