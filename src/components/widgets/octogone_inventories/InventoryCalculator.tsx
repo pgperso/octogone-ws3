@@ -37,6 +37,7 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
   const [displayValue, setDisplayValue] = useState('0');
   const [isEditing, setIsEditing] = useState(false);
   const [selectedUnit, setSelectedUnit] = useState<string>('');
+  const [isSaving, setIsSaving] = useState(false);
 
   // Réinitialiser quand le produit change
   useEffect(() => {
@@ -75,10 +76,22 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
   const handleSave = () => {
     if (selectedProduct) {
       const quantity = parseFloat(displayValue) || 0;
-      onSave(selectedProduct.id, quantity);
-      // Reset de la calculatrice après l'ajout
-      setDisplayValue('0');
-      setIsEditing(false);
+      
+      // Animation de feedback
+      setIsSaving(true);
+      
+      // Sauvegarder après un court délai pour montrer l'animation
+      setTimeout(() => {
+        onSave(selectedProduct.id, quantity);
+        // Reset de la calculatrice après l'ajout
+        setDisplayValue('0');
+        setIsEditing(false);
+        
+        // Retour à l'état normal après l'animation
+        setTimeout(() => {
+          setIsSaving(false);
+        }, 300);
+      }, 150);
     }
   };
 
@@ -213,14 +226,15 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
         {/* Bouton Ajouter - prend tout l'espace disponible */}
         <button
           onClick={handleSave}
-          disabled={!selectedProduct || !isEditing}
-          className="flex-1 p-4 rounded-lg font-bold text-lg transition-all disabled:opacity-50 flex items-center justify-center gap-3 shadow-lg cursor-pointer disabled:cursor-not-allowed"
+          disabled={!selectedProduct || !isEditing || isSaving}
+          className="flex-1 p-4 rounded-lg font-bold text-lg transition-all duration-300 disabled:opacity-50 flex items-center justify-center gap-3 shadow-lg cursor-pointer disabled:cursor-not-allowed"
           style={{
-            backgroundColor: 'var(--primary)',
-            color: 'var(--on-primary)'
+            backgroundColor: isSaving ? 'var(--success)' : 'var(--primary)',
+            color: isSaving ? 'var(--on-success)' : 'var(--on-primary)',
+            transform: isSaving ? 'scale(0.95)' : 'scale(1)'
           }}
         >
-          <Check className="w-6 h-6" />
+          <Check className={`w-6 h-6 transition-transform duration-300 ${isSaving ? 'scale-125' : 'scale-100'}`} />
           {isEnglish ? 'Add' : 'Ajouter'}
         </button>
 
