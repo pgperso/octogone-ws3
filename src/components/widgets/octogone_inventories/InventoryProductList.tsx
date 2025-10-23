@@ -109,27 +109,12 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
     return sorted;
   }, [products, searchTerm, locale, sortBy, inventory]);
 
-  // Notifier le parent des produits filtrés et triés
+  // Notifier le parent des produits filtrés et triés - UNE SEULE FOIS au mount et quand la liste change
   useEffect(() => {
     if (onFilteredProductsChange) {
       onFilteredProductsChange(filteredAndSortedProducts);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filteredAndSortedProducts]);
-
-  // Sélectionner automatiquement le premier produit seulement quand le tri change
-  useEffect(() => {
-    // Ne pas sélectionner au premier mount
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-      return;
-    }
-    
-    if (filteredAndSortedProducts.length > 0) {
-      onProductSelect(filteredAndSortedProducts[0]);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sortBy]); // Seulement quand sortBy change
+  }, [filteredAndSortedProducts, onFilteredProductsChange]);
 
   // Obtenir la quantité d'un produit
   const getQuantity = (productId: string): number => {

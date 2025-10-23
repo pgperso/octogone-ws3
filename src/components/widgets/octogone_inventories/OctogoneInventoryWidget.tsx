@@ -101,18 +101,14 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
   // Filtrer les produits par emplacement
   const filteredProducts = products.filter(p => (p.storage || 'sec') === selectedStorage);
 
-  // Réinitialiser la recherche quand on change d'emplacement
+  // Réinitialiser la recherche et sélectionner le premier produit quand on change d'emplacement
   useEffect(() => {
     setSearchTerm('');
-  }, [selectedStorage]);
-
-  // Sélectionner le premier produit de la liste triée quand l'emplacement change
-  useEffect(() => {
-    if (filteredAndSortedProducts.length > 0) {
-      setSelectedProduct(filteredAndSortedProducts[0]);
+    const firstProduct = filteredProducts[0];
+    if (firstProduct) {
+      setSelectedProduct(firstProduct);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedStorage]); // Déclenché par le changement d'emplacement
+  }, [selectedStorage, filteredProducts]);
 
   // Gérer la sélection d'un produit
   const handleProductSelect = (product: Product) => {
