@@ -156,7 +156,7 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
       }
     });
     return sorted;
-  }, [filteredProducts, sortBy, locale, inventory, nonInventoriableOverrides]);
+  }, [filteredProducts, sortBy, locale, inventory]);
 
   // Réinitialiser la recherche et sélectionner le premier produit quand on change d'emplacement
   useEffect(() => {

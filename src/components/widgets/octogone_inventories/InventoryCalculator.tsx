@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Delete, Check, ChevronUp, ChevronDown, Loader2, X, EqualNot } from 'lucide-react';
+import { Delete, Check, ChevronUp, ChevronDown, Loader2, EqualNot } from 'lucide-react';
 import { ProductCard } from './ProductCard';
 
 interface Product {
