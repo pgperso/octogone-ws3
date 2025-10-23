@@ -17,11 +17,12 @@ interface Product {
   availableUnits?: string[];
   unitCost: number;
   image?: string;
-  storage?: 'sec' | 'congelateur' | 'frigidaire';
+  storage?: string;
   minInventory?: number;
   initialQuantity?: number;
   theoreticalQuantity?: number;
   isRecipe?: boolean;
+  nonInventoriable?: boolean;
 }
 
 type StorageType = 'sec' | 'congelateur' | 'frigidaire';

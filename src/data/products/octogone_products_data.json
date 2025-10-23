@@ -521,7 +521,8 @@
       "storage": "sec",
       "minInventory": 10,
       "initialQuantity": 17,
-      "theoreticalQuantity": 13
+      "theoreticalQuantity": 13,
+      "nonInventoriable": true
     },
     {
       "id": "prod-037",
@@ -535,6 +536,7 @@
       "minInventory": 3,
       "initialQuantity": 2,
       "theoreticalQuantity": 2,
+      "nonInventoriable": true,
       "enrichment": {
         "recipes": ["recipe-001", "recipe-002"],
         "recipe_role": "seasoning",
@@ -781,6 +783,99 @@
       "minInventory": 10,
       "initialQuantity": 17,
       "theoreticalQuantity": 16
+    },
+    {
+      "id": "prod-055",
+      "name": "Sachets de ketchup",
+      "category": "Condiments portion",
+      "brand": "Heinz",
+      "unit": "un",
+      "availableUnits": ["un"],
+      "unitCost": 0.05,
+      "storage": "sec",
+      "minInventory": 500,
+      "initialQuantity": 800,
+      "theoreticalQuantity": 750,
+      "nonInventoriable": true
+    },
+    {
+      "id": "prod-056",
+      "name": "Serviettes en papier",
+      "category": "Fournitures de service",
+      "brand": "Cascades",
+      "unit": "un",
+      "availableUnits": ["un"],
+      "unitCost": 0.02,
+      "storage": "sec",
+      "minInventory": 1000,
+      "initialQuantity": 1500,
+      "theoreticalQuantity": 1200,
+      "nonInventoriable": true
+    },
+    {
+      "id": "prod-057",
+      "name": "Détergent à vaisselle",
+      "category": "Produits de nettoyage",
+      "brand": "Dawn",
+      "unit": "L",
+      "availableUnits": ["L", "mL"],
+      "unitCost": 8.99,
+      "storage": "sec",
+      "minInventory": 3,
+      "initialQuantity": 5,
+      "theoreticalQuantity": 4
+    },
+    {
+      "id": "prod-058",
+      "name": "Désinfectant surfaces",
+      "category": "Produits de nettoyage",
+      "brand": "Lysol",
+      "unit": "L",
+      "availableUnits": ["L", "mL"],
+      "unitCost": 12.50,
+      "storage": "sec",
+      "minInventory": 2,
+      "initialQuantity": 4,
+      "theoreticalQuantity": 3
+    },
+    {
+      "id": "prod-059",
+      "name": "Gants jetables",
+      "category": "Fournitures de service",
+      "brand": "Nitrile Pro",
+      "unit": "un",
+      "availableUnits": ["un"],
+      "unitCost": 0.15,
+      "storage": "sec",
+      "minInventory": 200,
+      "initialQuantity": 300,
+      "theoreticalQuantity": 250
+    },
+    {
+      "id": "prod-060",
+      "name": "Papier essuie-tout",
+      "category": "Fournitures de service",
+      "brand": "Bounty",
+      "unit": "un",
+      "availableUnits": ["un"],
+      "unitCost": 2.50,
+      "storage": "sec",
+      "minInventory": 10,
+      "initialQuantity": 15,
+      "theoreticalQuantity": 12
+    },
+    {
+      "id": "prod-061",
+      "name": "Sacs à ordures",
+      "category": "Fournitures de service",
+      "brand": "Glad",
+      "unit": "un",
+      "availableUnits": ["un"],
+      "unitCost": 0.30,
+      "storage": "sec",
+      "minInventory": 50,
+      "initialQuantity": 80,
+      "theoreticalQuantity": 65
     },
     {
       "id": "recipe-001",

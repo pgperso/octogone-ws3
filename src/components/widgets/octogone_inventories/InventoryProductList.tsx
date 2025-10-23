@@ -19,6 +19,7 @@ interface Product {
   initialQuantity?: number;
   theoreticalQuantity?: number;
   isRecipe?: boolean;
+  nonInventoriable?: boolean;
 }
 
 interface InventoryItem {
@@ -258,41 +259,63 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 
                 {/* Colonne Inventaire précédent */}
                 <div className="flex-1 flex items-center justify-center">
-                  <div 
-                    className="w-full px-3 py-2 rounded text-xs"
-                    style={{
-                      backgroundColor: quantity === 0 ? 'var(--secondary-container)' : 'var(--surface)',
-                      color: quantity === 0 ? 'var(--on-secondary-container)' : 'var(--outline)',
-                      border: isSelected ? '3px solid white' : (quantity === 0 ? '3px solid white' : '2px solid var(--outline)'),
-                      fontWeight: quantity === 0 ? 'bold' : 'normal'
-                    }}
-                  >
-                    <div className="font-semibold text-sm">
-                      {product.initialQuantity || 0} {translateUnit(product.unit, locale)}
+                  {product.nonInventoriable ? (
+                    <div className="text-sm" style={{ color: 'var(--on-surface-variant)' }}>-</div>
+                  ) : (
+                    <div 
+                      className="w-full px-3 py-2 rounded text-xs"
+                      style={{
+                        backgroundColor: quantity === 0 ? 'var(--secondary-container)' : 'var(--surface)',
+                        color: quantity === 0 ? 'var(--on-secondary-container)' : 'var(--outline)',
+                        border: isSelected ? '3px solid white' : (quantity === 0 ? '3px solid white' : '2px solid var(--outline)'),
+                        fontWeight: quantity === 0 ? 'bold' : 'normal'
+                      }}
+                    >
+                      <div className="font-semibold text-sm">
+                        {product.initialQuantity || 0} {translateUnit(product.unit, locale)}
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
                 
                 {/* Colonne Inventaire en cours */}
                 <div className="flex-1 flex items-center justify-center">
-                  <div 
-                    className="w-full px-3 py-2 rounded text-xs"
-                    style={{
-                      backgroundColor: quantity > 0 ? 'var(--secondary-container)' : 'var(--surface)',
-                      color: quantity > 0 ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)',
-                      border: isSelected ? '3px solid white' : (quantity > 0 ? '3px solid white' : '2px solid var(--outline)'),
-                      fontWeight: quantity > 0 ? 'bold' : 'normal'
-                    }}
-                  >
-                    <div className="font-bold text-sm">
-                      {quantity > 0 ? `${quantity} ${translateUnit(product.unit, locale)}` : '-'}
+                  {product.nonInventoriable ? (
+                    <div className="text-sm" style={{ color: 'var(--on-surface-variant)' }}>-</div>
+                  ) : (
+                    <div 
+                      className="w-full px-3 py-2 rounded text-xs"
+                      style={{
+                        backgroundColor: quantity > 0 ? 'var(--secondary-container)' : 'var(--surface)',
+                        color: quantity > 0 ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)',
+                        border: isSelected ? '3px solid white' : (quantity > 0 ? '3px solid white' : '2px solid var(--outline)'),
+                        fontWeight: quantity > 0 ? 'bold' : 'normal'
+                      }}
+                    >
+                      <div className="font-bold text-sm">
+                        {quantity > 0 ? `${quantity} ${translateUnit(product.unit, locale)}` : '-'}
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
+                
+                {/* Colonne Valeur totale */}
                 <div className="flex-1 text-right pr-2 flex items-center justify-end">
-                  <div className="font-semibold">
-                    {quantity > 0 ? `${totalCost.toFixed(2)} $` : '-'}
-                  </div>
+                  {product.nonInventoriable ? (
+                    <span 
+                      className="px-2 py-1 text-xs font-semibold rounded-full"
+                      style={{ 
+                        backgroundColor: 'var(--tertiary-container)',
+                        color: 'var(--on-tertiary-container)'
+                      }}
+                    >
+                      {isEnglish ? "Don't count" : 'Ne pas compter'}
+                    </span>
+                  ) : (
+                    <div className="font-semibold">
+                      {quantity > 0 ? `${totalCost.toFixed(2)} $` : '-'}
+                    </div>
+                  )}
                 </div>
                 <div className="w-12 flex-shrink-0 flex items-center justify-end">
                   {quantity > 0 && (
