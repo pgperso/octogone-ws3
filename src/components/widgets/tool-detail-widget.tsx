@@ -186,7 +186,7 @@ export default function ToolDetailWidget({ tool, locale }: ToolDetailWidgetProps
                                   if (!feature) return null;
                                   
                                   return (
-                                    <motion.div key={featureIndex} className="flex flex-col motion-element"
+                                    <motion.div key={featureIndex} className="flex flex-col motion-element text-center md:text-left"
                                       initial={{ opacity: 0, y: 20 }}
                                       whileInView={{ opacity: 1, y: 0 }}
                                       viewport={{ once: true }}
@@ -194,7 +194,7 @@ export default function ToolDetailWidget({ tool, locale }: ToolDetailWidgetProps
                                     >
                                       {/* Badges de concepts */}
                                       {feature.concepts && feature.concepts.length > 0 && (
-                                        <div className="flex flex-wrap gap-2 mb-4">
+                                        <div className="flex flex-wrap gap-2 mb-4 justify-center md:justify-start">
                                           {feature.concepts.map((conceptId) => {
                                             const conceptInfo = conceptConfig[conceptId];
                                             if (!conceptInfo) return null;
@@ -280,10 +280,10 @@ export default function ToolDetailWidget({ tool, locale }: ToolDetailWidgetProps
                               </div>
                               
                               {/* Contenu */}
-                              <div className={imageOnLeft ? 'lg:order-2' : 'lg:order-1'}>
+                              <div className={`${imageOnLeft ? 'lg:order-2' : 'lg:order-1'} text-center lg:text-left`}>
                                 {/* Badges de concepts */}
                                 {singleFeature.concepts && singleFeature.concepts.length > 0 && (
-                                  <div className="flex flex-wrap gap-2 mb-4">
+                                  <div className="flex flex-wrap gap-2 mb-4 justify-center lg:justify-start">
                                     {singleFeature.concepts?.map((conceptId) => {
                                       const conceptInfo = conceptConfig[conceptId];
                                       if (!conceptInfo) return null;
