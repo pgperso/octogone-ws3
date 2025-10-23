@@ -155,7 +155,7 @@ export default function ToolDetailWidget({ tool, locale }: ToolDetailWidgetProps
                                     {feature.benefits && feature.benefits.length > 0 && (
                                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
                                         {feature.benefits.map((benefit, idx) => (
-                                          <div key={idx} className="flex items-start gap-3 p-4 rounded-lg bg-surface-container">
+                                          <div key={idx} className="flex items-start gap-3 p-4 rounded-lg bg-surface-container mx-auto md:mx-0 max-w-md md:max-w-none">
                                             <Check className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'var(--secondary)' }} />
                                             <span className="text-base" style={{ color: 'var(--on-surface)' }}>
                                               {isEnglish ? benefit.en : benefit.fr}
