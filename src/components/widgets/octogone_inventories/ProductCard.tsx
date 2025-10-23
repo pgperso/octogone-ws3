@@ -162,7 +162,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
       </div>
 
       {/* Troisième colonne - Graphique et bouton */}
-      <div className="w-[220px] p-6 border-l flex flex-col justify-between" style={{ borderColor: 'var(--outline)' }}>
+      <div className="w-[280px] p-6 border-l flex flex-col justify-between" style={{ borderColor: 'var(--outline)' }}>
         {/* Graphique de stock */}
         <div>
           <div className="mb-3">
