@@ -137,6 +137,11 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
           if (!a.isRecipe && b.isRecipe) return 1;
           return translateProduct(a.name, locale).localeCompare(translateProduct(b.name, locale));
         
+        case 'non-inventoriable':
+          if (a.nonInventoriable && !b.nonInventoriable) return -1;
+          if (!a.nonInventoriable && b.nonInventoriable) return 1;
+          return translateProduct(a.name, locale).localeCompare(translateProduct(b.name, locale));
+        
         default:
           return 0;
       }

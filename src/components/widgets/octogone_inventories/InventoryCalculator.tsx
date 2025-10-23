@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Delete, Check, ChevronUp, ChevronDown, Loader2 } from 'lucide-react';
+import { Delete, Check, ChevronUp, ChevronDown, Loader2, X } from 'lucide-react';
 import { ProductCard } from './ProductCard';
 
 interface Product {
@@ -111,6 +111,42 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
   const totalValue = selectedProduct 
     ? (parseFloat(displayValue) || 0) * selectedProduct.unitCost 
     : 0;
+
+  // Si le produit est non-inventoriable, afficher un message
+  if (selectedProduct?.nonInventoriable) {
+    return (
+      <div className="p-6 flex flex-col h-full">
+        <ProductCard 
+          product={selectedProduct} 
+          locale={locale}
+          currentQuantity={0}
+          onAddToOrder={() => {
+            console.log('Ajouter à la commande:', selectedProduct.name);
+          }}
+        />
+        <div className="flex-1 flex items-center justify-center">
+          <div className="text-center">
+            <X 
+              className="w-16 h-16 mx-auto mb-4" 
+              style={{ color: 'var(--error)' }}
+            />
+            <p 
+              className="text-lg font-semibold mb-2"
+              style={{ color: 'var(--on-surface)' }}
+            >
+              {isEnglish ? "Don't count" : 'Ne pas compter'}
+            </p>
+            <p 
+              className="text-sm"
+              style={{ color: 'var(--on-surface-variant)' }}
+            >
+              {isEnglish ? 'This product is not tracked in inventory' : 'Ce produit n\'est pas suivi en inventaire'}
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col h-full p-6">
