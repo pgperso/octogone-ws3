@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Search, Check, History, X } from 'lucide-react';
 import { translateCategory, translateProduct, translateUnit } from '@/data/products/octogone_products_translations';
 import { OctogoneButton } from '@/components/ui/octogone-button';
@@ -35,6 +35,8 @@ interface InventoryProductListProps {
   locale?: 'fr' | 'en';
 }
 
+type SortOption = 'alphabetical' | 'category' | 'inventoried' | 'not-inventoried' | 'recipes';
+
 export const InventoryProductList: React.FC<InventoryProductListProps> = ({
   products,
   inventory,
@@ -45,24 +47,63 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
   locale = 'fr'
 }) => {
   const isEnglish = locale === 'en';
+  const [sortBy, setSortBy] = useState<SortOption>('alphabetical');
 
-  // Filtrer les produits selon la recherche
-  const filteredProducts = useMemo(() => {
-    if (!searchTerm.trim()) return products;
-    
-    const term = searchTerm.toLowerCase();
-    return products.filter(product => {
-      const translatedName = translateProduct(product.name, locale).toLowerCase();
-      const translatedCategory = translateCategory(product.category, locale).toLowerCase();
-      const originalName = product.name.toLowerCase();
-      const originalCategory = product.category.toLowerCase();
-      
-      return translatedName.includes(term) ||
-             translatedCategory.includes(term) ||
-             originalName.includes(term) ||
-             originalCategory.includes(term);
+  // Filtrer et trier les produits
+  const filteredAndSortedProducts = useMemo(() => {
+    // D'abord filtrer selon la recherche
+    let filtered = products;
+    if (searchTerm.trim()) {
+      const term = searchTerm.toLowerCase();
+      filtered = products.filter(product => {
+        const translatedName = translateProduct(product.name, locale).toLowerCase();
+        const originalName = product.name.toLowerCase();
+        
+        return translatedName.includes(term) ||
+               originalName.includes(term);
+      });
+    }
+
+    // Ensuite trier selon l'option choisie
+    const sorted = [...filtered].sort((a, b) => {
+      switch (sortBy) {
+        case 'alphabetical':
+          return translateProduct(a.name, locale).localeCompare(translateProduct(b.name, locale));
+        
+        case 'category':
+          const categoryA = translateCategory(a.category, locale);
+          const categoryB = translateCategory(b.category, locale);
+          if (categoryA !== categoryB) {
+            return categoryA.localeCompare(categoryB);
+          }
+          return translateProduct(a.name, locale).localeCompare(translateProduct(b.name, locale));
+        
+        case 'inventoried':
+          const quantityA = inventory.find(i => i.productId === a.id)?.quantity || 0;
+          const quantityB = inventory.find(i => i.productId === b.id)?.quantity || 0;
+          if (quantityA > 0 && quantityB === 0) return -1;
+          if (quantityA === 0 && quantityB > 0) return 1;
+          return translateProduct(a.name, locale).localeCompare(translateProduct(b.name, locale));
+        
+        case 'not-inventoried':
+          const qtyA = inventory.find(i => i.productId === a.id)?.quantity || 0;
+          const qtyB = inventory.find(i => i.productId === b.id)?.quantity || 0;
+          if (qtyA === 0 && qtyB > 0) return -1;
+          if (qtyA > 0 && qtyB === 0) return 1;
+          return translateProduct(a.name, locale).localeCompare(translateProduct(b.name, locale));
+        
+        case 'recipes':
+          if (a.isRecipe && !b.isRecipe) return -1;
+          if (!a.isRecipe && b.isRecipe) return 1;
+          return translateProduct(a.name, locale).localeCompare(translateProduct(b.name, locale));
+        
+        default:
+          return 0;
+      }
     });
-  }, [products, searchTerm, locale]);
+
+    return sorted;
+  }, [products, searchTerm, locale, sortBy, inventory]);
 
   // Obtenir la quantité d'un produit
   const getQuantity = (productId: string): number => {
@@ -104,6 +145,25 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
             )}
           </div>
           
+          {/* Dropdown Tri */}
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value as SortOption)}
+            className="px-3 py-2 text-sm rounded-lg border focus:outline-none focus:ring-2"
+            style={{
+              backgroundColor: 'var(--surface)',
+              borderColor: 'var(--outline)',
+              color: 'var(--on-surface)',
+              '--tw-ring-color': 'var(--primary)'
+            } as React.CSSProperties}
+          >
+            <option value="alphabetical">{isEnglish ? 'A-Z' : 'A-Z'}</option>
+            <option value="category">{isEnglish ? 'Category' : 'Catégorie'}</option>
+            <option value="inventoried">{isEnglish ? 'Inventoried' : 'Inventoriés'}</option>
+            <option value="not-inventoried">{isEnglish ? 'Not inventoried' : 'Non inventoriés'}</option>
+            <option value="recipes">{isEnglish ? 'Recipes' : 'Recettes'}</option>
+          </select>
+          
           {/* Bouton Historique */}
           <OctogoneButton
             variant="primary"
@@ -130,7 +190,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
 
       {/* Liste scrollable */}
       <div className="flex-1 overflow-y-auto">
-        {filteredProducts.length === 0 ? (
+        {filteredAndSortedProducts.length === 0 ? (
           <div 
             className="flex items-center justify-center h-32 text-sm"
             style={{ color: 'var(--on-surface-variant)' }}
@@ -138,7 +198,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
             {isEnglish ? 'No product found' : 'Aucun produit trouvé'}
           </div>
         ) : (
-          filteredProducts.map((product) => {
+          filteredAndSortedProducts.map((product: Product) => {
             const quantity = getQuantity(product.id);
             const totalCost = quantity * product.unitCost;
             const isSelected = selectedProductId === product.id;
