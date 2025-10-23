@@ -785,7 +785,7 @@
     {
       "id": "recipe-001",
       "name": "Mélange d'épices maison",
-      "category": "Recettes",
+      "category": "Préparation",
       "brand": "Marque Maison",
       "unit": "kg",
       "availableUnits": ["kg", "g"],
@@ -803,7 +803,7 @@
     {
       "id": "recipe-002",
       "name": "Chapelure assaisonnée",
-      "category": "Recettes",
+      "category": "Préparation",
       "brand": "Marque Maison",
       "unit": "kg",
       "availableUnits": ["kg", "g"],
@@ -821,7 +821,7 @@
     {
       "id": "recipe-003",
       "name": "Sauce bolognaise",
-      "category": "Recettes",
+      "category": "Préparation",
       "brand": "Marque Maison",
       "unit": "L",
       "availableUnits": ["L", "mL"],
@@ -839,7 +839,7 @@
     {
       "id": "recipe-004",
       "name": "Bouillon de légumes",
-      "category": "Recettes",
+      "category": "Préparation",
       "brand": "Marque Maison",
       "unit": "L",
       "availableUnits": ["L", "mL"],
@@ -857,7 +857,7 @@
     {
       "id": "recipe-005",
       "name": "Vinaigrette balsamique maison",
-      "category": "Recettes",
+      "category": "Préparation",
       "brand": "Marque Maison",
       "unit": "L",
       "availableUnits": ["L", "mL"],
@@ -875,7 +875,7 @@
     {
       "id": "recipe-006",
       "name": "Marinade pour poulet",
-      "category": "Recettes",
+      "category": "Préparation",
       "brand": "Marque Maison",
       "unit": "L",
       "availableUnits": ["L", "mL"],
@@ -888,6 +888,114 @@
       "enrichment": {
         "recipe_role": "marinade",
         "pairs_well_with": ["prod-003"]
+      }
+    },
+    {
+      "id": "recipe-007",
+      "name": "Soupe à l'oignon gratinée",
+      "category": "Entrée",
+      "brand": "Marque Maison",
+      "unit": "L",
+      "availableUnits": ["L", "mL"],
+      "unitCost": 9.75,
+      "storage": "frigidaire",
+      "minInventory": 3,
+      "initialQuantity": 5,
+      "theoreticalQuantity": 4,
+      "isRecipe": true,
+      "enrichment": {
+        "recipe_role": "starter",
+        "pairs_well_with": ["prod-006", "prod-009", "prod-027"]
+      }
+    },
+    {
+      "id": "recipe-008",
+      "name": "Lasagne à la viande",
+      "category": "Plat principal",
+      "brand": "Marque Maison",
+      "unit": "un",
+      "availableUnits": ["un"],
+      "unitCost": 45.00,
+      "storage": "congelateur",
+      "minInventory": 2,
+      "initialQuantity": 4,
+      "theoreticalQuantity": 3,
+      "isRecipe": true,
+      "enrichment": {
+        "recipe_role": "main_dish",
+        "pairs_well_with": ["prod-001", "prod-032", "prod-009"]
+      }
+    },
+    {
+      "id": "recipe-009",
+      "name": "Gâteau au chocolat",
+      "category": "Dessert",
+      "brand": "Marque Maison",
+      "unit": "un",
+      "availableUnits": ["un"],
+      "unitCost": 28.50,
+      "storage": "frigidaire",
+      "minInventory": 1,
+      "initialQuantity": 2,
+      "theoreticalQuantity": 1,
+      "isRecipe": true,
+      "enrichment": {
+        "recipe_role": "dessert",
+        "pairs_well_with": ["prod-005", "prod-010", "prod-038"]
+      }
+    },
+    {
+      "id": "recipe-010",
+      "name": "Velouté de légumes",
+      "category": "Entrée",
+      "brand": "Marque Maison",
+      "unit": "L",
+      "availableUnits": ["L", "mL"],
+      "unitCost": 7.80,
+      "storage": "congelateur",
+      "minInventory": 4,
+      "initialQuantity": 6,
+      "theoreticalQuantity": 5,
+      "isRecipe": true,
+      "enrichment": {
+        "recipe_role": "starter",
+        "pairs_well_with": ["prod-010", "prod-006"]
+      }
+    },
+    {
+      "id": "recipe-011",
+      "name": "Poulet rôti mariné",
+      "category": "Plat principal",
+      "brand": "Marque Maison",
+      "unit": "un",
+      "availableUnits": ["un"],
+      "unitCost": 35.00,
+      "storage": "frigidaire",
+      "minInventory": 2,
+      "initialQuantity": 3,
+      "theoreticalQuantity": 2,
+      "isRecipe": true,
+      "enrichment": {
+        "recipe_role": "main_dish",
+        "pairs_well_with": ["prod-003", "prod-014"]
+      }
+    },
+    {
+      "id": "recipe-012",
+      "name": "Tarte aux fruits",
+      "category": "Dessert",
+      "brand": "Marque Maison",
+      "unit": "un",
+      "availableUnits": ["un"],
+      "unitCost": 32.00,
+      "storage": "frigidaire",
+      "minInventory": 1,
+      "initialQuantity": 2,
+      "theoreticalQuantity": 1,
+      "isRecipe": true,
+      "enrichment": {
+        "recipe_role": "dessert",
+        "pairs_well_with": ["prod-038", "prod-048"]
       }
     }
   ]
