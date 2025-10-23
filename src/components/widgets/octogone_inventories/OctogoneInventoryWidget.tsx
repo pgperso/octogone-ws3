@@ -107,6 +107,7 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
     if (firstProduct) {
       setSelectedProduct(firstProduct);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedStorage]); // SEULEMENT selectedStorage, pas filteredProducts
 
   // Gérer la sélection d'un produit
@@ -708,7 +709,6 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
             selectedProductId={selectedProduct?.id || null}
             searchTerm={searchTerm}
             onSearchChange={setSearchTerm}
-            onFilteredProductsChange={undefined}
             locale={locale}
           />
         </div>

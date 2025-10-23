@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Search, Check, History, X, ArrowUpDown } from 'lucide-react';
 import { translateCategory, translateProduct, translateUnit } from '@/data/products/octogone_products_translations';
 import { OctogoneButton } from '@/components/ui/octogone-button';
@@ -33,7 +33,6 @@ interface InventoryProductListProps {
   selectedProductId: string | null;
   searchTerm: string;
   onSearchChange: (term: string) => void;
-  onFilteredProductsChange?: (products: Product[]) => void;
   locale?: 'fr' | 'en';
 }
 
@@ -46,7 +45,6 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
   selectedProductId,
   searchTerm,
   onSearchChange,
-  onFilteredProductsChange,
   locale = 'fr'
 }) => {
   const isEnglish = locale === 'en';
