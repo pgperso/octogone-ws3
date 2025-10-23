@@ -568,15 +568,15 @@ export const tools: Tool[] = [
       { concept: 'operate', features: [0, 1] },
       { concept: 'automate', features: [2, 3, 4] },
       { concept: 'analyze', features: [5, 6] },
-      { concept: 'predict', features: [7, 8] }
+      { concept: 'predict', features: [7] }
     ],
     
     features: [
       {
         titleFr: 'Centralisation intelligente des données',
         titleEn: 'Intelligent Data Centralization',
-        descriptionFr: 'Octogone 360 agrège automatiquement les données de tous vos outils de gestion : inventaires, recettes, ventes, facturation, conformité. Chaque information est structurée et organisée pour vous offrir une vue d\'ensemble cohérente et exploitable. Fini les rapports éparpillés dans différents systèmes.',
-        descriptionEn: 'Octogone 360 automatically aggregates data from all your management tools: inventory, recipes, sales, billing, compliance. Every piece of information is structured and organized to give you a coherent and actionable overview. No more scattered reports across different systems.',
+        descriptionFr: 'Octogone 360 agrège automatiquement les données de tous vos outils de gestion. Chaque information est structurée et organisée pour vous offrir une vue d\'ensemble cohérente et exploitable. Fini les rapports éparpillés dans différents systèmes.',
+        descriptionEn: 'Octogone 360 automatically aggregates data from all your management tools. Every piece of information is structured and organized to give you a coherent and actionable overview. No more scattered reports across different systems.',
         image: '/images/tools/360-centralisation.jpg',
         benefits: [
           { fr: 'Agrégation automatique de toutes vos données', en: 'Automatic aggregation of all your data' },
@@ -588,24 +588,24 @@ export const tools: Tool[] = [
       {
         titleFr: 'Tableau de bord personnalisable',
         titleEn: 'Customizable Dashboard',
-        descriptionFr: 'Créez votre espace de travail idéal en sélectionnant les KPIs qui comptent vraiment pour vous. Réorganisez-les par glisser-déposer selon vos priorités pour accéder instantanément aux informations essentielles à votre prise de décision.',
-        descriptionEn: 'Create your ideal workspace by selecting the KPIs that truly matter to you. Reorganize them by drag-and-drop according to your priorities to instantly access the information essential to your decision-making.',
+        descriptionFr: 'Créez votre espace de travail idéal en sélectionnant les KPIs qui comptent vraiment pour vous. Réorganisez-les selon vos priorités pour accéder instantanément aux informations essentielles à votre prise de décision.',
+        descriptionEn: 'Create your ideal workspace by selecting the KPIs that truly matter to you. Reorganize them according to your priorities to instantly access the information essential to your decision-making.',
         image: '/images/tools/360-personnalisation.jpg',
         benefits: [
           { fr: 'Sélection libre des KPIs à afficher', en: 'Free selection of KPIs to display' },
-          { fr: 'Réorganisation intuitive par glisser-déposer', en: 'Intuitive drag-and-drop reorganization' },
+          { fr: 'Réorganisation intuitive des KPIs', en: 'Intuitive KPI reorganization' },
           { fr: 'Accès rapide aux informations prioritaires', en: 'Quick access to priority information' }
         ],
         concepts: ['operate']
       },
       {
-        titleFr: 'Analyses comptables automatisées',
-        titleEn: 'Automated Accounting Analyses',
-        descriptionFr: 'Transformez vos données brutes en analyses comptables structurées automatiquement. Le système calcule et met à jour vos métriques financières en continu, sans intervention manuelle. Gagnez des heures de travail administratif chaque semaine.',
-        descriptionEn: 'Transform your raw data into structured accounting analyses automatically. The system calculates and updates your financial metrics continuously, without manual intervention. Save hours of administrative work every week.',
+        titleFr: 'Analyses financières automatisées',
+        titleEn: 'Automated Financial Analyses',
+        descriptionFr: 'Transformez vos données brutes en analyses financières structurées automatiquement. Le système calcule et met à jour vos métriques en continu, sans intervention manuelle. Gagnez des heures de travail administratif chaque semaine.',
+        descriptionEn: 'Transform your raw data into structured financial analyses automatically. The system calculates and updates your metrics continuously, without manual intervention. Save hours of administrative work every week.',
         image: '/images/tools/360-comptabilite.jpg',
         benefits: [
-          { fr: 'Calculs comptables automatiques et continus', en: 'Automatic and continuous accounting calculations' },
+          { fr: 'Calculs financiers automatiques et continus', en: 'Automatic and continuous financial calculations' },
           { fr: 'Métriques financières toujours à jour', en: 'Financial metrics always up to date' },
           { fr: 'Gain de temps administratif significatif', en: 'Significant administrative time savings' }
         ],
@@ -625,14 +625,14 @@ export const tools: Tool[] = [
         concepts: ['operate', 'analyze']
       },
       {
-        titleFr: 'Visualisations avancées et graphiques',
-        titleEn: 'Advanced Visualizations and Charts',
-        descriptionFr: 'Pour chaque KPI, générez des graphiques détaillés et explorez vos données en profondeur. Courbes d\'évolution, histogrammes comparatifs, répartitions... Visualisez vos tendances et identifiez rapidement les opportunités d\'amélioration.',
-        descriptionEn: 'For each KPI, generate detailed charts and explore your data in depth. Evolution curves, comparative histograms, distributions... Visualize your trends and quickly identify improvement opportunities.',
+        titleFr: 'Visualisations et graphiques',
+        titleEn: 'Visualizations and Charts',
+        descriptionFr: 'Générez des graphiques détaillés pour visualiser vos données en profondeur. Explorez vos tendances et identifiez rapidement les opportunités d\'amélioration grâce à des représentations visuelles claires et intuitives.',
+        descriptionEn: 'Generate detailed charts to visualize your data in depth. Explore your trends and quickly identify improvement opportunities through clear and intuitive visual representations.',
         image: '/images/tools/360-graphiques.jpg',
         benefits: [
-          { fr: 'Graphiques détaillés pour chaque KPI', en: 'Detailed charts for each KPI' },
-          { fr: 'Multiples types de visualisations disponibles', en: 'Multiple visualization types available' },
+          { fr: 'Graphiques détaillés et intuitifs', en: 'Detailed and intuitive charts' },
+          { fr: 'Visualisations claires de vos données', en: 'Clear data visualizations' },
           { fr: 'Analyse approfondie des tendances', en: 'In-depth trend analysis' }
         ],
         concepts: ['analyze']
@@ -640,12 +640,12 @@ export const tools: Tool[] = [
       {
         titleFr: 'Comparaisons multi-établissements',
         titleEn: 'Multi-Location Comparisons',
-        descriptionFr: 'Comparez les performances entre vos différents établissements en temps réel. Identifiez vos sites les plus performants, repérez les écarts et partagez les meilleures pratiques. Idéal pour les groupes et franchises qui veulent harmoniser leurs opérations et maximiser la rentabilité de chaque emplacement.',
-        descriptionEn: 'Compare performance across your different locations in real-time. Identify your best-performing sites, spot gaps and share best practices. Ideal for groups and franchises looking to harmonize operations and maximize profitability at each location.',
+        descriptionFr: 'Comparez les performances entre vos différents établissements en temps réel. Identifiez vos sites les plus performants et repérez les écarts pour harmoniser vos opérations. Idéal pour les groupes et franchises qui veulent maximiser la rentabilité de chaque emplacement.',
+        descriptionEn: 'Compare performance across your different locations in real-time. Identify your best-performing sites and spot gaps to harmonize your operations. Ideal for groups and franchises looking to maximize profitability at each location.',
         image: '/images/tools/360-multi-etablissements.jpg',
         benefits: [
           { fr: 'Comparaison en temps réel entre établissements', en: 'Real-time comparison between locations' },
-          { fr: 'Identification des meilleures pratiques', en: 'Best practices identification' },
+          { fr: 'Détection des écarts de performance', en: 'Performance gap detection' },
           { fr: 'Optimisation de la performance globale du groupe', en: 'Overall group performance optimization' }
         ],
         concepts: ['analyze', 'predict']
@@ -664,30 +664,17 @@ export const tools: Tool[] = [
         concepts: ['analyze']
       },
       {
-        titleFr: 'Intelligence artificielle intégrée',
-        titleEn: 'Integrated Artificial Intelligence',
-        descriptionFr: 'Bientôt, Cortex, notre agent intelligent, analysera vos données pour vous proposer des insights actionnables. Obtenez des réponses instantanées à vos questions, générez des rapports en langage naturel et recevez des recommandations personnalisées pour améliorer votre rentabilité. L\'intelligence artificielle au service de votre performance.',
-        descriptionEn: 'Soon, Cortex, our intelligent agent, will analyze your data to provide you with actionable insights. Get instant answers to your questions, generate reports in natural language and receive personalized recommendations to improve your profitability. Artificial intelligence at the service of your performance.',
+        titleFr: 'Intelligence artificielle et prévisions',
+        titleEn: 'Artificial Intelligence and Forecasting',
+        descriptionFr: 'Bientôt, Cortex, notre agent intelligent, analysera vos données pour vous proposer des insights actionnables et des prévisions basées sur votre historique. Anticipez vos besoins, optimisez vos opérations et prenez des décisions éclairées grâce à l\'intelligence artificielle.',
+        descriptionEn: 'Soon, Cortex, our intelligent agent, will analyze your data to provide you with actionable insights and forecasts based on your history. Anticipate your needs, optimize your operations and make informed decisions with artificial intelligence.',
         image: '/images/tools/360-ia.jpg',
         benefits: [
           { fr: 'Insights générés par intelligence artificielle', en: 'AI-generated insights' },
-          { fr: 'Réponses instantanées en langage naturel', en: 'Instant answers in natural language' },
-          { fr: 'Recommandations personnalisées et actionnables', en: 'Personalized and actionable recommendations' }
+          { fr: 'Prévisions basées sur données historiques', en: 'Forecasts based on historical data' },
+          { fr: 'Optimisation continue de vos opérations', en: 'Continuous optimization of your operations' }
         ],
         concepts: ['predict', 'automate']
-      },
-      {
-        titleFr: 'Prévisions et anticipation',
-        titleEn: 'Forecasting and Anticipation',
-        descriptionFr: 'Anticipez vos besoins futurs grâce à l\'analyse de vos données historiques. Prévisions de ventes, d\'achalandage, de coûts... Planifiez vos achats, votre staffing et vos opérations avec confiance.',
-        descriptionEn: 'Anticipate your future needs through analysis of your historical data. Sales forecasts, traffic, costs... Plan your purchases, staffing and operations with confidence.',
-        image: '/images/tools/360-previsions.jpg',
-        benefits: [
-          { fr: 'Prévisions basées sur données historiques', en: 'Forecasts based on historical data' },
-          { fr: 'Planification optimisée des opérations', en: 'Optimized operations planning' },
-          { fr: 'Anticipation des besoins en ressources', en: 'Resource needs anticipation' }
-        ],
-        concepts: ['predict']
       }
     ]
   }
