@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useRef, useEffect } from 'react';
 import { Search, Check, History, X, ArrowUpDown } from 'lucide-react';
 import { translateCategory, translateProduct, translateUnit } from '@/data/products/octogone_products_translations';
 import { OctogoneButton } from '@/components/ui/octogone-button';
@@ -51,6 +51,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
 }) => {
   const isEnglish = locale === 'en';
   const [sortBy, setSortBy] = useState<SortOption>('alphabetical');
+  const isInitialMount = useRef(true);
 
   // Filtrer et trier les produits
   const filteredAndSortedProducts = useMemo(() => {
@@ -109,7 +110,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
   }, [products, searchTerm, locale, sortBy, inventory]);
 
   // Notifier le parent des produits filtrés et triés
-  React.useEffect(() => {
+  useEffect(() => {
     if (onFilteredProductsChange) {
       onFilteredProductsChange(filteredAndSortedProducts);
     }
@@ -117,7 +118,13 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
   }, [filteredAndSortedProducts]);
 
   // Sélectionner automatiquement le premier produit seulement quand le tri change
-  React.useEffect(() => {
+  useEffect(() => {
+    // Ne pas sélectionner au premier mount
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+    
     if (filteredAndSortedProducts.length > 0) {
       onProductSelect(filteredAndSortedProducts[0]);
     }
