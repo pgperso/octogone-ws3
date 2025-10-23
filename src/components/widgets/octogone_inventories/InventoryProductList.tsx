@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState, useRef, useEffect } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { Search, Check, History, X, ArrowUpDown } from 'lucide-react';
 import { translateCategory, translateProduct, translateUnit } from '@/data/products/octogone_products_translations';
 import { OctogoneButton } from '@/components/ui/octogone-button';
@@ -51,7 +51,6 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
 }) => {
   const isEnglish = locale === 'en';
   const [sortBy, setSortBy] = useState<SortOption>('alphabetical');
-  const isInitialMount = useRef(true);
 
   // Filtrer et trier les produits
   const filteredAndSortedProducts = useMemo(() => {
