@@ -74,6 +74,7 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
   const [showThirdUser, setShowThirdUser] = useState(false);
   const [secondUserActive, setSecondUserActive] = useState(true);
   const [sortBy, setSortBy] = useState<SortOption>('alphabetical');
+  const [nonInventoriableOverrides, setNonInventoriableOverrides] = useState<Record<string, boolean>>({});
 
   // Afficher le deuxième utilisateur après 10 secondes
   useEffect(() => {
@@ -100,8 +101,16 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
 
   const products = inventoryData.products as Product[];
   
+  // Appliquer les overrides de nonInventoriable
+  const productsWithOverrides = products.map(p => ({
+    ...p,
+    nonInventoriable: nonInventoriableOverrides[p.id] !== undefined 
+      ? nonInventoriableOverrides[p.id] 
+      : p.nonInventoriable
+  }));
+  
   // Filtrer les produits par emplacement
-  const filteredProducts = products.filter(p => (p.storage || 'sec') === selectedStorage);
+  const filteredProducts = productsWithOverrides.filter(p => (p.storage || 'sec') === selectedStorage);
 
   // Calculer la liste triée (même logique que dans InventoryProductList)
   const sortedProducts = useMemo(() => {
@@ -147,7 +156,7 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
       }
     });
     return sorted;
-  }, [filteredProducts, sortBy, locale, inventory]);
+  }, [filteredProducts, sortBy, locale, inventory, nonInventoriableOverrides]);
 
   // Réinitialiser la recherche et sélectionner le premier produit quand on change d'emplacement
   useEffect(() => {
@@ -197,6 +206,28 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
     const currentIndex = sortedProducts.findIndex((p: Product) => p.id === selectedProduct.id);
     if (currentIndex > 0) {
       setSelectedProduct(sortedProducts[currentIndex - 1]);
+    }
+  };
+
+  // Toggle le statut non-inventoriable d'un produit
+  const handleToggleNonInventoriable = (productId: string) => {
+    setNonInventoriableOverrides(prev => {
+      const product = products.find(p => p.id === productId);
+      const currentStatus = prev[productId] !== undefined ? prev[productId] : product?.nonInventoriable;
+      return {
+        ...prev,
+        [productId]: !currentStatus
+      };
+    });
+    // Mettre à jour le produit sélectionné avec le nouveau statut
+    if (selectedProduct?.id === productId) {
+      const updatedProduct = productsWithOverrides.find(p => p.id === productId);
+      if (updatedProduct) {
+        setSelectedProduct({
+          ...updatedProduct,
+          nonInventoriable: !updatedProduct.nonInventoriable
+        });
+      }
     }
   };
 
@@ -773,6 +804,7 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
             onSave={handleSaveQuantity}
             onNavigateNext={selectedProduct && sortedProducts.findIndex((p: Product) => p.id === selectedProduct.id) < sortedProducts.length - 1 ? handleNavigateNext : undefined}
             onNavigatePrevious={selectedProduct && sortedProducts.findIndex((p: Product) => p.id === selectedProduct.id) > 0 ? handleNavigatePrevious : undefined}
+            onToggleNonInventoriable={handleToggleNonInventoriable}
             locale={locale}
           />
         </div>

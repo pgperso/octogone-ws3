@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo } from 'react';
-import { Search, Check, History, X, ArrowUpDown } from 'lucide-react';
+import { Search, Check, History, X, ArrowUpDown, EqualNot } from 'lucide-react';
 import { translateCategory, translateProduct, translateUnit } from '@/data/products/octogone_products_translations';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { OctogoneDropdownButton } from '@/components/ui/octogone-dropdown-button';
@@ -326,7 +326,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                       className="w-7 h-7 rounded-lg flex items-center justify-center"
                       style={{ backgroundColor: 'var(--error)' }}
                     >
-                      <X 
+                      <EqualNot 
                         className="w-5 h-5" 
                         style={{ color: 'white' }}
                       />

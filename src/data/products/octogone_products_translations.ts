@@ -11,7 +11,14 @@ export const categoryTranslations: Record<string, { fr: string; en: string }> = 
   'Épicerie': { fr: 'Épicerie', en: 'Grocery' },
   'Condiments': { fr: 'Condiments', en: 'Condiments' },
   'Alcools': { fr: 'Alcools', en: 'Alcoholic beverages' },
-  'Recettes': { fr: 'Recettes', en: 'Recipes' }
+  'Recettes': { fr: 'Recettes', en: 'Recipes' },
+  'Préparation': { fr: 'Préparation', en: 'Preparation' },
+  'Entrée': { fr: 'Entrée', en: 'Appetizer' },
+  'Plat principal': { fr: 'Plat principal', en: 'Main course' },
+  'Dessert': { fr: 'Dessert', en: 'Dessert' },
+  'Condiments portion': { fr: 'Condiments portion', en: 'Portion condiments' },
+  'Fournitures de service': { fr: 'Fournitures de service', en: 'Service supplies' },
+  'Produits de nettoyage': { fr: 'Produits de nettoyage', en: 'Cleaning products' }
 };
 
 export const productTranslations: Record<string, { fr: string; en: string }> = {
@@ -115,7 +122,22 @@ export const productTranslations: Record<string, { fr: string; en: string }> = {
   'Sauce bolognaise': { fr: 'Sauce bolognaise', en: 'Bolognese sauce' },
   'Bouillon de légumes': { fr: 'Bouillon de légumes', en: 'Vegetable broth' },
   'Vinaigrette balsamique maison': { fr: 'Vinaigrette balsamique maison', en: 'House balsamic vinaigrette' },
-  'Marinade pour poulet': { fr: 'Marinade pour poulet', en: 'Chicken marinade' }
+  'Marinade pour poulet': { fr: 'Marinade pour poulet', en: 'Chicken marinade' },
+  'Soupe à l\'oignon gratinée': { fr: 'Soupe à l\'oignon gratinée', en: 'French onion soup' },
+  'Lasagne à la viande': { fr: 'Lasagne à la viande', en: 'Meat lasagna' },
+  'Gâteau au chocolat': { fr: 'Gâteau au chocolat', en: 'Chocolate cake' },
+  'Velouté de légumes': { fr: 'Velouté de légumes', en: 'Vegetable velouté' },
+  'Poulet rôti mariné': { fr: 'Poulet rôti mariné', en: 'Marinated roast chicken' },
+  'Tarte aux fruits': { fr: 'Tarte aux fruits', en: 'Fruit tart' },
+  
+  // Produits non-alimentaires
+  'Sachets de ketchup': { fr: 'Sachets de ketchup', en: 'Ketchup packets' },
+  'Serviettes en papier': { fr: 'Serviettes en papier', en: 'Paper napkins' },
+  'Détergent à vaisselle': { fr: 'Détergent à vaisselle', en: 'Dish soap' },
+  'Désinfectant': { fr: 'Désinfectant', en: 'Disinfectant' },
+  'Gants jetables': { fr: 'Gants jetables', en: 'Disposable gloves' },
+  'Papier essuie-tout': { fr: 'Papier essuie-tout', en: 'Paper towels' },
+  'Sacs à ordures': { fr: 'Sacs à ordures', en: 'Garbage bags' }
 };
 
 export const brandTranslations: Record<string, { fr: string; en: string }> = {
@@ -145,7 +167,13 @@ export const brandTranslations: Record<string, { fr: string; en: string }> = {
   'French\'s': { fr: 'French\'s', en: 'French\'s' },
   'Bick\'s': { fr: 'Bick\'s', en: 'Bick\'s' },
   'Tropicana': { fr: 'Tropicana', en: 'Tropicana' },
-  'Coca-Cola': { fr: 'Coca-Cola', en: 'Coca-Cola' }
+  'Coca-Cola': { fr: 'Coca-Cola', en: 'Coca-Cola' },
+  'Cascades': { fr: 'Cascades', en: 'Cascades' },
+  'Dawn': { fr: 'Dawn', en: 'Dawn' },
+  'Lysol': { fr: 'Lysol', en: 'Lysol' },
+  'Nitrile Pro': { fr: 'Nitrile Pro', en: 'Nitrile Pro' },
+  'Bounty': { fr: 'Bounty', en: 'Bounty' },
+  'Glad': { fr: 'Glad', en: 'Glad' }
 };
 
 export const unitTranslations: Record<string, { fr: string; en: string }> = {

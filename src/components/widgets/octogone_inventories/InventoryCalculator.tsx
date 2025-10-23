@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Delete, Check, ChevronUp, ChevronDown, Loader2, X } from 'lucide-react';
+import { Delete, Check, ChevronUp, ChevronDown, Loader2, X, EqualNot } from 'lucide-react';
 import { ProductCard } from './ProductCard';
 
 interface Product {
@@ -27,6 +27,7 @@ interface InventoryCalculatorProps {
   onSave: (productId: string, quantity: number) => void;
   onNavigateNext?: () => void;
   onNavigatePrevious?: () => void;
+  onToggleNonInventoriable?: (productId: string) => void;
   locale?: 'fr' | 'en';
 }
 
@@ -37,6 +38,7 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
   onSave,
   onNavigateNext,
   onNavigatePrevious,
+  onToggleNonInventoriable,
   locale = 'fr'
 }) => {
   const isEnglish = locale === 'en';
@@ -124,9 +126,9 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
             console.log('Ajouter à la commande:', selectedProduct.name);
           }}
         />
-        <div className="flex-1 flex items-center justify-center">
-          <div className="text-center">
-            <X 
+        <div className="flex-1 flex flex-col items-center justify-center">
+          <div className="text-center mb-6">
+            <EqualNot 
               className="w-16 h-16 mx-auto mb-4" 
               style={{ color: 'var(--error)' }}
             />
@@ -137,12 +139,24 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
               {isEnglish ? "Don't count" : 'Ne pas compter'}
             </p>
             <p 
-              className="text-sm"
+              className="text-sm mb-4"
               style={{ color: 'var(--on-surface-variant)' }}
             >
               {isEnglish ? 'This product is not tracked in inventory' : 'Ce produit n\'est pas suivi en inventaire'}
             </p>
           </div>
+          {onToggleNonInventoriable && (
+            <button
+              onClick={() => onToggleNonInventoriable(selectedProduct.id)}
+              className="px-6 py-3 rounded-lg font-semibold transition-all cursor-pointer"
+              style={{
+                backgroundColor: 'var(--primary)',
+                color: 'var(--on-primary)'
+              }}
+            >
+              {isEnglish ? 'Enable inventory tracking' : 'Activer le suivi d\'inventaire'}
+            </button>
+          )}
         </div>
       </div>
     );
