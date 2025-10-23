@@ -221,7 +221,7 @@ export default function ToolDetailWidget({ tool, locale }: ToolDetailWidgetProps
                                       <p className="text-base mb-6" style={{ color: 'var(--on-surface-variant)' }}>
                                         {isEnglish ? feature.descriptionEn : feature.descriptionFr}
                                       </p>
-                                      <div className="space-y-3">
+                                      <div className="space-y-3 flex flex-col items-center md:items-start">
                                         {feature.benefits.map((benefit, idx) => (
                                           <div key={idx} className="flex items-start gap-3">
                                             <Check className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'var(--secondary)' }} />
@@ -310,7 +310,7 @@ export default function ToolDetailWidget({ tool, locale }: ToolDetailWidgetProps
                                 <p className="text-base mb-6" style={{ color: 'var(--on-surface-variant)' }}>
                                   {isEnglish ? singleFeature.descriptionEn : singleFeature.descriptionFr}
                                 </p>
-                                <div className="space-y-3">
+                                <div className="space-y-3 flex flex-col items-center lg:items-start">
                                   {singleFeature.benefits.map((benefit, idx) => (
                                     <div key={idx} className="flex items-start gap-3">
                                       <Check className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'var(--secondary)' }} />
