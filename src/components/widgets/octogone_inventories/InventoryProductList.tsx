@@ -246,8 +246,8 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                       <span 
                         className="px-2 py-0.5 text-xs font-semibold rounded-full"
                         style={{ 
-                          backgroundColor: 'var(--tertiary-container)',
-                          color: 'var(--on-tertiary-container)'
+                          backgroundColor: '#E2CDED',
+                          color: '#1F1F1F'
                         }}
                       >
                         {isEnglish ? 'Recipe' : 'Recette'}
