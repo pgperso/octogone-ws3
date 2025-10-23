@@ -742,9 +742,9 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
       </div>
 
       {/* Contenu principal */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
+      <div className="grid grid-cols-1 lg:grid-cols-2">
         {/* Liste de produits (gauche) - scrollable */}
-        <div className="border-r w-full h-full flex" style={{ borderColor: 'var(--outline)' }}>
+        <div className="border-r w-full" style={{ borderColor: 'var(--outline)' }}>
           <InventoryProductList
             products={filteredProducts}
             inventory={inventory}
