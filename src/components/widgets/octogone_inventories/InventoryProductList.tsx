@@ -193,7 +193,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
       {/* En-tête des colonnes */}
       <div className="flex gap-2 px-6 py-3 border-b font-semibold text-sm" style={{ backgroundColor: 'var(--surface-container)', borderColor: 'var(--outline)', color: 'var(--on-surface-variant)' }}>
         <div className="flex-[2]">{isEnglish ? 'Product' : 'Produit'}</div>
-        <div className="flex-1">{isEnglish ? 'Category' : 'Catégorie'}</div>
+        <div className="flex-1 hidden md:block">{isEnglish ? 'Category' : 'Catégorie'}</div>
         <div className="flex-1">{isEnglish ? 'Previous inventory' : 'Inventaire précédent'}</div>
         <div className="flex-1">{isEnglish ? 'Current inventory' : 'Inventaire en cours'}</div>
         <div className="flex-1 text-right pr-2">{isEnglish ? 'Total value' : 'Valeur totale'}</div>
@@ -256,7 +256,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 </div>
                 
                 {/* Colonne Catégorie */}
-                <div className="flex-1 flex items-center">
+                <div className="flex-1 flex items-center hidden md:flex">
                   {!product.nonInventoriable && (
                     <div 
                       className="text-sm"
