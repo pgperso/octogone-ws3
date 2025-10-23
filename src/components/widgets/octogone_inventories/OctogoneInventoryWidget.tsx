@@ -71,7 +71,6 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
   const [showSecondUser, setShowSecondUser] = useState(false);
   const [showThirdUser, setShowThirdUser] = useState(false);
   const [secondUserActive, setSecondUserActive] = useState(true);
-  const [filteredAndSortedProducts, setFilteredAndSortedProducts] = useState<Product[]>([]);
 
   // Afficher le deuxième utilisateur après 10 secondes
   useEffect(() => {
@@ -137,17 +136,17 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
   // Navigation entre produits
   const handleNavigateNext = () => {
     if (!selectedProduct) return;
-    const currentIndex = filteredAndSortedProducts.findIndex(p => p.id === selectedProduct.id);
-    if (currentIndex < filteredAndSortedProducts.length - 1) {
-      setSelectedProduct(filteredAndSortedProducts[currentIndex + 1]);
+    const currentIndex = filteredProducts.findIndex((p: Product) => p.id === selectedProduct.id);
+    if (currentIndex < filteredProducts.length - 1) {
+      setSelectedProduct(filteredProducts[currentIndex + 1]);
     }
   };
 
   const handleNavigatePrevious = () => {
     if (!selectedProduct) return;
-    const currentIndex = filteredAndSortedProducts.findIndex(p => p.id === selectedProduct.id);
+    const currentIndex = filteredProducts.findIndex((p: Product) => p.id === selectedProduct.id);
     if (currentIndex > 0) {
-      setSelectedProduct(filteredAndSortedProducts[currentIndex - 1]);
+      setSelectedProduct(filteredProducts[currentIndex - 1]);
     }
   };
 
@@ -709,7 +708,7 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
             selectedProductId={selectedProduct?.id || null}
             searchTerm={searchTerm}
             onSearchChange={setSearchTerm}
-            onFilteredProductsChange={setFilteredAndSortedProducts}
+            onFilteredProductsChange={undefined}
             locale={locale}
           />
         </div>
@@ -721,8 +720,8 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
             hasExistingEntry={selectedProduct ? inventory.some(i => i.productId === selectedProduct.id && i.quantity > 0) : false}
             currentInventoryQuantity={selectedProduct ? inventory.find(i => i.productId === selectedProduct.id)?.quantity || 0 : 0}
             onSave={handleSaveQuantity}
-            onNavigateNext={selectedProduct && filteredAndSortedProducts.findIndex(p => p.id === selectedProduct.id) < filteredAndSortedProducts.length - 1 ? handleNavigateNext : undefined}
-            onNavigatePrevious={selectedProduct && filteredAndSortedProducts.findIndex(p => p.id === selectedProduct.id) > 0 ? handleNavigatePrevious : undefined}
+            onNavigateNext={selectedProduct && filteredProducts.findIndex((p: Product) => p.id === selectedProduct.id) < filteredProducts.length - 1 ? handleNavigateNext : undefined}
+            onNavigatePrevious={selectedProduct && filteredProducts.findIndex((p: Product) => p.id === selectedProduct.id) > 0 ? handleNavigatePrevious : undefined}
             locale={locale}
           />
         </div>

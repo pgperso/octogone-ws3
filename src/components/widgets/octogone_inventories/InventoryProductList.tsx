@@ -108,12 +108,8 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
     return sorted;
   }, [products, searchTerm, locale, sortBy, inventory]);
 
-  // Notifier le parent des produits filtrés et triés
-  useEffect(() => {
-    if (onFilteredProductsChange) {
-      onFilteredProductsChange(filteredAndSortedProducts);
-    }
-  }, [filteredAndSortedProducts]); // Pas onFilteredProductsChange car c'est stable (setState)
+  // NOTE: onFilteredProductsChange n'est plus utilisé pour éviter les boucles infinies
+  // La navigation avec les flèches utilise maintenant la liste locale
 
   // Obtenir la quantité d'un produit
   const getQuantity = (productId: string): number => {
