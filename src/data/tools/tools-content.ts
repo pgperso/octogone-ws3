@@ -601,15 +601,18 @@ export const tools: Tool[] = [
         concepts: ['operate']
       },
       {
-        titleFr: 'Analyses financières automatisées',
-        titleEn: 'Automated Financial Analyses',
-        descriptionFr: 'Transformez vos données brutes en analyses financières structurées automatiquement. Le système calcule et met à jour vos métriques en continu, sans intervention manuelle. Gagnez des heures de travail administratif chaque semaine.',
-        descriptionEn: 'Transform your raw data into structured financial analyses automatically. The system calculates and updates your metrics continuously, without manual intervention. Save hours of administrative work every week.',
+        titleFr: 'Données structurées et automatisées',
+        titleEn: 'Structured and Automated Data',
+        descriptionFr: 'Octogone 360 transforme automatiquement vos données brutes en informations structurées et exploitables. Chaque métrique est calculée en temps réel et mise à jour en continu, sans aucune intervention manuelle. Vos KPIs sont toujours à jour, vos rapports toujours prêts, et vous gagnez des heures précieuses chaque semaine. Concentrez-vous sur la prise de décision, pas sur la collecte de données.',
+        descriptionEn: 'Octogone 360 automatically transforms your raw data into structured and actionable information. Every metric is calculated in real-time and continuously updated, without any manual intervention. Your KPIs are always up to date, your reports always ready, and you save precious hours every week. Focus on decision-making, not data collection.',
         layout: 'full-width',
         benefits: [
-          { fr: 'Calculs financiers automatiques et continus', en: 'Automatic and continuous financial calculations' },
-          { fr: 'Métriques financières toujours à jour', en: 'Financial metrics always up to date' },
-          { fr: 'Gain de temps administratif significatif', en: 'Significant administrative time savings' }
+          { fr: 'Calculs automatiques en temps réel', en: 'Automatic real-time calculations' },
+          { fr: 'Métriques toujours à jour', en: 'Metrics always up to date' },
+          { fr: 'Gain de temps administratif significatif', en: 'Significant administrative time savings' },
+          { fr: 'Données structurées et exploitables', en: 'Structured and actionable data' },
+          { fr: 'Aucune intervention manuelle requise', en: 'No manual intervention required' },
+          { fr: 'Rapports instantanément disponibles', en: 'Reports instantly available' }
         ],
         concepts: ['automate', 'analyze']
       },
@@ -662,15 +665,18 @@ export const tools: Tool[] = [
         concepts: ['analyze']
       },
       {
-        titleFr: 'Intelligence artificielle et prévisions',
-        titleEn: 'Artificial Intelligence and Forecasting',
-        descriptionFr: 'Bientôt, Cortex, notre agent intelligent, analysera vos données pour vous proposer des insights actionnables et des prévisions basées sur votre historique. Anticipez vos besoins, optimisez vos opérations et prenez des décisions éclairées grâce à l\'intelligence artificielle.',
-        descriptionEn: 'Soon, Cortex, our intelligent agent, will analyze your data to provide you with actionable insights and forecasts based on your history. Anticipate your needs, optimize your operations and make informed decisions with artificial intelligence.',
+        titleFr: 'Cortex : Intelligence artificielle intégrée',
+        titleEn: 'Cortex: Integrated Artificial Intelligence',
+        descriptionFr: 'Bientôt disponible : Cortex, votre agent intelligent personnel. Il analysera vos données en profondeur pour vous proposer des insights actionnables et des prévisions précises basées sur votre historique. Posez vos questions en langage naturel et obtenez des réponses instantanées. Cortex identifie les tendances, anticipe vos besoins, et vous aide à prendre des décisions éclairées. L\'intelligence artificielle au service de votre performance, sans effort.',
+        descriptionEn: 'Coming soon: Cortex, your personal intelligent agent. It will analyze your data in depth to provide you with actionable insights and accurate forecasts based on your history. Ask your questions in natural language and get instant answers. Cortex identifies trends, anticipates your needs, and helps you make informed decisions. Artificial intelligence at the service of your performance, effortlessly.',
         layout: 'full-width',
         benefits: [
           { fr: 'Insights générés par intelligence artificielle', en: 'AI-generated insights' },
           { fr: 'Prévisions basées sur données historiques', en: 'Forecasts based on historical data' },
-          { fr: 'Optimisation continue de vos opérations', en: 'Continuous optimization of your operations' }
+          { fr: 'Questions en langage naturel', en: 'Natural language questions' },
+          { fr: 'Réponses instantanées et personnalisées', en: 'Instant and personalized answers' },
+          { fr: 'Identification automatique des tendances', en: 'Automatic trend identification' },
+          { fr: 'Aide à la décision en temps réel', en: 'Real-time decision support' }
         ],
         concepts: ['predict', 'automate']
       }
