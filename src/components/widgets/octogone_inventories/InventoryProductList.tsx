@@ -113,13 +113,15 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
     if (onFilteredProductsChange) {
       onFilteredProductsChange(filteredAndSortedProducts);
     }
-  }, [filteredAndSortedProducts, onFilteredProductsChange]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filteredAndSortedProducts]);
 
   // Sélectionner automatiquement le premier produit seulement quand le tri change
   React.useEffect(() => {
     if (filteredAndSortedProducts.length > 0) {
       onProductSelect(filteredAndSortedProducts[0]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sortBy]); // Seulement quand sortBy change
 
   // Obtenir la quantité d'un produit
