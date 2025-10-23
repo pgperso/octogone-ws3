@@ -553,87 +553,141 @@ export const tools: Tool[] = [
     id: 'octogone-360',
     nameFr: 'Octogone 360',
     nameEn: 'Octogone 360',
-    descriptionFr: 'Tableau de bord intelligent avec tous vos KPIs en temps réel',
-    descriptionEn: 'Intelligent dashboard with all your KPIs in real-time',
+    descriptionFr: 'Tableau de bord intelligent multi-établissements avec analyses comptables automatisées et IA',
+    descriptionEn: 'Intelligent multi-location dashboard with automated accounting analyses and AI',
     heroImage: '/dashboard_fr.avif',
     
     headerCategoryFr: 'Tableau de bord',
     headerCategoryEn: 'Dashboard',
     headerTitleFr: 'Octogone 360',
     headerTitleEn: 'Octogone 360',
-    headerDescriptionFr: 'Centralisez tous vos KPIs en un seul endroit. Ventes, achalandage, bénéfices, coûts... Tout ce dont vous avez besoin pour prendre les bonnes décisions, en temps réel.',
-    headerDescriptionEn: 'Centralize all your KPIs in one place. Sales, traffic, profits, costs... Everything you need to make the right decisions, in real-time.',
+    headerDescriptionFr: 'Centralisez, analysez et comparez. Données structurées, rapports automatisés, insights IA.',
+    headerDescriptionEn: 'Centralize, analyze and compare. Structured data, automated reports, AI insights.',
     
     sections: [
-      { concept: 'analyze', features: [0, 1] },
-      { features: [2, 3, 4] }
+      { concept: 'operate', features: [0, 1] },
+      { concept: 'automate', features: [2, 3] },
+      { concept: 'analyze', features: [4, 5, 6] },
+      { concept: 'predict', features: [7, 8] }
     ],
     
     features: [
       {
-        titleFr: 'Vue d\'ensemble en temps réel',
-        titleEn: 'Real-Time Overview',
-        descriptionFr: 'Consultez tous vos indicateurs clés sur un seul écran. Ventes, achalandage, bénéfices... Tout est centralisé pour une prise de décision rapide et éclairée.',
-        descriptionEn: 'View all your key indicators on one screen. Sales, traffic, profits... Everything centralized for quick and informed decision-making.',
-        image: '/images/tools/360-overview.jpg',
+        titleFr: 'Centralisation intelligente des données',
+        titleEn: 'Intelligent Data Centralization',
+        descriptionFr: 'Octogone 360 agrège automatiquement les données de tous vos outils de gestion : inventaires, recettes, ventes, facturation, conformité. Chaque information est structurée et organisée pour vous offrir une vue d\'ensemble cohérente et exploitable. Fini les rapports éparpillés dans différents systèmes.',
+        descriptionEn: 'Octogone 360 automatically aggregates data from all your management tools: inventory, recipes, sales, billing, compliance. Every piece of information is structured and organized to give you a coherent and actionable overview. No more scattered reports across different systems.',
+        image: '/images/tools/360-centralisation.jpg',
         benefits: [
-          { fr: 'Vision globale instantanée', en: 'Instant global view' },
-          { fr: 'Données actualisées', en: 'Updated data' },
-          { fr: 'Décisions rapides', en: 'Quick decisions' }
+          { fr: 'Agrégation automatique de toutes vos données', en: 'Automatic aggregation of all your data' },
+          { fr: 'Vue d\'ensemble cohérente et centralisée', en: 'Coherent and centralized overview' },
+          { fr: 'Élimination des rapports manuels', en: 'Elimination of manual reports' }
+        ],
+        concepts: ['operate', 'automate']
+      },
+      {
+        titleFr: 'Tableau de bord personnalisable',
+        titleEn: 'Customizable Dashboard',
+        descriptionFr: 'Créez votre espace de travail idéal en sélectionnant les KPIs qui comptent vraiment pour vous. Réorganisez-les par glisser-déposer selon vos priorités pour accéder instantanément aux informations essentielles à votre prise de décision.',
+        descriptionEn: 'Create your ideal workspace by selecting the KPIs that truly matter to you. Reorganize them by drag-and-drop according to your priorities to instantly access the information essential to your decision-making.',
+        image: '/images/tools/360-personnalisation.jpg',
+        benefits: [
+          { fr: 'Sélection libre des KPIs à afficher', en: 'Free selection of KPIs to display' },
+          { fr: 'Réorganisation intuitive par glisser-déposer', en: 'Intuitive drag-and-drop reorganization' },
+          { fr: 'Accès rapide aux informations prioritaires', en: 'Quick access to priority information' }
+        ],
+        concepts: ['operate']
+      },
+      {
+        titleFr: 'Analyses comptables automatisées',
+        titleEn: 'Automated Accounting Analyses',
+        descriptionFr: 'Transformez vos données brutes en analyses comptables structurées automatiquement. Le système calcule et met à jour vos métriques financières en continu, sans intervention manuelle. Gagnez des heures de travail administratif chaque semaine.',
+        descriptionEn: 'Transform your raw data into structured accounting analyses automatically. The system calculates and updates your financial metrics continuously, without manual intervention. Save hours of administrative work every week.',
+        image: '/images/tools/360-comptabilite.jpg',
+        benefits: [
+          { fr: 'Calculs comptables automatiques et continus', en: 'Automatic and continuous accounting calculations' },
+          { fr: 'Métriques financières toujours à jour', en: 'Financial metrics always up to date' },
+          { fr: 'Gain de temps administratif significatif', en: 'Significant administrative time savings' }
+        ],
+        concepts: ['automate', 'analyze']
+      },
+      {
+        titleFr: 'Rapports exportables',
+        titleEn: 'Exportable Reports',
+        descriptionFr: 'Générez des rapports complets et exportez-les au format PDF, Excel ou CSV. Partagez vos analyses avec votre équipe, vos partenaires ou votre comptable. Tous vos indicateurs clés, graphiques et tableaux dans un document professionnel prêt à l\'emploi.',
+        descriptionEn: 'Generate complete reports and export them in PDF, Excel or CSV format. Share your analyses with your team, partners or accountant. All your key indicators, charts and tables in a professional ready-to-use document.',
+        image: '/images/tools/360-rapports.jpg',
+        benefits: [
+          { fr: 'Export PDF, Excel et CSV', en: 'PDF, Excel and CSV export' },
+          { fr: 'Rapports professionnels complets', en: 'Complete professional reports' },
+          { fr: 'Partage facile avec équipes et partenaires', en: 'Easy sharing with teams and partners' }
+        ],
+        concepts: ['operate', 'analyze']
+      },
+      {
+        titleFr: 'Visualisations avancées et graphiques',
+        titleEn: 'Advanced Visualizations and Charts',
+        descriptionFr: 'Pour chaque KPI, générez des graphiques détaillés et explorez vos données en profondeur. Courbes d\'évolution, histogrammes comparatifs, répartitions... Visualisez vos tendances et identifiez rapidement les opportunités d\'amélioration.',
+        descriptionEn: 'For each KPI, generate detailed charts and explore your data in depth. Evolution curves, comparative histograms, distributions... Visualize your trends and quickly identify improvement opportunities.',
+        image: '/images/tools/360-graphiques.jpg',
+        benefits: [
+          { fr: 'Graphiques détaillés pour chaque KPI', en: 'Detailed charts for each KPI' },
+          { fr: 'Multiples types de visualisations disponibles', en: 'Multiple visualization types available' },
+          { fr: 'Analyse approfondie des tendances', en: 'In-depth trend analysis' }
         ],
         concepts: ['analyze']
       },
       {
-        titleFr: 'Comparaisons historiques',
-        titleEn: 'Historical Comparisons',
-        descriptionFr: 'Comparez vos performances avec les périodes précédentes. Jour, semaine, mois... Identifiez les tendances et ajustez votre stratégie en conséquence.',
-        descriptionEn: 'Compare your performance with previous periods. Day, week, month... Identify trends and adjust your strategy accordingly.',
-        image: '/images/tools/360-compare.jpg',
+        titleFr: 'Comparaisons multi-établissements',
+        titleEn: 'Multi-Location Comparisons',
+        descriptionFr: 'Comparez les performances entre vos différents établissements en temps réel. Identifiez vos sites les plus performants, repérez les écarts et partagez les meilleures pratiques. Idéal pour les groupes et franchises qui veulent harmoniser leurs opérations et maximiser la rentabilité de chaque emplacement.',
+        descriptionEn: 'Compare performance across your different locations in real-time. Identify your best-performing sites, spot gaps and share best practices. Ideal for groups and franchises looking to harmonize operations and maximize profitability at each location.',
+        image: '/images/tools/360-multi-etablissements.jpg',
         benefits: [
-          { fr: 'Analyse des tendances', en: 'Trend analysis' },
-          { fr: 'Comparaisons multiples', en: 'Multiple comparisons' },
-          { fr: 'Détection d\'anomalies', en: 'Anomaly detection' }
+          { fr: 'Comparaison en temps réel entre établissements', en: 'Real-time comparison between locations' },
+          { fr: 'Identification des meilleures pratiques', en: 'Best practices identification' },
+          { fr: 'Optimisation de la performance globale du groupe', en: 'Overall group performance optimization' }
+        ],
+        concepts: ['analyze', 'predict']
+      },
+      {
+        titleFr: 'Analyses comparatives historiques',
+        titleEn: 'Historical Comparative Analyses',
+        descriptionFr: 'Comparez vos performances actuelles avec n\'importe quelle période passée. Jour, semaine, mois, année... Identifiez les tendances saisonnières, mesurez l\'impact de vos actions et ajustez votre stratégie en fonction de données concrètes.',
+        descriptionEn: 'Compare your current performance with any past period. Day, week, month, year... Identify seasonal trends, measure the impact of your actions and adjust your strategy based on concrete data.',
+        image: '/images/tools/360-historique.jpg',
+        benefits: [
+          { fr: 'Comparaisons flexibles sur toutes périodes', en: 'Flexible comparisons across all periods' },
+          { fr: 'Détection des tendances saisonnières', en: 'Seasonal trend detection' },
+          { fr: 'Mesure d\'impact des actions mises en place', en: 'Impact measurement of implemented actions' }
         ],
         concepts: ['analyze']
       },
       {
-        titleFr: 'Ventes et achalandage',
-        titleEn: 'Sales and Traffic',
-        descriptionFr: 'Suivez vos ventes et le nombre de clients en temps réel. Identifiez vos heures de pointe et optimisez vos opérations.',
-        descriptionEn: 'Track your sales and customer count in real-time. Identify your peak hours and optimize your operations.',
-        image: '/images/tools/360-sales.jpg',
+        titleFr: 'Intelligence artificielle intégrée',
+        titleEn: 'Integrated Artificial Intelligence',
+        descriptionFr: 'Bientôt, Cortex, notre agent intelligent, analysera vos données pour vous proposer des insights actionnables. Obtenez des réponses instantanées à vos questions, générez des rapports en langage naturel et recevez des recommandations personnalisées pour améliorer votre rentabilité. L\'intelligence artificielle au service de votre performance.',
+        descriptionEn: 'Soon, Cortex, our intelligent agent, will analyze your data to provide you with actionable insights. Get instant answers to your questions, generate reports in natural language and receive personalized recommendations to improve your profitability. Artificial intelligence at the service of your performance.',
+        image: '/images/tools/360-ia.jpg',
         benefits: [
-          { fr: 'Suivi en temps réel', en: 'Real-time tracking' },
-          { fr: 'Heures de pointe', en: 'Peak hours' },
-          { fr: 'Optimisation staff', en: 'Staff optimization' }
+          { fr: 'Insights générés par intelligence artificielle', en: 'AI-generated insights' },
+          { fr: 'Réponses instantanées en langage naturel', en: 'Instant answers in natural language' },
+          { fr: 'Recommandations personnalisées et actionnables', en: 'Personalized and actionable recommendations' }
         ],
-        concepts: ['analyze']
+        concepts: ['predict', 'automate']
       },
       {
-        titleFr: 'Rentabilité et coûts',
-        titleEn: 'Profitability and Costs',
-        descriptionFr: 'Visualisez vos bénéfices, votre food cost et vos coûts de main d\'œuvre. Maintenez vos marges et contrôlez vos dépenses.',
-        descriptionEn: 'Visualize your profits, food cost and labor costs. Maintain your margins and control your expenses.',
-        image: '/images/tools/360-profits.jpg',
+        titleFr: 'Prévisions et anticipation',
+        titleEn: 'Forecasting and Anticipation',
+        descriptionFr: 'Anticipez vos besoins futurs grâce à l\'analyse de vos données historiques. Prévisions de ventes, d\'achalandage, de coûts... Planifiez vos achats, votre staffing et vos opérations avec confiance.',
+        descriptionEn: 'Anticipate your future needs through analysis of your historical data. Sales forecasts, traffic, costs... Plan your purchases, staffing and operations with confidence.',
+        image: '/images/tools/360-previsions.jpg',
         benefits: [
-          { fr: 'Marges sous contrôle', en: 'Margins under control' },
-          { fr: 'Food cost optimisé', en: 'Optimized food cost' },
-          { fr: 'Coûts maîtrisés', en: 'Controlled costs' }
+          { fr: 'Prévisions basées sur données historiques', en: 'Forecasts based on historical data' },
+          { fr: 'Planification optimisée des opérations', en: 'Optimized operations planning' },
+          { fr: 'Anticipation des besoins en ressources', en: 'Resource needs anticipation' }
         ],
-        concepts: ['analyze']
-      },
-      {
-        titleFr: 'Et bien plus encore',
-        titleEn: 'And Much More',
-        descriptionFr: 'Surveillez vos gains et pertes d\'inventaire, suivez les changements de prix fournisseurs, analysez votre ingénierie de menu... Octogone 360 centralise tous les indicateurs essentiels pour piloter votre restaurant efficacement.',
-        descriptionEn: 'Monitor your inventory gains and losses, track supplier price changes, analyze your menu engineering... Octogone 360 centralizes all essential indicators to efficiently manage your restaurant.',
-        image: '/images/tools/360-more.jpg',
-        benefits: [
-          { fr: 'Surveillance complète', en: 'Complete monitoring' },
-          { fr: 'Indicateurs essentiels', en: 'Essential indicators' },
-          { fr: 'Pilotage efficace', en: 'Efficient management' }
-        ],
-        concepts: ['analyze']
+        concepts: ['predict']
       }
     ]
   }

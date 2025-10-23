@@ -27,6 +27,10 @@ export function generateToolSchema(tool: Tool, locale: string) {
     pourboire: {
       fr: 'Gérez la répartition des pourboires automatiquement selon vos conventions. Calculs précis, intégration POS, gestion des exceptions.',
       en: 'Manage tip distribution automatically according to your conventions. Accurate calculations, POS integration, exception management.'
+    },
+    'octogone-360': {
+      fr: 'Tableau de bord restaurant intelligent multi-établissements avec analyses comptables automatisées et IA. Centralisez vos données, comparez vos sites, exportez vos rapports PDF/Excel. Idéal pour groupes et franchises.',
+      en: 'Intelligent multi-location restaurant dashboard with automated accounting analyses and AI. Centralize your data, compare your sites, export PDF/Excel reports. Ideal for groups and franchises.'
     }
   };
 
@@ -46,6 +50,10 @@ export function generateToolSchema(tool: Tool, locale: string) {
     pourboire: {
       fr: 'gestion pourboires restaurant, répartition pourboires, calcul pourboires automatique',
       en: 'restaurant tip management, tip distribution, automatic tip calculation'
+    },
+    'octogone-360': {
+      fr: 'tableau de bord restaurant, dashboard restaurant, KPI restaurant, métriques restaurant, business intelligence restaurant, analytics restaurant, reporting restaurant, gestion performance restaurant, multi-établissements, comparaison établissements, analyses comptables restaurant, rapports PDF Excel, IA restaurant, Cortex AI, prévisions restaurant, groupes restaurants, franchises restaurants',
+      en: 'restaurant dashboard, restaurant KPI, restaurant metrics, restaurant business intelligence, restaurant analytics, restaurant reporting, restaurant performance management, multi-location, location comparison, restaurant accounting analyses, PDF Excel reports, restaurant AI, Cortex AI, restaurant forecasting, restaurant groups, restaurant franchises'
     }
   };
 
