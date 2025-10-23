@@ -119,9 +119,9 @@ export default function ToolDetailWidget({ tool, locale }: ToolDetailWidgetProps
                                   viewport={{ once: true }}
                                   transition={{ duration: 0.8, delay: 0.2 }}
                                 >
-                                  {/* Badges de concepts */}
+                                  {/* Badges de concepts - centrés */}
                                   {feature.concepts && feature.concepts.length > 0 && (
-                                    <div className="flex flex-wrap gap-2 mb-6">
+                                    <div className="flex flex-wrap gap-2 mb-6 justify-center">
                                       {feature.concepts.map((conceptId) => {
                                         const conceptInfo = conceptConfig[conceptId];
                                         if (!conceptInfo) return null;
@@ -143,12 +143,12 @@ export default function ToolDetailWidget({ tool, locale }: ToolDetailWidgetProps
                                     </div>
                                   )}
                                   
-                                  <h4 className="text-4xl lg:text-5xl font-bold mb-8 text-center" style={{ color: 'var(--on-surface)' }}>
+                                  <h4 className="text-3xl lg:text-4xl font-bold mb-6 text-center" style={{ color: 'var(--on-surface)' }}>
                                     {isEnglish ? feature.titleEn : feature.titleFr}
                                   </h4>
                                   
                                   <div className="max-w-4xl mx-auto">
-                                    <p className="text-lg lg:text-xl mb-8 text-center leading-relaxed" style={{ color: 'var(--on-surface-variant)' }}>
+                                    <p className="text-base mb-6 text-center" style={{ color: 'var(--on-surface-variant)' }}>
                                       {isEnglish ? feature.descriptionEn : feature.descriptionFr}
                                     </p>
                                     
