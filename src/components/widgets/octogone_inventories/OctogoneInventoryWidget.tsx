@@ -104,11 +104,17 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
   // Réinitialiser la recherche et sélectionner le premier produit quand on change d'emplacement
   useEffect(() => {
     setSearchTerm('');
-    const firstProduct = filteredProducts[0];
-    if (firstProduct) {
-      setSelectedProduct(firstProduct);
+    // Attendre que filteredAndSortedProducts soit mis à jour
+    if (filteredAndSortedProducts.length > 0) {
+      setSelectedProduct(filteredAndSortedProducts[0]);
+    } else {
+      // Fallback sur filteredProducts si filteredAndSortedProducts n'est pas encore prêt
+      const firstProduct = filteredProducts[0];
+      if (firstProduct) {
+        setSelectedProduct(firstProduct);
+      }
     }
-  }, [selectedStorage]);
+  }, [selectedStorage, filteredAndSortedProducts]);
 
   // Gérer la sélection d'un produit
   const handleProductSelect = (product: Product) => {
