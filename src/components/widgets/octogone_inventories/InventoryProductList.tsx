@@ -32,6 +32,7 @@ interface InventoryProductListProps {
   selectedProductId: string | null;
   searchTerm: string;
   onSearchChange: (term: string) => void;
+  onFilteredProductsChange?: (products: Product[]) => void;
   locale?: 'fr' | 'en';
 }
 
@@ -44,6 +45,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
   selectedProductId,
   searchTerm,
   onSearchChange,
+  onFilteredProductsChange,
   locale = 'fr'
 }) => {
   const isEnglish = locale === 'en';
@@ -104,6 +106,13 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
 
     return sorted;
   }, [products, searchTerm, locale, sortBy, inventory]);
+
+  // Notifier le parent des produits filtrés et triés
+  React.useEffect(() => {
+    if (onFilteredProductsChange) {
+      onFilteredProductsChange(filteredAndSortedProducts);
+    }
+  }, [filteredAndSortedProducts, onFilteredProductsChange]);
 
   // Obtenir la quantité d'un produit
   const getQuantity = (productId: string): number => {
