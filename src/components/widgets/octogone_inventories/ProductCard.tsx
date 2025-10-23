@@ -114,8 +114,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
         minHeight: '200px'
       }}
     >
-      {/* Photo à gauche - 1:1 pleine hauteur */}
-      <div className="relative w-[200px] h-full flex-shrink-0" style={{ backgroundColor: 'var(--surface-variant)' }}>
+      {/* Photo à gauche - 1/3 */}
+      <div className="relative flex-1 h-full" style={{ backgroundColor: 'var(--surface-variant)' }}>
         {productImage ? (
           <Image
             src={productImage}
@@ -130,7 +130,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
         )}
       </div>
 
-      {/* Infos à droite - Design sobre et professionnel */}
+      {/* Infos au centre - 1/3 */}
       <div className="flex-1 p-6 flex flex-col justify-between">
         {/* Nom du produit */}
         <div>
@@ -179,8 +179,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
         </div>
       </div>
 
-      {/* Troisième colonne - Graphique et bouton */}
-      <div className="w-[280px] p-6 border-l flex flex-col justify-between" style={{ borderColor: 'var(--outline)' }}>
+      {/* Troisième colonne - Graphique et bouton - 1/3 */}
+      <div className="flex-1 p-6 border-l flex flex-col justify-between" style={{ borderColor: 'var(--outline)' }}>
         {/* Graphique de stock */}
         <div>
           <div className="mb-3">

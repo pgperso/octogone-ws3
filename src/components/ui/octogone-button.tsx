@@ -75,7 +75,6 @@ export const OctogoneButton: React.FC<OctogoneButtonProps> = ({
     ${sizeClasses}
     text-black font-semibold rounded-lg
     transition-all duration-300 ease-out
-    transform hover:scale-105
     shadow-lg hover:shadow-xl
     ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
     ${className}
