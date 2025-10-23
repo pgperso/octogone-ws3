@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo } from 'react';
-import { Search, Check, History, X, ArrowUpDown, XCircle } from 'lucide-react';
+import { Search, Check, History, X, ArrowUpDown } from 'lucide-react';
 import { translateCategory, translateProduct, translateUnit } from '@/data/products/octogone_products_translations';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { OctogoneDropdownButton } from '@/components/ui/octogone-dropdown-button';
@@ -301,9 +301,8 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 <div className="flex-1 text-right pr-2 flex items-center justify-end">
                   {product.nonInventoriable ? (
                     <span 
-                      className="px-2 py-1 text-xs font-semibold rounded-full"
+                      className="text-xs font-semibold"
                       style={{ 
-                        backgroundColor: 'var(--error-container)',
                         color: 'var(--on-surface)'
                       }}
                     >
