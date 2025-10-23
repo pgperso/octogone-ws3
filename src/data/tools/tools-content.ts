@@ -66,15 +66,15 @@ export const tools: Tool[] = [
     sections: [
       {
         concept: 'operate',
-        features: [0, 1, 2, 3, 4] // 2 avec images + 3 sans images
+        features: [0, 1] // 2 avec images alternées
       },
       {
         concept: 'automate',
-        features: [5] // 1 avec image
+        features: [2, 3, 4, 5] // 1 full-width + 3 triple colonne
       },
       {
         concept: 'analyze',
-        features: [6, 7] // 2 avec images
+        features: [6, 7] // 2 avec images alternées
       }
     ],
     
@@ -106,56 +106,56 @@ export const tools: Tool[] = [
         concepts: ['operate']
       },
       {
+        titleFr: 'Gestion intelligente des seuils minimums',
+        titleEn: 'Smart Minimum Threshold Management',
+        descriptionFr: 'Identifiez instantanément les produits sous leur seuil minimum pendant votre inventaire. Envoyez-les directement dans un bon de commande pour préparer votre liste chez vos fournisseurs, ou à la production pour générer des bons de production à la cuisine. Agissez immédiatement sans attendre la fin de l\'inventaire. Cette fonctionnalité vous permet de réagir en temps réel aux ruptures de stock et d\'optimiser votre gestion des approvisionnements.',
+        descriptionEn: 'Instantly identify products below their minimum threshold during your inventory. Send them directly to a purchase order to prepare your supplier list, or to production to generate kitchen production orders. Act immediately without waiting for inventory completion. This feature allows you to react in real-time to stock shortages and optimize your supply management.',
+        layout: 'full-width',
+        benefits: [
+          { fr: 'Détection automatique des produits sous le seuil', en: 'Automatic detection of products below threshold' },
+          { fr: 'Envoi direct vers Commande ou Production', en: 'Direct send to Order or Production' },
+          { fr: 'Action immédiate pendant l\'inventaire', en: 'Immediate action during inventory' },
+          { fr: 'Réaction en temps réel aux ruptures', en: 'Real-time reaction to shortages' },
+          { fr: 'Optimisation des approvisionnements', en: 'Supply optimization' },
+          { fr: 'Gain de temps et d\'efficacité', en: 'Time and efficiency savings' }
+        ],
+        concepts: ['operate', 'automate']
+      },
+      {
         titleFr: 'Recherche et tri efficaces',
         titleEn: 'Efficient Search and Sorting',
-        descriptionFr: 'Trouvez rapidement n\'importe quel article dans votre liste d\'inventaire et organisez-la selon différents critères de tri pour optimiser votre flux de travail.',
-        descriptionEn: 'Quickly find any item in your inventory list and organize it according to different sorting criteria to optimize your workflow.',
-        image: '/images/tools/inventaire-recherche.jpg',
+        descriptionFr: 'Trouvez rapidement n\'importe quel article et organisez votre liste selon différents critères pour optimiser votre flux de travail.',
+        descriptionEn: 'Quickly find any item and organize your list according to different criteria to optimize your workflow.',
         benefits: [
-          { fr: 'Recherche instantanée dans votre liste d\'inventaire', en: 'Instant search in your inventory list' },
-          { fr: 'Multiples options de tri disponibles', en: 'Multiple sorting options available' },
-          { fr: 'Gain de temps significatif lors du comptage', en: 'Significant time savings during counting' }
+          { fr: 'Recherche instantanée', en: 'Instant search' },
+          { fr: 'Options de tri multiples', en: 'Multiple sorting options' },
+          { fr: 'Gain de temps au comptage', en: 'Time savings during counting' }
         ],
         concepts: ['operate']
       },
       {
         titleFr: 'Saisie rapide et intuitive',
         titleEn: 'Fast and Intuitive Entry',
-        descriptionFr: 'Enregistrez vos quantités avec notre calculatrice intégrée, même hors ligne, sur n\'importe quel appareil : téléphone, tablette ou ordinateur. Naviguez au clavier sans interruption.',
-        descriptionEn: 'Record your quantities with our integrated calculator, even offline, on any device: phone, tablet or computer. Navigate by keyboard without interruption.',
-        image: '/images/tools/inventaire-saisie.jpg',
+        descriptionFr: 'Enregistrez vos quantités avec notre calculatrice intégrée, même hors ligne, sur n\'importe quel appareil.',
+        descriptionEn: 'Record your quantities with our integrated calculator, even offline, on any device.',
         benefits: [
-          { fr: 'Calculatrice numérique intégrée', en: 'Integrated digital calculator' },
-          { fr: 'Compatible téléphone, tablette et ordinateur', en: 'Compatible with phone, tablet and computer' },
-          { fr: 'Mode hors ligne pour travailler partout', en: 'Offline mode to work anywhere' }
+          { fr: 'Calculatrice intégrée', en: 'Integrated calculator' },
+          { fr: 'Multi-appareils', en: 'Multi-device' },
+          { fr: 'Mode hors ligne', en: 'Offline mode' }
         ],
         concepts: ['operate']
       },
       {
-        titleFr: 'Flexibilité de saisie',
-        titleEn: 'Entry Flexibility',
-        descriptionFr: 'Comptez avec les unités de mesure configurées dans votre catalogue produits. Toutes les conversions sont automatiques et précises, éliminant les erreurs de calcul manuel.',
-        descriptionEn: 'Count with the units of measure configured in your product catalog. All conversions are automatic and precise, eliminating manual calculation errors.',
-        image: '/images/tools/inventaire-unites.jpg',
+        titleFr: 'Flexibilité des unités',
+        titleEn: 'Unit Flexibility',
+        descriptionFr: 'Comptez avec les unités configurées dans votre catalogue. Conversions automatiques et précises.',
+        descriptionEn: 'Count with units configured in your catalog. Automatic and precise conversions.',
         benefits: [
-          { fr: 'Saisie avec n\'importe quelle unité de mesure configurée', en: 'Entry with any configured unit of measure' },
-          { fr: 'Conversions automatiques précises', en: 'Precise automatic conversions' },
-          { fr: 'Élimination des erreurs de calcul', en: 'Elimination of calculation errors' }
+          { fr: 'Unités de mesure configurables', en: 'Configurable units of measure' },
+          { fr: 'Conversions automatiques', en: 'Automatic conversions' },
+          { fr: 'Élimination des erreurs', en: 'Error elimination' }
         ],
         concepts: ['operate']
-      },
-      {
-        titleFr: 'Gestion intelligente des seuils minimums',
-        titleEn: 'Smart Minimum Threshold Management',
-        descriptionFr: 'Identifiez instantanément les produits sous leur seuil minimum pendant votre inventaire. Envoyez-les directement dans un bon de commande (outil Commande) pour préparer votre liste de produits à commander chez vos fournisseurs. Pour les recettes, envoyez-les à la production (outil Production) pour générer des bons de production à la cuisine. Agissez immédiatement sans attendre la fin de l\'inventaire.',
-        descriptionEn: 'Instantly identify products below their minimum threshold during your inventory. Send them directly to a purchase order (Order tool) to prepare your list of products to order from your suppliers. For recipes, send them to production (Production tool) to generate production orders for the kitchen. Act immediately without waiting for the end of inventory.',
-        image: '/images/tools/inventaire-seuils.jpg',
-        benefits: [
-          { fr: 'Détection automatique des produits sous le seuil minimum', en: 'Automatic detection of products below minimum threshold' },
-          { fr: 'Envoi direct vers l\'outil Commande ou Production', en: 'Direct send to Order or Production tool' },
-          { fr: 'Action immédiate pendant l\'inventaire', en: 'Immediate action during inventory' }
-        ],
-        concepts: ['operate', 'automate']
       },
       {
         titleFr: 'Visibilité continue de vos stocks',
