@@ -217,7 +217,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
         {/* Bouton Ajouter à ma commande - Toujours visible */}
         {onAddToOrder && (
           <OctogoneButton
-            variant={isBelowMinimum ? 'primary' : 'secondary'}
+            variant="primary"
             size="lg"
             onClick={onAddToOrder}
             className="w-full"
