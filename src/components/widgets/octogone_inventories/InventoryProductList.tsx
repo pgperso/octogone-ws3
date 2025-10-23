@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo } from 'react';
-import { Search, Check, History } from 'lucide-react';
+import { Search, Check, History, X } from 'lucide-react';
 import { translateCategory, translateProduct, translateUnit } from '@/data/products/octogone_products_translations';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 
@@ -50,11 +50,18 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
     if (!searchTerm.trim()) return products;
     
     const term = searchTerm.toLowerCase();
-    return products.filter(product => 
-      product.name.toLowerCase().includes(term) ||
-      product.category.toLowerCase().includes(term)
-    );
-  }, [products, searchTerm]);
+    return products.filter(product => {
+      const translatedName = translateProduct(product.name, locale).toLowerCase();
+      const translatedCategory = translateCategory(product.category, locale).toLowerCase();
+      const originalName = product.name.toLowerCase();
+      const originalCategory = product.category.toLowerCase();
+      
+      return translatedName.includes(term) ||
+             translatedCategory.includes(term) ||
+             originalName.includes(term) ||
+             originalCategory.includes(term);
+    });
+  }, [products, searchTerm, locale]);
 
   // Obtenir la quantité d'un produit
   const getQuantity = (productId: string): number => {
@@ -77,7 +84,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
               placeholder={isEnglish ? 'Search for a product...' : 'Rechercher un produit...'}
               value={searchTerm}
               onChange={(e) => onSearchChange(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 rounded-lg border focus:outline-none focus:ring-2"
+              className="w-full pl-10 pr-10 py-2 rounded-lg border focus:outline-none focus:ring-2"
               style={{
                 backgroundColor: 'var(--surface)',
                 borderColor: 'var(--outline)',
@@ -85,6 +92,15 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 '--tw-ring-color': 'var(--primary)'
               } as React.CSSProperties}
             />
+            {searchTerm && (
+              <button
+                onClick={() => onSearchChange('')}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 flex items-center justify-center rounded-full hover:bg-gray-200 transition-colors"
+                style={{ color: 'var(--on-surface-variant)' }}
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
           </div>
           
           {/* Bouton Historique */}
