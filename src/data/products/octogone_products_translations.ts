@@ -108,6 +108,36 @@ export const productTranslations: Record<string, { fr: string; en: string }> = {
   'Cornichons': { fr: 'Cornichons', en: 'Pickles' }
 };
 
+export const brandTranslations: Record<string, { fr: string; en: string }> = {
+  'Boucherie Sélection': { fr: 'Boucherie Sélection', en: 'Selection Butcher' },
+  'Viandes Premium': { fr: 'Viandes Premium', en: 'Premium Meats' },
+  'Océan Frais': { fr: 'Océan Frais', en: 'Fresh Ocean' },
+  'Ferme Laitière': { fr: 'Ferme Laitière', en: 'Dairy Farm' },
+  'Fromagerie Artisanale': { fr: 'Fromagerie Artisanale', en: 'Artisan Cheese' },
+  'Maraîcher Bio': { fr: 'Maraîcher Bio', en: 'Organic Grower' },
+  'Ferme Locale': { fr: 'Ferme Locale', en: 'Local Farm' },
+  'Champignonnière': { fr: 'Champignonnière', en: 'Mushroom Farm' },
+  'Fruits Tropicaux': { fr: 'Fruits Tropicaux', en: 'Tropical Fruits' },
+  'Jardin Frais': { fr: 'Jardin Frais', en: 'Fresh Garden' },
+  'Verger Sélection': { fr: 'Verger Sélection', en: 'Selection Orchard' },
+  'Boulangerie Artisanale': { fr: 'Boulangerie Artisanale', en: 'Artisan Bakery' },
+  'Pain Maison': { fr: 'Pain Maison', en: 'Homemade Bread' },
+  'Marque Maison': { fr: 'Marque Maison', en: 'House Brand' },
+  'Épicerie Sélection': { fr: 'Épicerie Sélection', en: 'Selection Grocery' },
+  'Brasserie Locale': { fr: 'Brasserie Locale', en: 'Local Brewery' },
+  'Vignoble Premium': { fr: 'Vignoble Premium', en: 'Premium Vineyard' },
+  'Torréfaction Artisanale': { fr: 'Torréfaction Artisanale', en: 'Artisan Roastery' },
+  'Surgelés Qualité': { fr: 'Surgelés Qualité', en: 'Quality Frozen' },
+  'Glacier Artisanal': { fr: 'Glacier Artisanal', en: 'Artisan Ice Cream' },
+  'Condiments Maison': { fr: 'Condiments Maison', en: 'House Condiments' },
+  'Heinz': { fr: 'Heinz', en: 'Heinz' },
+  'Hellmann\'s': { fr: 'Hellmann\'s', en: 'Hellmann\'s' },
+  'French\'s': { fr: 'French\'s', en: 'French\'s' },
+  'Bick\'s': { fr: 'Bick\'s', en: 'Bick\'s' },
+  'Tropicana': { fr: 'Tropicana', en: 'Tropicana' },
+  'Coca-Cola': { fr: 'Coca-Cola', en: 'Coca-Cola' }
+};
+
 export const unitTranslations: Record<string, { fr: string; en: string }> = {
   'kg': { fr: 'kg', en: 'kg' },
   'g': { fr: 'g', en: 'g' },
@@ -130,4 +160,8 @@ export function translateProduct(productName: string, locale: 'fr' | 'en'): stri
 
 export function translateUnit(unit: string, locale: 'fr' | 'en'): string {
   return unitTranslations[unit]?.[locale] || unit;
+}
+
+export function translateBrand(brand: string, locale: 'fr' | 'en'): string {
+  return brandTranslations[brand]?.[locale] || brand;
 }

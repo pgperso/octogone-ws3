@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { ImageIcon, ShoppingCart } from 'lucide-react';
-import { translateCategory, translateProduct, translateUnit } from '@/data/products/octogone_products_translations';
+import { translateCategory, translateProduct, translateUnit, translateBrand } from '@/data/products/octogone_products_translations';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 
 interface Product {
@@ -29,11 +29,11 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr', currentQuantity = 0, onAddToOrder }) => {
   const isEnglish = locale === 'en';
-  const displayBrand = product.brand || (isEnglish ? 'No brand' : 'Sans marque');
+  const displayBrand = product.brand ? translateBrand(product.brand, locale) : (isEnglish ? 'No brand' : 'Sans marque');
   const minInventory = product.minInventory || 0;
   
-  // Stock actuel = nouvelle saisie si elle existe, sinon inventaire théorique du POS
-  const actualStock = currentQuantity > 0 ? currentQuantity : (product.theoreticalQuantity || 0);
+  // Stock actuel = toujours la quantité saisie (currentQuantity vient de la calculatrice)
+  const actualStock = currentQuantity;
   const isBelowMinimum = actualStock < minInventory;
   const percentage = minInventory > 0 ? Math.min((actualStock / minInventory) * 100, 100) : 100;
   const difference = actualStock - minInventory;
