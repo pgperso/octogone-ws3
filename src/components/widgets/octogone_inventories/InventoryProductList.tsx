@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useMemo, useState } from 'react';
-import { Search, Check, History, X } from 'lucide-react';
+import { Search, Check, History, X, ArrowUpDown } from 'lucide-react';
 import { translateCategory, translateProduct, translateUnit } from '@/data/products/octogone_products_translations';
 import { OctogoneButton } from '@/components/ui/octogone-button';
+import { OctogoneDropdownButton } from '@/components/ui/octogone-dropdown-button';
 
 interface Product {
   id: string;
@@ -162,23 +163,20 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
           </div>
           
           {/* Dropdown Tri */}
-          <select
+          <OctogoneDropdownButton
+            options={[
+              { value: 'alphabetical', label: isEnglish ? 'A-Z' : 'A-Z' },
+              { value: 'category', label: isEnglish ? 'Category' : 'Catégorie' },
+              { value: 'inventoried', label: isEnglish ? 'Inventoried' : 'Inventoriés' },
+              { value: 'not-inventoried', label: isEnglish ? 'Not inventoried' : 'Non inventoriés' },
+              { value: 'recipes', label: isEnglish ? 'Recipes' : 'Recettes' }
+            ]}
             value={sortBy}
-            onChange={(e) => setSortBy(e.target.value as SortOption)}
-            className="px-3 py-2 text-sm rounded-lg border focus:outline-none focus:ring-2"
-            style={{
-              backgroundColor: 'var(--surface)',
-              borderColor: 'var(--outline)',
-              color: 'var(--on-surface)',
-              '--tw-ring-color': 'var(--primary)'
-            } as React.CSSProperties}
-          >
-            <option value="alphabetical">{isEnglish ? 'A-Z' : 'A-Z'}</option>
-            <option value="category">{isEnglish ? 'Category' : 'Catégorie'}</option>
-            <option value="inventoried">{isEnglish ? 'Inventoried' : 'Inventoriés'}</option>
-            <option value="not-inventoried">{isEnglish ? 'Not inventoried' : 'Non inventoriés'}</option>
-            <option value="recipes">{isEnglish ? 'Recipes' : 'Recettes'}</option>
-          </select>
+            onChange={(value) => setSortBy(value as SortOption)}
+            icon={<ArrowUpDown className="w-5 h-5" />}
+            variant="secondary"
+            size="sm"
+          />
           
           {/* Bouton Historique */}
           <OctogoneButton
