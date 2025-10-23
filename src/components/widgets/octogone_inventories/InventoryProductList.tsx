@@ -186,6 +186,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
       {/* En-tête des colonnes */}
       <div className="flex gap-2 px-6 py-3 border-b font-semibold text-sm" style={{ backgroundColor: 'var(--surface-container)', borderColor: 'var(--outline)', color: 'var(--on-surface-variant)' }}>
         <div className="flex-[2]">{isEnglish ? 'Product' : 'Produit'}</div>
+        <div className="flex-1">{isEnglish ? 'Category' : 'Catégorie'}</div>
         <div className="flex-1">{isEnglish ? 'Previous inventory' : 'Inventaire précédent'}</div>
         <div className="flex-1">{isEnglish ? 'Current inventory' : 'Inventaire en cours'}</div>
         <div className="flex-1 text-right pr-2">{isEnglish ? 'Total value' : 'Valeur totale'}</div>
@@ -229,23 +230,26 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                   }
                 }}
               >
+                {/* Colonne Produit */}
                 <div className="flex-[2]">
-                  <div className="flex items-center gap-2">
-                    <div className="font-medium">{translateProduct(product.name, locale)}</div>
-                    {product.isRecipe && (
-                      <span 
-                        className="px-2 py-0.5 text-xs font-semibold rounded-full"
-                        style={{ 
-                          backgroundColor: '#E2CDED',
-                          color: '#1F1F1F'
-                        }}
-                      >
-                        {isEnglish ? 'Recipe' : 'Recette'}
-                      </span>
-                    )}
-                  </div>
+                  <div className="font-medium">{translateProduct(product.name, locale)}</div>
+                  {product.isRecipe && (
+                    <span 
+                      className="px-2 py-0.5 text-xs font-semibold rounded-full inline-block mt-1"
+                      style={{ 
+                        backgroundColor: '#E2CDED',
+                        color: '#1F1F1F'
+                      }}
+                    >
+                      {isEnglish ? 'Recipe' : 'Recette'}
+                    </span>
+                  )}
+                </div>
+                
+                {/* Colonne Catégorie */}
+                <div className="flex-1 flex items-center">
                   <div 
-                    className="text-xs mt-0.5"
+                    className="text-sm"
                     style={{ color: isSelected ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)' }}
                   >
                     {translateCategory(product.category, locale)}
