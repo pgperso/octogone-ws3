@@ -16,6 +16,7 @@ interface Product {
   minInventory?: number;
   initialQuantity?: number;
   theoreticalQuantity?: number;
+  isRecipe?: boolean;
 }
 
 interface InventoryCalculatorProps {

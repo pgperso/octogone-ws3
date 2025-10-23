@@ -781,6 +781,114 @@
       "minInventory": 10,
       "initialQuantity": 17,
       "theoreticalQuantity": 16
+    },
+    {
+      "id": "recipe-001",
+      "name": "Mélange d'épices maison",
+      "category": "Recettes",
+      "brand": "Marque Maison",
+      "unit": "kg",
+      "availableUnits": ["kg", "g"],
+      "unitCost": 25.50,
+      "storage": "sec",
+      "minInventory": 2,
+      "initialQuantity": 3,
+      "theoreticalQuantity": 2,
+      "isRecipe": true,
+      "enrichment": {
+        "recipe_role": "seasoning",
+        "pairs_well_with": ["prod-001", "prod-003", "prod-002"]
+      }
+    },
+    {
+      "id": "recipe-002",
+      "name": "Chapelure assaisonnée",
+      "category": "Recettes",
+      "brand": "Marque Maison",
+      "unit": "kg",
+      "availableUnits": ["kg", "g"],
+      "unitCost": 18.75,
+      "storage": "sec",
+      "minInventory": 1,
+      "initialQuantity": 2,
+      "theoreticalQuantity": 1,
+      "isRecipe": true,
+      "enrichment": {
+        "recipe_role": "coating",
+        "pairs_well_with": ["prod-003", "prod-054"]
+      }
+    },
+    {
+      "id": "recipe-003",
+      "name": "Sauce bolognaise",
+      "category": "Recettes",
+      "brand": "Marque Maison",
+      "unit": "L",
+      "availableUnits": ["L", "mL"],
+      "unitCost": 12.25,
+      "storage": "congelateur",
+      "minInventory": 5,
+      "initialQuantity": 8,
+      "theoreticalQuantity": 6,
+      "isRecipe": true,
+      "enrichment": {
+        "recipe_role": "sauce",
+        "pairs_well_with": ["prod-032", "prod-049"]
+      }
+    },
+    {
+      "id": "recipe-004",
+      "name": "Bouillon de légumes",
+      "category": "Recettes",
+      "brand": "Marque Maison",
+      "unit": "L",
+      "availableUnits": ["L", "mL"],
+      "unitCost": 8.50,
+      "storage": "congelateur",
+      "minInventory": 3,
+      "initialQuantity": 5,
+      "theoreticalQuantity": 4,
+      "isRecipe": true,
+      "enrichment": {
+        "recipe_role": "base",
+        "pairs_well_with": ["prod-050", "prod-032"]
+      }
+    },
+    {
+      "id": "recipe-005",
+      "name": "Vinaigrette balsamique maison",
+      "category": "Recettes",
+      "brand": "Marque Maison",
+      "unit": "L",
+      "availableUnits": ["L", "mL"],
+      "unitCost": 15.80,
+      "storage": "frigidaire",
+      "minInventory": 1,
+      "initialQuantity": 2,
+      "theoreticalQuantity": 1,
+      "isRecipe": true,
+      "enrichment": {
+        "recipe_role": "dressing",
+        "pairs_well_with": ["prod-029", "prod-013", "prod-043"]
+      }
+    },
+    {
+      "id": "recipe-006",
+      "name": "Marinade pour poulet",
+      "category": "Recettes",
+      "brand": "Marque Maison",
+      "unit": "L",
+      "availableUnits": ["L", "mL"],
+      "unitCost": 11.40,
+      "storage": "frigidaire",
+      "minInventory": 1,
+      "initialQuantity": 2,
+      "theoreticalQuantity": 1,
+      "isRecipe": true,
+      "enrichment": {
+        "recipe_role": "marinade",
+        "pairs_well_with": ["prod-003"]
+      }
     }
   ]
 }

@@ -17,6 +17,10 @@ interface Product {
   unitCost: number;
   image?: string;
   storage?: 'sec' | 'congelateur' | 'frigidaire';
+  minInventory?: number;
+  initialQuantity?: number;
+  theoreticalQuantity?: number;
+  isRecipe?: boolean;
 }
 
 type StorageType = 'sec' | 'congelateur' | 'frigidaire';

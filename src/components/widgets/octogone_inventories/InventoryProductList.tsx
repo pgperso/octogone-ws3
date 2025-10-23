@@ -17,6 +17,7 @@ interface Product {
   minInventory?: number;
   initialQuantity?: number;
   theoreticalQuantity?: number;
+  isRecipe?: boolean;
 }
 
 interface InventoryItem {
@@ -165,7 +166,20 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 }}
               >
                 <div className="flex-[2]">
-                  <div className="font-medium">{translateProduct(product.name, locale)}</div>
+                  <div className="flex items-center gap-2">
+                    <div className="font-medium">{translateProduct(product.name, locale)}</div>
+                    {product.isRecipe && (
+                      <span 
+                        className="px-2 py-0.5 text-xs font-semibold rounded-full"
+                        style={{ 
+                          backgroundColor: 'var(--tertiary-container)',
+                          color: 'var(--on-tertiary-container)'
+                        }}
+                      >
+                        {isEnglish ? 'Recipe' : 'Recette'}
+                      </span>
+                    )}
+                  </div>
                   <div 
                     className="text-xs mt-0.5"
                     style={{ color: isSelected ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)' }}

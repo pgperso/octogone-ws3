@@ -9,7 +9,9 @@ export const categoryTranslations: Record<string, { fr: string; en: string }> = 
   'Boissons': { fr: 'Boissons', en: 'Beverages' },
   'Surgelés': { fr: 'Surgelés', en: 'Frozen' },
   'Épicerie': { fr: 'Épicerie', en: 'Grocery' },
-  'Condiments': { fr: 'Condiments', en: 'Condiments' }
+  'Condiments': { fr: 'Condiments', en: 'Condiments' },
+  'Alcools': { fr: 'Alcools', en: 'Alcoholic beverages' },
+  'Recettes': { fr: 'Recettes', en: 'Recipes' }
 };
 
 export const productTranslations: Record<string, { fr: string; en: string }> = {
@@ -105,7 +107,15 @@ export const productTranslations: Record<string, { fr: string; en: string }> = {
   'Ketchup': { fr: 'Ketchup', en: 'Ketchup' },
   'Mayonnaise': { fr: 'Mayonnaise', en: 'Mayonnaise' },
   'Moutarde': { fr: 'Moutarde', en: 'Mustard' },
-  'Cornichons': { fr: 'Cornichons', en: 'Pickles' }
+  'Cornichons': { fr: 'Cornichons', en: 'Pickles' },
+  
+  // Recettes
+  'Mélange d\'épices maison': { fr: 'Mélange d\'épices maison', en: 'House spice blend' },
+  'Chapelure assaisonnée': { fr: 'Chapelure assaisonnée', en: 'Seasoned breadcrumbs' },
+  'Sauce bolognaise': { fr: 'Sauce bolognaise', en: 'Bolognese sauce' },
+  'Bouillon de légumes': { fr: 'Bouillon de légumes', en: 'Vegetable broth' },
+  'Vinaigrette balsamique maison': { fr: 'Vinaigrette balsamique maison', en: 'House balsamic vinaigrette' },
+  'Marinade pour poulet': { fr: 'Marinade pour poulet', en: 'Chicken marinade' }
 };
 
 export const brandTranslations: Record<string, { fr: string; en: string }> = {
