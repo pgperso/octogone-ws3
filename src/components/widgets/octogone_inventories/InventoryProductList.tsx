@@ -33,10 +33,12 @@ interface InventoryProductListProps {
   selectedProductId: string | null;
   searchTerm: string;
   onSearchChange: (term: string) => void;
+  sortBy: SortOption;
+  onSortChange: (sort: SortOption) => void;
   locale?: 'fr' | 'en';
 }
 
-type SortOption = 'alphabetical' | 'category' | 'inventoried' | 'not-inventoried' | 'recipes';
+export type SortOption = 'alphabetical' | 'category' | 'inventoried' | 'not-inventoried' | 'recipes';
 
 export const InventoryProductList: React.FC<InventoryProductListProps> = ({
   products,
@@ -45,10 +47,11 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
   selectedProductId,
   searchTerm,
   onSearchChange,
+  sortBy,
+  onSortChange,
   locale = 'fr'
 }) => {
   const isEnglish = locale === 'en';
-  const [sortBy, setSortBy] = useState<SortOption>('alphabetical');
 
   // Filtrer et trier les produits
   const filteredAndSortedProducts = useMemo(() => {
@@ -159,7 +162,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
               { value: 'recipes', label: isEnglish ? 'Recipes' : 'Recettes' }
             ]}
             value={sortBy}
-            onChange={(value) => setSortBy(value as SortOption)}
+            onChange={(value) => onSortChange(value as SortOption)}
             icon={<ArrowUpDown className="w-5 h-5" />}
             variant="secondary"
             size="sm"

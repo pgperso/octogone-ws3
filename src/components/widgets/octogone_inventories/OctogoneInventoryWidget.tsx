@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import Image from 'next/image';
-import { InventoryProductList } from './InventoryProductList';
+import { InventoryProductList, type SortOption } from './InventoryProductList';
 import { InventoryCalculator } from './InventoryCalculator';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import inventoryData from '@/data/products/octogone_products_data.json';
+import { translateCategory, translateProduct } from '@/data/products/octogone_products_translations';
 
 interface Product {
   id: string;
@@ -71,6 +72,7 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
   const [showSecondUser, setShowSecondUser] = useState(false);
   const [showThirdUser, setShowThirdUser] = useState(false);
   const [secondUserActive, setSecondUserActive] = useState(true);
+  const [sortBy, setSortBy] = useState<SortOption>('alphabetical');
 
   // Afficher le deuxième utilisateur après 10 secondes
   useEffect(() => {
@@ -99,6 +101,47 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
   
   // Filtrer les produits par emplacement
   const filteredProducts = products.filter(p => (p.storage || 'sec') === selectedStorage);
+
+  // Calculer la liste triée (même logique que dans InventoryProductList)
+  const sortedProducts = useMemo(() => {
+    const sorted = [...filteredProducts].sort((a, b) => {
+      switch (sortBy) {
+        case 'alphabetical':
+          return translateProduct(a.name, locale).localeCompare(translateProduct(b.name, locale));
+        
+        case 'category':
+          const categoryA = translateCategory(a.category, locale);
+          const categoryB = translateCategory(b.category, locale);
+          if (categoryA !== categoryB) {
+            return categoryA.localeCompare(categoryB);
+          }
+          return translateProduct(a.name, locale).localeCompare(translateProduct(b.name, locale));
+        
+        case 'inventoried':
+          const quantityA = inventory.find(i => i.productId === a.id)?.quantity || 0;
+          const quantityB = inventory.find(i => i.productId === b.id)?.quantity || 0;
+          if (quantityA > 0 && quantityB === 0) return -1;
+          if (quantityA === 0 && quantityB > 0) return 1;
+          return translateProduct(a.name, locale).localeCompare(translateProduct(b.name, locale));
+        
+        case 'not-inventoried':
+          const qtyA = inventory.find(i => i.productId === a.id)?.quantity || 0;
+          const qtyB = inventory.find(i => i.productId === b.id)?.quantity || 0;
+          if (qtyA === 0 && qtyB > 0) return -1;
+          if (qtyA > 0 && qtyB === 0) return 1;
+          return translateProduct(a.name, locale).localeCompare(translateProduct(b.name, locale));
+        
+        case 'recipes':
+          if (a.isRecipe && !b.isRecipe) return -1;
+          if (!a.isRecipe && b.isRecipe) return 1;
+          return translateProduct(a.name, locale).localeCompare(translateProduct(b.name, locale));
+        
+        default:
+          return 0;
+      }
+    });
+    return sorted;
+  }, [filteredProducts, sortBy, locale, inventory]);
 
   // Réinitialiser la recherche et sélectionner le premier produit quand on change d'emplacement
   useEffect(() => {
@@ -134,20 +177,20 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
     });
   };
 
-  // Navigation entre produits
+  // Navigation entre produits (utilise la liste triée)
   const handleNavigateNext = () => {
     if (!selectedProduct) return;
-    const currentIndex = filteredProducts.findIndex((p: Product) => p.id === selectedProduct.id);
-    if (currentIndex < filteredProducts.length - 1) {
-      setSelectedProduct(filteredProducts[currentIndex + 1]);
+    const currentIndex = sortedProducts.findIndex((p: Product) => p.id === selectedProduct.id);
+    if (currentIndex < sortedProducts.length - 1) {
+      setSelectedProduct(sortedProducts[currentIndex + 1]);
     }
   };
 
   const handleNavigatePrevious = () => {
     if (!selectedProduct) return;
-    const currentIndex = filteredProducts.findIndex((p: Product) => p.id === selectedProduct.id);
+    const currentIndex = sortedProducts.findIndex((p: Product) => p.id === selectedProduct.id);
     if (currentIndex > 0) {
-      setSelectedProduct(filteredProducts[currentIndex - 1]);
+      setSelectedProduct(sortedProducts[currentIndex - 1]);
     }
   };
 
@@ -709,6 +752,8 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
             selectedProductId={selectedProduct?.id || null}
             searchTerm={searchTerm}
             onSearchChange={setSearchTerm}
+            sortBy={sortBy}
+            onSortChange={setSortBy}
             locale={locale}
           />
         </div>
@@ -720,8 +765,8 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
             hasExistingEntry={selectedProduct ? inventory.some(i => i.productId === selectedProduct.id && i.quantity > 0) : false}
             currentInventoryQuantity={selectedProduct ? inventory.find(i => i.productId === selectedProduct.id)?.quantity || 0 : 0}
             onSave={handleSaveQuantity}
-            onNavigateNext={selectedProduct && filteredProducts.findIndex((p: Product) => p.id === selectedProduct.id) < filteredProducts.length - 1 ? handleNavigateNext : undefined}
-            onNavigatePrevious={selectedProduct && filteredProducts.findIndex((p: Product) => p.id === selectedProduct.id) > 0 ? handleNavigatePrevious : undefined}
+            onNavigateNext={selectedProduct && sortedProducts.findIndex((p: Product) => p.id === selectedProduct.id) < sortedProducts.length - 1 ? handleNavigateNext : undefined}
+            onNavigatePrevious={selectedProduct && sortedProducts.findIndex((p: Product) => p.id === selectedProduct.id) > 0 ? handleNavigatePrevious : undefined}
             locale={locale}
           />
         </div>
