@@ -117,7 +117,13 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
         <ProductCard 
           product={selectedProduct} 
           locale={locale}
-          currentQuantity={isEditing ? parseFloat(displayValue) || 0 : currentInventoryQuantity}
+          currentQuantity={
+            isEditing 
+              ? parseFloat(displayValue) || 0 
+              : (currentInventoryQuantity > 0 
+                  ? currentInventoryQuantity 
+                  : (selectedProduct.theoreticalQuantity || selectedProduct.initialQuantity || 0))
+          }
           onAddToOrder={() => {
             // Fonction pour ajouter à la commande (à implémenter)
             console.log('Ajouter à la commande:', selectedProduct.name);
