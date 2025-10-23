@@ -42,12 +42,21 @@ export const OctogoneDropdownButton: React.FC<OctogoneDropdownButtonProps> = ({
 
   const selectedOption = options.find(opt => opt.value === value);
 
-  // Tailles identiques à OctogoneButton
-  const sizeClasses = {
-    sm: 'px-4 py-2 text-sm',
-    md: 'px-6 py-3 text-base',
-    lg: 'px-8 py-4 text-base'
+  // Tailles EXACTEMENT identiques à OctogoneButton
+  const getSizeClasses = () => {
+    switch (size) {
+      case 'sm':
+        return 'px-4 py-2 text-sm';
+      case 'md':
+        return 'px-6 py-3 text-base';
+      case 'lg':
+        return 'px-8 py-4 text-base';
+      default:
+        return 'px-6 py-3 text-base';
+    }
   };
+  
+  const sizeClasses = getSizeClasses();
 
   // Couleurs identiques à OctogoneButton
   const getColors = () => {
@@ -77,7 +86,7 @@ export const OctogoneDropdownButton: React.FC<OctogoneDropdownButtonProps> = ({
       {/* Bouton principal */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`${sizeClasses[size]} text-black font-semibold rounded-lg transition-all duration-300 ease-out shadow-lg hover:shadow-xl inline-flex items-center gap-2 whitespace-nowrap cursor-pointer`}
+        className={`${sizeClasses} text-black font-semibold rounded-lg transition-all duration-300 ease-out shadow-lg hover:shadow-xl inline-flex items-center justify-center whitespace-nowrap cursor-pointer`}
         style={{
           backgroundColor: colors.normal
         }}
@@ -88,10 +97,10 @@ export const OctogoneDropdownButton: React.FC<OctogoneDropdownButtonProps> = ({
           e.currentTarget.style.backgroundColor = colors.normal;
         }}
       >
-        {icon && <span className="flex-shrink-0">{icon}</span>}
-        <span>{selectedOption?.label || 'Select...'}</span>
+        {icon && <span className="mr-2">{icon}</span>}
+        {selectedOption?.label || 'Select...'}
         <ChevronDown 
-          className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+          className={`w-4 h-4 ml-2 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
         />
       </button>
 
