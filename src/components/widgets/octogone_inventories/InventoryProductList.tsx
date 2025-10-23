@@ -107,12 +107,16 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
     return sorted;
   }, [products, searchTerm, locale, sortBy, inventory]);
 
-  // Notifier le parent des produits filtrés et triés
+  // Notifier le parent des produits filtrés et triés et sélectionner le premier
   React.useEffect(() => {
     if (onFilteredProductsChange) {
       onFilteredProductsChange(filteredAndSortedProducts);
     }
-  }, [filteredAndSortedProducts, onFilteredProductsChange]);
+    // Sélectionner automatiquement le premier produit
+    if (filteredAndSortedProducts.length > 0) {
+      onProductSelect(filteredAndSortedProducts[0]);
+    }
+  }, [filteredAndSortedProducts, onFilteredProductsChange, onProductSelect]);
 
   // Obtenir la quantité d'un produit
   const getQuantity = (productId: string): number => {
