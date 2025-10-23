@@ -121,6 +121,13 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
     }
   }, [sortBy]); // Seulement quand sortBy change
 
+  // Sélectionner le premier produit quand la liste de produits change (changement d'emplacement)
+  React.useEffect(() => {
+    if (filteredAndSortedProducts.length > 0 && products.length > 0) {
+      onProductSelect(filteredAndSortedProducts[0]);
+    }
+  }, [products]); // Quand les produits changent (changement d'emplacement)
+
   // Obtenir la quantité d'un produit
   const getQuantity = (productId: string): number => {
     const item = inventory.find(i => i.productId === productId);
