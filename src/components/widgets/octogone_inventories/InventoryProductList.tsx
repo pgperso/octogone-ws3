@@ -105,8 +105,8 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
       {/* En-tête des colonnes */}
       <div className="flex gap-2 px-6 py-3 border-b font-semibold text-sm" style={{ backgroundColor: 'var(--surface-container)', borderColor: 'var(--outline)', color: 'var(--on-surface-variant)' }}>
         <div className="flex-[2]">{isEnglish ? 'Product' : 'Produit'}</div>
-        <div className="flex-1 text-center">{isEnglish ? 'Previous inventory' : 'Inventaire précédent'}</div>
-        <div className="flex-1 text-center">{isEnglish ? 'Current inventory' : 'Inventaire en cours'}</div>
+        <div className="flex-1">{isEnglish ? 'Previous inventory' : 'Inventaire précédent'}</div>
+        <div className="flex-1">{isEnglish ? 'Current inventory' : 'Inventaire en cours'}</div>
         <div className="flex-1 text-right pr-2">{isEnglish ? 'Total value' : 'Valeur totale'}</div>
         <div className="w-12 flex-shrink-0"></div>
       </div>
@@ -191,15 +191,9 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                     </div>
                   </div>
                 </div>
-                <div className="flex-1 text-right pr-2">
+                <div className="flex-1 text-right pr-2 flex items-center justify-end">
                   <div className="font-semibold">
                     {quantity > 0 ? `${totalCost.toFixed(2)} $` : '-'}
-                  </div>
-                  <div 
-                    className="text-xs mt-0.5"
-                    style={{ color: isSelected ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)' }}
-                  >
-                    {quantity > 0 ? `${quantity} × ${product.unitCost.toFixed(2)} $` : `${product.unitCost.toFixed(2)} $ / ${translateUnit(product.unit, locale)}`}
                   </div>
                 </div>
                 <div className="w-12 flex-shrink-0 flex items-center justify-end">
