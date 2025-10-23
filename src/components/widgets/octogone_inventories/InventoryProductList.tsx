@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useMemo } from 'react';
-import { Search, Check, History, X, ArrowUpDown } from 'lucide-react';
+import { Search, Check, History, X, ArrowUpDown, XCircle } from 'lucide-react';
 import { translateCategory, translateProduct, translateUnit } from '@/data/products/octogone_products_translations';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { OctogoneDropdownButton } from '@/components/ui/octogone-dropdown-button';
@@ -249,19 +249,19 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 
                 {/* Colonne Catégorie */}
                 <div className="flex-1 flex items-center">
-                  <div 
-                    className="text-sm"
-                    style={{ color: isSelected ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)' }}
-                  >
-                    {translateCategory(product.category, locale)}
-                  </div>
+                  {!product.nonInventoriable && (
+                    <div 
+                      className="text-sm"
+                      style={{ color: isSelected ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)' }}
+                    >
+                      {translateCategory(product.category, locale)}
+                    </div>
+                  )}
                 </div>
                 
                 {/* Colonne Inventaire précédent */}
                 <div className="flex-1 flex items-center justify-center">
-                  {product.nonInventoriable ? (
-                    <div className="text-sm" style={{ color: 'var(--on-surface-variant)' }}>-</div>
-                  ) : (
+                  {!product.nonInventoriable && (
                     <div 
                       className="w-full px-3 py-2 rounded text-xs"
                       style={{
@@ -280,9 +280,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 
                 {/* Colonne Inventaire en cours */}
                 <div className="flex-1 flex items-center justify-center">
-                  {product.nonInventoriable ? (
-                    <div className="text-sm" style={{ color: 'var(--on-surface-variant)' }}>-</div>
-                  ) : (
+                  {!product.nonInventoriable && (
                     <div 
                       className="w-full px-3 py-2 rounded text-xs"
                       style={{
@@ -305,8 +303,8 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                     <span 
                       className="px-2 py-1 text-xs font-semibold rounded-full"
                       style={{ 
-                        backgroundColor: 'var(--tertiary-container)',
-                        color: 'var(--on-tertiary-container)'
+                        backgroundColor: 'var(--error-container)',
+                        color: 'var(--on-surface)'
                       }}
                     >
                       {isEnglish ? "Don't count" : 'Ne pas compter'}
@@ -318,16 +316,28 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                   )}
                 </div>
                 <div className="w-12 flex-shrink-0 flex items-center justify-end">
-                  {quantity > 0 && (
+                  {product.nonInventoriable ? (
                     <div 
                       className="w-7 h-7 rounded-lg flex items-center justify-center"
-                      style={{ backgroundColor: 'var(--success)' }}
+                      style={{ backgroundColor: 'var(--error)' }}
                     >
-                      <Check 
+                      <X 
                         className="w-5 h-5" 
-                        style={{ color: 'var(--on-primary-container)' }}
+                        style={{ color: 'white' }}
                       />
                     </div>
+                  ) : (
+                    quantity > 0 && (
+                      <div 
+                        className="w-7 h-7 rounded-lg flex items-center justify-center"
+                        style={{ backgroundColor: 'var(--success)' }}
+                      >
+                        <Check 
+                          className="w-5 h-5" 
+                          style={{ color: 'var(--on-primary-container)' }}
+                        />
+                      </div>
+                    )
                   )}
                 </div>
               </div>
