@@ -108,7 +108,7 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
     if (firstProduct) {
       setSelectedProduct(firstProduct);
     }
-  }, [selectedStorage, filteredProducts]);
+  }, [selectedStorage]); // SEULEMENT selectedStorage, pas filteredProducts
 
   // Gérer la sélection d'un produit
   const handleProductSelect = (product: Product) => {
