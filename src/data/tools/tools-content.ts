@@ -48,8 +48,8 @@ export const tools: Tool[] = [
     id: 'inventaire',
     nameFr: 'Inventaire',
     nameEn: 'Inventory',
-    descriptionFr: 'Numérisez vos inventaires et suivez vos stocks en temps réel',
-    descriptionEn: 'Digitize your inventory and track your stock in real-time',
+    descriptionFr: 'Logiciel de gestion d\'inventaire restaurant pour optimiser vos stocks en temps réel',
+    descriptionEn: 'Restaurant inventory management software to optimize your stock in real-time',
     heroImage: '/images/tools/inventaire-hero.jpg',
     
     // Header personnalisé
@@ -57,8 +57,8 @@ export const tools: Tool[] = [
     headerCategoryEn: 'Inventory & Real-Time Inventory',
     headerTitleFr: 'Des inventaires faciles, rapides et précis',
     headerTitleEn: 'Inventory made simple, fast, and accurate',
-    headerDescriptionFr: 'Collaborez en temps réel, suivez automatiquement et obtenez une visibilité complète',
-    headerDescriptionEn: 'Collaborate in real-time, track automatically, and gain complete visibility',
+    headerDescriptionFr: 'Gestion collaborative des stocks, mode hors ligne, réduction des coûts alimentaires de 2-5%',
+    headerDescriptionEn: 'Collaborative stock management, offline mode, reduce food costs by 2-5%',
     
     // Configuration des sections avec concepts
     sections: [

@@ -13,8 +13,8 @@ export function generateToolSchema(tool: Tool, locale: string) {
   
   const toolDescriptions = {
     inventaire: {
-      fr: 'Numérisez vos inventaires et suivez vos stocks en temps réel. Saisie collaborative, inventaire théorique automatique, analyse des écarts. Économisez 8 heures par semaine.',
-      en: 'Digitize your inventory and track your stock in real-time. Collaborative entry, automatic theoretical inventory, variance analysis. Save 8 hours per week.'
+      fr: 'Logiciel de gestion d\'inventaire restaurant avec saisie collaborative multi-appareils. Inventaire en temps réel, mode hors ligne, gestion des stocks par emplacement. Réduisez votre temps d\'inventaire de 50% et vos coûts alimentaires de 2-5%.',
+      en: 'Restaurant inventory management software with multi-device collaborative entry. Real-time inventory, offline mode, location-based stock management. Reduce your inventory time by 50% and food costs by 2-5%.'
     },
     foodcost: {
       fr: 'Calculez automatiquement votre food cost et optimisez vos marges. Recettes standardisées, coûts en temps réel, ingénierie de menu. Réduisez votre food cost de 2-5%.',
@@ -32,8 +32,8 @@ export function generateToolSchema(tool: Tool, locale: string) {
 
   const keywords = {
     inventaire: {
-      fr: 'inventaire restaurant, gestion stock restaurant, inventaire temps réel, inventaire collaboratif, réduction gaspillage',
-      en: 'restaurant inventory, restaurant stock management, real-time inventory, collaborative inventory, waste reduction'
+      fr: 'inventaire restaurant, gestion inventaire restaurant, logiciel inventaire restaurant, inventaire temps réel, gestion stock restaurant, inventaire collaboratif, inventaire mobile, inventaire hors ligne, réduction gaspillage, contrôle des stocks, gestion des stocks alimentaires, inventaire par emplacement, seuil minimum stock, bon de commande automatique, réduction coûts alimentaires, food cost',
+      en: 'restaurant inventory, restaurant inventory management, restaurant inventory software, real-time inventory, restaurant stock management, collaborative inventory, mobile inventory, offline inventory, waste reduction, stock control, food stock management, location-based inventory, minimum stock threshold, automatic purchase order, food cost reduction, inventory app'
     },
     foodcost: {
       fr: 'food cost restaurant, calcul food cost, recettes standardisées, coût recettes, ingénierie menu',
