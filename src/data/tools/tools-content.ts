@@ -64,103 +64,120 @@ export const tools: Tool[] = [
     sections: [
       {
         concept: 'operate',
-        features: [0, 1, 2, 3, 4] // Features principales avec images + secondaires
+        features: [0, 1, 2, 3, 4] // 2 avec images + 3 sans images
+      },
+      {
+        concept: 'automate',
+        features: [5] // 1 avec image
       },
       {
         concept: 'analyze',
-        features: [5, 6] // Features restantes
+        features: [6, 7] // 2 avec images
       }
     ],
     
     features: [
       {
-        titleFr: 'Saisie d\'inventaire collaborative et simultanée',
-        titleEn: 'Collaborative and Simultaneous Inventory Entry',
-        descriptionFr: 'Transformez votre prise d\'inventaire en permettant à plusieurs membres de votre équipe de saisir les quantités simultanément. Fini les heures interminables avec une seule personne qui fait le tour du restaurant. Divisez les zones, saisissez en parallèle et synchronisez automatiquement toutes les données en temps réel. Cette approche collaborative réduit drastiquement le temps nécessaire pour compléter un inventaire complet.',
-        descriptionEn: 'Transform your inventory taking by allowing multiple team members to enter quantities simultaneously. No more endless hours with one person going around the restaurant. Divide zones, enter data in parallel and automatically sync all data in real-time. This collaborative approach drastically reduces the time needed to complete a full inventory.',
+        titleFr: 'Saisie collaborative et simultanée',
+        titleEn: 'Collaborative and Simultaneous Entry',
+        descriptionFr: 'Permettez à plusieurs membres de votre équipe de saisir les quantités simultanément, même hors ligne. Divisez les zones, saisissez en parallèle et synchronisez automatiquement lorsque la connexion est rétablie. Cette approche collaborative réduit drastiquement le temps nécessaire pour compléter un inventaire complet.',
+        descriptionEn: 'Allow multiple team members to enter quantities simultaneously, even offline. Divide zones, enter in parallel, and automatically sync when connection is restored. This collaborative approach drastically reduces the time needed to complete a full inventory.',
         image: '/images/tools/inventaire-mobile.jpg',
         benefits: [
           { fr: 'Saisie simultanée par plusieurs utilisateurs', en: 'Simultaneous entry by multiple users' },
-          { fr: 'Synchronisation automatique en temps réel', en: 'Automatic real-time synchronization' },
-          { fr: 'Réduction significative du temps d\'inventaire', en: 'Significant inventory time reduction' }
+          { fr: 'Mode hors ligne pour travailler sans interruption', en: 'Offline mode to work without interruption' },
+          { fr: 'Synchronisation automatique en temps réel', en: 'Automatic real-time synchronization' }
         ],
         concepts: ['operate']
       },
       {
-        titleFr: 'Inventaire théorique en temps réel',
-        titleEn: 'Real-time Theoretical Inventory',
-        descriptionFr: 'Connaissez à tout moment votre inventaire théorique grâce à l\'intégration avec votre système POS. Chaque vente déduit automatiquement les ingrédients utilisés de votre stock théorique. Plus besoin d\'attendre la fin du mois pour savoir où vous en êtes. Cette visibilité en temps réel vous permet de prendre des décisions éclairées sur vos commandes et d\'anticiper les ruptures de stock.',
-        descriptionEn: 'Know your theoretical inventory at any time through integration with your POS system. Each sale automatically deducts the ingredients used from your theoretical stock. No need to wait until the end of the month to know where you stand. This real-time visibility allows you to make informed decisions about your orders and anticipate stock-outs.',
-        image: '/images/tools/inventaire-temps-reel.jpg',
-        benefits: [
-          { fr: 'Inventaire théorique calculé automatiquement', en: 'Theoretical inventory calculated automatically' },
-          { fr: 'Déduction automatique à chaque vente', en: 'Automatic deduction with each sale' },
-          { fr: 'Visibilité continue de vos stocks', en: 'Continuous stock visibility' }
-        ],
-        concepts: ['automate', 'analyze']
-      },
-      {
-        titleFr: 'Analyse des écarts et optimisation',
-        titleEn: 'Variance Analysis and Optimization',
-        descriptionFr: 'Comparez votre inventaire physique avec votre inventaire théorique pour identifier précisément vos écarts. Détectez rapidement le gaspillage, les erreurs de portions, le vol ou les problèmes de recettes. Les rapports détaillés vous montrent où se situent vos pertes et vous aident à mettre en place des actions correctives. Cette analyse vous permet de réduire vos coûts alimentaires de 2 à 5% en moyenne.',
-        descriptionEn: 'Compare your physical inventory with your theoretical inventory to precisely identify your variances. Quickly detect waste, portion errors, theft or recipe issues. Detailed reports show you where your losses are and help you implement corrective actions. This analysis allows you to reduce your food costs by 2 to 5% on average.',
-        image: '/images/tools/inventaire-ecarts.jpg',
-        benefits: [
-          { fr: 'Comparaison physique vs théorique', en: 'Physical vs theoretical comparison' },
-          { fr: 'Identification des sources de pertes', en: 'Loss source identification' },
-          { fr: 'Réduction des coûts alimentaires de 2-5%', en: '2-5% food cost reduction' }
-        ],
-        concepts: ['analyze', 'predict']
-      },
-      {
-        titleFr: 'Flexibilité des unités de mesure',
-        titleEn: 'Unit of Measure Flexibility',
-        descriptionFr: 'Prenez vos inventaires avec n\'importe quelle unité de mesure. Toutes les équivalences possibles sont gérées directement dans la fiche produit : comptez en caisses, en unités, en kilogrammes ou en litres selon ce qui est le plus pratique sur le terrain. Chaque fiche produit contient toutes les conversions nécessaires, permettant au système de convertir automatiquement vers l\'unité de base pour des calculs précis. Cette flexibilité accélère considérablement la prise d\'inventaire et élimine les erreurs de conversion.',
-        descriptionEn: 'Take your inventories with any unit of measure. All possible equivalences are managed directly in the product sheet: count in cases, units, kilograms or liters depending on what\'s most practical in the field. Each product sheet contains all necessary conversions, allowing the system to automatically convert to the base unit for accurate calculations. This flexibility significantly speeds up inventory taking and eliminates conversion errors.',
-        image: '/images/tools/inventaire-unites.jpg',
-        benefits: [
-          { fr: 'Saisie avec n\'importe quelle unité de mesure', en: 'Entry with any unit of measure' },
-          { fr: 'Toutes les équivalences dans la fiche produit', en: 'All equivalences in the product sheet' },
-          { fr: 'Conversions automatiques pour calculs précis', en: 'Automatic conversions for accurate calculations' }
-        ],
-        concepts: ['operate']
-      },
-      {
-        titleFr: 'Catalogue de produits centralisé et personnalisé',
-        titleEn: 'Centralized and Customized Product Catalog',
-        descriptionFr: 'Nous importons tous les produits de vos fournisseurs directement dans votre propre catalogue de produits. Chaque produit est enregistré dans une fiche complète avec toutes ses informations : formats, codes produits, prix, et surtout toutes les unités de mesure possibles avec leurs conversions. Ce catalogue centralisé est partagé entre l\'inventaire et les recettes, garantissant une cohérence parfaite dans toute votre gestion.',
-        descriptionEn: 'We import all products from your suppliers directly into your own product catalog. Each product is recorded in a complete sheet with all its information: formats, product codes, prices, and especially all possible units of measure with their conversions. This centralized catalog is shared between inventory and recipes, ensuring perfect consistency throughout your management.',
-        image: '/images/tools/inventaire-catalogue.jpg',
-        benefits: [
-          { fr: 'Import automatique depuis vos fournisseurs', en: 'Automatic import from your suppliers' },
-          { fr: 'Catalogue personnalisé à votre entreprise', en: 'Catalog customized to your business' },
-          { fr: 'Partagé entre inventaire et recettes', en: 'Shared between inventory and recipes' }
-        ],
-        concepts: ['operate', 'automate']
-      },
-      {
-        titleFr: 'Gestion des emplacements personnalisés',
-        titleEn: 'Custom Location Management',
-        descriptionFr: 'Créez des listes personnalisées d\'emplacements avec des positions spécifiques pour organiser votre prise d\'inventaire. Définissez vos zones (cuisine, bar, réserve) et les positions exactes de chaque produit. Cette organisation facilite grandement la prise d\'inventaire en guidant vos équipes dans un ordre logique et en réduisant les oublis.',
-        descriptionEn: 'Create custom location lists with specific positions to organize your inventory taking. Define your zones (kitchen, bar, storage) and the exact positions of each product. This organization greatly facilitates inventory taking by guiding your teams in a logical order and reducing oversights.',
+        titleFr: 'Organisation par zones personnalisées',
+        titleEn: 'Custom Zone Organization',
+        descriptionFr: 'Créez des listes personnalisées par emplacement avec des positions spécifiques pour chaque produit. Cette organisation guide vos équipes dans un ordre logique et réduit les oublis.',
+        descriptionEn: 'Create custom lists by location with specific positions for each product. This organization guides your teams in a logical order and reduces oversights.',
         image: '/images/tools/inventaire-emplacements.jpg',
         benefits: [
-          { fr: 'Listes d\'emplacements personnalisées', en: 'Custom location lists' },
+          { fr: 'Listes d\'emplacements personnalisables', en: 'Customizable location lists' },
           { fr: 'Positions définies pour chaque produit', en: 'Defined positions for each product' },
           { fr: 'Organisation logique de la prise d\'inventaire', en: 'Logical inventory taking organization' }
         ],
         concepts: ['operate']
       },
       {
-        titleFr: 'Rapports détaillés et comparaisons',
-        titleEn: 'Detailed Reports and Comparisons',
-        descriptionFr: 'Générez des rapports détaillés sur vos inventaires avec toutes les informations dont vous avez besoin : valeur totale, écarts, mouvements de stock, historique complet. Comparez vos inventaires entre différentes périodes pour identifier les tendances et les variations.',
-        descriptionEn: 'Generate detailed reports on your inventories with all the information you need: total value, variances, stock movements, complete history. Compare your inventories across different periods to identify trends and variations.',
-        image: '/images/tools/inventaire-rapports.jpg',
+        titleFr: 'Recherche et tri efficaces',
+        titleEn: 'Efficient Search and Sorting',
+        descriptionFr: 'Trouvez rapidement n\'importe quel article dans votre liste d\'inventaire et organisez-la selon différents critères de tri pour optimiser votre flux de travail.',
+        descriptionEn: 'Quickly find any item in your inventory list and organize it according to different sorting criteria to optimize your workflow.',
+        image: '/images/tools/inventaire-recherche.jpg',
         benefits: [
-          { fr: 'Rapports détaillés complets', en: 'Complete detailed reports' },
-          { fr: 'Comparaison entre périodes', en: 'Period-to-period comparison' },
-          { fr: 'Historique et analyses', en: 'History and analytics' }
+          { fr: 'Recherche instantanée dans votre liste d\'inventaire', en: 'Instant search in your inventory list' },
+          { fr: 'Multiples options de tri disponibles', en: 'Multiple sorting options available' },
+          { fr: 'Gain de temps significatif lors du comptage', en: 'Significant time savings during counting' }
+        ],
+        concepts: ['operate']
+      },
+      {
+        titleFr: 'Saisie rapide et intuitive',
+        titleEn: 'Fast and Intuitive Entry',
+        descriptionFr: 'Enregistrez vos quantités avec notre calculatrice intégrée, même hors ligne, sur n\'importe quel appareil : téléphone, tablette ou ordinateur. Naviguez au clavier sans interruption.',
+        descriptionEn: 'Record your quantities with our integrated calculator, even offline, on any device: phone, tablet or computer. Navigate by keyboard without interruption.',
+        image: '/images/tools/inventaire-saisie.jpg',
+        benefits: [
+          { fr: 'Calculatrice numérique intégrée', en: 'Integrated digital calculator' },
+          { fr: 'Compatible téléphone, tablette et ordinateur', en: 'Compatible with phone, tablet and computer' },
+          { fr: 'Mode hors ligne pour travailler partout', en: 'Offline mode to work anywhere' }
+        ],
+        concepts: ['operate']
+      },
+      {
+        titleFr: 'Flexibilité de saisie',
+        titleEn: 'Entry Flexibility',
+        descriptionFr: 'Comptez avec les unités de mesure configurées dans votre catalogue produits. Toutes les conversions sont automatiques et précises, éliminant les erreurs de calcul manuel.',
+        descriptionEn: 'Count with the units of measure configured in your product catalog. All conversions are automatic and precise, eliminating manual calculation errors.',
+        image: '/images/tools/inventaire-unites.jpg',
+        benefits: [
+          { fr: 'Saisie avec n\'importe quelle unité de mesure configurée', en: 'Entry with any configured unit of measure' },
+          { fr: 'Conversions automatiques précises', en: 'Precise automatic conversions' },
+          { fr: 'Élimination des erreurs de calcul', en: 'Elimination of calculation errors' }
+        ],
+        concepts: ['operate']
+      },
+      {
+        titleFr: 'Gestion intelligente des seuils minimums',
+        titleEn: 'Smart Minimum Threshold Management',
+        descriptionFr: 'Identifiez instantanément les produits sous leur seuil minimum pendant votre inventaire. Envoyez-les directement dans un bon de commande (outil Commande) pour préparer votre liste de produits à commander chez vos fournisseurs. Pour les recettes, envoyez-les à la production (outil Production) pour générer des bons de production à la cuisine. Agissez immédiatement sans attendre la fin de l\'inventaire.',
+        descriptionEn: 'Instantly identify products below their minimum threshold during your inventory. Send them directly to a purchase order (Order tool) to prepare your list of products to order from your suppliers. For recipes, send them to production (Production tool) to generate production orders for the kitchen. Act immediately without waiting for the end of inventory.',
+        image: '/images/tools/inventaire-seuils.jpg',
+        benefits: [
+          { fr: 'Détection automatique des produits sous le seuil minimum', en: 'Automatic detection of products below minimum threshold' },
+          { fr: 'Envoi direct vers l\'outil Commande ou Production', en: 'Direct send to Order or Production tool' },
+          { fr: 'Action immédiate pendant l\'inventaire', en: 'Immediate action during inventory' }
+        ],
+        concepts: ['operate', 'automate']
+      },
+      {
+        titleFr: 'Visibilité continue de vos stocks',
+        titleEn: 'Continuous Stock Visibility',
+        descriptionFr: 'Allez au-delà de l\'inventaire périodique traditionnel. Découvrez comment notre outil Inventaire en Temps Réel vous permet de suivre automatiquement votre inventaire théorique en continu grâce à l\'intégration avec votre système de point de vente, vous offrant une visibilité 24/7 sur vos stocks.',
+        descriptionEn: 'Go beyond traditional periodic inventory. Discover how our Real-Time Inventory tool allows you to automatically track your theoretical inventory continuously through integration with your point of sale system, giving you 24/7 visibility of your stocks.',
+        image: '/images/tools/inventaire-temps-reel.jpg',
+        benefits: [
+          { fr: 'Suivi continu de votre inventaire théorique', en: 'Continuous tracking of your theoretical inventory' },
+          { fr: 'Intégration transparente avec votre POS', en: 'Seamless integration with your POS' },
+          { fr: 'Visibilité en temps réel de vos stocks', en: 'Real-time visibility of your stocks' }
+        ],
+        concepts: ['automate', 'analyze']
+      },
+      {
+        titleFr: 'Analyse des écarts et optimisation',
+        titleEn: 'Variance Analysis and Optimization',
+        descriptionFr: 'Comparez votre inventaire physique avec votre inventaire théorique pour identifier précisément vos écarts. Découvrez notre outil Inventaire en Temps Réel qui vous aide à détecter rapidement le gaspillage, les erreurs de portions ou les problèmes de recettes, vous permettant de réduire vos coûts alimentaires de 2 à 5% en moyenne.',
+        descriptionEn: 'Compare your physical inventory with your theoretical inventory to precisely identify your variances. Discover our Real-Time Inventory tool that helps you quickly detect waste, portion errors or recipe issues, allowing you to reduce your food costs by 2 to 5% on average.',
+        image: '/images/tools/inventaire-ecarts.jpg',
+        benefits: [
+          { fr: 'Comparaison précise physique vs théorique', en: 'Precise physical vs theoretical comparison' },
+          { fr: 'Identification rapide des sources de pertes', en: 'Quick identification of loss sources' },
+          { fr: 'Réduction des coûts alimentaires de 2-5%', en: 'Food cost reduction of 2-5%' }
         ],
         concepts: ['analyze', 'predict']
       }

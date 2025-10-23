@@ -238,19 +238,21 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 }}
               >
                 {/* Colonne Produit */}
-                <div className="flex-[2]">
-                  <div className="font-medium">{translateProduct(product.name, locale)}</div>
-                  {product.isRecipe && (
-                    <span 
-                      className="px-2 py-0.5 text-xs font-semibold rounded-full inline-block mt-1"
-                      style={{ 
-                        backgroundColor: '#E2CDED',
-                        color: '#1F1F1F'
-                      }}
-                    >
-                      {isEnglish ? 'Recipe' : 'Recette'}
-                    </span>
-                  )}
+                <div className={`flex-[2] ${product.isRecipe ? '' : 'flex items-center'}`}>
+                  <div>
+                    <div className="font-medium">{translateProduct(product.name, locale)}</div>
+                    {product.isRecipe && (
+                      <span 
+                        className="px-2 py-0.5 text-xs font-semibold rounded-full inline-block mt-1"
+                        style={{ 
+                          backgroundColor: '#E2CDED',
+                          color: '#1F1F1F'
+                        }}
+                      >
+                        {isEnglish ? 'Recipe' : 'Recette'}
+                      </span>
+                    )}
+                  </div>
                 </div>
                 
                 {/* Colonne Catégorie */}
