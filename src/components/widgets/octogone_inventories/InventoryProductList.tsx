@@ -103,12 +103,12 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
       </div>
 
       {/* En-tête des colonnes */}
-      <div className="grid grid-cols-12 gap-2 px-6 py-3 border-b font-semibold text-sm" style={{ backgroundColor: 'var(--surface-container)', borderColor: 'var(--outline)', color: 'var(--on-surface-variant)' }}>
-        <div className="col-span-3">{isEnglish ? 'Product' : 'Produit'}</div>
-        <div className="col-span-2">{isEnglish ? 'Previous inventory' : 'Inventaire précédent'}</div>
-        <div className="col-span-2">{isEnglish ? 'Current inventory' : 'Inventaire en cours'}</div>
-        <div className="col-span-3 text-right pr-2">{isEnglish ? 'Total value' : 'Valeur totale'}</div>
-        <div className="col-span-2"></div>
+      <div className="flex gap-2 px-6 py-3 border-b font-semibold text-sm" style={{ backgroundColor: 'var(--surface-container)', borderColor: 'var(--outline)', color: 'var(--on-surface-variant)' }}>
+        <div className="flex-[2]">{isEnglish ? 'Product' : 'Produit'}</div>
+        <div className="flex-1 text-center">{isEnglish ? 'Previous inventory' : 'Inventaire précédent'}</div>
+        <div className="flex-1 text-center">{isEnglish ? 'Current inventory' : 'Inventaire en cours'}</div>
+        <div className="flex-1 text-right pr-2">{isEnglish ? 'Total value' : 'Valeur totale'}</div>
+        <div className="w-12 flex-shrink-0"></div>
       </div>
 
       {/* Liste scrollable */}
@@ -130,7 +130,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
               <div
                 key={product.id}
                 onClick={() => onProductSelect(product)}
-                className="grid grid-cols-12 gap-2 px-6 py-3 cursor-pointer border-b transition-all hover:bg-opacity-50"
+                className="flex gap-2 px-6 py-3 cursor-pointer border-b transition-all hover:bg-opacity-50"
                 style={{
                   backgroundColor: isSelected ? 'var(--secondary-container)' : 'transparent',
                   borderColor: 'var(--outline)',
@@ -148,7 +148,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                   }
                 }}
               >
-                <div className="col-span-3">
+                <div className="flex-[2]">
                   <div className="font-medium">{translateProduct(product.name, locale)}</div>
                   <div 
                     className="text-xs mt-0.5"
@@ -159,7 +159,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 </div>
                 
                 {/* Colonne Inventaire précédent */}
-                <div className="col-span-2 flex items-center">
+                <div className="flex-1 flex items-center justify-center">
                   <div 
                     className="w-full px-3 py-2 rounded text-xs"
                     style={{
@@ -176,7 +176,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 </div>
                 
                 {/* Colonne Inventaire en cours */}
-                <div className="col-span-2 flex items-center">
+                <div className="flex-1 flex items-center justify-center">
                   <div 
                     className="w-full px-3 py-2 rounded text-xs"
                     style={{
@@ -191,7 +191,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                     </div>
                   </div>
                 </div>
-                <div className="col-span-3 text-right pr-2">
+                <div className="flex-1 text-right pr-2">
                   <div className="font-semibold">
                     {quantity > 0 ? `${totalCost.toFixed(2)} $` : '-'}
                   </div>
@@ -202,7 +202,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                     {quantity > 0 ? `${quantity} × ${product.unitCost.toFixed(2)} $` : `${product.unitCost.toFixed(2)} $ / ${translateUnit(product.unit, locale)}`}
                   </div>
                 </div>
-                <div className="col-span-2 flex items-center justify-center">
+                <div className="w-12 flex-shrink-0 flex items-center justify-end">
                   {quantity > 0 && (
                     <div 
                       className="w-7 h-7 rounded-lg flex items-center justify-center"
