@@ -8,13 +8,15 @@ export interface ToolFeature {
   titleEn: string;
   descriptionFr: string;
   descriptionEn: string;
-  image: string;
+  image?: string; // Optionnel pour layout full-width
   benefits: Array<{
     fr: string;
     en: string;
   }>;
   // Concepts associés à cette feature (peut être 1, 2, 3 ou 4 concepts)
   concepts?: Array<'operate' | 'automate' | 'analyze' | 'predict'>;
+  // Layout spécial pour cette feature (optionnel)
+  layout?: 'full-width';
 }
 
 export interface Tool {

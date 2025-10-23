@@ -84,6 +84,9 @@ export default function ToolDetailWidget({ tool, locale }: ToolDetailWidgetProps
     return null;
   }
 
+  // Compteur global pour l'alternance des images entre toutes les sections
+  let globalImageCounter = 0;
+
   // Layout avec sections et concepts
   return (
     <div className="max-w-6xl mx-auto space-y-8 motion-container">
@@ -98,11 +101,74 @@ export default function ToolDetailWidget({ tool, locale }: ToolDetailWidgetProps
                 <>
                   {(() => {
                     const groups = createFeatureGroups(section.features);
-                    let imageCounter = 0;
                     
                     return (
                       <div className="space-y-16">
                         {groups.map((group, groupIdx) => {
+                          
+                          // Vérifier si c'est une feature full-width
+                          if (group.type === 'single') {
+                            const feature = tool.features[group.features[0]];
+                            if (feature?.layout === 'full-width') {
+                              return (
+                                <motion.div
+                                  key={`full-width-${groupIdx}`}
+                                  className="py-16 motion-element"
+                                  initial={{ opacity: 0, y: 30 }}
+                                  whileInView={{ opacity: 1, y: 0 }}
+                                  viewport={{ once: true }}
+                                  transition={{ duration: 0.8, delay: 0.2 }}
+                                >
+                                  {/* Badges de concepts */}
+                                  {feature.concepts && feature.concepts.length > 0 && (
+                                    <div className="flex flex-wrap gap-2 mb-6">
+                                      {feature.concepts.map((conceptId) => {
+                                        const conceptInfo = conceptConfig[conceptId];
+                                        if (!conceptInfo) return null;
+                                        
+                                        const ConceptIconBadge = conceptInfo.icon;
+                                        return (
+                                          <div 
+                                            key={conceptId}
+                                            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full"
+                                            style={{ backgroundColor: conceptInfo.color }}
+                                          >
+                                            <ConceptIconBadge className="w-4 h-4" style={{ color: conceptInfo.textColor }} />
+                                            <span className="text-xs font-bold" style={{ color: conceptInfo.textColor }}>
+                                              {isEnglish ? conceptInfo.labelEn : conceptInfo.labelFr}
+                                            </span>
+                                          </div>
+                                        );
+                                      })}
+                                    </div>
+                                  )}
+                                  
+                                  <h4 className="text-4xl lg:text-5xl font-bold mb-8 text-center" style={{ color: 'var(--on-surface)' }}>
+                                    {isEnglish ? feature.titleEn : feature.titleFr}
+                                  </h4>
+                                  
+                                  <div className="max-w-4xl mx-auto">
+                                    <p className="text-lg lg:text-xl mb-8 text-center leading-relaxed" style={{ color: 'var(--on-surface-variant)' }}>
+                                      {isEnglish ? feature.descriptionEn : feature.descriptionFr}
+                                    </p>
+                                    
+                                    {feature.benefits && feature.benefits.length > 0 && (
+                                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+                                        {feature.benefits.map((benefit, idx) => (
+                                          <div key={idx} className="flex items-start gap-3 p-4 rounded-lg bg-surface-container">
+                                            <Check className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'var(--secondary)' }} />
+                                            <span className="text-base" style={{ color: 'var(--on-surface)' }}>
+                                              {isEnglish ? benefit.en : benefit.fr}
+                                            </span>
+                                          </div>
+                                        ))}
+                                      </div>
+                                    )}
+                                  </div>
+                                </motion.div>
+                              );
+                            }
+                          }
                           
                           if (group.type === 'triple') {
                             // Groupe de 3 features SANS IMAGE en colonnes (juste texte)
@@ -176,8 +242,8 @@ export default function ToolDetailWidget({ tool, locale }: ToolDetailWidgetProps
                           const singleFeature = tool.features[group.features[0]];
                           if (!singleFeature) return null;
                           
-                          const imageOnLeft = imageCounter % 2 === 0;
-                          imageCounter++;
+                          const imageOnLeft = globalImageCounter % 2 === 0;
+                          globalImageCounter++;
                           
                           return (
                             <motion.div 
