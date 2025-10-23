@@ -293,7 +293,7 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
             <div className="flex items-center gap-4">
               {/* Bouton Export */}
               <OctogoneButton
-                variant="secondary"
+                variant="primary"
                 size="md"
                 onClick={handleExportCSV}
                 icon={
@@ -360,7 +360,7 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             {/* Bouton Export */}
             <OctogoneButton
-              variant="secondary"
+              variant="primary"
               size="md"
               className="flex-1"
               onClick={() => {
