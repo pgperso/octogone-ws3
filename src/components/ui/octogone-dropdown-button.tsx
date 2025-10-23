@@ -77,7 +77,7 @@ export const OctogoneDropdownButton: React.FC<OctogoneDropdownButtonProps> = ({
       {/* Bouton principal */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`${sizeClasses[size]} text-black font-semibold rounded-lg transition-all duration-300 ease-out shadow-lg hover:shadow-xl flex items-center gap-2 whitespace-nowrap`}
+        className={`${sizeClasses[size]} text-black font-semibold rounded-lg transition-all duration-300 ease-out shadow-lg hover:shadow-xl inline-flex items-center gap-2 whitespace-nowrap cursor-pointer`}
         style={{
           backgroundColor: colors.normal
         }}

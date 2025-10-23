@@ -241,7 +241,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
             className="w-full"
             icon={<ShoppingCart size={20} />}
           >
-            {isEnglish ? 'Add to my order' : 'Ajouter à ma commande'}
+            {isEnglish ? 'Order' : 'Commander'}
           </OctogoneButton>
         )}
       </div>
