@@ -566,8 +566,8 @@ export const tools: Tool[] = [
     
     sections: [
       { concept: 'operate', features: [0, 1] },
-      { concept: 'automate', features: [2, 3] },
-      { concept: 'analyze', features: [4, 5, 6] },
+      { concept: 'automate', features: [2, 3, 4] },
+      { concept: 'analyze', features: [5, 6] },
       { concept: 'predict', features: [7, 8] }
     ],
     
