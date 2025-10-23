@@ -568,8 +568,8 @@ export const tools: Tool[] = [
     
     sections: [
       { concept: 'operate', features: [0, 1] },
-      { concept: 'automate', features: [2, 3, 4] },
-      { concept: 'analyze', features: [5, 6] },
+      { concept: 'automate', features: [2, 3, 4, 5] },
+      { concept: 'analyze', features: [6] },
       { concept: 'predict', features: [7] }
     ],
     
@@ -605,7 +605,7 @@ export const tools: Tool[] = [
         titleEn: 'Automated Financial Analyses',
         descriptionFr: 'Transformez vos données brutes en analyses financières structurées automatiquement. Le système calcule et met à jour vos métriques en continu, sans intervention manuelle. Gagnez des heures de travail administratif chaque semaine.',
         descriptionEn: 'Transform your raw data into structured financial analyses automatically. The system calculates and updates your metrics continuously, without manual intervention. Save hours of administrative work every week.',
-        image: '/images/tools/360-comptabilite.jpg',
+        layout: 'full-width',
         benefits: [
           { fr: 'Calculs financiers automatiques et continus', en: 'Automatic and continuous financial calculations' },
           { fr: 'Métriques financières toujours à jour', en: 'Financial metrics always up to date' },
@@ -616,9 +616,8 @@ export const tools: Tool[] = [
       {
         titleFr: 'Rapports exportables',
         titleEn: 'Exportable Reports',
-        descriptionFr: 'Générez des rapports complets et exportez-les au format PDF, Excel ou CSV. Partagez vos analyses avec votre équipe, vos partenaires ou votre comptable. Tous vos indicateurs clés, graphiques et tableaux dans un document professionnel prêt à l\'emploi.',
-        descriptionEn: 'Generate complete reports and export them in PDF, Excel or CSV format. Share your analyses with your team, partners or accountant. All your key indicators, charts and tables in a professional ready-to-use document.',
-        image: '/images/tools/360-rapports.jpg',
+        descriptionFr: 'Générez et exportez vos rapports au format PDF, Excel ou CSV. Partagez facilement vos analyses avec votre équipe et vos partenaires.',
+        descriptionEn: 'Generate and export your reports in PDF, Excel or CSV format. Easily share your analyses with your team and partners.',
         benefits: [
           { fr: 'Export PDF, Excel et CSV', en: 'PDF, Excel and CSV export' },
           { fr: 'Rapports professionnels complets', en: 'Complete professional reports' },
@@ -629,9 +628,8 @@ export const tools: Tool[] = [
       {
         titleFr: 'Visualisations et graphiques',
         titleEn: 'Visualizations and Charts',
-        descriptionFr: 'Générez des graphiques détaillés pour visualiser vos données en profondeur. Explorez vos tendances et identifiez rapidement les opportunités d\'amélioration grâce à des représentations visuelles claires et intuitives.',
-        descriptionEn: 'Generate detailed charts to visualize your data in depth. Explore your trends and quickly identify improvement opportunities through clear and intuitive visual representations.',
-        image: '/images/tools/360-graphiques.jpg',
+        descriptionFr: 'Visualisez vos données avec des graphiques clairs et intuitifs. Explorez vos tendances et identifiez rapidement les opportunités d\'amélioration.',
+        descriptionEn: 'Visualize your data with clear and intuitive charts. Explore your trends and quickly identify improvement opportunities.',
         benefits: [
           { fr: 'Graphiques détaillés et intuitifs', en: 'Detailed and intuitive charts' },
           { fr: 'Visualisations claires de vos données', en: 'Clear data visualizations' },
@@ -642,9 +640,8 @@ export const tools: Tool[] = [
       {
         titleFr: 'Comparaisons multi-établissements',
         titleEn: 'Multi-Location Comparisons',
-        descriptionFr: 'Comparez les performances entre vos différents établissements en temps réel. Identifiez vos sites les plus performants et repérez les écarts pour harmoniser vos opérations. Idéal pour les groupes et franchises qui veulent maximiser la rentabilité de chaque emplacement.',
-        descriptionEn: 'Compare performance across your different locations in real-time. Identify your best-performing sites and spot gaps to harmonize your operations. Ideal for groups and franchises looking to maximize profitability at each location.',
-        image: '/images/tools/360-multi-etablissements.jpg',
+        descriptionFr: 'Comparez les performances entre vos établissements en temps réel. Identifiez les écarts et harmonisez vos opérations. Idéal pour les groupes et franchises.',
+        descriptionEn: 'Compare performance across your locations in real-time. Identify gaps and harmonize your operations. Ideal for groups and franchises.',
         benefits: [
           { fr: 'Comparaison en temps réel entre établissements', en: 'Real-time comparison between locations' },
           { fr: 'Détection des écarts de performance', en: 'Performance gap detection' },
@@ -655,9 +652,8 @@ export const tools: Tool[] = [
       {
         titleFr: 'Analyses comparatives historiques',
         titleEn: 'Historical Comparative Analyses',
-        descriptionFr: 'Comparez vos performances actuelles avec n\'importe quelle période passée. Jour, semaine, mois, année... Identifiez les tendances saisonnières, mesurez l\'impact de vos actions et ajustez votre stratégie en fonction de données concrètes.',
-        descriptionEn: 'Compare your current performance with any past period. Day, week, month, year... Identify seasonal trends, measure the impact of your actions and adjust your strategy based on concrete data.',
-        image: '/images/tools/360-historique.jpg',
+        descriptionFr: 'Comparez vos performances avec n\'importe quelle période passée. Identifiez les tendances saisonnières, mesurez l\'impact de vos actions et ajustez votre stratégie en fonction de données concrètes.',
+        descriptionEn: 'Compare your performance with any past period. Identify seasonal trends, measure the impact of your actions and adjust your strategy based on concrete data.',
         benefits: [
           { fr: 'Comparaisons flexibles sur toutes périodes', en: 'Flexible comparisons across all periods' },
           { fr: 'Détection des tendances saisonnières', en: 'Seasonal trend detection' },
@@ -670,7 +666,7 @@ export const tools: Tool[] = [
         titleEn: 'Artificial Intelligence and Forecasting',
         descriptionFr: 'Bientôt, Cortex, notre agent intelligent, analysera vos données pour vous proposer des insights actionnables et des prévisions basées sur votre historique. Anticipez vos besoins, optimisez vos opérations et prenez des décisions éclairées grâce à l\'intelligence artificielle.',
         descriptionEn: 'Soon, Cortex, our intelligent agent, will analyze your data to provide you with actionable insights and forecasts based on your history. Anticipate your needs, optimize your operations and make informed decisions with artificial intelligence.',
-        image: '/images/tools/360-ia.jpg',
+        layout: 'full-width',
         benefits: [
           { fr: 'Insights générés par intelligence artificielle', en: 'AI-generated insights' },
           { fr: 'Prévisions basées sur données historiques', en: 'Forecasts based on historical data' },
