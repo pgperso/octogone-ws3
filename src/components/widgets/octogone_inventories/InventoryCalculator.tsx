@@ -21,6 +21,7 @@ interface Product {
 interface InventoryCalculatorProps {
   selectedProduct: Product | null;
   hasExistingEntry: boolean;
+  currentInventoryQuantity?: number; // Quantité actuelle dans l'inventaire
   onSave: (productId: string, quantity: number) => void;
   onNavigateNext?: () => void;
   onNavigatePrevious?: () => void;
@@ -30,6 +31,7 @@ interface InventoryCalculatorProps {
 export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
   selectedProduct,
   hasExistingEntry,
+  currentInventoryQuantity = 0,
   onSave,
   onNavigateNext,
   onNavigatePrevious,
@@ -115,7 +117,7 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
         <ProductCard 
           product={selectedProduct} 
           locale={locale}
-          currentQuantity={isEditing ? parseFloat(displayValue) || 0 : 0}
+          currentQuantity={isEditing ? parseFloat(displayValue) || 0 : currentInventoryQuantity}
           onAddToOrder={() => {
             // Fonction pour ajouter à la commande (à implémenter)
             console.log('Ajouter à la commande:', selectedProduct.name);
