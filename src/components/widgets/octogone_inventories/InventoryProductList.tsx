@@ -122,7 +122,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
     <div className="flex flex-col w-full" style={{ maxHeight: '750px' }}>
       {/* Barre de recherche */}
       <div className="px-6 py-6 border-b" style={{ borderColor: 'var(--outline)' }}>
-        <div className="flex gap-3">
+        <div className="flex items-center gap-3">
           <div className="relative flex-1">
             <Search 
               className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5" 
