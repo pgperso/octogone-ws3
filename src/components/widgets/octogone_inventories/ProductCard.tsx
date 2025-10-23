@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { ImageIcon, ShoppingCart } from 'lucide-react';
+import { ShoppingCart, ImageIcon, ChefHat } from 'lucide-react';
 import { translateCategory, translateProduct, translateUnit, translateBrand } from '@/data/products/octogone_products_translations';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 
@@ -240,16 +240,19 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
           </div>
         </div>
 
-        {/* Bouton Ajouter à ma commande - Toujours visible */}
+        {/* Bouton Commander/Produire - Toujours visible */}
         {onAddToOrder && (
           <OctogoneButton
             variant="primary"
             size="lg"
             onClick={onAddToOrder}
             className="w-full"
-            icon={<ShoppingCart size={20} />}
+            icon={product.isRecipe ? <ChefHat size={20} /> : <ShoppingCart size={20} />}
           >
-            {isEnglish ? 'Order' : 'Commander'}
+            {product.isRecipe 
+              ? (isEnglish ? 'Produce' : 'Produire')
+              : (isEnglish ? 'Order' : 'Commander')
+            }
           </OctogoneButton>
         )}
       </div>
