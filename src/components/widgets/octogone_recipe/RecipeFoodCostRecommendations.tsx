@@ -113,7 +113,7 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
         'Négocier avec les fournisseurs',
         'Remplacer certains ingrédients coûteux'
       ],
-        color: 'var(--on-error-container)',
+        color: '#FFFFFF', // Blanc
         bgColor: 'var(--error)'
       };
   };
