@@ -1,11 +1,11 @@
 "use client";
 
 import React from 'react';
-import { TrendingDown, TrendingUp, CheckCircle, AlertTriangle } from 'lucide-react';
+import { TrendingDown, TrendingUp, CheckCircle } from 'lucide-react';
 
 interface RecipeFoodCostRecommendationsProps {
   actualFoodCost: number;
-  targetFoodCost: number;
+  targetFoodCost?: number; // Optionnel, utilisé pour référence future
   locale?: 'fr' | 'en';
 }
 
@@ -19,7 +19,6 @@ interface Recommendation {
 
 export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendationsProps> = ({
   actualFoodCost,
-  targetFoodCost,
   locale = 'fr'
 }) => {
   const isEnglish = locale === 'en';
