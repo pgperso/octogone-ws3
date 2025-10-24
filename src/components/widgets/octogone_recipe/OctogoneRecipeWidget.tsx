@@ -432,16 +432,32 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
 
         {/* Recommandations - Colonne séparée à droite */}
         <div 
-          className="rounded-lg"
+          className="rounded-lg cursor-pointer transition-all relative group h-full"
           style={{ 
             backgroundColor: 'var(--surface-container-low)'
           }}
+          onClick={() => setIsRecommendationsOpen(true)}
         >
-          <div className="p-4">
+          {/* Overlay au hover - invisible par défaut */}
+          <div 
+            className="absolute inset-0 opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-center justify-center pointer-events-none z-20 rounded-lg"
+            style={{ 
+              backgroundColor: 'var(--secondary-container)'
+            }}
+          >
+            <span 
+              className="text-lg font-semibold"
+              style={{ color: 'var(--on-secondary-container)' }}
+            >
+              {isEnglish ? 'See recommendations' : 'Voir les recommandations'}
+            </span>
+          </div>
+
+          <div className="p-4 relative z-10 h-full">
             <RecipeFoodCostRecommendations
               actualFoodCost={calculateFoodCostPercentage()}
               locale={locale}
-              onClick={() => setIsRecommendationsOpen(true)}
+              onClick={() => {}}
             />
           </div>
         </div>
