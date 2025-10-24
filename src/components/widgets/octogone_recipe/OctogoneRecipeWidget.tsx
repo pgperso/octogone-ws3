@@ -2,10 +2,11 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { Settings } from 'lucide-react';
 import { RecipeIngredientsList } from './RecipeIngredientsList';
 import { RecipeSteps } from './RecipeSteps';
 import { ProductSideMenu } from './ProductSideMenu';
-import { RecipeSettingsModal } from './RecipeSettingsModal';
+import { RecipeSettingsSideMenu } from './RecipeSettingsSideMenu';
 import { OctogoneFoodCostCircularBar } from '@/components/ui/octogone-foodcost-circular-bar';
 import inventoryData from '@/data/products/octogone_products_data.json';
 
@@ -52,7 +53,7 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
   const [sellingPrice, setSellingPrice] = useState(15.99); // Prix de vente
   const [category, setCategory] = useState('main'); // Catégorie
   
-  // État du modal de paramètres
+  // État du side menu de paramètres
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   
   // État du multiplicateur de recette
@@ -314,12 +315,15 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
             backgroundColor: 'var(--secondary-container)'
           }}
         >
-          <span 
-            className="text-lg font-semibold"
-            style={{ color: 'var(--on-secondary-container)' }}
-          >
-            {isEnglish ? 'Edit Settings' : 'Modifier les paramètres'}
-          </span>
+          <div className="flex items-center gap-3">
+            <Settings size={24} style={{ color: 'var(--on-secondary-container)' }} />
+            <span 
+              className="text-lg font-semibold"
+              style={{ color: 'var(--on-secondary-container)' }}
+            >
+              {isEnglish ? 'Edit Settings' : 'Modifier les paramètres'}
+            </span>
+          </div>
         </div>
 
         <div className="flex items-center gap-6 relative z-10">
@@ -460,8 +464,8 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
         />
       )}
 
-      {/* Modal de paramètres */}
-      <RecipeSettingsModal
+      {/* Side menu de paramètres */}
+      <RecipeSettingsSideMenu
         isOpen={isSettingsOpen}
         onClose={() => setIsSettingsOpen(false)}
         recipeName={recipeName}
