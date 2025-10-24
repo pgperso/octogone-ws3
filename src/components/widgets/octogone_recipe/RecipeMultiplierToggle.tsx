@@ -3,6 +3,7 @@
 import React from 'react';
 import { Calculator } from 'lucide-react';
 import { OctogoneQuantitySelector } from '@/components/ui/octogone-quantity-selector';
+import { OctogoneToggle } from '@/components/ui/octogone-toggle';
 
 interface RecipeMultiplierToggleProps {
   isMultiplierView: boolean;
@@ -21,41 +22,27 @@ export const RecipeMultiplierToggle: React.FC<RecipeMultiplierToggleProps> = ({
 }) => {
   const isEnglish = locale === 'en';
 
+  const toggleOptions = [
+    {
+      value: 'original',
+      label: isEnglish ? 'Original' : 'Originale'
+    },
+    {
+      value: 'multiplier',
+      label: isEnglish ? 'Multiply' : 'Multiplier',
+      icon: <Calculator size={14} />
+    }
+  ];
+
   return (
     <div className="flex items-center gap-3 mb-4">
       {/* Toggle Switch à deux états */}
-      <div 
-        className="inline-flex rounded-lg p-1"
-        style={{
-          backgroundColor: 'var(--surface-variant)',
-          border: '1px solid var(--outline)'
-        }}
-      >
-        {/* Vue Originale */}
-        <button
-          onClick={() => onToggle(false)}
-          className="px-4 py-2 rounded-md text-sm font-medium transition-all"
-          style={{
-            backgroundColor: !isMultiplierView ? 'var(--secondary-container)' : 'transparent',
-            color: !isMultiplierView ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)'
-          }}
-        >
-          {isEnglish ? 'Original' : 'Originale'}
-        </button>
-
-        {/* Vue Multiplication */}
-        <button
-          onClick={() => onToggle(true)}
-          className="px-4 py-2 rounded-md text-sm font-medium transition-all flex items-center gap-2"
-          style={{
-            backgroundColor: isMultiplierView ? 'var(--secondary-container)' : 'transparent',
-            color: isMultiplierView ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)'
-          }}
-        >
-          <Calculator size={14} />
-          {isEnglish ? 'Multiply' : 'Multiplier'}
-        </button>
-      </div>
+      <OctogoneToggle
+        options={toggleOptions}
+        value={isMultiplierView ? 'multiplier' : 'original'}
+        onChange={(value) => onToggle(value === 'multiplier')}
+        size="sm"
+      />
 
       {/* Multiplicateur (visible seulement si vue multiplication activée) */}
       {isMultiplierView && (
