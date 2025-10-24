@@ -165,10 +165,10 @@ export const ProductSideMenu: React.FC<ProductSideMenuProps> = ({
                       {/* Indicateur "Ajouté" */}
                       {isAdded && (
                         <div 
-                          className="flex items-center justify-center w-6 h-6 rounded-full flex-shrink-0"
+                          className="flex items-center justify-center w-6 h-6 rounded flex-shrink-0"
                           style={{ 
-                            backgroundColor: 'var(--primary)',
-                            color: 'var(--on-primary)'
+                            backgroundColor: 'var(--success)',
+                            color: 'var(--on-success-container)'
                           }}
                         >
                           <Check size={14} strokeWidth={3} />
