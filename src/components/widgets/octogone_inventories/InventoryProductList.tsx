@@ -194,10 +194,19 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
       <div className="flex gap-2 px-6 py-3 border-b font-semibold text-sm" style={{ backgroundColor: 'var(--surface-container)', borderColor: 'var(--outline)', color: 'var(--on-surface-variant)' }}>
         <div className="flex-[2]">{isEnglish ? 'Product' : 'Produit'}</div>
         <div className="flex-1 hidden md:block">{isEnglish ? 'Category' : 'Catégorie'}</div>
-        <div className="flex-1">{isEnglish ? 'Previous inventory' : 'Inventaire précédent'}</div>
-        <div className="flex-1">{isEnglish ? 'Current inventory' : 'Inventaire en cours'}</div>
-        <div className="flex-1 text-right pr-2">{isEnglish ? 'Total value' : 'Valeur totale'}</div>
-        <div className="w-12 flex-shrink-0"></div>
+        <div className="flex-1">
+          <span className="hidden md:inline">{isEnglish ? 'Previous inventory' : 'Inventaire précédent'}</span>
+          <span className="md:hidden">{isEnglish ? 'Previous' : 'Précédent'}</span>
+        </div>
+        <div className="flex-1">
+          <span className="hidden md:inline">{isEnglish ? 'Current inventory' : 'Inventaire en cours'}</span>
+          <span className="md:hidden">{isEnglish ? 'Current' : 'En cours'}</span>
+        </div>
+        <div className="flex-1 text-right pr-2">
+          <span className="hidden md:inline">{isEnglish ? 'Total value' : 'Valeur totale'}</span>
+          <span className="md:hidden">{isEnglish ? 'Total' : 'Total'}</span>
+        </div>
+        <div className="w-12 flex-shrink-0 hidden md:block"></div>
       </div>
 
       {/* Liste scrollable */}
@@ -322,7 +331,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                     </div>
                   )}
                 </div>
-                <div className="w-12 flex-shrink-0 flex items-center justify-end">
+                <div className="w-12 flex-shrink-0 flex items-center justify-end hidden md:flex">
                   {product.nonInventoriable ? (
                     <div 
                       className="w-7 h-7 rounded-lg flex items-center justify-center"

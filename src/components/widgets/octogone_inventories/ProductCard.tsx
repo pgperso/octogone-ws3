@@ -116,15 +116,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
 
   return (
     <div 
-      className="rounded-lg mb-4 overflow-hidden flex"
+      className="rounded-lg mb-4 overflow-hidden flex flex-col md:flex-row"
       style={{ 
         backgroundColor: 'transparent',
         border: '1px solid var(--outline)',
         minHeight: '200px'
       }}
     >
-      {/* Photo à gauche - 1/3 */}
-      <div className="relative flex-1 h-full" style={{ backgroundColor: 'var(--surface-variant)' }}>
+      {/* Layout mobile : 2 colonnes (photo + infos combinées) */}
+      {/* Layout desktop : 3 colonnes (photo + infos + graphique) */}
+      
+      {/* Photo à gauche - 1/3 desktop, 1/2 mobile */}
+      <div className="relative flex-1 md:flex-1 h-48 md:h-auto" style={{ backgroundColor: 'var(--surface-variant)' }}>
         {productImage ? (
           <Image
             src={productImage}
@@ -139,7 +142,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
         )}
       </div>
 
-      {/* Infos au centre - 1/3 */}
+      {/* Infos au centre - 1/3 desktop, 1/2 mobile (contient tout en mobile) */}
       <div className="flex-1 p-6 flex flex-col justify-between">
         {/* Nom du produit */}
         <div>
@@ -186,10 +189,95 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
             </div>
           </div>
         </div>
+        
+        {/* Graphique de stock - Intégré dans la même colonne en mobile */}
+        <div className="mt-6 md:hidden">
+          <div className="mb-3">
+            <div className="flex items-baseline justify-between mb-2">
+              <span className="text-xs font-medium" style={{ color: 'var(--on-surface-variant)' }}>
+                {isEnglish ? 'Current stock' : 'Stock actuel'}
+              </span>
+              <span className="text-sm font-bold" style={{ color: isBelowMinimum ? 'var(--error)' : 'var(--on-surface)' }}>
+                {actualStock} {translateUnit(product.unit, locale)}
+              </span>
+            </div>
+            <div className="flex items-baseline justify-between mb-2">
+              <span className="text-xs font-medium" style={{ color: 'var(--on-surface-variant)' }}>
+                {isEnglish ? 'Required minimum' : 'Minimum requis'}
+              </span>
+              <span className="text-sm font-medium" style={{ color: 'var(--on-surface-variant)' }}>
+                {minInventory} {translateUnit(product.unit, locale)}
+              </span>
+            </div>
+            <div className="flex items-baseline justify-between mb-3">
+              <span className="text-xs font-medium" style={{ color: 'var(--on-surface-variant)' }}>
+                {isEnglish ? 'Difference' : 'Différence'}
+              </span>
+              <span 
+                className="text-sm font-bold"
+                style={{ 
+                  color: difference >= 0 ? 'var(--success)' : 'var(--error)'
+                }}
+              >
+                {difference >= 0 ? '+' : ''}{difference} {translateUnit(product.unit, locale)}
+              </span>
+            </div>
+          </div>
+
+          {/* Barre de progression */}
+          <div className="mb-4">
+            <div className="h-2 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--surface)' }}>
+              <div 
+                className="h-full transition-all duration-300"
+                style={{ 
+                  width: `${percentage}%`,
+                  backgroundColor: isBelowMinimum ? 'var(--error)' : 'var(--success)'
+                }}
+              />
+            </div>
+            <div className="text-xs text-center mt-1" style={{ color: 'var(--on-surface-variant)' }}>
+              {percentage.toFixed(0)}%
+            </div>
+          </div>
+
+          {/* Barre de progression */}
+          <div className="mb-4">
+            <div className="h-2 rounded-full overflow-hidden" style={{ backgroundColor: 'var(--surface)' }}>
+              <div 
+                className="h-full transition-all duration-300"
+                style={{ 
+                  width: `${percentage}%`,
+                  backgroundColor: isBelowMinimum ? 'var(--error)' : 'var(--success)'
+                }}
+              />
+            </div>
+            <div className="text-xs text-center mt-1" style={{ color: 'var(--on-surface-variant)' }}>
+              {percentage.toFixed(0)}%
+            </div>
+          </div>
+        </div>
+
+        {/* Bouton Commander/Produire - En mobile */}
+        {onAddToOrder && (
+          <div className="mt-4 md:hidden">
+            <OctogoneButton
+              variant="primary"
+              size="lg"
+              onClick={onAddToOrder}
+              className="w-full"
+              icon={product.isRecipe ? <ChefHat size={20} /> : <ShoppingCart size={20} />}
+            >
+              {product.isRecipe 
+                ? (isEnglish ? 'Produce' : 'Produire')
+                : (isEnglish ? 'Order' : 'Commander')
+              }
+            </OctogoneButton>
+          </div>
+        )}
       </div>
 
-      {/* Troisième colonne - Graphique et bouton - 1/3 */}
-      <div className="flex-1 p-6 border-l flex flex-col justify-between" style={{ borderColor: 'var(--outline)' }}>
+      {/* Troisième colonne - Graphique et bouton - Desktop seulement */}
+      <div className="hidden md:flex flex-1 p-6 border-l flex-col justify-between" style={{ borderColor: 'var(--outline)' }}>
         {/* Graphique de stock */}
         <div>
           <div className="mb-3">
@@ -241,7 +329,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
           </div>
         </div>
 
-        {/* Bouton Commander/Produire - Toujours visible */}
+        {/* Bouton Commander/Produire - Desktop */}
         {onAddToOrder && (
           <OctogoneButton
             variant="primary"
