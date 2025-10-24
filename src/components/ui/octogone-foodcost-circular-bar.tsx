@@ -18,13 +18,13 @@ export const OctogoneFoodCostCircularBar: React.FC<OctogoneFoodCostCircularBarPr
   // Déterminer si la cible est respectée
   const isTargetMet = actualFoodCost <= targetFoodCost;
   
-  // Calculer le pourcentage de la barre (basé sur la cible)
-  const percentage = Math.min((actualFoodCost / targetFoodCost) * 100, 100);
+  // La barre représente la cible sur 100%
+  const targetPercentage = targetFoodCost; // Ex: 30% de cible = 30% de la barre
   
   // Rayon du cercle
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = circumference - (percentage / 100) * circumference;
+  const strokeDashoffset = circumference - (targetPercentage / 100) * circumference;
 
   return (
     <div className="relative inline-flex items-center justify-center">
@@ -58,19 +58,13 @@ export const OctogoneFoodCostCircularBar: React.FC<OctogoneFoodCostCircularBarPr
         />
       </svg>
       
-      {/* Texte au centre */}
-      <div className="absolute inset-0 flex flex-col items-center justify-center">
+      {/* Texte au centre - Seulement le food cost réel */}
+      <div className="absolute inset-0 flex items-center justify-center">
         <span 
-          className="text-2xl font-bold"
+          className="text-xl font-bold"
           style={{ color: isTargetMet ? 'var(--success)' : 'var(--error)' }}
         >
           {actualFoodCost.toFixed(1)}%
-        </span>
-        <span 
-          className="text-xs font-medium"
-          style={{ color: 'var(--on-surface-variant)' }}
-        >
-          / {targetFoodCost.toFixed(0)}%
         </span>
       </div>
     </div>
