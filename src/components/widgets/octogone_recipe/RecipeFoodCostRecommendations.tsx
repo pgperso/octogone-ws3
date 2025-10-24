@@ -1,7 +1,7 @@
 "use client";
 
-import React from 'react';
-import { TrendingDown, TrendingUp, CheckCircle } from 'lucide-react';
+import React, { useState } from 'react';
+import { TrendingDown, TrendingUp, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface RecipeFoodCostRecommendationsProps {
   actualFoodCost: number;
@@ -22,6 +22,7 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
   locale = 'fr'
 }) => {
   const isEnglish = locale === 'en';
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   // Déterminer l'état et les recommandations
   const getRecommendations = (): Recommendation => {
@@ -94,39 +95,82 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
   };
 
   const recommendation = getRecommendations();
+  const totalItems = recommendation.items.length;
+
+  const handlePrevious = () => {
+    setCurrentIndex((prev) => (prev === 0 ? totalItems - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev === totalItems - 1 ? 0 : prev + 1));
+  };
 
   return (
-    <div 
-      className="rounded-lg p-3 h-full flex flex-col justify-center"
-      style={{ 
-        backgroundColor: recommendation.bgColor,
-        border: `1px solid ${recommendation.color}`
-      }}
-    >
-      {/* Header avec icône et titre */}
-      <div className="flex items-center gap-2 mb-2">
-        <div style={{ color: recommendation.color }}>
-          {recommendation.icon}
-        </div>
-        <p 
-          className="text-sm font-bold"
-          style={{ color: recommendation.color }}
-        >
-          {recommendation.title}
-        </p>
-      </div>
+    <div className="h-full flex flex-col">
+      {/* Titre comme les autres widgets */}
+      <p 
+        className="text-xs font-medium mb-2"
+        style={{ color: 'var(--on-surface-variant)' }}
+      >
+        {isEnglish ? 'Recommendations' : 'Recommandations'}
+      </p>
 
-      {/* Recommandations en texte compact */}
-      <div className="space-y-1">
-        {recommendation.items.slice(0, 3).map((item, index) => (
+      {/* Container de la recommandation */}
+      <div 
+        className="rounded-lg p-3 flex-1 flex flex-col justify-between"
+        style={{ 
+          backgroundColor: recommendation.bgColor,
+          border: `1px solid ${recommendation.color}`
+        }}
+      >
+        {/* Header avec icône et statut */}
+        <div className="flex items-center gap-2 mb-3">
+          <div style={{ color: recommendation.color }}>
+            {recommendation.icon}
+          </div>
           <p 
-            key={index}
-            className="text-xs leading-tight"
+            className="text-sm font-bold flex-1"
+            style={{ color: recommendation.color }}
+          >
+            {recommendation.title}
+          </p>
+        </div>
+
+        {/* Recommandation actuelle */}
+        <div className="flex-1 flex items-center">
+          <p 
+            className="text-sm leading-tight"
             style={{ color: 'var(--on-surface)' }}
           >
-            • {item}
+            {recommendation.items[currentIndex]}
           </p>
-        ))}
+        </div>
+
+        {/* Navigation */}
+        {totalItems > 1 && (
+          <div className="flex items-center justify-between mt-3 pt-3 border-t" style={{ borderColor: recommendation.color }}>
+            <button
+              onClick={handlePrevious}
+              className="p-1 rounded hover:opacity-70 transition-opacity"
+              style={{ color: recommendation.color }}
+            >
+              <ChevronLeft size={16} />
+            </button>
+            <span 
+              className="text-xs font-medium"
+              style={{ color: recommendation.color }}
+            >
+              {currentIndex + 1} / {totalItems}
+            </span>
+            <button
+              onClick={handleNext}
+              className="p-1 rounded hover:opacity-70 transition-opacity"
+              style={{ color: recommendation.color }}
+            >
+              <ChevronRight size={16} />
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
