@@ -126,7 +126,7 @@ export const OctogoneQuantitySelector: React.FC<OctogoneQuantitySelectorProps> =
         onKeyDown={handleKeyDown}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
-        className={`w-20 text-center font-medium ${sizeClasses.input} bg-transparent outline-none`}
+        className={`w-20 text-center font-medium ${sizeClasses.input} bg-transparent outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none`}
         style={{
           color: 'var(--on-surface)',
           borderLeft: '1px solid var(--outline)',
