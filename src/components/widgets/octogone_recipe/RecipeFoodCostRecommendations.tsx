@@ -30,7 +30,7 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
     // Food Cost idéal : 28-32%
     if (actualFoodCost >= 28 && actualFoodCost <= 32) {
       return {
-        icon: <CheckCircle size={20} />,
+        icon: <CheckCircle size={28} />,
         title: isEnglish ? 'Excellent Balance' : 'Excellent Équilibre',
         items: isEnglish ? [
           'Food cost in optimal range',
@@ -51,7 +51,7 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
     // Food Cost trop bas : <28%
     if (actualFoodCost < 28) {
       return {
-        icon: <TrendingDown size={20} />,
+        icon: <TrendingDown size={28} />,
         title: isEnglish ? 'Low Food Cost' : 'Food Cost Bas',
         items: isEnglish ? [
           'Food cost below optimal range',
@@ -73,7 +73,7 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
     
     // Food Cost trop élevé : >32%
     return {
-      icon: <TrendingUp size={20} />,
+      icon: <TrendingUp size={28} />,
       title: isEnglish ? 'High Food Cost' : 'Food Cost Élevé',
       items: isEnglish ? [
         'Food cost above optimal range',
@@ -107,24 +107,26 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
         {isEnglish ? 'Recommendations' : 'Recommandations'}
       </p>
 
-      {/* Container cliquable - même hauteur que les métriques */}
+      {/* Container cliquable - EXACTEMENT comme les métriques */}
       <div 
-        className="px-4 py-2 rounded-lg flex items-center gap-3 flex-1 cursor-pointer transition-all hover:opacity-80"
+        className="px-4 py-2 rounded-lg text-center flex items-center justify-center flex-1 cursor-pointer transition-all hover:opacity-80"
         style={{ 
           backgroundColor: recommendation.bgColor,
           border: `1px solid ${recommendation.color}`
         }}
         onClick={onClick}
       >
-        <div style={{ color: recommendation.color }} className="flex-shrink-0">
-          {recommendation.icon}
+        <div className="flex items-center gap-2">
+          <div style={{ color: recommendation.color }} className="flex-shrink-0">
+            {recommendation.icon}
+          </div>
+          <p 
+            className="text-2xl font-bold whitespace-nowrap"
+            style={{ color: recommendation.color }}
+          >
+            {recommendation.title}
+          </p>
         </div>
-        <p 
-          className="text-xs font-medium leading-tight flex-1 whitespace-nowrap overflow-hidden text-ellipsis"
-          style={{ color: recommendation.color }}
-        >
-          {recommendation.title} - {isEnglish ? 'See recommendations' : 'Voir les recommandations'}
-        </p>
       </div>
     </div>
   );
