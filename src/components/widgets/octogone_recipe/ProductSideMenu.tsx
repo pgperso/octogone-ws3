@@ -62,10 +62,10 @@ export const ProductSideMenu: React.FC<ProductSideMenuProps> = ({
           {/* Overlay avec animation de fade */}
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={{ opacity: 0.5 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="absolute inset-0 bg-black bg-opacity-50"
+            className="absolute inset-0 bg-black"
             onClick={onClose}
           />
 
