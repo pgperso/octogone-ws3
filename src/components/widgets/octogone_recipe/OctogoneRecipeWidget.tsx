@@ -8,6 +8,7 @@ import { RecipeSteps } from './RecipeSteps';
 import { ProductSideMenu } from './ProductSideMenu';
 import { RecipeSettingsModal } from './RecipeSettingsModal';
 import { OctogoneButton } from '@/components/ui/octogone-button';
+import { OctogoneFoodCostCircularBar } from '@/components/ui/octogone-foodcost-circular-bar';
 import inventoryData from '@/data/products/octogone_products_data.json';
 
 interface Product {
@@ -358,30 +359,36 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
               </p>
             </div>
 
-            {/* Food Cost */}
+            {/* Prix de vente */}
             <div className="text-right">
               <p 
                 className="text-xs font-medium mb-1"
                 style={{ color: 'var(--on-surface-variant)' }}
               >
+                {isEnglish ? 'Selling Price' : 'Prix de Vente'}
+              </p>
+              <p 
+                className="text-2xl font-bold"
+                style={{ color: 'var(--primary)' }}
+              >
+                {sellingPrice.toFixed(2)} $
+              </p>
+            </div>
+
+            {/* Food Cost - Barre circulaire */}
+            <div className="flex flex-col items-center">
+              <p 
+                className="text-xs font-medium mb-2"
+                style={{ color: 'var(--on-surface-variant)' }}
+              >
                 Food Cost
               </p>
-              <div className="flex items-baseline gap-2">
-                <p 
-                  className="text-2xl font-bold"
-                  style={{ 
-                    color: calculateFoodCostPercentage() <= targetFoodCost ? 'var(--success)' : 'var(--error)'
-                  }}
-                >
-                  {calculateFoodCostPercentage().toFixed(1)}%
-                </p>
-                <p 
-                  className="text-sm"
-                  style={{ color: 'var(--on-surface-variant)' }}
-                >
-                  / {targetFoodCost}%
-                </p>
-              </div>
+              <OctogoneFoodCostCircularBar
+                actualFoodCost={calculateFoodCostPercentage()}
+                targetFoodCost={targetFoodCost}
+                size={80}
+                strokeWidth={6}
+              />
             </div>
 
             {/* Bouton Paramètres */}
