@@ -45,6 +45,13 @@ export const RecipeSettingsSideMenu: React.FC<RecipeSettingsSideMenuProps> = ({
     setCat(category);
   }, [recipeName, sellingPrice, targetFoodCost, category]);
 
+  // Détecter si des changements ont été faits
+  const hasChanges = 
+    name !== recipeName ||
+    price !== sellingPrice ||
+    foodCost !== targetFoodCost ||
+    cat !== category;
+
   const handleSave = () => {
     onSave({
       recipeName: name,
@@ -58,14 +65,14 @@ export const RecipeSettingsSideMenu: React.FC<RecipeSettingsSideMenuProps> = ({
   return (
     <AnimatePresence>
       {isOpen && (
-        <>
-          {/* Overlay de fond */}
+        <div className="absolute inset-0 z-50 p-4">
+          {/* Overlay avec animation de fade */}
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={{ opacity: 0.5 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="absolute inset-0 bg-black bg-opacity-50 z-30"
+            transition={{ duration: 0.3 }}
+            className="absolute inset-0 bg-black"
             onClick={onClose}
           />
 
@@ -112,8 +119,8 @@ export const RecipeSettingsSideMenu: React.FC<RecipeSettingsSideMenuProps> = ({
             </div>
 
             {/* Contenu scrollable */}
-            <div className="flex-1 overflow-y-auto p-6">
-              <div className="space-y-6">
+            <div className="flex-1 overflow-y-auto">
+              <div className="p-6 space-y-6">
         {/* Nom de la recette */}
         <div>
           <label
@@ -204,9 +211,19 @@ export const RecipeSettingsSideMenu: React.FC<RecipeSettingsSideMenuProps> = ({
             <option value="side">{isEnglish ? 'Side Dish' : 'Accompagnement'}</option>
           </select>
         </div>
+              </div>
+            </div>
 
-                {/* Boutons */}
-                <div className="flex gap-3 pt-4">
+            {/* Boutons fixés en bas - Affichés seulement si changements */}
+            {hasChanges && (
+              <div 
+                className="p-4 border-t"
+                style={{ 
+                  backgroundColor: 'var(--surface-container)',
+                  borderColor: 'var(--outline)'
+                }}
+              >
+                <div className="flex gap-3">
                   <OctogoneButton
                     variant="secondary"
                     size="md"
@@ -225,9 +242,9 @@ export const RecipeSettingsSideMenu: React.FC<RecipeSettingsSideMenuProps> = ({
                   </OctogoneButton>
                 </div>
               </div>
-            </div>
+            )}
           </motion.div>
-        </>
+        </div>
       )}
     </AnimatePresence>
   );
