@@ -223,10 +223,8 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
     setCategory(settings.category);
   };
 
-  const totalCost = calculateTotalCost();
   const costPerPortion = calculateCostPerPortion();
   const foodCostPercentage = calculateFoodCostPercentage();
-  const grossMargin = calculateGrossMargin();
 
   return (
     <div 
