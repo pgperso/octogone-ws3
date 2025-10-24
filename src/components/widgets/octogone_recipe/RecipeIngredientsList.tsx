@@ -40,11 +40,47 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
 }) => {
   const isEnglish = locale === 'en';
 
+  // Fonction de conversion d'unités vers l'unité de base du produit
+  const convertToBaseUnit = (quantity: number, fromUnit: string, toUnit: string): number => {
+    if (fromUnit === toUnit) return quantity;
+
+    // Conversions de poids
+    const weightConversions: Record<string, number> = {
+      'kg': 1,
+      'g': 0.001,
+      'lb': 0.453592,
+      'oz': 0.0283495
+    };
+
+    // Conversions de volume
+    const volumeConversions: Record<string, number> = {
+      'L': 1,
+      'mL': 0.001
+    };
+
+    // Si les deux unités sont dans le même système
+    if (weightConversions[fromUnit] && weightConversions[toUnit]) {
+      return (quantity * weightConversions[fromUnit]) / weightConversions[toUnit];
+    }
+    if (volumeConversions[fromUnit] && volumeConversions[toUnit]) {
+      return (quantity * volumeConversions[fromUnit]) / volumeConversions[toUnit];
+    }
+
+    // Si pas de conversion possible, retourner la quantité telle quelle
+    return quantity;
+  };
+
+  // Calculer le coût d'un ingrédient avec conversion d'unité
+  const calculateIngredientCost = (ingredient: RecipeIngredient, product: Product): number => {
+    const convertedQuantity = convertToBaseUnit(ingredient.quantity, ingredient.unit, product.unit);
+    return convertedQuantity * product.unitCost;
+  };
+
   // Calculer le coût total
   const totalCost = ingredients.reduce((sum, ingredient) => {
     const product = products.find(p => p.id === ingredient.productId);
     if (!product) return sum;
-    return sum + (ingredient.quantity * product.unitCost);
+    return sum + calculateIngredientCost(ingredient, product);
   }, 0);
 
   return (
@@ -90,7 +126,7 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
             const product = products.find(p => p.id === ingredient.productId);
             if (!product) return null;
 
-            const ingredientCost = ingredient.quantity * product.unitCost;
+            const ingredientCost = calculateIngredientCost(ingredient, product);
 
             return (
               <div
