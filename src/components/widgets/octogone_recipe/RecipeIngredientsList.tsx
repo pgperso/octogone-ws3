@@ -108,12 +108,23 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
         style={{ borderColor: 'var(--outline)' }}
       >
         <div className="flex items-center justify-between">
-          <h4 
-            className="text-lg font-semibold"
-            style={{ color: 'var(--on-surface)' }}
-          >
-            {isEnglish ? 'Ingredients' : 'Ingrédients'}
-          </h4>
+          <div className="flex items-center gap-2">
+            <h4 
+              className="text-lg font-semibold"
+              style={{ color: 'var(--on-surface)' }}
+            >
+              {isEnglish ? 'Ingredients' : 'Ingrédients'}
+            </h4>
+            <span
+              className="px-2 py-0.5 rounded-full text-xs font-semibold"
+              style={{
+                backgroundColor: 'var(--secondary-container)',
+                color: 'var(--on-secondary-container)'
+              }}
+            >
+              {ingredients.length}
+            </span>
+          </div>
           
           <div className="flex items-center gap-3">
             {/* Toggle multiplicateur */}
@@ -187,7 +198,7 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
                     className="text-sm font-bold mx-4"
                     style={{ color: 'var(--primary)' }}
                   >
-                    {displayedQuantity} {translateUnit(ingredient.unit, locale)}
+                    {displayedQuantity.toFixed(2).replace(/\.?0+$/, '')} {translateUnit(ingredient.unit, locale)}
                   </p>
 
                   {/* Coût */}

@@ -51,7 +51,7 @@ export const OctogoneToggle: React.FC<OctogoneToggleProps> = ({
           <button
             key={option.value}
             onClick={() => onChange(option.value)}
-            className={`${sizeClasses} rounded-md font-medium transition-all flex items-center gap-2`}
+            className={`${sizeClasses} rounded-md font-medium transition-all flex items-center gap-2 cursor-pointer`}
             style={{
               backgroundColor: isActive ? 'var(--secondary-container)' : 'transparent',
               color: isActive ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)'
