@@ -199,7 +199,7 @@ export const RecipeSettingsModal: React.FC<RecipeSettingsModalProps> = ({
                     className="block text-sm font-medium mb-2"
                     style={{ color: 'var(--on-surface)' }}
                   >
-                    {isEnglish ? 'Portions' : 'Portions'}
+                    {isEnglish ? 'Yield (portions)' : 'Rendement (portions)'}
                   </label>
                   <input
                     type="number"
