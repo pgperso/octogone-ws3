@@ -5,6 +5,7 @@ import { Plus, Trash2 } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { OctogoneUnitSelector } from '@/components/ui/octogone-unit-selector';
 import { OctogoneQuantitySelector } from '@/components/ui/octogone-quantity-selector';
+import { RecipeMultiplierToggle } from './RecipeMultiplierToggle';
 import { translateProduct, translateUnit } from '@/data/products/octogone_products_translations';
 
 interface Product {
@@ -29,6 +30,10 @@ interface RecipeIngredientsListProps {
   onAddIngredient: () => void;
   onRemoveIngredient: (productId: string) => void;
   onUpdateIngredient: (productId: string, quantity: number, unit?: string) => void;
+  isMultiplierView: boolean;
+  multiplier: number;
+  onToggleMultiplier: (enabled: boolean) => void;
+  onMultiplierChange: (value: number) => void;
   locale?: 'fr' | 'en';
 }
 
@@ -38,6 +43,10 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
   onAddIngredient,
   onRemoveIngredient,
   onUpdateIngredient,
+  isMultiplierView,
+  multiplier,
+  onToggleMultiplier,
+  onMultiplierChange,
   locale = 'fr'
 }) => {
   const isEnglish = locale === 'en';
@@ -95,23 +104,34 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
     >
       {/* En-tête */}
       <div 
-        className="flex items-center justify-between p-4 border-b"
+        className="p-4 border-b"
         style={{ borderColor: 'var(--outline)' }}
       >
-        <h4 
-          className="text-lg font-semibold"
-          style={{ color: 'var(--on-surface)' }}
-        >
-          {isEnglish ? 'Ingredients' : 'Ingrédients'}
-        </h4>
-        <OctogoneButton
-          variant="primary"
-          size="sm"
-          onClick={onAddIngredient}
-          icon={<Plus size={16} />}
-        >
-          {isEnglish ? 'Add' : 'Ajouter'}
-        </OctogoneButton>
+        <div className="flex items-center justify-between mb-3">
+          <h4 
+            className="text-lg font-semibold"
+            style={{ color: 'var(--on-surface)' }}
+          >
+            {isEnglish ? 'Ingredients' : 'Ingrédients'}
+          </h4>
+          <OctogoneButton
+            variant="primary"
+            size="sm"
+            onClick={onAddIngredient}
+            icon={<Plus size={16} />}
+          >
+            {isEnglish ? 'Add' : 'Ajouter'}
+          </OctogoneButton>
+        </div>
+        
+        {/* Toggle multiplicateur */}
+        <RecipeMultiplierToggle
+          isMultiplierView={isMultiplierView}
+          multiplier={multiplier}
+          onToggle={onToggleMultiplier}
+          onMultiplierChange={onMultiplierChange}
+          locale={locale}
+        />
       </div>
 
       {/* Liste des ingrédients */}
@@ -128,6 +148,9 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
             const product = products.find(p => p.id === ingredient.productId);
             if (!product) return null;
 
+            // Quantité affichée (multipliée si vue multiplicateur activée)
+            const displayedQuantity = isMultiplierView ? ingredient.quantity * multiplier : ingredient.quantity;
+            
             const ingredientCost = calculateIngredientCost(ingredient, product);
 
             const unitOptions = (product.availableUnits || [product.unit]).map(unit => ({
@@ -156,8 +179,13 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
 
                 {/* Sélecteur de quantité avec OctogoneQuantitySelector */}
                 <OctogoneQuantitySelector
-                  value={ingredient.quantity}
-                  onChange={(newQuantity) => onUpdateIngredient(ingredient.productId, newQuantity)}
+                  value={displayedQuantity}
+                  onChange={(newQuantity) => {
+                    // En mode multiplicateur, on ne peut pas éditer (affichage seulement)
+                    if (!isMultiplierView) {
+                      onUpdateIngredient(ingredient.productId, newQuantity);
+                    }
+                  }}
                   min={0}
                   step={0.1}
                   size="sm"

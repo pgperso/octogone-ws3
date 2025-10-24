@@ -10,13 +10,11 @@ interface RecipeSettingsModalProps {
   onClose: () => void;
   recipeName: string;
   sellingPrice: number;
-  portions: number;
   targetFoodCost: number;
   category: string;
   onSave: (settings: {
     recipeName: string;
     sellingPrice: number;
-    portions: number;
     targetFoodCost: number;
     category: string;
   }) => void;
@@ -28,7 +26,6 @@ export const RecipeSettingsModal: React.FC<RecipeSettingsModalProps> = ({
   onClose,
   recipeName: initialRecipeName,
   sellingPrice: initialSellingPrice,
-  portions: initialPortions,
   targetFoodCost: initialTargetFoodCost,
   category: initialCategory,
   onSave,
@@ -39,7 +36,6 @@ export const RecipeSettingsModal: React.FC<RecipeSettingsModalProps> = ({
   // États locaux pour le formulaire
   const [recipeName, setRecipeName] = useState(initialRecipeName);
   const [sellingPrice, setSellingPrice] = useState(initialSellingPrice);
-  const [portions, setPortions] = useState(initialPortions);
   const [targetFoodCost, setTargetFoodCost] = useState(initialTargetFoodCost);
   const [category, setCategory] = useState(initialCategory);
 
@@ -48,17 +44,15 @@ export const RecipeSettingsModal: React.FC<RecipeSettingsModalProps> = ({
     if (isOpen) {
       setRecipeName(initialRecipeName);
       setSellingPrice(initialSellingPrice);
-      setPortions(initialPortions);
       setTargetFoodCost(initialTargetFoodCost);
       setCategory(initialCategory);
     }
-  }, [isOpen, initialRecipeName, initialSellingPrice, initialPortions, initialTargetFoodCost, initialCategory]);
+  }, [isOpen, initialRecipeName, initialSellingPrice, initialTargetFoodCost, initialCategory]);
 
   const handleSave = () => {
     onSave({
       recipeName,
       sellingPrice,
-      portions,
       targetFoodCost,
       category
     });
@@ -191,65 +185,33 @@ export const RecipeSettingsModal: React.FC<RecipeSettingsModalProps> = ({
                 </select>
               </div>
 
-              {/* Grid pour les champs numériques */}
-              <div className="grid grid-cols-2 gap-4">
-                {/* Nombre de portions */}
-                <div>
-                  <label
-                    className="block text-sm font-medium mb-2"
-                    style={{ color: 'var(--on-surface)' }}
-                  >
-                    {isEnglish ? 'Yield (portions)' : 'Rendement (portions)'}
-                  </label>
-                  <input
-                    type="number"
-                    value={portions}
-                    onChange={(e) => setPortions(parseFloat(e.target.value) || 1)}
-                    min="1"
-                    step="1"
-                    className="w-full px-4 py-2.5 rounded-lg text-base transition-all"
-                    style={{
-                      backgroundColor: 'var(--surface-variant)',
-                      color: 'var(--on-surface)',
-                      border: '2px solid var(--outline)'
-                    }}
-                    onFocus={(e) => {
-                      e.currentTarget.style.borderColor = 'var(--primary)';
-                    }}
-                    onBlur={(e) => {
-                      e.currentTarget.style.borderColor = 'var(--outline)';
-                    }}
-                  />
-                </div>
-
-                {/* Prix de vente */}
-                <div>
-                  <label
-                    className="block text-sm font-medium mb-2"
-                    style={{ color: 'var(--on-surface)' }}
-                  >
-                    {isEnglish ? 'Selling Price ($)' : 'Prix de Vente ($)'}
-                  </label>
-                  <input
-                    type="number"
-                    value={sellingPrice}
-                    onChange={(e) => setSellingPrice(parseFloat(e.target.value) || 0)}
-                    min="0"
-                    step="0.01"
-                    className="w-full px-4 py-2.5 rounded-lg text-base transition-all"
-                    style={{
-                      backgroundColor: 'var(--surface-variant)',
-                      color: 'var(--on-surface)',
-                      border: '2px solid var(--outline)'
-                    }}
-                    onFocus={(e) => {
-                      e.currentTarget.style.borderColor = 'var(--primary)';
-                    }}
-                    onBlur={(e) => {
-                      e.currentTarget.style.borderColor = 'var(--outline)';
-                    }}
-                  />
-                </div>
+              {/* Prix de vente */}
+              <div>
+                <label
+                  className="block text-sm font-medium mb-2"
+                  style={{ color: 'var(--on-surface)' }}
+                >
+                  {isEnglish ? 'Selling Price ($)' : 'Prix de Vente ($)'}
+                </label>
+                <input
+                  type="number"
+                  value={sellingPrice}
+                  onChange={(e) => setSellingPrice(parseFloat(e.target.value) || 0)}
+                  min="0"
+                  step="0.01"
+                  className="w-full px-4 py-2.5 rounded-lg text-base transition-all"
+                  style={{
+                    backgroundColor: 'var(--surface-variant)',
+                    color: 'var(--on-surface)',
+                    border: '2px solid var(--outline)'
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.borderColor = 'var(--primary)';
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.borderColor = 'var(--outline)';
+                  }}
+                />
               </div>
 
               {/* Cible Food Cost */}

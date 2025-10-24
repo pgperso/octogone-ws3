@@ -51,11 +51,14 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
   const [recipeImage] = useState('/products/supreme-cheesburger.avif');
   const [targetFoodCost, setTargetFoodCost] = useState(30); // Cible en %
   const [sellingPrice, setSellingPrice] = useState(15.99); // Prix de vente
-  const [portions, setPortions] = useState(1); // Nombre de portions
   const [category, setCategory] = useState('main'); // Catégorie
   
   // État du modal de paramètres
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  
+  // État du multiplicateur de recette
+  const [isMultiplierView, setIsMultiplierView] = useState(false);
+  const [multiplier, setMultiplier] = useState(1);
   
   // État pour les ingrédients de la recette
   const [ingredients, setIngredients] = useState<RecipeIngredient[]>([
@@ -190,10 +193,9 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
     }, 0);
   };
 
-  // Calculer le coût par portion
+  // Calculer le coût par portion (toujours sur la recette de base)
   const calculateCostPerPortion = (): number => {
-    const totalCost = calculateTotalCost();
-    return portions > 0 ? totalCost / portions : totalCost;
+    return calculateTotalCost();
   };
 
   // Calculer le food cost en pourcentage
@@ -207,13 +209,11 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
   const handleSaveSettings = (settings: {
     recipeName: string;
     sellingPrice: number;
-    portions: number;
     targetFoodCost: number;
     category: string;
   }) => {
     setRecipeName(settings.recipeName);
     setSellingPrice(settings.sellingPrice);
-    setPortions(settings.portions);
     setTargetFoodCost(settings.targetFoodCost);
     setCategory(settings.category);
   };
@@ -406,6 +406,10 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
           onAddIngredient={() => setIsSideMenuOpen(true)}
           onRemoveIngredient={handleRemoveIngredient}
           onUpdateIngredient={handleUpdateIngredient}
+          isMultiplierView={isMultiplierView}
+          multiplier={multiplier}
+          onToggleMultiplier={setIsMultiplierView}
+          onMultiplierChange={setMultiplier}
           locale={locale}
         />
 
@@ -439,7 +443,6 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
         onClose={() => setIsSettingsOpen(false)}
         recipeName={recipeName}
         sellingPrice={sellingPrice}
-        portions={portions}
         targetFoodCost={targetFoodCost}
         category={category}
         onSave={handleSaveSettings}
