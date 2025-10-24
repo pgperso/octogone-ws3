@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useState } from 'react';
-import { TrendingDown, TrendingUp, CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react';
+import React from 'react';
+import { TrendingDown, TrendingUp, CheckCircle } from 'lucide-react';
 
 interface RecipeFoodCostRecommendationsProps {
   actualFoodCost: number;
   targetFoodCost?: number; // Optionnel, utilisé pour référence future
   locale?: 'fr' | 'en';
+  onClick: () => void;
 }
 
 interface Recommendation {
@@ -19,10 +20,10 @@ interface Recommendation {
 
 export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendationsProps> = ({
   actualFoodCost,
-  locale = 'fr'
+  locale = 'fr',
+  onClick
 }) => {
   const isEnglish = locale === 'en';
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   // Déterminer l'état et les recommandations
   const getRecommendations = (): Recommendation => {
@@ -95,18 +96,9 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
   };
 
   const recommendation = getRecommendations();
-  const totalItems = recommendation.items.length;
-
-  const handlePrevious = () => {
-    setCurrentIndex((prev) => (prev === 0 ? totalItems - 1 : prev - 1));
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev === totalItems - 1 ? 0 : prev + 1));
-  };
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="flex flex-col self-stretch">
       {/* Titre comme les autres widgets */}
       <p 
         className="text-xs font-medium mb-2"
@@ -115,62 +107,24 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
         {isEnglish ? 'Recommendations' : 'Recommandations'}
       </p>
 
-      {/* Container de la recommandation */}
+      {/* Container cliquable - même style que les métriques */}
       <div 
-        className="rounded-lg p-3 flex-1 flex flex-col justify-between"
+        className="px-4 py-2 rounded-lg text-center flex flex-col items-center justify-center flex-1 cursor-pointer transition-all hover:opacity-80"
         style={{ 
           backgroundColor: recommendation.bgColor,
-          border: `1px solid ${recommendation.color}`
+          border: `2px solid ${recommendation.color}`
         }}
+        onClick={onClick}
       >
-        {/* Header avec icône et statut */}
-        <div className="flex items-center gap-2 mb-3">
-          <div style={{ color: recommendation.color }}>
-            {recommendation.icon}
-          </div>
-          <p 
-            className="text-sm font-bold flex-1"
-            style={{ color: recommendation.color }}
-          >
-            {recommendation.title}
-          </p>
+        <div style={{ color: recommendation.color }} className="mb-2">
+          {recommendation.icon}
         </div>
-
-        {/* Recommandation actuelle */}
-        <div className="flex-1 flex items-center">
-          <p 
-            className="text-sm leading-tight"
-            style={{ color: 'var(--on-surface)' }}
-          >
-            {recommendation.items[currentIndex]}
-          </p>
-        </div>
-
-        {/* Navigation */}
-        {totalItems > 1 && (
-          <div className="flex items-center justify-between mt-3 pt-3 border-t" style={{ borderColor: recommendation.color }}>
-            <button
-              onClick={handlePrevious}
-              className="p-1 rounded hover:opacity-70 transition-opacity"
-              style={{ color: recommendation.color }}
-            >
-              <ChevronLeft size={16} />
-            </button>
-            <span 
-              className="text-xs font-medium"
-              style={{ color: recommendation.color }}
-            >
-              {currentIndex + 1} / {totalItems}
-            </span>
-            <button
-              onClick={handleNext}
-              className="p-1 rounded hover:opacity-70 transition-opacity"
-              style={{ color: recommendation.color }}
-            >
-              <ChevronRight size={16} />
-            </button>
-          </div>
-        )}
+        <p 
+          className="text-sm font-bold leading-tight"
+          style={{ color: recommendation.color }}
+        >
+          {recommendation.title}
+        </p>
       </div>
     </div>
   );

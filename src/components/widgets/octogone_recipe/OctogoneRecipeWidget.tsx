@@ -8,6 +8,7 @@ import { RecipeSteps } from './RecipeSteps';
 import { ProductSideMenu } from './ProductSideMenu';
 import { RecipeSettingsSideMenu } from './RecipeSettingsSideMenu';
 import { RecipeFoodCostRecommendations } from './RecipeFoodCostRecommendations';
+import { RecipeRecommendationsModal } from './RecipeRecommendationsModal';
 import { OctogoneFoodCostCircularBar } from '@/components/ui/octogone-foodcost-circular-bar';
 import inventoryData from '@/data/products/octogone_products_data.json';
 
@@ -56,6 +57,9 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
   
   // État du side menu de paramètres
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  
+  // État du modal de recommandations
+  const [isRecommendationsOpen, setIsRecommendationsOpen] = useState(false);
   
   // État du multiplicateur de recette
   const [isMultiplierView, setIsMultiplierView] = useState(false);
@@ -431,6 +435,7 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
           <RecipeFoodCostRecommendations
             actualFoodCost={calculateFoodCostPercentage()}
             locale={locale}
+            onClick={() => setIsRecommendationsOpen(true)}
           />
         </div>
       </div>
@@ -484,6 +489,14 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
         targetFoodCost={targetFoodCost}
         category={category}
         onSave={handleSaveSettings}
+        locale={locale}
+      />
+
+      {/* Modal de recommandations */}
+      <RecipeRecommendationsModal
+        isOpen={isRecommendationsOpen}
+        onClose={() => setIsRecommendationsOpen(false)}
+        actualFoodCost={calculateFoodCostPercentage()}
         locale={locale}
       />
     </div>
