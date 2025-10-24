@@ -107,34 +107,36 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
         className="p-4 border-b"
         style={{ borderColor: 'var(--outline)' }}
       >
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center justify-between">
           <h4 
             className="text-lg font-semibold"
             style={{ color: 'var(--on-surface)' }}
           >
             {isEnglish ? 'Ingredients' : 'Ingrédients'}
           </h4>
-          {/* Bouton Ajouter visible seulement en vue originale */}
-          {!isMultiplierView && (
+          
+          <div className="flex items-center gap-3">
+            {/* Toggle multiplicateur */}
+            <RecipeMultiplierToggle
+              isMultiplierView={isMultiplierView}
+              multiplier={multiplier}
+              onToggle={onToggleMultiplier}
+              onMultiplierChange={onMultiplierChange}
+              locale={locale}
+            />
+            
+            {/* Bouton Ajouter (désactivé en mode multiplier) */}
             <OctogoneButton
               variant="primary"
               size="sm"
               onClick={onAddIngredient}
               icon={<Plus size={16} />}
+              disabled={isMultiplierView}
             >
               {isEnglish ? 'Add' : 'Ajouter'}
             </OctogoneButton>
-          )}
+          </div>
         </div>
-        
-        {/* Toggle multiplicateur */}
-        <RecipeMultiplierToggle
-          isMultiplierView={isMultiplierView}
-          multiplier={multiplier}
-          onToggle={onToggleMultiplier}
-          onMultiplierChange={onMultiplierChange}
-          locale={locale}
-        />
       </div>
 
       {/* Liste des ingrédients */}
