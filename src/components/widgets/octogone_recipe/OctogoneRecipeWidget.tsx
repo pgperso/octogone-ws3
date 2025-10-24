@@ -431,7 +431,7 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
         </div>
 
         {/* Recommandations - Colonne séparée à droite */}
-        <div className="flex items-stretch">
+        <div className="flex items-end">
           <RecipeFoodCostRecommendations
             actualFoodCost={calculateFoodCostPercentage()}
             locale={locale}
