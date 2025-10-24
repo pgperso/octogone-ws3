@@ -98,7 +98,7 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
   const recommendation = getRecommendations();
 
   return (
-    <div className="flex flex-col self-stretch">
+    <div className="flex flex-col h-full">
       {/* Titre comme les autres widgets */}
       <p 
         className="text-xs font-medium mb-2"
