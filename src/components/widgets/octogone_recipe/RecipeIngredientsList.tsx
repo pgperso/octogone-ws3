@@ -114,14 +114,17 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
           >
             {isEnglish ? 'Ingredients' : 'Ingrédients'}
           </h4>
-          <OctogoneButton
-            variant="primary"
-            size="sm"
-            onClick={onAddIngredient}
-            icon={<Plus size={16} />}
-          >
-            {isEnglish ? 'Add' : 'Ajouter'}
-          </OctogoneButton>
+          {/* Bouton Ajouter visible seulement en vue originale */}
+          {!isMultiplierView && (
+            <OctogoneButton
+              variant="primary"
+              size="sm"
+              onClick={onAddIngredient}
+              icon={<Plus size={16} />}
+            >
+              {isEnglish ? 'Add' : 'Ajouter'}
+            </OctogoneButton>
+          )}
         </div>
         
         {/* Toggle multiplicateur */}
@@ -158,6 +161,45 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
               label: translateUnit(unit, locale)
             }));
 
+            // Vue Multiplication (lecture seule)
+            if (isMultiplierView) {
+              return (
+                <div
+                  key={ingredient.productId}
+                  className="flex items-center justify-between p-3 rounded-lg"
+                  style={{ 
+                    backgroundColor: 'var(--surface)',
+                    border: '1px solid var(--outline)'
+                  }}
+                >
+                  {/* Nom du produit */}
+                  <p 
+                    className="text-sm font-medium flex-1"
+                    style={{ color: 'var(--on-surface)' }}
+                  >
+                    {translateProduct(product.name, locale)}
+                  </p>
+
+                  {/* Quantité (texte simple) */}
+                  <p 
+                    className="text-sm font-bold mx-4"
+                    style={{ color: 'var(--primary)' }}
+                  >
+                    {displayedQuantity} {translateUnit(ingredient.unit, locale)}
+                  </p>
+
+                  {/* Coût */}
+                  <span 
+                    className="text-sm font-semibold w-20 text-right"
+                    style={{ color: 'var(--on-surface)' }}
+                  >
+                    {(ingredientCost * multiplier).toFixed(2)} $
+                  </span>
+                </div>
+              );
+            }
+
+            // Vue Originale (éditable)
             return (
               <div
                 key={ingredient.productId}
@@ -179,13 +221,8 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
 
                 {/* Sélecteur de quantité avec OctogoneQuantitySelector */}
                 <OctogoneQuantitySelector
-                  value={displayedQuantity}
-                  onChange={(newQuantity) => {
-                    // En mode multiplicateur, on ne peut pas éditer (affichage seulement)
-                    if (!isMultiplierView) {
-                      onUpdateIngredient(ingredient.productId, newQuantity);
-                    }
-                  }}
+                  value={ingredient.quantity}
+                  onChange={(newQuantity) => onUpdateIngredient(ingredient.productId, newQuantity)}
                   min={0}
                   step={0.1}
                   size="sm"
