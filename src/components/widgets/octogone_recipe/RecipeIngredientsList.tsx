@@ -8,6 +8,7 @@ import { OctogoneUnitSelector } from '@/components/ui/octogone-unit-selector';
 import { OctogoneQuantitySelector } from '@/components/ui/octogone-quantity-selector';
 import { RecipeMultiplierToggle } from './RecipeMultiplierToggle';
 import { translateProduct, translateUnit } from '@/data/products/octogone_products_translations';
+import { getProductImage } from '@/utils/productImageMapping';
 
 interface Product {
   id: string;
@@ -172,16 +173,9 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
             // Vue Multiplication (lecture seule)
             if (isMultiplierView) {
               return (
-                <div
-                  key={ingredient.productId}
-                  className="flex items-center justify-between p-3 rounded-lg"
-                  style={{ 
-                    backgroundColor: 'var(--surface)',
-                    border: '1px solid var(--outline)'
-                  }}
-                >
-                  {/* Image du produit (cachée sur mobile) */}
-                  <div className="hidden md:block flex-shrink-0 mr-3">
+                <div key={ingredient.productId} className="flex items-center gap-3">
+                  {/* Image du produit à gauche (cachée sur mobile) */}
+                  <div className="hidden md:block flex-shrink-0">
                     <div 
                       className="w-10 h-10 rounded-lg overflow-hidden"
                       style={{ 
@@ -190,7 +184,7 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
                       }}
                     >
                       <Image
-                        src={product.image || '/products/placeholder.png'}
+                        src={product.image || getProductImage(product.name)}
                         alt={product.name}
                         width={40}
                         height={40}
@@ -199,13 +193,21 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
                     </div>
                   </div>
 
-                  {/* Nom du produit */}
-                  <p 
-                    className="text-sm font-medium flex-1"
-                    style={{ color: 'var(--on-surface)' }}
+                  {/* Row du produit */}
+                  <div
+                    className="flex items-center justify-between p-3 rounded-lg flex-1"
+                    style={{ 
+                      backgroundColor: 'var(--surface)',
+                      border: '1px solid var(--outline)'
+                    }}
                   >
-                    {translateProduct(product.name, locale)}
-                  </p>
+                    {/* Nom du produit */}
+                    <p 
+                      className="text-sm font-medium flex-1"
+                      style={{ color: 'var(--on-surface)' }}
+                    >
+                      {translateProduct(product.name, locale)}
+                    </p>
 
                   {/* Quantité (texte simple) */}
                   <p 
@@ -222,21 +224,15 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
                   >
                     {(ingredientCost * multiplier).toFixed(2)} $
                   </span>
+                  </div>
                 </div>
               );
             }
 
             // Vue Originale (éditable)
             return (
-              <div
-                key={ingredient.productId}
-                className="flex items-stretch gap-3 p-3 rounded-lg"
-                style={{ 
-                  backgroundColor: 'var(--surface)',
-                  border: '1px solid var(--outline)'
-                }}
-              >
-                {/* Image du produit (cachée sur mobile) */}
+              <div key={ingredient.productId} className="flex items-stretch gap-3">
+                {/* Image du produit à gauche (cachée sur mobile) */}
                 <div className="hidden md:flex flex-shrink-0 items-center">
                   <div 
                     className="w-10 h-10 rounded-lg overflow-hidden"
@@ -246,7 +242,7 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
                     }}
                   >
                     <Image
-                      src={product.image || '/products/placeholder.png'}
+                      src={product.image || getProductImage(product.name)}
                       alt={product.name}
                       width={40}
                       height={40}
@@ -255,15 +251,23 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
                   </div>
                 </div>
 
-                {/* Nom du produit - À gauche */}
-                <div className="flex-1 min-w-0 flex items-center">
-                  <p 
-                    className="text-sm font-medium truncate"
-                    style={{ color: 'var(--on-surface)' }}
-                  >
-                    {translateProduct(product.name, locale)}
-                  </p>
-                </div>
+                {/* Row du produit */}
+                <div
+                  className="flex items-stretch gap-3 p-3 rounded-lg flex-1"
+                  style={{ 
+                    backgroundColor: 'var(--surface)',
+                    border: '1px solid var(--outline)'
+                  }}
+                >
+                  {/* Nom du produit - À gauche */}
+                  <div className="flex-1 min-w-0 flex items-center">
+                    <p 
+                      className="text-sm font-medium truncate"
+                      style={{ color: 'var(--on-surface)' }}
+                    >
+                      {translateProduct(product.name, locale)}
+                    </p>
+                  </div>
 
                 {/* Sélecteur de quantité avec OctogoneQuantitySelector */}
                 <OctogoneQuantitySelector
@@ -311,6 +315,7 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
                 >
                   <Trash2 size={16} />
                 </button>
+                </div>
               </div>
             );
           })
