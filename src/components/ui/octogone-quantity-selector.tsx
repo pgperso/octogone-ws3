@@ -10,6 +10,7 @@ interface OctogoneQuantitySelectorProps {
   max?: number;
   step?: number;
   size?: 'sm' | 'md' | 'lg';
+  forceBorderWhite?: boolean;
 }
 
 export const OctogoneQuantitySelector: React.FC<OctogoneQuantitySelectorProps> = ({
@@ -18,7 +19,8 @@ export const OctogoneQuantitySelector: React.FC<OctogoneQuantitySelectorProps> =
   min = 0,
   max = 9999,
   step = 0.1,
-  size = 'sm'
+  size = 'sm',
+  forceBorderWhite = false
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -93,7 +95,7 @@ export const OctogoneQuantitySelector: React.FC<OctogoneQuantitySelectorProps> =
       className={`inline-flex items-center rounded-lg transition-all duration-200 ${sizeClasses.container}`}
       style={{
         backgroundColor: 'transparent',
-        border: `1px solid ${isFocused ? 'var(--primary)' : 'var(--outline)'}`,
+        border: `2px solid ${forceBorderWhite ? '#FFFFFF' : (isFocused ? '#FFFFFF' : 'var(--outline)')}`,
       }}
     >
       {/* Bouton Moins */}

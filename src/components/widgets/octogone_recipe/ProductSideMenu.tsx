@@ -94,6 +94,7 @@ export const ProductSideMenu: React.FC<ProductSideMenuProps> = ({
       onAddProduct(selected.productId, selected.quantity, selected.unit);
     });
     setSelectedProducts([]);
+    onClose();
   };
 
   return (
@@ -262,20 +263,30 @@ export const ProductSideMenu: React.FC<ProductSideMenuProps> = ({
                   
                   {/* Champs de quantité/unité si sélectionné */}
                   {isSelected && selectedProduct && (
-                    <div className="mt-3 flex items-center gap-2">
-                      <OctogoneQuantitySelector
-                        value={selectedProduct.quantity}
-                        onChange={(qty) => updateProductQuantity(product.id, qty)}
-                        min={0}
-                        step={0.1}
-                        size="sm"
-                      />
-                      <OctogoneUnitSelector
-                        options={unitOptions}
-                        value={selectedProduct.unit}
-                        onChange={(unit) => updateProductUnit(product.id, unit)}
-                        size="sm"
-                      />
+                    <div className="mt-3 flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2">
+                        <OctogoneQuantitySelector
+                          value={selectedProduct.quantity}
+                          onChange={(qty) => updateProductQuantity(product.id, qty)}
+                          min={0}
+                          step={0.1}
+                          size="sm"
+                          forceBorderWhite={true}
+                        />
+                        <OctogoneUnitSelector
+                          options={unitOptions}
+                          value={selectedProduct.unit}
+                          onChange={(unit) => updateProductUnit(product.id, unit)}
+                          size="sm"
+                          forceBorderWhite={true}
+                        />
+                      </div>
+                      {/* Prix dynamique */}
+                      <div className="text-right">
+                        <p className="text-sm font-semibold" style={{ color: 'var(--on-secondary-container)' }}>
+                          {(selectedProduct.quantity * product.unitCost).toFixed(2)} $
+                        </p>
+                      </div>
                     </div>
                   )}
                 </div>

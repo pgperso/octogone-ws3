@@ -13,13 +13,15 @@ interface OctogoneUnitSelectorProps {
   value: string;
   onChange: (value: string) => void;
   size?: 'sm' | 'md' | 'lg';
+  forceBorderWhite?: boolean;
 }
 
 export const OctogoneUnitSelector: React.FC<OctogoneUnitSelectorProps> = ({
   options,
   value,
   onChange,
-  size = 'sm'
+  size = 'sm',
+  forceBorderWhite = false
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -62,7 +64,7 @@ export const OctogoneUnitSelector: React.FC<OctogoneUnitSelectorProps> = ({
         className={`${sizeClasses} font-medium rounded-lg transition-all duration-200 inline-flex items-center justify-center whitespace-nowrap cursor-pointer`}
         style={{
           backgroundColor: 'transparent',
-          border: '1px solid var(--outline)',
+          border: `2px solid ${forceBorderWhite ? '#FFFFFF' : (isOpen ? '#FFFFFF' : 'var(--outline)')}`,
           color: 'var(--on-surface)'
         }}
         onMouseEnter={(e) => {
