@@ -220,7 +220,7 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
       </div>
 
       {/* Contenu principal - 2 colonnes */}
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-6 p-6 overflow-hidden relative">
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-6 p-6 overflow-hidden">
         {/* Colonne gauche - Ingrédients */}
         <RecipeIngredientsList
           ingredients={ingredients}
@@ -242,14 +242,16 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
         />
       </div>
 
-      {/* Side Menu pour ajouter des produits */}
-      <ProductSideMenu
-        isOpen={isSideMenuOpen}
-        onClose={() => setIsSideMenuOpen(false)}
-        products={products}
-        onAddProduct={handleAddIngredient}
-        locale={locale}
-      />
+      {/* Side Menu pour ajouter des produits - Au niveau du conteneur principal */}
+      {isSideMenuOpen && (
+        <ProductSideMenu
+          isOpen={isSideMenuOpen}
+          onClose={() => setIsSideMenuOpen(false)}
+          products={products}
+          onAddProduct={handleAddIngredient}
+          locale={locale}
+        />
+      )}
     </div>
   );
 };
