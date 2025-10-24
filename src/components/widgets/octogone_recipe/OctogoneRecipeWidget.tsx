@@ -144,7 +144,7 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
 
   return (
     <div 
-      className="w-full h-full rounded-xl overflow-hidden flex flex-col"
+      className="w-full h-full rounded-xl overflow-hidden flex flex-col relative"
       style={{ 
         backgroundColor: 'var(--surface)',
         border: '1px solid var(--outline)'
