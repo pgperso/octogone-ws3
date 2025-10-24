@@ -1,6 +1,7 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import { Plus, Trash2 } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { OctogoneUnitSelector } from '@/components/ui/octogone-unit-selector';
@@ -16,6 +17,7 @@ interface Product {
   unit: string;
   availableUnits?: string[];
   unitCost: number;
+  image?: string;
 }
 
 interface RecipeIngredient {
@@ -178,6 +180,25 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
                     border: '1px solid var(--outline)'
                   }}
                 >
+                  {/* Image du produit (cachée sur mobile) */}
+                  <div className="hidden md:block flex-shrink-0 mr-3">
+                    <div 
+                      className="w-10 h-10 rounded-lg overflow-hidden"
+                      style={{ 
+                        backgroundColor: 'var(--surface-variant)',
+                        border: '1px solid var(--outline)'
+                      }}
+                    >
+                      <Image
+                        src={product.image || '/products/placeholder.png'}
+                        alt={product.name}
+                        width={40}
+                        height={40}
+                        className="object-cover w-full h-full"
+                      />
+                    </div>
+                  </div>
+
                   {/* Nom du produit */}
                   <p 
                     className="text-sm font-medium flex-1"
@@ -215,6 +236,25 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
                   border: '1px solid var(--outline)'
                 }}
               >
+                {/* Image du produit (cachée sur mobile) */}
+                <div className="hidden md:flex flex-shrink-0 items-center">
+                  <div 
+                    className="w-10 h-10 rounded-lg overflow-hidden"
+                    style={{ 
+                      backgroundColor: 'var(--surface-variant)',
+                      border: '1px solid var(--outline)'
+                    }}
+                  >
+                    <Image
+                      src={product.image || '/products/placeholder.png'}
+                      alt={product.name}
+                      width={40}
+                      height={40}
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+                </div>
+
                 {/* Nom du produit - À gauche */}
                 <div className="flex-1 min-w-0 flex items-center">
                   <p 
