@@ -151,10 +151,16 @@ export const ProductSideMenu: React.FC<ProductSideMenuProps> = ({
           </h3>
           <button
             onClick={onClose}
-            className="p-2 rounded-lg hover:opacity-80"
+            className="p-2 rounded-lg transition-all cursor-pointer"
             style={{ 
               backgroundColor: 'var(--surface)',
               color: 'var(--on-surface)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = 'var(--secondary-container)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'var(--surface)';
             }}
           >
             <X size={20} />

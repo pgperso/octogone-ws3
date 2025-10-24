@@ -7,6 +7,7 @@ import { RecipeIngredientsList } from './RecipeIngredientsList';
 import { RecipeSteps } from './RecipeSteps';
 import { ProductSideMenu } from './ProductSideMenu';
 import { RecipeSettingsSideMenu } from './RecipeSettingsSideMenu';
+import { RecipeFoodCostRecommendations } from './RecipeFoodCostRecommendations';
 import { OctogoneFoodCostCircularBar } from '@/components/ui/octogone-foodcost-circular-bar';
 import inventoryData from '@/data/products/octogone_products_data.json';
 
@@ -422,6 +423,15 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Widget de recommandations */}
+      <div className="px-6 pt-6">
+        <RecipeFoodCostRecommendations
+          actualFoodCost={calculateFoodCostPercentage()}
+          targetFoodCost={targetFoodCost}
+          locale={locale}
+        />
       </div>
 
       {/* Contenu principal - 2 colonnes */}
