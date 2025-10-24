@@ -43,6 +43,12 @@ interface OctogoneRecipeWidgetProps {
 export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ locale = 'fr' }) => {
   const isEnglish = locale === 'en';
   
+  // Informations de la recette
+  const [recipeName] = useState('Cheeseburger Supreme');
+  const [recipeImage] = useState('/products/supreme-cheesburger.avif');
+  const [targetFoodCost] = useState(30); // Cible en %
+  const [sellingPrice] = useState(15.99); // Prix de vente
+  
   // État pour les ingrédients de la recette
   const [ingredients, setIngredients] = useState<RecipeIngredient[]>([
     { productId: 'prod-022', quantity: 2, unit: 'kg' }, // Farine
@@ -157,13 +163,34 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
 
     if (targetIndex < 0 || targetIndex >= steps.length) return;
 
-    // Échanger les étapes
     [newSteps[stepIndex], newSteps[targetIndex]] = [newSteps[targetIndex], newSteps[stepIndex]];
 
-    // Réassigner les ordres
-    const reorderedSteps = newSteps.map((step, index) => ({ ...step, order: index + 1 }));
+    const reorderedSteps = newSteps.map((step, index) => ({
+      ...step,
+      order: index + 1
+    }));
+
     setSteps(reorderedSteps);
   };
+
+  // Calculer le coût total des ingrédients
+  const calculateTotalCost = (): number => {
+    return ingredients.reduce((total, ingredient) => {
+      const product = products.find(p => p.id === ingredient.productId);
+      if (!product) return total;
+      return total + (ingredient.quantity * product.unitCost);
+    }, 0);
+  };
+
+  // Calculer le food cost en pourcentage
+  const calculateFoodCostPercentage = (): number => {
+    const totalCost = calculateTotalCost();
+    if (sellingPrice === 0) return 0;
+    return (totalCost / sellingPrice) * 100;
+  };
+
+  const totalCost = calculateTotalCost();
+  const foodCostPercentage = calculateFoodCostPercentage();
 
   return (
     <div 
@@ -241,6 +268,94 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
               <p className="text-xs leading-tight" style={{ color: 'var(--on-surface-variant)' }}>
                 Bistro 8
               </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Header de la recette - Photo, Nom et Métriques */}
+      <div 
+        className="px-6 py-4"
+        style={{ 
+          backgroundColor: 'var(--surface-container-low)',
+          borderBottom: '1px solid var(--outline)'
+        }}
+      >
+        <div className="flex items-center gap-6">
+          {/* Image de la recette */}
+          <div 
+            className="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0"
+            style={{ 
+              border: '2px solid var(--outline)'
+            }}
+          >
+            <Image
+              src={recipeImage}
+              alt={recipeName}
+              width={96}
+              height={96}
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Nom de la recette */}
+          <div className="flex-1">
+            <h3 
+              className="text-2xl font-bold"
+              style={{ color: 'var(--on-surface)' }}
+            >
+              {recipeName}
+            </h3>
+            <p 
+              className="text-sm mt-1"
+              style={{ color: 'var(--on-surface-variant)' }}
+            >
+              {isEnglish ? 'Recipe' : 'Recette'}
+            </p>
+          </div>
+
+          {/* Métriques */}
+          <div className="flex gap-6">
+            {/* Coût total */}
+            <div className="text-right">
+              <p 
+                className="text-xs font-medium mb-1"
+                style={{ color: 'var(--on-surface-variant)' }}
+              >
+                {isEnglish ? 'Total Cost' : 'Coût Total'}
+              </p>
+              <p 
+                className="text-2xl font-bold"
+                style={{ color: 'var(--on-surface)' }}
+              >
+                {totalCost.toFixed(2)} $
+              </p>
+            </div>
+
+            {/* Food Cost */}
+            <div className="text-right">
+              <p 
+                className="text-xs font-medium mb-1"
+                style={{ color: 'var(--on-surface-variant)' }}
+              >
+                Food Cost
+              </p>
+              <div className="flex items-baseline gap-2">
+                <p 
+                  className="text-2xl font-bold"
+                  style={{ 
+                    color: foodCostPercentage <= targetFoodCost ? 'var(--success)' : 'var(--error)'
+                  }}
+                >
+                  {foodCostPercentage.toFixed(1)}%
+                </p>
+                <p 
+                  className="text-sm"
+                  style={{ color: 'var(--on-surface-variant)' }}
+                >
+                  / {targetFoodCost}%
+                </p>
+              </div>
             </div>
           </div>
         </div>
