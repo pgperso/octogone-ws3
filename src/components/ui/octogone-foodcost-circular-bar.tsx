@@ -61,7 +61,7 @@ export const OctogoneFoodCostCircularBar: React.FC<OctogoneFoodCostCircularBarPr
       {/* Texte au centre - Seulement le food cost réel */}
       <div className="absolute inset-0 flex items-center justify-center">
         <span 
-          className="text-xl font-bold"
+          className="text-sm font-bold"
           style={{ color: isTargetMet ? 'var(--success)' : 'var(--error)' }}
         >
           {actualFoodCost.toFixed(1)}%

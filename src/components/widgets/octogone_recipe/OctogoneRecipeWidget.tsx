@@ -344,35 +344,45 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
           {/* Métriques */}
           <div className="flex items-center gap-6">
             {/* Coût par portion */}
-            <div className="text-right">
+            <div className="flex flex-col">
               <p 
-                className="text-xs font-medium mb-1"
+                className="text-xs font-medium mb-2"
                 style={{ color: 'var(--on-surface-variant)' }}
               >
                 {isEnglish ? 'Cost/Portion' : 'Coût/Portion'}
               </p>
-              <p 
-                className="text-2xl font-bold"
-                style={{ color: 'var(--on-surface)' }}
+              <div 
+                className="px-4 py-2 rounded-lg text-center"
+                style={{ border: '1px solid var(--outline)' }}
               >
-                {calculateCostPerPortion().toFixed(2)} $
-              </p>
+                <p 
+                  className="text-2xl font-bold"
+                  style={{ color: 'var(--on-surface)' }}
+                >
+                  {calculateCostPerPortion().toFixed(2)} $
+                </p>
+              </div>
             </div>
 
             {/* Prix de vente */}
-            <div className="text-right">
+            <div className="flex flex-col">
               <p 
-                className="text-xs font-medium mb-1"
+                className="text-xs font-medium mb-2"
                 style={{ color: 'var(--on-surface-variant)' }}
               >
                 {isEnglish ? 'Selling Price' : 'Prix de Vente'}
               </p>
-              <p 
-                className="text-2xl font-bold"
-                style={{ color: 'var(--primary)' }}
+              <div 
+                className="px-4 py-2 rounded-lg text-center"
+                style={{ border: '1px solid var(--outline)' }}
               >
-                {sellingPrice.toFixed(2)} $
-              </p>
+                <p 
+                  className="text-2xl font-bold"
+                  style={{ color: 'var(--primary)' }}
+                >
+                  {sellingPrice.toFixed(2)} $
+                </p>
+              </div>
             </div>
 
             {/* Food Cost - Barre circulaire */}
