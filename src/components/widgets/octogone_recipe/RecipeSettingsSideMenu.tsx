@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { OctogoneSideMenu } from '@/components/ui/octogone-sidemenu';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 
 interface RecipeSettingsSideMenuProps {
@@ -55,13 +56,64 @@ export const RecipeSettingsSideMenu: React.FC<RecipeSettingsSideMenuProps> = ({
   };
 
   return (
-    <OctogoneSideMenu
-      isOpen={isOpen}
-      onClose={onClose}
-      title={isEnglish ? 'Recipe Settings' : 'Paramètres de la Recette'}
-      width="450px"
-    >
-      <div className="space-y-6">
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          {/* Overlay de fond */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="absolute inset-0 bg-black bg-opacity-50 z-30"
+            onClick={onClose}
+          />
+
+          {/* Side Menu avec animation de glissement et effet flottant */}
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ 
+              type: 'spring',
+              damping: 30,
+              stiffness: 300
+            }}
+            className="absolute top-4 right-4 bottom-4 w-[calc(100%-2rem)] md:w-[450px] flex flex-col rounded-2xl overflow-hidden z-40"
+            style={{ 
+              backgroundColor: 'var(--surface-container)',
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
+            }}
+          >
+            {/* En-tête */}
+            <div 
+              className="flex items-center justify-between p-4 border-b"
+              style={{ 
+                backgroundColor: 'var(--primary)',
+                borderColor: 'var(--outline)'
+              }}
+            >
+              <h3 
+                className="text-xl font-semibold"
+                style={{ color: 'var(--on-primary-container)' }}
+              >
+                {isEnglish ? 'Recipe Settings' : 'Paramètres de la Recette'}
+              </h3>
+              <button
+                onClick={onClose}
+                className="p-2 rounded-lg hover:opacity-80"
+                style={{ 
+                  backgroundColor: 'var(--surface)',
+                  color: 'var(--on-surface)'
+                }}
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* Contenu scrollable */}
+            <div className="flex-1 overflow-y-auto p-6">
+              <div className="space-y-6">
         {/* Nom de la recette */}
         <div>
           <label
@@ -153,26 +205,30 @@ export const RecipeSettingsSideMenu: React.FC<RecipeSettingsSideMenuProps> = ({
           </select>
         </div>
 
-        {/* Boutons */}
-        <div className="flex gap-3 pt-4">
-          <OctogoneButton
-            variant="secondary"
-            size="md"
-            onClick={onClose}
-            className="flex-1"
-          >
-            {isEnglish ? 'Cancel' : 'Annuler'}
-          </OctogoneButton>
-          <OctogoneButton
-            variant="primary"
-            size="md"
-            onClick={handleSave}
-            className="flex-1"
-          >
-            {isEnglish ? 'Save' : 'Enregistrer'}
-          </OctogoneButton>
-        </div>
-      </div>
-    </OctogoneSideMenu>
+                {/* Boutons */}
+                <div className="flex gap-3 pt-4">
+                  <OctogoneButton
+                    variant="secondary"
+                    size="md"
+                    onClick={onClose}
+                    className="flex-1"
+                  >
+                    {isEnglish ? 'Cancel' : 'Annuler'}
+                  </OctogoneButton>
+                  <OctogoneButton
+                    variant="primary"
+                    size="md"
+                    onClick={handleSave}
+                    className="flex-1"
+                  >
+                    {isEnglish ? 'Save' : 'Enregistrer'}
+                  </OctogoneButton>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
   );
 };
