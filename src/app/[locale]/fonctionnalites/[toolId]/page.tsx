@@ -12,6 +12,7 @@ import { ToolSEO } from "@/components/seo/tool-seo";
 import { LogoCard } from "@/components/widgets/logo-card";
 import OctogoneDashboardKPIs from "@/components/widgets/OctogoneDashboardKPIs";
 import { OctogoneInventoryWidget } from "@/components/widgets/octogone_inventories";
+import { OctogoneRecipeWidget } from "@/components/widgets/octogone_recipe";
 
 // Permettre les paramètres dynamiques
 export const dynamicParams = true;
@@ -158,6 +159,15 @@ export default function ToolPage({
       {toolId === 'inventaire' && (
         <ResponsiveSection spacing="xl" bgColor="">
           <OctogoneInventoryWidget locale={locale as 'fr' | 'en'} />
+        </ResponsiveSection>
+      )}
+
+      {/* Widget Recettes - Uniquement pour Food Cost */}
+      {toolId === 'food-cost' && (
+        <ResponsiveSection spacing="xl" bgColor="">
+          <div className="h-[800px]">
+            <OctogoneRecipeWidget locale={locale as 'fr' | 'en'} />
+          </div>
         </ResponsiveSection>
       )}
 
