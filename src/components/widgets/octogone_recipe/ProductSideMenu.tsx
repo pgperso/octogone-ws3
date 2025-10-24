@@ -57,16 +57,16 @@ export const ProductSideMenu: React.FC<ProductSideMenuProps> = ({
   if (!isOpen) return null;
 
   return (
-    <>
+    <div className="fixed inset-0 z-[9999]">
       {/* Overlay */}
       <div
-        className="fixed inset-0 bg-black bg-opacity-50 z-40"
+        className="absolute inset-0 bg-black bg-opacity-50"
         onClick={onClose}
       />
 
       {/* Side Menu */}
       <div
-        className="fixed top-0 right-0 h-full w-full md:w-[500px] z-50 flex flex-col"
+        className="absolute top-0 right-0 h-full w-full md:w-[500px] flex flex-col"
         style={{ 
           backgroundColor: 'var(--surface-container)',
           boxShadow: '-4px 0 12px rgba(0, 0, 0, 0.1)'
@@ -222,6 +222,6 @@ export const ProductSideMenu: React.FC<ProductSideMenuProps> = ({
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };

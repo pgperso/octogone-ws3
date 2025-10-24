@@ -146,31 +146,28 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
     <div className="relative w-full h-full">
       {/* En-tête avec avatar Marc */}
       <div 
-        className="flex items-center gap-3 p-4 border-b"
+        className="flex items-center gap-4 p-6 border-b"
         style={{ 
           backgroundColor: 'var(--surface-container)',
           borderColor: 'var(--outline)'
         }}
       >
-        <div className="relative w-10 h-10 rounded-full overflow-hidden">
+        <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
           <img
-            src="/avatars/marc.avif"
+            src="/images/avatars/marc.avif"
             alt="Marc"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover rounded-full"
           />
         </div>
-        <div>
-          <h3 
-            className="text-lg font-semibold"
-            style={{ color: 'var(--on-surface)' }}
-          >
-            {isEnglish ? 'Recipe Builder' : 'Créateur de recettes'}
-          </h3>
-          <p 
-            className="text-sm"
-            style={{ color: 'var(--on-surface-variant)' }}
-          >
-            Marc • {isEnglish ? 'Head Chef' : 'Chef exécutif'}
+        <div className="flex flex-col justify-center h-16">
+          <h2 className="text-2xl font-bold leading-tight" style={{ color: 'var(--on-surface)' }}>
+            {isEnglish ? 'Hello Marc' : 'Bonjour Marc'}
+          </h2>
+          <p className="text-sm font-semibold leading-tight" style={{ color: 'var(--primary)' }}>
+            {isEnglish ? 'Restaurant Director' : 'Directeur de la restauration'}
+          </p>
+          <p className="text-xs leading-tight" style={{ color: 'var(--on-surface-variant)' }}>
+            Groupe Resto & Co
           </p>
         </div>
       </div>
