@@ -105,12 +105,15 @@ export const RecipeRecommendationsModal: React.FC<RecipeRecommendationsModalProp
     <>
       {/* Overlay de fond */}
       <div
-        className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center"
+        className="absolute inset-0 bg-black z-30"
+        style={{ opacity: 0.5 }}
         onClick={onClose}
-      >
-        {/* Modal */}
+      />
+
+      {/* Modal centré */}
+      <div className="absolute inset-0 z-40 flex items-center justify-center p-4">
         <div
-          className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full mx-4 max-h-[80vh] overflow-hidden flex flex-col"
+          className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-hidden flex flex-col"
           style={{ backgroundColor: 'var(--surface-container)' }}
           onClick={(e) => e.stopPropagation()}
         >

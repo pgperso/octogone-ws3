@@ -109,24 +109,22 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
 
       {/* Container cliquable - EXACTEMENT comme les métriques */}
       <div 
-        className="px-4 py-2 rounded-lg text-center flex items-center justify-center flex-1 cursor-pointer transition-all hover:opacity-80"
+        className="px-4 py-2 rounded-lg flex items-center justify-center gap-2 flex-1 cursor-pointer transition-all hover:opacity-80"
         style={{ 
           backgroundColor: recommendation.bgColor,
           border: `1px solid ${recommendation.color}`
         }}
         onClick={onClick}
       >
-        <div className="flex items-center gap-2">
-          <div style={{ color: recommendation.color }} className="flex-shrink-0">
-            {recommendation.icon}
-          </div>
-          <p 
-            className="text-2xl font-bold whitespace-nowrap"
-            style={{ color: recommendation.color }}
-          >
-            {recommendation.title}
-          </p>
+        <div style={{ color: recommendation.color }} className="flex-shrink-0">
+          {recommendation.icon}
         </div>
+        <p 
+          className="text-2xl font-bold whitespace-nowrap"
+          style={{ color: recommendation.color }}
+        >
+          {recommendation.title}
+        </p>
       </div>
     </div>
   );
