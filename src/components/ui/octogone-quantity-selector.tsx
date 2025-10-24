@@ -109,11 +109,13 @@ export const OctogoneQuantitySelector: React.FC<OctogoneQuantitySelectorProps> =
         }}
         onMouseEnter={(e) => {
           if (value > min) {
-            e.currentTarget.style.backgroundColor = 'var(--surface-variant)';
+            e.currentTarget.style.backgroundColor = 'var(--secondary-container)';
+            e.currentTarget.style.color = 'var(--on-secondary-container)';
           }
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.backgroundColor = 'transparent';
+          e.currentTarget.style.color = 'var(--on-surface)';
         }}
       >
         <Minus size={sizeClasses.icon} />
@@ -150,11 +152,13 @@ export const OctogoneQuantitySelector: React.FC<OctogoneQuantitySelectorProps> =
         }}
         onMouseEnter={(e) => {
           if (value < max) {
-            e.currentTarget.style.backgroundColor = 'var(--surface-variant)';
+            e.currentTarget.style.backgroundColor = 'var(--secondary-container)';
+            e.currentTarget.style.color = 'var(--on-secondary-container)';
           }
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.backgroundColor = 'transparent';
+          e.currentTarget.style.color = 'var(--on-surface)';
         }}
       >
         <Plus size={sizeClasses.icon} />

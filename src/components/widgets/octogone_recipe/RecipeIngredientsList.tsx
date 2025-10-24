@@ -138,14 +138,14 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
             return (
               <div
                 key={ingredient.productId}
-                className="flex items-center gap-3 p-3 rounded-lg"
+                className="flex items-stretch gap-3 p-3 rounded-lg"
                 style={{ 
                   backgroundColor: 'var(--surface)',
                   border: '1px solid var(--outline)'
                 }}
               >
                 {/* Nom du produit - À gauche */}
-                <div className="flex-1 min-w-0">
+                <div className="flex-1 min-w-0 flex items-center">
                   <p 
                     className="text-sm font-medium truncate"
                     style={{ color: 'var(--on-surface)' }}
@@ -172,12 +172,14 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
                 />
 
                 {/* Coût */}
-                <span 
-                  className="text-sm font-semibold w-20 text-right"
-                  style={{ color: 'var(--on-surface)' }}
-                >
-                  {ingredientCost.toFixed(2)} $
-                </span>
+                <div className="flex items-center">
+                  <span 
+                    className="text-sm font-semibold w-20 text-right"
+                    style={{ color: 'var(--on-surface)' }}
+                  >
+                    {ingredientCost.toFixed(2)} $
+                  </span>
+                </div>
 
                 {/* Bouton supprimer */}
                 <button
