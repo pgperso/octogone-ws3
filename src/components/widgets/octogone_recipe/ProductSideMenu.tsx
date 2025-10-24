@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Search, Plus, Check } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
+import { OctogoneQuantitySelector } from '@/components/ui/octogone-quantity-selector';
+import { OctogoneUnitSelector } from '@/components/ui/octogone-unit-selector';
 import { translateProduct, translateCategory, translateUnit } from '@/data/products/octogone_products_translations';
 
 interface Product {
@@ -12,8 +14,15 @@ interface Product {
   category: string;
   brand?: string;
   unit: string;
+  availableUnits?: string[];
   unitCost: number;
   storage?: string;
+}
+
+interface SelectedProduct {
+  productId: string;
+  quantity: number;
+  unit: string;
 }
 
 interface ProductSideMenuProps {
@@ -35,8 +44,7 @@ export const ProductSideMenu: React.FC<ProductSideMenuProps> = ({
 }) => {
   const isEnglish = locale === 'en';
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
-  const [quantity, setQuantity] = useState<number>(1);
+  const [selectedProducts, setSelectedProducts] = useState<SelectedProduct[]>([]);
 
   // Filtrer les produits par recherche
   const filteredProducts = products.filter(product => {
@@ -46,15 +54,46 @@ export const ProductSideMenu: React.FC<ProductSideMenuProps> = ({
     return productName.includes(search) || categoryName.includes(search);
   });
 
-  const handleAddProduct = () => {
-    if (selectedProductId && quantity > 0) {
-      const product = products.find(p => p.id === selectedProductId);
+  // Toggle sélection d'un produit
+  const toggleProductSelection = (productId: string) => {
+    const isSelected = selectedProducts.some(p => p.productId === productId);
+    
+    if (isSelected) {
+      // Désélectionner
+      setSelectedProducts(selectedProducts.filter(p => p.productId !== productId));
+    } else {
+      // Sélectionner avec valeurs par défaut
+      const product = products.find(p => p.id === productId);
       if (product) {
-        onAddProduct(selectedProductId, quantity, product.unit);
-        setSelectedProductId(null);
-        setQuantity(1);
+        setSelectedProducts([...selectedProducts, {
+          productId,
+          quantity: 1,
+          unit: product.unit
+        }]);
       }
     }
+  };
+
+  // Mettre à jour la quantité d'un produit sélectionné
+  const updateProductQuantity = (productId: string, quantity: number) => {
+    setSelectedProducts(selectedProducts.map(p => 
+      p.productId === productId ? { ...p, quantity } : p
+    ));
+  };
+
+  // Mettre à jour l'unité d'un produit sélectionné
+  const updateProductUnit = (productId: string, unit: string) => {
+    setSelectedProducts(selectedProducts.map(p => 
+      p.productId === productId ? { ...p, unit } : p
+    ));
+  };
+
+  // Ajouter tous les produits sélectionnés
+  const handleAddProducts = () => {
+    selectedProducts.forEach(selected => {
+      onAddProduct(selected.productId, selected.quantity, selected.unit);
+    });
+    setSelectedProducts([]);
   };
 
   return (
@@ -148,19 +187,31 @@ export const ProductSideMenu: React.FC<ProductSideMenuProps> = ({
           ) : (
             filteredProducts.map((product) => {
               const isAdded = addedProductIds.includes(product.id);
+              const selectedProduct = selectedProducts.find(p => p.productId === product.id);
+              const isSelected = !!selectedProduct;
+              
+              const unitOptions = (product.availableUnits || [product.unit]).map(unit => ({
+                value: unit,
+                label: translateUnit(unit, locale)
+              }));
               
               return (
-                <button
+                <div
                   key={product.id}
-                  onClick={() => setSelectedProductId(product.id)}
-                  className="w-full text-left p-3 rounded-lg transition-all relative"
+                  className="p-3 rounded-lg transition-all"
                   style={{
-                    backgroundColor: selectedProductId === product.id ? 'var(--secondary-container)' : 'var(--surface)',
-                    border: `1px solid ${selectedProductId === product.id ? 'var(--secondary)' : 'var(--outline)'}`,
-                    color: selectedProductId === product.id ? 'var(--on-secondary-container)' : 'var(--on-surface)'
+                    backgroundColor: isSelected ? 'var(--secondary-container)' : 'var(--surface)',
+                    border: `1px solid ${isSelected ? 'var(--secondary)' : 'var(--outline)'}`,
                   }}
                 >
-                  <div className="flex items-center justify-between">
+                  {/* En-tête du produit - Cliquable */}
+                  <button
+                    onClick={() => toggleProductSelection(product.id)}
+                    className="w-full text-left flex items-center justify-between"
+                    style={{
+                      color: isSelected ? 'var(--on-secondary-container)' : 'var(--on-surface)'
+                    }}
+                  >
                     <div className="flex-1 flex items-center gap-2">
                       {/* Indicateur "Ajouté" */}
                       {isAdded && (
@@ -181,7 +232,7 @@ export const ProductSideMenu: React.FC<ProductSideMenuProps> = ({
                         <p 
                           className="text-xs mt-1"
                           style={{ 
-                            color: selectedProductId === product.id ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)',
+                            color: isSelected ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)',
                             opacity: 0.8
                           }}
                         >
@@ -189,29 +240,52 @@ export const ProductSideMenu: React.FC<ProductSideMenuProps> = ({
                         </p>
                       </div>
                     </div>
-                    <div className="text-right">
-                      <p className="text-sm font-semibold">
-                        {product.unitCost.toFixed(2)} $
-                      </p>
-                      <p 
-                        className="text-xs"
-                        style={{ 
-                          color: selectedProductId === product.id ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)',
-                          opacity: 0.8
-                        }}
-                      >
-                        / {translateUnit(product.unit, locale)}
-                      </p>
+                    
+                    {/* Prix ou Sélectionné */}
+                    {!isSelected && (
+                      <div className="text-right">
+                        <p className="text-sm font-semibold">
+                          {product.unitCost.toFixed(2)} $
+                        </p>
+                        <p 
+                          className="text-xs"
+                          style={{ 
+                            color: 'var(--on-surface-variant)',
+                            opacity: 0.8
+                          }}
+                        >
+                          / {translateUnit(product.unit, locale)}
+                        </p>
+                      </div>
+                    )}
+                  </button>
+                  
+                  {/* Champs de quantité/unité si sélectionné */}
+                  {isSelected && selectedProduct && (
+                    <div className="mt-3 flex items-center gap-2">
+                      <OctogoneQuantitySelector
+                        value={selectedProduct.quantity}
+                        onChange={(qty) => updateProductQuantity(product.id, qty)}
+                        min={0}
+                        step={0.1}
+                        size="sm"
+                      />
+                      <OctogoneUnitSelector
+                        options={unitOptions}
+                        value={selectedProduct.unit}
+                        onChange={(unit) => updateProductUnit(product.id, unit)}
+                        size="sm"
+                      />
                     </div>
-                  </div>
-                </button>
+                  )}
+                </div>
               );
             })
           )}
         </div>
 
-        {/* Footer avec quantité et bouton d'ajout */}
-        {selectedProductId && (
+        {/* Footer avec bouton d'ajout */}
+        {selectedProducts.length > 0 && (
           <div 
             className="p-4 border-t"
             style={{ 
@@ -219,41 +293,17 @@ export const ProductSideMenu: React.FC<ProductSideMenuProps> = ({
               borderColor: 'var(--outline)'
             }}
           >
-            <div className="flex items-center gap-3 mb-3">
-              <label 
-                className="text-sm font-medium"
-                style={{ color: 'var(--on-surface)' }}
-              >
-                {isEnglish ? 'Quantity:' : 'Quantité :'}
-              </label>
-              <input
-                type="number"
-                value={quantity}
-                onChange={(e) => setQuantity(parseFloat(e.target.value) || 0)}
-                className="flex-1 px-3 py-2 rounded-lg text-center"
-                style={{
-                  backgroundColor: 'var(--surface)',
-                  color: 'var(--on-surface)',
-                  border: '1px solid var(--outline)'
-                }}
-                step="0.1"
-                min="0"
-              />
-              <span 
-                className="text-sm"
-                style={{ color: 'var(--on-surface-variant)' }}
-              >
-                {translateUnit(products.find(p => p.id === selectedProductId)?.unit || '', locale)}
-              </span>
-            </div>
             <OctogoneButton
               variant="primary"
               size="lg"
-              onClick={handleAddProduct}
+              onClick={handleAddProducts}
               className="w-full"
               icon={<Plus size={20} />}
             >
-              {isEnglish ? 'Add to Recipe' : 'Ajouter à la recette'}
+              {isEnglish 
+                ? `Add ${selectedProducts.length} product${selectedProducts.length > 1 ? 's' : ''} to recipe`
+                : `Ajouter ${selectedProducts.length} produit${selectedProducts.length > 1 ? 's' : ''} à la recette`
+              }
             </OctogoneButton>
           </div>
         )}
