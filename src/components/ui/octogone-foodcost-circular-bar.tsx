@@ -34,8 +34,25 @@ export const OctogoneFoodCostCircularBar: React.FC<OctogoneFoodCostCircularBarPr
     return () => clearTimeout(timer);
   }, [actualFoodCost, targetFoodCost]);
 
-  // Déterminer si la cible est respectée
-  const isTargetMet = actualFoodCost <= targetFoodCost;
+  // Déterminer la couleur selon les seuils
+  const getColor = () => {
+    // Food Cost idéal : 28-32%
+    if (actualFoodCost >= 28 && actualFoodCost <= 32) {
+      return 'var(--success)'; // Vert
+    }
+    // Food Cost trop bas : <28%
+    if (actualFoodCost < 28) {
+      return 'var(--warning)'; // Jaune
+    }
+    // Food Cost modérément élevé : 33-38%
+    if (actualFoodCost >= 33 && actualFoodCost <= 38) {
+      return '#FF8C00'; // Orange
+    }
+    // Food Cost très élevé : >38%
+    return 'var(--error)'; // Rouge
+  };
+  
+  const color = getColor();
   
   // Rayon du cercle
   const radius = (size - strokeWidth) / 2;
@@ -65,7 +82,7 @@ export const OctogoneFoodCostCircularBar: React.FC<OctogoneFoodCostCircularBarPr
           cy={size / 2}
           r={radius}
           fill="none"
-          stroke={isTargetMet ? 'var(--success)' : 'var(--error)'}
+          stroke={color}
           strokeWidth={strokeWidth}
           strokeDasharray={circumference}
           strokeDashoffset={strokeDashoffset}
@@ -78,7 +95,7 @@ export const OctogoneFoodCostCircularBar: React.FC<OctogoneFoodCostCircularBarPr
       <div className="absolute inset-0 flex items-center justify-center">
         <span 
           className="text-sm font-bold transition-all duration-500"
-          style={{ color: isTargetMet ? 'var(--success)' : 'var(--error)' }}
+          style={{ color: color }}
         >
           {animatedFoodCost.toFixed(1)}%
         </span>

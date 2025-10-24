@@ -43,8 +43,8 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
           'Maintenir ce niveau',
           'Surveiller régulièrement les coûts'
         ],
-        color: 'var(--success)',
-        bgColor: 'var(--success-container)'
+        color: 'var(--on-secondary-container)',
+        bgColor: 'var(--success)'
       };
     }
     
@@ -66,33 +66,56 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
           'Ajouter des garnitures premium',
           'Risque : La qualité perçue peut en souffrir'
         ],
-        color: 'var(--warning)',
-        bgColor: 'var(--warning-container)'
+        color: 'var(--on-secondary-container)',
+        bgColor: 'var(--warning)'
       };
     }
     
-    // Food Cost trop élevé : >32%
+    // Food Cost modérément élevé : 33-38% (Orange)
+    if (actualFoodCost >= 33 && actualFoodCost <= 38) {
+      return {
+        icon: <TrendingUp size={28} />,
+        title: isEnglish ? 'Elevated Food Cost' : 'Food Cost Élevé',
+        items: isEnglish ? [
+          'Food cost above optimal range',
+          'Consider increasing selling price',
+          'Optimize portion sizes',
+          'Review ingredient costs',
+          'Monitor closely'
+        ] : [
+          'Food cost au-dessus de la plage optimale',
+          'Considérer augmenter le prix de vente',
+          'Optimiser les portions',
+          'Réviser les coûts des ingrédients',
+          'Surveiller de près'
+        ],
+        color: 'var(--on-secondary-container)',
+        bgColor: '#FF8C00' // Orange
+      };
+    }
+    
+    // Food Cost très élevé : >38% (Rouge)
     return {
       icon: <TrendingUp size={28} />,
-      title: isEnglish ? 'High Food Cost' : 'Food Cost Élevé',
+      title: isEnglish ? 'Critical Food Cost' : 'Food Cost Critique',
       items: isEnglish ? [
-        'Food cost above optimal range',
-        'Consider increasing selling price',
-        'Optimize portion sizes',
+        'Food cost critically high',
+        'Urgent action required',
+        'Increase selling price immediately',
+        'Reduce portion sizes',
         'Negotiate with suppliers',
-        'Replace expensive ingredients',
-        'Review recipe for waste reduction'
+        'Replace expensive ingredients'
       ] : [
-        'Food cost au-dessus de la plage optimale',
-        'Considérer augmenter le prix de vente',
-        'Optimiser les portions',
+        'Food cost critique',
+        'Action urgente requise',
+        'Augmenter le prix de vente immédiatement',
+        'Réduire les portions',
         'Négocier avec les fournisseurs',
-        'Remplacer certains ingrédients coûteux',
-        'Réviser la recette pour réduire le gaspillage'
+        'Remplacer certains ingrédients coûteux'
       ],
-      color: 'var(--error)',
-      bgColor: 'var(--error-container)'
-    };
+        color: 'var(--on-error-container)',
+        bgColor: 'var(--error)'
+      };
   };
 
   const recommendation = getRecommendations();
@@ -107,12 +130,11 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
         {isEnglish ? 'Recommendations' : 'Recommandations'}
       </p>
 
-      {/* Container - EXACTEMENT comme les métriques */}
+      {/* Container - Fond plein coloré */}
       <div 
         className="px-4 py-2 rounded-lg flex items-center justify-center gap-2 flex-1"
         style={{ 
-          backgroundColor: recommendation.bgColor,
-          border: `1px solid ${recommendation.color}`
+          backgroundColor: recommendation.bgColor
         }}
         onClick={onClick}
       >
