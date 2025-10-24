@@ -30,7 +30,7 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
     // Food Cost idéal : 28-32%
     if (actualFoodCost >= 28 && actualFoodCost <= 32) {
       return {
-        icon: <CheckCircle size={24} />,
+        icon: <CheckCircle size={20} />,
         title: isEnglish ? 'Excellent Balance' : 'Excellent Équilibre',
         items: isEnglish ? [
           'Food cost in optimal range',
@@ -51,8 +51,8 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
     // Food Cost trop bas : <28%
     if (actualFoodCost < 28) {
       return {
-        icon: <TrendingDown size={24} />,
-        title: isEnglish ? 'Low Food Cost - Opportunity' : 'Food Cost Bas - Opportunité',
+        icon: <TrendingDown size={20} />,
+        title: isEnglish ? 'Low Food Cost' : 'Food Cost Bas',
         items: isEnglish ? [
           'Food cost below optimal range',
           'Consider improving ingredient quality',
@@ -73,8 +73,8 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
     
     // Food Cost trop élevé : >32%
     return {
-      icon: <TrendingUp size={24} />,
-      title: isEnglish ? 'High Food Cost - Action Required' : 'Food Cost Élevé - Action Requise',
+      icon: <TrendingUp size={20} />,
+      title: isEnglish ? 'High Food Cost' : 'Food Cost Élevé',
       items: isEnglish ? [
         'Food cost above optimal range',
         'Consider increasing selling price',
@@ -120,10 +120,10 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
           {recommendation.icon}
         </div>
         <p 
-          className="text-sm font-semibold leading-tight flex-1"
+          className="text-xs font-medium leading-tight flex-1 whitespace-nowrap overflow-hidden text-ellipsis"
           style={{ color: recommendation.color }}
         >
-          {recommendation.title}, {isEnglish ? 'see recommendations' : 'voir les recommandations'}
+          {recommendation.title} - {isEnglish ? 'See recommendations' : 'Voir les recommandations'}
         </p>
       </div>
     </div>
