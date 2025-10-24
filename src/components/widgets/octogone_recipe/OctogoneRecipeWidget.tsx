@@ -203,11 +203,6 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
     return (costPerPortion / sellingPrice) * 100;
   };
 
-  // Calculer la marge brute par portion
-  const calculateGrossMargin = (): number => {
-    return sellingPrice - calculateCostPerPortion();
-  };
-
   // Sauvegarder les paramètres de la recette
   const handleSaveSettings = (settings: {
     recipeName: string;
