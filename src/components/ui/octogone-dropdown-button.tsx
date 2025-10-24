@@ -13,7 +13,7 @@ interface OctogoneDropdownButtonProps {
   value: string;
   onChange: (value: string) => void;
   icon?: React.ReactNode;
-  variant?: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary' | 'outline';
   size?: 'sm' | 'md' | 'lg';
 }
 
@@ -71,6 +71,8 @@ export const OctogoneDropdownButton: React.FC<OctogoneDropdownButtonProps> = ({
           normal: '#BADFF6',
           hover: '#dcb26b'
         };
+      case 'outline':
+        return null; // Pas de couleurs pour outline
       default:
         return {
           normal: '#dcb26b',
@@ -80,21 +82,32 @@ export const OctogoneDropdownButton: React.FC<OctogoneDropdownButtonProps> = ({
   };
 
   const colors = getColors();
+  const isOutline = variant === 'outline';
 
   return (
     <div ref={dropdownRef} className="relative inline-block">
       {/* Bouton principal */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`${sizeClasses} text-black font-semibold rounded-lg transition-all duration-300 ease-out shadow-lg hover:shadow-xl inline-flex items-center justify-center whitespace-nowrap cursor-pointer`}
-        style={{
-          backgroundColor: colors.normal
+        className={`${sizeClasses} font-semibold rounded-lg transition-all duration-300 ease-out inline-flex items-center justify-center whitespace-nowrap cursor-pointer w-full ${
+          isOutline ? '' : 'shadow-lg hover:shadow-xl text-black'
+        }`}
+        style={isOutline ? {
+          backgroundColor: 'transparent',
+          border: '1px solid var(--outline)',
+          color: 'var(--on-surface)'
+        } : {
+          backgroundColor: colors!.normal
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = colors.hover;
+          if (!isOutline) {
+            e.currentTarget.style.backgroundColor = colors!.hover;
+          }
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = colors.normal;
+          if (!isOutline) {
+            e.currentTarget.style.backgroundColor = colors!.normal;
+          }
         }}
       >
         {icon && <span className="mr-2">{icon}</span>}

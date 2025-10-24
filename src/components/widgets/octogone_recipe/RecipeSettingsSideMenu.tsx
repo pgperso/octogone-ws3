@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
+import { OctogoneQuantitySelector } from '@/components/ui/octogone-quantity-selector';
+import { OctogoneDropdownButton } from '@/components/ui/octogone-dropdown-button';
 
 interface RecipeSettingsSideMenuProps {
   isOpen: boolean;
@@ -150,17 +152,13 @@ export const RecipeSettingsSideMenu: React.FC<RecipeSettingsSideMenuProps> = ({
           >
             {isEnglish ? 'Selling Price ($)' : 'Prix de Vente ($)'}
           </label>
-          <input
-            type="number"
-            step="0.01"
+          <OctogoneQuantitySelector
             value={price}
-            onChange={(e) => setPrice(parseFloat(e.target.value))}
-            className="w-full px-4 py-2 rounded-lg"
-            style={{
-              backgroundColor: 'var(--surface)',
-              border: '1px solid var(--outline)',
-              color: 'var(--on-surface)'
-            }}
+            onChange={setPrice}
+            min={0}
+            max={999}
+            step={0.25}
+            size="md"
           />
         </div>
 
@@ -172,17 +170,13 @@ export const RecipeSettingsSideMenu: React.FC<RecipeSettingsSideMenuProps> = ({
           >
             {isEnglish ? 'Target Food Cost (%)' : 'Food Cost Cible (%)'}
           </label>
-          <input
-            type="number"
-            step="1"
+          <OctogoneQuantitySelector
             value={foodCost}
-            onChange={(e) => setFoodCost(parseFloat(e.target.value))}
-            className="w-full px-4 py-2 rounded-lg"
-            style={{
-              backgroundColor: 'var(--surface)',
-              border: '1px solid var(--outline)',
-              color: 'var(--on-surface)'
-            }}
+            onChange={setFoodCost}
+            min={0}
+            max={100}
+            step={1}
+            size="md"
           />
         </div>
 
@@ -194,22 +188,19 @@ export const RecipeSettingsSideMenu: React.FC<RecipeSettingsSideMenuProps> = ({
           >
             {isEnglish ? 'Category' : 'Catégorie'}
           </label>
-          <select
+          <OctogoneDropdownButton
+            options={[
+              { value: 'appetizer', label: isEnglish ? 'Appetizer' : 'Entrée' },
+              { value: 'main', label: isEnglish ? 'Main Course' : 'Plat Principal' },
+              { value: 'dessert', label: isEnglish ? 'Dessert' : 'Dessert' },
+              { value: 'drink', label: isEnglish ? 'Drink' : 'Boisson' },
+              { value: 'side', label: isEnglish ? 'Side Dish' : 'Accompagnement' }
+            ]}
             value={cat}
-            onChange={(e) => setCat(e.target.value)}
-            className="w-full px-4 py-2 rounded-lg"
-            style={{
-              backgroundColor: 'var(--surface)',
-              border: '1px solid var(--outline)',
-              color: 'var(--on-surface)'
-            }}
-          >
-            <option value="appetizer">{isEnglish ? 'Appetizer' : 'Entrée'}</option>
-            <option value="main">{isEnglish ? 'Main Course' : 'Plat Principal'}</option>
-            <option value="dessert">{isEnglish ? 'Dessert' : 'Dessert'}</option>
-            <option value="drink">{isEnglish ? 'Drink' : 'Boisson'}</option>
-            <option value="side">{isEnglish ? 'Side Dish' : 'Accompagnement'}</option>
-          </select>
+            onChange={setCat}
+            variant="outline"
+            size="md"
+          />
         </div>
               </div>
             </div>
