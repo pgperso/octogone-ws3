@@ -300,34 +300,35 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
         </div>
       </div>
 
-      {/* Header de la recette - Photo, Nom et Métriques */}
-      <div 
-        className="px-6 py-4 cursor-pointer transition-all relative group"
-        style={{ 
-          backgroundColor: 'var(--surface-container-low)',
-          borderBottom: '1px solid var(--outline)'
-        }}
-        onClick={() => setIsSettingsOpen(true)}
-      >
-        {/* Overlay au hover - invisible par défaut */}
+      {/* Header de la recette + Recommandations */}
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_350px] gap-4 px-6 py-4" style={{ borderBottom: '1px solid var(--outline)' }}>
+        {/* Header de la recette - Photo, Nom et Métriques */}
         <div 
-          className="absolute inset-0 opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-center justify-center pointer-events-none z-20"
+          className="cursor-pointer transition-all relative group rounded-lg"
           style={{ 
-            backgroundColor: 'var(--secondary-container)'
+            backgroundColor: 'var(--surface-container-low)'
           }}
+          onClick={() => setIsSettingsOpen(true)}
         >
-          <div className="flex items-center gap-3">
-            <Settings size={24} style={{ color: 'var(--on-secondary-container)' }} />
-            <span 
-              className="text-lg font-semibold"
-              style={{ color: 'var(--on-secondary-container)' }}
-            >
-              {isEnglish ? 'Edit Settings' : 'Modifier les paramètres'}
-            </span>
+          {/* Overlay au hover - invisible par défaut */}
+          <div 
+            className="absolute inset-0 opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-center justify-center pointer-events-none z-20 rounded-lg"
+            style={{ 
+              backgroundColor: 'var(--secondary-container)'
+            }}
+          >
+            <div className="flex items-center gap-3">
+              <Settings size={24} style={{ color: 'var(--on-secondary-container)' }} />
+              <span 
+                className="text-lg font-semibold"
+                style={{ color: 'var(--on-secondary-container)' }}
+              >
+                {isEnglish ? 'Edit Settings' : 'Modifier les paramètres'}
+              </span>
+            </div>
           </div>
-        </div>
 
-        <div className="flex items-center gap-6 relative z-10">
+          <div className="flex items-center gap-6 relative z-10 p-4">
           {/* Image de la recette */}
           <div 
             className="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0"
@@ -344,32 +345,24 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
             />
           </div>
 
-          {/* Nom de la recette */}
-          <div className="flex-1">
-            <h3 
-              className="text-2xl font-bold"
-              style={{ color: 'var(--on-surface)' }}
-            >
-              {recipeName}
-            </h3>
-            <p 
-              className="text-sm mt-1"
-              style={{ color: 'var(--on-surface-variant)' }}
-            >
-              {isEnglish ? 'Recipe' : 'Recette'}
-            </p>
-          </div>
+            {/* Nom de la recette */}
+            <div className="flex-1">
+              <h3 
+                className="text-2xl font-bold"
+                style={{ color: 'var(--on-surface)' }}
+              >
+                {recipeName}
+              </h3>
+              <p 
+                className="text-sm mt-1"
+                style={{ color: 'var(--on-surface-variant)' }}
+              >
+                {isEnglish ? 'Recipe' : 'Recette'}
+              </p>
+            </div>
 
-          {/* Recommandations */}
-          <div className="flex-shrink-0" style={{ width: '300px' }}>
-            <RecipeFoodCostRecommendations
-              actualFoodCost={calculateFoodCostPercentage()}
-              locale={locale}
-            />
-          </div>
-
-          {/* Métriques */}
-          <div className="flex gap-6">
+            {/* Métriques */}
+            <div className="flex gap-6">
             {/* Coût par portion */}
             <div className="flex flex-col self-stretch">
               <p 
@@ -429,7 +422,16 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
                 />
               </div>
             </div>
+            </div>
           </div>
+        </div>
+
+        {/* Recommandations - Colonne séparée à droite */}
+        <div className="flex items-stretch">
+          <RecipeFoodCostRecommendations
+            actualFoodCost={calculateFoodCostPercentage()}
+            locale={locale}
+          />
         </div>
       </div>
 
