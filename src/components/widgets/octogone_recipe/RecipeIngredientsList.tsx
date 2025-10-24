@@ -4,6 +4,7 @@ import React from 'react';
 import { Plus, Trash2 } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { OctogoneUnitSelector } from '@/components/ui/octogone-unit-selector';
+import { OctogoneQuantitySelector } from '@/components/ui/octogone-quantity-selector';
 import { translateProduct, translateUnit } from '@/data/products/octogone_products_translations';
 
 interface Product {
@@ -153,19 +154,13 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
                   </p>
                 </div>
 
-                {/* Quantité éditable */}
-                <input
-                  type="number"
+                {/* Sélecteur de quantité avec OctogoneQuantitySelector */}
+                <OctogoneQuantitySelector
                   value={ingredient.quantity}
-                  onChange={(e) => onUpdateIngredient(ingredient.productId, parseFloat(e.target.value) || 0)}
-                  className="w-20 px-2 py-1 rounded text-center"
-                  style={{
-                    backgroundColor: 'var(--surface-variant)',
-                    color: 'var(--on-surface)',
-                    border: '1px solid var(--outline)'
-                  }}
-                  step="0.1"
-                  min="0"
+                  onChange={(newQuantity) => onUpdateIngredient(ingredient.productId, newQuantity)}
+                  min={0}
+                  step={0.1}
+                  size="sm"
                 />
 
                 {/* Sélecteur d'unité avec OctogoneUnitSelector */}
