@@ -22,23 +22,41 @@ export const RecipeMultiplierToggle: React.FC<RecipeMultiplierToggleProps> = ({
 
   return (
     <div className="flex items-center gap-3 mb-4">
-      {/* Toggle */}
-      <button
-        onClick={() => onToggle(!isMultiplierView)}
-        className="flex items-center gap-2 px-3 py-2 rounded-lg transition-all"
+      {/* Toggle Switch à deux états */}
+      <div 
+        className="inline-flex rounded-lg p-1"
         style={{
-          backgroundColor: isMultiplierView ? 'var(--primary-container)' : 'var(--surface-variant)',
-          color: isMultiplierView ? 'var(--on-primary-container)' : 'var(--on-surface-variant)',
-          border: `1px solid ${isMultiplierView ? 'var(--primary)' : 'var(--outline)'}`
+          backgroundColor: 'var(--surface-variant)',
+          border: '1px solid var(--outline)'
         }}
       >
-        <Calculator size={16} />
-        <span className="text-sm font-medium">
-          {isEnglish ? 'Multiply Recipe' : 'Multiplier la Recette'}
-        </span>
-      </button>
+        {/* Vue Originale */}
+        <button
+          onClick={() => onToggle(false)}
+          className="px-4 py-2 rounded-md text-sm font-medium transition-all"
+          style={{
+            backgroundColor: !isMultiplierView ? 'var(--primary)' : 'transparent',
+            color: !isMultiplierView ? 'var(--on-primary)' : 'var(--on-surface-variant)'
+          }}
+        >
+          {isEnglish ? 'Original' : 'Originale'}
+        </button>
 
-      {/* Multiplicateur (visible seulement si activé) */}
+        {/* Vue Multiplication */}
+        <button
+          onClick={() => onToggle(true)}
+          className="px-4 py-2 rounded-md text-sm font-medium transition-all flex items-center gap-2"
+          style={{
+            backgroundColor: isMultiplierView ? 'var(--primary)' : 'transparent',
+            color: isMultiplierView ? 'var(--on-primary)' : 'var(--on-surface-variant)'
+          }}
+        >
+          <Calculator size={14} />
+          {isEnglish ? 'Multiply' : 'Multiplier'}
+        </button>
+      </div>
+
+      {/* Multiplicateur (visible seulement si vue multiplication activée) */}
       {isMultiplierView && (
         <div className="flex items-center gap-2">
           <span 
