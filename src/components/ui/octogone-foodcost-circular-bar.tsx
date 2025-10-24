@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface OctogoneFoodCostCircularBarProps {
   actualFoodCost: number; // Food cost réel en %
@@ -15,16 +15,32 @@ export const OctogoneFoodCostCircularBar: React.FC<OctogoneFoodCostCircularBarPr
   size = 120,
   strokeWidth = 8
 }) => {
+  // État pour l'animation
+  const [animatedPercentage, setAnimatedPercentage] = useState(0);
+  const [animatedFoodCost, setAnimatedFoodCost] = useState(0);
+
+  // Animer la barre au montage et quand les valeurs changent
+  useEffect(() => {
+    // Réinitialiser à 0
+    setAnimatedPercentage(0);
+    setAnimatedFoodCost(0);
+
+    // Démarrer l'animation après un court délai
+    const timer = setTimeout(() => {
+      setAnimatedPercentage(targetFoodCost);
+      setAnimatedFoodCost(actualFoodCost);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [actualFoodCost, targetFoodCost]);
+
   // Déterminer si la cible est respectée
   const isTargetMet = actualFoodCost <= targetFoodCost;
-  
-  // La barre représente la cible sur 100%
-  const targetPercentage = targetFoodCost; // Ex: 30% de cible = 30% de la barre
   
   // Rayon du cercle
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = circumference - (targetPercentage / 100) * circumference;
+  const strokeDashoffset = circumference - (animatedPercentage / 100) * circumference;
 
   return (
     <div className="relative inline-flex items-center justify-center">
@@ -61,10 +77,10 @@ export const OctogoneFoodCostCircularBar: React.FC<OctogoneFoodCostCircularBarPr
       {/* Texte au centre - Seulement le food cost réel */}
       <div className="absolute inset-0 flex items-center justify-center">
         <span 
-          className="text-sm font-bold"
+          className="text-sm font-bold transition-all duration-500"
           style={{ color: isTargetMet ? 'var(--success)' : 'var(--error)' }}
         >
-          {actualFoodCost.toFixed(1)}%
+          {animatedFoodCost.toFixed(1)}%
         </span>
       </div>
     </div>

@@ -6,7 +6,6 @@ import { RecipeIngredientsList } from './RecipeIngredientsList';
 import { RecipeSteps } from './RecipeSteps';
 import { ProductSideMenu } from './ProductSideMenu';
 import { RecipeSettingsModal } from './RecipeSettingsModal';
-import { OctogoneButton } from '@/components/ui/octogone-button';
 import { OctogoneFoodCostCircularBar } from '@/components/ui/octogone-foodcost-circular-bar';
 import inventoryData from '@/data/products/octogone_products_data.json';
 
