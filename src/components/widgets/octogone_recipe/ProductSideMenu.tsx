@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Search, Plus } from 'lucide-react';
+import { X, Search, Plus, Check } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { translateProduct, translateCategory, translateUnit } from '@/data/products/octogone_products_translations';
 
@@ -21,6 +21,7 @@ interface ProductSideMenuProps {
   onClose: () => void;
   products: Product[];
   onAddProduct: (productId: string, quantity: number, unit: string) => void;
+  addedProductIds?: string[];
   locale?: 'fr' | 'en';
 }
 
@@ -29,6 +30,7 @@ export const ProductSideMenu: React.FC<ProductSideMenuProps> = ({
   onClose,
   products,
   onAddProduct,
+  addedProductIds = [],
   locale = 'fr'
 }) => {
   const isEnglish = locale === 'en';
@@ -144,49 +146,67 @@ export const ProductSideMenu: React.FC<ProductSideMenuProps> = ({
               {isEnglish ? 'No products found' : 'Aucun produit trouvé'}
             </div>
           ) : (
-            filteredProducts.map((product) => (
-              <button
-                key={product.id}
-                onClick={() => setSelectedProductId(product.id)}
-                className="w-full text-left p-3 rounded-lg transition-all"
-                style={{
-                  backgroundColor: selectedProductId === product.id ? 'var(--secondary-container)' : 'var(--surface)',
-                  border: `1px solid ${selectedProductId === product.id ? 'var(--secondary)' : 'var(--outline)'}`,
-                  color: selectedProductId === product.id ? 'var(--on-secondary-container)' : 'var(--on-surface)'
-                }}
-              >
-                <div className="flex items-center justify-between">
-                  <div className="flex-1">
-                    <p className="font-medium">
-                      {translateProduct(product.name, locale)}
-                    </p>
-                    <p 
-                      className="text-xs mt-1"
-                      style={{ 
-                        color: selectedProductId === product.id ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)',
-                        opacity: 0.8
-                      }}
-                    >
-                      {translateCategory(product.category, locale)}
-                    </p>
+            filteredProducts.map((product) => {
+              const isAdded = addedProductIds.includes(product.id);
+              
+              return (
+                <button
+                  key={product.id}
+                  onClick={() => setSelectedProductId(product.id)}
+                  className="w-full text-left p-3 rounded-lg transition-all relative"
+                  style={{
+                    backgroundColor: selectedProductId === product.id ? 'var(--secondary-container)' : 'var(--surface)',
+                    border: `1px solid ${selectedProductId === product.id ? 'var(--secondary)' : 'var(--outline)'}`,
+                    color: selectedProductId === product.id ? 'var(--on-secondary-container)' : 'var(--on-surface)'
+                  }}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1 flex items-center gap-2">
+                      {/* Indicateur "Ajouté" */}
+                      {isAdded && (
+                        <div 
+                          className="flex items-center justify-center w-6 h-6 rounded-full flex-shrink-0"
+                          style={{ 
+                            backgroundColor: 'var(--primary)',
+                            color: 'var(--on-primary)'
+                          }}
+                        >
+                          <Check size={14} strokeWidth={3} />
+                        </div>
+                      )}
+                      <div className="flex-1">
+                        <p className="font-medium">
+                          {translateProduct(product.name, locale)}
+                        </p>
+                        <p 
+                          className="text-xs mt-1"
+                          style={{ 
+                            color: selectedProductId === product.id ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)',
+                            opacity: 0.8
+                          }}
+                        >
+                          {translateCategory(product.category, locale)}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-sm font-semibold">
+                        {product.unitCost.toFixed(2)} $
+                      </p>
+                      <p 
+                        className="text-xs"
+                        style={{ 
+                          color: selectedProductId === product.id ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)',
+                          opacity: 0.8
+                        }}
+                      >
+                        / {translateUnit(product.unit, locale)}
+                      </p>
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <p className="text-sm font-semibold">
-                      {product.unitCost.toFixed(2)} $
-                    </p>
-                    <p 
-                      className="text-xs"
-                      style={{ 
-                        color: selectedProductId === product.id ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)',
-                        opacity: 0.8
-                      }}
-                    >
-                      / {translateUnit(product.unit, locale)}
-                    </p>
-                  </div>
-                </div>
-              </button>
-            ))
+                </button>
+              );
+            })
           )}
         </div>
 

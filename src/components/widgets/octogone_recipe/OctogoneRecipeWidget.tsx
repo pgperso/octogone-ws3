@@ -254,6 +254,7 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
           onClose={() => setIsSideMenuOpen(false)}
           products={products}
           onAddProduct={handleAddIngredient}
+          addedProductIds={ingredients.map(ing => ing.productId)}
           locale={locale}
         />
       )}
