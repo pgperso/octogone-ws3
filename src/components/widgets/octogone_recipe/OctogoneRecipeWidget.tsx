@@ -2,9 +2,12 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { Settings } from 'lucide-react';
 import { RecipeIngredientsList } from './RecipeIngredientsList';
 import { RecipeSteps } from './RecipeSteps';
 import { ProductSideMenu } from './ProductSideMenu';
+import { RecipeSettingsModal } from './RecipeSettingsModal';
+import { OctogoneButton } from '@/components/ui/octogone-button';
 import inventoryData from '@/data/products/octogone_products_data.json';
 
 interface Product {
@@ -44,10 +47,15 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
   const isEnglish = locale === 'en';
   
   // Informations de la recette
-  const [recipeName] = useState('Cheeseburger Supreme');
+  const [recipeName, setRecipeName] = useState('Cheeseburger Supreme');
   const [recipeImage] = useState('/products/supreme-cheesburger.avif');
-  const [targetFoodCost] = useState(30); // Cible en %
-  const [sellingPrice] = useState(15.99); // Prix de vente
+  const [targetFoodCost, setTargetFoodCost] = useState(30); // Cible en %
+  const [sellingPrice, setSellingPrice] = useState(15.99); // Prix de vente
+  const [portions, setPortions] = useState(1); // Nombre de portions
+  const [category, setCategory] = useState('main'); // Catégorie
+  
+  // État du modal de paramètres
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   
   // État pour les ingrédients de la recette
   const [ingredients, setIngredients] = useState<RecipeIngredient[]>([
@@ -182,15 +190,43 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
     }, 0);
   };
 
+  // Calculer le coût par portion
+  const calculateCostPerPortion = (): number => {
+    const totalCost = calculateTotalCost();
+    return portions > 0 ? totalCost / portions : totalCost;
+  };
+
   // Calculer le food cost en pourcentage
   const calculateFoodCostPercentage = (): number => {
-    const totalCost = calculateTotalCost();
+    const costPerPortion = calculateCostPerPortion();
     if (sellingPrice === 0) return 0;
-    return (totalCost / sellingPrice) * 100;
+    return (costPerPortion / sellingPrice) * 100;
+  };
+
+  // Calculer la marge brute par portion
+  const calculateGrossMargin = (): number => {
+    return sellingPrice - calculateCostPerPortion();
+  };
+
+  // Sauvegarder les paramètres de la recette
+  const handleSaveSettings = (settings: {
+    recipeName: string;
+    sellingPrice: number;
+    portions: number;
+    targetFoodCost: number;
+    category: string;
+  }) => {
+    setRecipeName(settings.recipeName);
+    setSellingPrice(settings.sellingPrice);
+    setPortions(settings.portions);
+    setTargetFoodCost(settings.targetFoodCost);
+    setCategory(settings.category);
   };
 
   const totalCost = calculateTotalCost();
+  const costPerPortion = calculateCostPerPortion();
   const foodCostPercentage = calculateFoodCostPercentage();
+  const grossMargin = calculateGrossMargin();
 
   return (
     <div 
@@ -315,20 +351,20 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
           </div>
 
           {/* Métriques */}
-          <div className="flex gap-6">
-            {/* Coût total */}
+          <div className="flex items-center gap-6">
+            {/* Coût par portion */}
             <div className="text-right">
               <p 
                 className="text-xs font-medium mb-1"
                 style={{ color: 'var(--on-surface-variant)' }}
               >
-                {isEnglish ? 'Total Cost' : 'Coût Total'}
+                {isEnglish ? 'Cost/Portion' : 'Coût/Portion'}
               </p>
               <p 
                 className="text-2xl font-bold"
                 style={{ color: 'var(--on-surface)' }}
               >
-                {totalCost.toFixed(2)} $
+                {costPerPortion.toFixed(2)} $
               </p>
             </div>
 
@@ -357,6 +393,16 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
                 </p>
               </div>
             </div>
+
+            {/* Bouton Paramètres */}
+            <OctogoneButton
+              variant="secondary"
+              size="md"
+              onClick={() => setIsSettingsOpen(true)}
+              icon={<Settings size={18} />}
+            >
+              {isEnglish ? 'Settings' : 'Paramètres'}
+            </OctogoneButton>
           </div>
         </div>
       </div>
@@ -396,6 +442,19 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
           locale={locale}
         />
       )}
+
+      {/* Modal de paramètres */}
+      <RecipeSettingsModal
+        isOpen={isSettingsOpen}
+        onClose={() => setIsSettingsOpen(false)}
+        recipeName={recipeName}
+        sellingPrice={sellingPrice}
+        portions={portions}
+        targetFoodCost={targetFoodCost}
+        category={category}
+        onSave={handleSaveSettings}
+        locale={locale}
+      />
     </div>
   );
 };
