@@ -143,37 +143,84 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
   };
 
   return (
-    <div className="relative w-full h-full">
-      {/* En-tête avec avatar Marc */}
+    <div 
+      className="w-full h-full rounded-xl overflow-hidden flex flex-col"
+      style={{ 
+        backgroundColor: 'var(--surface)',
+        border: '1px solid var(--outline)'
+      }}
+    >
+      {/* En-tête avec avatar Marc - Même structure que widget inventaire */}
       <div 
-        className="flex items-center gap-4 p-6 border-b"
+        className="px-6 py-6"
         style={{ 
           backgroundColor: 'var(--surface-container)',
-          borderColor: 'var(--outline)'
+          borderBottom: '1px solid var(--outline)'
         }}
       >
-        <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
-          <img
-            src="/images/avatars/marc.avif"
-            alt="Marc"
-            className="w-full h-full object-cover rounded-full"
-          />
+        {/* Desktop: Avatar + Bouton en ligne */}
+        <div className="hidden lg:flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div 
+              className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0"
+              style={{ 
+                border: '2px solid var(--primary)',
+                padding: '2px'
+              }}
+            >
+              <img
+                src="/images/avatars/marc.avif"
+                alt="Marc"
+                className="w-full h-full object-cover rounded-full"
+              />
+            </div>
+            <div className="flex flex-col justify-center h-16">
+              <h2 className="text-2xl font-bold leading-tight" style={{ color: 'var(--on-surface)' }}>
+                {isEnglish ? 'Hello Marc' : 'Bonjour Marc'}
+              </h2>
+              <p className="text-sm font-semibold leading-tight" style={{ color: 'var(--primary)' }}>
+                {isEnglish ? 'Restaurant Director' : 'Directeur de la restauration'}
+              </p>
+              <p className="text-xs leading-tight" style={{ color: 'var(--on-surface-variant)' }}>
+                Groupe Resto & Co
+              </p>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col justify-center h-16">
-          <h2 className="text-2xl font-bold leading-tight" style={{ color: 'var(--on-surface)' }}>
-            {isEnglish ? 'Hello Marc' : 'Bonjour Marc'}
-          </h2>
-          <p className="text-sm font-semibold leading-tight" style={{ color: 'var(--primary)' }}>
-            {isEnglish ? 'Restaurant Director' : 'Directeur de la restauration'}
-          </p>
-          <p className="text-xs leading-tight" style={{ color: 'var(--on-surface-variant)' }}>
-            Groupe Resto & Co
-          </p>
+
+        {/* Mobile: Avatar */}
+        <div className="lg:hidden">
+          <div className="flex items-center gap-4">
+            <div 
+              className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0"
+              style={{ 
+                border: '2px solid var(--primary)',
+                padding: '2px'
+              }}
+            >
+              <img
+                src="/images/avatars/marc.avif"
+                alt="Marc"
+                className="w-full h-full object-cover rounded-full"
+              />
+            </div>
+            <div className="flex flex-col justify-center h-16">
+              <h2 className="text-2xl font-bold leading-tight" style={{ color: 'var(--on-surface)' }}>
+                {isEnglish ? 'Hello Marc' : 'Bonjour Marc'}
+              </h2>
+              <p className="text-sm font-semibold leading-tight" style={{ color: 'var(--primary)' }}>
+                {isEnglish ? 'Restaurant Director' : 'Directeur de la restauration'}
+              </p>
+              <p className="text-xs leading-tight" style={{ color: 'var(--on-surface-variant)' }}>
+                Groupe Resto & Co
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Contenu principal - 2 colonnes */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 p-6 h-[calc(100%-80px)] overflow-hidden">
+      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-6 p-6 overflow-hidden relative">
         {/* Colonne gauche - Ingrédients */}
         <RecipeIngredientsList
           ingredients={ingredients}
