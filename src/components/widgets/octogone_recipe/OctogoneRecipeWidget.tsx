@@ -307,12 +307,11 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
         }}
         onClick={() => setIsSettingsOpen(true)}
       >
-        {/* Overlay au hover */}
+        {/* Overlay au hover - invisible par défaut */}
         <div 
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+          className="absolute inset-0 opacity-0 group-hover:opacity-90 transition-opacity duration-300 flex items-center justify-center pointer-events-none z-20"
           style={{ 
-            backgroundColor: 'var(--secondary-container)',
-            opacity: 0.9
+            backgroundColor: 'var(--secondary-container)'
           }}
         >
           <span 
