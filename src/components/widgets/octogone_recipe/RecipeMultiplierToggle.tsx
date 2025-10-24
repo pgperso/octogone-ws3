@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Calculator } from 'lucide-react';
+import { OctogoneQuantitySelector } from '@/components/ui/octogone-quantity-selector';
 
 interface RecipeMultiplierToggleProps {
   isMultiplierView: boolean;
@@ -35,8 +36,8 @@ export const RecipeMultiplierToggle: React.FC<RecipeMultiplierToggleProps> = ({
           onClick={() => onToggle(false)}
           className="px-4 py-2 rounded-md text-sm font-medium transition-all"
           style={{
-            backgroundColor: !isMultiplierView ? 'var(--primary)' : 'transparent',
-            color: !isMultiplierView ? 'var(--on-primary)' : 'var(--on-surface-variant)'
+            backgroundColor: !isMultiplierView ? 'var(--secondary-container)' : 'transparent',
+            color: !isMultiplierView ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)'
           }}
         >
           {isEnglish ? 'Original' : 'Originale'}
@@ -47,8 +48,8 @@ export const RecipeMultiplierToggle: React.FC<RecipeMultiplierToggleProps> = ({
           onClick={() => onToggle(true)}
           className="px-4 py-2 rounded-md text-sm font-medium transition-all flex items-center gap-2"
           style={{
-            backgroundColor: isMultiplierView ? 'var(--primary)' : 'transparent',
-            color: isMultiplierView ? 'var(--on-primary)' : 'var(--on-surface-variant)'
+            backgroundColor: isMultiplierView ? 'var(--secondary-container)' : 'transparent',
+            color: isMultiplierView ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)'
           }}
         >
           <Calculator size={14} />
@@ -65,24 +66,12 @@ export const RecipeMultiplierToggle: React.FC<RecipeMultiplierToggleProps> = ({
           >
             ×
           </span>
-          <input
-            type="number"
+          <OctogoneQuantitySelector
             value={multiplier}
-            onChange={(e) => onMultiplierChange(parseFloat(e.target.value) || 1)}
-            min="1"
-            step="1"
-            className="w-16 px-2 py-1 text-center rounded-lg text-sm font-bold transition-all"
-            style={{
-              backgroundColor: 'var(--primary-container)',
-              color: 'var(--on-primary-container)',
-              border: '2px solid var(--primary)'
-            }}
-            onFocus={(e) => {
-              e.currentTarget.style.borderColor = 'var(--primary)';
-            }}
-            onBlur={(e) => {
-              e.currentTarget.style.borderColor = 'var(--primary)';
-            }}
+            onChange={onMultiplierChange}
+            min={1}
+            step={1}
+            size="sm"
           />
           <span 
             className="text-xs"
