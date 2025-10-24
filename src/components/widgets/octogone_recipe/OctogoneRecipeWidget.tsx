@@ -80,8 +80,6 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
       // Ajouter un nouvel ingrédient
       setIngredients([...ingredients, { productId, quantity, unit }]);
     }
-    
-    setIsSideMenuOpen(false);
   };
 
   // Supprimer un ingrédient
