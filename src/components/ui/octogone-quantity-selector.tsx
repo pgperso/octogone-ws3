@@ -102,7 +102,7 @@ export const OctogoneQuantitySelector: React.FC<OctogoneQuantitySelectorProps> =
       <button
         onClick={handleDecrement}
         disabled={value <= min}
-        className={`${sizeClasses.button} flex items-center justify-center transition-colors duration-200 disabled:opacity-30 disabled:cursor-not-allowed rounded-l-lg`}
+        className={`${sizeClasses.button} flex items-center justify-center transition-colors duration-200 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer rounded-l-lg`}
         style={{
           color: 'var(--on-surface)',
           backgroundColor: 'transparent'
@@ -145,7 +145,7 @@ export const OctogoneQuantitySelector: React.FC<OctogoneQuantitySelectorProps> =
       <button
         onClick={handleIncrement}
         disabled={value >= max}
-        className={`${sizeClasses.button} flex items-center justify-center transition-colors duration-200 disabled:opacity-30 disabled:cursor-not-allowed rounded-r-lg`}
+        className={`${sizeClasses.button} flex items-center justify-center transition-colors duration-200 disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer rounded-r-lg`}
         style={{
           color: 'var(--on-surface)',
           backgroundColor: 'transparent'

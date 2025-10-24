@@ -44,13 +44,13 @@ export const OctogoneUnitSelector: React.FC<OctogoneUnitSelectorProps> = ({
   const getSizeClasses = () => {
     switch (size) {
       case 'sm':
-        return 'px-3 py-1.5 text-sm';
+        return 'px-3 h-8 text-sm';
       case 'md':
-        return 'px-4 py-2 text-base';
+        return 'px-4 h-10 text-base';
       case 'lg':
-        return 'px-5 py-2.5 text-base';
+        return 'px-5 h-12 text-base';
       default:
-        return 'px-3 py-1.5 text-sm';
+        return 'px-3 h-8 text-sm';
     }
   };
   
