@@ -95,7 +95,7 @@ export const OctogoneFoodCostCircularBar: React.FC<OctogoneFoodCostCircularBarPr
       <div className="absolute inset-0 flex items-center justify-center">
         <span 
           className="text-sm font-bold transition-all duration-500"
-          style={{ color: color }}
+          style={{ color: 'var(--on-surface)' }}
         >
           {animatedFoodCost.toFixed(1)}%
         </span>

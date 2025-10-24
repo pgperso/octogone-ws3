@@ -30,8 +30,8 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
     // Food Cost idéal : 28-32%
     if (actualFoodCost >= 28 && actualFoodCost <= 32) {
       return {
-        icon: <CheckCircle size={28} />,
-        title: isEnglish ? 'Excellent Balance' : 'Excellent Équilibre',
+        icon: <CheckCircle size={20} />,
+        title: isEnglish ? 'Your food cost is in the optimal range' : 'Votre food cost est dans la plage optimale',
         items: isEnglish ? [
           'Food cost in optimal range',
           'Good quality-profitability balance',
@@ -51,8 +51,8 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
     // Food Cost trop bas : <28%
     if (actualFoodCost < 28) {
       return {
-        icon: <TrendingDown size={28} />,
-        title: isEnglish ? 'Low Food Cost' : 'Food Cost Bas',
+        icon: <TrendingDown size={20} />,
+        title: isEnglish ? 'Your food cost is too low' : 'Votre food cost est trop bas',
         items: isEnglish ? [
           'Food cost below optimal range',
           'Consider improving ingredient quality',
@@ -74,8 +74,8 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
     // Food Cost modérément élevé : 33-38% (Orange)
     if (actualFoodCost >= 33 && actualFoodCost <= 38) {
       return {
-        icon: <TrendingUp size={28} />,
-        title: isEnglish ? 'Elevated Food Cost' : 'Food Cost Élevé',
+        icon: <TrendingUp size={20} />,
+        title: isEnglish ? 'Your food cost is elevated' : 'Votre food cost est élevé',
         items: isEnglish ? [
           'Food cost above optimal range',
           'Consider increasing selling price',
@@ -96,8 +96,8 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
     
     // Food Cost très élevé : >38% (Rouge)
     return {
-      icon: <TrendingUp size={28} />,
-      title: isEnglish ? 'Critical Food Cost' : 'Food Cost Critique',
+      icon: <TrendingUp size={20} />,
+      title: isEnglish ? 'Your food cost is very high' : 'Votre food cost est très élevé',
       items: isEnglish ? [
         'Food cost critically high',
         'Urgent action required',
@@ -142,7 +142,7 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
           {recommendation.icon}
         </div>
         <p 
-          className="text-2xl font-bold whitespace-nowrap"
+          className="text-sm font-medium leading-tight"
           style={{ color: recommendation.color }}
         >
           {recommendation.title}
