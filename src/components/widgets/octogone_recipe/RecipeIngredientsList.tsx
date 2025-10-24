@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Plus, Trash2 } from 'lucide-react';
+import { Plus, Trash2, ImageIcon } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { OctogoneUnitSelector } from '@/components/ui/octogone-unit-selector';
 import { OctogoneQuantitySelector } from '@/components/ui/octogone-quantity-selector';
@@ -177,19 +177,24 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
                   {/* Image du produit à gauche (cachée sur mobile) */}
                   <div className="hidden md:block flex-shrink-0">
                     <div 
-                      className="w-10 h-10 rounded-lg overflow-hidden"
+                      className="w-16 rounded-lg overflow-hidden flex items-center justify-center"
                       style={{ 
                         backgroundColor: 'var(--surface-variant)',
-                        border: '1px solid var(--outline)'
+                        border: '1px solid var(--outline)',
+                        alignSelf: 'stretch'
                       }}
                     >
-                      <Image
-                        src={product.image || getProductImage(product.name)}
-                        alt={product.name}
-                        width={40}
-                        height={40}
-                        className="object-cover w-full h-full"
-                      />
+                      {(product.image || getProductImage(product.name)) !== '/products/placeholder.avif' ? (
+                        <Image
+                          src={product.image || getProductImage(product.name)}
+                          alt={product.name}
+                          width={64}
+                          height={64}
+                          className="object-cover w-full h-full"
+                        />
+                      ) : (
+                        <ImageIcon size={24} style={{ color: 'var(--on-surface-variant)', opacity: 0.3 }} />
+                      )}
                     </div>
                   </div>
 
@@ -233,21 +238,26 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
             return (
               <div key={ingredient.productId} className="flex items-stretch gap-3">
                 {/* Image du produit à gauche (cachée sur mobile) */}
-                <div className="hidden md:flex flex-shrink-0 items-center">
+                <div className="hidden md:flex flex-shrink-0">
                   <div 
-                    className="w-10 h-10 rounded-lg overflow-hidden"
+                    className="w-16 rounded-lg overflow-hidden flex items-center justify-center"
                     style={{ 
                       backgroundColor: 'var(--surface-variant)',
-                      border: '1px solid var(--outline)'
+                      border: '1px solid var(--outline)',
+                      alignSelf: 'stretch'
                     }}
                   >
-                    <Image
-                      src={product.image || getProductImage(product.name)}
-                      alt={product.name}
-                      width={40}
-                      height={40}
-                      className="object-cover w-full h-full"
-                    />
+                    {(product.image || getProductImage(product.name)) !== '/products/placeholder.avif' ? (
+                      <Image
+                        src={product.image || getProductImage(product.name)}
+                        alt={product.name}
+                        width={64}
+                        height={64}
+                        className="object-cover w-full h-full"
+                      />
+                    ) : (
+                      <ImageIcon size={24} style={{ color: 'var(--on-surface-variant)', opacity: 0.3 }} />
+                    )}
                   </div>
                 </div>
 
