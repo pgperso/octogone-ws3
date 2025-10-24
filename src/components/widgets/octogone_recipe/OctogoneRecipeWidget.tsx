@@ -342,9 +342,9 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
           </div>
 
           {/* Métriques */}
-          <div className="flex items-stretch gap-6">
+          <div className="flex gap-6">
             {/* Coût par portion */}
-            <div className="flex flex-col h-full">
+            <div className="flex flex-col self-stretch">
               <p 
                 className="text-xs font-medium mb-2"
                 style={{ color: 'var(--on-surface-variant)' }}
@@ -365,7 +365,7 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
             </div>
 
             {/* Prix de vente */}
-            <div className="flex flex-col h-full">
+            <div className="flex flex-col self-stretch">
               <p 
                 className="text-xs font-medium mb-2"
                 style={{ color: 'var(--on-surface-variant)' }}
@@ -386,7 +386,7 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
             </div>
 
             {/* Food Cost - Barre circulaire */}
-            <div className="flex flex-col h-full">
+            <div className="flex flex-col self-stretch">
               <p 
                 className="text-xs font-medium mb-2"
                 style={{ color: 'var(--on-surface-variant)' }}
