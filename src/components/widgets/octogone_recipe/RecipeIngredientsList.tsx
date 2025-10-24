@@ -182,14 +182,14 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
                 {/* Bouton supprimer */}
                 <button
                   onClick={() => onRemoveIngredient(ingredient.productId)}
-                  className="p-2 rounded-lg transition-all flex-shrink-0"
+                  className="p-2 rounded-lg transition-all flex-shrink-0 cursor-pointer"
                   style={{ 
                     backgroundColor: 'var(--error-container)',
                     color: 'var(--on-error-container)'
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.backgroundColor = 'var(--error)';
-                    e.currentTarget.style.color = 'var(--on-error-container)';
+                    e.currentTarget.style.color = 'var(--on-error)';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.backgroundColor = 'var(--error-container)';
