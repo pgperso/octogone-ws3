@@ -305,7 +305,7 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
       </div>
 
       {/* Header de la recette + Recommandations */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_350px] gap-4 px-6 py-4" style={{ borderBottom: '1px solid var(--outline)' }}>
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_350px] gap-4 px-6 py-4 items-stretch" style={{ borderBottom: '1px solid var(--outline)' }}>
         {/* Header de la recette - Photo, Nom et Métriques */}
         <div 
           className="cursor-pointer transition-all relative group rounded-lg"
@@ -432,7 +432,7 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
 
         {/* Recommandations - Colonne séparée à droite */}
         <div 
-          className="rounded-lg cursor-pointer transition-all relative group h-full"
+          className="rounded-lg cursor-pointer transition-all relative group flex flex-col"
           style={{ 
             backgroundColor: 'var(--surface-container-low)'
           }}
@@ -453,7 +453,7 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
             </span>
           </div>
 
-          <div className="p-4 relative z-10 h-full">
+          <div className="p-4 relative z-10 flex-1 flex flex-col">
             <RecipeFoodCostRecommendations
               actualFoodCost={calculateFoodCostPercentage()}
               locale={locale}
