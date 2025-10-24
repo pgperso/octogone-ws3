@@ -3,7 +3,7 @@
 import React from 'react';
 import { Plus, Trash2 } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
-import { OctogoneDropdownButton } from '@/components/ui/octogone-dropdown-button';
+import { OctogoneUnitSelector } from '@/components/ui/octogone-unit-selector';
 import { translateProduct, translateUnit } from '@/data/products/octogone_products_translations';
 
 interface Product {
@@ -168,12 +168,11 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
                   min="0"
                 />
 
-                {/* Sélecteur d'unité avec OctogoneDropdownButton */}
-                <OctogoneDropdownButton
+                {/* Sélecteur d'unité avec OctogoneUnitSelector */}
+                <OctogoneUnitSelector
                   options={unitOptions}
                   value={ingredient.unit}
-                  onChange={(newUnit) => onUpdateIngredient(ingredient.productId, ingredient.quantity, newUnit)}
-                  variant="secondary"
+                  onChange={(newUnit: string) => onUpdateIngredient(ingredient.productId, ingredient.quantity, newUnit)}
                   size="sm"
                 />
 
