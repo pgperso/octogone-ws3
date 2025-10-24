@@ -300,14 +300,30 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
 
       {/* Header de la recette - Photo, Nom et Métriques */}
       <div 
-        className="px-6 py-4 cursor-pointer transition-all hover:bg-opacity-80"
+        className="px-6 py-4 cursor-pointer transition-all relative group"
         style={{ 
           backgroundColor: 'var(--surface-container-low)',
           borderBottom: '1px solid var(--outline)'
         }}
         onClick={() => setIsSettingsOpen(true)}
       >
-        <div className="flex items-center gap-6">
+        {/* Overlay au hover */}
+        <div 
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+          style={{ 
+            backgroundColor: 'var(--secondary-container)',
+            opacity: 0.9
+          }}
+        >
+          <span 
+            className="text-lg font-semibold"
+            style={{ color: 'var(--on-secondary-container)' }}
+          >
+            {isEnglish ? 'Edit Settings' : 'Modifier les paramètres'}
+          </span>
+        </div>
+
+        <div className="flex items-center gap-6 relative z-10">
           {/* Image de la recette */}
           <div 
             className="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0"
