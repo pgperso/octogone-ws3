@@ -30,30 +30,30 @@ export const OctogoneQuantitySelector: React.FC<OctogoneQuantitySelectorProps> =
     switch (size) {
       case 'sm':
         return {
-          container: 'h-8',
+          container: 'h-8 min-w-[120px]',
           button: 'w-8 h-8',
-          input: 'text-sm',
+          input: 'text-sm w-12',
           icon: 14
         };
       case 'md':
         return {
-          container: 'h-10',
+          container: 'h-10 min-w-[140px]',
           button: 'w-10 h-10',
-          input: 'text-base',
+          input: 'text-base w-16',
           icon: 16
         };
       case 'lg':
         return {
-          container: 'h-12',
+          container: 'h-12 min-w-[160px]',
           button: 'w-12 h-12',
-          input: 'text-base',
+          input: 'text-base w-20',
           icon: 18
         };
       default:
         return {
-          container: 'h-8',
+          container: 'h-8 min-w-[120px]',
           button: 'w-8 h-8',
-          input: 'text-sm',
+          input: 'text-sm w-12',
           icon: 14
         };
     }
