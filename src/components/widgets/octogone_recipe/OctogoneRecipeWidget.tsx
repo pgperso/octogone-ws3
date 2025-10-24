@@ -431,12 +431,19 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
         </div>
 
         {/* Recommandations - Colonne séparée à droite */}
-        <div className="flex items-end">
-          <RecipeFoodCostRecommendations
-            actualFoodCost={calculateFoodCostPercentage()}
-            locale={locale}
-            onClick={() => setIsRecommendationsOpen(true)}
-          />
+        <div 
+          className="rounded-lg"
+          style={{ 
+            backgroundColor: 'var(--surface-container-low)'
+          }}
+        >
+          <div className="p-4">
+            <RecipeFoodCostRecommendations
+              actualFoodCost={calculateFoodCostPercentage()}
+              locale={locale}
+              onClick={() => setIsRecommendationsOpen(true)}
+            />
+          </div>
         </div>
       </div>
 
