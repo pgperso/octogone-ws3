@@ -82,6 +82,30 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
     }
   };
 
+  // Ajouter plusieurs ingrédients en une seule fois
+  const handleAddMultipleIngredients = (newIngredients: Array<{ productId: string; quantity: number; unit: string }>) => {
+    setIngredients(prevIngredients => {
+      const updatedIngredients = [...prevIngredients];
+      
+      newIngredients.forEach(newIng => {
+        const existingIndex = updatedIngredients.findIndex(ing => ing.productId === newIng.productId);
+        
+        if (existingIndex >= 0) {
+          // Mettre à jour la quantité si existe
+          updatedIngredients[existingIndex] = {
+            ...updatedIngredients[existingIndex],
+            quantity: updatedIngredients[existingIndex].quantity + newIng.quantity
+          };
+        } else {
+          // Ajouter nouveau
+          updatedIngredients.push(newIng);
+        }
+      });
+      
+      return updatedIngredients;
+    });
+  };
+
   // Supprimer un ingrédient
   const handleRemoveIngredient = (productId: string) => {
     setIngredients(ingredients.filter(ing => ing.productId !== productId));
@@ -252,6 +276,7 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
           onClose={() => setIsSideMenuOpen(false)}
           products={products}
           onAddProduct={handleAddIngredient}
+          onAddMultipleProducts={handleAddMultipleIngredients}
           addedProductIds={ingredients.map(ing => ing.productId)}
           locale={locale}
         />

@@ -30,6 +30,7 @@ interface ProductSideMenuProps {
   onClose: () => void;
   products: Product[];
   onAddProduct: (productId: string, quantity: number, unit: string) => void;
+  onAddMultipleProducts?: (products: SelectedProduct[]) => void;
   addedProductIds?: string[];
   locale?: 'fr' | 'en';
 }
@@ -39,6 +40,7 @@ export const ProductSideMenu: React.FC<ProductSideMenuProps> = ({
   onClose,
   products,
   onAddProduct,
+  onAddMultipleProducts,
   addedProductIds = [],
   locale = 'fr'
 }) => {
@@ -90,9 +92,15 @@ export const ProductSideMenu: React.FC<ProductSideMenuProps> = ({
 
   // Ajouter tous les produits sélectionnés
   const handleAddProducts = () => {
-    selectedProducts.forEach(selected => {
-      onAddProduct(selected.productId, selected.quantity, selected.unit);
-    });
+    if (onAddMultipleProducts) {
+      // Utiliser la fonction d'ajout multiple si disponible
+      onAddMultipleProducts(selectedProducts);
+    } else {
+      // Fallback: ajouter un par un
+      selectedProducts.forEach(selected => {
+        onAddProduct(selected.productId, selected.quantity, selected.unit);
+      });
+    }
     setSelectedProducts([]);
     onClose();
   };
