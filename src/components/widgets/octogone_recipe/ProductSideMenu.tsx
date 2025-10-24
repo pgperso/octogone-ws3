@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { X, Search, Plus } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { translateProduct, translateCategory, translateUnit } from '@/data/products/octogone_products_translations';
@@ -54,24 +55,36 @@ export const ProductSideMenu: React.FC<ProductSideMenuProps> = ({
     }
   };
 
-  if (!isOpen) return null;
-
   return (
-    <div className="absolute inset-0 z-50">
-      {/* Overlay */}
-      <div
-        className="absolute inset-0 bg-black bg-opacity-50"
-        onClick={onClose}
-      />
+    <AnimatePresence>
+      {isOpen && (
+        <div className="absolute inset-0 z-50">
+          {/* Overlay avec animation de fade */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute inset-0 bg-black bg-opacity-50"
+            onClick={onClose}
+          />
 
-      {/* Side Menu */}
-      <div
-        className="absolute top-0 right-0 h-full w-full md:w-[500px] flex flex-col"
-        style={{ 
-          backgroundColor: 'var(--surface-container)',
-          boxShadow: '-4px 0 12px rgba(0, 0, 0, 0.1)'
-        }}
-      >
+          {/* Side Menu avec animation de glissement */}
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ 
+              type: 'spring',
+              damping: 30,
+              stiffness: 300
+            }}
+            className="absolute top-0 right-0 h-full w-full md:w-[500px] flex flex-col"
+            style={{ 
+              backgroundColor: 'var(--surface-container)',
+              boxShadow: '-4px 0 12px rgba(0, 0, 0, 0.1)'
+            }}
+          >
         {/* En-tête */}
         <div 
           className="flex items-center justify-between p-4 border-b"
@@ -221,7 +234,9 @@ export const ProductSideMenu: React.FC<ProductSideMenuProps> = ({
             </OctogoneButton>
           </div>
         )}
-      </div>
-    </div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
   );
 };
