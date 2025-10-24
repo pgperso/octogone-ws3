@@ -342,9 +342,9 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
           </div>
 
           {/* Métriques */}
-          <div className="flex items-center gap-6">
+          <div className="flex items-stretch gap-6">
             {/* Coût par portion */}
-            <div className="flex flex-col">
+            <div className="flex flex-col h-full">
               <p 
                 className="text-xs font-medium mb-2"
                 style={{ color: 'var(--on-surface-variant)' }}
@@ -352,7 +352,7 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
                 {isEnglish ? 'Cost/Portion' : 'Coût/Portion'}
               </p>
               <div 
-                className="px-4 py-2 rounded-lg text-center"
+                className="px-4 py-2 rounded-lg text-center flex items-center justify-center flex-1"
                 style={{ border: '1px solid var(--outline)' }}
               >
                 <p 
@@ -365,7 +365,7 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
             </div>
 
             {/* Prix de vente */}
-            <div className="flex flex-col">
+            <div className="flex flex-col h-full">
               <p 
                 className="text-xs font-medium mb-2"
                 style={{ color: 'var(--on-surface-variant)' }}
@@ -373,7 +373,7 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
                 {isEnglish ? 'Selling Price' : 'Prix de Vente'}
               </p>
               <div 
-                className="px-4 py-2 rounded-lg text-center"
+                className="px-4 py-2 rounded-lg text-center flex items-center justify-center flex-1"
                 style={{ border: '1px solid var(--outline)' }}
               >
                 <p 
@@ -386,19 +386,21 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
             </div>
 
             {/* Food Cost - Barre circulaire */}
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col h-full">
               <p 
                 className="text-xs font-medium mb-2"
                 style={{ color: 'var(--on-surface-variant)' }}
               >
                 Food Cost
               </p>
-              <OctogoneFoodCostCircularBar
-                actualFoodCost={calculateFoodCostPercentage()}
-                targetFoodCost={targetFoodCost}
-                size={80}
-                strokeWidth={6}
-              />
+              <div className="flex items-center justify-center flex-1">
+                <OctogoneFoodCostCircularBar
+                  actualFoodCost={calculateFoodCostPercentage()}
+                  targetFoodCost={targetFoodCost}
+                  size={80}
+                  strokeWidth={6}
+                />
+              </div>
             </div>
 
             {/* Bouton Paramètres */}
