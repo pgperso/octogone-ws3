@@ -11,6 +11,7 @@ interface Product {
   category: string;
   brand?: string;
   unit: string;
+  availableUnits?: string[];
   unitCost: number;
 }
 
@@ -25,7 +26,7 @@ interface RecipeIngredientsListProps {
   products: Product[];
   onAddIngredient: () => void;
   onRemoveIngredient: (productId: string) => void;
-  onUpdateIngredient: (productId: string, quantity: number) => void;
+  onUpdateIngredient: (productId: string, quantity: number, unit?: string) => void;
   locale?: 'fr' | 'en';
 }
 
@@ -115,13 +116,24 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
                   min="0"
                 />
 
-                {/* Unité */}
-                <span 
-                  className="text-sm font-medium w-16"
-                  style={{ color: 'var(--on-surface-variant)' }}
+                {/* Sélecteur d'unité */}
+                <select
+                  value={ingredient.unit}
+                  onChange={(e) => onUpdateIngredient(ingredient.productId, ingredient.quantity, e.target.value)}
+                  className="px-2 py-1 rounded text-sm font-medium"
+                  style={{
+                    backgroundColor: 'var(--surface-variant)',
+                    color: 'var(--on-surface)',
+                    border: '1px solid var(--outline)',
+                    cursor: 'pointer'
+                  }}
                 >
-                  {translateUnit(ingredient.unit, locale)}
-                </span>
+                  {(product.availableUnits || [product.unit]).map((unit) => (
+                    <option key={unit} value={unit}>
+                      {translateUnit(unit, locale)}
+                    </option>
+                  ))}
+                </select>
 
                 {/* Nom du produit */}
                 <div className="flex-1">

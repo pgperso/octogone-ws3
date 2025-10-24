@@ -88,11 +88,11 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
     setIngredients(ingredients.filter(ing => ing.productId !== productId));
   };
 
-  // Mettre à jour la quantité d'un ingrédient
-  const handleUpdateIngredient = (productId: string, quantity: number) => {
+  // Mettre à jour la quantité et/ou l'unité d'un ingrédient
+  const handleUpdateIngredient = (productId: string, quantity: number, unit?: string) => {
     setIngredients(ingredients.map(ing => 
       ing.productId === productId 
-        ? { ...ing, quantity }
+        ? { ...ing, quantity, ...(unit && { unit }) }
         : ing
     ));
   };
