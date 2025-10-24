@@ -88,11 +88,14 @@ export const ProductSideMenu: React.FC<ProductSideMenuProps> = ({
         {/* En-tête */}
         <div 
           className="flex items-center justify-between p-4 border-b"
-          style={{ borderColor: 'var(--outline)' }}
+          style={{ 
+            backgroundColor: 'var(--primary)',
+            borderColor: 'var(--outline)'
+          }}
         >
           <h3 
             className="text-xl font-semibold"
-            style={{ color: 'var(--on-surface)' }}
+            style={{ color: 'var(--on-primary-container)' }}
           >
             {isEnglish ? 'Add Ingredient' : 'Ajouter un ingrédient'}
           </h3>
@@ -100,8 +103,8 @@ export const ProductSideMenu: React.FC<ProductSideMenuProps> = ({
             onClick={onClose}
             className="p-2 rounded-lg hover:opacity-80"
             style={{ 
-              backgroundColor: 'var(--surface-variant)',
-              color: 'var(--on-surface-variant)'
+              backgroundColor: 'var(--surface)',
+              color: 'var(--on-surface)'
             }}
           >
             <X size={20} />

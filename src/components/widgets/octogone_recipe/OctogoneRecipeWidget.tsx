@@ -169,20 +169,20 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
               }}
             >
               <img
-                src="/images/avatars/marc.avif"
-                alt="Marc"
+                src="/images/avatars/vincent.avif"
+                alt="Vincent"
                 className="w-full h-full object-cover rounded-full"
               />
             </div>
             <div className="flex flex-col justify-center h-16">
               <h2 className="text-2xl font-bold leading-tight" style={{ color: 'var(--on-surface)' }}>
-                {isEnglish ? 'Hello Marc' : 'Bonjour Marc'}
+                {isEnglish ? 'Hello Vincent' : 'Bonjour Vincent'}
               </h2>
               <p className="text-sm font-semibold leading-tight" style={{ color: 'var(--primary)' }}>
-                {isEnglish ? 'Restaurant Director' : 'Directeur de la restauration'}
+                {isEnglish ? 'Executive Chef' : 'Chef Exécutif'}
               </p>
               <p className="text-xs leading-tight" style={{ color: 'var(--on-surface-variant)' }}>
-                Groupe Resto & Co
+                Bistro 8
               </p>
             </div>
           </div>
@@ -199,20 +199,20 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
               }}
             >
               <img
-                src="/images/avatars/marc.avif"
-                alt="Marc"
+                src="/images/avatars/vincent.avif"
+                alt="Vincent"
                 className="w-full h-full object-cover rounded-full"
               />
             </div>
             <div className="flex flex-col justify-center h-16">
               <h2 className="text-2xl font-bold leading-tight" style={{ color: 'var(--on-surface)' }}>
-                {isEnglish ? 'Hello Marc' : 'Bonjour Marc'}
+                {isEnglish ? 'Hello Vincent' : 'Bonjour Vincent'}
               </h2>
               <p className="text-sm font-semibold leading-tight" style={{ color: 'var(--primary)' }}>
-                {isEnglish ? 'Restaurant Director' : 'Directeur de la restauration'}
+                {isEnglish ? 'Executive Chef' : 'Chef Exécutif'}
               </p>
               <p className="text-xs leading-tight" style={{ color: 'var(--on-surface-variant)' }}>
-                Groupe Resto & Co
+                Bistro 8
               </p>
             </div>
           </div>
