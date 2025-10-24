@@ -97,67 +97,36 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
 
   return (
     <div 
-      className="rounded-2xl p-6 h-full flex flex-col"
+      className="rounded-lg p-3 h-full flex flex-col justify-center"
       style={{ 
-        backgroundColor: 'var(--surface-container-low)',
-        border: '1px solid var(--outline)'
+        backgroundColor: recommendation.bgColor,
+        border: `1px solid ${recommendation.color}`
       }}
     >
       {/* Header avec icône et titre */}
-      <div className="flex items-center gap-3 mb-4">
-        <div 
-          className="p-2 rounded-lg"
-          style={{ 
-            backgroundColor: recommendation.bgColor,
-            color: recommendation.color
-          }}
-        >
+      <div className="flex items-center gap-2 mb-2">
+        <div style={{ color: recommendation.color }}>
           {recommendation.icon}
         </div>
-        <div className="flex-1">
-          <h3 
-            className="text-lg font-bold"
+        <p 
+          className="text-sm font-bold"
+          style={{ color: recommendation.color }}
+        >
+          {recommendation.title}
+        </p>
+      </div>
+
+      {/* Recommandations en texte compact */}
+      <div className="space-y-1">
+        {recommendation.items.slice(0, 3).map((item, index) => (
+          <p 
+            key={index}
+            className="text-xs leading-tight"
             style={{ color: 'var(--on-surface)' }}
           >
-            {isEnglish ? 'Recommendations' : 'Recommandations'}
-          </h3>
-          <p 
-            className="text-sm font-semibold"
-            style={{ color: recommendation.color }}
-          >
-            {recommendation.title}
+            • {item}
           </p>
-        </div>
-      </div>
-
-      {/* Liste des recommandations */}
-      <div className="flex-1 space-y-2">
-        {recommendation.items.map((item, index) => (
-          <div 
-            key={index}
-            className="flex items-start gap-2 text-sm"
-            style={{ color: 'var(--on-surface-variant)' }}
-          >
-            <span 
-              className="mt-1 flex-shrink-0"
-              style={{ color: recommendation.color }}
-            >
-              •
-            </span>
-            <span>{item}</span>
-          </div>
         ))}
-      </div>
-
-      {/* Footer avec plage optimale */}
-      <div 
-        className="mt-4 pt-4 border-t text-xs"
-        style={{ 
-          borderColor: 'var(--outline)',
-          color: 'var(--on-surface-variant)'
-        }}
-      >
-        {isEnglish ? 'Optimal range: 28-32%' : 'Plage optimale : 28-32%'}
       </div>
     </div>
   );

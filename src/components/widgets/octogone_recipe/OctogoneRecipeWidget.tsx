@@ -360,6 +360,14 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
             </p>
           </div>
 
+          {/* Recommandations */}
+          <div className="flex-shrink-0" style={{ width: '300px' }}>
+            <RecipeFoodCostRecommendations
+              actualFoodCost={calculateFoodCostPercentage()}
+              locale={locale}
+            />
+          </div>
+
           {/* Métriques */}
           <div className="flex gap-6">
             {/* Coût par portion */}
@@ -423,15 +431,6 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Widget de recommandations */}
-      <div className="px-6 pt-6">
-        <RecipeFoodCostRecommendations
-          actualFoodCost={calculateFoodCostPercentage()}
-          targetFoodCost={targetFoodCost}
-          locale={locale}
-        />
       </div>
 
       {/* Contenu principal - 2 colonnes */}
