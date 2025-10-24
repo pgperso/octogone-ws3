@@ -58,7 +58,7 @@ export const ProductSideMenu: React.FC<ProductSideMenuProps> = ({
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="absolute inset-0 z-50">
+        <div className="absolute inset-0 z-50 p-4">
           {/* Overlay avec animation de fade */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -69,7 +69,7 @@ export const ProductSideMenu: React.FC<ProductSideMenuProps> = ({
             onClick={onClose}
           />
 
-          {/* Side Menu avec animation de glissement */}
+          {/* Side Menu avec animation de glissement et effet flottant */}
           <motion.div
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
@@ -79,10 +79,10 @@ export const ProductSideMenu: React.FC<ProductSideMenuProps> = ({
               damping: 30,
               stiffness: 300
             }}
-            className="absolute top-0 right-0 h-full w-full md:w-[500px] flex flex-col"
+            className="absolute top-4 right-4 bottom-4 w-[calc(100%-2rem)] md:w-[500px] flex flex-col rounded-2xl overflow-hidden"
             style={{ 
               backgroundColor: 'var(--surface-container)',
-              boxShadow: '-4px 0 12px rgba(0, 0, 0, 0.1)'
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
             }}
           >
         {/* En-tête */}
