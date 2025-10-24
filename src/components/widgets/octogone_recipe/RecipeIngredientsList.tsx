@@ -87,13 +87,6 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
     return convertedQuantity * product.unitCost;
   };
 
-  // Calculer le coût total
-  const totalCost = ingredients.reduce((sum, ingredient) => {
-    const product = products.find(p => p.id === ingredient.productId);
-    if (!product) return sum;
-    return sum + calculateIngredientCost(ingredient, product);
-  }, 0);
-
   return (
     <div 
       className="flex flex-col h-full rounded-lg overflow-hidden"
@@ -282,30 +275,6 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
             );
           })
         )}
-      </div>
-
-      {/* Footer avec coût total */}
-      <div 
-        className="p-4 border-t"
-        style={{ 
-          backgroundColor: 'var(--surface-variant)',
-          borderColor: 'var(--outline)'
-        }}
-      >
-        <div className="flex items-center justify-between">
-          <span 
-            className="text-lg font-semibold"
-            style={{ color: 'var(--on-surface)' }}
-          >
-            {isEnglish ? 'Total Cost' : 'Coût total'}
-          </span>
-          <span 
-            className="text-2xl font-bold"
-            style={{ color: 'var(--primary)' }}
-          >
-            {totalCost.toFixed(2)} $
-          </span>
-        </div>
       </div>
     </div>
   );
