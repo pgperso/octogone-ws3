@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Settings } from 'lucide-react';
 import { RecipeIngredientsList } from './RecipeIngredientsList';
 import { RecipeSteps } from './RecipeSteps';
 import { ProductSideMenu } from './ProductSideMenu';
@@ -302,11 +301,12 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
 
       {/* Header de la recette - Photo, Nom et Métriques */}
       <div 
-        className="px-6 py-4"
+        className="px-6 py-4 cursor-pointer transition-all hover:bg-opacity-80"
         style={{ 
           backgroundColor: 'var(--surface-container-low)',
           borderBottom: '1px solid var(--outline)'
         }}
+        onClick={() => setIsSettingsOpen(true)}
       >
         <div className="flex items-center gap-6">
           {/* Image de la recette */}
@@ -402,16 +402,6 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
                 />
               </div>
             </div>
-
-            {/* Bouton Paramètres */}
-            <OctogoneButton
-              variant="secondary"
-              size="md"
-              onClick={() => setIsSettingsOpen(true)}
-              icon={<Settings size={18} />}
-            >
-              {isEnglish ? 'Settings' : 'Paramètres'}
-            </OctogoneButton>
           </div>
         </div>
       </div>
