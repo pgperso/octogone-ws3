@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { RecipeIngredientsList } from './RecipeIngredientsList';
 import { RecipeSteps } from './RecipeSteps';
 import { ProductSideMenu } from './ProductSideMenu';
@@ -168,9 +169,11 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
                 padding: '2px'
               }}
             >
-              <img
+              <Image
                 src="/images/avatars/vincent.avif"
                 alt="Vincent"
+                width={60}
+                height={60}
                 className="w-full h-full object-cover rounded-full"
               />
             </div>
@@ -198,9 +201,11 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
                 padding: '2px'
               }}
             >
-              <img
+              <Image
                 src="/images/avatars/vincent.avif"
                 alt="Vincent"
+                width={60}
+                height={60}
                 className="w-full h-full object-cover rounded-full"
               />
             </div>
