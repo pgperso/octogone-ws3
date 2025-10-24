@@ -218,9 +218,6 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
     setCategory(settings.category);
   };
 
-  const costPerPortion = calculateCostPerPortion();
-  const foodCostPercentage = calculateFoodCostPercentage();
-
   return (
     <div 
       className="w-full h-full rounded-xl overflow-hidden flex flex-col relative"
@@ -357,7 +354,7 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
                 className="text-2xl font-bold"
                 style={{ color: 'var(--on-surface)' }}
               >
-                {costPerPortion.toFixed(2)} $
+                {calculateCostPerPortion().toFixed(2)} $
               </p>
             </div>
 
@@ -373,10 +370,10 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
                 <p 
                   className="text-2xl font-bold"
                   style={{ 
-                    color: foodCostPercentage <= targetFoodCost ? 'var(--success)' : 'var(--error)'
+                    color: calculateFoodCostPercentage() <= targetFoodCost ? 'var(--success)' : 'var(--error)'
                   }}
                 >
-                  {foodCostPercentage.toFixed(1)}%
+                  {calculateFoodCostPercentage().toFixed(1)}%
                 </p>
                 <p 
                   className="text-sm"
