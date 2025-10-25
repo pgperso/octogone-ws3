@@ -2,8 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Settings, Calculator } from 'lucide-react';
-import { OctogoneButton } from '@/components/ui/octogone-button';
+import { Settings } from 'lucide-react';
 import { RecipeIngredientsList } from './RecipeIngredientsList';
 import { RecipeSteps } from './RecipeSteps';
 import { ProductSideMenu } from './ProductSideMenu';
@@ -225,81 +224,14 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
   };
 
   return (
-    <div className="w-full h-full flex flex-col">
-      {/* Section Hero - Image, Description et Bouton */}
-      <div 
-        className="w-full px-6 py-12"
-        style={{ 
-          backgroundColor: 'var(--surface-container-low)',
-          borderBottom: '1px solid var(--outline)'
-        }}
-      >
-        <div className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            {/* Image du burger */}
-            <div className="order-2 lg:order-1">
-              <div 
-                className="w-full aspect-square rounded-3xl overflow-hidden shadow-2xl"
-                style={{ border: '2px solid var(--outline)' }}
-              >
-                <Image
-                  src={recipeImage}
-                  alt={recipeName}
-                  width={600}
-                  height={600}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-
-            {/* Description et bouton */}
-            <div className="order-1 lg:order-2 space-y-6">
-              <h1 
-                className="text-4xl lg:text-5xl font-bold"
-                style={{ color: 'var(--on-surface)' }}
-              >
-                {recipeName}
-              </h1>
-              
-              <p 
-                className="text-lg lg:text-xl leading-relaxed"
-                style={{ color: 'var(--on-surface-variant)' }}
-              >
-                {isEnglish 
-                  ? 'A delicious gourmet burger with premium ingredients, perfectly grilled beef patty, aged cheddar, crispy bacon, fresh lettuce, tomatoes, and our secret sauce. A true culinary masterpiece that will delight your customers.'
-                  : 'Un délicieux burger gourmet avec des ingrédients premium, galette de bœuf parfaitement grillée, cheddar affiné, bacon croustillant, laitue fraîche, tomates et notre sauce secrète. Un véritable chef-dœuvre culinaire qui ravira vos clients.'}
-              </p>
-
-              <div className="pt-2">
-                <OctogoneButton
-                  variant="primary"
-                  size="lg"
-                  onClick={() => {
-                    // Scroll vers le widget de calcul
-                    const widget = document.getElementById('recipe-calculator');
-                    widget?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }}
-                  className="gap-3"
-                >
-                  <Calculator size={24} />
-                  {isEnglish ? 'Calculate my recipe price' : 'Calculer le prix de ma recette'}
-                </OctogoneButton>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Widget de calcul de recette */}
-      <div 
-        id="recipe-calculator"
-        className="flex-1 rounded-xl overflow-hidden flex flex-col relative"
-        style={{ 
-          backgroundColor: 'var(--surface)',
-          border: '1px solid var(--outline)'
-        }}
-      >
-        {/* En-tête avec avatar Marc - Même structure que widget inventaire */}
+    <div 
+      className="w-full h-full rounded-xl overflow-hidden flex flex-col relative"
+      style={{ 
+        backgroundColor: 'var(--surface)',
+        border: '1px solid var(--outline)'
+      }}
+    >
+      {/* En-tête avec avatar Marc - Même structure que widget inventaire */}
       <div 
         className="px-6 py-6"
         style={{ 
@@ -590,7 +522,6 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
         actualFoodCost={calculateFoodCostPercentage()}
         locale={locale}
       />
-      </div>
     </div>
   );
 };
