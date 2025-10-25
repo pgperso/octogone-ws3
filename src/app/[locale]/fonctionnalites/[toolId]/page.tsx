@@ -12,7 +12,7 @@ import { ToolSEO } from "@/components/seo/tool-seo";
 import { LogoCard } from "@/components/widgets/logo-card";
 import OctogoneDashboardKPIs from "@/components/widgets/OctogoneDashboardKPIs";
 import { OctogoneInventoryWidget } from "@/components/widgets/octogone_inventories";
-import { OctogoneRecipeWidget } from "@/components/widgets/octogone_recipe";
+import { OctogoneRecipeWidget, RecipeHeroSection } from "@/components/widgets/octogone_recipe";
 
 // Permettre les paramètres dynamiques
 export const dynamicParams = true;
@@ -164,11 +164,28 @@ export default function ToolPage({
 
       {/* Widget Recettes - Uniquement pour Food Cost */}
       {toolId === 'food-cost' && (
-        <ResponsiveSection spacing="xl" bgColor="">
-          <div className="h-[800px]">
-            <OctogoneRecipeWidget locale={locale as 'fr' | 'en'} />
-          </div>
-        </ResponsiveSection>
+        <>
+          {/* Hero Section */}
+          <RecipeHeroSection
+            recipeName="Cheeseburger Supreme"
+            recipeImage="/products/supreme-cheesburger.avif"
+            description={locale === 'en' 
+              ? 'A delicious gourmet burger with premium ingredients, perfectly grilled beef patty, aged cheddar, crispy bacon, fresh lettuce, tomatoes, and our secret sauce. A true culinary masterpiece that will delight your customers.'
+              : 'Un délicieux burger gourmet avec des ingrédients premium, galette de bœuf parfaitement grillée, cheddar affiné, bacon croustillant, laitue fraîche, tomates et notre sauce secrète. Un véritable chef-dœuvre culinaire qui ravira vos clients.'}
+            onCalculateClick={() => {
+              const widget = document.getElementById('recipe-widget');
+              widget?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
+            locale={locale as 'fr' | 'en'}
+          />
+          
+          {/* Widget de calcul */}
+          <ResponsiveSection spacing="xl" bgColor="">
+            <div id="recipe-widget" className="h-[800px]">
+              <OctogoneRecipeWidget locale={locale as 'fr' | 'en'} />
+            </div>
+          </ResponsiveSection>
+        </>
       )}
 
       {/* Features Section - Widget réutilisable */}
