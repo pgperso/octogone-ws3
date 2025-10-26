@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Mail, Key, CheckCircle, FileEdit, AlertCircle, FileText, Edit3 } from 'lucide-react';
+import { Mail, Key, CheckCircle, FileEdit, Edit3 } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { RECIPE_ACCESS_CONFIG } from '@/config/recipe-access';
 import { trackRecipeAccessRequest, trackRecipeAccessUnlocked, trackRecipeCalculationStart } from '@/lib/tracking/hubspot-events';
@@ -226,79 +226,12 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
               {recipeName}
             </h1>
             
-            {/* Description */}
-            <div className="space-y-2">
-              <div className="flex items-center gap-2">
-                <FileText size={16} style={{ color: 'var(--on-surface-variant)' }} />
-                <span 
-                  className="text-sm font-medium"
-                  style={{ color: 'var(--on-surface-variant)' }}
-                >
-                  Description
-                </span>
-              </div>
-              <p 
-                className="text-lg leading-relaxed"
-                style={{ color: 'var(--on-surface-variant)' }}
-              >
-                {description}
-              </p>
-            </div>
-
-            {/* Allergènes */}
-            <div className="space-y-2">
-              <div className="flex items-center gap-2">
-                <AlertCircle size={16} style={{ color: 'var(--on-surface-variant)' }} />
-                <span 
-                  className="text-sm font-medium"
-                  style={{ color: 'var(--on-surface-variant)' }}
-                >
-                  {isEnglish ? 'Allergens' : 'Allergènes'}
-                </span>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {/* Gluten (pain) */}
-                <div 
-                  className="px-3 py-1.5 rounded-full text-xs font-medium"
-                  style={{ 
-                    backgroundColor: 'var(--tertiary-container)',
-                    color: 'var(--on-tertiary-container)'
-                  }}
-                >
-                  {isEnglish ? 'Gluten' : 'Gluten'}
-                </div>
-                {/* Lait (fromage) */}
-                <div 
-                  className="px-3 py-1.5 rounded-full text-xs font-medium"
-                  style={{ 
-                    backgroundColor: 'var(--secondary-container)',
-                    color: 'var(--on-secondary-container)'
-                  }}
-                >
-                  {isEnglish ? 'Dairy' : 'Lait'}
-                </div>
-                {/* Moutarde (sauce) */}
-                <div 
-                  className="px-3 py-1.5 rounded-full text-xs font-medium"
-                  style={{ 
-                    backgroundColor: 'var(--primary-container)',
-                    color: 'var(--on-primary-container)'
-                  }}
-                >
-                  {isEnglish ? 'Mustard' : 'Moutarde'}
-                </div>
-                {/* Sésame (pain) */}
-                <div 
-                  className="px-3 py-1.5 rounded-full text-xs font-medium"
-                  style={{ 
-                    backgroundColor: 'var(--tertiary-container)',
-                    color: 'var(--on-tertiary-container)'
-                  }}
-                >
-                  {isEnglish ? 'Sesame' : 'Sésame'}
-                </div>
-              </div>
-            </div>
+            <p 
+              className="text-lg lg:text-xl leading-relaxed"
+              style={{ color: 'var(--on-surface-variant)' }}
+            >
+              {description}
+            </p>
 
             {/* Système d'email gate (seulement si activé) */}
             {RECIPE_ACCESS_CONFIG.ENABLE_EMAIL_GATE && (
