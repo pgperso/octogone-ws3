@@ -65,21 +65,17 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
   const [isMultiplierView, setIsMultiplierView] = useState(false);
   const [multiplier, setMultiplier] = useState(1);
   
-  // État pour les ingrédients de la recette
+  // État pour les ingrédients de la recette - Burger en cours
   const [ingredients, setIngredients] = useState<RecipeIngredient[]>([
-    { productId: 'prod-022', quantity: 2, unit: 'kg' }, // Farine
-    { productId: 'prod-008', quantity: 0.5, unit: 'kg' }, // Beurre
-    { productId: 'prod-031', quantity: 6, unit: 'unité' }, // Œufs
-    { productId: 'prod-041', quantity: 0.3, unit: 'kg' }, // Sucre
+    { productId: 'prod-001', quantity: 0.15, unit: 'kg' }, // Bœuf haché
+    { productId: 'prod-006', quantity: 0.03, unit: 'kg' }, // Cheddar
+    { productId: 'prod-029', quantity: 1, unit: 'un' }, // Pain à burger
   ]);
 
-  // État pour les étapes de préparation
+  // État pour les étapes de préparation - Burger en cours
   const [steps, setSteps] = useState<RecipeStep[]>([
-    { id: 'step-1', order: 1, description: isEnglish ? 'Preheat oven to 180°C (350°F)' : 'Préchauffer le four à 180°C (350°F)' },
-    { id: 'step-2', order: 2, description: isEnglish ? 'Mix flour and butter until smooth' : 'Mélanger la farine et le beurre jusqu\'à obtenir une texture lisse' },
-    { id: 'step-3', order: 3, description: isEnglish ? 'Add eggs one by one while mixing' : 'Ajouter les œufs un par un en mélangeant' },
-    { id: 'step-4', order: 4, description: isEnglish ? 'Incorporate sugar gradually' : 'Incorporer le sucre progressivement' },
-    { id: 'step-5', order: 5, description: isEnglish ? 'Bake for 25-30 minutes' : 'Cuire au four pendant 25-30 minutes' },
+    { id: 'step-1', order: 1, description: isEnglish ? 'Form a 150g beef patty and season with salt and pepper' : 'Former une galette de 150g de bœuf et assaisonner avec sel et poivre' },
+    { id: 'step-2', order: 2, description: isEnglish ? 'Grill the patty for 4-5 minutes per side and add cheddar in the last minute' : 'Griller la galette 4-5 minutes de chaque côté et ajouter le cheddar la dernière minute' },
   ]);
 
   // État pour le side menu
