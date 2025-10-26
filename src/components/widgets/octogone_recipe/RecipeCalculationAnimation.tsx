@@ -58,12 +58,12 @@ export const RecipeCalculationAnimation: React.FC<RecipeCalculationAnimationProp
         borderBottom: '1px solid var(--outline)'
       }}
     >
-      <div className="max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           {/* Image du burger avec progress bar - Même position que hero */}
-          <div className="order-2 lg:order-1 relative">
+          <div className="order-2 lg:order-1 relative" style={{ height: '600px' }}>
             <div 
-              className="w-full aspect-square rounded-3xl overflow-hidden shadow-2xl"
+              className="w-full h-full rounded-3xl overflow-hidden shadow-2xl"
               style={{ border: '2px solid var(--outline)' }}
             >
               <Image

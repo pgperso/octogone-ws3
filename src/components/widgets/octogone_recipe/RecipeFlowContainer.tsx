@@ -21,8 +21,8 @@ export const RecipeFlowContainer: React.FC<RecipeFlowContainerProps> = ({
   const recipeName = 'Cheeseburger Supreme';
   const recipeImage = '/products/supreme-cheesburger.avif';
   const description = isEnglish 
-    ? 'Premium burger with grilled beef patty, aged cheddar, bacon, lettuce, tomatoes, and house sauce. Calculate the exact food cost and optimize your margins with precise ingredient tracking.'
-    : 'Burger premium avec galette de bœuf grillée, cheddar affiné, bacon, laitue, tomates et sauce maison. Calculez le food cost exact et optimisez vos marges avec un suivi précis des ingrédients.';
+    ? 'Premium burger with grilled beef patty, aged cheddar, bacon, lettuce, tomatoes, and house sauce.'
+    : 'Burger premium avec galette de bœuf grillée, cheddar affiné, bacon, laitue, tomates et sauce maison.';
 
   const handleCalculateClick = () => {
     setFlowState('animation');

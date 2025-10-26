@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Mail, Key, FileEdit, Edit3 } from 'lucide-react';
+import { Mail, Key, FileEdit, Edit3, FileText } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { RECIPE_ACCESS_CONFIG } from '@/config/recipe-access';
 import { trackRecipeAccessRequest, trackRecipeAccessUnlocked, trackRecipeCalculationStart } from '@/lib/tracking/hubspot-events';
@@ -237,12 +237,27 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
               {recipeName}
             </h1>
             
-            <p 
-              className="text-lg leading-relaxed"
-              style={{ color: 'var(--on-surface-variant)' }}
+            {/* Container de description avec bordure */}
+            <div 
+              className="p-4 rounded-lg border"
+              style={{ borderColor: 'var(--outline)' }}
             >
-              {description}
-            </p>
+              <div className="flex items-center gap-2 mb-2">
+                <FileText size={16} style={{ color: 'var(--on-surface-variant)' }} />
+                <span 
+                  className="text-sm font-medium"
+                  style={{ color: 'var(--on-surface-variant)' }}
+                >
+                  Description
+                </span>
+              </div>
+              <p 
+                className="text-lg leading-relaxed"
+                style={{ color: 'var(--on-surface-variant)' }}
+              >
+                {description}
+              </p>
+            </div>
             </div>
 
             {/* Divider */}
