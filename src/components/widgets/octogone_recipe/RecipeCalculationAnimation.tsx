@@ -56,18 +56,18 @@ export const RecipeCalculationAnimation: React.FC<RecipeCalculationAnimationProp
       }}
     >
       <div className="max-w-5xl mx-auto">
-        <div className="flex flex-col items-center justify-center gap-8">
-          {/* Image avec progress bar circulaire */}
-          <div className="relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          {/* Image du burger avec progress bar - Même position que hero */}
+          <div className="order-2 lg:order-1 relative">
             <div 
-              className="w-[400px] h-[400px] rounded-3xl overflow-hidden shadow-2xl"
+              className="w-full aspect-square rounded-3xl overflow-hidden shadow-2xl"
               style={{ border: '2px solid var(--outline)' }}
             >
               <Image
                 src={recipeImage}
                 alt={recipeName}
-                width={400}
-                height={400}
+                width={600}
+                height={600}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -119,19 +119,20 @@ export const RecipeCalculationAnimation: React.FC<RecipeCalculationAnimationProp
             </div>
           </div>
 
-          {/* Texte */}
-          <div className="text-center">
-            <h2 
-              className="text-2xl lg:text-3xl font-bold"
+          {/* Texte - Même position que hero */}
+          <div className="order-1 lg:order-2 space-y-6">
+            <h1 
+              className="text-4xl lg:text-5xl font-bold"
               style={{ color: 'var(--on-surface)' }}
             >
-              {isEnglish ? 'Calculating your recipe...' : 'Calcul de votre recette...'}
-            </h2>
+              {recipeName}
+            </h1>
+            
             <p 
-              className="text-lg mt-2"
+              className="text-lg lg:text-xl leading-relaxed"
               style={{ color: 'var(--on-surface-variant)' }}
             >
-              {recipeName}
+              {isEnglish ? 'Calculating your recipe...' : 'Calcul de votre recette...'}
             </p>
           </div>
         </div>
