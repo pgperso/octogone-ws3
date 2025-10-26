@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Calculator, Mail, Key, CheckCircle, FileEdit } from 'lucide-react';
+import { Calculator, Mail, Key, CheckCircle, FileEdit, AlertCircle } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { RECIPE_ACCESS_CONFIG } from '@/config/recipe-access';
 import { trackRecipeAccessRequest, trackRecipeAccessUnlocked, trackRecipeCalculationStart } from '@/lib/tracking/hubspot-events';
@@ -131,8 +131,11 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
           {/* Image du burger avec progress bar circulaire */}
           <div className="order-2 lg:order-1 relative">
             <div 
-              className="w-full aspect-square rounded-3xl overflow-hidden shadow-2xl"
-              style={{ border: '2px solid var(--outline)' }}
+              className="w-full rounded-3xl overflow-hidden shadow-2xl"
+              style={{ 
+                border: '2px solid var(--outline)',
+                aspectRatio: '1 / 1.15'
+              }}
             >
               <Image
                 src={recipeImage}
@@ -229,6 +232,61 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
             >
               {description}
             </p>
+
+            {/* Allergènes */}
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <AlertCircle size={16} style={{ color: 'var(--on-surface-variant)' }} />
+                <span 
+                  className="text-sm font-medium"
+                  style={{ color: 'var(--on-surface-variant)' }}
+                >
+                  {isEnglish ? 'Allergens' : 'Allergènes'}
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {/* Gluten (pain) */}
+                <div 
+                  className="px-3 py-1.5 rounded-full text-xs font-medium"
+                  style={{ 
+                    backgroundColor: 'var(--error-container)',
+                    color: 'var(--on-error-container)'
+                  }}
+                >
+                  {isEnglish ? 'Gluten' : 'Gluten'}
+                </div>
+                {/* Lait (fromage) */}
+                <div 
+                  className="px-3 py-1.5 rounded-full text-xs font-medium"
+                  style={{ 
+                    backgroundColor: 'var(--error-container)',
+                    color: 'var(--on-error-container)'
+                  }}
+                >
+                  {isEnglish ? 'Dairy' : 'Lait'}
+                </div>
+                {/* Moutarde (sauce) */}
+                <div 
+                  className="px-3 py-1.5 rounded-full text-xs font-medium"
+                  style={{ 
+                    backgroundColor: 'var(--error-container)',
+                    color: 'var(--on-error-container)'
+                  }}
+                >
+                  {isEnglish ? 'Mustard' : 'Moutarde'}
+                </div>
+                {/* Sésame (pain) */}
+                <div 
+                  className="px-3 py-1.5 rounded-full text-xs font-medium"
+                  style={{ 
+                    backgroundColor: 'var(--error-container)',
+                    color: 'var(--on-error-container)'
+                  }}
+                >
+                  {isEnglish ? 'Sesame' : 'Sésame'}
+                </div>
+              </div>
+            </div>
 
             {/* Système d'email gate (seulement si activé) */}
             {RECIPE_ACCESS_CONFIG.ENABLE_EMAIL_GATE && (
@@ -337,11 +395,10 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
                 variant="primary"
                 size="lg"
                 onClick={handleCalculateClick}
-                disabled={!isButtonEnabled}
-                className="gap-3"
+                className="gap-2"
               >
-                <Calculator size={24} />
-                {isEnglish ? 'Calculate my recipe price' : 'Calculer le prix de ma recette'}
+                <Calculator size={20} />
+                {isEnglish ? 'Complete my recipe' : 'Compléter ma recette'}
               </OctogoneButton>
             </div>
           </div>
