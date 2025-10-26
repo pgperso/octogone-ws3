@@ -129,11 +129,12 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           {/* Image du burger avec progress bar circulaire */}
-          <div className="order-2 lg:order-1 relative h-full">
+          <div className="order-2 lg:order-1 relative" style={{ minHeight: '500px' }}>
             <div 
               className="w-full h-full rounded-3xl overflow-hidden shadow-2xl"
               style={{ 
-                border: '2px solid var(--outline)'
+                border: '2px solid var(--outline)',
+                minHeight: '500px'
               }}
             >
               <Image
@@ -236,8 +237,8 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
             {/* Explication sobre du processus */}
             {RECIPE_ACCESS_CONFIG.ENABLE_EMAIL_GATE && accessState !== 'unlocked' && (
               <p 
-                className="text-sm"
-                style={{ color: 'var(--on-surface-variant)', opacity: 0.8 }}
+                className="text-base leading-relaxed"
+                style={{ color: 'var(--on-surface)' }}
               >
                 {isEnglish 
                   ? 'To complete the recipe and test Octogone\'s new features before everyone else, enter your email address to receive your activation code.'
