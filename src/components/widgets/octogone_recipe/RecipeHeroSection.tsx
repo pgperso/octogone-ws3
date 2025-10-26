@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Calculator, Mail, Key, CheckCircle } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
@@ -30,6 +30,28 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
   const [code, setCode] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [recipeProgress, setRecipeProgress] = useState(0);
+
+  // Animation de la progress bar au chargement (0% → 35%)
+  useEffect(() => {
+    const targetProgress = 35;
+    const duration = 2000; // 2 secondes
+    const interval = 30;
+    const increment = (targetProgress / duration) * interval;
+
+    const timer = setInterval(() => {
+      setRecipeProgress(prev => {
+        const next = prev + increment;
+        if (next >= targetProgress) {
+          clearInterval(timer);
+          return targetProgress;
+        }
+        return next;
+      });
+    }, interval);
+
+    return () => clearInterval(timer);
+  }, []);
 
   // Si l'email gate est désactivé, le bouton est toujours actif
   const isButtonEnabled = !RECIPE_ACCESS_CONFIG.ENABLE_EMAIL_GATE || accessState === 'unlocked';
@@ -124,6 +146,44 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
             >
               {description}
             </p>
+
+            {/* Progress bar de la recette */}
+            <div className="space-y-2">
+              <div className="flex justify-between items-center">
+                <span 
+                  className="text-sm font-medium"
+                  style={{ color: 'var(--on-surface-variant)' }}
+                >
+                  {isEnglish ? 'Recipe completion' : 'Complétion de la recette'}
+                </span>
+                <span 
+                  className="text-sm font-bold"
+                  style={{ color: 'var(--primary)' }}
+                >
+                  {Math.round(recipeProgress)}%
+                </span>
+              </div>
+              <div 
+                className="h-2 rounded-full overflow-hidden"
+                style={{ backgroundColor: 'var(--surface-variant)' }}
+              >
+                <div 
+                  className="h-full transition-all duration-300"
+                  style={{ 
+                    backgroundColor: 'var(--primary)',
+                    width: `${recipeProgress}%`
+                  }}
+                />
+              </div>
+              <p 
+                className="text-xs"
+                style={{ color: 'var(--on-surface-variant)', opacity: 0.7 }}
+              >
+                {isEnglish 
+                  ? 'Complete the recipe to calculate the exact food cost' 
+                  : 'Complétez la recette pour calculer le food cost exact'}
+              </p>
+            </div>
 
             {/* Système d'email gate (seulement si activé) */}
             {RECIPE_ACCESS_CONFIG.ENABLE_EMAIL_GATE && (
