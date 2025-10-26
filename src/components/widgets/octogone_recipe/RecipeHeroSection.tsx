@@ -190,6 +190,24 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
                 </span>
               </div>
             </div>
+
+            {/* Note de brouillon sous la progress bar */}
+            <div 
+              className="absolute bottom-4 left-4 right-4 p-3 rounded-lg border backdrop-blur-sm"
+              style={{ 
+                backgroundColor: 'rgba(var(--secondary-container-rgb, 255, 243, 224), 0.95)',
+                borderColor: 'var(--secondary)',
+              }}
+            >
+              <p 
+                className="text-xs leading-relaxed text-center"
+                style={{ color: 'var(--on-secondary-container)' }}
+              >
+                {isEnglish 
+                  ? '📝 Draft mode - Complete the recipe before publishing'
+                  : '📝 Mode brouillon - Complétez la recette avant de la publier'}
+              </p>
+            </div>
           </div>
 
           {/* Description et bouton */}
@@ -229,25 +247,6 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
             >
               {description}
             </p>
-
-            {/* Note de brouillon */}
-            <div 
-              className="p-4 rounded-lg border"
-              style={{ 
-                backgroundColor: 'var(--secondary-container)',
-                borderColor: 'var(--secondary)',
-                opacity: 0.9
-              }}
-            >
-              <p 
-                className="text-sm leading-relaxed"
-                style={{ color: 'var(--on-secondary-container)' }}
-              >
-                {isEnglish 
-                  ? '📝 This recipe is in draft mode and not yet complete. Finish entering all ingredients and steps before publishing it to your menu.'
-                  : '📝 Cette recette est en mode brouillon et n\'est pas encore complète. Terminez la saisie de tous les ingrédients et étapes avant de la publier dans votre menu.'}
-              </p>
-            </div>
 
             {/* Système d'email gate (seulement si activé) */}
             {RECIPE_ACCESS_CONFIG.ENABLE_EMAIL_GATE && (
