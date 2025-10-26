@@ -49,6 +49,7 @@ export const RecipeFlowContainer: React.FC<RecipeFlowContainerProps> = ({
       {flowState === 'animation' && (
         <RecipeCalculationAnimation
           recipeName={recipeName}
+          recipeImage={recipeImage}
           onComplete={handleAnimationComplete}
           locale={locale}
         />

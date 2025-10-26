@@ -1,204 +1,138 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Calculator, TrendingUp, DollarSign, Percent } from 'lucide-react';
+import Image from 'next/image';
 
 interface RecipeCalculationAnimationProps {
   recipeName: string;
+  recipeImage: string;
   onComplete: () => void;
   locale?: 'fr' | 'en';
 }
 
 export const RecipeCalculationAnimation: React.FC<RecipeCalculationAnimationProps> = ({
   recipeName,
+  recipeImage,
   onComplete,
   locale = 'fr'
 }) => {
   const isEnglish = locale === 'en';
-  const [step, setStep] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Étape 1: Analyse des ingrédients (0-2s)
-    const timer1 = setTimeout(() => setStep(1), 500);
+    // Animation du progress de 0 à 100% en 3 secondes
+    const duration = 3000;
+    const interval = 30;
+    const increment = (100 / duration) * interval;
 
-    // Étape 2: Calcul des coûts (2-4s)
-    const timer2 = setTimeout(() => setStep(2), 2500);
+    const timer = setInterval(() => {
+      setProgress(prev => {
+        const next = prev + increment;
+        if (next >= 100) {
+          clearInterval(timer);
+          setTimeout(onComplete, 300);
+          return 100;
+        }
+        return next;
+      });
+    }, interval);
 
-    // Étape 3: Optimisation (4-5.5s)
-    const timer3 = setTimeout(() => setStep(3), 4500);
-
-    // Fin: Afficher le widget (5.5s)
-    const timer4 = setTimeout(() => {
-      setTimeout(onComplete, 500);
-    }, 6000);
-
-    return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-      clearTimeout(timer3);
-      clearTimeout(timer4);
-    };
+    return () => clearInterval(timer);
   }, [onComplete]);
+
+  // Calcul du cercle de progression
+  const size = 200;
+  const strokeWidth = 8;
+  const radius = (size - strokeWidth) / 2;
+  const circumference = 2 * Math.PI * radius;
+  const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
     <div 
-      className="w-full min-h-screen flex items-center justify-center px-6 py-12"
+      className="w-full px-6 py-12"
       style={{ 
-        backgroundColor: 'var(--surface)',
+        backgroundColor: 'var(--surface-container-low)',
+        borderBottom: '1px solid var(--outline)'
       }}
     >
-      <div className="max-w-3xl w-full text-center space-y-12">
-        {/* Titre */}
-        <div className="space-y-4">
-          <div className="flex justify-center mb-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="flex flex-col items-center justify-center gap-8">
+          {/* Image avec progress bar circulaire */}
+          <div className="relative">
             <div 
-              className="p-6 rounded-full"
-              style={{ backgroundColor: 'var(--primary-container)' }}
+              className="w-[400px] h-[400px] rounded-3xl overflow-hidden shadow-2xl"
+              style={{ border: '2px solid var(--outline)' }}
             >
-              <Calculator size={48} style={{ color: 'var(--primary)' }} />
+              <Image
+                src={recipeImage}
+                alt={recipeName}
+                width={400}
+                height={400}
+                className="w-full h-full object-cover"
+              />
             </div>
-          </div>
-          <h2 
-            className="text-3xl lg:text-4xl font-bold"
-            style={{ color: 'var(--on-surface)' }}
-          >
-            {isEnglish ? 'Calculating your recipe...' : 'Calcul de votre recette...'}
-          </h2>
-          <p 
-            className="text-lg"
-            style={{ color: 'var(--on-surface-variant)' }}
-          >
-            {recipeName}
-          </p>
-        </div>
-
-        {/* Étapes de calcul */}
-        <div className="flex flex-col lg:flex-row gap-6">
-          {/* Étape 1: Analyse des ingrédients */}
-          <div 
-            className={`flex-1 p-6 rounded-2xl transition-all duration-500 ${
-              step >= 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-            }`}
-            style={{ 
-              backgroundColor: 'var(--secondary-container)',
-              border: '2px solid var(--outline)'
-            }}
-          >
-            <div className="flex flex-col items-center text-center gap-4">
-              <div className="flex-shrink-0">
-                <DollarSign 
-                  size={48} 
-                  style={{ color: 'var(--secondary)' }} 
+            
+            {/* Progress bar circulaire par-dessus l'image */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <svg
+                width={size}
+                height={size}
+                className="transform -rotate-90"
+              >
+                {/* Cercle de fond */}
+                <circle
+                  cx={size / 2}
+                  cy={size / 2}
+                  r={radius}
+                  fill="none"
+                  stroke="rgba(255, 255, 255, 0.3)"
+                  strokeWidth={strokeWidth}
                 />
-              </div>
-              <div className="flex-1">
-                <p 
-                  className="text-lg font-bold mb-2"
-                  style={{ color: 'var(--on-secondary-container)' }}
-                >
-                  {isEnglish ? 'Analyzing ingredients' : 'Analyse des ingrédients'}
-                </p>
-                <p 
-                  className="text-sm"
-                  style={{ color: 'var(--on-secondary-container)', opacity: 0.7 }}
-                >
-                  {isEnglish ? 'Calculating costs and quantities' : 'Calcul des coûts et quantités'}
-                </p>
-              </div>
-              {step >= 2 && (
-                <div className="text-3xl" style={{ color: 'var(--secondary)' }}>✓</div>
-              )}
-            </div>
-          </div>
-
-          {/* Étape 2: Calcul des coûts */}
-          <div 
-            className={`flex-1 p-6 rounded-2xl transition-all duration-500 ${
-              step >= 2 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-            }`}
-            style={{ 
-              backgroundColor: 'var(--tertiary-container)',
-              border: '2px solid var(--outline)'
-            }}
-          >
-            <div className="flex flex-col items-center text-center gap-4">
-              <div className="flex-shrink-0">
-                <TrendingUp 
-                  size={48} 
-                  style={{ color: 'var(--tertiary)' }} 
+                
+                {/* Cercle de progression */}
+                <circle
+                  cx={size / 2}
+                  cy={size / 2}
+                  r={radius}
+                  fill="none"
+                  stroke="var(--primary)"
+                  strokeWidth={strokeWidth}
+                  strokeDasharray={circumference}
+                  strokeDashoffset={strokeDashoffset}
+                  strokeLinecap="round"
+                  className="transition-all duration-300"
                 />
-              </div>
-              <div className="flex-1">
-                <p 
-                  className="text-lg font-bold mb-2"
-                  style={{ color: 'var(--on-tertiary-container)' }}
+              </svg>
+              
+              {/* Pourcentage au centre */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span 
+                  className="text-4xl font-bold"
+                  style={{ 
+                    color: '#FFFFFF',
+                    textShadow: '0 2px 8px rgba(0,0,0,0.5)'
+                  }}
                 >
-                  {isEnglish ? 'Calculating costs' : 'Calcul des coûts'}
-                </p>
-                <p 
-                  className="text-sm"
-                  style={{ color: 'var(--on-tertiary-container)', opacity: 0.7 }}
-                >
-                  {isEnglish ? 'Food cost and profitability analysis' : 'Analyse du food cost et rentabilité'}
-                </p>
+                  {Math.round(progress)}%
+                </span>
               </div>
-              {step >= 3 && (
-                <div className="text-3xl" style={{ color: 'var(--tertiary)' }}>✓</div>
-              )}
             </div>
           </div>
 
-          {/* Étape 3: Optimisation */}
-          <div 
-            className={`flex-1 p-6 rounded-2xl transition-all duration-500 ${
-              step >= 3 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-            }`}
-            style={{ 
-              backgroundColor: 'var(--success-container)',
-              border: '2px solid var(--outline)'
-            }}
-          >
-            <div className="flex flex-col items-center text-center gap-4">
-              <div className="flex-shrink-0">
-                <Percent 
-                  size={48} 
-                  style={{ color: 'var(--success)' }} 
-                />
-              </div>
-              <div className="flex-1">
-                <p 
-                  className="text-lg font-bold mb-2"
-                  style={{ color: 'var(--on-success-container)' }}
-                >
-                  {isEnglish ? 'Optimizing recipe' : 'Optimisation de la recette'}
-                </p>
-                <p 
-                  className="text-sm"
-                  style={{ color: 'var(--on-success-container)', opacity: 0.7 }}
-                >
-                  {isEnglish ? 'Generating recommendations' : 'Génération des recommandations'}
-                </p>
-              </div>
-              {step >= 3 && (
-                <div className="text-3xl" style={{ color: 'var(--success)' }}>✓</div>
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* Barre de progression */}
-        <div className="w-full max-w-md mx-auto">
-          <div 
-            className="h-2 rounded-full overflow-hidden"
-            style={{ backgroundColor: 'var(--surface-variant)' }}
-          >
-            <div 
-              className="h-full transition-all duration-300"
-              style={{ 
-                backgroundColor: 'var(--primary)',
-                width: `${(step / 3) * 100}%`
-              }}
-            />
+          {/* Texte */}
+          <div className="text-center">
+            <h2 
+              className="text-2xl lg:text-3xl font-bold"
+              style={{ color: 'var(--on-surface)' }}
+            >
+              {isEnglish ? 'Calculating your recipe...' : 'Calcul de votre recette...'}
+            </h2>
+            <p 
+              className="text-lg mt-2"
+              style={{ color: 'var(--on-surface-variant)' }}
+            >
+              {recipeName}
+            </p>
           </div>
         </div>
       </div>
