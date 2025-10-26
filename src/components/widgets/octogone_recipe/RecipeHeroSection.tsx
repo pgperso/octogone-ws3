@@ -182,22 +182,33 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
               
               {/* Pourcentage au centre */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <span 
-                  className="text-4xl font-bold"
-                  style={{ 
-                    color: '#FFFFFF',
-                    textShadow: '0 2px 8px rgba(0,0,0,0.5)'
-                  }}
-                >
-                  {Math.round(displayProgress)}%
-                </span>
+                <div className="flex flex-col items-center">
+                  <span 
+                    className="text-4xl font-bold"
+                    style={{ 
+                      color: '#FFFFFF',
+                      textShadow: '0 2px 8px rgba(0,0,0,0.5)'
+                    }}
+                  >
+                    {Math.round(displayProgress)}%
+                  </span>
+                  <span 
+                    className="text-sm font-medium mt-1"
+                    style={{ 
+                      color: '#FFFFFF',
+                      textShadow: '0 2px 8px rgba(0,0,0,0.5)'
+                    }}
+                  >
+                    {isEnglish ? 'completed' : 'complété'}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Description et bouton */}
-          <div className="order-1 lg:order-2 space-y-4">
-            <div>
+          <div className="order-1 lg:order-2 space-y-6">
+            <div className="space-y-3">
             {/* Badge Brouillon */}
             <div className="flex items-center gap-2 mb-3">
               <div 
@@ -233,6 +244,7 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
             >
               {description}
             </p>
+            </div>
 
             {/* Explication sobre du processus */}
             {RECIPE_ACCESS_CONFIG.ENABLE_EMAIL_GATE && accessState !== 'unlocked' && (
@@ -245,7 +257,6 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
                   : 'Pour compléter la recette et tester avant tout le monde les nouveautés sur Octogone, inscrivez votre adresse courriel pour recevoir votre code d\'activation.'}
               </p>
             )}
-            </div>
 
             {/* Système d'email gate (seulement si activé) */}
             {RECIPE_ACCESS_CONFIG.ENABLE_EMAIL_GATE && (
