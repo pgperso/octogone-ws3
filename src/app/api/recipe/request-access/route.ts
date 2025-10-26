@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
         const resend = new Resend(process.env.RESEND_API_KEY);
         
         await resend.emails.send({
-        from: 'Octogone <noreply@octogone.app>',
+        from: 'Octogone <onboarding@resend.dev>',
         to: email,
         subject: locale === 'en' 
           ? 'Your access code for the recipe calculator'
