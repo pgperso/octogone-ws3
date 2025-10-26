@@ -16,67 +16,27 @@ export const RecipeCalculationAnimation: React.FC<RecipeCalculationAnimationProp
 }) => {
   const isEnglish = locale === 'en';
   const [step, setStep] = useState(0);
-  const [ingredientCost, setIngredientCost] = useState(0);
-  const [sellingPrice, setSellingPrice] = useState(0);
-  const [foodCost, setFoodCost] = useState(0);
 
   useEffect(() => {
-    // Étape 1: Calcul du coût des ingrédients (0-3s)
+    // Étape 1: Analyse des ingrédients (0-2s)
     const timer1 = setTimeout(() => setStep(1), 500);
-    
-    // Animation du coût des ingrédients
-    const ingredientInterval = setInterval(() => {
-      setIngredientCost(prev => {
-        const next = prev + 0.15;
-        return next >= 4.75 ? 4.75 : next;
-      });
-    }, 30);
 
-    // Étape 2: Calcul du prix de vente (3-5s)
-    const timer2 = setTimeout(() => {
-      setStep(2);
-      clearInterval(ingredientInterval);
-      setIngredientCost(4.75);
-    }, 3000);
+    // Étape 2: Calcul des coûts (2-4s)
+    const timer2 = setTimeout(() => setStep(2), 2500);
 
-    // Animation du prix de vente
-    const priceInterval = setInterval(() => {
-      setSellingPrice(prev => {
-        const next = prev + 0.25;
-        return next >= 15.99 ? 15.99 : next;
-      });
-    }, 30);
+    // Étape 3: Optimisation (4-5.5s)
+    const timer3 = setTimeout(() => setStep(3), 4500);
 
-    // Étape 3: Calcul du food cost (5-7s)
-    const timer3 = setTimeout(() => {
-      setStep(3);
-      clearInterval(priceInterval);
-      setSellingPrice(15.99);
-    }, 5000);
-
-    // Animation du food cost
-    const foodCostInterval = setInterval(() => {
-      setFoodCost(prev => {
-        const next = prev + 0.5;
-        return next >= 29.7 ? 29.7 : next;
-      });
-    }, 30);
-
-    // Fin: Afficher le widget (7s)
+    // Fin: Afficher le widget (5.5s)
     const timer4 = setTimeout(() => {
-      clearInterval(foodCostInterval);
-      setFoodCost(29.7);
-      setTimeout(onComplete, 1000);
-    }, 7000);
+      setTimeout(onComplete, 500);
+    }, 6000);
 
     return () => {
       clearTimeout(timer1);
       clearTimeout(timer2);
       clearTimeout(timer3);
       clearTimeout(timer4);
-      clearInterval(ingredientInterval);
-      clearInterval(priceInterval);
-      clearInterval(foodCostInterval);
     };
   }, [onComplete]);
 
@@ -112,93 +72,117 @@ export const RecipeCalculationAnimation: React.FC<RecipeCalculationAnimationProp
           </p>
         </div>
 
-        {/* Cartes de calcul */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Coût des ingrédients */}
+        {/* Étapes de calcul */}
+        <div className="space-y-6">
+          {/* Étape 1: Analyse des ingrédients */}
           <div 
             className={`p-6 rounded-2xl transition-all duration-500 ${
-              step >= 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+              step >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
             style={{ 
               backgroundColor: 'var(--secondary-container)',
               border: '2px solid var(--outline)'
             }}
           >
-            <DollarSign 
-              size={32} 
-              className="mx-auto mb-4" 
-              style={{ color: 'var(--secondary)' }} 
-            />
-            <p 
-              className="text-sm font-medium mb-2"
-              style={{ color: 'var(--on-secondary-container)' }}
-            >
-              {isEnglish ? 'Ingredient Cost' : 'Coût Ingrédients'}
-            </p>
-            <p 
-              className="text-4xl font-bold"
-              style={{ color: 'var(--on-secondary-container)' }}
-            >
-              ${ingredientCost.toFixed(2)}
-            </p>
+            <div className="flex items-center gap-4">
+              <div className="flex-shrink-0">
+                <DollarSign 
+                  size={40} 
+                  style={{ color: 'var(--secondary)' }} 
+                />
+              </div>
+              <div className="flex-1">
+                <p 
+                  className="text-lg font-bold mb-1"
+                  style={{ color: 'var(--on-secondary-container)' }}
+                >
+                  {isEnglish ? 'Analyzing ingredients...' : 'Analyse des ingrédients...'}
+                </p>
+                <p 
+                  className="text-sm"
+                  style={{ color: 'var(--on-secondary-container)', opacity: 0.7 }}
+                >
+                  {isEnglish ? 'Calculating costs and quantities' : 'Calcul des coûts et quantités'}
+                </p>
+              </div>
+              {step >= 2 && (
+                <div className="flex-shrink-0 text-2xl">✓</div>
+              )}
+            </div>
           </div>
 
-          {/* Prix de vente */}
+          {/* Étape 2: Calcul des coûts */}
           <div 
             className={`p-6 rounded-2xl transition-all duration-500 ${
-              step >= 2 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+              step >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
             style={{ 
               backgroundColor: 'var(--tertiary-container)',
               border: '2px solid var(--outline)'
             }}
           >
-            <TrendingUp 
-              size={32} 
-              className="mx-auto mb-4" 
-              style={{ color: 'var(--tertiary)' }} 
-            />
-            <p 
-              className="text-sm font-medium mb-2"
-              style={{ color: 'var(--on-tertiary-container)' }}
-            >
-              {isEnglish ? 'Selling Price' : 'Prix de Vente'}
-            </p>
-            <p 
-              className="text-4xl font-bold"
-              style={{ color: 'var(--on-tertiary-container)' }}
-            >
-              ${sellingPrice.toFixed(2)}
-            </p>
+            <div className="flex items-center gap-4">
+              <div className="flex-shrink-0">
+                <TrendingUp 
+                  size={40} 
+                  style={{ color: 'var(--tertiary)' }} 
+                />
+              </div>
+              <div className="flex-1">
+                <p 
+                  className="text-lg font-bold mb-1"
+                  style={{ color: 'var(--on-tertiary-container)' }}
+                >
+                  {isEnglish ? 'Calculating costs...' : 'Calcul des coûts...'}
+                </p>
+                <p 
+                  className="text-sm"
+                  style={{ color: 'var(--on-tertiary-container)', opacity: 0.7 }}
+                >
+                  {isEnglish ? 'Food cost and profitability analysis' : 'Analyse du food cost et rentabilité'}
+                </p>
+              </div>
+              {step >= 3 && (
+                <div className="flex-shrink-0 text-2xl">✓</div>
+              )}
+            </div>
           </div>
 
-          {/* Food Cost % */}
+          {/* Étape 3: Optimisation */}
           <div 
             className={`p-6 rounded-2xl transition-all duration-500 ${
-              step >= 3 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+              step >= 3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
             style={{ 
               backgroundColor: 'var(--success-container)',
               border: '2px solid var(--outline)'
             }}
           >
-            <Percent 
-              size={32} 
-              className="mx-auto mb-4" 
-              style={{ color: 'var(--success)' }} 
-            />
-            <p 
-              className="text-sm font-medium mb-2"
-              style={{ color: 'var(--on-success-container)' }}
-            >
-              Food Cost
-            </p>
-            <p 
-              className="text-4xl font-bold"
-              style={{ color: 'var(--on-success-container)' }}
-            >
-              {foodCost.toFixed(1)}%
-            </p>
+            <div className="flex items-center gap-4">
+              <div className="flex-shrink-0">
+                <Percent 
+                  size={40} 
+                  style={{ color: 'var(--success)' }} 
+                />
+              </div>
+              <div className="flex-1">
+                <p 
+                  className="text-lg font-bold mb-1"
+                  style={{ color: 'var(--on-success-container)' }}
+                >
+                  {isEnglish ? 'Optimizing recipe...' : 'Optimisation de la recette...'}
+                </p>
+                <p 
+                  className="text-sm"
+                  style={{ color: 'var(--on-success-container)', opacity: 0.7 }}
+                >
+                  {isEnglish ? 'Generating recommendations' : 'Génération des recommandations'}
+                </p>
+              </div>
+              {step >= 3 && (
+                <div className="flex-shrink-0 text-2xl">✓</div>
+              )}
+            </div>
           </div>
         </div>
 
