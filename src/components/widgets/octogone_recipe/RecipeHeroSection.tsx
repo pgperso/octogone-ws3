@@ -31,27 +31,40 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [recipeProgress, setRecipeProgress] = useState(0);
+  const [displayProgress, setDisplayProgress] = useState(0);
 
   // Animation de la progress bar au chargement (0% → 35%)
   useEffect(() => {
-    const targetProgress = 35;
-    const duration = 2000; // 2 secondes
-    const interval = 30;
-    const increment = (targetProgress / duration) * interval;
+    // Démarrer l'animation après un court délai
+    const timer = setTimeout(() => {
+      setRecipeProgress(35);
+    }, 100);
 
-    const timer = setInterval(() => {
-      setRecipeProgress(prev => {
-        const next = prev + increment;
-        if (next >= targetProgress) {
-          clearInterval(timer);
-          return targetProgress;
-        }
-        return next;
-      });
-    }, interval);
-
-    return () => clearInterval(timer);
+    return () => clearTimeout(timer);
   }, []);
+
+  // Animation du pourcentage affiché
+  useEffect(() => {
+    if (displayProgress < recipeProgress) {
+      const duration = 2000; // 2 secondes
+      const steps = 60; // 60 FPS
+      const increment = recipeProgress / steps;
+      const interval = duration / steps;
+
+      const timer = setInterval(() => {
+        setDisplayProgress(prev => {
+          const next = prev + increment;
+          if (next >= recipeProgress) {
+            clearInterval(timer);
+            return recipeProgress;
+          }
+          return next;
+        });
+      }, interval);
+
+      return () => clearInterval(timer);
+    }
+  }, [recipeProgress, displayProgress]);
 
   // Si l'email gate est désactivé, le bouton est toujours actif
   const isButtonEnabled = !RECIPE_ACCESS_CONFIG.ENABLE_EMAIL_GATE || accessState === 'unlocked';
@@ -158,7 +171,9 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
                   strokeDasharray={2 * Math.PI * 92}
                   strokeDashoffset={2 * Math.PI * 92 - (recipeProgress / 100) * (2 * Math.PI * 92)}
                   strokeLinecap="round"
-                  className="transition-all duration-300"
+                  style={{
+                    transition: 'stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1)'
+                  }}
                 />
               </svg>
               
@@ -171,7 +186,7 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
                     textShadow: '0 2px 8px rgba(0,0,0,0.5)'
                   }}
                 >
-                  {Math.round(recipeProgress)}%
+                  {Math.round(displayProgress)}%
                 </span>
               </div>
             </div>
