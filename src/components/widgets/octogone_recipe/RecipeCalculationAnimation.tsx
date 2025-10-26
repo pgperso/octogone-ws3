@@ -17,13 +17,16 @@ export const RecipeCalculationAnimation: React.FC<RecipeCalculationAnimationProp
   locale = 'fr'
 }) => {
   const isEnglish = locale === 'en';
-  const [progress, setProgress] = useState(0);
+  // La recette commence à 35% (ingrédients de base déjà présents)
+  const INITIAL_PROGRESS = 35;
+  const [progress, setProgress] = useState(INITIAL_PROGRESS);
 
   useEffect(() => {
-    // Animation du progress de 0 à 100% en 3 secondes
+    // Animation du progress de 35% à 100% en 3 secondes
     const duration = 3000;
     const interval = 30;
-    const increment = (100 / duration) * interval;
+    const remainingProgress = 100 - INITIAL_PROGRESS;
+    const increment = (remainingProgress / duration) * interval;
 
     const timer = setInterval(() => {
       setProgress(prev => {
