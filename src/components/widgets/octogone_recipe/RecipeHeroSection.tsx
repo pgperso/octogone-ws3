@@ -127,7 +127,7 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
       }}
     >
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           {/* Image du burger avec progress bar circulaire */}
           <div className="order-2 lg:order-1 relative h-full">
             <div 
@@ -194,8 +194,8 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
             </div>
           </div>
 
-          {/* Description et bouton - Hauteur égale à l'image */}
-          <div className="order-1 lg:order-2 flex flex-col justify-between h-full space-y-4">
+          {/* Description et bouton */}
+          <div className="order-1 lg:order-2 space-y-4">
             <div>
             {/* Badge Brouillon */}
             <div className="flex items-center gap-2 mb-3">
@@ -240,16 +240,15 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
                 style={{ color: 'var(--on-surface-variant)', opacity: 0.8 }}
               >
                 {isEnglish 
-                  ? 'Enter your email address to receive an access code and complete this recipe.'
-                  : 'Inscrivez votre adresse courriel pour recevoir un code d\'accès et compléter cette recette.'}
+                  ? 'To complete the recipe and test Octogone\'s new features before everyone else, enter your email address to receive your activation code.'
+                  : 'Pour compléter la recette et tester avant tout le monde les nouveautés sur Octogone, inscrivez votre adresse courriel pour recevoir votre code d\'activation.'}
               </p>
             )}
             </div>
 
             {/* Système d'email gate (seulement si activé) */}
-            <div>
             {RECIPE_ACCESS_CONFIG.ENABLE_EMAIL_GATE && (
-              <div className="space-y-2">
+              <div className="space-y-3">
                 {/* État 1: Demande d'email */}
                 {accessState === 'email' && (
                   <div className="space-y-2">
@@ -345,19 +344,16 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
             )}
 
             {/* Bouton Compléter */}
-            <div>
-              <OctogoneButton
-                variant="primary"
-                size="lg"
-                onClick={handleCalculateClick}
-                disabled={!isButtonEnabled}
-                className="gap-2"
-              >
-                <Edit3 size={20} />
-                {isEnglish ? 'Complete my recipe' : 'Compléter ma recette'}
-              </OctogoneButton>
-            </div>
-            </div>
+            <OctogoneButton
+              variant="primary"
+              size="lg"
+              onClick={handleCalculateClick}
+              disabled={!isButtonEnabled}
+              className="gap-2"
+            >
+              <Edit3 size={20} />
+              {isEnglish ? 'Complete my recipe' : 'Compléter ma recette'}
+            </OctogoneButton>
           </div>
         </div>
       </div>
