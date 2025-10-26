@@ -127,14 +127,13 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
       }}
     >
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           {/* Image du burger avec progress bar circulaire */}
-          <div className="order-2 lg:order-1 relative">
+          <div className="order-2 lg:order-1 relative h-full">
             <div 
-              className="w-full rounded-3xl overflow-hidden shadow-2xl"
+              className="w-full h-full rounded-3xl overflow-hidden shadow-2xl"
               style={{ 
-                border: '2px solid var(--outline)',
-                aspectRatio: '1 / 1.3'
+                border: '2px solid var(--outline)'
               }}
             >
               <Image
@@ -233,6 +232,18 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
             >
               {description}
             </p>
+
+            {/* Explication sobre du processus */}
+            {RECIPE_ACCESS_CONFIG.ENABLE_EMAIL_GATE && accessState !== 'unlocked' && (
+              <p 
+                className="text-sm"
+                style={{ color: 'var(--on-surface-variant)', opacity: 0.8 }}
+              >
+                {isEnglish 
+                  ? 'Enter your email address to receive an access code and complete this recipe.'
+                  : 'Inscrivez votre adresse courriel pour recevoir un code d\'accès et compléter cette recette.'}
+              </p>
+            )}
             </div>
 
             {/* Système d'email gate (seulement si activé) */}
