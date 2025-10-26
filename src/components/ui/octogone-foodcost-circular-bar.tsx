@@ -27,7 +27,7 @@ export const OctogoneFoodCostCircularBar: React.FC<OctogoneFoodCostCircularBarPr
 
     // Démarrer l'animation après un court délai
     const timer = setTimeout(() => {
-      setAnimatedPercentage(targetFoodCost);
+      setAnimatedPercentage(actualFoodCost);
       setAnimatedFoodCost(actualFoodCost);
     }, 100);
 
@@ -57,7 +57,9 @@ export const OctogoneFoodCostCircularBar: React.FC<OctogoneFoodCostCircularBarPr
   // Rayon du cercle
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = circumference - (animatedPercentage / 100) * circumference;
+  // Utiliser le food cost réel pour la progression, avec un maximum de 100%
+  const progressPercentage = Math.min(animatedPercentage, 100);
+  const strokeDashoffset = circumference - (progressPercentage / 100) * circumference;
 
   return (
     <div className="relative inline-flex items-center justify-center">

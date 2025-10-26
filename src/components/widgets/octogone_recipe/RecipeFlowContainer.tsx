@@ -56,8 +56,10 @@ export const RecipeFlowContainer: React.FC<RecipeFlowContainerProps> = ({
 
       {/* État 3: Widget complet */}
       {flowState === 'widget' && (
-        <div className="h-[800px]">
-          <OctogoneRecipeWidget locale={locale} />
+        <div className="px-6 py-8">
+          <div className="h-[800px]">
+            <OctogoneRecipeWidget locale={locale} />
+          </div>
         </div>
       )}
     </div>
