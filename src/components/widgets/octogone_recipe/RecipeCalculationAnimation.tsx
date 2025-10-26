@@ -73,30 +73,30 @@ export const RecipeCalculationAnimation: React.FC<RecipeCalculationAnimationProp
         </div>
 
         {/* Étapes de calcul */}
-        <div className="space-y-6">
+        <div className="flex flex-col lg:flex-row gap-6">
           {/* Étape 1: Analyse des ingrédients */}
           <div 
-            className={`p-6 rounded-2xl transition-all duration-500 ${
-              step >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            className={`flex-1 p-6 rounded-2xl transition-all duration-500 ${
+              step >= 1 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
             }`}
             style={{ 
               backgroundColor: 'var(--secondary-container)',
               border: '2px solid var(--outline)'
             }}
           >
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col items-center text-center gap-4">
               <div className="flex-shrink-0">
                 <DollarSign 
-                  size={40} 
+                  size={48} 
                   style={{ color: 'var(--secondary)' }} 
                 />
               </div>
               <div className="flex-1">
                 <p 
-                  className="text-lg font-bold mb-1"
+                  className="text-lg font-bold mb-2"
                   style={{ color: 'var(--on-secondary-container)' }}
                 >
-                  {isEnglish ? 'Analyzing ingredients...' : 'Analyse des ingrédients...'}
+                  {isEnglish ? 'Analyzing ingredients' : 'Analyse des ingrédients'}
                 </p>
                 <p 
                   className="text-sm"
@@ -106,34 +106,34 @@ export const RecipeCalculationAnimation: React.FC<RecipeCalculationAnimationProp
                 </p>
               </div>
               {step >= 2 && (
-                <div className="flex-shrink-0 text-2xl">✓</div>
+                <div className="text-3xl" style={{ color: 'var(--secondary)' }}>✓</div>
               )}
             </div>
           </div>
 
           {/* Étape 2: Calcul des coûts */}
           <div 
-            className={`p-6 rounded-2xl transition-all duration-500 ${
-              step >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            className={`flex-1 p-6 rounded-2xl transition-all duration-500 ${
+              step >= 2 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
             }`}
             style={{ 
               backgroundColor: 'var(--tertiary-container)',
               border: '2px solid var(--outline)'
             }}
           >
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col items-center text-center gap-4">
               <div className="flex-shrink-0">
                 <TrendingUp 
-                  size={40} 
+                  size={48} 
                   style={{ color: 'var(--tertiary)' }} 
                 />
               </div>
               <div className="flex-1">
                 <p 
-                  className="text-lg font-bold mb-1"
+                  className="text-lg font-bold mb-2"
                   style={{ color: 'var(--on-tertiary-container)' }}
                 >
-                  {isEnglish ? 'Calculating costs...' : 'Calcul des coûts...'}
+                  {isEnglish ? 'Calculating costs' : 'Calcul des coûts'}
                 </p>
                 <p 
                   className="text-sm"
@@ -143,34 +143,34 @@ export const RecipeCalculationAnimation: React.FC<RecipeCalculationAnimationProp
                 </p>
               </div>
               {step >= 3 && (
-                <div className="flex-shrink-0 text-2xl">✓</div>
+                <div className="text-3xl" style={{ color: 'var(--tertiary)' }}>✓</div>
               )}
             </div>
           </div>
 
           {/* Étape 3: Optimisation */}
           <div 
-            className={`p-6 rounded-2xl transition-all duration-500 ${
-              step >= 3 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            className={`flex-1 p-6 rounded-2xl transition-all duration-500 ${
+              step >= 3 ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
             }`}
             style={{ 
               backgroundColor: 'var(--success-container)',
               border: '2px solid var(--outline)'
             }}
           >
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col items-center text-center gap-4">
               <div className="flex-shrink-0">
                 <Percent 
-                  size={40} 
+                  size={48} 
                   style={{ color: 'var(--success)' }} 
                 />
               </div>
               <div className="flex-1">
                 <p 
-                  className="text-lg font-bold mb-1"
+                  className="text-lg font-bold mb-2"
                   style={{ color: 'var(--on-success-container)' }}
                 >
-                  {isEnglish ? 'Optimizing recipe...' : 'Optimisation de la recette...'}
+                  {isEnglish ? 'Optimizing recipe' : 'Optimisation de la recette'}
                 </p>
                 <p 
                   className="text-sm"
@@ -180,7 +180,7 @@ export const RecipeCalculationAnimation: React.FC<RecipeCalculationAnimationProp
                 </p>
               </div>
               {step >= 3 && (
-                <div className="flex-shrink-0 text-2xl">✓</div>
+                <div className="text-3xl" style={{ color: 'var(--success)' }}>✓</div>
               )}
             </div>
           </div>
