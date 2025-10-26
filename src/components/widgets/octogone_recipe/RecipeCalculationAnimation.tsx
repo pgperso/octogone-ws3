@@ -17,18 +17,16 @@ export const RecipeCalculationAnimation: React.FC<RecipeCalculationAnimationProp
   locale = 'fr'
 }) => {
   const isEnglish = locale === 'en';
-  // La recette commence à 35% (ingrédients de base déjà présents)
-  const INITIAL_PROGRESS = 35;
+  // La recette commence à 43% (3 ingrédients sur 7 déjà présents)
+  const INITIAL_PROGRESS = 43;
   const [progress, setProgress] = useState(INITIAL_PROGRESS);
   const [visibleTags, setVisibleTags] = useState<number[]>([]);
 
-  // Tags de prix pour les ingrédients (position en % sur l'image)
+  // Tags de prix pour les 3 ingrédients de base (43% complété)
   const priceTags = [
-    { id: 1, price: '$0.45', label: isEnglish ? 'Bun' : 'Pain', top: '15%', left: '20%', delay: 0 },
-    { id: 2, price: '$2.80', label: isEnglish ? 'Beef' : 'Bœuf', top: '55%', left: '50%', delay: 300 },
-    { id: 3, price: '$0.65', label: isEnglish ? 'Cheddar' : 'Cheddar', top: '45%', left: '70%', delay: 600 },
-    { id: 4, price: '$0.85', label: isEnglish ? 'Bacon' : 'Bacon', top: '60%', left: '25%', delay: 900 },
-    { id: 5, price: '$0.25', label: isEnglish ? 'Lettuce' : 'Laitue', top: '35%', left: '35%', delay: 1200 },
+    { id: 1, price: '$0.45', label: isEnglish ? 'Burger bun' : 'Pain burger', top: '15%', left: '25%', delay: 0 },
+    { id: 2, price: '$2.80', label: isEnglish ? 'Beef' : 'Bœuf', top: '55%', left: '50%', delay: 400 },
+    { id: 3, price: '$0.65', label: isEnglish ? 'Cheddar' : 'Cheddar', top: '42%', left: '65%', delay: 800 },
   ];
 
   // Animation des tags de prix
