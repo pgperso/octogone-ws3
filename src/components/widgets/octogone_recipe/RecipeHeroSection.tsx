@@ -287,7 +287,7 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
                         onKeyDown={(e) => e.key === 'Enter' && handleRequestCode()}
                       />
                       <OctogoneButton
-                        variant="secondary"
+                        variant="primary"
                         size="lg"
                         onClick={handleRequestCode}
                         disabled={isLoading}
