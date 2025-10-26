@@ -1,9 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { Resend } from 'resend';
 import { RECIPE_ACCESS_CONFIG } from '@/config/recipe-access';
-
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 const requestAccessSchema = z.object({
   email: z.string().email('Email invalide'),
@@ -26,8 +23,12 @@ export async function POST(request: NextRequest) {
     // avec trackRecipeAccessRequest(email, locale)
     
     // Envoyer le code par email avec Resend
-    try {
-      await resend.emails.send({
+    if (process.env.RESEND_API_KEY) {
+      try {
+        const { Resend } = await import('resend');
+        const resend = new Resend(process.env.RESEND_API_KEY);
+        
+        await resend.emails.send({
         from: 'Octogone <noreply@octogone.app>',
         to: email,
         subject: locale === 'en' 
@@ -48,11 +49,14 @@ export async function POST(request: NextRequest) {
             <p>Entrez ce code sur le site pour débloquer l'accès.</p>
             <p style="color: #666; font-size: 12px;">Ce code est valide pendant ${RECIPE_ACCESS_CONFIG.CODE_VALIDITY_MINUTES} minutes.</p>
           `
-      });
-    } catch (emailError) {
-      console.error('Erreur lors de l\'envoi de l\'email:', emailError);
-      // On continue quand même pour ne pas bloquer l'utilisateur
-      // En développement, le code sera visible dans les logs
+        });
+        console.log(`Email envoyé avec succès à ${email}`);
+      } catch (emailError) {
+        console.error('Erreur lors de l\'envoi de l\'email:', emailError);
+      }
+    } else {
+      console.warn('RESEND_API_KEY non configurée - Email non envoyé');
+      console.log(`Code d'accès pour ${email}: ${RECIPE_ACCESS_CONFIG.ACCESS_CODE}`);
     }
 
     return NextResponse.json(
