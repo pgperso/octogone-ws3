@@ -66,8 +66,8 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
           'Ajouter des garnitures premium',
           'Risque : La qualité perçue peut en souffrir'
         ],
-        color: 'var(--on-secondary-container)',
-        bgColor: 'var(--warning)'
+        color: '#000000',
+        bgColor: '#FFC107' // Jaune warning
       };
     }
     
