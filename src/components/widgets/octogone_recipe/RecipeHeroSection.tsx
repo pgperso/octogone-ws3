@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Calculator, Mail, Key, CheckCircle } from 'lucide-react';
+import { Calculator, Mail, Key, CheckCircle, FileEdit } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { RECIPE_ACCESS_CONFIG } from '@/config/recipe-access';
 import { trackRecipeAccessRequest, trackRecipeAccessUnlocked, trackRecipeCalculationStart } from '@/lib/tracking/hubspot-events';
@@ -194,6 +194,28 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
 
           {/* Description et bouton */}
           <div className="order-1 lg:order-2 space-y-6">
+            {/* Badge Brouillon */}
+            <div className="flex items-center gap-2">
+              <div 
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full"
+                style={{ 
+                  backgroundColor: 'var(--secondary-container)',
+                  border: '1px solid var(--secondary)'
+                }}
+              >
+                <FileEdit 
+                  size={16} 
+                  style={{ color: 'var(--on-secondary-container)' }}
+                />
+                <span 
+                  className="text-sm font-medium"
+                  style={{ color: 'var(--on-secondary-container)' }}
+                >
+                  {isEnglish ? 'Draft' : 'Brouillon'}
+                </span>
+              </div>
+            </div>
+
             <h1 
               className="text-4xl lg:text-5xl font-bold"
               style={{ color: 'var(--on-surface)' }}
@@ -207,6 +229,25 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
             >
               {description}
             </p>
+
+            {/* Note de brouillon */}
+            <div 
+              className="p-4 rounded-lg border"
+              style={{ 
+                backgroundColor: 'var(--secondary-container)',
+                borderColor: 'var(--secondary)',
+                opacity: 0.9
+              }}
+            >
+              <p 
+                className="text-sm leading-relaxed"
+                style={{ color: 'var(--on-secondary-container)' }}
+              >
+                {isEnglish 
+                  ? '📝 This recipe is in draft mode and not yet complete. Finish entering all ingredients and steps before publishing it to your menu.'
+                  : '📝 Cette recette est en mode brouillon et n\'est pas encore complète. Terminez la saisie de tous les ingrédients et étapes avant de la publier dans votre menu.'}
+              </p>
+            </div>
 
             {/* Système d'email gate (seulement si activé) */}
             {RECIPE_ACCESS_CONFIG.ENABLE_EMAIL_GATE && (
