@@ -126,7 +126,7 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
         borderBottom: '1px solid var(--outline)'
       }}
     >
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           {/* Image du burger avec progress bar circulaire */}
           <div className="order-2 lg:order-1 relative">
@@ -134,7 +134,7 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
               className="w-full rounded-3xl overflow-hidden shadow-2xl"
               style={{ 
                 border: '2px solid var(--outline)',
-                aspectRatio: '1 / 1.15'
+                aspectRatio: '1 / 1.3'
               }}
             >
               <Image
@@ -302,30 +302,16 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
 
             {/* Système d'email gate (seulement si activé) */}
             {RECIPE_ACCESS_CONFIG.ENABLE_EMAIL_GATE && (
-              <div className="space-y-4">
-                {/* Message d'instruction */}
-                {accessState !== 'unlocked' && (
-                  <div 
-                    className="p-4 rounded-lg border-l-4"
-                    style={{ 
-                      backgroundColor: 'var(--primary-container)',
-                      borderColor: 'var(--primary)'
-                    }}
-                  >
-                    <p 
-                      className="text-sm font-medium"
-                      style={{ color: 'var(--on-primary-container)' }}
-                    >
-                      {isEnglish 
-                        ? '🔒 To complete this recipe, enter your email to receive an access code.'
-                        : '🔒 Pour compléter cette recette, entrez votre email pour recevoir un code d\'accès.'}
-                    </p>
-                  </div>
-                )}
-
+              <div className="space-y-3">
                 {/* État 1: Demande d'email */}
                 {accessState === 'email' && (
-                  <div className="space-y-3">
+                  <div className="space-y-2">
+                    <label 
+                      className="text-sm font-medium"
+                      style={{ color: 'var(--on-surface-variant)' }}
+                    >
+                      {isEnglish ? 'Email address' : 'Adresse email'}
+                    </label>
                     <div className="flex gap-3">
                       <input
                         type="email"
@@ -359,20 +345,13 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
 
                 {/* État 2: Validation du code */}
                 {accessState === 'code' && (
-                  <div className="space-y-3">
-                    <div 
-                      className="p-4 rounded-lg"
-                      style={{ backgroundColor: 'var(--secondary-container)' }}
+                  <div className="space-y-2">
+                    <label 
+                      className="text-sm font-medium"
+                      style={{ color: 'var(--on-surface-variant)' }}
                     >
-                      <p 
-                        className="text-sm font-medium"
-                        style={{ color: 'var(--on-secondary-container)' }}
-                      >
-                        {isEnglish 
-                          ? `Code sent to ${email}. Check your inbox!` 
-                          : `Code envoyé à ${email}. Vérifiez votre boîte de réception !`}
-                      </p>
-                    </div>
+                      {isEnglish ? 'Access code' : 'Code d\'accès'}
+                    </label>
                     <div className="flex gap-3">
                       <input
                         type="text"
@@ -405,16 +384,13 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
 
                 {/* État 3: Accès débloqué */}
                 {accessState === 'unlocked' && (
-                  <div 
-                    className="p-4 rounded-lg flex items-center gap-3"
-                    style={{ backgroundColor: 'var(--success-container)' }}
-                  >
-                    <CheckCircle size={24} style={{ color: 'var(--success)' }} />
+                  <div className="flex items-center gap-2">
+                    <CheckCircle size={18} style={{ color: 'var(--success)' }} />
                     <p 
-                      className="font-medium"
-                      style={{ color: 'var(--on-success-container)' }}
+                      className="text-sm font-medium"
+                      style={{ color: 'var(--success)' }}
                     >
-                      {isEnglish ? 'Access unlocked! Click the button below.' : 'Accès débloqué ! Cliquez sur le bouton ci-dessous.'}
+                      {isEnglish ? 'Access granted' : 'Accès autorisé'}
                     </p>
                   </div>
                 )}
@@ -433,16 +409,6 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
                 <Edit3 size={20} />
                 {isEnglish ? 'Complete my recipe' : 'Compléter ma recette'}
               </OctogoneButton>
-              {!isButtonEnabled && (
-                <p 
-                  className="text-xs mt-2"
-                  style={{ color: 'var(--on-surface-variant)', opacity: 0.7 }}
-                >
-                  {isEnglish 
-                    ? 'Enter the access code to unlock this button'
-                    : 'Entrez le code d\'accès pour débloquer ce bouton'}
-                </p>
-              )}
             </div>
           </div>
         </div>
