@@ -260,26 +260,6 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
             </div>
             </div>
 
-            {/* Divider */}
-            {RECIPE_ACCESS_CONFIG.ENABLE_EMAIL_GATE && accessState !== 'unlocked' && (
-              <div 
-                className="w-full h-px"
-                style={{ backgroundColor: 'var(--outline)' }}
-              />
-            )}
-
-            {/* Explication sobre du processus */}
-            {RECIPE_ACCESS_CONFIG.ENABLE_EMAIL_GATE && accessState !== 'unlocked' && (
-              <p 
-                className="text-lg leading-relaxed"
-                style={{ color: 'var(--on-surface-variant)' }}
-              >
-                {isEnglish 
-                  ? 'To complete the recipe and test Octogone\'s new features before everyone else, enter your email address to receive your activation code.'
-                  : 'Pour compléter la recette et tester avant tout le monde les nouveautés sur Octogone, inscrivez votre adresse courriel pour recevoir votre code d\'activation.'}
-              </p>
-            )}
-
             {/* Système d'email gate (seulement si activé) */}
             {RECIPE_ACCESS_CONFIG.ENABLE_EMAIL_GATE && (
               <div className="space-y-3">
@@ -320,6 +300,15 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
                     {error && (
                       <p className="text-sm" style={{ color: 'var(--error)' }}>{error}</p>
                     )}
+                    {/* Message explicatif sous le champ email */}
+                    <p 
+                      className="text-sm leading-relaxed"
+                      style={{ color: 'var(--on-surface-variant)', opacity: 0.8 }}
+                    >
+                      {isEnglish 
+                        ? 'To complete the recipe and test Octogone\'s new features before everyone else, enter your email address to receive your activation code.'
+                        : 'Pour compléter la recette et tester avant tout le monde les nouveautés sur Octogone, inscrivez votre adresse courriel pour recevoir votre code d\'activation.'}
+                    </p>
                   </div>
                 )}
 

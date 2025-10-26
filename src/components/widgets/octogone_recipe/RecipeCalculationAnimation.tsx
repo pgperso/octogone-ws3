@@ -135,7 +135,7 @@ export const RecipeCalculationAnimation: React.FC<RecipeCalculationAnimationProp
               className="text-lg lg:text-xl leading-relaxed"
               style={{ color: 'var(--on-surface-variant)' }}
             >
-              {isEnglish ? 'Calculating your recipe...' : 'Calcul de votre recette...'}
+              {isEnglish ? 'Preparing your recipe...' : 'Préparation de votre recette...'}
             </p>
           </div>
         </div>
