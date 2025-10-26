@@ -190,28 +190,10 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
                 </span>
               </div>
             </div>
-
-            {/* Note de brouillon sous la progress bar */}
-            <div 
-              className="absolute bottom-4 left-4 right-4 p-3 rounded-lg border backdrop-blur-sm"
-              style={{ 
-                backgroundColor: 'rgba(var(--secondary-container-rgb, 255, 243, 224), 0.95)',
-                borderColor: 'var(--secondary)',
-              }}
-            >
-              <p 
-                className="text-xs leading-relaxed text-center"
-                style={{ color: 'var(--on-secondary-container)' }}
-              >
-                {isEnglish 
-                  ? '📝 Draft mode - Complete the recipe before publishing'
-                  : '📝 Mode brouillon - Complétez la recette avant de la publier'}
-              </p>
-            </div>
           </div>
 
-          {/* Description et bouton */}
-          <div className="order-1 lg:order-2 space-y-6">
+          {/* Description et bouton - Hauteur égale à l'image */}
+          <div className="order-1 lg:order-2 flex flex-col justify-between h-full">
             {/* Badge Brouillon */}
             <div className="flex items-center gap-2">
               <div 
