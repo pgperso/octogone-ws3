@@ -112,3 +112,36 @@ export const trackVideoInteraction = (action: 'play' | 'pause' | 'complete', vid
     video_title: videoTitle,
   });
 };
+
+/**
+ * Tracker la demande d'accès au widget de recette
+ */
+export const trackRecipeAccessRequest = (email: string, locale: string) => {
+  trackEvent('recipe_access_requested', {
+    email,
+    locale,
+    widget_type: 'food_cost_calculator',
+  });
+};
+
+/**
+ * Tracker la validation du code d'accès
+ */
+export const trackRecipeAccessUnlocked = (email: string, locale: string) => {
+  trackEvent('recipe_access_unlocked', {
+    email,
+    locale,
+    widget_type: 'food_cost_calculator',
+  });
+};
+
+/**
+ * Tracker le clic sur le bouton "Calculer le prix de ma recette"
+ */
+export const trackRecipeCalculationStart = (hasEmailGate: boolean, locale: string) => {
+  trackEvent('recipe_calculation_started', {
+    has_email_gate: hasEmailGate,
+    locale,
+    widget_type: 'food_cost_calculator',
+  });
+};
