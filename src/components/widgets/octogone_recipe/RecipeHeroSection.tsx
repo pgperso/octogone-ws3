@@ -170,16 +170,12 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
                       style={{ backgroundColor: 'var(--secondary-container)' }}
                     >
                       <p 
-                        className="text-sm font-medium mb-2"
+                        className="text-sm font-medium"
                         style={{ color: 'var(--on-secondary-container)' }}
                       >
-                        {isEnglish ? 'Use this code:' : 'Utilisez ce code :'}
-                      </p>
-                      <p 
-                        className="text-2xl font-bold"
-                        style={{ color: 'var(--on-secondary-container)' }}
-                      >
-                        {RECIPE_ACCESS_CONFIG.ACCESS_CODE}
+                        {isEnglish 
+                          ? `Code sent to ${email}. Check your inbox!` 
+                          : `Code envoyé à ${email}. Vérifiez votre boîte de réception !`}
                       </p>
                     </div>
                     <div className="flex gap-3">

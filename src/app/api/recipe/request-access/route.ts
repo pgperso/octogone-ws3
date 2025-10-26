@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { Resend } from 'resend';
+import { RECIPE_ACCESS_CONFIG } from '@/config/recipe-access';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const requestAccessSchema = z.object({
   email: z.string().email('Email invalide'),
@@ -21,14 +25,35 @@ export async function POST(request: NextRequest) {
     // NOTE: Le tracking HubSpot est déjà fait côté client dans RecipeHeroSection
     // avec trackRecipeAccessRequest(email, locale)
     
-    // TODO: Sauvegarder dans une base de données si nécessaire
-    // Par exemple avec Prisma, Supabase, MongoDB, etc.
-    
-    // TODO: Envoyer un email avec le code si nécessaire
-    // Utiliser Resend, SendGrid, ou Mailgun
-    
-    // TODO: Si besoin de tracking serveur HubSpot, utiliser l'API HubSpot
-    // https://developers.hubspot.com/docs/api/events/send-custom-behavioral-event
+    // Envoyer le code par email avec Resend
+    try {
+      await resend.emails.send({
+        from: 'Octogone <noreply@octogone.app>',
+        to: email,
+        subject: locale === 'en' 
+          ? 'Your access code for the recipe calculator'
+          : 'Votre code d\'accès pour le calculateur de recette',
+        html: locale === 'en'
+          ? `
+            <h2>Your access code</h2>
+            <p>Here is your code to access the recipe calculator:</p>
+            <h1 style="font-size: 32px; font-weight: bold; color: #DCB26B;">${RECIPE_ACCESS_CONFIG.ACCESS_CODE}</h1>
+            <p>Enter this code on the website to unlock access.</p>
+            <p style="color: #666; font-size: 12px;">This code is valid for ${RECIPE_ACCESS_CONFIG.CODE_VALIDITY_MINUTES} minutes.</p>
+          `
+          : `
+            <h2>Votre code d'accès</h2>
+            <p>Voici votre code pour accéder au calculateur de recette :</p>
+            <h1 style="font-size: 32px; font-weight: bold; color: #DCB26B;">${RECIPE_ACCESS_CONFIG.ACCESS_CODE}</h1>
+            <p>Entrez ce code sur le site pour débloquer l'accès.</p>
+            <p style="color: #666; font-size: 12px;">Ce code est valide pendant ${RECIPE_ACCESS_CONFIG.CODE_VALIDITY_MINUTES} minutes.</p>
+          `
+      });
+    } catch (emailError) {
+      console.error('Erreur lors de l\'envoi de l\'email:', emailError);
+      // On continue quand même pour ne pas bloquer l'utilisateur
+      // En développement, le code sera visible dans les logs
+    }
 
     return NextResponse.json(
       { 
