@@ -196,9 +196,10 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
           </div>
 
           {/* Description et bouton - Hauteur égale à l'image */}
-          <div className="order-1 lg:order-2 flex flex-col justify-between h-full">
+          <div className="order-1 lg:order-2 flex flex-col justify-between h-full space-y-4">
+            <div>
             {/* Badge Brouillon */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 mb-3">
               <div 
                 className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full"
                 style={{ 
@@ -220,22 +221,24 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
             </div>
 
             <h1 
-              className="text-4xl lg:text-5xl font-bold"
+              className="text-4xl lg:text-5xl font-bold mb-3"
               style={{ color: 'var(--on-surface)' }}
             >
               {recipeName}
             </h1>
             
             <p 
-              className="text-lg lg:text-xl leading-relaxed"
+              className="text-lg leading-relaxed"
               style={{ color: 'var(--on-surface-variant)' }}
             >
               {description}
             </p>
+            </div>
 
             {/* Système d'email gate (seulement si activé) */}
+            <div>
             {RECIPE_ACCESS_CONFIG.ENABLE_EMAIL_GATE && (
-              <div className="space-y-3">
+              <div className="space-y-2">
                 {/* État 1: Demande d'email */}
                 {accessState === 'email' && (
                   <div className="space-y-2">
@@ -331,7 +334,7 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
             )}
 
             {/* Bouton Compléter */}
-            <div className="pt-2">
+            <div>
               <OctogoneButton
                 variant="primary"
                 size="lg"
@@ -342,6 +345,7 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
                 <Edit3 size={20} />
                 {isEnglish ? 'Complete my recipe' : 'Compléter ma recette'}
               </OctogoneButton>
+            </div>
             </div>
           </div>
         </div>
