@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Calculator, Mail, Key, CheckCircle, FileEdit, AlertCircle } from 'lucide-react';
+import { Mail, Key, CheckCircle, FileEdit, AlertCircle, FileText, Edit3 } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { RECIPE_ACCESS_CONFIG } from '@/config/recipe-access';
 import { trackRecipeAccessRequest, trackRecipeAccessUnlocked, trackRecipeCalculationStart } from '@/lib/tracking/hubspot-events';
@@ -226,12 +226,24 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
               {recipeName}
             </h1>
             
-            <p 
-              className="text-lg lg:text-xl leading-relaxed"
-              style={{ color: 'var(--on-surface-variant)' }}
-            >
-              {description}
-            </p>
+            {/* Description */}
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <FileText size={16} style={{ color: 'var(--on-surface-variant)' }} />
+                <span 
+                  className="text-sm font-medium"
+                  style={{ color: 'var(--on-surface-variant)' }}
+                >
+                  Description
+                </span>
+              </div>
+              <p 
+                className="text-lg leading-relaxed"
+                style={{ color: 'var(--on-surface-variant)' }}
+              >
+                {description}
+              </p>
+            </div>
 
             {/* Allergènes */}
             <div className="space-y-2">
@@ -249,8 +261,8 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
                 <div 
                   className="px-3 py-1.5 rounded-full text-xs font-medium"
                   style={{ 
-                    backgroundColor: 'var(--error-container)',
-                    color: 'var(--on-error-container)'
+                    backgroundColor: 'var(--tertiary-container)',
+                    color: 'var(--on-tertiary-container)'
                   }}
                 >
                   {isEnglish ? 'Gluten' : 'Gluten'}
@@ -259,8 +271,8 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
                 <div 
                   className="px-3 py-1.5 rounded-full text-xs font-medium"
                   style={{ 
-                    backgroundColor: 'var(--error-container)',
-                    color: 'var(--on-error-container)'
+                    backgroundColor: 'var(--secondary-container)',
+                    color: 'var(--on-secondary-container)'
                   }}
                 >
                   {isEnglish ? 'Dairy' : 'Lait'}
@@ -269,8 +281,8 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
                 <div 
                   className="px-3 py-1.5 rounded-full text-xs font-medium"
                   style={{ 
-                    backgroundColor: 'var(--error-container)',
-                    color: 'var(--on-error-container)'
+                    backgroundColor: 'var(--primary-container)',
+                    color: 'var(--on-primary-container)'
                   }}
                 >
                   {isEnglish ? 'Mustard' : 'Moutarde'}
@@ -279,8 +291,8 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
                 <div 
                   className="px-3 py-1.5 rounded-full text-xs font-medium"
                   style={{ 
-                    backgroundColor: 'var(--error-container)',
-                    color: 'var(--on-error-container)'
+                    backgroundColor: 'var(--tertiary-container)',
+                    color: 'var(--on-tertiary-container)'
                   }}
                 >
                   {isEnglish ? 'Sesame' : 'Sésame'}
@@ -291,6 +303,26 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
             {/* Système d'email gate (seulement si activé) */}
             {RECIPE_ACCESS_CONFIG.ENABLE_EMAIL_GATE && (
               <div className="space-y-4">
+                {/* Message d'instruction */}
+                {accessState !== 'unlocked' && (
+                  <div 
+                    className="p-4 rounded-lg border-l-4"
+                    style={{ 
+                      backgroundColor: 'var(--primary-container)',
+                      borderColor: 'var(--primary)'
+                    }}
+                  >
+                    <p 
+                      className="text-sm font-medium"
+                      style={{ color: 'var(--on-primary-container)' }}
+                    >
+                      {isEnglish 
+                        ? '🔒 To complete this recipe, enter your email to receive an access code.'
+                        : '🔒 Pour compléter cette recette, entrez votre email pour recevoir un code d\'accès.'}
+                    </p>
+                  </div>
+                )}
+
                 {/* État 1: Demande d'email */}
                 {accessState === 'email' && (
                   <div className="space-y-3">
@@ -389,17 +421,28 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
               </div>
             )}
 
-            {/* Bouton Calculer */}
+            {/* Bouton Compléter */}
             <div className="pt-2">
               <OctogoneButton
                 variant="primary"
                 size="lg"
                 onClick={handleCalculateClick}
+                disabled={!isButtonEnabled}
                 className="gap-2"
               >
-                <Calculator size={20} />
+                <Edit3 size={20} />
                 {isEnglish ? 'Complete my recipe' : 'Compléter ma recette'}
               </OctogoneButton>
+              {!isButtonEnabled && (
+                <p 
+                  className="text-xs mt-2"
+                  style={{ color: 'var(--on-surface-variant)', opacity: 0.7 }}
+                >
+                  {isEnglish 
+                    ? 'Enter the access code to unlock this button'
+                    : 'Entrez le code d\'accès pour débloquer ce bouton'}
+                </p>
+              )}
             </div>
           </div>
         </div>
