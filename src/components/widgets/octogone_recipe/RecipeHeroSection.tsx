@@ -57,7 +57,7 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
       } else {
         setError(isEnglish ? 'Error sending code' : 'Erreur lors de l\'envoi du code');
       }
-    } catch (err) {
+    } catch {
       setError(isEnglish ? 'Error sending code' : 'Erreur lors de l\'envoi du code');
     } finally {
       setIsLoading(false);
