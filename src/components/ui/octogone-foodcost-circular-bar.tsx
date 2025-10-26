@@ -42,11 +42,11 @@ export const OctogoneFoodCostCircularBar: React.FC<OctogoneFoodCostCircularBarPr
     }
     // Food Cost trop bas : <28%
     if (actualFoodCost < 28) {
-      return '#FFC107'; // Jaune warning
+      return 'var(--warning)';
     }
     // Food Cost modérément élevé : 33-38%
     if (actualFoodCost >= 33 && actualFoodCost <= 38) {
-      return '#FF8C00'; // Orange
+      return 'var(--orange)';
     }
     // Food Cost très élevé : >38%
     return 'var(--error)'; // Rouge

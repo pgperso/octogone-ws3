@@ -78,6 +78,14 @@
   /* Couleurs de succès */
   --success: #BFD495;
   --on-success: #1F1F1F;
+
+  /* Couleurs de warning */
+  --warning: #eac94e;
+  --on-warning: #1F1F1F;
+
+  /* Couleurs orange (food cost élevé) */
+  --orange: #ec9019;
+  --on-orange: #1F1F1F;
 }
 
 /* Thème Dark - Basé sur Flutter AppColors */
@@ -122,4 +130,12 @@
   /* Couleurs de succès */
   --success: #BFD495;
   --on-success: #1F1F1F;
+
+  /* Couleurs de warning */
+  --warning: #eac94e;
+  --on-warning: #1F1F1F;
+
+  /* Couleurs orange (food cost élevé) */
+  --orange: #ec9019;
+  --on-orange: #1F1F1F;
 }

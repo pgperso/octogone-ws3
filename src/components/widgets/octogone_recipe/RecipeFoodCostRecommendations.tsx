@@ -66,8 +66,8 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
           'Ajouter des garnitures premium',
           'Risque : La qualité perçue peut en souffrir'
         ],
-        color: '#000000',
-        bgColor: '#FFC107' // Jaune warning
+        color: 'var(--on-warning)',
+        bgColor: 'var(--warning)'
       };
     }
     
@@ -89,8 +89,8 @@ export const RecipeFoodCostRecommendations: React.FC<RecipeFoodCostRecommendatio
           'Réviser les coûts des ingrédients',
           'Surveiller de près'
         ],
-        color: 'var(--on-secondary-container)',
-        bgColor: '#FF8C00' // Orange
+        color: 'var(--on-orange)',
+        bgColor: 'var(--orange)'
       };
     }
     
