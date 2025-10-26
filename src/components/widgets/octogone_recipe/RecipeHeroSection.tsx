@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { Calculator, Mail, Key, CheckCircle } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
