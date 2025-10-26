@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Calculator, Mail, Key, CheckCircle } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
@@ -30,6 +30,28 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
   const [code, setCode] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [recipeProgress, setRecipeProgress] = useState(0);
+
+  // Animation de la progress bar au chargement (0% → 35%)
+  useEffect(() => {
+    const targetProgress = 35;
+    const duration = 2000; // 2 secondes
+    const interval = 30;
+    const increment = (targetProgress / duration) * interval;
+
+    const timer = setInterval(() => {
+      setRecipeProgress(prev => {
+        const next = prev + increment;
+        if (next >= targetProgress) {
+          clearInterval(timer);
+          return targetProgress;
+        }
+        return next;
+      });
+    }, interval);
+
+    return () => clearInterval(timer);
+  }, []);
 
   // Si l'email gate est désactivé, le bouton est toujours actif
   const isButtonEnabled = !RECIPE_ACCESS_CONFIG.ENABLE_EMAIL_GATE || accessState === 'unlocked';
@@ -93,8 +115,8 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
     >
       <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-          {/* Image du burger */}
-          <div className="order-2 lg:order-1">
+          {/* Image du burger avec progress bar circulaire */}
+          <div className="order-2 lg:order-1 relative">
             <div 
               className="w-full aspect-square rounded-3xl overflow-hidden shadow-2xl"
               style={{ border: '2px solid var(--outline)' }}
@@ -106,6 +128,52 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
                 height={600}
                 className="w-full h-full object-cover"
               />
+            </div>
+            
+            {/* Progress bar circulaire par-dessus l'image */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <svg
+                width={200}
+                height={200}
+                className="transform -rotate-90"
+              >
+                {/* Cercle de fond */}
+                <circle
+                  cx={100}
+                  cy={100}
+                  r={92}
+                  fill="none"
+                  stroke="rgba(255, 255, 255, 0.3)"
+                  strokeWidth={8}
+                />
+                
+                {/* Cercle de progression */}
+                <circle
+                  cx={100}
+                  cy={100}
+                  r={92}
+                  fill="none"
+                  stroke="var(--primary)"
+                  strokeWidth={8}
+                  strokeDasharray={2 * Math.PI * 92}
+                  strokeDashoffset={2 * Math.PI * 92 - (recipeProgress / 100) * (2 * Math.PI * 92)}
+                  strokeLinecap="round"
+                  className="transition-all duration-300"
+                />
+              </svg>
+              
+              {/* Pourcentage au centre */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <span 
+                  className="text-4xl font-bold"
+                  style={{ 
+                    color: '#FFFFFF',
+                    textShadow: '0 2px 8px rgba(0,0,0,0.5)'
+                  }}
+                >
+                  {Math.round(recipeProgress)}%
+                </span>
+              </div>
             </div>
           </div>
 
