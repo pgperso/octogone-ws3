@@ -7,7 +7,7 @@
 
 export const RECIPE_ACCESS_CONFIG = {
   // Active/désactive le système d'email gate
-  ENABLE_EMAIL_GATE: false, // Mettre à true pour activer
+  ENABLE_EMAIL_GATE: true, // Mettre à false pour désactiver
   
   // Code d'accès valide
   ACCESS_CODE: 'OCTOGONE2025',
