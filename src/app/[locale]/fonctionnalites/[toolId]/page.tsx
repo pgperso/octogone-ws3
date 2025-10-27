@@ -260,13 +260,31 @@ export default function ToolPage({
           spacing="xxl" 
           className="relative"
           style={{
-            backgroundImage: 'url(/restaurant1.avif)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundAttachment: 'fixed',
             backgroundColor: '#1a1a1a'
           }}
         >
+          {/* Images en split screen 50/50 */}
+          <div className="absolute inset-0" style={{ zIndex: 0 }}>
+            {/* Moitié gauche - restaurant1.avif */}
+            <div 
+              className="absolute top-0 left-0 bottom-0 w-1/2"
+              style={{
+                backgroundImage: 'url(/restaurant1.avif)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}
+            />
+            
+            {/* Moitié droite - cocktail.avif */}
+            <div 
+              className="absolute top-0 right-0 bottom-0 w-1/2"
+              style={{
+                backgroundImage: 'url(/cocktail.avif)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}
+            />
+          </div>
           
           {/* Overlay subtil */}
           <div 
