@@ -1,16 +1,4 @@
-import React, { useState, useEffect } from 'react';
-
-// Keyframes pour l'animation de flottement
-const floatAnimation = `
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-8px);
-    }
-  }
-`;
+import React from 'react';
 
 interface PriceTagProps {
   price: string;
@@ -29,37 +17,18 @@ export const PriceTag: React.FC<PriceTagProps> = ({
   right,
   isVisible,
 }) => {
-  const [hasPopped, setHasPopped] = useState(false);
-  const [floatDelay] = useState(Math.random() * 0.5);
-
-  // Démarrer le flottement après l'animation pop (0.7s)
-  useEffect(() => {
-    if (isVisible && !hasPopped) {
-      const timer = setTimeout(() => {
-        setHasPopped(true);
-      }, 700);
-      return () => clearTimeout(timer);
-    }
-  }, [isVisible, hasPopped]);
-
   return (
-    <>
-      <style>{floatAnimation}</style>
-      <div
-        className="absolute"
-        style={{
-          top,
-          ...(left && { left }),
-          ...(right && { right }),
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? 'scale(1) rotate(0deg)' : 'scale(0) rotate(-10deg)',
-          transition: !hasPopped 
-            ? 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)' // Pop animation
-            : 'none', // Pas de transition pendant le float
-          animation: hasPopped ? 'float 3s ease-in-out infinite' : 'none',
-          animationDelay: hasPopped ? `${floatDelay}s` : '0s',
-        }}
-      >
+    <div
+      className="absolute"
+      style={{
+        top,
+        ...(left && { left }),
+        ...(right && { right }),
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible ? 'scale(1) rotate(0deg)' : 'scale(0) rotate(-10deg)',
+        transition: 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
+      }}
+    >
       {/* Badge carré avec radius - BLANC */}
       <div
         className="px-4 py-3 shadow-lg backdrop-blur-sm"
@@ -85,7 +54,6 @@ export const PriceTag: React.FC<PriceTagProps> = ({
           </span>
         </div>
       </div>
-      </div>
-    </>
+    </div>
   );
 };
