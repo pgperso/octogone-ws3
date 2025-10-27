@@ -6,6 +6,8 @@ import { Mail, Key, FileEdit, Edit3, FileText } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { RECIPE_ACCESS_CONFIG } from '@/config/recipe-access';
 import { trackRecipeAccessRequest, trackRecipeAccessUnlocked, trackRecipeCalculationStart } from '@/lib/tracking/hubspot-events';
+import { RECIPE_PRICE_TAGS, INITIAL_RECIPE_PROGRESS, HERO_TAG_DELAYS } from './recipePriceTags';
+import { PriceTag } from './PriceTag';
 
 interface RecipeHeroSectionProps {
   recipeName: string;
@@ -34,31 +36,22 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
   const [displayProgress, setDisplayProgress] = useState(0);
   const [visibleTags, setVisibleTags] = useState<number[]>([]);
 
-  // Tags de prix pour les 3 ingrédients de base (43% complété)
-  const priceTags = [
-    { id: 1, price: '$0.45', label: isEnglish ? 'Burger bun' : 'Pain burger', top: '15%', left: '25%', delay: 200 },
-    { id: 2, price: '$2.80', label: isEnglish ? 'Beef' : 'Bœuf', top: '55%', left: '50%', delay: 600 },
-    { id: 3, price: '$0.65', label: isEnglish ? 'Cheddar' : 'Cheddar', top: '42%', left: '65%', delay: 1000 },
-  ];
-
-  // Animation de la progress bar au chargement (0% → 43%)
-  // 3 ingrédients sur 7 : pain burger, bœuf, cheddar
+  // Animation de la progress bar au chargement
   useEffect(() => {
-    // Démarrer l'animation après un court délai
     const timer = setTimeout(() => {
-      setRecipeProgress(43);
+      setRecipeProgress(INITIAL_RECIPE_PROGRESS);
     }, 100);
-
     return () => clearTimeout(timer);
   }, []);
 
   // Animation des tags de prix
   useEffect(() => {
-    priceTags.forEach((tag) => {
+    const timers = RECIPE_PRICE_TAGS.map((tag, index) => 
       setTimeout(() => {
         setVisibleTags(prev => [...prev, tag.id]);
-      }, tag.delay);
-    });
+      }, HERO_TAG_DELAYS[index])
+    );
+    return () => timers.forEach(clearTimeout);
   }, []);
 
   // Animation du pourcentage affiché
@@ -223,41 +216,17 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
             </div>
 
             {/* Tags de prix sur les ingrédients */}
-            {priceTags.map((tag) => (
-              <div
+            {RECIPE_PRICE_TAGS.map((tag) => (
+              <PriceTag
                 key={tag.id}
-                className="absolute"
-                style={{
-                  top: tag.top,
-                  left: tag.left,
-                  opacity: visibleTags.includes(tag.id) ? 1 : 0,
-                  transform: visibleTags.includes(tag.id) ? 'scale(1)' : 'scale(0.8)',
-                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                }}
-              >
-                <div
-                  className="px-3 py-1.5 rounded-full shadow-lg backdrop-blur-sm"
-                  style={{
-                    backgroundColor: 'rgba(var(--primary-rgb, 212, 175, 55), 0.95)',
-                    border: '2px solid var(--primary)',
-                  }}
-                >
-                  <div className="flex flex-col items-center">
-                    <span
-                      className="text-xs font-bold"
-                      style={{ color: 'var(--on-primary)' }}
-                    >
-                      {tag.price}
-                    </span>
-                    <span
-                      className="text-[10px] font-medium"
-                      style={{ color: 'var(--on-primary)', opacity: 0.9 }}
-                    >
-                      {tag.label}
-                    </span>
-                  </div>
-                </div>
-              </div>
+                price={tag.price}
+                label={isEnglish ? tag.labelEn : tag.labelFr}
+                top={tag.top}
+                left={tag.left}
+                lineEndX={tag.lineEndX}
+                lineEndY={tag.lineEndY}
+                isVisible={visibleTags.includes(tag.id)}
+              />
             ))}
           </div>
 
