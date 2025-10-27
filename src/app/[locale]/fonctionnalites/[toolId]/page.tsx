@@ -249,27 +249,55 @@ export default function ToolPage({
           spacing="xxl" 
           className="relative"
           style={{
-            backgroundImage: 'url(/restaurant1.avif)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundAttachment: 'fixed',
             backgroundColor: '#1a1a1a'
           }}
         >
+          {/* Vidéo en background */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              zIndex: 0
+            }}
+          >
+            <source src="/animations/operate.mp4" type="video/mp4" />
+          </video>
+          
           {/* Overlay subtil */}
           <div 
             className="absolute inset-0"
-            style={{ backgroundColor: 'rgba(0, 0, 0, 0.65)' }}
+            style={{ backgroundColor: 'rgba(0, 0, 0, 0.65)', zIndex: 1 }}
           />
 
           {/* Contenu */}
           <div className="relative z-10">
             <div className="max-w-6xl mx-auto">
+              {/* Titre */}
+              <motion.h2
+                className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12"
+                style={{ color: 'white' }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                {isEnglish ? 'Immediate Benefits' : 'Des bénéfices immédiats'}
+              </motion.h2>
+              
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
               >
                 {/* 4 cartes bénéfices mappées */}

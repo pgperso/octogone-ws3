@@ -154,8 +154,7 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
     <div 
       className="w-full px-6 py-12"
       style={{ 
-        backgroundColor: 'var(--surface-container-low)',
-        borderBottom: '1px solid var(--outline)'
+        backgroundColor: 'var(--surface-container-low)'
       }}
     >
       <div className="max-w-7xl mx-auto">
