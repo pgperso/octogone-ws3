@@ -36,13 +36,21 @@ export const RECIPE_PRICE_TAGS: PriceTagConfig[] = [
     top: '50%', 
     left: '80%'
   },
+  { 
+    id: 4, 
+    price: '$0.35', 
+    labelEn: 'Supreme sauce', 
+    labelFr: 'Sauce supreme', 
+    top: '60%', 
+    left: '80%'
+  },
 ];
 
 // Pourcentage de complétion initial (3 ingrédients sur 7)
 export const INITIAL_RECIPE_PROGRESS = 43;
 
 // Délais d'apparition des tags dans le hero (en ms)
-export const HERO_TAG_DELAYS = [200, 600, 1000];
+export const HERO_TAG_DELAYS = [200, 600, 1000, 1400];
 
 // Délais d'apparition des tags dans l'animation (en ms)
-export const ANIMATION_TAG_DELAYS = [0, 400, 800];
+export const ANIMATION_TAG_DELAYS = [0, 400, 800, 1200];
