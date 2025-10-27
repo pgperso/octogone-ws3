@@ -217,24 +217,24 @@ export default function ToolPage({
                   style={{ color: 'var(--on-surface)' }}
                 >
                   {isEnglish 
-                    ? "You spend hours calculating costs, adjusting recipes, trying to figure out if you're making money. Sound familiar?"
-                    : "Tu passes des heures à calculer les coûts, ajuster les recettes, essayer de comprendre si tu fais du profit. Ça te parle ?"}
+                    ? "Managing recipe costs and profitability requires precision and time. Manual calculations, constant price adjustments, and margin analysis can consume hours of your valuable time each week."
+                    : "Gérer les coûts de recettes et la rentabilité demande précision et temps. Les calculs manuels, les ajustements constants de prix et l'analyse des marges peuvent vous faire perdre des heures précieuses chaque semaine."}
                 </p>
                 <p 
                   className="text-lg lg:text-xl leading-relaxed"
                   style={{ color: 'var(--on-surface)' }}
                 >
                   {isEnglish
-                    ? "Imagine entering your ingredients once, and everything updates automatically. Change a supplier price? All your recipes recalculate instantly. Test scenarios, optimize margins, and get back to what you love: creating incredible dishes."
-                    : "Imagine : tu rentres tes ingrédients une fois, et tout se met à jour automatiquement. Tu changes un prix de fournisseur ? Toutes tes recettes se recalculent instantanément. Tu testes des scénarios, optimises tes marges, et tu te concentres sur ce que tu aimes : créer des plats incroyables."}
+                    ? "With our recipe management system, you enter your ingredients once and benefit from automatic updates across all your recipes. When supplier prices change, your entire menu recalculates instantly. You can simulate scenarios, optimize your margins, and make informed decisions based on real-time data."
+                    : "Avec notre système de gestion de recettes, vous saisissez vos ingrédients une seule fois et bénéficiez de mises à jour automatiques sur toutes vos recettes. Lorsque les prix fournisseurs changent, votre menu entier se recalcule instantanément. Vous pouvez simuler des scénarios, optimiser vos marges et prendre des décisions éclairées basées sur des données en temps réel."}
                 </p>
                 <p 
                   className="text-lg lg:text-xl leading-relaxed font-semibold"
                   style={{ color: 'var(--primary)' }}
                 >
                   {isEnglish
-                    ? "Finally understand where your money goes, and more importantly, where it comes from."
-                    : "Comprends enfin où va ton argent, et surtout, d'où il vient."}
+                    ? "Gain complete visibility into your costs and profitability, ingredient by ingredient."
+                    : "Obtenez une visibilité complète sur vos coûts et votre rentabilité, ingrédient par ingrédient."}
                 </p>
               </div>
             </motion.div>
