@@ -296,13 +296,19 @@ export default function ToolPage({
                   const isLarger = index === 0 || index === 3; // Cartes 1 et 4 plus grandes
                   
                   return (
-                    <div
+                    <motion.div
                       key={card.concept}
-                      className="cursor-pointer"
+                      className="cursor-pointer relative"
                       style={{
-                        perspective: '1000px'
+                        perspective: '1000px',
+                        transformStyle: 'preserve-3d'
                       }}
-                      onClick={() => {
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.1 + (index * 0.1) }}
+                      onClick={(e) => {
+                        e.stopPropagation();
                         setFlippedCards(prev => 
                           prev.includes(card.concept)
                             ? prev.filter(c => c !== card.concept)
@@ -314,13 +320,9 @@ export default function ToolPage({
                         className="relative rounded-xl"
                         style={{
                           transformStyle: 'preserve-3d',
-                          transition: 'transform 0.6s',
-                          transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
+                          transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+                          transition: 'transform 0.6s ease-in-out'
                         }}
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.1 + (index * 0.1) }}
                         whileHover={{
                           scale: isLarger ? 1.03 : 1.02,
                           y: -4,
@@ -369,7 +371,7 @@ export default function ToolPage({
                           </div>
                         </div>
                       </motion.div>
-                    </div>
+                    </motion.div>
                   );
                 })}
               </div>
