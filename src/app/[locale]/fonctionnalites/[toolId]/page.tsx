@@ -201,7 +201,8 @@ export default function ToolPage({
       {/* Section Témoignage Cuisinier - Uniquement pour Food Cost */}
       {toolId === 'food-cost' && (
         <ResponsiveSection spacing="xl" bgColor="">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Texte à gauche */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -285,6 +286,7 @@ export default function ToolPage({
                 </div>
               </div>
             </motion.div>
+            </div>
           </div>
         </ResponsiveSection>
       )}
