@@ -200,87 +200,100 @@ export default function ToolPage({
 
       {/* Section Bénéfices avec Parallaxe - Uniquement pour Food Cost */}
       {toolId === 'food-cost' && (
-        <div className="relative overflow-hidden" style={{ minHeight: '500px' }}>
-          {/* Background avec effet parallaxe */}
-          <div
-            className="absolute inset-0 z-0"
-            style={{
-              backgroundImage: 'url(/images/restaurant1.avif)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat'
-            }}
-          />
-          
+        <div 
+          className="relative overflow-hidden"
+          style={{
+            backgroundImage: 'url(/images/restaurant1.avif)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed'
+          }}
+        >
           {/* Overlay subtil */}
           <div 
-            className="absolute inset-0 z-10"
-            style={{
-              backgroundColor: 'rgba(0, 0, 0, 0.5)'
-            }}
+            className="absolute inset-0"
+            style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}
           />
 
           {/* Contenu */}
-          <ResponsiveSection spacing="xl" className="relative z-20">
+          <ResponsiveSection spacing="xl" className="relative z-10">
             <div className="max-w-6xl mx-auto">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="grid grid-cols-1 md:grid-cols-3 gap-8"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
               >
-                {/* Bénéfice 1 */}
-                <div className="text-center space-y-4 p-6">
-                  <div 
-                    className="w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4"
-                    style={{ backgroundColor: 'rgba(191, 212, 149, 0.2)', border: '2px solid var(--success)' }}
-                  >
-                    <span className="text-3xl">⚡</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-white">
+                {/* Bénéfice 1 - Vert menthe (Operate) */}
+                <div 
+                  className="p-6 rounded-xl backdrop-blur-sm"
+                  style={{ 
+                    backgroundColor: 'rgba(184, 224, 210, 0.15)',
+                    border: '1px solid #B8E0D2'
+                  }}
+                >
+                  <h3 className="text-lg font-bold text-white mb-3">
                     {isEnglish ? 'Instant Updates' : 'Mises à jour instantanées'}
                   </h3>
-                  <p className="text-base text-white opacity-90">
+                  <p className="text-sm text-white opacity-90">
                     {isEnglish 
-                      ? 'Change one price, update all recipes automatically. Save hours of manual recalculations.'
-                      : 'Changez un prix, toutes vos recettes se mettent à jour automatiquement. Économisez des heures de recalculs manuels.'}
+                      ? 'Change one price, all recipes update automatically'
+                      : 'Changez un prix, toutes vos recettes se mettent à jour automatiquement'}
                   </p>
                 </div>
 
-                {/* Bénéfice 2 */}
-                <div className="text-center space-y-4 p-6">
-                  <div 
-                    className="w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4"
-                    style={{ backgroundColor: 'rgba(220, 178, 107, 0.2)', border: '2px solid var(--primary)' }}
-                  >
-                    <span className="text-3xl">📊</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-white">
+                {/* Bénéfice 2 - Bleu ciel (Automate) */}
+                <div 
+                  className="p-6 rounded-xl backdrop-blur-sm"
+                  style={{ 
+                    backgroundColor: 'rgba(180, 212, 255, 0.15)',
+                    border: '1px solid #B4D4FF'
+                  }}
+                >
+                  <h3 className="text-lg font-bold text-white mb-3">
                     {isEnglish ? 'Real-Time Profitability' : 'Rentabilité en temps réel'}
                   </h3>
-                  <p className="text-base text-white opacity-90">
+                  <p className="text-sm text-white opacity-90">
                     {isEnglish
-                      ? 'Know your exact margins on every dish. Make data-driven decisions to maximize profits.'
-                      : 'Connaissez vos marges exactes sur chaque plat. Prenez des décisions basées sur les données pour maximiser vos profits.'}
+                      ? 'Know your exact margins on every dish instantly'
+                      : 'Connaissez vos marges exactes sur chaque plat instantanément'}
                   </p>
                 </div>
 
-                {/* Bénéfice 3 */}
-                <div className="text-center space-y-4 p-6">
-                  <div 
-                    className="w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4"
-                    style={{ backgroundColor: 'rgba(186, 223, 246, 0.2)', border: '2px solid var(--secondary)' }}
-                  >
-                    <span className="text-3xl">🎯</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-white">
+                {/* Bénéfice 3 - Jaune (Analyze) */}
+                <div 
+                  className="p-6 rounded-xl backdrop-blur-sm"
+                  style={{ 
+                    backgroundColor: 'rgba(255, 229, 180, 0.15)',
+                    border: '1px solid #FFE5B4'
+                  }}
+                >
+                  <h3 className="text-lg font-bold text-white mb-3">
                     {isEnglish ? 'Scenario Testing' : 'Tests de scénarios'}
                   </h3>
-                  <p className="text-base text-white opacity-90">
+                  <p className="text-sm text-white opacity-90">
                     {isEnglish
-                      ? 'Simulate price changes and recipe modifications before implementing them. Optimize with confidence.'
-                      : 'Simulez les changements de prix et modifications de recettes avant de les implémenter. Optimisez en toute confiance.'}
+                      ? 'Simulate changes before implementing them'
+                      : 'Simulez les changements avant de les implémenter'}
+                  </p>
+                </div>
+
+                {/* Bénéfice 4 - Mauve (Predict) */}
+                <div 
+                  className="p-6 rounded-xl backdrop-blur-sm"
+                  style={{ 
+                    backgroundColor: 'rgba(200, 182, 255, 0.15)',
+                    border: '1px solid #C8B6FF'
+                  }}
+                >
+                  <h3 className="text-lg font-bold text-white mb-3">
+                    {isEnglish ? 'Cost Optimization' : 'Optimisation des coûts'}
+                  </h3>
+                  <p className="text-sm text-white opacity-90">
+                    {isEnglish
+                      ? 'Identify opportunities to improve your margins'
+                      : 'Identifiez les opportunités d’améliorer vos marges'}
                   </p>
                 </div>
               </motion.div>
