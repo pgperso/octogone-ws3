@@ -201,12 +201,13 @@ export default function ToolPage({
       {/* Section Bénéfices avec Parallaxe - Uniquement pour Food Cost */}
       {toolId === 'food-cost' && (
         <div 
-          className="relative overflow-hidden py-16 md:py-24"
+          className="relative py-16 md:py-24"
           style={{
             backgroundImage: 'url(/images/restaurant1.avif)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            backgroundAttachment: 'fixed'
+            backgroundAttachment: 'fixed',
+            minHeight: '500px'
           }}
         >
           {/* Overlay subtil */}
