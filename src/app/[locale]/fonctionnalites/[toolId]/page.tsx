@@ -195,7 +195,9 @@ export default function ToolPage({
 
       {/* Widget Recettes - Uniquement pour Food Cost */}
       {toolId === 'food-cost' && (
-        <RecipeFlowContainer locale={locale as 'fr' | 'en'} />
+        <ResponsiveSection spacing="xxl" bgColor="">
+          <RecipeFlowContainer locale={locale as 'fr' | 'en'} />
+        </ResponsiveSection>
       )}
 
       {/* Section Bénéfices avec Parallaxe - Uniquement pour Food Cost */}
