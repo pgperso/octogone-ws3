@@ -37,6 +37,21 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
   const [displayProgress, setDisplayProgress] = useState(0);
   const [visibleTags, setVisibleTags] = useState<number[]>([]);
 
+  // Charger l'email sauvegardé et vérifier si déjà débloqué dans la session
+  useEffect(() => {
+    // Vérifier si déjà débloqué dans cette session
+    const isUnlocked = sessionStorage.getItem('octogone_recipe_unlocked');
+    if (isUnlocked === 'true') {
+      setAccessState('unlocked');
+    }
+    
+    // Pré-remplir l'email s'il existe
+    const savedEmail = localStorage.getItem('octogone_recipe_email');
+    if (savedEmail) {
+      setEmail(savedEmail);
+    }
+  }, []);
+
   // Animation de la progress bar au chargement
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -115,6 +130,11 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
     if (code.toUpperCase() === RECIPE_ACCESS_CONFIG.ACCESS_CODE) {
       setAccessState('unlocked');
       setError('');
+      
+      // Sauvegarder l'email et marquer comme débloqué
+      localStorage.setItem('octogone_recipe_email', email);
+      sessionStorage.setItem('octogone_recipe_unlocked', 'true');
+      
       // Track HubSpot: Accès débloqué
       trackRecipeAccessUnlocked(email, locale);
     } else {

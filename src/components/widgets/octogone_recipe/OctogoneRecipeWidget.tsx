@@ -207,6 +207,11 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
     return (costPerPortion / sellingPrice) * 100;
   };
 
+  // Calculer le profit brut (marge brute en $)
+  const calculateGrossProfit = (): number => {
+    return sellingPrice - calculateCostPerPortion();
+  };
+
   // Sauvegarder les paramètres de la recette
   const handleSaveSettings = (settings: {
     recipeName: string;
@@ -402,6 +407,30 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
                   style={{ color: 'var(--primary)' }}
                 >
                   {sellingPrice.toFixed(2)} $
+                </p>
+              </div>
+            </div>
+
+            {/* Profit Brut */}
+            <div className="flex flex-col self-stretch">
+              <p 
+                className="text-xs font-medium mb-2"
+                style={{ color: 'var(--on-surface-variant)' }}
+              >
+                {isEnglish ? 'Gross Profit' : 'Profit Brut'}
+              </p>
+              <div 
+                className="px-4 py-2 rounded-lg text-center flex items-center justify-center flex-1"
+                style={{ 
+                  border: '1px solid var(--success)',
+                  backgroundColor: 'rgba(191, 212, 149, 0.1)'
+                }}
+              >
+                <p 
+                  className="text-2xl font-bold"
+                  style={{ color: 'var(--success)' }}
+                >
+                  {calculateGrossProfit().toFixed(2)} $
                 </p>
               </div>
             </div>
