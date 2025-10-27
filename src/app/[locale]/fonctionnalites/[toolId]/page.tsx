@@ -65,7 +65,7 @@ export default function ToolPage({
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-[#002236] via-[#003d5c] to-[#005a82]" style={{
             ...(toolId === 'food-cost' && {
-              background: 'linear-gradient(135deg, #E8D5F2 0%, #D4B5E8 50%, #C8A5DC 100%)'
+              background: 'linear-gradient(135deg, #BFD495 0%, #A8BD7A 100%)'
             })
           }} />
           <div className="absolute inset-0 opacity-10"
@@ -90,8 +90,11 @@ export default function ToolPage({
 
           {/* Titre */}
           <motion.h1 
-            className="text-4xl lg:text-6xl font-bold mb-3 drop-shadow-lg"
-            style={{ color: toolId === 'food-cost' ? '#1a1a1a' : 'white' }}
+            className="text-4xl lg:text-6xl font-bold mb-3"
+            style={{ 
+              color: toolId === 'food-cost' ? '#1a1a1a' : 'white',
+              textShadow: toolId === 'food-cost' ? 'none' : '0 2px 8px rgba(0,0,0,0.5)'
+            }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -105,9 +108,9 @@ export default function ToolPage({
                     : ['un ingrédient', 'une unité', 'une once', 'un gramme', 'un millilitre']
                   }
                   interval={2500}
-                  className="text-[#D4AF37]"
                 />
-                {isEnglish ? ' at a time' : ' à la fois'}
+                <br />
+                {isEnglish ? 'at a time' : 'à la fois'}
               </>
             ) : headerTitle}
           </motion.h1>
