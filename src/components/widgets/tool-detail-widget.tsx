@@ -89,7 +89,7 @@ export default function ToolDetailWidget({ tool, locale }: ToolDetailWidgetProps
 
   // Layout avec sections et concepts
   return (
-    <div className="max-w-6xl mx-auto space-y-8 motion-container">
+    <div className="max-w-7xl mx-auto space-y-8 motion-container">
       {tool.sections.map((section, sectionIndex) => {
         
         return (

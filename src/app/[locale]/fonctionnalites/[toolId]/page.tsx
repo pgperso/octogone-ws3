@@ -259,15 +259,7 @@ export default function ToolPage({
             muted
             playsInline
             className="absolute inset-0 w-full h-full object-cover"
-            style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              zIndex: 0
-            }}
+            style={{ zIndex: 0 }}
           >
             <source src="/animations/operate.mp4" type="video/mp4" />
           </video>
@@ -280,7 +272,7 @@ export default function ToolPage({
 
           {/* Contenu */}
           <div className="relative z-10">
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-7xl mx-auto">
               {/* Titre */}
               <motion.h2
                 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12"
