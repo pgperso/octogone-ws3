@@ -286,10 +286,18 @@ export default function ToolPage({
             />
           </div>
           
-          {/* Overlay subtil */}
-          <div 
+          {/* Overlay avec couleur de la carte sélectionnée */}
+          <motion.div 
+            key={`overlay-${selectedCard}`}
             className="absolute inset-0"
-            style={{ backgroundColor: 'rgba(0, 0, 0, 0.65)', zIndex: 1 }}
+            style={{ 
+              backgroundColor: `${benefitCards.find(c => c.concept === selectedCard)?.color}`,
+              opacity: 0.75,
+              zIndex: 1 
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.75 }}
+            transition={{ duration: 0.5 }}
           />
 
           {/* Contenu */}
