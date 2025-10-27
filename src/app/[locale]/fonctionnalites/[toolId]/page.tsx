@@ -257,7 +257,7 @@ export default function ToolPage({
               className="relative"
             >
               <div 
-                className="aspect-[4/5] rounded-2xl overflow-hidden"
+                className="aspect-[3/4] rounded-2xl overflow-hidden"
                 style={{ 
                   backgroundColor: 'var(--surface-container)',
                   border: '2px solid var(--outline)'
