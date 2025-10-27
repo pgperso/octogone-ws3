@@ -179,6 +179,100 @@ export default function ToolPage({
         </div>
       </ResponsiveSection>
 
+      {/* Section Témoignage Cuisinier - Uniquement pour Food Cost */}
+      {toolId === 'food-cost' && (
+        <ResponsiveSection spacing="xl" bgColor="">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Texte à gauche */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="space-y-6"
+            >
+              <div className="space-y-4">
+                <p 
+                  className="text-lg lg:text-xl leading-relaxed"
+                  style={{ color: 'var(--on-surface)' }}
+                >
+                  {isEnglish 
+                    ? "Honestly, this tool has completely changed how I work in the kitchen. Before, I was spending hours calculating costs, adjusting recipes, trying to figure out if I was making money or not. It was a nightmare!"
+                    : "Honnêtement, cet outil a complètement changé ma façon de travailler en cuisine. Avant, je passais des heures à calculer les coûts, ajuster les recettes, essayer de comprendre si je faisais du profit ou pas. C'était un cauchemar !"}
+                </p>
+                <p 
+                  className="text-lg lg:text-xl leading-relaxed"
+                  style={{ color: 'var(--on-surface)' }}
+                >
+                  {isEnglish
+                    ? "Now, I enter my ingredients once, and boom! Everything updates automatically. I change a supplier price? The system recalculates all my recipes instantly. I can test scenarios, optimize my margins, and focus on what I love: creating amazing dishes."
+                    : "Maintenant, je rentre mes ingrédients une fois, et boom ! Tout se met à jour automatiquement. Je change un prix de fournisseur ? Le système recalcule toutes mes recettes instantanément. Je peux tester des scénarios, optimiser mes marges, et me concentrer sur ce que j'aime : créer des plats incroyables."}
+                </p>
+                <p 
+                  className="text-lg lg:text-xl leading-relaxed font-semibold"
+                  style={{ color: 'var(--primary)' }}
+                >
+                  {isEnglish
+                    ? "It's like having a financial assistant in my pocket. I finally understand where my money goes, and more importantly, where it comes from!"
+                    : "C'est comme avoir un assistant financier dans ma poche. Je comprends enfin où va mon argent, et surtout, d'où il vient !"}
+                </p>
+              </div>
+              
+              {/* Attribution */}
+              <div className="pt-4 border-t" style={{ borderColor: 'var(--outline)' }}>
+                <p className="font-bold text-lg" style={{ color: 'var(--on-surface)' }}>
+                  {isEnglish ? 'Vincent L.' : 'Vincent L.'}
+                </p>
+                <p className="text-sm" style={{ color: 'var(--on-surface-variant)' }}>
+                  {isEnglish ? 'Executive Chef, Bistro 8' : 'Chef Exécutif, Bistro 8'}
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Image à droite */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative"
+            >
+              <div 
+                className="aspect-[4/5] rounded-2xl overflow-hidden"
+                style={{ 
+                  backgroundColor: 'var(--surface-container)',
+                  border: '2px solid var(--outline)'
+                }}
+              >
+                {/* Placeholder - À remplacer par l'image du cuisinier */}
+                <div className="w-full h-full flex items-center justify-center">
+                  <div className="text-center space-y-2">
+                    <div 
+                      className="text-6xl mb-4"
+                      style={{ color: 'var(--on-surface-variant)' }}
+                    >
+                      👨‍🍳
+                    </div>
+                    <p 
+                      className="text-sm font-medium"
+                      style={{ color: 'var(--on-surface-variant)' }}
+                    >
+                      {isEnglish ? 'Chef Image Placeholder' : 'Image Chef Placeholder'}
+                    </p>
+                    <p 
+                      className="text-xs"
+                      style={{ color: 'var(--on-surface-variant)', opacity: 0.7 }}
+                    >
+                      {isEnglish ? 'Replace with actual chef photo' : 'Remplacer par photo du chef'}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </ResponsiveSection>
+      )}
+
       {/* Dashboard KPIs - Uniquement pour Octogone 360 */}
       {toolId === 'octogone-360' && (
         <ResponsiveSection spacing="xl" bgColor="">
