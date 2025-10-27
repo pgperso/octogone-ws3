@@ -109,7 +109,7 @@ export const RecipeCalculationAnimation: React.FC<RecipeCalculationAnimationProp
                   cy={size / 2}
                   r={radius}
                   fill="none"
-                  stroke="var(--primary)"
+                  stroke="var(--success)"
                   strokeWidth={strokeWidth}
                   strokeDasharray={circumference}
                   strokeDashoffset={strokeDashoffset}
