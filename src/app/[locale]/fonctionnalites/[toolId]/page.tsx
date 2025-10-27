@@ -333,40 +333,88 @@ export default function ToolPage({
                 transition={{ duration: 0.4 }}
               >
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                  {/* Graphique animé à gauche */}
-                  <div className="flex items-center justify-center">
-                    <motion.div
-                      className="relative"
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ duration: 0.6, ease: 'easeOut' }}
-                    >
-                      {/* Cercle extérieur */}
-                      <motion.div
-                        className="w-48 h-48 rounded-full flex items-center justify-center"
-                        style={{
-                          backgroundColor: benefitCards.find(c => c.concept === selectedCard)?.color,
-                          border: `4px solid ${benefitCards.find(c => c.concept === selectedCard)?.border}`
-                        }}
-                        initial={{ rotate: 0 }}
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                      >
-                        {/* Statistique au centre */}
-                        <div className="text-center">
-                          <div className="text-4xl font-bold" style={{ color: '#1a1a1a' }}>
+                  {/* Graphique à barres animé à gauche */}
+                  <div className="flex flex-col gap-4">
+                    {/* Titre du graphique */}
+                    <div className="text-center mb-4">
+                      <div className="text-4xl font-bold mb-2" style={{ color: 'white' }}>
+                        {isEnglish 
+                          ? benefitCards.find(c => c.concept === selectedCard)?.statEn.split(' ')[0]
+                          : benefitCards.find(c => c.concept === selectedCard)?.statFr.split(' ')[0]}
+                      </div>
+                      <div className="text-sm" style={{ color: 'white', opacity: 0.8 }}>
+                        {isEnglish 
+                          ? benefitCards.find(c => c.concept === selectedCard)?.statEn.split(' ').slice(1).join(' ')
+                          : benefitCards.find(c => c.concept === selectedCard)?.statFr.split(' ').slice(1).join(' ')}
+                      </div>
+                    </div>
+                    
+                    {/* Barres de progression */}
+                    <div className="space-y-4">
+                      {/* Barre Avant */}
+                      <div>
+                        <div className="flex justify-between text-xs mb-1" style={{ color: 'white', opacity: 0.7 }}>
+                          <span>{isEnglish ? 'Before' : 'Avant'}</span>
+                          <span>100%</span>
+                        </div>
+                        <div className="h-8 bg-white bg-opacity-20 rounded-lg overflow-hidden">
+                          <motion.div
+                            className="h-full rounded-lg"
+                            style={{ backgroundColor: 'rgba(239, 68, 68, 0.8)' }}
+                            initial={{ width: '0%' }}
+                            animate={{ width: '100%' }}
+                            transition={{ duration: 1, ease: 'easeOut' }}
+                          />
+                        </div>
+                      </div>
+                      
+                      {/* Barre Après */}
+                      <div>
+                        <div className="flex justify-between text-xs mb-1" style={{ color: 'white', opacity: 0.7 }}>
+                          <span>{isEnglish ? 'After' : 'Après'}</span>
+                          <span>
+                            {selectedCard === 'operate' ? '50%' : 
+                             selectedCard === 'automate' ? '0%' :
+                             selectedCard === 'analyze' ? '95%' : '90%'}
+                          </span>
+                        </div>
+                        <div className="h-8 bg-white bg-opacity-20 rounded-lg overflow-hidden">
+                          <motion.div
+                            className="h-full rounded-lg"
+                            style={{ 
+                              backgroundColor: benefitCards.find(c => c.concept === selectedCard)?.color
+                            }}
+                            initial={{ width: '0%' }}
+                            animate={{ 
+                              width: selectedCard === 'operate' ? '50%' : 
+                                     selectedCard === 'automate' ? '0%' :
+                                     selectedCard === 'analyze' ? '95%' : '90%'
+                            }}
+                            transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
+                          />
+                        </div>
+                      </div>
+                      
+                      {/* Gain */}
+                      <div className="pt-2 border-t border-white border-opacity-20">
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm font-semibold" style={{ color: 'white' }}>
+                            {isEnglish ? 'Gain' : 'Gain'}
+                          </span>
+                          <motion.span 
+                            className="text-2xl font-bold"
+                            style={{ color: benefitCards.find(c => c.concept === selectedCard)?.border }}
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ duration: 0.5, delay: 1 }}
+                          >
                             {isEnglish 
                               ? benefitCards.find(c => c.concept === selectedCard)?.statEn.split(' ')[0]
                               : benefitCards.find(c => c.concept === selectedCard)?.statFr.split(' ')[0]}
-                          </div>
-                          <div className="text-xs font-semibold mt-2" style={{ color: '#1a1a1a', opacity: 0.8 }}>
-                            {isEnglish 
-                              ? benefitCards.find(c => c.concept === selectedCard)?.statEn.split(' ').slice(1).join(' ')
-                              : benefitCards.find(c => c.concept === selectedCard)?.statFr.split(' ').slice(1).join(' ')}
-                          </div>
+                          </motion.span>
                         </div>
-                      </motion.div>
-                    </motion.div>
+                      </div>
+                    </div>
                   </div>
                   
                   {/* Texte à droite */}
