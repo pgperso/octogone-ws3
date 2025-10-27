@@ -18,11 +18,11 @@ export const RecipeFlowContainer: React.FC<RecipeFlowContainerProps> = ({
   const isEnglish = locale === 'en';
 
   // Données de la recette
-  const recipeName = 'Cheeseburger Supreme';
+  const recipeName = isEnglish ? 'Cheeseburger Supreme' : 'Cheeseburger Suprême';
   const recipeImage = '/products/cheesburger_recipe.avif';
   const description = isEnglish 
-    ? 'Premium burger with grilled beef patty, aged cheddar, bacon, lettuce, tomatoes, and house sauce.'
-    : 'Burger premium avec galette de bœuf grillée, cheddar affiné, bacon, laitue, tomates et sauce maison.';
+    ? 'Double grilled beef patty, sharp cheddar, smoked bacon, tomatoes, onions and our famous secret spicy sauce.'
+    : 'Double galette de bœuf grillée, cheddar fort, bacon fumé, tomates, oignons et notre fameuse sauce épicée secrète.';
 
   const handleCalculateClick = () => {
     setFlowState('animation');

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Mail, Key, FileEdit, Edit3, FileText } from 'lucide-react';
+import { Mail, Key, FileEdit, Edit3, FileText, AlertTriangle } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { RECIPE_ACCESS_CONFIG } from '@/config/recipe-access';
 import { trackRecipeAccessRequest, trackRecipeAccessUnlocked, trackRecipeCalculationStart } from '@/lib/tracking/hubspot-events';
@@ -299,12 +299,16 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
               <div className="flex flex-wrap gap-2">
                 {/* Badge Gluten */}
                 <div 
-                  className="inline-flex items-center px-3 py-1.5 rounded-full"
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full"
                   style={{ 
-                    backgroundColor: 'var(--error-container)',
+                    backgroundColor: 'var(--error)',
                     border: '1px solid var(--error)'
                   }}
                 >
+                  <AlertTriangle 
+                    size={16} 
+                    style={{ color: 'var(--on-error-container)' }}
+                  />
                   <span 
                     className="text-sm font-medium"
                     style={{ color: 'var(--on-error-container)' }}

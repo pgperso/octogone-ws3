@@ -41,7 +41,7 @@ export const RECIPE_PRICE_TAGS: PriceTagConfig[] = [
     id: 4, 
     price: '$7.50', 
     labelEn: 'Supreme sauce', 
-    labelFr: 'Sauce suprême', 
+    labelFr: 'Sauce Suprême', 
     top: '75%', 
     left: '60%',
     productId: 'recipe-013'
