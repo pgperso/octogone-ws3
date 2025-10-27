@@ -65,7 +65,7 @@ export default function ToolPage({
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-[#002236] via-[#003d5c] to-[#005a82]" style={{
             ...(toolId === 'food-cost' && {
-              background: 'linear-gradient(135deg, #BFD495 0%, #A8BD7A 100%)'
+              background: 'linear-gradient(135deg, #B8E0D2 0%, #A5CABE 100%)'
             })
           }} />
           <div className="absolute inset-0 opacity-10"
@@ -100,18 +100,25 @@ export default function ToolPage({
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             {toolId === 'food-cost' ? (
-              <>
-                {isEnglish ? 'Profit is calculated ' : 'Le profit se calcule '}
-                <RotatingText 
-                  words={isEnglish 
-                    ? ['one ingredient', 'one unit', 'one ounce', 'one gram', 'one milliliter']
-                    : ['un ingrédient', 'une unité', 'une once', 'un gramme', 'un millilitre']
-                  }
-                  interval={2500}
-                />
-                <br />
-                {isEnglish ? 'at a time' : 'à la fois'}
-              </>
+              <RotatingText 
+                words={isEnglish 
+                  ? [
+                      'Profit is calculated one ingredient at a time',
+                      'Profit is calculated one unit at a time',
+                      'Profit is calculated one ounce at a time',
+                      'Profit is calculated one gram at a time',
+                      'Profit is calculated one milliliter at a time'
+                    ]
+                  : [
+                      'Le profit se calcule un ingrédient à la fois',
+                      'Le profit se calcule une unité à la fois',
+                      'Le profit se calcule une once à la fois',
+                      'Le profit se calcule un gramme à la fois',
+                      'Le profit se calcule un millilitre à la fois'
+                    ]
+                }
+                interval={4500}
+              />
             ) : headerTitle}
           </motion.h1>
           

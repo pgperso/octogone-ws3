@@ -32,10 +32,13 @@ export const RotatingText: React.FC<RotatingTextProps> = ({
     <AnimatePresence mode="wait">
       <motion.span
         key={currentIndex}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -20 }}
-        transition={{ duration: 0.5 }}
+        initial={{ opacity: 0, y: 30, filter: 'blur(4px)' }}
+        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+        exit={{ opacity: 0, y: -30, filter: 'blur(4px)' }}
+        transition={{ 
+          duration: 0.8,
+          ease: [0.4, 0, 0.2, 1]
+        }}
         className={className}
       >
         {words[currentIndex]}
