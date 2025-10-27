@@ -289,24 +289,19 @@ export default function ToolPage({
                 {isEnglish ? 'Immediate Benefits' : 'Des bénéfices immédiats'}
               </motion.h2>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:items-center">
                 {/* 4 cartes bénéfices avec flip et effet de profondeur */}
                 {benefitCards.map((card, index) => {
                   const isFlipped = flippedCards.includes(card.concept);
                   const isLarger = index === 0 || index === 3; // Cartes 1 et 4 plus grandes
                   
                   return (
-                    <motion.div
+                    <div
                       key={card.concept}
                       className="cursor-pointer"
                       style={{
-                        perspective: '1000px',
-                        transformStyle: 'preserve-3d'
+                        perspective: '1000px'
                       }}
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: 0.1 + (index * 0.1) }}
                       onClick={() => {
                         setFlippedCards(prev => 
                           prev.includes(card.concept)
@@ -322,6 +317,10 @@ export default function ToolPage({
                           transition: 'transform 0.6s',
                           transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
                         }}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.1 + (index * 0.1) }}
                         whileHover={{
                           scale: isLarger ? 1.03 : 1.02,
                           y: -4,
@@ -358,16 +357,19 @@ export default function ToolPage({
                           }}
                         >
                           <div className="text-center">
-                            <p className="text-3xl font-bold mb-2" style={{ color: '#1a1a1a' }}>
+                            <p className="text-3xl font-bold mb-3" style={{ color: '#1a1a1a' }}>
                               {isEnglish ? card.statEn.split(' ')[0] : card.statFr.split(' ')[0]}
                             </p>
-                            <p className="text-sm font-medium" style={{ color: '#1a1a1a', opacity: 0.85 }}>
+                            <p className="text-sm font-medium mb-4" style={{ color: '#1a1a1a', opacity: 0.85 }}>
                               {isEnglish ? card.statEn.split(' ').slice(1).join(' ') : card.statFr.split(' ').slice(1).join(' ')}
+                            </p>
+                            <p className="text-xs font-semibold" style={{ color: '#1a1a1a', opacity: 0.6 }}>
+                              {isEnglish ? 'See my benefits' : 'Voir mes bénéfices'}
                             </p>
                           </div>
                         </div>
                       </motion.div>
-                    </motion.div>
+                    </div>
                   );
                 })}
               </div>
