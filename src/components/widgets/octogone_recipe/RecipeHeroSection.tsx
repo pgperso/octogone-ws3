@@ -8,6 +8,7 @@ import { RECIPE_ACCESS_CONFIG } from '@/config/recipe-access';
 import { trackRecipeAccessRequest, trackRecipeAccessUnlocked, trackRecipeCalculationStart } from '@/lib/tracking/hubspot-events';
 import { RECIPE_PRICE_TAGS, INITIAL_RECIPE_PROGRESS, HERO_TAG_DELAYS } from './recipePriceTags';
 import { PriceTag } from './PriceTag';
+import { PositioningGrid } from './PositioningGrid';
 
 interface RecipeHeroSectionProps {
   recipeName: string;
@@ -214,6 +215,9 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
                 </div>
               </div>
             </div>
+
+            {/* GRILLE DE POSITIONNEMENT TEMPORAIRE - À RETIRER */}
+            <PositioningGrid />
 
             {/* Tags de prix sur les ingrédients */}
             {RECIPE_PRICE_TAGS.map((tag) => (
