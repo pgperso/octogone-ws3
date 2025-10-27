@@ -265,21 +265,21 @@ export default function ToolPage({
         >
           {/* Images en split screen 50/50 */}
           <div className="absolute inset-0" style={{ zIndex: 0 }}>
-            {/* Moitié gauche - restaurant1.avif */}
+            {/* Moitié gauche - recipe */}
             <div 
               className="absolute top-0 left-0 bottom-0 w-1/2"
               style={{
-                backgroundImage: 'url(/restaurant1.avif)',
+                backgroundImage: 'url(/pages/recipe.avif)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
               }}
             />
             
-            {/* Moitié droite - cocktail.avif */}
+            {/* Moitié droite - cocktail */}
             <div 
               className="absolute top-0 right-0 bottom-0 w-1/2"
               style={{
-                backgroundImage: 'url(/cocktail.avif)',
+                backgroundImage: 'url(/pages/cocktail.avif)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
               }}
