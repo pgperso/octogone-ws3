@@ -33,7 +33,7 @@ export const RECIPE_PRICE_TAGS: PriceTagConfig[] = [
     price: '$0.65', 
     labelEn: 'Cheddar', 
     labelFr: 'Cheddar', 
-    top: '60%', 
+    top: '50%', 
     left: '80%'
   },
 ];

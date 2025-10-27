@@ -31,23 +31,23 @@ export const PriceTag: React.FC<PriceTagProps> = ({
     >
       {/* Badge carré avec radius - BLANC */}
       <div
-        className="px-3 py-2 shadow-lg backdrop-blur-sm"
+        className="px-4 py-3 shadow-lg backdrop-blur-sm"
         style={{
           backgroundColor: 'rgba(255, 255, 255, 0.95)',
           border: '2px solid rgba(255, 255, 255, 0.8)',
-          borderRadius: '8px',
-          minWidth: '80px',
+          borderRadius: '10px',
+          minWidth: '100px',
         }}
       >
-        <div className="flex flex-col items-center gap-0.5">
+        <div className="flex flex-col items-center gap-1">
           <span
-            className="text-sm font-bold leading-none"
+            className="text-base font-bold leading-none"
             style={{ color: '#000000' }}
           >
             {price}
           </span>
           <span
-            className="text-[10px] font-medium leading-none"
+            className="text-xs font-medium leading-none"
             style={{ color: '#000000', opacity: 0.8 }}
           >
             {label}
