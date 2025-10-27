@@ -198,6 +198,101 @@ export default function ToolPage({
         <RecipeFlowContainer locale={locale as 'fr' | 'en'} />
       )}
 
+      {/* Section Bénéfices avec Parallaxe - Uniquement pour Food Cost */}
+      {toolId === 'food-cost' && (
+        <div className="relative overflow-hidden" style={{ minHeight: '500px' }}>
+          {/* Background avec effet parallaxe */}
+          <motion.div
+            className="absolute inset-0 z-0"
+            style={{
+              backgroundImage: 'url(/images/restaurant1.avif)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundAttachment: 'fixed'
+            }}
+            initial={{ scale: 1.1 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, ease: 'easeOut' }}
+          />
+          
+          {/* Overlay */}
+          <div 
+            className="absolute inset-0 z-10"
+            style={{
+              background: 'linear-gradient(135deg, rgba(0, 34, 54, 0.92) 0%, rgba(0, 61, 92, 0.88) 100%)'
+            }}
+          />
+
+          {/* Contenu */}
+          <ResponsiveSection spacing="xl" className="relative z-20">
+            <div className="max-w-6xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="grid grid-cols-1 md:grid-cols-3 gap-8"
+              >
+                {/* Bénéfice 1 */}
+                <div className="text-center space-y-4 p-6">
+                  <div 
+                    className="w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4"
+                    style={{ backgroundColor: 'rgba(191, 212, 149, 0.2)', border: '2px solid var(--success)' }}
+                  >
+                    <span className="text-3xl">⚡</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white">
+                    {isEnglish ? 'Instant Updates' : 'Mises à jour instantanées'}
+                  </h3>
+                  <p className="text-base text-white opacity-90">
+                    {isEnglish 
+                      ? 'Change one price, update all recipes automatically. Save hours of manual recalculations.'
+                      : 'Changez un prix, toutes vos recettes se mettent à jour automatiquement. Économisez des heures de recalculs manuels.'}
+                  </p>
+                </div>
+
+                {/* Bénéfice 2 */}
+                <div className="text-center space-y-4 p-6">
+                  <div 
+                    className="w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4"
+                    style={{ backgroundColor: 'rgba(220, 178, 107, 0.2)', border: '2px solid var(--primary)' }}
+                  >
+                    <span className="text-3xl">📊</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white">
+                    {isEnglish ? 'Real-Time Profitability' : 'Rentabilité en temps réel'}
+                  </h3>
+                  <p className="text-base text-white opacity-90">
+                    {isEnglish
+                      ? 'Know your exact margins on every dish. Make data-driven decisions to maximize profits.'
+                      : 'Connaissez vos marges exactes sur chaque plat. Prenez des décisions basées sur les données pour maximiser vos profits.'}
+                  </p>
+                </div>
+
+                {/* Bénéfice 3 */}
+                <div className="text-center space-y-4 p-6">
+                  <div 
+                    className="w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4"
+                    style={{ backgroundColor: 'rgba(186, 223, 246, 0.2)', border: '2px solid var(--secondary)' }}
+                  >
+                    <span className="text-3xl">🎯</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white">
+                    {isEnglish ? 'Scenario Testing' : 'Tests de scénarios'}
+                  </h3>
+                  <p className="text-base text-white opacity-90">
+                    {isEnglish
+                      ? 'Simulate price changes and recipe modifications before implementing them. Optimize with confidence.'
+                      : 'Simulez les changements de prix et modifications de recettes avant de les implémenter. Optimisez en toute confiance.'}
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+          </ResponsiveSection>
+        </div>
+      )}
+
       {/* Features Section - Widget réutilisable */}
       <ResponsiveSection spacing="xxl" bgColor="">
         <ToolDetailWidget tool={tool} locale={locale} />
