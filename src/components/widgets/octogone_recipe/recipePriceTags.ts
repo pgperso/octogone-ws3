@@ -1,6 +1,17 @@
 // Configuration des tags de prix pour les ingrédients de base
 // Position: top (vertical) / left (horizontal) en pourcentage
-export const RECIPE_PRICE_TAGS = [
+
+export interface PriceTagConfig {
+  id: number;
+  price: string;
+  labelEn: string;
+  labelFr: string;
+  top: string;
+  left?: string;
+  right?: string;
+}
+
+export const RECIPE_PRICE_TAGS: PriceTagConfig[] = [
   { 
     id: 1, 
     price: '$0.45', 
