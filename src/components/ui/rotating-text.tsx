@@ -32,14 +32,15 @@ export const RotatingText: React.FC<RotatingTextProps> = ({
     <AnimatePresence mode="wait">
       <motion.span
         key={currentIndex}
-        initial={{ opacity: 0, y: 30, filter: 'blur(4px)' }}
-        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-        exit={{ opacity: 0, y: -30, filter: 'blur(4px)' }}
+        initial={{ opacity: 0, y: -15 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 15 }}
         transition={{ 
-          duration: 0.8,
-          ease: [0.4, 0, 0.2, 1]
+          duration: 0.6,
+          ease: [0.25, 0.1, 0.25, 1]
         }}
         className={className}
+        style={{ display: 'inline-block' }}
       >
         {words[currentIndex]}
       </motion.span>

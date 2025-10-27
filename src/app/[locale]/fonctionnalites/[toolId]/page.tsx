@@ -117,7 +117,7 @@ export default function ToolPage({
                       'Le profit se calcule un millilitre à la fois'
                     ]
                 }
-                interval={4500}
+                interval={9000}
               />
             ) : headerTitle}
           </motion.h1>
