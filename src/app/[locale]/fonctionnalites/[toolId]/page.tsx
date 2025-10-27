@@ -84,8 +84,8 @@ export default function ToolPage({
     }
   ];
   
-  // State pour les cartes flipées
-  const [flippedCards, setFlippedCards] = React.useState<string[]>([]);
+  // State pour la carte sélectionnée
+  const [selectedCard, setSelectedCard] = React.useState<string>('operate');
   
   // Déterminer le titre et la description du header
   const headerCategory = tool.headerCategoryFr && tool.headerCategoryEn
@@ -289,92 +289,72 @@ export default function ToolPage({
                 {isEnglish ? 'Immediate Benefits' : 'Des bénéfices immédiats'}
               </motion.h2>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:items-center">
-                {/* 4 cartes bénéfices avec flip et effet de profondeur */}
+              {/* 4 cartes simples avec sélection */}
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                 {benefitCards.map((card, index) => {
-                  const isFlipped = flippedCards.includes(card.concept);
-                  const isLarger = index === 0 || index === 3; // Cartes 1 et 4 plus grandes
+                  const isSelected = selectedCard === card.concept;
                   
                   return (
                     <motion.div
                       key={card.concept}
-                      className="cursor-pointer relative"
+                      className="p-6 rounded-xl cursor-pointer transition-all duration-300"
                       style={{
-                        perspective: '1000px',
-                        transformStyle: 'preserve-3d'
+                        backgroundColor: card.color,
+                        border: isSelected ? `3px solid ${card.border}` : `2px solid ${card.border}`,
+                        opacity: isSelected ? 1 : 0.7
                       }}
                       initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
+                      whileInView={{ opacity: isSelected ? 1 : 0.7, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: 0.1 + (index * 0.1) }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setFlippedCards(prev => 
-                          prev.includes(card.concept)
-                            ? prev.filter(c => c !== card.concept)
-                            : [...prev, card.concept]
-                        );
-                      }}
+                      onClick={() => setSelectedCard(card.concept)}
                     >
-                      <motion.div
-                        className="relative rounded-xl"
-                        style={{
-                          transformStyle: 'preserve-3d',
-                          transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
-                          transition: 'transform 0.6s ease-in-out'
-                        }}
-                        whileHover={{
-                          scale: isLarger ? 1.03 : 1.02,
-                          y: -4,
-                          boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)'
-                        }}
-                      >
-                        {/* Face avant */}
-                        <div
-                          className="p-6 rounded-xl"
-                          style={{
-                            backgroundColor: card.color,
-                            border: `2px solid ${card.border}`,
-                            backfaceVisibility: 'hidden',
-                            minHeight: isLarger ? '200px' : '180px'
-                          }}
-                        >
-                          <h3 className="text-lg font-bold mb-3" style={{ color: '#1a1a1a' }}>
-                            {isEnglish ? card.titleEn : card.titleFr}
-                          </h3>
-                          <p className="text-sm" style={{ color: '#1a1a1a', opacity: 0.85 }}>
-                            {isEnglish ? card.descEn : card.descFr}
-                          </p>
-                        </div>
-                        
-                        {/* Face arrière (statistique) */}
-                        <div
-                          className="absolute inset-0 p-6 rounded-xl flex flex-col items-center justify-center"
-                          style={{
-                            backgroundColor: card.color,
-                            border: `2px solid ${card.border}`,
-                            backfaceVisibility: 'hidden',
-                            transform: 'rotateY(180deg)',
-                            minHeight: isLarger ? '200px' : '180px'
-                          }}
-                        >
-                          <div className="text-center">
-                            <p className="text-3xl font-bold mb-3" style={{ color: '#1a1a1a' }}>
-                              {isEnglish ? card.statEn.split(' ')[0] : card.statFr.split(' ')[0]}
-                            </p>
-                            <p className="text-sm font-medium mb-4" style={{ color: '#1a1a1a', opacity: 0.85 }}>
-                              {isEnglish ? card.statEn.split(' ').slice(1).join(' ') : card.statFr.split(' ').slice(1).join(' ')}
-                            </p>
-                            <p className="text-xs font-semibold" style={{ color: '#1a1a1a', opacity: 0.6 }}>
-                              {isEnglish ? 'See my benefits' : 'Voir mes bénéfices'}
-                            </p>
-                          </div>
-                        </div>
-                      </motion.div>
+                      <h3 className="text-lg font-bold mb-3" style={{ color: '#1a1a1a' }}>
+                        {isEnglish ? card.titleEn : card.titleFr}
+                      </h3>
+                      <p className="text-sm" style={{ color: '#1a1a1a', opacity: 0.85 }}>
+                        {isEnglish ? card.descEn : card.descFr}
+                      </p>
                     </motion.div>
                   );
                 })}
               </div>
+              
+              {/* Texte explicatif qui change selon la sélection */}
+              <motion.div
+                key={selectedCard}
+                className="p-8 rounded-2xl"
+                style={{
+                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)'
+                }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+              >
+                <h3 className="text-2xl font-bold mb-4" style={{ color: 'white' }}>
+                  {isEnglish 
+                    ? benefitCards.find(c => c.concept === selectedCard)?.titleEn
+                    : benefitCards.find(c => c.concept === selectedCard)?.titleFr}
+                </h3>
+                <p className="text-lg mb-6" style={{ color: 'white', opacity: 0.9 }}>
+                  {isEnglish 
+                    ? benefitCards.find(c => c.concept === selectedCard)?.descEn
+                    : benefitCards.find(c => c.concept === selectedCard)?.descFr}
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="text-3xl font-bold" style={{ color: 'white' }}>
+                    {isEnglish 
+                      ? benefitCards.find(c => c.concept === selectedCard)?.statEn.split(' ')[0]
+                      : benefitCards.find(c => c.concept === selectedCard)?.statFr.split(' ')[0]}
+                  </div>
+                  <div className="text-base" style={{ color: 'white', opacity: 0.8 }}>
+                    {isEnglish 
+                      ? benefitCards.find(c => c.concept === selectedCard)?.statEn.split(' ').slice(1).join(' ')
+                      : benefitCards.find(c => c.concept === selectedCard)?.statFr.split(' ').slice(1).join(' ')}
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </div>
         </ResponsiveSection>
