@@ -19,7 +19,7 @@ export const RecipeFlowContainer: React.FC<RecipeFlowContainerProps> = ({
 
   // Données de la recette
   const recipeName = 'Cheeseburger Supreme';
-  const recipeImage = '/products/supreme-cheesburger.avif';
+  const recipeImage = '/products/Cheeseburger_recipe.avif';
   const description = isEnglish 
     ? 'Premium burger with grilled beef patty, aged cheddar, bacon, lettuce, tomatoes, and house sauce.'
     : 'Burger premium avec galette de bœuf grillée, cheddar affiné, bacon, laitue, tomates et sauce maison.';
