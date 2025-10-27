@@ -1092,6 +1092,24 @@
         "recipe_role": "dessert",
         "pairs_well_with": ["prod-038", "prod-048"]
       }
+    },
+    {
+      "id": "recipe-013",
+      "name": "Sauce suprême",
+      "category": "Préparation",
+      "brand": "Marque Maison",
+      "unit": "L",
+      "availableUnits": ["L", "mL"],
+      "unitCost": 7.50,
+      "storage": "frigidaire",
+      "minInventory": 3,
+      "initialQuantity": 5,
+      "theoreticalQuantity": 4,
+      "isRecipe": true,
+      "enrichment": {
+        "recipe_role": "sauce",
+        "pairs_well_with": ["prod-001", "prod-029", "prod-003"]
+      }
     }
   ]
 }

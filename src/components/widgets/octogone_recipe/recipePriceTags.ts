@@ -9,6 +9,7 @@ export interface PriceTagConfig {
   top: string;
   left?: string;
   right?: string;
+  productId?: string; // ID du produit/recette dans octogone_products_data.json
 }
 
 export const RECIPE_PRICE_TAGS: PriceTagConfig[] = [
@@ -26,7 +27,7 @@ export const RECIPE_PRICE_TAGS: PriceTagConfig[] = [
     labelEn: 'Beef', 
     labelFr: 'Bœuf', 
     top: '60%', 
-    left: '15%'
+    left: '7%'
   },
   { 
     id: 3, 
@@ -38,11 +39,12 @@ export const RECIPE_PRICE_TAGS: PriceTagConfig[] = [
   },
   { 
     id: 4, 
-    price: '$0.35', 
+    price: '$7.50', 
     labelEn: 'Supreme sauce', 
-    labelFr: 'Sauce supreme', 
+    labelFr: 'Sauce suprême', 
     top: '75%', 
-    left: '60%'
+    left: '60%',
+    productId: 'recipe-013'
   },
 ];
 
