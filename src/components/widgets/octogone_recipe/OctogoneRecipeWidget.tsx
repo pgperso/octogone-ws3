@@ -50,7 +50,7 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
   
   // Informations de la recette
   const [recipeName, setRecipeName] = useState('Cheeseburger Supreme');
-  const [recipeImage] = useState('/products/supreme-cheesburger.avif');
+  const [recipeImage] = useState('/products/cheesburger_recipe.avif');
   const [targetFoodCost, setTargetFoodCost] = useState(30); // Cible en %
   const [sellingPrice, setSellingPrice] = useState(15.99); // Prix de vente
   const [category, setCategory] = useState('main'); // Catégorie
@@ -70,6 +70,7 @@ export const OctogoneRecipeWidget: React.FC<OctogoneRecipeWidgetProps> = ({ loca
     { productId: 'prod-001', quantity: 0.15, unit: 'kg' }, // Bœuf haché
     { productId: 'prod-006', quantity: 0.03, unit: 'kg' }, // Cheddar
     { productId: 'prod-029', quantity: 1, unit: 'un' }, // Pain à burger
+    { productId: 'recipe-013', quantity: 0.05, unit: 'L' }, // Sauce Suprême
   ]);
 
   // État pour les étapes de préparation - Burger en cours
