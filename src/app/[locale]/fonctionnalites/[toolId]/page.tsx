@@ -320,118 +320,108 @@ export default function ToolPage({
                 })}
               </div>
               
-              {/* Texte explicatif avec graphique animé */}
-              <motion.div
-                key={selectedCard}
-                className="p-8 rounded-2xl"
-                style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)'
-                }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-              >
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                  {/* Graphique à barres animé à gauche */}
-                  <div className="flex flex-col gap-4">
-                    {/* Titre du graphique */}
-                    <div className="text-center mb-4">
-                      <div className="text-4xl font-bold mb-2" style={{ color: 'white' }}>
+              {/* Layout 2 colonnes : Graphique | Texte */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-8">
+                {/* Colonne 1 : Graphique expressif */}
+                <motion.div
+                  key={selectedCard}
+                  className="flex items-center justify-center"
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <div className="relative w-full max-w-md">
+                    {/* Statistique principale en gros */}
+                    <motion.div 
+                      className="text-center mb-8"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ duration: 0.6, ease: 'easeOut' }}
+                    >
+                      <div 
+                        className="text-7xl font-black mb-2"
+                        style={{ 
+                          color: benefitCards.find(c => c.concept === selectedCard)?.border,
+                          textShadow: `0 0 40px ${benefitCards.find(c => c.concept === selectedCard)?.color}`
+                        }}
+                      >
                         {isEnglish 
                           ? benefitCards.find(c => c.concept === selectedCard)?.statEn.split(' ')[0]
                           : benefitCards.find(c => c.concept === selectedCard)?.statFr.split(' ')[0]}
                       </div>
-                      <div className="text-sm" style={{ color: 'white', opacity: 0.8 }}>
+                      <div className="text-xl font-semibold" style={{ color: 'white', opacity: 0.9 }}>
                         {isEnglish 
                           ? benefitCards.find(c => c.concept === selectedCard)?.statEn.split(' ').slice(1).join(' ')
                           : benefitCards.find(c => c.concept === selectedCard)?.statFr.split(' ').slice(1).join(' ')}
                       </div>
-                    </div>
+                    </motion.div>
                     
-                    {/* Barres de progression */}
-                    <div className="space-y-4">
-                      {/* Barre Avant */}
-                      <div>
-                        <div className="flex justify-between text-xs mb-1" style={{ color: 'white', opacity: 0.7 }}>
-                          <span>{isEnglish ? 'Before' : 'Avant'}</span>
-                          <span>100%</span>
-                        </div>
-                        <div className="h-8 bg-white bg-opacity-20 rounded-lg overflow-hidden">
-                          <motion.div
-                            className="h-full rounded-lg"
-                            style={{ backgroundColor: 'rgba(239, 68, 68, 0.8)' }}
-                            initial={{ width: '0%' }}
-                            animate={{ width: '100%' }}
-                            transition={{ duration: 1, ease: 'easeOut' }}
-                          />
-                        </div>
-                      </div>
+                    {/* Visualisation avec cercles concentriques */}
+                    <div className="relative h-64 flex items-center justify-center">
+                      {/* Cercles d'arrière-plan */}
+                      {[1, 2, 3].map((ring, i) => (
+                        <motion.div
+                          key={ring}
+                          className="absolute rounded-full"
+                          style={{
+                            width: `${80 + (i * 60)}px`,
+                            height: `${80 + (i * 60)}px`,
+                            border: `2px solid ${benefitCards.find(c => c.concept === selectedCard)?.border}`,
+                            opacity: 0.2 - (i * 0.05)
+                          }}
+                          initial={{ scale: 0, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 0.2 - (i * 0.05) }}
+                          transition={{ duration: 0.8, delay: i * 0.1 }}
+                        />
+                      ))}
                       
-                      {/* Barre Après */}
-                      <div>
-                        <div className="flex justify-between text-xs mb-1" style={{ color: 'white', opacity: 0.7 }}>
-                          <span>{isEnglish ? 'After' : 'Après'}</span>
-                          <span>
+                      {/* Cercle central avec couleur de la carte */}
+                      <motion.div
+                        className="absolute w-32 h-32 rounded-full flex items-center justify-center"
+                        style={{
+                          backgroundColor: benefitCards.find(c => c.concept === selectedCard)?.color,
+                          border: `4px solid ${benefitCards.find(c => c.concept === selectedCard)?.border}`,
+                          boxShadow: `0 0 60px ${benefitCards.find(c => c.concept === selectedCard)?.color}`
+                        }}
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ duration: 0.6, delay: 0.3 }}
+                      >
+                        <div className="text-center">
+                          <div className="text-2xl font-bold" style={{ color: '#1a1a1a' }}>
                             {selectedCard === 'operate' ? '50%' : 
-                             selectedCard === 'automate' ? '0%' :
-                             selectedCard === 'analyze' ? '95%' : '90%'}
-                          </span>
+                             selectedCard === 'automate' ? '100%' :
+                             selectedCard === 'analyze' ? '2-5%' : '8-10%'}
+                          </div>
+                          <div className="text-xs font-semibold" style={{ color: '#1a1a1a', opacity: 0.7 }}>
+                            {isEnglish ? 'Impact' : 'Impact'}
+                          </div>
                         </div>
-                        <div className="h-8 bg-white bg-opacity-20 rounded-lg overflow-hidden">
-                          <motion.div
-                            className="h-full rounded-lg"
-                            style={{ 
-                              backgroundColor: benefitCards.find(c => c.concept === selectedCard)?.color
-                            }}
-                            initial={{ width: '0%' }}
-                            animate={{ 
-                              width: selectedCard === 'operate' ? '50%' : 
-                                     selectedCard === 'automate' ? '0%' :
-                                     selectedCard === 'analyze' ? '95%' : '90%'
-                            }}
-                            transition={{ duration: 1, delay: 0.3, ease: 'easeOut' }}
-                          />
-                        </div>
-                      </div>
-                      
-                      {/* Gain */}
-                      <div className="pt-2 border-t border-white border-opacity-20">
-                        <div className="flex justify-between items-center">
-                          <span className="text-sm font-semibold" style={{ color: 'white' }}>
-                            {isEnglish ? 'Gain' : 'Gain'}
-                          </span>
-                          <motion.span 
-                            className="text-2xl font-bold"
-                            style={{ color: benefitCards.find(c => c.concept === selectedCard)?.border }}
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            transition={{ duration: 0.5, delay: 1 }}
-                          >
-                            {isEnglish 
-                              ? benefitCards.find(c => c.concept === selectedCard)?.statEn.split(' ')[0]
-                              : benefitCards.find(c => c.concept === selectedCard)?.statFr.split(' ')[0]}
-                          </motion.span>
-                        </div>
-                      </div>
+                      </motion.div>
                     </div>
                   </div>
-                  
-                  {/* Texte à droite */}
-                  <div>
-                    <h3 className="text-2xl font-bold mb-4" style={{ color: 'white' }}>
-                      {isEnglish 
-                        ? benefitCards.find(c => c.concept === selectedCard)?.titleEn
-                        : benefitCards.find(c => c.concept === selectedCard)?.titleFr}
-                    </h3>
-                    <p className="text-lg" style={{ color: 'white', opacity: 0.9 }}>
-                      {isEnglish 
-                        ? benefitCards.find(c => c.concept === selectedCard)?.descEn
-                        : benefitCards.find(c => c.concept === selectedCard)?.descFr}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
+                </motion.div>
+                
+                {/* Colonne 2 : Texte explicatif */}
+                <motion.div
+                  key={`text-${selectedCard}`}
+                  className="flex flex-col justify-center"
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <h3 className="text-3xl font-bold mb-6" style={{ color: 'white' }}>
+                    {isEnglish 
+                      ? benefitCards.find(c => c.concept === selectedCard)?.titleEn
+                      : benefitCards.find(c => c.concept === selectedCard)?.titleFr}
+                  </h3>
+                  <p className="text-xl leading-relaxed" style={{ color: 'white', opacity: 0.9 }}>
+                    {isEnglish 
+                      ? benefitCards.find(c => c.concept === selectedCard)?.descEn
+                      : benefitCards.find(c => c.concept === selectedCard)?.descFr}
+                  </p>
+                </motion.div>
+              </div>
             </div>
           </div>
         </ResponsiveSection>
