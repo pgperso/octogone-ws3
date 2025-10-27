@@ -320,102 +320,100 @@ export default function ToolPage({
                 })}
               </div>
               
-              {/* Layout 2 colonnes : Graphique | Texte */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-8">
-                {/* Colonne 1 : Graphique expressif */}
+              {/* Layout 3 colonnes : Nombre | Graphique | Texte */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8 items-center">
+                {/* Colonne 1 : Nombre géant */}
                 <motion.div
-                  key={selectedCard}
-                  className="flex items-center justify-center"
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
+                  key={`number-${selectedCard}`}
+                  className="flex flex-col items-center justify-center"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, ease: 'easeOut' }}
                 >
-                  <div className="relative w-full max-w-md">
-                    {/* Statistique principale en gros */}
-                    <motion.div 
-                      className="text-center mb-8"
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ duration: 0.6, ease: 'easeOut' }}
-                    >
-                      <div 
-                        className="text-7xl font-black mb-2"
-                        style={{ 
-                          color: benefitCards.find(c => c.concept === selectedCard)?.border,
-                          textShadow: `0 0 40px ${benefitCards.find(c => c.concept === selectedCard)?.color}`
-                        }}
-                      >
-                        {isEnglish 
-                          ? benefitCards.find(c => c.concept === selectedCard)?.statEn.split(' ')[0]
-                          : benefitCards.find(c => c.concept === selectedCard)?.statFr.split(' ')[0]}
-                      </div>
-                      <div className="text-xl font-semibold" style={{ color: 'white', opacity: 0.9 }}>
-                        {isEnglish 
-                          ? benefitCards.find(c => c.concept === selectedCard)?.statEn.split(' ').slice(1).join(' ')
-                          : benefitCards.find(c => c.concept === selectedCard)?.statFr.split(' ').slice(1).join(' ')}
-                      </div>
-                    </motion.div>
-                    
-                    {/* Visualisation avec cercles concentriques */}
-                    <div className="relative h-64 flex items-center justify-center">
-                      {/* Cercles d'arrière-plan */}
-                      {[1, 2, 3].map((ring, i) => (
-                        <motion.div
-                          key={ring}
-                          className="absolute rounded-full"
-                          style={{
-                            width: `${80 + (i * 60)}px`,
-                            height: `${80 + (i * 60)}px`,
-                            border: `2px solid ${benefitCards.find(c => c.concept === selectedCard)?.border}`,
-                            opacity: 0.2 - (i * 0.05)
-                          }}
-                          initial={{ scale: 0, opacity: 0 }}
-                          animate={{ scale: 1, opacity: 0.2 - (i * 0.05) }}
-                          transition={{ duration: 0.8, delay: i * 0.1 }}
-                        />
-                      ))}
-                      
-                      {/* Cercle central avec couleur de la carte */}
-                      <motion.div
-                        className="absolute w-32 h-32 rounded-full flex items-center justify-center"
-                        style={{
-                          backgroundColor: benefitCards.find(c => c.concept === selectedCard)?.color,
-                          border: `4px solid ${benefitCards.find(c => c.concept === selectedCard)?.border}`,
-                          boxShadow: `0 0 60px ${benefitCards.find(c => c.concept === selectedCard)?.color}`
-                        }}
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ duration: 0.6, delay: 0.3 }}
-                      >
-                        <div className="text-center">
-                          <div className="text-2xl font-bold" style={{ color: '#1a1a1a' }}>
-                            {selectedCard === 'operate' ? '50%' : 
-                             selectedCard === 'automate' ? '100%' :
-                             selectedCard === 'analyze' ? '2-5%' : '8-10%'}
-                          </div>
-                          <div className="text-xs font-semibold" style={{ color: '#1a1a1a', opacity: 0.7 }}>
-                            {isEnglish ? 'Impact' : 'Impact'}
-                          </div>
-                        </div>
-                      </motion.div>
-                    </div>
+                  <div 
+                    className="text-8xl font-black mb-4"
+                    style={{ 
+                      color: benefitCards.find(c => c.concept === selectedCard)?.border,
+                      textShadow: `0 0 60px ${benefitCards.find(c => c.concept === selectedCard)?.color}`
+                    }}
+                  >
+                    {isEnglish 
+                      ? benefitCards.find(c => c.concept === selectedCard)?.statEn.split(' ')[0]
+                      : benefitCards.find(c => c.concept === selectedCard)?.statFr.split(' ')[0]}
+                  </div>
+                  <div className="text-lg font-semibold text-center" style={{ color: 'white', opacity: 0.9 }}>
+                    {isEnglish 
+                      ? benefitCards.find(c => c.concept === selectedCard)?.statEn.split(' ').slice(1).join(' ')
+                      : benefitCards.find(c => c.concept === selectedCard)?.statFr.split(' ').slice(1).join(' ')}
                   </div>
                 </motion.div>
                 
-                {/* Colonne 2 : Texte explicatif */}
+                {/* Colonne 2 : Graphique avec cercles concentriques */}
+                <motion.div
+                  key={`graphic-${selectedCard}`}
+                  className="flex items-center justify-center"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                >
+                  <div className="relative h-64 w-64 flex items-center justify-center">
+                    {/* Cercles d'arrière-plan */}
+                    {[1, 2, 3].map((ring, i) => (
+                      <motion.div
+                        key={ring}
+                        className="absolute rounded-full"
+                        style={{
+                          width: `${80 + (i * 60)}px`,
+                          height: `${80 + (i * 60)}px`,
+                          border: `2px solid ${benefitCards.find(c => c.concept === selectedCard)?.border}`,
+                          opacity: 0.2 - (i * 0.05)
+                        }}
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 0.2 - (i * 0.05) }}
+                        transition={{ duration: 0.8, delay: i * 0.1 }}
+                      />
+                    ))}
+                    
+                    {/* Cercle central avec couleur de la carte */}
+                    <motion.div
+                      className="absolute w-32 h-32 rounded-full flex items-center justify-center"
+                      style={{
+                        backgroundColor: benefitCards.find(c => c.concept === selectedCard)?.color,
+                        border: `4px solid ${benefitCards.find(c => c.concept === selectedCard)?.border}`,
+                        boxShadow: `0 0 60px ${benefitCards.find(c => c.concept === selectedCard)?.color}`
+                      }}
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ duration: 0.6, delay: 0.3 }}
+                    >
+                      <div className="text-center">
+                        <div className="text-2xl font-bold" style={{ color: '#1a1a1a' }}>
+                          {selectedCard === 'operate' ? '50%' : 
+                           selectedCard === 'automate' ? '100%' :
+                           selectedCard === 'analyze' ? '2-5%' : '8-10%'}
+                        </div>
+                        <div className="text-xs font-semibold" style={{ color: '#1a1a1a', opacity: 0.7 }}>
+                          {isEnglish ? 'Impact' : 'Impact'}
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
+                </motion.div>
+                
+                {/* Colonne 3 : Texte explicatif */}
                 <motion.div
                   key={`text-${selectedCard}`}
                   className="flex flex-col justify-center"
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
                 >
-                  <h3 className="text-3xl font-bold mb-6" style={{ color: 'white' }}>
+                  <h3 className="text-2xl font-bold mb-4" style={{ color: 'white' }}>
                     {isEnglish 
                       ? benefitCards.find(c => c.concept === selectedCard)?.titleEn
                       : benefitCards.find(c => c.concept === selectedCard)?.titleFr}
                   </h3>
-                  <p className="text-xl leading-relaxed" style={{ color: 'white', opacity: 0.9 }}>
+                  <p className="text-base leading-relaxed" style={{ color: 'white', opacity: 0.9 }}>
                     {isEnglish 
                       ? benefitCards.find(c => c.concept === selectedCard)?.descEn
                       : benefitCards.find(c => c.concept === selectedCard)?.descFr}
