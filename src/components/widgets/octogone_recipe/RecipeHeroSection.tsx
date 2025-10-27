@@ -307,11 +307,11 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
                 >
                   <AlertTriangle 
                     size={16} 
-                    style={{ color: 'var(--on-error-container)' }}
+                    style={{ color: 'var(--on-error)' }}
                   />
                   <span 
                     className="text-sm font-medium"
-                    style={{ color: 'var(--on-error-container)' }}
+                    style={{ color: 'var(--on-error)' }}
                   >
                     {isEnglish ? 'Gluten' : 'Gluten'}
                   </span>

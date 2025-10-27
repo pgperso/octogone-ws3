@@ -1100,7 +1100,7 @@
       "brand": "Marque Maison",
       "unit": "L",
       "availableUnits": ["L", "mL"],
-      "unitCost": 7.50,
+      "unitCost": 0.85,
       "storage": "frigidaire",
       "minInventory": 3,
       "initialQuantity": 5,

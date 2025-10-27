@@ -17,7 +17,7 @@ export const PriceTag: React.FC<PriceTagProps> = ({
   right,
   isVisible,
 }) => {
-  // Extraire le montant numérique du prix
+  // Extraire le montant numérique du prix (format: "2.85$")
   const priceValue = parseFloat(price.replace('$', ''));
   
   // Calculer le facteur d'échelle (min: 1.0 pour $0.35, max: ~2.0 pour $2.80)
