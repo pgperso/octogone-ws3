@@ -17,7 +17,7 @@ export const RECIPE_PRICE_TAGS: PriceTagConfig[] = [
     price: '$0.45', 
     labelEn: 'Burger bun', 
     labelFr: 'Pain burger', 
-    top: '20%', 
+    top: '15%', 
     left: '40%'
   },
   { 
@@ -26,7 +26,7 @@ export const RECIPE_PRICE_TAGS: PriceTagConfig[] = [
     labelEn: 'Beef', 
     labelFr: 'Bœuf', 
     top: '60%', 
-    left: '20%'
+    left: '15%'
   },
   { 
     id: 3, 
@@ -41,7 +41,7 @@ export const RECIPE_PRICE_TAGS: PriceTagConfig[] = [
     price: '$0.35', 
     labelEn: 'Supreme sauce', 
     labelFr: 'Sauce supreme', 
-    top: '80%', 
+    top: '75%', 
     left: '60%'
   },
 ];

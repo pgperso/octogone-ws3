@@ -17,6 +17,18 @@ export const PriceTag: React.FC<PriceTagProps> = ({
   right,
   isVisible,
 }) => {
+  // Extraire le montant numérique du prix
+  const priceValue = parseFloat(price.replace('$', ''));
+  
+  // Calculer le facteur d'échelle (min: 1.0 pour $0.35, max: ~2.0 pour $2.80)
+  // Taille de base = 100px, on scale entre 1.0 et 1.8
+  const scaleFactor = Math.max(1.0, Math.min(1.8, 0.8 + (priceValue / 3.5)));
+  const minWidth = Math.round(100 * scaleFactor);
+  const paddingX = Math.round(16 * scaleFactor); // px-4 = 16px
+  const paddingY = Math.round(12 * scaleFactor); // py-3 = 12px
+  const fontSize = scaleFactor > 1.3 ? 'text-lg' : 'text-base';
+  const labelSize = scaleFactor > 1.3 ? 'text-sm' : 'text-xs';
+  
   return (
     <div
       className="absolute"
@@ -31,23 +43,27 @@ export const PriceTag: React.FC<PriceTagProps> = ({
     >
       {/* Badge carré avec radius - BLANC */}
       <div
-        className="px-4 py-3 shadow-lg backdrop-blur-sm"
+        className="shadow-lg backdrop-blur-sm"
         style={{
           backgroundColor: 'rgba(255, 255, 255, 0.95)',
           border: '2px solid rgba(255, 255, 255, 0.8)',
           borderRadius: '10px',
-          minWidth: '100px',
+          minWidth: `${minWidth}px`,
+          paddingLeft: `${paddingX}px`,
+          paddingRight: `${paddingX}px`,
+          paddingTop: `${paddingY}px`,
+          paddingBottom: `${paddingY}px`,
         }}
       >
         <div className="flex flex-col items-center gap-1">
           <span
-            className="text-base font-bold leading-none"
+            className={`${fontSize} font-bold leading-none`}
             style={{ color: '#000000' }}
           >
             {price}
           </span>
           <span
-            className="text-xs font-medium leading-none"
+            className={`${labelSize} font-medium leading-none`}
             style={{ color: '#000000', opacity: 0.8 }}
           >
             {label}
