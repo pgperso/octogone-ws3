@@ -40,7 +40,7 @@ export default function ToolPage({
   const benefitCards = [
     {
       concept: 'operate',
-      color: '#B8E0D2',
+      color: 'rgba(184, 224, 210, 0.85)',
       border: '#A5CABE',
       titleFr: 'Standardiser les recettes',
       titleEn: 'Standardize Recipes',
@@ -49,7 +49,7 @@ export default function ToolPage({
     },
     {
       concept: 'automate',
-      color: '#B4D4FF',
+      color: 'rgba(180, 212, 255, 0.85)',
       border: '#A1C7FF',
       titleFr: 'Calcul automatique des coûts',
       titleEn: 'Auto-Calculate Costs',
@@ -58,7 +58,7 @@ export default function ToolPage({
     },
     {
       concept: 'analyze',
-      color: '#FFE5B4',
+      color: 'rgba(255, 229, 180, 0.85)',
       border: '#F5D89E',
       titleFr: 'Food Cost en temps réel',
       titleEn: 'Real-Time Food Cost',
@@ -67,7 +67,7 @@ export default function ToolPage({
     },
     {
       concept: 'predict',
-      color: '#C8B6FF',
+      color: 'rgba(200, 182, 255, 0.85)',
       border: '#B8A5F0',
       titleFr: 'Recommandations intelligentes',
       titleEn: 'Smart Recommendations',
@@ -293,20 +293,18 @@ export default function ToolPage({
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.1 + (index * 0.1) }}
                     whileHover={{ 
-                      scale: 1.05,
-                      y: -8,
-                      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
-                      transition: { duration: 0.3 }
+                      scale: 1.02,
+                      y: -4,
+                      boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
+                      transition: { duration: 0.2 }
                     }}
                   >
-                    <motion.h3 
+                    <h3 
                       className="text-lg font-bold mb-3" 
                       style={{ color: '#1a1a1a' }}
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.2 }}
                     >
                       {isEnglish ? card.titleEn : card.titleFr}
-                    </motion.h3>
+                    </h3>
                     <p className="text-sm" style={{ color: '#1a1a1a', opacity: 0.85 }}>
                       {isEnglish ? card.descEn : card.descFr}
                     </p>
