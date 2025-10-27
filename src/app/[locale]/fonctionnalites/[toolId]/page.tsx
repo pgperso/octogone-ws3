@@ -202,25 +202,21 @@ export default function ToolPage({
       {toolId === 'food-cost' && (
         <div className="relative overflow-hidden" style={{ minHeight: '500px' }}>
           {/* Background avec effet parallaxe */}
-          <motion.div
+          <div
             className="absolute inset-0 z-0"
             style={{
               backgroundImage: 'url(/images/restaurant1.avif)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
-              backgroundAttachment: 'fixed'
+              backgroundRepeat: 'no-repeat'
             }}
-            initial={{ scale: 1.1 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.5, ease: 'easeOut' }}
           />
           
-          {/* Overlay */}
+          {/* Overlay subtil */}
           <div 
             className="absolute inset-0 z-10"
             style={{
-              background: 'linear-gradient(135deg, rgba(0, 34, 54, 0.92) 0%, rgba(0, 61, 92, 0.88) 100%)'
+              backgroundColor: 'rgba(0, 0, 0, 0.5)'
             }}
           />
 
