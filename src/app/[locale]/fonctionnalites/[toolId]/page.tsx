@@ -249,20 +249,13 @@ export default function ToolPage({
           spacing="xxl" 
           className="relative"
           style={{
+            backgroundImage: 'url(/restaurant1.avif)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundAttachment: 'fixed',
             backgroundColor: '#1a1a1a'
           }}
         >
-          {/* Vidéo en background */}
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{ zIndex: 0 }}
-          >
-            <source src="/animations/operate.mp4" type="video/mp4" />
-          </video>
           
           {/* Overlay subtil */}
           <div 
