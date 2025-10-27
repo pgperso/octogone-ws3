@@ -13,6 +13,7 @@ import { LogoCard } from "@/components/widgets/logo-card";
 import OctogoneDashboardKPIs from "@/components/widgets/OctogoneDashboardKPIs";
 import { OctogoneInventoryWidget } from "@/components/widgets/octogone_inventories";
 import { RecipeFlowContainer } from "@/components/widgets/octogone_recipe";
+import { RotatingText } from "@/components/ui/rotating-text";
 
 // Permettre les paramètres dynamiques
 export const dynamicParams = true;
@@ -62,19 +63,24 @@ export default function ToolPage({
       >
         {/* Image de fond */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#002236] via-[#003d5c] to-[#005a82]" />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#002236] via-[#003d5c] to-[#005a82]" style={{
+            ...(toolId === 'food-cost' && {
+              background: 'linear-gradient(135deg, #E8D5F2 0%, #D4B5E8 50%, #C8A5DC 100%)'
+            })
+          }} />
           <div className="absolute inset-0 opacity-10"
             style={{
               backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(220, 178, 107, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(186, 223, 246, 0.3) 0%, transparent 50%)'
             }}
           />
-          <div className="absolute inset-0 bg-black/50"></div>
+          {toolId !== 'food-cost' && <div className="absolute inset-0 bg-black/50"></div>}
         </div>
 
         <div className="relative z-10 text-center">
           {/* Catégorie en texte simple */}
           <motion.p 
-            className="text-white text-lg font-semibold mb-4 opacity-90"
+            className="text-lg font-semibold mb-4 opacity-90"
+            style={{ color: toolId === 'food-cost' ? '#1a1a1a' : 'white' }}
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 0.9, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -84,17 +90,32 @@ export default function ToolPage({
 
           {/* Titre */}
           <motion.h1 
-            className="text-4xl lg:text-6xl font-bold text-white mb-3 drop-shadow-lg"
+            className="text-4xl lg:text-6xl font-bold mb-3 drop-shadow-lg"
+            style={{ color: toolId === 'food-cost' ? '#1a1a1a' : 'white' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            {headerTitle}
+            {toolId === 'food-cost' ? (
+              <>
+                {isEnglish ? 'Profit is calculated ' : 'Le profit se calcule '}
+                <RotatingText 
+                  words={isEnglish 
+                    ? ['one ingredient', 'one unit', 'one ounce', 'one gram', 'one milliliter']
+                    : ['un ingrédient', 'une unité', 'une once', 'un gramme', 'un millilitre']
+                  }
+                  interval={2500}
+                  className="text-[#D4AF37]"
+                />
+                {isEnglish ? ' at a time' : ' à la fois'}
+              </>
+            ) : headerTitle}
           </motion.h1>
           
           {/* Description */}
           <motion.p 
-            className="text-lg text-white opacity-90 max-w-3xl mx-auto mb-8"
+            className="text-lg opacity-90 max-w-3xl mx-auto mb-8"
+            style={{ color: toolId === 'food-cost' ? '#1a1a1a' : 'white' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 0.9, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}

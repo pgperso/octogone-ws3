@@ -196,8 +196,8 @@ export const tools: Tool[] = [
     // Header personnalisé
     headerCategoryFr: 'Recettes & Food Cost',
     headerCategoryEn: 'Recipes & Food Cost',
-    headerTitleFr: 'Maîtrisez votre rentabilité avec précision',
-    headerTitleEn: 'Master your profitability with precision',
+    headerTitleFr: 'Le profit se calcule un ingrédient à la fois',
+    headerTitleEn: 'Profit is calculated one ingredient at a time',
     headerDescriptionFr: 'Standardisez vos recettes, calculez automatiquement et optimisez vos marges',
     headerDescriptionEn: 'Standardize your recipes, calculate automatically and optimize your margins',
     
