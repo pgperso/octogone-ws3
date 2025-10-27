@@ -257,10 +257,13 @@ export default function ToolPage({
               className="relative"
             >
               <div 
-                className="aspect-[3/4] rounded-2xl overflow-hidden"
+                className="aspect-square rounded-2xl overflow-hidden"
                 style={{ 
                   backgroundColor: 'var(--surface-container)',
-                  border: '2px solid var(--outline)'
+                  border: '2px solid var(--outline)',
+                  maxHeight: '400px',
+                  maxWidth: '400px',
+                  margin: '0 auto'
                 }}
               >
                 {/* Placeholder - À remplacer par l'image du cuisinier */}
