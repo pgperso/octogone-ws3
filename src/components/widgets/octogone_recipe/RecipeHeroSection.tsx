@@ -2,12 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { Mail, Key, FileEdit, Edit3, FileText, AlertTriangle } from 'lucide-react';
+import { Mail, Key, Edit3, FileText, AlertTriangle, FileEdit } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { RECIPE_ACCESS_CONFIG } from '@/config/recipe-access';
 import { trackRecipeAccessRequest, trackRecipeAccessUnlocked, trackRecipeCalculationStart } from '@/lib/tracking/hubspot-events';
 import { RECIPE_PRICE_TAGS, INITIAL_RECIPE_PROGRESS, HERO_TAG_DELAYS } from './recipePriceTags';
 import { PriceTag } from './PriceTag';
+import { CircularProgress } from './CircularProgress';
 
 interface RecipeHeroSectionProps {
   recipeName: string;
@@ -157,63 +158,13 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
             </div>
             
             {/* Progress bar circulaire par-dessus l'image */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <svg
-                width={200}
-                height={200}
-                className="transform -rotate-90"
-              >
-                {/* Cercle de fond */}
-                <circle
-                  cx={100}
-                  cy={100}
-                  r={92}
-                  fill="none"
-                  stroke="rgba(255, 255, 255, 0.3)"
-                  strokeWidth={8}
-                />
-                
-                {/* Cercle de progression */}
-                <circle
-                  cx={100}
-                  cy={100}
-                  r={92}
-                  fill="none"
-                  stroke="var(--success)"
-                  strokeWidth={8}
-                  strokeDasharray={2 * Math.PI * 92}
-                  strokeDashoffset={2 * Math.PI * 92 - (recipeProgress / 100) * (2 * Math.PI * 92)}
-                  strokeLinecap="round"
-                  style={{
-                    transition: 'stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1)'
-                  }}
-                />
-              </svg>
-              
-              {/* Pourcentage au centre */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="flex flex-col items-center">
-                  <span 
-                    className="text-4xl font-bold"
-                    style={{ 
-                      color: '#FFFFFF',
-                      textShadow: '0 2px 8px rgba(0,0,0,0.5)'
-                    }}
-                  >
-                    {Math.round(displayProgress)}%
-                  </span>
-                  <span 
-                    className="text-sm font-medium mt-1"
-                    style={{ 
-                      color: '#FFFFFF',
-                      textShadow: '0 2px 8px rgba(0,0,0,0.5)'
-                    }}
-                  >
-                    {isEnglish ? 'completed' : 'complété'}
-                  </span>
-                </div>
-              </div>
-            </div>
+            <CircularProgress
+              progress={displayProgress}
+              size={200}
+              strokeWidth={8}
+              showPercentage={true}
+              percentageLabel={isEnglish ? 'completed' : 'complété'}
+            />
 
             {/* Tags de prix sur les ingrédients */}
             {RECIPE_PRICE_TAGS.map((tag) => (

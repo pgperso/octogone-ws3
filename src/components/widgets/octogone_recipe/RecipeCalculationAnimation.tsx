@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { RECIPE_PRICE_TAGS, INITIAL_RECIPE_PROGRESS, ANIMATION_TAG_DELAYS } from './recipePriceTags';
 import { PriceTag } from './PriceTag';
+import { CircularProgress } from './CircularProgress';
 
 interface RecipeCalculationAnimationProps {
   recipeName: string;
@@ -54,12 +55,6 @@ export const RecipeCalculationAnimation: React.FC<RecipeCalculationAnimationProp
     return () => clearInterval(timer);
   }, [onComplete]);
 
-  // Calcul du cercle de progression
-  const size = 200;
-  const strokeWidth = 8;
-  const radius = (size - strokeWidth) / 2;
-  const circumference = 2 * Math.PI * radius;
-  const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
     <div 
@@ -87,50 +82,12 @@ export const RecipeCalculationAnimation: React.FC<RecipeCalculationAnimationProp
             </div>
             
             {/* Progress bar circulaire par-dessus l'image */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <svg
-                width={size}
-                height={size}
-                className="transform -rotate-90"
-              >
-                {/* Cercle de fond */}
-                <circle
-                  cx={size / 2}
-                  cy={size / 2}
-                  r={radius}
-                  fill="none"
-                  stroke="rgba(255, 255, 255, 0.3)"
-                  strokeWidth={strokeWidth}
-                />
-                
-                {/* Cercle de progression */}
-                <circle
-                  cx={size / 2}
-                  cy={size / 2}
-                  r={radius}
-                  fill="none"
-                  stroke="var(--success)"
-                  strokeWidth={strokeWidth}
-                  strokeDasharray={circumference}
-                  strokeDashoffset={strokeDashoffset}
-                  strokeLinecap="round"
-                  className="transition-all duration-300"
-                />
-              </svg>
-              
-              {/* Pourcentage au centre */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span 
-                  className="text-4xl font-bold"
-                  style={{ 
-                    color: '#FFFFFF',
-                    textShadow: '0 2px 8px rgba(0,0,0,0.5)'
-                  }}
-                >
-                  {Math.round(progress)}%
-                </span>
-              </div>
-            </div>
+            <CircularProgress
+              progress={progress}
+              size={200}
+              strokeWidth={8}
+              showPercentage={true}
+            />
 
             {/* Tags de prix sur les ingrédients */}
             {RECIPE_PRICE_TAGS.map((tag) => (
