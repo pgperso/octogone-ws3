@@ -282,6 +282,38 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
                 {description}
               </p>
             </div>
+
+            {/* Container d'allergènes */}
+            <div 
+              className="p-4 rounded-lg border"
+              style={{ borderColor: 'var(--outline)' }}
+            >
+              <div className="flex items-center gap-2 mb-3">
+                <span 
+                  className="text-sm font-medium"
+                  style={{ color: 'var(--on-surface-variant)' }}
+                >
+                  {isEnglish ? 'Allergens' : 'Allergènes'}
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {/* Badge Gluten */}
+                <div 
+                  className="inline-flex items-center px-3 py-1.5 rounded-full"
+                  style={{ 
+                    backgroundColor: 'var(--error-container)',
+                    border: '1px solid var(--error)'
+                  }}
+                >
+                  <span 
+                    className="text-sm font-medium"
+                    style={{ color: 'var(--on-error-container)' }}
+                  >
+                    {isEnglish ? 'Gluten' : 'Gluten'}
+                  </span>
+                </div>
+              </div>
+            </div>
             </div>
 
             {/* Système d'email gate (seulement si activé) */}
