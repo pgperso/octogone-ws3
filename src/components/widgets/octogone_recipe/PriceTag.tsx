@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Keyframes pour l'animation de flottement
 const floatAnimation = `
   @keyframes float {
     0%, 100% {
-      transform: translateY(0px) scale(1) rotate(0deg);
+      transform: translateY(0px);
     }
     50% {
-      transform: translateY(-8px) scale(1) rotate(0deg);
+      transform: translateY(-8px);
     }
   }
 `;
@@ -29,6 +29,19 @@ export const PriceTag: React.FC<PriceTagProps> = ({
   right,
   isVisible,
 }) => {
+  const [hasPopped, setHasPopped] = useState(false);
+  const [floatDelay] = useState(Math.random() * 0.5);
+
+  // Démarrer le flottement après l'animation pop (0.7s)
+  useEffect(() => {
+    if (isVisible && !hasPopped) {
+      const timer = setTimeout(() => {
+        setHasPopped(true);
+      }, 700);
+      return () => clearTimeout(timer);
+    }
+  }, [isVisible, hasPopped]);
+
   return (
     <>
       <style>{floatAnimation}</style>
@@ -40,11 +53,11 @@ export const PriceTag: React.FC<PriceTagProps> = ({
           ...(right && { right }),
           opacity: isVisible ? 1 : 0,
           transform: isVisible ? 'scale(1) rotate(0deg)' : 'scale(0) rotate(-10deg)',
-          transition: isVisible 
-            ? 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)' // Bounce out
-            : 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-          animation: isVisible ? 'float 3s ease-in-out infinite' : 'none',
-          animationDelay: `${Math.random() * 0.5}s`, // Décalage aléatoire
+          transition: !hasPopped 
+            ? 'all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)' // Pop animation
+            : 'none', // Pas de transition pendant le float
+          animation: hasPopped ? 'float 3s ease-in-out infinite' : 'none',
+          animationDelay: hasPopped ? `${floatDelay}s` : '0s',
         }}
       >
       {/* Badge carré avec radius - BLANC */}
