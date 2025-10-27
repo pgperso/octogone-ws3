@@ -1,15 +1,13 @@
 // Configuration des tags de prix pour les ingrédients de base
-// Position: top/left pour le badge, lineX/lineY pour le point de connexion sur l'ingrédient
+// Position: top/left/right en pourcentage par rapport au conteneur de l'image
 export const RECIPE_PRICE_TAGS = [
   { 
     id: 1, 
     price: '$0.45', 
     labelEn: 'Burger bun', 
     labelFr: 'Pain burger', 
-    top: '8%', 
-    left: '5%',
-    lineEndX: '30%',
-    lineEndY: '18%'
+    top: '33%', 
+    left: '33%'
   },
   { 
     id: 2, 
@@ -17,19 +15,15 @@ export const RECIPE_PRICE_TAGS = [
     labelEn: 'Beef', 
     labelFr: 'Bœuf', 
     top: '70%', 
-    left: '75%',
-    lineEndX: '55%',
-    lineEndY: '58%'
+    right: '20%'
   },
   { 
     id: 3, 
     price: '$0.65', 
     labelEn: 'Cheddar', 
     labelFr: 'Cheddar', 
-    top: '35%', 
-    left: '78%',
-    lineEndX: '60%',
-    lineEndY: '45%'
+    top: '60%', 
+    right: '10%'
   },
 ];
 

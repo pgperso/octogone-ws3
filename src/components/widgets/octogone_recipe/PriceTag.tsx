@@ -4,9 +4,8 @@ interface PriceTagProps {
   price: string;
   label: string;
   top: string;
-  left: string;
-  lineEndX: string;
-  lineEndY: string;
+  left?: string;
+  right?: string;
   isVisible: boolean;
 }
 
@@ -15,8 +14,7 @@ export const PriceTag: React.FC<PriceTagProps> = ({
   label,
   top,
   left,
-  lineEndX,
-  lineEndY,
+  right,
   isVisible,
 }) => {
   return (
@@ -24,36 +22,13 @@ export const PriceTag: React.FC<PriceTagProps> = ({
       className="absolute"
       style={{
         top,
-        left,
+        ...(left && { left }),
+        ...(right && { right }),
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? 'scale(1)' : 'scale(0.8)',
         transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
       }}
     >
-      {/* Ligne de connexion vers l'ingrédient */}
-      <svg
-        className="absolute pointer-events-none"
-        style={{
-          top: '50%',
-          left: '50%',
-          width: '200px',
-          height: '200px',
-          transform: 'translate(-50%, -50%)',
-          overflow: 'visible',
-        }}
-      >
-        <line
-          x1="0"
-          y1="0"
-          x2={`calc(${lineEndX} - ${left})`}
-          y2={`calc(${lineEndY} - ${top})`}
-          stroke="var(--primary)"
-          strokeWidth="2"
-          strokeDasharray="4 4"
-          opacity="0.6"
-        />
-      </svg>
-
       {/* Badge carré avec radius */}
       <div
         className="px-3 py-2 shadow-lg backdrop-blur-sm"

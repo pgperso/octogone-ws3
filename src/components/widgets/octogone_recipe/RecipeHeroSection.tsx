@@ -222,9 +222,8 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
                 price={tag.price}
                 label={isEnglish ? tag.labelEn : tag.labelFr}
                 top={tag.top}
-                left={tag.left}
-                lineEndX={tag.lineEndX}
-                lineEndY={tag.lineEndY}
+                left={'left' in tag ? tag.left : undefined}
+                right={'right' in tag ? tag.right : undefined}
                 isVisible={visibleTags.includes(tag.id)}
               />
             ))}
