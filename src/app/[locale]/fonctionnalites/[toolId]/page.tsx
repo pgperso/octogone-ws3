@@ -36,7 +36,7 @@ export default function ToolPage({
   // Couleurs pour le hero food-cost
   const heroTextColor = toolId === 'food-cost' ? '#1a1a1a' : 'white';
   
-  // Configuration des 4 cartes bénéfices pour food-cost
+  // Configuration des 4 cartes bénéfices pour food-cost avec statistiques
   const benefitCards = [
     {
       concept: 'operate',
@@ -45,7 +45,9 @@ export default function ToolPage({
       titleFr: 'Standardiser les recettes',
       titleEn: 'Standardize Recipes',
       descFr: 'Créez des fiches techniques détaillées avec ingrédients, quantités et étapes de préparation',
-      descEn: 'Create detailed recipe sheets with ingredients, quantities and preparation steps'
+      descEn: 'Create detailed recipe sheets with ingredients, quantities and preparation steps',
+      statFr: '10-15h économisées par semaine',
+      statEn: '10-15h saved per week'
     },
     {
       concept: 'automate',
@@ -54,7 +56,9 @@ export default function ToolPage({
       titleFr: 'Calcul automatique des coûts',
       titleEn: 'Auto-Calculate Costs',
       descFr: 'Changez un prix, toutes vos recettes se mettent à jour instantanément. Zéro recalcul manuel',
-      descEn: 'Change one price, all your recipes update instantly. Zero manual recalculation'
+      descEn: 'Change one price, all your recipes update instantly. Zero manual recalculation',
+      statFr: '100% des recettes mises à jour instantanément',
+      statEn: '100% of recipes updated instantly'
     },
     {
       concept: 'analyze',
@@ -63,7 +67,9 @@ export default function ToolPage({
       titleFr: 'Food Cost en temps réel',
       titleEn: 'Real-Time Food Cost',
       descFr: 'Connaissez votre food cost % et profit brut exacts sur chaque plat instantanément',
-      descEn: 'Know your exact food cost % and gross profit on every dish instantly'
+      descEn: 'Know your exact food cost % and gross profit on every dish instantly',
+      statFr: '2-5% de réduction des coûts',
+      statEn: '2-5% cost reduction'
     },
     {
       concept: 'predict',
@@ -72,9 +78,14 @@ export default function ToolPage({
       titleFr: 'Recommandations intelligentes',
       titleEn: 'Smart Recommendations',
       descFr: 'Recevez des suggestions IA pour optimiser vos marges et améliorer votre rentabilité',
-      descEn: 'Get AI-powered suggestions to optimize your margins and improve profitability'
+      descEn: 'Get AI-powered suggestions to optimize your margins and improve profitability',
+      statFr: '8-10% d’amélioration des marges',
+      statEn: '8-10% margin improvement'
     }
   ];
+  
+  // State pour les cartes flipées
+  const [flippedCards, setFlippedCards] = React.useState<string[]>([]);
   
   // Déterminer le titre et la description du header
   const headerCategory = tool.headerCategoryFr && tool.headerCategoryEn
@@ -279,37 +290,86 @@ export default function ToolPage({
               </motion.h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {/* 4 cartes bénéfices mappées avec animations */}
-                {benefitCards.map((card, index) => (
-                  <motion.div 
-                    key={card.concept}
-                    className="p-6 rounded-xl cursor-pointer"
-                    style={{ 
-                      backgroundColor: card.color,
-                      border: `2px solid ${card.border}`
-                    }}
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.1 + (index * 0.1) }}
-                    whileHover={{ 
-                      scale: 1.02,
-                      y: -4,
-                      boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)',
-                      transition: { duration: 0.2 }
-                    }}
-                  >
-                    <h3 
-                      className="text-lg font-bold mb-3" 
-                      style={{ color: '#1a1a1a' }}
+                {/* 4 cartes bénéfices avec flip et effet de profondeur */}
+                {benefitCards.map((card, index) => {
+                  const isFlipped = flippedCards.includes(card.concept);
+                  const isLarger = index === 0 || index === 3; // Cartes 1 et 4 plus grandes
+                  
+                  return (
+                    <motion.div
+                      key={card.concept}
+                      className="cursor-pointer"
+                      style={{
+                        perspective: '1000px',
+                        transformStyle: 'preserve-3d'
+                      }}
+                      initial={{ opacity: 0, y: 30 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.1 + (index * 0.1) }}
+                      onClick={() => {
+                        setFlippedCards(prev => 
+                          prev.includes(card.concept)
+                            ? prev.filter(c => c !== card.concept)
+                            : [...prev, card.concept]
+                        );
+                      }}
                     >
-                      {isEnglish ? card.titleEn : card.titleFr}
-                    </h3>
-                    <p className="text-sm" style={{ color: '#1a1a1a', opacity: 0.85 }}>
-                      {isEnglish ? card.descEn : card.descFr}
-                    </p>
-                  </motion.div>
-                ))}
+                      <motion.div
+                        className="relative rounded-xl"
+                        style={{
+                          transformStyle: 'preserve-3d',
+                          transition: 'transform 0.6s',
+                          transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
+                        }}
+                        whileHover={{
+                          scale: isLarger ? 1.03 : 1.02,
+                          y: -4,
+                          boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)'
+                        }}
+                      >
+                        {/* Face avant */}
+                        <div
+                          className="p-6 rounded-xl"
+                          style={{
+                            backgroundColor: card.color,
+                            border: `2px solid ${card.border}`,
+                            backfaceVisibility: 'hidden',
+                            minHeight: isLarger ? '200px' : '180px'
+                          }}
+                        >
+                          <h3 className="text-lg font-bold mb-3" style={{ color: '#1a1a1a' }}>
+                            {isEnglish ? card.titleEn : card.titleFr}
+                          </h3>
+                          <p className="text-sm" style={{ color: '#1a1a1a', opacity: 0.85 }}>
+                            {isEnglish ? card.descEn : card.descFr}
+                          </p>
+                        </div>
+                        
+                        {/* Face arrière (statistique) */}
+                        <div
+                          className="absolute inset-0 p-6 rounded-xl flex flex-col items-center justify-center"
+                          style={{
+                            backgroundColor: card.color,
+                            border: `2px solid ${card.border}`,
+                            backfaceVisibility: 'hidden',
+                            transform: 'rotateY(180deg)',
+                            minHeight: isLarger ? '200px' : '180px'
+                          }}
+                        >
+                          <div className="text-center">
+                            <p className="text-3xl font-bold mb-2" style={{ color: '#1a1a1a' }}>
+                              {isEnglish ? card.statEn.split(' ')[0] : card.statFr.split(' ')[0]}
+                            </p>
+                            <p className="text-sm font-medium" style={{ color: '#1a1a1a', opacity: 0.85 }}>
+                              {isEnglish ? card.statEn.split(' ').slice(1).join(' ') : card.statFr.split(' ').slice(1).join(' ')}
+                            </p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
           </div>
