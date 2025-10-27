@@ -1101,6 +1101,7 @@
       "unit": "L",
       "availableUnits": ["L", "mL"],
       "unitCost": 0.85,
+      "image": "/products/supreme-sauce.avif",
       "storage": "frigidaire",
       "minInventory": 3,
       "initialQuantity": 5,

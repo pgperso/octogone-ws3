@@ -141,7 +141,7 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           {/* Image du burger avec progress bar circulaire */}
-          <div className="order-2 lg:order-1 relative" style={{ height: '600px' }}>
+          <div className="order-1 lg:order-1 relative" style={{ height: '600px' }}>
             <div 
               className="w-full h-full rounded-3xl overflow-hidden shadow-2xl"
               style={{ 
@@ -181,7 +181,7 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
           </div>
 
           {/* Description et bouton */}
-          <div className="order-1 lg:order-2 space-y-6">
+          <div className="order-2 lg:order-2 space-y-6">
             <div className="space-y-3">
             {/* Badge Brouillon */}
             <div className="flex items-center gap-2 mb-3">

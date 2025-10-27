@@ -67,7 +67,7 @@ export const RecipeCalculationAnimation: React.FC<RecipeCalculationAnimationProp
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           {/* Image du burger avec progress bar - Même position que hero */}
-          <div className="order-2 lg:order-1 relative" style={{ height: '600px' }}>
+          <div className="order-1 lg:order-1 relative" style={{ height: '600px' }}>
             <div 
               className="w-full h-full rounded-3xl overflow-hidden shadow-2xl"
               style={{ border: '2px solid var(--outline)' }}
@@ -104,7 +104,7 @@ export const RecipeCalculationAnimation: React.FC<RecipeCalculationAnimationProp
           </div>
 
           {/* Texte - Même position que hero */}
-          <div className="order-1 lg:order-2 space-y-6">
+          <div className="order-2 lg:order-2 space-y-6">
             <h1 
               className="text-4xl lg:text-5xl font-bold"
               style={{ color: 'var(--on-surface)' }}
