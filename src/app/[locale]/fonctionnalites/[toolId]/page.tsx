@@ -216,7 +216,7 @@ export default function ToolPage({
           />
 
           {/* Contenu */}
-          <div className="relative z-10 px-4 md:px-6 lg:px-8">
+          <ResponsiveSection spacing="xl" className="relative z-10">
             <div className="max-w-6xl mx-auto">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -298,7 +298,7 @@ export default function ToolPage({
                 </div>
               </motion.div>
             </div>
-          </div>
+          </ResponsiveSection>
         </div>
       )}
 

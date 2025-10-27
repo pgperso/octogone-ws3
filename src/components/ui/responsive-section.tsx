@@ -53,10 +53,8 @@ export const ResponsiveSection: React.FC<ResponsiveSectionProps> = ({
   style,
   ...props
 }) => {
-  // Utiliser var(--background) par défaut si aucune couleur n'est spécifiée
-  const defaultStyle = !bgColor && !style?.backgroundColor 
-    ? { backgroundColor: 'var(--background)', ...style }
-    : style;
+  // Transparent par défaut si aucune couleur n'est spécifiée
+  const defaultStyle = style;
   // Mapping des espacements pour chaque breakpoint
   const spacingClasses = {
     none: "",
