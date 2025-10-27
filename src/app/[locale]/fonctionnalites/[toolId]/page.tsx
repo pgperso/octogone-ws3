@@ -278,32 +278,41 @@ export default function ToolPage({
                 {isEnglish ? 'Immediate Benefits' : 'Des bénéfices immédiats'}
               </motion.h2>
               
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-              >
-                {/* 4 cartes bénéfices mappées */}
-                {benefitCards.map((card) => (
-                  <div 
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {/* 4 cartes bénéfices mappées avec animations */}
+                {benefitCards.map((card, index) => (
+                  <motion.div 
                     key={card.concept}
-                    className="p-6 rounded-xl"
+                    className="p-6 rounded-xl cursor-pointer"
                     style={{ 
                       backgroundColor: card.color,
                       border: `2px solid ${card.border}`
                     }}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.1 + (index * 0.1) }}
+                    whileHover={{ 
+                      scale: 1.05,
+                      y: -8,
+                      boxShadow: '0 20px 40px rgba(0, 0, 0, 0.3)',
+                      transition: { duration: 0.3 }
+                    }}
                   >
-                    <h3 className="text-lg font-bold mb-3" style={{ color: '#1a1a1a' }}>
+                    <motion.h3 
+                      className="text-lg font-bold mb-3" 
+                      style={{ color: '#1a1a1a' }}
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ duration: 0.2 }}
+                    >
                       {isEnglish ? card.titleEn : card.titleFr}
-                    </h3>
+                    </motion.h3>
                     <p className="text-sm" style={{ color: '#1a1a1a', opacity: 0.85 }}>
                       {isEnglish ? card.descEn : card.descFr}
                     </p>
-                  </div>
+                  </motion.div>
                 ))}
-              </motion.div>
+              </div>
             </div>
           </div>
         </ResponsiveSection>
