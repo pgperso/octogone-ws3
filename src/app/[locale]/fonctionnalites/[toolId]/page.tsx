@@ -203,17 +203,18 @@ export default function ToolPage({
         <div 
           className="relative py-16 md:py-24"
           style={{
-            backgroundImage: 'url(/images/restaurant1.avif)',
+            backgroundImage: 'url(/restaurant1.avif)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundAttachment: 'fixed',
-            minHeight: '500px'
+            minHeight: '500px',
+            backgroundColor: '#1a1a1a'
           }}
         >
           {/* Overlay subtil */}
           <div 
             className="absolute inset-0"
-            style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}
+            style={{ backgroundColor: 'rgba(0, 0, 0, 0.65)' }}
           />
 
           {/* Contenu */}
