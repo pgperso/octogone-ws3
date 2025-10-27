@@ -51,9 +51,6 @@ export const CircularProgress: React.FC<CircularProgressProps> = ({
           strokeDasharray={circumference}
           strokeDashoffset={strokeDashoffset}
           strokeLinecap="round"
-          style={{
-            transition: 'stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1)'
-          }}
         />
       </svg>
       
