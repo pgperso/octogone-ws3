@@ -227,75 +227,75 @@ export default function ToolPage({
                 transition={{ duration: 0.6 }}
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
               >
-                {/* Bénéfice 1 - Vert menthe (Operate) */}
+                {/* Opérer - Vert menthe */}
                 <div 
-                  className="p-6 rounded-xl backdrop-blur-sm"
+                  className="p-6 rounded-xl"
                   style={{ 
-                    backgroundColor: 'rgba(184, 224, 210, 0.15)',
-                    border: '1px solid #B8E0D2'
+                    backgroundColor: '#B8E0D2',
+                    border: '2px solid #A5CABE'
                   }}
                 >
-                  <h3 className="text-lg font-bold text-white mb-3">
-                    {isEnglish ? 'Instant Updates' : 'Mises à jour instantanées'}
+                  <h3 className="text-lg font-bold mb-3" style={{ color: '#1a1a1a' }}>
+                    {isEnglish ? 'Standardize Recipes' : 'Standardiser les recettes'}
                   </h3>
-                  <p className="text-sm text-white opacity-90">
+                  <p className="text-sm" style={{ color: '#1a1a1a', opacity: 0.85 }}>
                     {isEnglish 
-                      ? 'Change one price, all recipes update automatically'
-                      : 'Changez un prix, toutes vos recettes se mettent à jour automatiquement'}
+                      ? 'Create detailed recipe sheets with ingredients, quantities and preparation steps'
+                      : 'Créez des fiches techniques détaillées avec ingrédients, quantités et étapes de préparation'}
                   </p>
                 </div>
 
-                {/* Bénéfice 2 - Bleu ciel (Automate) */}
+                {/* Automatiser - Bleu ciel */}
                 <div 
-                  className="p-6 rounded-xl backdrop-blur-sm"
+                  className="p-6 rounded-xl"
                   style={{ 
-                    backgroundColor: 'rgba(180, 212, 255, 0.15)',
-                    border: '1px solid #B4D4FF'
+                    backgroundColor: '#B4D4FF',
+                    border: '2px solid #A1C7FF'
                   }}
                 >
-                  <h3 className="text-lg font-bold text-white mb-3">
-                    {isEnglish ? 'Real-Time Profitability' : 'Rentabilité en temps réel'}
+                  <h3 className="text-lg font-bold mb-3" style={{ color: '#1a1a1a' }}>
+                    {isEnglish ? 'Auto-Calculate Costs' : 'Calcul automatique des coûts'}
                   </h3>
-                  <p className="text-sm text-white opacity-90">
+                  <p className="text-sm" style={{ color: '#1a1a1a', opacity: 0.85 }}>
                     {isEnglish
-                      ? 'Know your exact margins on every dish instantly'
-                      : 'Connaissez vos marges exactes sur chaque plat instantanément'}
+                      ? 'Change one price, all your recipes update instantly. Zero manual recalculation'
+                      : 'Changez un prix, toutes vos recettes se mettent à jour instantanément. Zéro recalcul manuel'}
                   </p>
                 </div>
 
-                {/* Bénéfice 3 - Jaune (Analyze) */}
+                {/* Analyser - Jaune */}
                 <div 
-                  className="p-6 rounded-xl backdrop-blur-sm"
+                  className="p-6 rounded-xl"
                   style={{ 
-                    backgroundColor: 'rgba(255, 229, 180, 0.15)',
-                    border: '1px solid #FFE5B4'
+                    backgroundColor: '#FFE5B4',
+                    border: '2px solid #F5D89E'
                   }}
                 >
-                  <h3 className="text-lg font-bold text-white mb-3">
-                    {isEnglish ? 'Scenario Testing' : 'Tests de scénarios'}
+                  <h3 className="text-lg font-bold mb-3" style={{ color: '#1a1a1a' }}>
+                    {isEnglish ? 'Real-Time Food Cost' : 'Food Cost en temps réel'}
                   </h3>
-                  <p className="text-sm text-white opacity-90">
+                  <p className="text-sm" style={{ color: '#1a1a1a', opacity: 0.85 }}>
                     {isEnglish
-                      ? 'Simulate changes before implementing them'
-                      : 'Simulez les changements avant de les implémenter'}
+                      ? 'Know your exact food cost % and gross profit on every dish instantly'
+                      : 'Connaissez votre food cost % et profit brut exacts sur chaque plat instantanément'}
                   </p>
                 </div>
 
-                {/* Bénéfice 4 - Mauve (Predict) */}
+                {/* Prédire - Mauve */}
                 <div 
-                  className="p-6 rounded-xl backdrop-blur-sm"
+                  className="p-6 rounded-xl"
                   style={{ 
-                    backgroundColor: 'rgba(200, 182, 255, 0.15)',
-                    border: '1px solid #C8B6FF'
+                    backgroundColor: '#C8B6FF',
+                    border: '2px solid #B8A5F0'
                   }}
                 >
-                  <h3 className="text-lg font-bold text-white mb-3">
-                    {isEnglish ? 'Cost Optimization' : 'Optimisation des coûts'}
+                  <h3 className="text-lg font-bold mb-3" style={{ color: '#1a1a1a' }}>
+                    {isEnglish ? 'Smart Recommendations' : 'Recommandations intelligentes'}
                   </h3>
-                  <p className="text-sm text-white opacity-90">
+                  <p className="text-sm" style={{ color: '#1a1a1a', opacity: 0.85 }}>
                     {isEnglish
-                      ? 'Identify opportunities to improve your margins'
-                      : 'Identifiez les opportunités d’améliorer vos marges'}
+                      ? 'Get AI-powered suggestions to optimize your margins and improve profitability'
+                      : 'Recevez des suggestions IA pour optimiser vos marges et améliorer votre rentabilité'}
                   </p>
                 </div>
               </motion.div>
