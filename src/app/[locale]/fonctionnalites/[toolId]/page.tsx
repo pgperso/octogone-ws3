@@ -33,6 +33,49 @@ export default function ToolPage({
 
   const isEnglish = locale === "en";
   
+  // Couleurs pour le hero food-cost
+  const heroTextColor = toolId === 'food-cost' ? '#1a1a1a' : 'white';
+  
+  // Configuration des 4 cartes bénéfices pour food-cost
+  const benefitCards = [
+    {
+      concept: 'operate',
+      color: '#B8E0D2',
+      border: '#A5CABE',
+      titleFr: 'Standardiser les recettes',
+      titleEn: 'Standardize Recipes',
+      descFr: 'Créez des fiches techniques détaillées avec ingrédients, quantités et étapes de préparation',
+      descEn: 'Create detailed recipe sheets with ingredients, quantities and preparation steps'
+    },
+    {
+      concept: 'automate',
+      color: '#B4D4FF',
+      border: '#A1C7FF',
+      titleFr: 'Calcul automatique des coûts',
+      titleEn: 'Auto-Calculate Costs',
+      descFr: 'Changez un prix, toutes vos recettes se mettent à jour instantanément. Zéro recalcul manuel',
+      descEn: 'Change one price, all your recipes update instantly. Zero manual recalculation'
+    },
+    {
+      concept: 'analyze',
+      color: '#FFE5B4',
+      border: '#F5D89E',
+      titleFr: 'Food Cost en temps réel',
+      titleEn: 'Real-Time Food Cost',
+      descFr: 'Connaissez votre food cost % et profit brut exacts sur chaque plat instantanément',
+      descEn: 'Know your exact food cost % and gross profit on every dish instantly'
+    },
+    {
+      concept: 'predict',
+      color: '#C8B6FF',
+      border: '#B8A5F0',
+      titleFr: 'Recommandations intelligentes',
+      titleEn: 'Smart Recommendations',
+      descFr: 'Recevez des suggestions IA pour optimiser vos marges et améliorer votre rentabilité',
+      descEn: 'Get AI-powered suggestions to optimize your margins and improve profitability'
+    }
+  ];
+  
   // Déterminer le titre et la description du header
   const headerCategory = tool.headerCategoryFr && tool.headerCategoryEn
     ? (isEnglish ? tool.headerCategoryEn : tool.headerCategoryFr)
@@ -80,7 +123,7 @@ export default function ToolPage({
           {/* Catégorie en texte simple */}
           <motion.p 
             className="text-lg font-semibold mb-4 opacity-90"
-            style={{ color: toolId === 'food-cost' ? '#1a1a1a' : 'white' }}
+            style={{ color: heroTextColor }}
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 0.9, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -125,7 +168,7 @@ export default function ToolPage({
           {/* Description */}
           <motion.p 
             className="text-lg opacity-90 max-w-3xl mx-auto mb-8"
-            style={{ color: toolId === 'food-cost' ? '#1a1a1a' : 'white' }}
+            style={{ color: heroTextColor }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 0.9, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -229,77 +272,24 @@ export default function ToolPage({
                 transition={{ duration: 0.6 }}
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
               >
-                {/* Opérer - Vert menthe */}
-                <div 
-                  className="p-6 rounded-xl"
-                  style={{ 
-                    backgroundColor: '#B8E0D2',
-                    border: '2px solid #A5CABE'
-                  }}
-                >
-                  <h3 className="text-lg font-bold mb-3" style={{ color: '#1a1a1a' }}>
-                    {isEnglish ? 'Standardize Recipes' : 'Standardiser les recettes'}
-                  </h3>
-                  <p className="text-sm" style={{ color: '#1a1a1a', opacity: 0.85 }}>
-                    {isEnglish 
-                      ? 'Create detailed recipe sheets with ingredients, quantities and preparation steps'
-                      : 'Créez des fiches techniques détaillées avec ingrédients, quantités et étapes de préparation'}
-                  </p>
-                </div>
-
-                {/* Automatiser - Bleu ciel */}
-                <div 
-                  className="p-6 rounded-xl"
-                  style={{ 
-                    backgroundColor: '#B4D4FF',
-                    border: '2px solid #A1C7FF'
-                  }}
-                >
-                  <h3 className="text-lg font-bold mb-3" style={{ color: '#1a1a1a' }}>
-                    {isEnglish ? 'Auto-Calculate Costs' : 'Calcul automatique des coûts'}
-                  </h3>
-                  <p className="text-sm" style={{ color: '#1a1a1a', opacity: 0.85 }}>
-                    {isEnglish
-                      ? 'Change one price, all your recipes update instantly. Zero manual recalculation'
-                      : 'Changez un prix, toutes vos recettes se mettent à jour instantanément. Zéro recalcul manuel'}
-                  </p>
-                </div>
-
-                {/* Analyser - Jaune */}
-                <div 
-                  className="p-6 rounded-xl"
-                  style={{ 
-                    backgroundColor: '#FFE5B4',
-                    border: '2px solid #F5D89E'
-                  }}
-                >
-                  <h3 className="text-lg font-bold mb-3" style={{ color: '#1a1a1a' }}>
-                    {isEnglish ? 'Real-Time Food Cost' : 'Food Cost en temps réel'}
-                  </h3>
-                  <p className="text-sm" style={{ color: '#1a1a1a', opacity: 0.85 }}>
-                    {isEnglish
-                      ? 'Know your exact food cost % and gross profit on every dish instantly'
-                      : 'Connaissez votre food cost % et profit brut exacts sur chaque plat instantanément'}
-                  </p>
-                </div>
-
-                {/* Prédire - Mauve */}
-                <div 
-                  className="p-6 rounded-xl"
-                  style={{ 
-                    backgroundColor: '#C8B6FF',
-                    border: '2px solid #B8A5F0'
-                  }}
-                >
-                  <h3 className="text-lg font-bold mb-3" style={{ color: '#1a1a1a' }}>
-                    {isEnglish ? 'Smart Recommendations' : 'Recommandations intelligentes'}
-                  </h3>
-                  <p className="text-sm" style={{ color: '#1a1a1a', opacity: 0.85 }}>
-                    {isEnglish
-                      ? 'Get AI-powered suggestions to optimize your margins and improve profitability'
-                      : 'Recevez des suggestions IA pour optimiser vos marges et améliorer votre rentabilité'}
-                  </p>
-                </div>
+                {/* 4 cartes bénéfices mappées */}
+                {benefitCards.map((card) => (
+                  <div 
+                    key={card.concept}
+                    className="p-6 rounded-xl"
+                    style={{ 
+                      backgroundColor: card.color,
+                      border: `2px solid ${card.border}`
+                    }}
+                  >
+                    <h3 className="text-lg font-bold mb-3" style={{ color: '#1a1a1a' }}>
+                      {isEnglish ? card.titleEn : card.titleFr}
+                    </h3>
+                    <p className="text-sm" style={{ color: '#1a1a1a', opacity: 0.85 }}>
+                      {isEnglish ? card.descEn : card.descFr}
+                    </p>
+                  </div>
+                ))}
               </motion.div>
             </div>
           </div>
