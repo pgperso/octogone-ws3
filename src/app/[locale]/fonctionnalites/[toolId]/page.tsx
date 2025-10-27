@@ -55,7 +55,7 @@ export default function ToolPage({
       {/* SEO Schemas JSON-LD */}
       <ToolSEO tool={tool} locale={locale} />
       
-      <main className="flex min-h-screen flex-col" style={{ backgroundColor: 'var(--background)' }}>
+      <main className="flex min-h-screen flex-col">
       {/* Hero Section */}
       <ResponsiveSection 
         spacing="xl" 
