@@ -179,6 +179,25 @@ export default function ToolPage({
         </div>
       </ResponsiveSection>
 
+      {/* Dashboard KPIs - Uniquement pour Octogone 360 */}
+      {toolId === 'octogone-360' && (
+        <ResponsiveSection spacing="xl" bgColor="">
+          <OctogoneDashboardKPIs locale={locale as 'fr' | 'en'} />
+        </ResponsiveSection>
+      )}
+
+      {/* Widget Inventaire - Uniquement pour Inventaire */}
+      {toolId === 'inventaire' && (
+        <ResponsiveSection spacing="xl" bgColor="">
+          <OctogoneInventoryWidget locale={locale as 'fr' | 'en'} />
+        </ResponsiveSection>
+      )}
+
+      {/* Widget Recettes - Uniquement pour Food Cost */}
+      {toolId === 'food-cost' && (
+        <RecipeFlowContainer locale={locale as 'fr' | 'en'} />
+      )}
+
       {/* Section Témoignage Cuisinier - Uniquement pour Food Cost */}
       {toolId === 'food-cost' && (
         <ResponsiveSection spacing="xl" bgColor="">
@@ -246,24 +265,18 @@ export default function ToolPage({
               >
                 {/* Placeholder - À remplacer par l'image du cuisinier */}
                 <div className="w-full h-full flex items-center justify-center">
-                  <div className="text-center space-y-2">
+                  <div className="text-center space-y-1 p-4">
                     <div 
-                      className="text-6xl mb-4"
+                      className="text-3xl mb-2"
                       style={{ color: 'var(--on-surface-variant)' }}
                     >
                       👨‍🍳
                     </div>
                     <p 
-                      className="text-sm font-medium"
+                      className="text-xs font-medium"
                       style={{ color: 'var(--on-surface-variant)' }}
                     >
-                      {isEnglish ? 'Chef Image Placeholder' : 'Image Chef Placeholder'}
-                    </p>
-                    <p 
-                      className="text-xs"
-                      style={{ color: 'var(--on-surface-variant)', opacity: 0.7 }}
-                    >
-                      {isEnglish ? 'Replace with actual chef photo' : 'Remplacer par photo du chef'}
+                      {isEnglish ? 'Chef Image' : 'Image Chef'}
                     </p>
                   </div>
                 </div>
@@ -271,25 +284,6 @@ export default function ToolPage({
             </motion.div>
           </div>
         </ResponsiveSection>
-      )}
-
-      {/* Dashboard KPIs - Uniquement pour Octogone 360 */}
-      {toolId === 'octogone-360' && (
-        <ResponsiveSection spacing="xl" bgColor="">
-          <OctogoneDashboardKPIs locale={locale as 'fr' | 'en'} />
-        </ResponsiveSection>
-      )}
-
-      {/* Widget Inventaire - Uniquement pour Inventaire */}
-      {toolId === 'inventaire' && (
-        <ResponsiveSection spacing="xl" bgColor="">
-          <OctogoneInventoryWidget locale={locale as 'fr' | 'en'} />
-        </ResponsiveSection>
-      )}
-
-      {/* Widget Recettes - Uniquement pour Food Cost */}
-      {toolId === 'food-cost' && (
-        <RecipeFlowContainer locale={locale as 'fr' | 'en'} />
       )}
 
       {/* Features Section - Widget réutilisable */}
