@@ -6,7 +6,7 @@ import { Check, Play, Zap, LineChart, Brain } from "lucide-react";
 import { Tool, ToolFeature } from "@/data/tools/tools-content";
 import { ResponsiveSection } from "@/components/ui/responsive-section";
 
-interface ToolDetailWidgetProps {
+interface FeatureSectionWidgetProps {
   tool: Tool;
   locale: string;
 }
@@ -50,7 +50,38 @@ const getImageSrc = (image: ToolFeature['image'], isEnglish: boolean): string | 
   return isEnglish ? image.src : (image.srcFr || image.src);
 };
 
-export default function FeatureSectionWidget({ tool, locale }: ToolDetailWidgetProps) {
+// Composant réutilisable pour les badges de concepts
+function ConceptBadges({ concepts, isEnglish, justify = 'center' }: { 
+  concepts?: Array<'operate' | 'automate' | 'analyze' | 'predict'>;
+  isEnglish: boolean;
+  justify?: 'center' | 'start';
+}) {
+  if (!concepts || concepts.length === 0) return null;
+  
+  return (
+    <div className={`flex flex-wrap gap-2 mb-4 ${justify === 'center' ? 'justify-center' : 'justify-center lg:justify-start'}`}>
+      {concepts.map((conceptId) => {
+        const conceptInfo = conceptConfig[conceptId];
+        if (!conceptInfo) return null;
+        const ConceptIcon = conceptInfo.icon;
+        return (
+          <div 
+            key={conceptId}
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full"
+            style={{ backgroundColor: conceptInfo.color }}
+          >
+            <ConceptIcon className="w-4 h-4" style={{ color: conceptInfo.textColor }} />
+            <span className="text-xs font-bold" style={{ color: conceptInfo.textColor }}>
+              {isEnglish ? conceptInfo.labelEn : conceptInfo.labelFr}
+            </span>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+export default function FeatureSectionWidget({ tool, locale }: FeatureSectionWidgetProps) {
   const isEnglish = locale === 'en';
 
   // Vérifier que les sections existent
@@ -159,28 +190,7 @@ function FullWidthFeature({ feature, isEnglish }: { feature: ToolFeature; isEngl
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay: 0.2 }}
     >
-      {/* Badges de concepts */}
-      {feature.concepts && feature.concepts.length > 0 && (
-        <div className="flex flex-wrap gap-2 mb-6 justify-center">
-          {feature.concepts.map((conceptId) => {
-            const conceptInfo = conceptConfig[conceptId];
-            if (!conceptInfo) return null;
-            const ConceptIcon = conceptInfo.icon;
-            return (
-              <div 
-                key={conceptId}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full"
-                style={{ backgroundColor: conceptInfo.color }}
-              >
-                <ConceptIcon className="w-4 h-4" style={{ color: conceptInfo.textColor }} />
-                <span className="text-xs font-bold" style={{ color: conceptInfo.textColor }}>
-                  {isEnglish ? conceptInfo.labelEn : conceptInfo.labelFr}
-                </span>
-              </div>
-            );
-          })}
-        </div>
-      )}
+      <ConceptBadges concepts={feature.concepts} isEnglish={isEnglish} justify="center" />
       
       <h4 className="text-3xl lg:text-4xl font-bold mb-6 text-center" style={{ color: 'var(--on-surface)' }}>
         {isEnglish ? feature.titleEn : feature.titleFr}
@@ -254,28 +264,7 @@ function ImageTextFeature({ feature, isEnglish, imageSrc, imageOnLeft }: {
       
       {/* Contenu */}
       <div className={`${imageOnLeft ? 'lg:order-2' : 'lg:order-1'} text-center lg:text-left`}>
-        {/* Badges de concepts */}
-        {feature.concepts && feature.concepts.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-4 justify-center lg:justify-start">
-            {feature.concepts.map((conceptId) => {
-              const conceptInfo = conceptConfig[conceptId];
-              if (!conceptInfo) return null;
-              const ConceptIcon = conceptInfo.icon;
-              return (
-                <div 
-                  key={conceptId}
-                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full"
-                  style={{ backgroundColor: conceptInfo.color }}
-                >
-                  <ConceptIcon className="w-4 h-4" style={{ color: conceptInfo.textColor }} />
-                  <span className="text-xs font-bold" style={{ color: conceptInfo.textColor }}>
-                    {isEnglish ? conceptInfo.labelEn : conceptInfo.labelFr}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-        )}
+        <ConceptBadges concepts={feature.concepts} isEnglish={isEnglish} justify="start" />
         <h4 className="text-3xl lg:text-4xl font-bold mb-6" style={{ color: 'var(--on-surface)' }}>
           {isEnglish ? feature.titleEn : feature.titleFr}
         </h4>
@@ -307,28 +296,7 @@ function ThreeColumnsFeature({ feature, isEnglish }: { feature: ToolFeature; isE
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay: 0.2 }}
     >
-      {/* Badges de concepts */}
-      {feature.concepts && feature.concepts.length > 0 && (
-        <div className="flex flex-wrap gap-2 mb-4 justify-center md:justify-start">
-          {feature.concepts.map((conceptId) => {
-            const conceptInfo = conceptConfig[conceptId];
-            if (!conceptInfo) return null;
-            const ConceptIcon = conceptInfo.icon;
-            return (
-              <div 
-                key={conceptId}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full"
-                style={{ backgroundColor: conceptInfo.color }}
-              >
-                <ConceptIcon className="w-4 h-4" style={{ color: conceptInfo.textColor }} />
-                <span className="text-xs font-bold" style={{ color: conceptInfo.textColor }}>
-                  {isEnglish ? conceptInfo.labelEn : conceptInfo.labelFr}
-                </span>
-              </div>
-            );
-          })}
-        </div>
-      )}
+      <ConceptBadges concepts={feature.concepts} isEnglish={isEnglish} justify="start" />
       <h4 className="text-3xl lg:text-4xl font-bold mb-6" style={{ color: 'var(--on-surface)' }}>
         {isEnglish ? feature.titleEn : feature.titleFr}
       </h4>
