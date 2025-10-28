@@ -37,6 +37,9 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
   const [displayProgress, setDisplayProgress] = useState(0);
   const [visibleTags, setVisibleTags] = useState<number[]>([]);
   const scrollContainerRef = React.useRef<HTMLDivElement>(null);
+  const [showSecondUser, setShowSecondUser] = useState(false);
+  const [showThirdUser, setShowThirdUser] = useState(false);
+  const [secondUserActive, setSecondUserActive] = useState(true);
 
   // Liste des produits inventoriés (même liste que dans OctogoneInventoryWidget)
   interface InventoryProduct {
@@ -96,6 +99,27 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
     if (savedEmail) {
       setEmail(savedEmail);
     }
+  }, []);
+
+  // Animation des avatars
+  useEffect(() => {
+    const timer1 = setTimeout(() => {
+      setShowSecondUser(true);
+    }, 3000); // Julie après 3 secondes
+    
+    const timer2 = setTimeout(() => {
+      setShowThirdUser(true);
+    }, 6000); // Marie après 6 secondes
+    
+    const timer3 = setTimeout(() => {
+      setSecondUserActive(false);
+    }, 9000); // Julie devient inactive après 9 secondes
+    
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+    };
   }, []);
 
   // Calculer le progrès basé sur le nombre de tags visibles par rapport au total de produits
@@ -360,32 +384,98 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
             </div>
 
             <h1 
-              className="text-4xl lg:text-5xl font-bold mb-3"
+              className="text-4xl lg:text-5xl font-bold mb-6"
               style={{ color: 'var(--on-surface)' }}
             >
               {inventoryName}
             </h1>
             
-            {/* Container de description avec bordure */}
-            <div 
-              className="p-4 rounded-lg border"
-              style={{ borderColor: 'var(--outline)' }}
-            >
-              <div className="flex items-center gap-2 mb-2">
-                <FileText size={16} style={{ color: 'var(--on-surface-variant)' }} />
-                <span 
-                  className="text-sm font-medium"
-                  style={{ color: 'var(--on-surface-variant)' }}
-                >
-                  Description
-                </span>
+            {/* Avatars des utilisateurs actifs */}
+            <div className="flex items-center gap-3 mb-6">
+              {/* Avatar Vincent - Toujours actif */}
+              <div className="relative group">
+                <div className="w-12 h-12 rounded-full overflow-hidden border-2" style={{ borderColor: 'var(--primary)' }}>
+                  <Image
+                    src="/images/avatars/vincent.avif"
+                    alt="Vincent"
+                    width={48}
+                    height={48}
+                    className="object-cover"
+                  />
+                </div>
+                <div 
+                  className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2"
+                  style={{ 
+                    backgroundColor: 'var(--success)',
+                    borderColor: 'var(--surface-container-low)'
+                  }}
+                />
+                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap" style={{ backgroundColor: 'var(--inverse-surface)' }}>
+                  <span className="text-xs" style={{ color: 'var(--inverse-on-surface)' }}>Vincent</span>
+                </div>
               </div>
-              <p 
-                className="text-lg leading-relaxed"
-                style={{ color: 'var(--on-surface-variant)' }}
-              >
-                {description}
-              </p>
+
+              {/* Avatar Julie - Apparaît après 3 secondes */}
+              {showSecondUser && (
+                <motion.div 
+                  className="relative group"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="w-12 h-12 rounded-full overflow-hidden border-2" style={{ borderColor: 'var(--primary)' }}>
+                    <Image
+                      src="/images/avatars/julie.avif"
+                      alt="Julie"
+                      width={48}
+                      height={48}
+                      className="object-cover"
+                    />
+                  </div>
+                  {secondUserActive && (
+                    <div 
+                      className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2"
+                      style={{ 
+                        backgroundColor: 'var(--success)',
+                        borderColor: 'var(--surface-container-low)'
+                      }}
+                    />
+                  )}
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap" style={{ backgroundColor: 'var(--inverse-surface)' }}>
+                    <span className="text-xs" style={{ color: 'var(--inverse-on-surface)' }}>Julie</span>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Avatar Marie - Apparaît après 6 secondes */}
+              {showThirdUser && (
+                <motion.div 
+                  className="relative group"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="w-12 h-12 rounded-full overflow-hidden border-2" style={{ borderColor: 'var(--primary)' }}>
+                    <Image
+                      src="/images/avatars/marie.avif"
+                      alt="Marie"
+                      width={48}
+                      height={48}
+                      className="object-cover"
+                    />
+                  </div>
+                  <div 
+                    className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2"
+                    style={{ 
+                      backgroundColor: 'var(--success)',
+                      borderColor: 'var(--surface-container-low)'
+                    }}
+                  />
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap" style={{ backgroundColor: 'var(--inverse-surface)' }}>
+                    <span className="text-xs" style={{ color: 'var(--inverse-on-surface)' }}>Marie</span>
+                  </div>
+                </motion.div>
+              )}
             </div>
             </div>
 
