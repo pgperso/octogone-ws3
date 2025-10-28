@@ -276,7 +276,7 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
               </div>
 
               {/* Colonne droite : Progress Bar */}
-              <div className="flex items-center justify-end">
+              <div className="flex items-center justify-end pr-6">
                 <CircularProgress
                   progress={displayProgress}
                   size={200}
