@@ -36,8 +36,9 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
   const [error, setError] = useState('');
   const [displayProgress, setDisplayProgress] = useState(0);
   const [visibleTags, setVisibleTags] = useState<number[]>([]);
+  const scrollContainerRef = React.useRef<HTMLDivElement>(null);
 
-  // Récupérer les produits avec initialQuantity > 0
+  // Liste des produits inventoriés (même liste que dans OctogoneInventoryWidget)
   interface InventoryProduct {
     id: string;
     name: string;
@@ -45,21 +46,42 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
     unit: string;
   }
 
+  const initialInventory = [
+    { productId: 'prod-022', quantity: 25 },
+    { productId: 'prod-032', quantity: 15 },
+    { productId: 'prod-037', quantity: 20 },
+    { productId: 'prod-025', quantity: 5 },
+    { productId: 'prod-039', quantity: 2 },
+    { productId: 'prod-041', quantity: 10 },
+    { productId: 'prod-009', quantity: 3 },
+    { productId: 'prod-017', quantity: 2 },
+    { productId: 'prod-023', quantity: 30 },
+    { productId: 'prod-049', quantity: 8 },
+    { productId: 'prod-050', quantity: 12 },
+    { productId: 'prod-057', quantity: 5 },
+    { productId: 'prod-008', quantity: 8 },
+    { productId: 'prod-028', quantity: 20 },
+    { productId: 'prod-031', quantity: 15 },
+    { productId: 'prod-013', quantity: 10 },
+    { productId: 'prod-043', quantity: 8 },
+    { productId: 'prod-029', quantity: 5 },
+    { productId: 'prod-004', quantity: 12 },
+  ];
+
   const allProducts = inventoryData.products as InventoryProduct[];
   const totalProductCount = allProducts.length;
   
-  const inventoryProducts = allProducts
-    .filter(p => p.initialQuantity && p.initialQuantity > 0)
-    .slice(0, 5) // Prendre les 5 premiers
-    .map((p, index) => ({
+  // Mapper les produits inventoriés avec leurs infos complètes
+  const inventoryProducts = initialInventory.map((item, index) => {
+    const product = allProducts.find(p => p.id === item.productId);
+    return {
       id: index + 1,
-      productId: p.id,
-      name: p.name,
-      quantity: p.initialQuantity!,
-      unit: p.unit
-    }));
-
-  const HERO_TAG_DELAYS = [800, 1200, 1600, 2000, 2400];
+      productId: item.productId,
+      name: product?.name || '',
+      quantity: item.quantity,
+      unit: product?.unit || ''
+    };
+  }).filter(p => p.name);
 
   // Charger l'email sauvegardé et vérifier si déjà débloqué dans la session
   useEffect(() => {
@@ -79,16 +101,27 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
   // Calculer le progrès basé sur le nombre de tags visibles par rapport au total de produits
   const currentProgress = (visibleTags.length / totalProductCount) * 100;
 
-  // Animation des tags de quantités
+  // Animation séquentielle des produits (un par un)
   useEffect(() => {
-    const timers = inventoryProducts.map((tag, index) => 
+    const delay = 150; // 150ms entre chaque produit pour une animation élégante
+    const timers = inventoryProducts.map((product, index) => 
       setTimeout(() => {
-        setVisibleTags(prev => [...prev, tag.id]);
-      }, HERO_TAG_DELAYS[index])
+        setVisibleTags(prev => [...prev, product.id]);
+      }, index * delay)
     );
     return () => timers.forEach(clearTimeout);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Scroll automatique élégant pour suivre les nouveaux produits
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({
+        top: scrollContainerRef.current.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
+  }, [visibleTags]);
 
   // Animation du pourcentage affiché qui suit le nombre de tags visibles
   useEffect(() => {
@@ -196,9 +229,9 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
             
             {/* Layout en 2 colonnes sur l'image */}
             <div className="absolute inset-0 grid grid-cols-2 p-6">
-              {/* Colonne gauche : Badges en liste verticale */}
-              <div className="flex flex-col justify-center space-y-3">
-              {inventoryProducts.map((tag, index) => (
+              {/* Colonne gauche : Badges en liste verticale avec scroll */}
+              <div ref={scrollContainerRef} className="flex-1 flex flex-col space-y-3 overflow-y-auto pr-2" style={{ maxHeight: '550px' }}>
+              {inventoryProducts.filter(tag => visibleTags.includes(tag.id)).map((tag, index) => (
                   <motion.div
                     key={tag.id}
                     initial={{ opacity: 0, x: -30 }}
