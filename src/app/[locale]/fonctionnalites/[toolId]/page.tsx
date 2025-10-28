@@ -262,6 +262,252 @@ export default function ToolPage({
         </ResponsiveSection>
       )}
 
+      {/* Section Bénéfices avec Parallaxe - Uniquement pour Inventaire */}
+      {toolId === 'inventaire' && (
+        <div className="py-16 md:py-24">
+          <div className="relative px-3 md:px-4">
+            <div className="relative rounded-2xl overflow-hidden">
+              {/* Images en split screen 50/50 */}
+              <div className="absolute inset-0" style={{ zIndex: 0 }}>
+                {/* Moitié gauche - inventaire mobile */}
+                <div 
+                  className="absolute top-0 left-0 bottom-0 w-1/2"
+                  style={{
+                    backgroundImage: 'url(/images/tools/inventaire-mobile.jpg)',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                />
+                
+                {/* Moitié droite - inventaire zones */}
+                <div 
+                  className="absolute top-0 right-0 bottom-0 w-1/2"
+                  style={{
+                    backgroundImage: 'url(/images/tools/inventaire-emplacements.jpg)',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                />
+              </div>
+              
+              {/* Overlay subtil */}
+              <div 
+                className="absolute inset-0 rounded-2xl"
+                style={{ backgroundColor: 'rgba(0, 0, 0, 0.65)', zIndex: 1 }}
+              />
+
+              {/* Contenu */}
+              <div className="relative z-10 py-16 md:py-24 px-4 md:px-8">
+                <div className="max-w-7xl mx-auto">
+                  {/* Titre */}
+                  <motion.h2
+                    className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12"
+                    style={{ color: 'white' }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    {isEnglish ? 'Immediate Benefits' : 'Des bénéfices immédiats'}
+                  </motion.h2>
+                  
+                  {/* 4 cartes simples avec sélection */}
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-12">
+                    {benefitCards.map((card, index) => {
+                      const isSelected = selectedCard === card.concept;
+                      
+                      return (
+                        <motion.div
+                          key={card.concept}
+                          className="p-6 rounded-xl cursor-pointer relative"
+                          style={{
+                            backgroundColor: card.color,
+                            border: isSelected ? `3px solid ${card.border}` : `2px solid ${card.border}`,
+                            opacity: isSelected ? 1 : 0.3,
+                            boxShadow: isSelected 
+                              ? `0 0 40px ${card.color}, 0 0 0 8px rgba(255,255,255,0.1), 0 0 0 16px rgba(255,255,255,0.05)` 
+                              : 'none',
+                            transition: 'all 0.3s ease'
+                          }}
+                          initial={{ opacity: 0, y: 30 }}
+                          whileInView={{ opacity: isSelected ? 1 : 0.3, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.5, delay: 0.1 + (index * 0.1) }}
+                          whileHover={{
+                            opacity: 1,
+                            boxShadow: `0 0 40px ${card.color}, 0 0 0 8px rgba(255,255,255,0.1), 0 0 0 16px rgba(255,255,255,0.05)`
+                          }}
+                          onClick={() => setSelectedCard(card.concept)}
+                        >
+                          <div className="flex items-start gap-3">
+                            {React.createElement(card.icon, { className: "w-6 h-6 flex-shrink-0 mt-1", style: { color: '#1a1a1a' } })}
+                            <div>
+                              <h3 className="text-lg font-bold mb-2" style={{ color: '#1a1a1a' }}>
+                                {isEnglish ? card.titleEn : card.titleFr}
+                              </h3>
+                              <p className="text-sm" style={{ color: '#1a1a1a', opacity: 0.85 }}>
+                                {isEnglish ? card.descEn : card.descFr}
+                              </p>
+                            </div>
+                          </div>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                  
+                  {/* Layout responsive */}
+                  <div className="grid grid-cols-1 gap-8 mt-8">
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 items-center">
+                      {/* Colonne 1 : Nombre géant */}
+                      <motion.div
+                        key={`number-${selectedCard}`}
+                        className="flex flex-col items-center justify-center"
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.6, ease: 'easeOut' }}
+                      >
+                        <div 
+                          className="text-8xl font-black mb-4"
+                          style={{ 
+                            color: benefitCards.find(c => c.concept === selectedCard)?.border,
+                            textShadow: `0 0 60px ${benefitCards.find(c => c.concept === selectedCard)?.color}`
+                          }}
+                        >
+                          {isEnglish 
+                            ? benefitCards.find(c => c.concept === selectedCard)?.statEn.split(' ')[0]
+                            : benefitCards.find(c => c.concept === selectedCard)?.statFr.split(' ')[0]}
+                        </div>
+                        <div className="text-lg font-semibold text-center" style={{ color: 'white', opacity: 0.9 }}>
+                          {isEnglish 
+                            ? benefitCards.find(c => c.concept === selectedCard)?.statEn.split(' ').slice(1).join(' ')
+                            : benefitCards.find(c => c.concept === selectedCard)?.statFr.split(' ').slice(1).join(' ')}
+                        </div>
+                      </motion.div>
+                      
+                      {/* Colonne 2 : Graphique */}
+                      <motion.div
+                        key={`graphic-${selectedCard}`}
+                        className="flex items-center justify-center"
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                      >
+                        <div className="relative h-64 w-64 flex items-center justify-center">
+                          {[1, 2, 3].map((ring, i) => (
+                            <motion.div
+                              key={ring}
+                              className="absolute rounded-full"
+                              style={{
+                                width: `${80 + (i * 60)}px`,
+                                height: `${80 + (i * 60)}px`,
+                                border: `2px solid ${benefitCards.find(c => c.concept === selectedCard)?.border}`,
+                                opacity: 0.2 - (i * 0.05)
+                              }}
+                              initial={{ scale: 0, opacity: 0 }}
+                              animate={{ scale: 1, opacity: 0.2 - (i * 0.05) }}
+                              transition={{ duration: 0.8, delay: i * 0.1 }}
+                            />
+                          ))}
+                          
+                          <motion.div
+                            className="absolute w-32 h-32 rounded-full flex items-center justify-center"
+                            style={{
+                              backgroundColor: benefitCards.find(c => c.concept === selectedCard)?.color,
+                              border: `4px solid ${benefitCards.find(c => c.concept === selectedCard)?.border}`,
+                              boxShadow: `0 0 60px ${benefitCards.find(c => c.concept === selectedCard)?.color}`
+                            }}
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ duration: 0.6, delay: 0.3 }}
+                          >
+                            <div className="text-center">
+                              <div className="text-2xl font-bold" style={{ color: '#1a1a1a' }}>
+                                {selectedCard === 'operate' ? '50%' : 
+                                 selectedCard === 'automate' ? '100%' :
+                                 selectedCard === 'analyze' ? '2-5%' : '8-10%'}
+                              </div>
+                              <div className="text-xs font-semibold" style={{ color: '#1a1a1a', opacity: 0.7 }}>
+                                {isEnglish ? 'Impact' : 'Impact'}
+                              </div>
+                            </div>
+                          </motion.div>
+                        </div>
+                      </motion.div>
+                      
+                      {/* Colonne 3 : Texte - Desktop */}
+                      <motion.div
+                        key={`text-${selectedCard}`}
+                        className="hidden lg:flex flex-col justify-center"
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
+                      >
+                        <div className="flex items-center gap-3 mb-4">
+                          <h3 className="text-2xl font-bold" style={{ color: 'white' }}>
+                            {isEnglish 
+                              ? benefitCards.find(c => c.concept === selectedCard)?.titleEn
+                              : benefitCards.find(c => c.concept === selectedCard)?.titleFr}
+                          </h3>
+                          {selectedCard === 'predict' && (
+                            <span 
+                              className="px-3 py-1 rounded-md text-xs font-semibold whitespace-nowrap"
+                              style={{ 
+                                backgroundColor: benefitCards.find(c => c.concept === selectedCard)?.color,
+                                color: '#1a1a1a'
+                              }}
+                            >
+                              {isEnglish ? 'Coming Soon' : 'Bientôt'}
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-base leading-relaxed" style={{ color: 'white', opacity: 0.9 }}>
+                          {isEnglish 
+                            ? benefitCards.find(c => c.concept === selectedCard)?.explanationEn
+                            : benefitCards.find(c => c.concept === selectedCard)?.explanationFr}
+                        </p>
+                      </motion.div>
+                    </div>
+                    
+                    {/* Texte - Mobile */}
+                    <motion.div
+                      key={`text-mobile-${selectedCard}`}
+                      className="lg:hidden"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.4 }}
+                    >
+                      <div className="flex items-center gap-3 mb-4">
+                        <h3 className="text-xl font-bold" style={{ color: 'white' }}>
+                          {isEnglish 
+                            ? benefitCards.find(c => c.concept === selectedCard)?.titleEn
+                            : benefitCards.find(c => c.concept === selectedCard)?.titleFr}
+                        </h3>
+                        {selectedCard === 'predict' && (
+                          <span 
+                            className="px-2 py-1 rounded-md text-xs font-semibold whitespace-nowrap"
+                            style={{ 
+                              backgroundColor: benefitCards.find(c => c.concept === selectedCard)?.color,
+                              color: '#1a1a1a'
+                            }}
+                          >
+                            {isEnglish ? 'Coming Soon' : 'Bientôt'}
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-sm leading-relaxed" style={{ color: 'white', opacity: 0.9 }}>
+                        {isEnglish 
+                          ? benefitCards.find(c => c.concept === selectedCard)?.explanationEn
+                          : benefitCards.find(c => c.concept === selectedCard)?.explanationFr}
+                      </p>
+                    </motion.div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Widget Recettes - Uniquement pour Food Cost */}
       {toolId === 'food-cost' && (
         <ResponsiveSection spacing="xxl" bgColor="">
@@ -525,8 +771,8 @@ export default function ToolPage({
         <FeatureSectionWidget tool={tool} locale={locale} />
       </ResponsiveSection>
 
-      {/* CTA Gel de tarifs - Uniquement pour Food Cost */}
-      {toolId === 'food-cost' && (
+      {/* CTA Gel de tarifs - Pour Food Cost et Inventaire */}
+      {(toolId === 'food-cost' || toolId === 'inventaire') && (
         <ResponsiveSection spacing="xl" bgColor="">
           <div className="max-w-4xl mx-auto">
             {/* Séparateur */}

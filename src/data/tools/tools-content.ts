@@ -70,15 +70,11 @@ export const tools: Tool[] = [
     sections: [
       {
         concept: 'operate',
-        features: [0, 1] // 2 avec images alternées
-      },
-      {
-        concept: 'automate',
-        features: [2, 3, 4, 5] // 1 full-width + 3 triple colonne
+        features: [0, 1, 2, 3, 4, 5] // 3 images + 3 colonnes
       },
       {
         concept: 'analyze',
-        features: [6, 7] // 2 avec images alternées
+        features: [6, 7, 8, 9] // 2 images + 2 colonnes (Rapports, Alertes)
       }
     ],
     
@@ -94,7 +90,8 @@ export const tools: Tool[] = [
           { fr: 'Mode hors ligne pour travailler sans interruption', en: 'Offline mode to work without interruption' },
           { fr: 'Synchronisation automatique en temps réel', en: 'Automatic real-time synchronization' }
         ],
-        concepts: ['operate']
+        concepts: ['operate'],
+        layout: 'image-left'
       },
       {
         titleFr: 'Organisation par zones personnalisées',
@@ -107,23 +104,22 @@ export const tools: Tool[] = [
           { fr: 'Positions définies pour chaque produit', en: 'Defined positions for each product' },
           { fr: 'Organisation logique de la prise d\'inventaire', en: 'Logical inventory taking organization' }
         ],
-        concepts: ['operate']
+        concepts: ['operate'],
+        layout: 'image-right'
       },
       {
         titleFr: 'Gestion intelligente des seuils minimums',
         titleEn: 'Smart Minimum Threshold Management',
         descriptionFr: 'Identifiez instantanément les produits sous leur seuil minimum pendant votre inventaire. Envoyez-les directement dans un bon de commande pour préparer votre liste chez vos fournisseurs, ou à la production pour générer des bons de production à la cuisine. Agissez immédiatement sans attendre la fin de l\'inventaire. Cette fonctionnalité vous permet de réagir en temps réel aux ruptures de stock et d\'optimiser votre gestion des approvisionnements.',
         descriptionEn: 'Instantly identify products below their minimum threshold during your inventory. Send them directly to a purchase order to prepare your supplier list, or to production to generate kitchen production orders. Act immediately without waiting for inventory completion. This feature allows you to react in real-time to stock shortages and optimize your supply management.',
-        layout: 'full-width',
+        image: '/images/tools/inventaire-seuils.jpg',
         benefits: [
           { fr: 'Détection automatique des produits sous le seuil', en: 'Automatic detection of products below threshold' },
           { fr: 'Envoi direct vers Commande ou Production', en: 'Direct send to Order or Production' },
-          { fr: 'Action immédiate pendant l\'inventaire', en: 'Immediate action during inventory' },
-          { fr: 'Réaction en temps réel aux ruptures', en: 'Real-time reaction to shortages' },
-          { fr: 'Optimisation des approvisionnements', en: 'Supply optimization' },
-          { fr: 'Gain de temps et d\'efficacité', en: 'Time and efficiency savings' }
+          { fr: 'Action immédiate pendant l\'inventaire', en: 'Immediate action during inventory' }
         ],
-        concepts: ['operate', 'automate']
+        concepts: ['operate', 'automate'],
+        layout: 'image-left'
       },
       {
         titleFr: 'Recherche et tri efficaces',
@@ -135,7 +131,8 @@ export const tools: Tool[] = [
           { fr: 'Options de tri multiples', en: 'Multiple sorting options' },
           { fr: 'Gain de temps au comptage', en: 'Time savings during counting' }
         ],
-        concepts: ['operate']
+        concepts: ['operate'],
+        layout: 'three-columns'
       },
       {
         titleFr: 'Saisie rapide et intuitive',
@@ -147,7 +144,8 @@ export const tools: Tool[] = [
           { fr: 'Multi-appareils', en: 'Multi-device' },
           { fr: 'Mode hors ligne', en: 'Offline mode' }
         ],
-        concepts: ['operate']
+        concepts: ['operate'],
+        layout: 'three-columns'
       },
       {
         titleFr: 'Flexibilité des unités',
@@ -159,7 +157,8 @@ export const tools: Tool[] = [
           { fr: 'Conversions automatiques', en: 'Automatic conversions' },
           { fr: 'Élimination des erreurs', en: 'Error elimination' }
         ],
-        concepts: ['operate']
+        concepts: ['operate'],
+        layout: 'three-columns'
       },
       {
         titleFr: 'Visibilité continue de vos stocks',
@@ -172,7 +171,8 @@ export const tools: Tool[] = [
           { fr: 'Intégration transparente avec votre POS', en: 'Seamless integration with your POS' },
           { fr: 'Visibilité en temps réel de vos stocks', en: 'Real-time visibility of your stocks' }
         ],
-        concepts: ['automate', 'analyze']
+        concepts: ['automate', 'analyze'],
+        layout: 'image-right'
       },
       {
         titleFr: 'Analyse des écarts et optimisation',
@@ -185,7 +185,34 @@ export const tools: Tool[] = [
           { fr: 'Identification rapide des sources de pertes', en: 'Quick identification of loss sources' },
           { fr: 'Réduction des coûts alimentaires de 2-5%', en: 'Food cost reduction of 2-5%' }
         ],
-        concepts: ['analyze', 'predict']
+        concepts: ['analyze', 'predict'],
+        layout: 'image-left'
+      },
+      {
+        titleFr: 'Rapports d\'inventaire détaillés',
+        titleEn: 'Detailed Inventory Reports',
+        descriptionFr: 'Générez des rapports complets avec valeurs, écarts et historiques. Exportez vos données pour analyse approfondie.',
+        descriptionEn: 'Generate comprehensive reports with values, variances and history. Export your data for in-depth analysis.',
+        benefits: [
+          { fr: 'Rapports détaillés et personnalisables', en: 'Detailed and customizable reports' },
+          { fr: 'Export vers Excel ou PDF', en: 'Export to Excel or PDF' },
+          { fr: 'Historique complet des inventaires', en: 'Complete inventory history' }
+        ],
+        concepts: ['analyze'],
+        layout: 'three-columns'
+      },
+      {
+        titleFr: 'Alertes intelligentes',
+        titleEn: 'Smart Alerts',
+        descriptionFr: 'Recevez des notifications automatiques pour les produits critiques, les écarts importants ou les tendances anormales.',
+        descriptionEn: 'Receive automatic notifications for critical products, significant variances or abnormal trends.',
+        benefits: [
+          { fr: 'Notifications en temps réel', en: 'Real-time notifications' },
+          { fr: 'Alertes personnalisables', en: 'Customizable alerts' },
+          { fr: 'Prévention proactive des problèmes', en: 'Proactive problem prevention' }
+        ],
+        concepts: ['analyze', 'predict'],
+        layout: 'three-columns'
       }
     ]
   },
