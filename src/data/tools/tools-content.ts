@@ -213,7 +213,7 @@ export const tools: Tool[] = [
       },
       {
         concept: 'analyze',
-        features: [6, 7, 8] // Features restantes
+        features: [6] // Simulateur de Food Cost
       }
     ],
     
@@ -327,32 +327,6 @@ export const tools: Tool[] = [
         ],
         concepts: ['analyze', 'predict'],
         layout: 'image-right'
-      },
-      {
-        titleFr: 'Ingénierie de menu',
-        titleEn: 'Menu Engineering',
-        descriptionFr: 'Analysez la rentabilité et la popularité de chaque plat avec la matrice d\'ingénierie de menu. Identifiez vos stars (populaires et rentables), vos chevaux de labour (populaires mais peu rentables), vos énigmes (rentables mais impopulaires) et vos poids morts. Optimisez votre menu pour maximiser vos profits.',
-        descriptionEn: 'Analyze the profitability and popularity of each dish with the menu engineering matrix. Identify your stars (popular and profitable), your workhorses (popular but not very profitable), your puzzles (profitable but unpopular) and your dead weight. Optimize your menu to maximize your profits.',
-        image: '/images/tools/foodcost-ingenierie.jpg',
-        benefits: [
-          { fr: 'Matrice d\'ingénierie de menu', en: 'Menu engineering matrix' },
-          { fr: 'Classification des plats', en: 'Dish classification' },
-          { fr: 'Optimisation de la rentabilité', en: 'Profitability optimization' }
-        ],
-        concepts: ['analyze']
-      },
-      {
-        titleFr: 'Suivi des tendances',
-        titleEn: 'Trend Tracking',
-        descriptionFr: 'Suivez l\'évolution de votre food cost dans le temps. Identifiez les tendances saisonnières, les variations de prix des fournisseurs et l\'impact de vos décisions. Les graphiques et rapports vous donnent une vision claire de votre performance et vous aident à anticiper les changements.',
-        descriptionEn: 'Track the evolution of your food cost over time. Identify seasonal trends, supplier price variations and the impact of your decisions. Graphs and reports give you a clear view of your performance and help you anticipate changes.',
-        image: '/images/tools/foodcost-tendances.jpg',
-        benefits: [
-          { fr: 'Évolution dans le temps', en: 'Evolution over time' },
-          { fr: 'Identification des tendances', en: 'Trend identification' },
-          { fr: 'Anticipation des changements', en: 'Change anticipation' }
-        ],
-        concepts: ['analyze', 'predict']
       }
     ]
   },
