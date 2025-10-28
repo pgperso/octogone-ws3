@@ -7,7 +7,8 @@ import { Mail, Key, ClipboardCheck, FileText, Package, CheckCircle2 } from 'luci
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { RECIPE_ACCESS_CONFIG } from '@/config/recipe-access';
 import { trackRecipeAccessRequest, trackRecipeAccessUnlocked } from '@/lib/tracking/hubspot-events';
-import { INVENTORY_TAGS, HERO_TAG_DELAYS } from './inventoryPriceTags';
+import inventoryData from '@/data/products/octogone_products_data.json';
+import { translateProduct } from '@/data/products/octogone_products_translations';
 import { CircularProgress } from '../octogone_recipe/CircularProgress';
 
 interface InventoryHeroSectionProps {
@@ -36,6 +37,20 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
   const [displayProgress, setDisplayProgress] = useState(0);
   const [visibleTags, setVisibleTags] = useState<number[]>([]);
 
+  // Récupérer les produits avec initialQuantity > 0
+  const inventoryProducts = (inventoryData.products as any[])
+    .filter(p => p.initialQuantity && p.initialQuantity > 0)
+    .slice(0, 5) // Prendre les 5 premiers
+    .map((p, index) => ({
+      id: index + 1,
+      productId: p.id,
+      name: p.name,
+      quantity: p.initialQuantity,
+      unit: p.unit
+    }));
+
+  const HERO_TAG_DELAYS = [800, 1200, 1600, 2000, 2400];
+
   // Charger l'email sauvegardé et vérifier si déjà débloqué dans la session
   useEffect(() => {
     // Vérifier si déjà débloqué dans cette session (partagé avec Food Cost)
@@ -52,17 +67,18 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
   }, []);
 
   // Calculer le progrès basé sur le nombre de tags visibles
-  const progressPerTag = 100 / INVENTORY_TAGS.length;
+  const progressPerTag = 100 / inventoryProducts.length;
   const currentProgress = visibleTags.length * progressPerTag;
 
   // Animation des tags de quantités
   useEffect(() => {
-    const timers = INVENTORY_TAGS.map((tag, index) => 
+    const timers = inventoryProducts.map((tag, index) => 
       setTimeout(() => {
         setVisibleTags(prev => [...prev, tag.id]);
       }, HERO_TAG_DELAYS[index])
     );
     return () => timers.forEach(clearTimeout);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Animation du pourcentage affiché qui suit le nombre de tags visibles
@@ -169,11 +185,22 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
               />
             </div>
             
-            {/* Layout en 2 colonnes sur l'image */}
-            <div className="absolute inset-0 flex gap-4 p-6">
-              {/* Colonne gauche : Badges en liste verticale */}
-              <div className="flex-1 flex flex-col justify-center space-y-3">
-                {INVENTORY_TAGS.map((tag, index) => (
+            {/* Progress bar au-dessus de l'image à droite */}
+            <div className="absolute top-4 right-4 z-10">
+              <div className="bg-white bg-opacity-95 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
+                <CircularProgress
+                  progress={displayProgress}
+                  size={180}
+                  strokeWidth={8}
+                  showPercentage={true}
+                  percentageLabel={isEnglish ? 'completed' : 'complété'}
+                />
+              </div>
+            </div>
+
+            {/* Badges en liste verticale à gauche */}
+            <div className="absolute left-6 top-1/2 transform -translate-y-1/2 space-y-3 max-w-xs">
+              {inventoryProducts.map((tag, index) => (
                   <motion.div
                     key={tag.id}
                     initial={{ opacity: 0, x: -30 }}
@@ -190,12 +217,9 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                     }}
                   >
                     <div 
-                      className="flex items-center gap-3 p-3 rounded-lg backdrop-blur-sm border-2"
+                      className="flex items-center gap-3 p-3 rounded-lg backdrop-blur-sm"
                       style={{
                         backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                        borderColor: visibleTags.includes(tag.id)
-                          ? 'var(--primary)'
-                          : 'rgba(255, 255, 255, 0.5)',
                         transition: 'all 0.3s ease'
                       }}
                     >
@@ -204,7 +228,7 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                         className="flex-shrink-0 w-8 h-8 rounded flex items-center justify-center"
                         style={{
                           backgroundColor: visibleTags.includes(tag.id)
-                            ? '#4CAF50'
+                            ? 'var(--success)'
                             : 'rgba(0, 0, 0, 0.1)',
                           borderRadius: '6px'
                         }}
@@ -230,7 +254,7 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                           className="text-sm font-semibold truncate"
                           style={{ color: '#1a1a1a' }}
                         >
-                          {isEnglish ? tag.labelEn : tag.labelFr}
+                          {translateProduct(tag.name, locale)}
                         </p>
                       </div>
 
@@ -245,24 +269,12 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                           className="text-sm font-bold"
                           style={{ color: '#1a1a1a' }}
                         >
-                          {tag.quantity} {isEnglish ? 'units' : 'unités'}
+                          {tag.quantity} {tag.unit}
                         </span>
                       </div>
                     </div>
                   </motion.div>
                 ))}
-              </div>
-
-              {/* Colonne droite : Progress Bar */}
-              <div className="flex-shrink-0 flex items-center justify-center" style={{ width: '250px' }}>
-                <CircularProgress
-                  progress={displayProgress}
-                  size={200}
-                  strokeWidth={8}
-                  showPercentage={true}
-                  percentageLabel={isEnglish ? 'completed' : 'complété'}
-                />
-              </div>
             </div>
           </div>
 
