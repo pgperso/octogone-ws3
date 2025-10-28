@@ -38,14 +38,24 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
   const [visibleTags, setVisibleTags] = useState<number[]>([]);
 
   // Récupérer les produits avec initialQuantity > 0
-  const inventoryProducts = (inventoryData.products as any[])
+  interface InventoryProduct {
+    id: string;
+    name: string;
+    initialQuantity?: number;
+    unit: string;
+  }
+
+  const allProducts = inventoryData.products as InventoryProduct[];
+  const totalProductCount = allProducts.length;
+  
+  const inventoryProducts = allProducts
     .filter(p => p.initialQuantity && p.initialQuantity > 0)
     .slice(0, 5) // Prendre les 5 premiers
     .map((p, index) => ({
       id: index + 1,
       productId: p.id,
       name: p.name,
-      quantity: p.initialQuantity,
+      quantity: p.initialQuantity!,
       unit: p.unit
     }));
 
@@ -66,9 +76,8 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
     }
   }, []);
 
-  // Calculer le progrès basé sur le nombre de tags visibles
-  const progressPerTag = 100 / inventoryProducts.length;
-  const currentProgress = visibleTags.length * progressPerTag;
+  // Calculer le progrès basé sur le nombre de tags visibles par rapport au total de produits
+  const currentProgress = (visibleTags.length / totalProductCount) * 100;
 
   // Animation des tags de quantités
   useEffect(() => {
