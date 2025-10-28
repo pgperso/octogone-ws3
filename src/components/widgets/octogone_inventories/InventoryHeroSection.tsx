@@ -103,7 +103,7 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
 
   // Animation séquentielle des produits (un par un)
   useEffect(() => {
-    const delay = 150; // 150ms entre chaque produit pour une animation élégante
+    const delay = 400; // 400ms entre chaque produit pour voir la progression
     const timers = inventoryProducts.map((product, index) => 
       setTimeout(() => {
         setVisibleTags(prev => [...prev, product.id]);
@@ -230,7 +230,20 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
             {/* Layout en 2 colonnes sur l'image */}
             <div className="absolute inset-0 grid grid-cols-2 p-6">
               {/* Colonne gauche : Badges en liste verticale avec scroll */}
-              <div ref={scrollContainerRef} className="flex-1 flex flex-col space-y-3 overflow-y-auto pr-2" style={{ maxHeight: '550px' }}>
+              <div 
+                ref={scrollContainerRef} 
+                className="flex-1 flex flex-col space-y-3 overflow-y-auto" 
+                style={{ 
+                  maxHeight: '550px',
+                  scrollbarWidth: 'none', /* Firefox */
+                  msOverflowStyle: 'none' /* IE/Edge */
+                }}
+              >
+                <style jsx>{`
+                  div::-webkit-scrollbar {
+                    display: none; /* Chrome/Safari */
+                  }
+                `}</style>
               {inventoryProducts.filter(tag => visibleTags.includes(tag.id)).map((tag, index) => (
                   <motion.div
                     key={tag.id}
