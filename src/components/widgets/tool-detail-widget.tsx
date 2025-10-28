@@ -257,25 +257,37 @@ export default function ToolDetailWidget({ tool, locale }: ToolDetailWidgetProps
                               {/* Image */}
                               <div className={imageOnLeft ? 'lg:order-1' : 'lg:order-2'}>
                                 <motion.div
-                                  className="bg-gradient-to-r from-marine-50 to-gold-50 rounded-2xl p-8 motion-element shadow-lg border border-gray-200"
+                                  className="rounded-2xl motion-element shadow-lg overflow-hidden"
                                   initial={{ opacity: 0, scale: 0.95 }}
                                   whileInView={{ opacity: 1, scale: 1 }}
                                   viewport={{ once: true }}
                                   transition={{ duration: 0.8, delay: 0.4 }}
                                 >
-                                  <motion.div 
-                                    className="text-center motion-element"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.6 }}
-                                  >
-                                    <div className="text-5xl mb-2" role="img" aria-label="Mobile device">📱</div>
-                                    <p className="text-sm font-medium text-marine-600">
-                                      {isEnglish ? singleFeature.titleEn : singleFeature.titleFr}
-                                    </p>
-                                    <p className="text-xs mt-1 opacity-70 text-marine-500">(placeholder)</p>
-                                  </motion.div>
+                                  {/* Image bilingue pour Catalogue centralisé */}
+                                  {(singleFeature.titleEn === 'Centralized Product Catalog' || singleFeature.titleFr === 'Catalogue centralisé de produits') ? (
+                                    <img 
+                                      src={isEnglish ? '/images/pages/product_list_en.avif' : '/images/pages/product_list_fr.avif'}
+                                      alt={isEnglish ? singleFeature.titleEn : singleFeature.titleFr}
+                                      className="w-full h-auto"
+                                    />
+                                  ) : (
+                                    /* Placeholder pour les autres features */
+                                    <div className="bg-gradient-to-r from-marine-50 to-gold-50 p-8">
+                                      <motion.div 
+                                        className="text-center motion-element"
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.6 }}
+                                      >
+                                        <div className="text-5xl mb-2" role="img" aria-label="Mobile device">📱</div>
+                                        <p className="text-sm font-medium text-marine-600">
+                                          {isEnglish ? singleFeature.titleEn : singleFeature.titleFr}
+                                        </p>
+                                        <p className="text-xs mt-1 opacity-70 text-marine-500">(placeholder)</p>
+                                      </motion.div>
+                                    </div>
+                                  )}
                                 </motion.div>
                               </div>
                               

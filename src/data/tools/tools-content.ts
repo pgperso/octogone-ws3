@@ -215,19 +215,6 @@ export const tools: Tool[] = [
     
     features: [
       {
-        titleFr: 'Standardisation des recettes',
-        titleEn: 'Recipe Standardization',
-        descriptionFr: 'Créez des fiches techniques détaillées pour chacun de vos plats. Définissez précisément les ingrédients, les quantités, les étapes de préparation et les portions. Cette standardisation garantit la constance de vos plats, facilite la formation de votre équipe et vous permet de calculer avec précision le coût de chaque recette. Vos recettes deviennent un actif documenté de votre entreprise.',
-        descriptionEn: 'Create detailed technical sheets for each of your dishes. Precisely define ingredients, quantities, preparation steps and portions. This standardization ensures consistency of your dishes, facilitates team training and allows you to accurately calculate the cost of each recipe. Your recipes become a documented asset of your business.',
-        image: '/images/tools/foodcost-recettes.jpg',
-        benefits: [
-          { fr: 'Fiches techniques détaillées et complètes', en: 'Detailed and complete technical sheets' },
-          { fr: 'Constance garantie de vos plats', en: 'Guaranteed consistency of your dishes' },
-          { fr: 'Formation simplifiée de l\'équipe', en: 'Simplified team training' }
-        ],
-        concepts: ['operate']
-      },
-      {
         titleFr: 'Catalogue centralisé de produits',
         titleEn: 'Centralized Product Catalog',
         descriptionFr: 'Utilisez le même catalogue de produits pour vos inventaires et vos recettes. Chaque produit contient toutes ses informations : prix, formats, unités de mesure et conversions. Cette centralisation élimine les incohérences et garantit que vos calculs de food cost utilisent toujours les prix les plus récents de vos fournisseurs.',
@@ -239,6 +226,19 @@ export const tools: Tool[] = [
           { fr: 'Prix toujours à jour', en: 'Always up-to-date prices' }
         ],
         concepts: ['operate', 'automate']
+      },
+      {
+        titleFr: 'Standardisation des recettes',
+        titleEn: 'Recipe Standardization',
+        descriptionFr: 'Créez des fiches techniques détaillées pour chacun de vos plats. Définissez précisément les ingrédients, les quantités, les étapes de préparation et les portions. Cette standardisation garantit la constance de vos plats, facilite la formation de votre équipe et vous permet de calculer avec précision le coût de chaque recette. Vos recettes deviennent un actif documenté de votre entreprise.',
+        descriptionEn: 'Create detailed technical sheets for each of your dishes. Precisely define ingredients, quantities, preparation steps and portions. This standardization ensures consistency of your dishes, facilitates team training and allows you to accurately calculate the cost of each recipe. Your recipes become a documented asset of your business.',
+        image: '/images/tools/foodcost-recettes.jpg',
+        benefits: [
+          { fr: 'Fiches techniques détaillées et complètes', en: 'Detailed and complete technical sheets' },
+          { fr: 'Constance garantie de vos plats', en: 'Guaranteed consistency of your dishes' },
+          { fr: 'Formation simplifiée de l\'équipe', en: 'Simplified team training' }
+        ],
+        concepts: ['operate']
       },
       {
         titleFr: 'Mises à jour automatiques des coûts',
