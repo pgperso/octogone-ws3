@@ -108,9 +108,9 @@ export const InventoryCalculationAnimation: React.FC<InventoryCalculationAnimati
             </div>
             
             {/* Layout en 2 colonnes sur l'image */}
-            <div className="absolute inset-0 flex items-center justify-between p-6">
+            <div className="absolute inset-0 grid grid-cols-2 gap-4 p-6">
               {/* Colonne gauche : Badges en liste verticale */}
-              <div className="flex flex-col justify-center space-y-3" style={{ maxWidth: '320px' }}>
+              <div className="flex flex-col justify-center space-y-3">
                 {inventoryProducts.map((tag) => (
                   <div key={tag.id}>
                     <div 
@@ -163,8 +163,11 @@ export const InventoryCalculationAnimation: React.FC<InventoryCalculationAnimati
                 ))}
               </div>
 
+              {/* Spacer pour pousser la progress bar à droite */}
+              <div className="flex-1"></div>
+
               {/* Colonne droite : Progress Bar */}
-              <div className="flex-shrink-0 flex items-center justify-end" style={{ width: '250px' }}>
+              <div className="flex items-center justify-center">
                 <CircularProgress
                   progress={displayProgress}
                   size={200}
