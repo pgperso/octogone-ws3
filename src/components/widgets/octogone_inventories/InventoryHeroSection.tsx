@@ -194,21 +194,10 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
               />
             </div>
             
-            {/* Progress bar au-dessus de l'image à droite */}
-            <div className="absolute top-4 right-4 z-10">
-              <div className="bg-white bg-opacity-95 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
-                <CircularProgress
-                  progress={displayProgress}
-                  size={180}
-                  strokeWidth={8}
-                  showPercentage={true}
-                  percentageLabel={isEnglish ? 'completed' : 'complété'}
-                />
-              </div>
-            </div>
-
-            {/* Badges en liste verticale à gauche */}
-            <div className="absolute left-6 top-1/2 transform -translate-y-1/2 space-y-3 max-w-xs">
+            {/* Layout en 2 colonnes sur l'image */}
+            <div className="absolute inset-0 flex gap-4 p-6">
+              {/* Colonne gauche : Badges en liste verticale */}
+              <div className="flex-1 flex flex-col justify-center space-y-3">
               {inventoryProducts.map((tag, index) => (
                   <motion.div
                     key={tag.id}
@@ -245,7 +234,7 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                         {visibleTags.includes(tag.id) ? (
                           <CheckCircle2 
                             size={16} 
-                            style={{ color: 'white' }}
+                            style={{ color: 'var(--on-success-container)' }}
                           />
                         ) : (
                           <span 
@@ -284,6 +273,18 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                     </div>
                   </motion.div>
                 ))}
+              </div>
+
+              {/* Colonne droite : Progress Bar */}
+              <div className="flex-shrink-0 flex items-center justify-center" style={{ width: '250px' }}>
+                <CircularProgress
+                  progress={displayProgress}
+                  size={200}
+                  strokeWidth={8}
+                  showPercentage={true}
+                  percentageLabel={isEnglish ? 'completed' : 'complété'}
+                />
+              </div>
             </div>
           </div>
 
