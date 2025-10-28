@@ -241,43 +241,43 @@ export const tools: Tool[] = [
         concepts: ['operate']
       },
       {
-        titleFr: 'Mises à jour automatiques des coûts',
-        titleEn: 'Automatic Cost Updates',
-        descriptionFr: 'Changez le prix d\'un ingrédient et toutes vos recettes se mettent à jour instantanément. Plus besoin de recalculer manuellement le coût de chaque plat. Le système propage automatiquement les changements de prix à travers toutes vos recettes, vous donnant une vision en temps réel de l\'impact sur votre rentabilité.',
-        descriptionEn: 'Change an ingredient price and all your recipes update instantly. No need to manually recalculate the cost of each dish. The system automatically propagates price changes across all your recipes, giving you real-time visibility of the impact on your profitability.',
+        titleFr: 'Simulation de changements de prix',
+        titleEn: 'Price Change Simulation',
+        descriptionFr: 'Testez l\'impact d\'une hausse fournisseur avant qu\'elle arrive. Simulez différents scénarios de prix et comparez-les côte à côte. Voyez instantanément l\'effet sur vos marges et vos coûts par plat. Décidez en connaissance de cause : ajuster vos prix de vente, modifier vos recettes ou négocier avec vos fournisseurs.',
+        descriptionEn: 'Test the impact of a supplier price increase before it happens. Simulate different price scenarios and compare them side by side. Instantly see the effect on your margins and costs per dish. Make informed decisions: adjust your selling prices, modify your recipes or negotiate with your suppliers.',
         image: '/images/tools/foodcost-auto.jpg',
         benefits: [
-          { fr: 'Mise à jour instantanée de toutes les recettes', en: 'Instant update of all recipes' },
-          { fr: 'Zéro calcul manuel', en: 'Zero manual calculation' },
-          { fr: 'Impact visible immédiatement', en: 'Impact visible immediately' }
+          { fr: 'Testez avant de subir les hausses', en: 'Test before suffering increases' },
+          { fr: 'Comparez plusieurs scénarios', en: 'Compare multiple scenarios' },
+          { fr: 'Décisions éclairées et rapides', en: 'Informed and quick decisions' }
         ],
-        concepts: ['automate']
+        concepts: ['analyze']
       },
       {
-        titleFr: 'Food Cost en temps réel',
-        titleEn: 'Real-time Food Cost',
-        descriptionFr: 'Connaissez votre food cost en temps réel grâce à l\'intégration avec votre POS. Chaque vente met à jour automatiquement vos statistiques. Suivez votre food cost par plat, par catégorie ou global. Identifiez immédiatement les variations et agissez rapidement pour maintenir votre rentabilité.',
-        descriptionEn: 'Know your food cost in real-time through integration with your POS. Each sale automatically updates your statistics. Track your food cost by dish, by category or overall. Immediately identify variations and act quickly to maintain your profitability.',
+        titleFr: 'Optimisation des marges par plat',
+        titleEn: 'Margin Optimization per Dish',
+        descriptionFr: 'Identifiez en un coup d\'œil vos plats les plus et les moins rentables. Analysez les coûts de chaque recette et comparez-les à vos prix de vente. Ajustez les portions ou remplacez certains ingrédients pour améliorer vos marges sans compromettre la qualité. Équilibrez votre menu entre rentabilité et popularité pour maximiser vos profits.',
+        descriptionEn: 'Identify at a glance your most and least profitable dishes. Analyze the costs of each recipe and compare them to your selling prices. Adjust portions or replace certain ingredients to improve your margins without compromising quality. Balance your menu between profitability and popularity to maximize your profits.',
         image: '/images/tools/foodcost-temps-reel.jpg',
         benefits: [
-          { fr: 'Food cost calculé en temps réel', en: 'Food cost calculated in real-time' },
-          { fr: 'Suivi par plat et par catégorie', en: 'Tracking by dish and category' },
-          { fr: 'Détection immédiate des variations', en: 'Immediate detection of variations' }
+          { fr: 'Identifiez vos plats les plus rentables', en: 'Identify your most profitable dishes' },
+          { fr: 'Ajustez portions et ingrédients', en: 'Adjust portions and ingredients' },
+          { fr: 'Équilibrez rentabilité et popularité', en: 'Balance profitability and popularity' }
         ],
-        concepts: ['automate', 'analyze']
+        concepts: ['analyze']
       },
       {
-        titleFr: 'Automatisation des calculs',
-        titleEn: 'Calculation Automation',
-        descriptionFr: 'Le système calcule automatiquement le coût de chaque recette en fonction des ingrédients et de leurs prix actuels. Les coûts de portions, les marges et les prix de vente suggérés sont calculés instantanément. Cette automatisation élimine les erreurs de calcul et vous fait gagner des heures chaque semaine.',
-        descriptionEn: 'The system automatically calculates the cost of each recipe based on ingredients and their current prices. Portion costs, margins and suggested selling prices are calculated instantly. This automation eliminates calculation errors and saves you hours each week.',
+        titleFr: 'Analyse des variations saisonnières',
+        titleEn: 'Seasonal Variation Analysis',
+        descriptionFr: 'Suivez l\'évolution de vos coûts dans le temps et identifiez les tendances saisonnières. Anticipez les hausses prévisibles (tomates en hiver, fruits rouges hors saison) et adaptez votre menu en conséquence. Ajustez vos prix de vente au bon moment pour maintenir vos marges tout au long de l\'année.',
+        descriptionEn: 'Track the evolution of your costs over time and identify seasonal trends. Anticipate predictable increases (tomatoes in winter, berries out of season) and adapt your menu accordingly. Adjust your selling prices at the right time to maintain your margins throughout the year.',
         image: '/images/tools/foodcost-calculs.jpg',
         benefits: [
-          { fr: 'Calculs automatiques et précis', en: 'Automatic and accurate calculations' },
-          { fr: 'Marges et prix suggérés', en: 'Suggested margins and prices' },
-          { fr: 'Économie de temps considérable', en: 'Considerable time savings' }
+          { fr: 'Suivez l\'évolution dans le temps', en: 'Track evolution over time' },
+          { fr: 'Anticipez les hausses saisonnières', en: 'Anticipate seasonal increases' },
+          { fr: 'Adaptez vos prix au bon moment', en: 'Adjust prices at the right time' }
         ],
-        concepts: ['automate']
+        concepts: ['analyze']
       },
       {
         titleFr: 'Simulateur de Food Cost',
