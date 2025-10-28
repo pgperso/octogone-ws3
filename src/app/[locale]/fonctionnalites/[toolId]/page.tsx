@@ -2,7 +2,6 @@
 
 import * as React from "react";
 import { motion } from "framer-motion";
-import { useParams } from "next/navigation";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Play, Zap, TrendingUp, Sparkles } from "lucide-react";
