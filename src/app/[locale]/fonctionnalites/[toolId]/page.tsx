@@ -275,8 +275,8 @@ export default function ToolPage({
             backgroundColor: '#1a1a1a'
           }}
         >
-          {/* Wrapper avec padding et radius pour effet flottant */}
-          <div className="relative px-4 md:px-6">
+          {/* Wrapper avec petit padding horizontal et radius pour effet flottant */}
+          <div className="relative px-2 md:px-3">
             <div className="relative rounded-2xl overflow-hidden">
               {/* Images en split screen 50/50 */}
               <div className="absolute inset-0" style={{ zIndex: 0 }}>
