@@ -40,8 +40,8 @@ export default function ToolPage({
   const isInventaire = tool.id === 'inventaire';
   const isFoodCost = tool.id === 'food-cost';
   
-  // Couleurs pour le hero food-cost
-  const heroTextColor = isFoodCost ? '#1a1a1a' : 'white';
+  // Couleurs pour le hero
+  const heroTextColor = (isFoodCost || isInventaire) ? '#1a1a1a' : 'white';
   
   // Cartes de bénéfices - Food Cost
   const foodCostBenefitCards = [
@@ -202,6 +202,9 @@ export default function ToolPage({
           <div className="absolute inset-0 bg-gradient-to-br from-[#002236] via-[#003d5c] to-[#005a82]" style={{
             ...(isFoodCost && {
               background: 'linear-gradient(135deg, #B8E0D2 0%, #A5CABE 100%)'
+            }),
+            ...(isInventaire && {
+              background: 'linear-gradient(135deg, #B4D4FF 0%, #A5C4E6 100%)'
             })
           }} />
           <div className="absolute inset-0 opacity-10"
@@ -209,7 +212,7 @@ export default function ToolPage({
               backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(220, 178, 107, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(186, 223, 246, 0.3) 0%, transparent 50%)'
             }}
           />
-          {!isFoodCost && <div className="absolute inset-0 bg-black/50"></div>}
+          {!isFoodCost && !isInventaire && <div className="absolute inset-0 bg-black/50"></div>}
         </div>
 
         <div className="relative z-10 text-center">
@@ -228,8 +231,8 @@ export default function ToolPage({
           <motion.h1 
             className="text-4xl lg:text-6xl font-bold mb-3"
             style={{ 
-              color: isFoodCost ? '#1a1a1a' : 'white',
-              textShadow: isFoodCost ? 'none' : '0 2px 8px rgba(0,0,0,0.5)'
+              color: (isFoodCost || isInventaire) ? '#1a1a1a' : 'white',
+              textShadow: (isFoodCost || isInventaire) ? 'none' : '0 2px 8px rgba(0,0,0,0.5)'
             }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -340,7 +343,7 @@ export default function ToolPage({
                 <div 
                   className="absolute top-0 left-0 bottom-0 w-1/2"
                   style={{
-                    backgroundImage: 'url(/images/tools/inventory1.avif)',
+                    backgroundImage: 'url(/images/pages/inventory1.avif)',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center'
                   }}
@@ -350,7 +353,7 @@ export default function ToolPage({
                 <div 
                   className="absolute top-0 right-0 bottom-0 w-1/2"
                   style={{
-                    backgroundImage: 'url(/images/tools/inventory2.avif)',
+                    backgroundImage: 'url(/images/pages/inventory2.avif)',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center'
                   }}
