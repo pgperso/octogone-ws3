@@ -217,26 +217,26 @@ export const tools: Tool[] = [
       {
         titleFr: 'Catalogue centralisé de produits',
         titleEn: 'Centralized Product Catalog',
-        descriptionFr: 'Utilisez le même catalogue de produits pour vos inventaires et vos recettes. Chaque produit contient toutes ses informations : prix, formats, unités de mesure et conversions. Cette centralisation élimine les incohérences et garantit que vos calculs de food cost utilisent toujours les prix les plus récents de vos fournisseurs.',
-        descriptionEn: 'Use the same product catalog for your inventories and recipes. Each product contains all its information: prices, formats, units of measure and conversions. This centralization eliminates inconsistencies and ensures your food cost calculations always use the most recent prices from your suppliers.',
+        descriptionFr: 'Tous les produits de vos fournisseurs réunis dans un seul catalogue. C\'est à partir de ce catalogue que vous créez vos recettes : chaque produit contient son prix, ses formats, ses unités de mesure et ses conversions. Un seul catalogue pour vos inventaires et vos recettes, garantissant que vos calculs de food cost utilisent toujours les prix réels de vos fournisseurs.',
+        descriptionEn: 'All products from your suppliers in one catalog. This is where you create your recipes from: each product contains its price, formats, units of measure and conversions. One catalog for your inventories and recipes, ensuring your food cost calculations always use real prices from your suppliers.',
         image: '/images/tools/foodcost-catalogue.jpg',
         benefits: [
-          { fr: 'Un seul catalogue pour inventaire et recettes', en: 'Single catalog for inventory and recipes' },
-          { fr: 'Cohérence parfaite des données', en: 'Perfect data consistency' },
-          { fr: 'Prix toujours à jour', en: 'Always up-to-date prices' }
+          { fr: 'Tous vos produits fournisseurs en un lieu', en: 'All your supplier products in one place' },
+          { fr: 'Source unique pour créer vos recettes', en: 'Single source to create your recipes' },
+          { fr: 'Prix réels synchronisés', en: 'Real prices synchronized' }
         ],
         concepts: ['operate', 'automate']
       },
       {
         titleFr: 'Catalogue centralisé de recettes',
         titleEn: 'Centralized Recipe Catalog',
-        descriptionFr: 'Centralisez toutes vos recettes dans un catalogue unique et structuré. Chaque recette contient ses ingrédients, quantités, étapes de préparation et coûts calculés automatiquement. Accédez instantanément à l\'ensemble de vos fiches techniques, partagez-les avec votre équipe et assurez la constance de vos plats. Votre catalogue de recettes devient la référence centrale pour toute votre production.',
-        descriptionEn: 'Centralize all your recipes in a single, structured catalog. Each recipe contains its ingredients, quantities, preparation steps and automatically calculated costs. Instantly access all your technical sheets, share them with your team and ensure consistency of your dishes. Your recipe catalog becomes the central reference for all your production.',
+        descriptionFr: 'Toutes vos recettes réunies dans un catalogue unique et structuré. Chaque recette est créée à partir des produits de votre catalogue et contient ses ingrédients, quantités, étapes de préparation et coûts calculés automatiquement. Accédez instantanément à l\'ensemble de vos fiches techniques et assurez la constance de vos plats. Votre catalogue de recettes devient la référence centrale pour toute votre production.',
+        descriptionEn: 'All your recipes in a single, structured catalog. Each recipe is created from products in your catalog and contains its ingredients, quantities, preparation steps and automatically calculated costs. Instantly access all your technical sheets and ensure consistency of your dishes. Your recipe catalog becomes the central reference for all your production.',
         image: '/images/tools/foodcost-recettes.jpg',
         benefits: [
-          { fr: 'Catalogue unique pour toutes vos recettes', en: 'Single catalog for all your recipes' },
-          { fr: 'Coûts calculés automatiquement', en: 'Automatically calculated costs' },
-          { fr: 'Accès instantané et partage d\'équipe', en: 'Instant access and team sharing' }
+          { fr: 'Toutes vos recettes en un lieu', en: 'All your recipes in one place' },
+          { fr: 'Créées à partir du catalogue produits', en: 'Created from product catalog' },
+          { fr: 'Coûts calculés automatiquement', en: 'Automatically calculated costs' }
         ],
         concepts: ['operate']
       },
