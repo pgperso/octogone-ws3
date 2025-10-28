@@ -328,7 +328,7 @@ export default function ToolPage({
                   return (
                     <motion.div
                       key={card.concept}
-                      className="p-6 rounded-xl cursor-pointer transition-all duration-300 relative"
+                      className="p-6 rounded-xl cursor-pointer transition-all duration-300"
                       style={{
                         backgroundColor: card.color,
                         border: isSelected ? `3px solid ${card.border}` : `2px solid ${card.border}`,
@@ -340,18 +340,6 @@ export default function ToolPage({
                       transition={{ duration: 0.5, delay: 0.1 + (index * 0.1) }}
                       onClick={() => setSelectedCard(card.concept)}
                     >
-                      {/* Badge "Bientôt" pour Predict */}
-                      {card.concept === 'predict' && (
-                        <div 
-                          className="absolute top-3 right-3 px-2 py-1 rounded-md text-xs font-semibold"
-                          style={{ 
-                            backgroundColor: '#1a1a1a',
-                            color: 'white'
-                          }}
-                        >
-                          {isEnglish ? 'Coming Soon' : 'Bientôt'}
-                        </div>
-                      )}
                       
                       <div className="flex items-start gap-3">
                         {React.createElement(card.icon, { className: "w-6 h-6 flex-shrink-0 mt-1", style: { color: '#1a1a1a' } })}
@@ -457,11 +445,24 @@ export default function ToolPage({
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
                 >
-                  <h3 className="text-2xl font-bold mb-4" style={{ color: 'white' }}>
-                    {isEnglish 
-                      ? benefitCards.find(c => c.concept === selectedCard)?.titleEn
-                      : benefitCards.find(c => c.concept === selectedCard)?.titleFr}
-                  </h3>
+                  <div className="flex items-center gap-3 mb-4">
+                    <h3 className="text-2xl font-bold" style={{ color: 'white' }}>
+                      {isEnglish 
+                        ? benefitCards.find(c => c.concept === selectedCard)?.titleEn
+                        : benefitCards.find(c => c.concept === selectedCard)?.titleFr}
+                    </h3>
+                    {selectedCard === 'predict' && (
+                      <span 
+                        className="px-3 py-1 rounded-md text-xs font-semibold whitespace-nowrap"
+                        style={{ 
+                          backgroundColor: benefitCards.find(c => c.concept === selectedCard)?.color,
+                          color: '#1a1a1a'
+                        }}
+                      >
+                        {isEnglish ? 'Coming Soon' : 'Bientôt'}
+                      </span>
+                    )}
+                  </div>
                   <p className="text-base leading-relaxed" style={{ color: 'white', opacity: 0.9 }}>
                     {isEnglish 
                       ? benefitCards.find(c => c.concept === selectedCard)?.explanationEn
