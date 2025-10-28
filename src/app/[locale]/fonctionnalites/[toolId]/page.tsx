@@ -303,7 +303,7 @@ export default function ToolPage({
           />
 
           {/* Contenu */}
-          <div className="relative z-10">
+          <div className="relative z-10 py-16 md:py-24">
             <div className="max-w-7xl mx-auto">
               {/* Titre */}
               <motion.h2
