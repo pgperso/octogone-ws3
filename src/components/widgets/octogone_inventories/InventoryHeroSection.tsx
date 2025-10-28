@@ -9,7 +9,7 @@ import { RECIPE_ACCESS_CONFIG } from '@/config/recipe-access';
 import { trackRecipeAccessRequest, trackRecipeAccessUnlocked } from '@/lib/tracking/hubspot-events';
 import inventoryData from '@/data/products/octogone_products_data.json';
 import { translateProduct } from '@/data/products/octogone_products_translations';
-// import { CircularProgress } from '../octogone_recipe/CircularProgress';
+import { CircularProgress } from '../octogone_recipe/CircularProgress';
 
 interface InventoryHeroSectionProps {
   inventoryName: string;
@@ -276,10 +276,14 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
               </div>
 
               {/* Colonne droite : Progress Bar */}
-              <div className="flex items-center justify-end pr-6" style={{ backgroundColor: 'rgba(255, 0, 0, 0.3)' }}>
-                <div style={{ width: '200px', height: '200px', backgroundColor: 'blue', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '24px', fontWeight: 'bold' }}>
-                  TEST
-                </div>
+              <div className="flex items-center justify-center">
+                <CircularProgress
+                  progress={displayProgress}
+                  size={200}
+                  strokeWidth={8}
+                  showPercentage={true}
+                  percentageLabel={isEnglish ? 'completed' : 'complété'}
+                />
               </div>
             </div>
           </div>
