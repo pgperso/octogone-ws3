@@ -50,8 +50,6 @@ const getImageSrc = (image: ToolFeature['image'], isEnglish: boolean): string | 
   return isEnglish ? image.src : (image.srcFr || image.src);
 };
 
-// Couleurs pastel pour la barre de progression
-const progressColors = ['#B8E0D2', '#B4D4FF', '#FFE5B4', '#C8B6FF'];
 
 // Composant réutilisable pour les badges de concepts
 function ConceptBadges({ concepts, isEnglish, justify = 'center' }: { 
@@ -228,10 +226,6 @@ function ImageTextFeature({ feature, isEnglish, imageSrc, imageOnLeft }: {
   imageSrc: string | null;
   imageOnLeft: boolean;
 }) {
-  // Générer un index stable basé sur le titre pour cohérence
-  const featureIndex = feature.titleEn.length % progressColors.length;
-  const progressColor = progressColors[featureIndex];
-
   return (
     <motion.div 
       className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center motion-element"
@@ -242,14 +236,13 @@ function ImageTextFeature({ feature, isEnglish, imageSrc, imageOnLeft }: {
     >
       {/* Image */}
       <div className={imageOnLeft ? 'lg:order-1' : 'lg:order-2'}>
-        <div className="space-y-3">
-          <motion.div
-            className="rounded-2xl motion-element shadow-lg overflow-hidden"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
+        <motion.div
+          className="rounded-2xl motion-element shadow-lg overflow-hidden"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
             {imageSrc ? (
               <img 
                 src={imageSrc}
@@ -267,36 +260,7 @@ function ImageTextFeature({ feature, isEnglish, imageSrc, imageOnLeft }: {
               </div>
             </div>
           )}
-          </motion.div>
-          
-          {/* Widget de progression - Subtil et intrigant */}
-          <motion.div
-            className="px-3 py-2 rounded-lg flex items-center gap-3"
-            style={{ backgroundColor: 'rgba(0, 0, 0, 0.03)' }}
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
-            <span className="text-xs font-medium whitespace-nowrap" style={{ color: 'var(--on-surface-variant)', opacity: 0.7 }}>
-              {isEnglish ? 'New version in preparation' : 'Nouvelle version en préparation'}
-            </span>
-            <div className="flex-1 h-1.5 bg-gray-200 rounded-full overflow-hidden">
-              <motion.div
-                className="h-full rounded-full"
-                style={{ backgroundColor: progressColor }}
-                animate={{ 
-                  width: ['60%', '100%', '60%']
-                }}
-                transition={{ 
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-            </div>
-          </motion.div>
-        </div>
+        </motion.div>
       </div>
       
       {/* Contenu */}
