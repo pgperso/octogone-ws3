@@ -2,8 +2,10 @@
 
 import * as React from "react";
 import { motion } from "framer-motion";
+import { useParams } from "next/navigation";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { Play, Zap, TrendingUp, Sparkles } from "lucide-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { ResponsiveSection } from "@/components/ui/responsive-section";
 import ToolDetailWidget from "@/components/widgets/tool-detail-widget";
@@ -36,51 +38,63 @@ export default function ToolPage({
   // Couleurs pour le hero food-cost
   const heroTextColor = toolId === 'food-cost' ? '#1a1a1a' : 'white';
   
-  // Configuration des 4 cartes bénéfices pour food-cost avec statistiques
+  // Configuration des 4 cartes bénéfices pour food-cost avec icônes, statistiques et textes explicatifs
   const benefitCards = [
     {
       concept: 'operate',
+      icon: Play,
       color: 'rgba(184, 224, 210, 0.85)',
       border: '#A5CABE',
       titleFr: 'Standardiser les recettes',
       titleEn: 'Standardize Recipes',
-      descFr: 'Créez des fiches techniques détaillées avec ingrédients, quantités et étapes de préparation',
-      descEn: 'Create detailed recipe sheets with ingredients, quantities and preparation steps',
-      statFr: '10-15h économisées par semaine',
-      statEn: '10-15h saved per week'
+      descFr: 'Fiches techniques avec ingrédients et portions',
+      descEn: 'Recipe cards with ingredients and portions',
+      statFr: '10-15h économisées',
+      statEn: '10-15h saved',
+      explanationFr: 'Les restaurants passent en moyenne 12 heures par semaine à recalculer manuellement les coûts de recettes quand les prix changent. Avec des fiches techniques standardisées, vous éliminez cette tâche répétitive. Chaque recette devient un document de référence précis que toute votre équipe peut suivre, garantissant la cohérence des portions et la maîtrise des coûts. C\'est la base pour contrôler votre food cost.',
+      explanationEn: 'Restaurants spend an average of 12 hours per week manually recalculating recipe costs when prices change. With standardized recipe cards, you eliminate this repetitive task. Each recipe becomes a precise reference document that your entire team can follow, ensuring portion consistency and cost control. It\'s the foundation for controlling your food cost.'
     },
     {
       concept: 'automate',
+      icon: Zap,
       color: 'rgba(180, 212, 255, 0.85)',
       border: '#A1C7FF',
-      titleFr: 'Calcul automatique des coûts',
-      titleEn: 'Auto-Calculate Costs',
-      descFr: 'Changez un prix, toutes vos recettes se mettent à jour instantanément. Zéro recalcul manuel',
-      descEn: 'Change one price, all your recipes update instantly. Zero manual recalculation',
-      statFr: '100% des recettes mises à jour instantanément',
-      statEn: '100% of recipes updated instantly'
+      titleFr: 'Mises à jour instantanées',
+      titleEn: 'Instant Updates',
+      descFr: 'Un prix change, tout se recalcule automatiquement',
+      descEn: 'One price changes, everything recalculates automatically',
+      statFr: '100% automatisé',
+      statEn: '100% automated',
+      explanationFr: 'Quand le prix d\'un fournisseur augmente, l\'impact se propage à toutes vos recettes concernées en temps réel. Plus besoin de passer des heures à identifier quels plats sont affectés et à recalculer leurs coûts. Le système détecte automatiquement les changements de prix et met à jour l\'ensemble de vos fiches techniques instantanément, vous permettant de réagir rapidement et d\'ajuster vos prix de vente si nécessaire.',
+      explanationEn: 'When a supplier price increases, the impact propagates to all affected recipes in real-time. No more spending hours identifying which dishes are affected and recalculating their costs. The system automatically detects price changes and updates all your recipe cards instantly, allowing you to react quickly and adjust your selling prices if needed.'
     },
     {
       concept: 'analyze',
+      icon: TrendingUp,
       color: 'rgba(255, 229, 180, 0.85)',
       border: '#F5D89E',
-      titleFr: 'Food Cost en temps réel',
-      titleEn: 'Real-Time Food Cost',
-      descFr: 'Connaissez votre food cost % et profit brut exacts sur chaque plat instantanément',
-      descEn: 'Know your exact food cost % and gross profit on every dish instantly',
-      statFr: '2-5% de réduction des coûts',
-      statEn: '2-5% cost reduction'
+      titleFr: 'Visibilité totale des coûts',
+      titleEn: 'Complete Cost Visibility',
+      descFr: 'Food cost % exact sur chaque plat',
+      descEn: 'Exact food cost % on every dish',
+      statFr: '2-5% de réduction',
+      statEn: '2-5% reduction',
+      explanationFr: 'Les restaurants qui ne suivent pas leurs coûts précisément perdent en moyenne 3-4% de leur chiffre d\'affaires en gaspillage et portions excessives. En connaissant le food cost exact de chaque plat, vous identifiez immédiatement les recettes non rentables, détectez les écarts de portions, et repérez le gaspillage. Cette visibilité vous permet d\'optimiser votre menu et de protéger vos marges.',
+      explanationEn: 'Restaurants that don\'t track their costs precisely lose an average of 3-4% of revenue to waste and over-portioning. By knowing the exact food cost of each dish, you immediately identify unprofitable recipes, detect portion variances, and spot waste. This visibility allows you to optimize your menu and protect your margins.'
     },
     {
       concept: 'predict',
+      icon: Sparkles,
       color: 'rgba(200, 182, 255, 0.85)',
       border: '#B8A5F0',
-      titleFr: 'Recommandations intelligentes',
-      titleEn: 'Smart Recommendations',
-      descFr: 'Recevez des suggestions IA pour optimiser vos marges et améliorer votre rentabilité',
-      descEn: 'Get AI-powered suggestions to optimize your margins and improve profitability',
-      statFr: '8-10% d’amélioration des marges',
-      statEn: '8-10% margin improvement'
+      titleFr: 'Optimisation intelligente',
+      titleEn: 'Smart Optimization',
+      descFr: 'Suggestions pour améliorer vos marges',
+      descEn: 'Suggestions to improve your margins',
+      statFr: '8-10% de gain',
+      statEn: '8-10% gain',
+      explanationFr: 'L\'analyse de milliers de restaurants montre que des ajustements ciblés sur les recettes à fort volume peuvent améliorer les marges de 8-10%. Le système identifie vos opportunités : substitutions d\'ingrédients moins coûteux sans impact qualité, ajustements de portions sur les plats à faible marge, et optimisation du mix produit. Ces recommandations sont basées sur vos données réelles et votre positionnement.',
+      explanationEn: 'Analysis of thousands of restaurants shows that targeted adjustments on high-volume recipes can improve margins by 8-10%. The system identifies your opportunities: less expensive ingredient substitutions without quality impact, portion adjustments on low-margin dishes, and product mix optimization. These recommendations are based on your actual data and positioning.'
     }
   ];
   
@@ -327,12 +341,17 @@ export default function ToolPage({
                       transition={{ duration: 0.5, delay: 0.1 + (index * 0.1) }}
                       onClick={() => setSelectedCard(card.concept)}
                     >
-                      <h3 className="text-lg font-bold mb-3" style={{ color: '#1a1a1a' }}>
-                        {isEnglish ? card.titleEn : card.titleFr}
-                      </h3>
-                      <p className="text-sm" style={{ color: '#1a1a1a', opacity: 0.85 }}>
-                        {isEnglish ? card.descEn : card.descFr}
-                      </p>
+                      <div className="flex items-start gap-3">
+                        {React.createElement(card.icon, { className: "w-6 h-6 flex-shrink-0 mt-1", style: { color: card.border } })}
+                        <div>
+                          <h3 className="text-lg font-bold mb-2" style={{ color: '#1a1a1a' }}>
+                            {isEnglish ? card.titleEn : card.titleFr}
+                          </h3>
+                          <p className="text-sm" style={{ color: '#1a1a1a', opacity: 0.85 }}>
+                            {isEnglish ? card.descEn : card.descFr}
+                          </p>
+                        </div>
+                      </div>
                     </motion.div>
                   );
                 })}
@@ -433,8 +452,8 @@ export default function ToolPage({
                   </h3>
                   <p className="text-base leading-relaxed" style={{ color: 'white', opacity: 0.9 }}>
                     {isEnglish 
-                      ? benefitCards.find(c => c.concept === selectedCard)?.descEn
-                      : benefitCards.find(c => c.concept === selectedCard)?.descFr}
+                      ? benefitCards.find(c => c.concept === selectedCard)?.explanationEn
+                      : benefitCards.find(c => c.concept === selectedCard)?.explanationFr}
                   </p>
                 </motion.div>
               </div>
