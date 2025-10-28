@@ -303,10 +303,22 @@ function ThreeColumnsFeature({ feature, isEnglish }: { feature: ToolFeature; isE
 
 // Composant pour 2 colonnes (à implémenter)
 function TwoColumnsFeature({ feature, isEnglish }: { feature: ToolFeature; isEnglish: boolean }) {
-  return <div>Two columns - TODO</div>;
+  // TODO: Implémenter le layout 2 colonnes
+  return (
+    <div className="text-center p-8">
+      <p className="text-sm text-gray-500">Layout 2 colonnes - À implémenter</p>
+      <p className="text-xs text-gray-400 mt-2">{isEnglish ? feature.titleEn : feature.titleFr}</p>
+    </div>
+  );
 }
 
 // Composant pour texte seul (à implémenter)
 function TextOnlyFeature({ feature, isEnglish }: { feature: ToolFeature; isEnglish: boolean }) {
-  return <div>Text only - TODO</div>;
+  // TODO: Implémenter le layout texte seul
+  return (
+    <div className="text-center p-8">
+      <p className="text-sm text-gray-500">Layout texte seul - À implémenter</p>
+      <p className="text-xs text-gray-400 mt-2">{isEnglish ? feature.titleEn : feature.titleFr}</p>
+    </div>
+  );
 }
