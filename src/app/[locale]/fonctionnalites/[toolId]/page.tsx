@@ -269,14 +269,9 @@ export default function ToolPage({
 
       {/* Section Bénéfices avec Parallaxe - Uniquement pour Food Cost */}
       {toolId === 'food-cost' && (
-        <ResponsiveSection 
-          spacing="xxl" 
-          style={{
-            backgroundColor: '#1a1a1a'
-          }}
-        >
+        <div className="py-16 md:py-24">
           {/* Wrapper avec petit padding horizontal et radius pour effet flottant */}
-          <div className="relative px-2 md:px-3">
+          <div className="relative px-3 md:px-4">
             <div className="relative rounded-2xl overflow-hidden">
               {/* Images en split screen 50/50 */}
               <div className="absolute inset-0" style={{ zIndex: 0 }}>
@@ -520,7 +515,7 @@ export default function ToolPage({
           </div>
             </div>
           </div>
-        </ResponsiveSection>
+        </div>
       )}
 
       {/* Features Section - Widget réutilisable */}
