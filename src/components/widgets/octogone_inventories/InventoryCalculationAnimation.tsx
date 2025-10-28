@@ -31,29 +31,66 @@ export const InventoryCalculationAnimation: React.FC<InventoryCalculationAnimati
   const isEnglish = locale === 'en';
   const [displayProgress, setDisplayProgress] = useState(0);
   const [visibleTags, setVisibleTags] = useState<number[]>([]);
+  const scrollContainerRef = React.useRef<HTMLDivElement>(null);
 
-  // Récupérer les mêmes produits que le Hero
+  // Liste des produits inventoriés (même liste que dans OctogoneInventoryWidget)
+  const initialInventory = [
+    { productId: 'prod-022', quantity: 25 },
+    { productId: 'prod-032', quantity: 15 },
+    { productId: 'prod-037', quantity: 20 },
+    { productId: 'prod-025', quantity: 5 },
+    { productId: 'prod-039', quantity: 2 },
+    { productId: 'prod-041', quantity: 10 },
+    { productId: 'prod-009', quantity: 3 },
+    { productId: 'prod-017', quantity: 2 },
+    { productId: 'prod-023', quantity: 30 },
+    { productId: 'prod-049', quantity: 8 },
+    { productId: 'prod-050', quantity: 12 },
+    { productId: 'prod-057', quantity: 5 },
+    { productId: 'prod-008', quantity: 8 },
+    { productId: 'prod-028', quantity: 20 },
+    { productId: 'prod-031', quantity: 15 },
+    { productId: 'prod-013', quantity: 10 },
+    { productId: 'prod-043', quantity: 8 },
+    { productId: 'prod-029', quantity: 5 },
+    { productId: 'prod-004', quantity: 12 },
+  ];
+
   const allProducts = inventoryData.products as InventoryProduct[];
   const totalProductCount = allProducts.length;
   
-  const inventoryProducts = allProducts
-    .filter(p => p.initialQuantity && p.initialQuantity > 0)
-    .slice(0, 5)
-    .map((p, index) => ({
+  // Mapper les produits inventoriés avec leurs infos complètes
+  const inventoryProducts = initialInventory.map((item, index) => {
+    const product = allProducts.find(p => p.id === item.productId);
+    return {
       id: index + 1,
-      productId: p.id,
-      name: p.name,
-      quantity: p.initialQuantity!,
-      unit: p.unit
-    }));
+      productId: item.productId,
+      name: product?.name || '',
+      quantity: item.quantity,
+      unit: product?.unit || ''
+    };
+  }).filter(p => p.name); // Filtrer les produits non trouvés
 
   const currentProgress = (visibleTags.length / totalProductCount) * 100;
 
-  // Tous les tags sont déjà visibles au départ (on garde l'état du Hero)
+  // Animation séquentielle des produits (un par un)
   useEffect(() => {
-    setVisibleTags(inventoryProducts.map(p => p.id));
+    const delay = 80; // 80ms entre chaque produit
+    const timers = inventoryProducts.map((product, index) => 
+      setTimeout(() => {
+        setVisibleTags(prev => [...prev, product.id]);
+      }, index * delay)
+    );
+    return () => timers.forEach(clearTimeout);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Scroll automatique pour suivre les nouveaux produits
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight;
+    }
+  }, [visibleTags]);
 
   // Animation du pourcentage de currentProgress vers 100%
   useEffect(() => {
@@ -109,9 +146,9 @@ export const InventoryCalculationAnimation: React.FC<InventoryCalculationAnimati
             
             {/* Layout en 2 colonnes sur l'image */}
             <div className="absolute inset-0 grid grid-cols-2 p-6">
-              {/* Colonne gauche : Badges en liste verticale */}
-              <div className="flex flex-col justify-center space-y-3">
-                {inventoryProducts.map((tag) => (
+              {/* Colonne gauche : Badges en liste verticale avec scroll */}
+              <div ref={scrollContainerRef} className="flex flex-col space-y-3 overflow-y-auto pr-2" style={{ maxHeight: '550px' }}>
+                {inventoryProducts.filter(tag => visibleTags.includes(tag.id)).map((tag) => (
                   <div key={tag.id}>
                     <div 
                       className="flex items-center gap-3 p-3 rounded-lg backdrop-blur-sm"
