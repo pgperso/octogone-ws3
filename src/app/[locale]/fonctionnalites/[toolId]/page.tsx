@@ -114,10 +114,10 @@ export default function ToolPage({
       titleEn: 'Collaborative Inventory',
       descFr: 'Plusieurs équipes en simultané',
       descEn: 'Multiple teams simultaneously',
-      statFr: '70% plus rapide',
-      statEn: '70% faster',
-      explanationFr: 'L\'inventaire manuel traditionnel prend 3-5 heures pour un restaurant moyen. Avec la saisie collaborative et le mode hors ligne, plusieurs membres de l\'équipe comptent simultanément dans différentes zones. Un inventaire complet se fait maintenant en 45-90 minutes. Cette rapidité permet des comptages plus fréquents, améliorant la précision et la réactivité face aux écarts.',
-      explanationEn: 'Traditional manual inventory takes 3-5 hours for an average restaurant. With collaborative entry and offline mode, multiple team members count simultaneously in different zones. A complete inventory now takes 45-90 minutes. This speed enables more frequent counts, improving accuracy and responsiveness to variances.'
+      statFr: '65% plus rapide',
+      statEn: '65% faster',
+      explanationFr: 'L\'inventaire manuel traditionnel prend 3-4 heures pour un restaurant moyen. Avec la saisie collaborative et le mode hors ligne, plusieurs membres de l\'équipe comptent simultanément dans différentes zones. Un inventaire complet se fait maintenant en 50-80 minutes. Cette rapidité permet des comptages plus fréquents, améliorant la précision et la réactivité face aux écarts.',
+      explanationEn: 'Traditional manual inventory takes 3-4 hours for an average restaurant. With collaborative entry and offline mode, multiple team members count simultaneously in different zones. A complete inventory now takes 50-80 minutes. This speed enables more frequent counts, improving accuracy and responsiveness to variances.'
     },
     {
       concept: 'automate',
@@ -128,8 +128,8 @@ export default function ToolPage({
       titleEn: 'Real-Time Alerts',
       descFr: 'Détection instantanée des seuils',
       descEn: 'Instant threshold detection',
-      statFr: '100% des ruptures',
-      statEn: '100% of shortages',
+      statFr: '95% des ruptures',
+      statEn: '95% of shortages',
       explanationFr: 'Les ruptures de stock coûtent cher : ventes perdues, clients déçus, substitutions d\'urgence. Le système détecte automatiquement les produits sous leur seuil minimum pendant l\'inventaire et génère immédiatement des bons de commande ou de production. Vous agissez en temps réel au lieu d\'attendre la fin du comptage, éliminant les ruptures évitables.',
       explanationEn: 'Stock shortages are costly: lost sales, disappointed customers, emergency substitutions. The system automatically detects products below minimum threshold during inventory and immediately generates purchase or production orders. You act in real-time instead of waiting for count completion, eliminating avoidable shortages.'
     },
@@ -142,10 +142,10 @@ export default function ToolPage({
       titleEn: 'Waste Reduction',
       descFr: 'Écarts physique vs théorique',
       descEn: 'Physical vs theoretical variances',
-      statFr: '2-5% de coûts',
-      statEn: '2-5% of costs',
-      explanationFr: 'Les restaurants qui ne comparent pas leur inventaire physique avec leur inventaire théorique perdent 2-5% de leur chiffre d\'affaires en gaspillage non détecté, sur-portions et pertes. En identifiant précisément les écarts, vous détectez rapidement les problèmes de portions, les erreurs de recettes, et les zones de gaspillage, protégeant directement vos marges.',
-      explanationEn: 'Restaurants that don\'t compare physical inventory with theoretical inventory lose 2-5% of revenue to undetected waste, over-portioning and losses. By precisely identifying variances, you quickly detect portion problems, recipe errors, and waste areas, directly protecting your margins.'
+      statFr: '3-6% de coûts',
+      statEn: '3-6% of costs',
+      explanationFr: 'Les restaurants qui ne comparent pas leur inventaire physique avec leur inventaire théorique perdent 3-6% de leur chiffre d\'affaires en gaspillage non détecté, sur-portions et pertes. En identifiant précisément les écarts, vous détectez rapidement les problèmes de portions, les erreurs de recettes, et les zones de gaspillage, protégeant directement vos marges.',
+      explanationEn: 'Restaurants that don\'t compare physical inventory with theoretical inventory lose 3-6% of revenue to undetected waste, over-portioning and losses. By precisely identifying variances, you quickly detect portion problems, recipe errors, and waste areas, directly protecting your margins.'
     },
     {
       concept: 'predict',
@@ -156,10 +156,10 @@ export default function ToolPage({
       titleEn: 'Smart Forecasting',
       descFr: 'Commandes optimisées automatiquement',
       descEn: 'Automatically optimized orders',
-      statFr: '15-20% de stock',
-      statEn: '15-20% of stock',
-      explanationFr: 'Le sur-stockage immobilise du capital et augmente le risque de péremption. Le sous-stockage cause des ruptures et des ventes perdues. En analysant vos historiques de ventes et vos tendances, le système suggère les quantités optimales à commander, réduisant votre stock moyen de 15-20% tout en maintenant la disponibilité. Moins de capital immobilisé, moins de gaspillage.',
-      explanationEn: 'Over-stocking ties up capital and increases spoilage risk. Under-stocking causes shortages and lost sales. By analyzing your sales history and trends, the system suggests optimal order quantities, reducing your average stock by 15-20% while maintaining availability. Less tied-up capital, less waste.'
+      statFr: '18-25% de stock',
+      statEn: '18-25% of stock',
+      explanationFr: 'Le sur-stockage immobilise du capital et augmente le risque de péremption. Le sous-stockage cause des ruptures et des ventes perdues. En analysant vos historiques de ventes et vos tendances, le système suggère les quantités optimales à commander, réduisant votre stock moyen de 18-25% tout en maintenant la disponibilité. Moins de capital immobilisé, moins de gaspillage.',
+      explanationEn: 'Over-stocking ties up capital and increases spoilage risk. Under-stocking causes shortages and lost sales. By analyzing your sales history and trends, the system suggests optimal order quantities, reducing your average stock by 18-25% while maintaining availability. Less tied-up capital, less waste.'
     }
   ];
 
@@ -490,9 +490,9 @@ export default function ToolPage({
                             <div className="text-center">
                               <div className="text-2xl font-bold" style={{ color: '#1a1a1a' }}>
                                 {isInventaire
-                                  ? (selectedCard === 'operate' ? '70%' : 
-                                     selectedCard === 'automate' ? '100%' :
-                                     selectedCard === 'analyze' ? '2-5%' : '15-20%')
+                                  ? (selectedCard === 'operate' ? '65%' : 
+                                     selectedCard === 'automate' ? '95%' :
+                                     selectedCard === 'analyze' ? '3-6%' : '18-25%')
                                   : (selectedCard === 'operate' ? '50%' : 
                                      selectedCard === 'automate' ? '100%' :
                                      selectedCard === 'analyze' ? '2-5%' : '8-10%')
@@ -753,9 +753,9 @@ export default function ToolPage({
                       <div className="text-center">
                         <div className="text-2xl font-bold" style={{ color: '#1a1a1a' }}>
                           {isInventaire
-                            ? (selectedCard === 'operate' ? '70%' : 
-                               selectedCard === 'automate' ? '100%' :
-                               selectedCard === 'analyze' ? '2-5%' : '15-20%')
+                            ? (selectedCard === 'operate' ? '65%' : 
+                               selectedCard === 'automate' ? '95%' :
+                               selectedCard === 'analyze' ? '3-6%' : '18-25%')
                             : (selectedCard === 'operate' ? '50%' : 
                                selectedCard === 'automate' ? '100%' :
                                selectedCard === 'analyze' ? '2-5%' : '8-10%')
