@@ -21,7 +21,6 @@ type AccessState = 'email' | 'code' | 'unlocked';
 
 export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
   inventoryName,
-  inventoryImage,
   description,
   onCalculateClick,
   locale = 'fr'
