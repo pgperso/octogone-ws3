@@ -268,7 +268,7 @@ export default function ToolDetailWidget({ tool, locale }: ToolDetailWidgetProps
                                     <img 
                                       src={isEnglish ? '/images/pages/product_list_en.avif' : '/images/pages/product_list_fr.avif'}
                                       alt={isEnglish ? singleFeature.titleEn : singleFeature.titleFr}
-                                      className="w-full h-auto max-w-md mx-auto"
+                                      className="w-full h-auto"
                                     />
                                   ) : (
                                     /* Placeholder pour les autres features */
