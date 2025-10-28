@@ -278,29 +278,28 @@ function ImageTextFeature({ feature, isEnglish, imageSrc, imageOnLeft }: {
           
           {/* Widget de progression - Subtil et intrigant */}
           <motion.div
-            className="px-3 py-2 rounded-lg"
+            className="px-3 py-2 rounded-lg flex items-center gap-3"
             style={{ backgroundColor: 'rgba(0, 0, 0, 0.03)' }}
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <div className="flex items-center justify-between mb-1.5">
-              <span className="text-xs font-medium" style={{ color: 'var(--on-surface-variant)', opacity: 0.7 }}>
-                {isEnglish ? 'New version in preparation' : 'Nouvelle version en préparation'}
-              </span>
-              <span className="text-xs font-bold" style={{ color: progressColor }}>
-                {progressValue}%
-              </span>
-            </div>
-            <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
+            <span className="text-xs font-medium whitespace-nowrap" style={{ color: 'var(--on-surface-variant)', opacity: 0.7 }}>
+              {isEnglish ? 'New version in preparation' : 'Nouvelle version en préparation'}
+            </span>
+            <div className="flex-1 h-1.5 bg-gray-200 rounded-full overflow-hidden">
               <motion.div
                 className="h-full rounded-full"
                 style={{ backgroundColor: progressColor }}
-                initial={{ width: 0 }}
-                whileInView={{ width: `${progressValue}%` }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.2, delay: 0.8, ease: "easeOut" }}
+                animate={{ 
+                  width: ['60%', '100%', '60%']
+                }}
+                transition={{ 
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
               />
             </div>
           </motion.div>
