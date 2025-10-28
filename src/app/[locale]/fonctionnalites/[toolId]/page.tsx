@@ -39,34 +39,34 @@ export default function ToolPage({
   // Couleurs pour le hero food-cost
   const heroTextColor = toolId === 'food-cost' ? '#1a1a1a' : 'white';
   
-  // Configuration des 4 cartes bénéfices pour food-cost avec icônes, statistiques et textes explicatifs
-  const benefitCards = [
+  // Cartes de bénéfices - Food Cost
+  const foodCostBenefitCards = [
     {
       concept: 'operate',
       icon: Play,
       color: 'rgba(184, 224, 210, 0.85)',
       border: '#A5CABE',
-      titleFr: 'Standardiser les recettes',
-      titleEn: 'Standardize Recipes',
-      descFr: 'Fiches techniques avec ingrédients et portions',
-      descEn: 'Recipe cards with ingredients and portions',
-      statFr: '10-15h économisées',
-      statEn: '10-15h saved',
-      explanationFr: 'Les restaurants passent en moyenne 12 heures par semaine à recalculer manuellement les coûts de recettes quand les prix changent. Avec des fiches techniques standardisées, vous éliminez cette tâche répétitive. Chaque recette devient un document de référence précis que toute votre équipe peut suivre, garantissant la cohérence des portions et la maîtrise des coûts. C\'est la base pour contrôler votre food cost.',
-      explanationEn: 'Restaurants spend an average of 12 hours per week manually recalculating recipe costs when prices change. With standardized recipe cards, you eliminate this repetitive task. Each recipe becomes a precise reference document that your entire team can follow, ensuring portion consistency and cost control. It\'s the foundation for controlling your food cost.'
+      titleFr: 'Standardisation complète',
+      titleEn: 'Complete Standardization',
+      descFr: 'Recettes unifiées pour tous',
+      descEn: 'Unified recipes for everyone',
+      statFr: '50% de temps économisé',
+      statEn: '50% time saved',
+      explanationFr: 'La création manuelle de fiches recettes prend en moyenne 15-20 minutes par recette. Avec un catalogue centralisé de produits et des outils de création rapide, vous créez une fiche complète en 5-7 minutes. Pour un restaurant avec 80 recettes, cela représente 16-20 heures économisées. De plus, toute modification se propage instantanément à toutes les équipes, éliminant les versions obsolètes et les erreurs de communication.',
+      explanationEn: 'Manual recipe card creation takes an average of 15-20 minutes per recipe. With a centralized product catalog and quick creation tools, you create a complete card in 5-7 minutes. For a restaurant with 80 recipes, this represents 16-20 hours saved. Additionally, any modification instantly propagates to all teams, eliminating outdated versions and communication errors.'
     },
     {
       concept: 'automate',
       icon: Zap,
       color: 'rgba(180, 212, 255, 0.85)',
-      border: '#A1C7FF',
-      titleFr: 'Mises à jour instantanées',
-      titleEn: 'Instant Updates',
-      descFr: 'Un prix change, tout se recalcule automatiquement',
-      descEn: 'One price changes, everything recalculates automatically',
-      statFr: '100% automatisé',
-      statEn: '100% automated',
-      explanationFr: 'Quand le prix d\'un fournisseur augmente, l\'impact se propage à toutes vos recettes concernées en temps réel. Plus besoin de passer des heures à identifier quels plats sont affectés et à recalculer leurs coûts. Le système détecte automatiquement les changements de prix et met à jour l\'ensemble de vos fiches techniques instantanément, vous permettant de réagir rapidement et d\'ajuster vos prix de vente si nécessaire.',
+      border: '#A5C4E6',
+      titleFr: 'Mise à jour automatique',
+      titleEn: 'Automatic Updates',
+      descFr: 'Prix fournisseurs → Recettes en temps réel',
+      descEn: 'Supplier prices → Recipes in real-time',
+      statFr: '100% des recettes',
+      statEn: '100% of recipes',
+      explanationFr: 'Lorsqu\'un prix fournisseur augmente, l\'impact se propage à toutes les recettes concernées en temps réel. Plus besoin de passer des heures à identifier quels plats sont affectés et à recalculer leurs coûts. Le système détecte automatiquement les changements de prix et met à jour toutes vos fiches recettes instantanément, vous permettant de réagir rapidement et d\'ajuster vos prix de vente si nécessaire.',
       explanationEn: 'When a supplier price increases, the impact propagates to all affected recipes in real-time. No more spending hours identifying which dishes are affected and recalculating their costs. The system automatically detects price changes and updates all your recipe cards instantly, allowing you to react quickly and adjust your selling prices if needed.'
     },
     {
@@ -98,6 +98,69 @@ export default function ToolPage({
       explanationEn: 'Analysis of thousands of restaurants shows that targeted adjustments on high-volume recipes can improve margins by 8-10%. The system identifies your opportunities: less expensive ingredient substitutions without quality impact, portion adjustments on low-margin dishes, and product mix optimization. These recommendations are based on your actual data and positioning.'
     }
   ];
+
+  // Cartes de bénéfices - Inventaire
+  const inventaireBenefitCards = [
+    {
+      concept: 'operate',
+      icon: Play,
+      color: 'rgba(184, 224, 210, 0.85)',
+      border: '#A5CABE',
+      titleFr: 'Inventaire collaboratif',
+      titleEn: 'Collaborative Inventory',
+      descFr: 'Plusieurs équipes en simultané',
+      descEn: 'Multiple teams simultaneously',
+      statFr: '70% plus rapide',
+      statEn: '70% faster',
+      explanationFr: 'L\'inventaire manuel traditionnel prend 3-5 heures pour un restaurant moyen. Avec la saisie collaborative et le mode hors ligne, plusieurs membres de l\'équipe comptent simultanément dans différentes zones. Un inventaire complet se fait maintenant en 45-90 minutes. Cette rapidité permet des comptages plus fréquents, améliorant la précision et la réactivité face aux écarts.',
+      explanationEn: 'Traditional manual inventory takes 3-5 hours for an average restaurant. With collaborative entry and offline mode, multiple team members count simultaneously in different zones. A complete inventory now takes 45-90 minutes. This speed enables more frequent counts, improving accuracy and responsiveness to variances.'
+    },
+    {
+      concept: 'automate',
+      icon: Zap,
+      color: 'rgba(180, 212, 255, 0.85)',
+      border: '#A5C4E6',
+      titleFr: 'Alertes en temps réel',
+      titleEn: 'Real-Time Alerts',
+      descFr: 'Détection instantanée des seuils',
+      descEn: 'Instant threshold detection',
+      statFr: '100% des ruptures',
+      statEn: '100% of shortages',
+      explanationFr: 'Les ruptures de stock coûtent cher : ventes perdues, clients déçus, substitutions d\'urgence. Le système détecte automatiquement les produits sous leur seuil minimum pendant l\'inventaire et génère immédiatement des bons de commande ou de production. Vous agissez en temps réel au lieu d\'attendre la fin du comptage, éliminant les ruptures évitables.',
+      explanationEn: 'Stock shortages are costly: lost sales, disappointed customers, emergency substitutions. The system automatically detects products below minimum threshold during inventory and immediately generates purchase or production orders. You act in real-time instead of waiting for count completion, eliminating avoidable shortages.'
+    },
+    {
+      concept: 'analyze',
+      icon: TrendingUp,
+      color: 'rgba(255, 229, 180, 0.85)',
+      border: '#F5D89E',
+      titleFr: 'Réduction du gaspillage',
+      titleEn: 'Waste Reduction',
+      descFr: 'Écarts physique vs théorique',
+      descEn: 'Physical vs theoretical variances',
+      statFr: '2-5% de coûts',
+      statEn: '2-5% of costs',
+      explanationFr: 'Les restaurants qui ne comparent pas leur inventaire physique avec leur inventaire théorique perdent 2-5% de leur chiffre d\'affaires en gaspillage non détecté, sur-portions et pertes. En identifiant précisément les écarts, vous détectez rapidement les problèmes de portions, les erreurs de recettes, et les zones de gaspillage, protégeant directement vos marges.',
+      explanationEn: 'Restaurants that don\'t compare physical inventory with theoretical inventory lose 2-5% of revenue to undetected waste, over-portioning and losses. By precisely identifying variances, you quickly detect portion problems, recipe errors, and waste areas, directly protecting your margins.'
+    },
+    {
+      concept: 'predict',
+      icon: Sparkles,
+      color: 'rgba(200, 182, 255, 0.85)',
+      border: '#B8A5F0',
+      titleFr: 'Prévisions intelligentes',
+      titleEn: 'Smart Forecasting',
+      descFr: 'Commandes optimisées automatiquement',
+      descEn: 'Automatically optimized orders',
+      statFr: '15-20% de stock',
+      statEn: '15-20% of stock',
+      explanationFr: 'Le sur-stockage immobilise du capital et augmente le risque de péremption. Le sous-stockage cause des ruptures et des ventes perdues. En analysant vos historiques de ventes et vos tendances, le système suggère les quantités optimales à commander, réduisant votre stock moyen de 15-20% tout en maintenant la disponibilité. Moins de capital immobilisé, moins de gaspillage.',
+      explanationEn: 'Over-stocking ties up capital and increases spoilage risk. Under-stocking causes shortages and lost sales. By analyzing your sales history and trends, the system suggests optimal order quantities, reducing your average stock by 15-20% while maintaining availability. Less tied-up capital, less waste.'
+    }
+  ];
+
+  // Sélectionner les bonnes cartes selon le toolId
+  const benefitCards = toolId === 'inventaire' ? inventaireBenefitCards : foodCostBenefitCards;
   
   // State pour la carte sélectionnée
   const [selectedCard, setSelectedCard] = React.useState<string>('operate');
@@ -422,9 +485,14 @@ export default function ToolPage({
                           >
                             <div className="text-center">
                               <div className="text-2xl font-bold" style={{ color: '#1a1a1a' }}>
-                                {selectedCard === 'operate' ? '50%' : 
-                                 selectedCard === 'automate' ? '100%' :
-                                 selectedCard === 'analyze' ? '2-5%' : '8-10%'}
+                                {toolId === 'inventaire' 
+                                  ? (selectedCard === 'operate' ? '70%' : 
+                                     selectedCard === 'automate' ? '100%' :
+                                     selectedCard === 'analyze' ? '2-5%' : '15-20%')
+                                  : (selectedCard === 'operate' ? '50%' : 
+                                     selectedCard === 'automate' ? '100%' :
+                                     selectedCard === 'analyze' ? '2-5%' : '8-10%')
+                                }
                               </div>
                               <div className="text-xs font-semibold" style={{ color: '#1a1a1a', opacity: 0.7 }}>
                                 {isEnglish ? 'Impact' : 'Impact'}
@@ -680,9 +748,14 @@ export default function ToolPage({
                     >
                       <div className="text-center">
                         <div className="text-2xl font-bold" style={{ color: '#1a1a1a' }}>
-                          {selectedCard === 'operate' ? '50%' : 
-                           selectedCard === 'automate' ? '100%' :
-                           selectedCard === 'analyze' ? '2-5%' : '8-10%'}
+                          {toolId === 'inventaire' 
+                            ? (selectedCard === 'operate' ? '70%' : 
+                               selectedCard === 'automate' ? '100%' :
+                               selectedCard === 'analyze' ? '2-5%' : '15-20%')
+                            : (selectedCard === 'operate' ? '50%' : 
+                               selectedCard === 'automate' ? '100%' :
+                               selectedCard === 'analyze' ? '2-5%' : '8-10%')
+                          }
                         </div>
                         <div className="text-xs font-semibold" style={{ color: '#1a1a1a', opacity: 0.7 }}>
                           {isEnglish ? 'Impact' : 'Impact'}
