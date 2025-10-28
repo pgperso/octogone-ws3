@@ -183,6 +183,7 @@ export const RecipeHeroSection: React.FC<RecipeHeroSectionProps> = ({
               strokeWidth={8}
               showPercentage={true}
               percentageLabel={isEnglish ? 'completed' : 'complété'}
+              absolute={true}
             />
 
             {/* Tags de prix sur les ingrédients */}

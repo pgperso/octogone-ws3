@@ -87,6 +87,8 @@ export const RecipeCalculationAnimation: React.FC<RecipeCalculationAnimationProp
               size={200}
               strokeWidth={8}
               showPercentage={true}
+              percentageLabel={isEnglish ? 'completed' : 'complété'}
+              absolute={true}
             />
 
             {/* Tags de prix sur les ingrédients */}

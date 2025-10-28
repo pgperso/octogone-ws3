@@ -6,6 +6,7 @@ interface CircularProgressProps {
   strokeWidth?: number;
   showPercentage?: boolean;
   percentageLabel?: string;
+  absolute?: boolean; // Si true, utilise absolute inset-0 (pour Recipe), sinon relative (pour Inventory)
 }
 
 /**
@@ -18,13 +19,17 @@ export const CircularProgress: React.FC<CircularProgressProps> = ({
   strokeWidth = 8,
   showPercentage = true,
   percentageLabel,
+  absolute = false,
 }) => {
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center">
+    <div 
+      className={absolute ? "absolute inset-0 flex items-center justify-center" : "relative flex items-center justify-center"}
+      style={absolute ? undefined : { width: size, height: size }}
+    >
       <svg
         width={size}
         height={size}
