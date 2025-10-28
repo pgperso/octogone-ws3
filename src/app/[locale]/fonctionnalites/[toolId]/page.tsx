@@ -320,8 +320,8 @@ export default function ToolPage({
                 {isEnglish ? 'Immediate Benefits' : 'Des bénéfices immédiats'}
               </motion.h2>
               
-              {/* 4 cartes simples avec sélection */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+              {/* 4 cartes simples avec sélection - 2x2 sur mobile, 4 colonnes sur desktop */}
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-12">
                 {benefitCards.map((card, index) => {
                   const isSelected = selectedCard === card.concept;
                   
@@ -357,9 +357,11 @@ export default function ToolPage({
                 })}
               </div>
               
-              {/* Layout 3 colonnes : Nombre | Graphique | Texte */}
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-8 items-center">
-                {/* Colonne 1 : Nombre géant */}
+              {/* Layout responsive : Mobile (2 cols + texte) | Desktop (3 cols) */}
+              <div className="grid grid-cols-1 gap-8 mt-8">
+                {/* Rangée 1 sur mobile : Nombre + Graphique en 2 colonnes */}
+                <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 items-center">
+                  {/* Colonne 1 : Nombre géant */}
                 <motion.div
                   key={`number-${selectedCard}`}
                   className="flex flex-col items-center justify-center"
@@ -437,10 +439,10 @@ export default function ToolPage({
                   </div>
                 </motion.div>
                 
-                {/* Colonne 3 : Texte explicatif */}
+                {/* Colonne 3 : Texte explicatif - Caché sur mobile, visible sur desktop */}
                 <motion.div
                   key={`text-${selectedCard}`}
-                  className="flex flex-col justify-center"
+                  className="hidden lg:flex flex-col justify-center"
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
@@ -464,6 +466,40 @@ export default function ToolPage({
                     )}
                   </div>
                   <p className="text-base leading-relaxed" style={{ color: 'white', opacity: 0.9 }}>
+                    {isEnglish 
+                      ? benefitCards.find(c => c.concept === selectedCard)?.explanationEn
+                      : benefitCards.find(c => c.concept === selectedCard)?.explanationFr}
+                  </p>
+                </motion.div>
+                </div>
+                
+                {/* Rangée 2 sur mobile : Texte en pleine largeur */}
+                <motion.div
+                  key={`text-mobile-${selectedCard}`}
+                  className="lg:hidden"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <h3 className="text-xl font-bold" style={{ color: 'white' }}>
+                      {isEnglish 
+                        ? benefitCards.find(c => c.concept === selectedCard)?.titleEn
+                        : benefitCards.find(c => c.concept === selectedCard)?.titleFr}
+                    </h3>
+                    {selectedCard === 'predict' && (
+                      <span 
+                        className="px-2 py-1 rounded-md text-xs font-semibold whitespace-nowrap"
+                        style={{ 
+                          backgroundColor: benefitCards.find(c => c.concept === selectedCard)?.color,
+                          color: '#1a1a1a'
+                        }}
+                      >
+                        {isEnglish ? 'Coming Soon' : 'Bientôt'}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-sm leading-relaxed" style={{ color: 'white', opacity: 0.9 }}>
                     {isEnglish 
                       ? benefitCards.find(c => c.concept === selectedCard)?.explanationEn
                       : benefitCards.find(c => c.concept === selectedCard)?.explanationFr}
