@@ -16,6 +16,7 @@ import { OctogoneInventoryWidget } from "@/components/widgets/octogone_inventori
 import { RecipeFlowContainer } from "@/components/widgets/octogone_recipe";
 import { RotatingText } from "@/components/ui/rotating-text";
 import { OctogoneButton } from "@/components/ui/octogone-button";
+import { Lock } from "lucide-react";
 
 // Permettre les paramètres dynamiques
 export const dynamicParams = true;
@@ -568,8 +569,9 @@ export default function ToolPage({
             >
               <OctogoneButton
                 href={`/${locale}/contact`}
-                variant="primary"
+                variant="priceFreeze"
                 size="lg"
+                icon={<Lock className="w-5 h-5" />}
               >
                 {isEnglish
                   ? 'Reserve Your Time Slot'

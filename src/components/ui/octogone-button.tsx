@@ -7,7 +7,7 @@ interface OctogoneButtonProps {
   children: React.ReactNode;
   href?: string;
   onClick?: () => void;
-  variant?: 'primary' | 'secondary' | 'cortex';
+  variant?: 'primary' | 'secondary' | 'cortex' | 'priceFreeze';
   size?: 'sm' | 'md' | 'lg';
   icon?: React.ReactNode;
   disabled?: boolean;
@@ -43,6 +43,11 @@ export const OctogoneButton: React.FC<OctogoneButtonProps> = ({
         return {
           normal: 'linear-gradient(135deg, #BADFF6 0%, #E2CDED 100%)', // Cortex Light gradient
           hover: 'linear-gradient(135deg, #E2CDED 0%, #BADFF6 100%)'   // Reversed gradient on hover
+        };
+      case 'priceFreeze':
+        return {
+          normal: 'linear-gradient(135deg, #FFE5B4 0%, #B8E0D2 100%)', // Yellow to Green pastel gradient
+          hover: 'linear-gradient(135deg, #B8E0D2 0%, #FFE5B4 100%)'   // Reversed gradient on hover
         };
       default:
         return {
@@ -83,7 +88,7 @@ export const OctogoneButton: React.FC<OctogoneButtonProps> = ({
   // Handlers pour les couleurs
   const handleMouseEnter = (e: React.MouseEvent<HTMLElement>) => {
     if (!disabled) {
-      if (variant === 'cortex') {
+      if (variant === 'cortex' || variant === 'priceFreeze') {
         e.currentTarget.style.background = colors.hover;
       } else {
         e.currentTarget.style.backgroundColor = colors.hover;
@@ -93,7 +98,7 @@ export const OctogoneButton: React.FC<OctogoneButtonProps> = ({
 
   const handleMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
     if (!disabled) {
-      if (variant === 'cortex') {
+      if (variant === 'cortex' || variant === 'priceFreeze') {
         e.currentTarget.style.background = colors.normal;
       } else {
         e.currentTarget.style.backgroundColor = colors.normal;
@@ -114,7 +119,7 @@ export const OctogoneButton: React.FC<OctogoneButtonProps> = ({
   // Props communes
   const commonProps = {
     className: baseClasses,
-    style: variant === 'cortex' 
+    style: (variant === 'cortex' || variant === 'priceFreeze') 
       ? { background: disabled ? '#9CA3AF' : colors.normal, cursor: disabled ? 'not-allowed' : 'pointer' }
       : { backgroundColor: disabled ? '#9CA3AF' : colors.normal, cursor: disabled ? 'not-allowed' : 'pointer' },
     onMouseEnter: handleMouseEnter,
