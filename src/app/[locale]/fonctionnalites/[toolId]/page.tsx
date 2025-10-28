@@ -523,6 +523,65 @@ export default function ToolPage({
         <FeatureSectionWidget tool={tool} locale={locale} />
       </ResponsiveSection>
 
+      {/* CTA Gel de tarifs - Uniquement pour Food Cost */}
+      {toolId === 'food-cost' && (
+        <ResponsiveSection spacing="xl" bgColor="">
+          <div className="max-w-4xl mx-auto">
+            {/* Séparateur */}
+            <motion.div 
+              className="mb-8 flex items-center gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="flex-1 h-px" style={{ backgroundColor: 'var(--outline)' }}></div>
+              <div className="text-sm font-semibold" style={{ color: 'var(--on-surface-variant)' }}>
+                {isEnglish ? 'Lock in Your Price Today' : 'Verrouillez votre tarif dès aujourd\'hui'}
+              </div>
+              <div className="flex-1 h-px" style={{ backgroundColor: 'var(--outline)' }}></div>
+            </motion.div>
+            
+            {/* Description */}
+            <motion.p 
+              className="text-center text-base mb-6 max-w-2xl mx-auto" 
+              style={{ color: 'var(--on-surface-variant)' }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              {isEnglish 
+                ? 'A new version of Octogone is in preparation. Sign up now and benefit from a price freeze: you\'ll pay today\'s price, even when the new version launches. Secure your rate before it\'s too late.'
+                : 'Une nouvelle version d\'Octogone est en préparation. Inscrivez-vous dès maintenant et profitez d\'un gel de tarifs : vous paierez le prix actuel, même lors du lancement de la nouvelle version. Sécurisez votre tarif avant qu\'il ne soit trop tard.'
+              }
+            </motion.p>
+            
+            {/* Bouton */}
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <Link
+                href={`/${locale}/contact`}
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 hover:scale-105"
+                style={{
+                  background: 'linear-gradient(135deg, #FFE5B4 0%, #B8E0D2 100%)',
+                  color: '#002236'
+                }}
+              >
+                {isEnglish
+                  ? 'Reserve Your Time Slot'
+                  : 'Réserver votre plage horaire'}
+              </Link>
+            </motion.div>
+          </div>
+        </ResponsiveSection>
+      )}
+
       {/* Section Partenaires - RH : Gestionnaires d'horaires */}
       {toolId === 'ressources-humaines' && (
         <ResponsiveSection spacing="xl" bgColor="">
