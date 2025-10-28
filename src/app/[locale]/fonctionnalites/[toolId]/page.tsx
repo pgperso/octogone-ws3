@@ -341,7 +341,7 @@ export default function ToolPage({
                       onClick={() => setSelectedCard(card.concept)}
                     >
                       <div className="flex items-start gap-3">
-                        {React.createElement(card.icon, { className: "w-6 h-6 flex-shrink-0 mt-1", style: { color: card.border } })}
+                        {React.createElement(card.icon, { className: "w-6 h-6 flex-shrink-0 mt-1", style: { color: '#1a1a1a' } })}
                         <div>
                           <h3 className="text-lg font-bold mb-2" style={{ color: '#1a1a1a' }}>
                             {isEnglish ? card.titleEn : card.titleFr}
