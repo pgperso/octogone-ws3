@@ -13,43 +13,35 @@ export interface InventoryTag {
 export const INVENTORY_TAGS: InventoryTag[] = [
   {
     id: 1,
-    quantity: '24',
-    labelFr: 'Tomates',
-    labelEn: 'Tomatoes',
+    quantity: '12',
+    labelFr: 'Raisin rouge',
+    labelEn: 'Red grapes',
     top: '15%',
     left: '12%'
   },
   {
     id: 2,
-    quantity: '18',
-    labelFr: 'Laitues',
-    labelEn: 'Lettuces',
+    quantity: '15',
+    labelFr: 'Raisin vert',
+    labelEn: 'Green grapes',
     top: '25%',
     right: '15%'
   },
   {
     id: 3,
-    quantity: '45',
-    labelFr: 'Oignons',
-    labelEn: 'Onions',
+    quantity: '8',
+    labelFr: 'Champignons',
+    labelEn: 'Mushrooms',
     top: '45%',
     left: '18%'
   },
   {
     id: 4,
-    quantity: '12',
-    labelFr: 'Fromages',
-    labelEn: 'Cheeses',
+    quantity: '24',
+    labelFr: 'Tomates',
+    labelEn: 'Tomatoes',
     top: '55%',
     right: '20%'
-  },
-  {
-    id: 5,
-    quantity: '8',
-    labelFr: 'Viandes',
-    labelEn: 'Meats',
-    top: '70%',
-    left: '15%'
   }
 ];
 
@@ -57,7 +49,7 @@ export const INVENTORY_TAGS: InventoryTag[] = [
 export const INITIAL_INVENTORY_PROGRESS = 35;
 
 // Délais d'apparition des tags dans le Hero (en ms)
-export const HERO_TAG_DELAYS = [800, 1200, 1600, 2000, 2400];
+export const HERO_TAG_DELAYS = [800, 1200, 1600, 2000];
 
 // Délais d'apparition des tags dans l'animation (en ms)
-export const ANIMATION_TAG_DELAYS = [200, 400, 600, 800, 1000];
+export const ANIMATION_TAG_DELAYS = [200, 400, 600, 800];

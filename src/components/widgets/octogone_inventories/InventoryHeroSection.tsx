@@ -33,7 +33,6 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
   const [code, setCode] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const [inventoryProgress, setInventoryProgress] = useState(0);
   const [displayProgress, setDisplayProgress] = useState(0);
   const [visibleTags, setVisibleTags] = useState<number[]>([]);
 
@@ -52,13 +51,9 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
     }
   }, []);
 
-  // Animation de la progress bar au chargement
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setInventoryProgress(INITIAL_INVENTORY_PROGRESS);
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []);
+  // Calculer le progrès basé sur le nombre de tags visibles
+  const progressPerTag = 100 / INVENTORY_TAGS.length;
+  const currentProgress = visibleTags.length * progressPerTag;
 
   // Animation des tags de quantités
   useEffect(() => {
@@ -70,20 +65,20 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
     return () => timers.forEach(clearTimeout);
   }, []);
 
-  // Animation du pourcentage affiché
+  // Animation du pourcentage affiché qui suit le nombre de tags visibles
   useEffect(() => {
-    if (displayProgress < inventoryProgress) {
-      const duration = 2000;
-      const steps = 60;
-      const increment = inventoryProgress / steps;
+    if (displayProgress < currentProgress) {
+      const duration = 400;
+      const steps = 20;
+      const increment = (currentProgress - displayProgress) / steps;
       const interval = duration / steps;
 
       const timer = setInterval(() => {
         setDisplayProgress(prev => {
           const next = prev + increment;
-          if (next >= inventoryProgress) {
+          if (next >= currentProgress) {
             clearInterval(timer);
-            return inventoryProgress;
+            return currentProgress;
           }
           return next;
         });
@@ -91,7 +86,7 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
 
       return () => clearInterval(timer);
     }
-  }, [inventoryProgress, displayProgress]);
+  }, [currentProgress, displayProgress]);
 
   // Si l'email gate est désactivé, le bouton est toujours actif
   const isButtonEnabled = !RECIPE_ACCESS_CONFIG.ENABLE_EMAIL_GATE || accessState === 'unlocked';
@@ -175,9 +170,9 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
             </div>
             
             {/* Layout en 2 colonnes sur l'image */}
-            <div className="absolute inset-0 grid grid-cols-2 gap-4 p-6">
+            <div className="absolute inset-0 flex gap-4 p-6">
               {/* Colonne gauche : Badges en liste verticale */}
-              <div className="flex flex-col justify-center space-y-3">
+              <div className="flex-1 flex flex-col justify-center space-y-3">
                 {INVENTORY_TAGS.map((tag, index) => (
                   <motion.div
                     key={tag.id}
@@ -197,9 +192,7 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                     <div 
                       className="flex items-center gap-3 p-3 rounded-lg backdrop-blur-sm border-2"
                       style={{
-                        backgroundColor: visibleTags.includes(tag.id) 
-                          ? 'rgba(180, 212, 255, 0.95)' 
-                          : 'rgba(255, 255, 255, 0.85)',
+                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
                         borderColor: visibleTags.includes(tag.id)
                           ? 'var(--primary)'
                           : 'rgba(255, 255, 255, 0.5)',
@@ -208,11 +201,12 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                     >
                       {/* Icône */}
                       <div 
-                        className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center"
+                        className="flex-shrink-0 w-8 h-8 rounded flex items-center justify-center"
                         style={{
                           backgroundColor: visibleTags.includes(tag.id)
-                            ? 'var(--primary)'
-                            : 'rgba(0, 0, 0, 0.1)'
+                            ? '#4CAF50'
+                            : 'rgba(0, 0, 0, 0.1)',
+                          borderRadius: '6px'
                         }}
                       >
                         {visibleTags.includes(tag.id) ? (
@@ -240,20 +234,18 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                         </p>
                       </div>
 
-                      {/* Quantité */}
+                      {/* Quantité avec unité */}
                       <div 
                         className="flex-shrink-0 px-2 py-1 rounded"
                         style={{
-                          backgroundColor: visibleTags.includes(tag.id)
-                            ? 'rgba(255, 255, 255, 0.3)'
-                            : 'rgba(0, 0, 0, 0.1)'
+                          backgroundColor: 'rgba(0, 0, 0, 0.05)'
                         }}
                       >
                         <span 
                           className="text-sm font-bold"
                           style={{ color: '#1a1a1a' }}
                         >
-                          {tag.quantity}
+                          {tag.quantity} {isEnglish ? 'units' : 'unités'}
                         </span>
                       </div>
                     </div>
@@ -262,7 +254,7 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
               </div>
 
               {/* Colonne droite : Progress Bar */}
-              <div className="flex items-center justify-center">
+              <div className="flex-shrink-0 flex items-center justify-center" style={{ width: '250px' }}>
                 <CircularProgress
                   progress={displayProgress}
                   size={200}
