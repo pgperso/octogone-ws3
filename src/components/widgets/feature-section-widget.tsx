@@ -50,7 +50,7 @@ const getImageSrc = (image: ToolFeature['image'], isEnglish: boolean): string | 
   return isEnglish ? image.src : (image.srcFr || image.src);
 };
 
-export default function ToolDetailWidgetV2({ tool, locale }: ToolDetailWidgetProps) {
+export default function FeatureSectionWidget({ tool, locale }: ToolDetailWidgetProps) {
   const isEnglish = locale === 'en';
 
   // Vérifier que les sections existent
