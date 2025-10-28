@@ -15,6 +15,7 @@ import OctogoneDashboardKPIs from "@/components/widgets/OctogoneDashboardKPIs";
 import { OctogoneInventoryWidget } from "@/components/widgets/octogone_inventories";
 import { RecipeFlowContainer } from "@/components/widgets/octogone_recipe";
 import { RotatingText } from "@/components/ui/rotating-text";
+import { OctogoneButton } from "@/components/ui/octogone-button";
 
 // Permettre les paramètres dynamiques
 export const dynamicParams = true;
@@ -552,8 +553,8 @@ export default function ToolPage({
               transition={{ duration: 0.5, delay: 0.1 }}
             >
               {isEnglish 
-                ? 'A new version of Octogone is in preparation. Sign up now and benefit from a price freeze: you\'ll pay today\'s price, even when the new version launches. Secure your rate before it\'s too late.'
-                : 'Une nouvelle version d\'Octogone est en préparation. Inscrivez-vous dès maintenant et profitez d\'un gel de tarifs : vous paierez le prix actuel, même lors du lancement de la nouvelle version. Sécurisez votre tarif avant qu\'il ne soit trop tard.'
+                ? 'A new version of Octogone is in preparation. Subscribe now and benefit from a price freeze: you\'ll pay today\'s price, even when the new version launches. Secure your rate before it\'s too late.'
+                : 'Une nouvelle version d\'Octogone est en préparation. Abonnez-vous dès maintenant et profitez d\'un gel de tarifs : vous paierez le prix actuel, même lors du lancement de la nouvelle version. Sécurisez votre tarif avant qu\'il ne soit trop tard.'
               }
             </motion.p>
             
@@ -565,18 +566,15 @@ export default function ToolPage({
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <Link
+              <OctogoneButton
                 href={`/${locale}/contact`}
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-base transition-all duration-300 hover:scale-105"
-                style={{
-                  background: 'linear-gradient(135deg, #FFE5B4 0%, #B8E0D2 100%)',
-                  color: '#002236'
-                }}
+                variant="primary"
+                size="lg"
               >
                 {isEnglish
                   ? 'Reserve Your Time Slot'
                   : 'Réserver votre plage horaire'}
-              </Link>
+              </OctogoneButton>
             </motion.div>
           </div>
         </ResponsiveSection>
