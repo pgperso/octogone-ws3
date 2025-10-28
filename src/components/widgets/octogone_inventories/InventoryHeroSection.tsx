@@ -277,13 +277,9 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
 
               {/* Colonne droite : Progress Bar */}
               <div className="flex items-center justify-end pr-6" style={{ backgroundColor: 'rgba(255, 0, 0, 0.3)' }}>
-                <CircularProgress
-                  progress={displayProgress}
-                  size={200}
-                  strokeWidth={8}
-                  showPercentage={true}
-                  percentageLabel={isEnglish ? 'completed' : 'complété'}
-                />
+                <div style={{ width: '200px', height: '200px', backgroundColor: 'blue', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontSize: '24px', fontWeight: 'bold' }}>
+                  TEST
+                </div>
               </div>
             </div>
           </div>
