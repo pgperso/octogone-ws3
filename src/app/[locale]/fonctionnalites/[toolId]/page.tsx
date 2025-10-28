@@ -328,7 +328,7 @@ export default function ToolPage({
                   return (
                     <motion.div
                       key={card.concept}
-                      className="p-6 rounded-xl cursor-pointer transition-all duration-300"
+                      className="p-6 rounded-xl cursor-pointer transition-all duration-300 relative"
                       style={{
                         backgroundColor: card.color,
                         border: isSelected ? `3px solid ${card.border}` : `2px solid ${card.border}`,
@@ -340,6 +340,19 @@ export default function ToolPage({
                       transition={{ duration: 0.5, delay: 0.1 + (index * 0.1) }}
                       onClick={() => setSelectedCard(card.concept)}
                     >
+                      {/* Badge "Bientôt" pour Predict */}
+                      {card.concept === 'predict' && (
+                        <div 
+                          className="absolute top-3 right-3 px-2 py-1 rounded-md text-xs font-semibold"
+                          style={{ 
+                            backgroundColor: '#1a1a1a',
+                            color: 'white'
+                          }}
+                        >
+                          {isEnglish ? 'Coming Soon' : 'Bientôt'}
+                        </div>
+                      )}
+                      
                       <div className="flex items-start gap-3">
                         {React.createElement(card.icon, { className: "w-6 h-6 flex-shrink-0 mt-1", style: { color: '#1a1a1a' } })}
                         <div>
