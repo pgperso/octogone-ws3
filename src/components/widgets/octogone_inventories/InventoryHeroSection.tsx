@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Key, ClipboardCheck, FileText, Package } from 'lucide-react';
+import Image from 'next/image';
+import { Mail, Key, ClipboardCheck, FileText, Package, CheckCircle2 } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { RECIPE_ACCESS_CONFIG } from '@/config/recipe-access';
 import { trackRecipeAccessRequest, trackRecipeAccessUnlocked } from '@/lib/tracking/hubspot-events';
@@ -21,6 +22,7 @@ type AccessState = 'email' | 'code' | 'unlocked';
 
 export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
   inventoryName,
+  inventoryImage,
   description,
   onCalculateClick,
   locale = 'fr'
@@ -154,90 +156,38 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
       }}
     >
       <div className="max-w-7xl mx-auto">
-        {/* Titre et description en haut */}
-        <div className="mb-8 space-y-3">
-          {/* Badge En cours */}
-          <div className="flex items-center gap-2 mb-3">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          {/* Image de l'inventaire avec badges et progress bar par-dessus */}
+          <div className="order-1 lg:order-1 relative" style={{ height: '600px' }}>
             <div 
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full"
+              className="w-full h-full rounded-3xl overflow-hidden shadow-2xl"
               style={{ 
-                backgroundColor: 'var(--secondary-container)',
-                border: '1px solid var(--secondary)'
+                border: '2px solid var(--outline)'
               }}
             >
-              <Package 
-                size={16} 
-                style={{ color: 'var(--on-secondary-container)' }}
+              <Image
+                src={inventoryImage}
+                alt={inventoryName}
+                width={600}
+                height={600}
+                className="w-full h-full object-cover"
               />
-              <span 
-                className="text-sm font-medium"
-                style={{ color: 'var(--on-secondary-container)' }}
-              >
-                {isEnglish ? 'In Progress' : 'En cours'}
-              </span>
             </div>
-          </div>
-
-          <h1 
-            className="text-4xl lg:text-5xl font-bold mb-3"
-            style={{ color: 'var(--on-surface)' }}
-          >
-            {inventoryName}
-          </h1>
-          
-          {/* Container de description avec bordure */}
-          <div 
-            className="p-4 rounded-lg border"
-            style={{ borderColor: 'var(--outline)' }}
-          >
-            <div className="flex items-center gap-2 mb-2">
-              <FileText size={16} style={{ color: 'var(--on-surface-variant)' }} />
-              <span 
-                className="text-sm font-medium"
-                style={{ color: 'var(--on-surface-variant)' }}
-              >
-                Description
-              </span>
-            </div>
-            <p 
-              className="text-lg leading-relaxed"
-              style={{ color: 'var(--on-surface-variant)' }}
-            >
-              {description}
-            </p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* Colonne gauche : Badges de produits */}
-          <div className="order-1 lg:order-1">
-            <div className="space-y-4">
-              {/* Titre de la colonne */}
-              <div className="flex items-center gap-3 mb-6">
-                <Package 
-                  size={24} 
-                  style={{ color: 'var(--primary)' }}
-                />
-                <h3 
-                  className="text-xl font-bold"
-                  style={{ color: 'var(--on-surface)' }}
-                >
-                  {isEnglish ? 'Products to Count' : 'Produits à compter'}
-                </h3>
-              </div>
-
-              {/* Liste des produits avec animation séquentielle */}
-              <div className="space-y-3">
+            
+            {/* Layout en 2 colonnes sur l'image */}
+            <div className="absolute inset-0 grid grid-cols-2 gap-4 p-6">
+              {/* Colonne gauche : Badges en liste verticale */}
+              <div className="flex flex-col justify-center space-y-3">
                 {INVENTORY_TAGS.map((tag, index) => (
                   <motion.div
                     key={tag.id}
-                    initial={{ opacity: 0, x: -50 }}
+                    initial={{ opacity: 0, x: -30 }}
                     animate={visibleTags.includes(tag.id) ? {
                       opacity: 1,
                       x: 0
                     } : {
                       opacity: 0,
-                      x: -50
+                      x: -30
                     }}
                     transition={{
                       duration: 0.4,
@@ -245,47 +195,46 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                     }}
                   >
                     <div 
-                      className="flex items-center gap-4 p-4 rounded-xl border-2"
+                      className="flex items-center gap-3 p-3 rounded-lg backdrop-blur-sm border-2"
                       style={{
                         backgroundColor: visibleTags.includes(tag.id) 
-                          ? 'rgba(180, 212, 255, 0.15)' 
-                          : 'var(--surface)',
+                          ? 'rgba(180, 212, 255, 0.95)' 
+                          : 'rgba(255, 255, 255, 0.85)',
                         borderColor: visibleTags.includes(tag.id)
                           ? 'var(--primary)'
-                          : 'var(--outline)',
+                          : 'rgba(255, 255, 255, 0.5)',
                         transition: 'all 0.3s ease'
                       }}
                     >
-                      {/* Numéro */}
+                      {/* Icône */}
                       <div 
-                        className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center"
+                        className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center"
                         style={{
                           backgroundColor: visibleTags.includes(tag.id)
                             ? 'var(--primary)'
-                            : 'var(--surface-variant)'
+                            : 'rgba(0, 0, 0, 0.1)'
                         }}
                       >
-                        <span 
-                          className="text-sm font-bold"
-                          style={{ 
-                            color: visibleTags.includes(tag.id)
-                              ? 'white'
-                              : 'var(--on-surface-variant)'
-                          }}
-                        >
-                          {index + 1}
-                        </span>
+                        {visibleTags.includes(tag.id) ? (
+                          <CheckCircle2 
+                            size={16} 
+                            style={{ color: 'white' }}
+                          />
+                        ) : (
+                          <span 
+                            className="text-xs font-bold"
+                            style={{ color: '#1a1a1a' }}
+                          >
+                            {index + 1}
+                          </span>
+                        )}
                       </div>
 
-                      {/* Nom du produit */}
-                      <div className="flex-1">
+                      {/* Nom */}
+                      <div className="flex-1 min-w-0">
                         <p 
-                          className="text-lg font-semibold"
-                          style={{ 
-                            color: visibleTags.includes(tag.id)
-                              ? 'var(--on-surface)'
-                              : 'var(--on-surface-variant)'
-                          }}
+                          className="text-sm font-semibold truncate"
+                          style={{ color: '#1a1a1a' }}
                         >
                           {isEnglish ? tag.labelEn : tag.labelFr}
                         </p>
@@ -293,20 +242,16 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
 
                       {/* Quantité */}
                       <div 
-                        className="flex-shrink-0 px-4 py-2 rounded-lg"
+                        className="flex-shrink-0 px-2 py-1 rounded"
                         style={{
                           backgroundColor: visibleTags.includes(tag.id)
-                            ? 'var(--primary-container)'
-                            : 'var(--surface-variant)'
+                            ? 'rgba(255, 255, 255, 0.3)'
+                            : 'rgba(0, 0, 0, 0.1)'
                         }}
                       >
                         <span 
-                          className="text-xl font-bold"
-                          style={{ 
-                            color: visibleTags.includes(tag.id)
-                              ? 'var(--on-primary-container)'
-                              : 'var(--on-surface-variant)'
-                          }}
+                          className="text-sm font-bold"
+                          style={{ color: '#1a1a1a' }}
                         >
                           {tag.quantity}
                         </span>
@@ -315,33 +260,74 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                   </motion.div>
                 ))}
               </div>
+
+              {/* Colonne droite : Progress Bar */}
+              <div className="flex items-center justify-center">
+                <CircularProgress
+                  progress={displayProgress}
+                  size={200}
+                  strokeWidth={8}
+                  showPercentage={true}
+                  percentageLabel={isEnglish ? 'completed' : 'complété'}
+                />
+              </div>
             </div>
           </div>
 
-          {/* Colonne droite : Progress Bar + Actions */}
-          <div className="order-2 lg:order-2">
-            {/* Progress Bar centrée */}
-            <div className="flex items-center justify-center mb-8">
-              <motion.div
-                className="relative"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+          {/* Description et bouton */}
+          <div className="order-2 lg:order-2 space-y-6">
+            <div className="space-y-3">
+            {/* Badge En cours */}
+            <div className="flex items-center gap-2 mb-3">
+              <div 
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full"
+                style={{ 
+                  backgroundColor: 'var(--secondary-container)',
+                  border: '1px solid var(--secondary)'
+                }}
               >
-                <div className="relative flex items-center justify-center" style={{ width: '280px', height: '280px' }}>
-                  <CircularProgress
-                    progress={displayProgress}
-                    size={280}
-                    strokeWidth={12}
-                    showPercentage={true}
-                    percentageLabel={isEnglish ? 'completed' : 'complété'}
-                  />
-                </div>
-              </motion.div>
+                <Package 
+                  size={16} 
+                  style={{ color: 'var(--on-secondary-container)' }}
+                />
+                <span 
+                  className="text-sm font-medium"
+                  style={{ color: 'var(--on-secondary-container)' }}
+                >
+                  {isEnglish ? 'In Progress' : 'En cours'}
+                </span>
+              </div>
             </div>
 
-            {/* Actions */}
-            <div className="space-y-6">
+            <h1 
+              className="text-4xl lg:text-5xl font-bold mb-3"
+              style={{ color: 'var(--on-surface)' }}
+            >
+              {inventoryName}
+            </h1>
+            
+            {/* Container de description avec bordure */}
+            <div 
+              className="p-4 rounded-lg border"
+              style={{ borderColor: 'var(--outline)' }}
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <FileText size={16} style={{ color: 'var(--on-surface-variant)' }} />
+                <span 
+                  className="text-sm font-medium"
+                  style={{ color: 'var(--on-surface-variant)' }}
+                >
+                  Description
+                </span>
+              </div>
+              <p 
+                className="text-lg leading-relaxed"
+                style={{ color: 'var(--on-surface-variant)' }}
+              >
+                {description}
+              </p>
+            </div>
+            </div>
 
             {/* Système d'email gate (seulement si activé) */}
             {RECIPE_ACCESS_CONFIG.ENABLE_EMAIL_GATE && (
@@ -449,7 +435,6 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
               <ClipboardCheck size={20} />
               {isEnglish ? 'Complete my inventory' : 'Compléter mon inventaire'}
             </OctogoneButton>
-            </div>
           </div>
         </div>
       </div>
