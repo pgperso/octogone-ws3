@@ -263,10 +263,16 @@ export default function ToolDetailWidget({ tool, locale }: ToolDetailWidgetProps
                                   viewport={{ once: true }}
                                   transition={{ duration: 0.8, delay: 0.4 }}
                                 >
-                                  {/* Image bilingue pour Catalogue centralisé */}
+                                  {/* Images bilingues pour catalogues */}
                                   {(singleFeature.titleEn === 'Centralized Product Catalog' || singleFeature.titleFr === 'Catalogue centralisé de produits') ? (
                                     <img 
                                       src={isEnglish ? '/images/pages/product_list_en.avif' : '/images/pages/product_list_fr.avif'}
+                                      alt={isEnglish ? singleFeature.titleEn : singleFeature.titleFr}
+                                      className="w-full h-auto"
+                                    />
+                                  ) : (singleFeature.titleEn === 'Centralized Recipe Catalog' || singleFeature.titleFr === 'Catalogue centralisé de recettes') ? (
+                                    <img 
+                                      src={isEnglish ? '/images/pages/recipe_list_en.avif' : '/images/pages/recipe_list_fr.avif'}
                                       alt={isEnglish ? singleFeature.titleEn : singleFeature.titleFr}
                                       className="w-full h-auto"
                                     />

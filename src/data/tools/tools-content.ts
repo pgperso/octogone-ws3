@@ -228,15 +228,15 @@ export const tools: Tool[] = [
         concepts: ['operate', 'automate']
       },
       {
-        titleFr: 'Standardisation des recettes',
-        titleEn: 'Recipe Standardization',
-        descriptionFr: 'Créez des fiches techniques détaillées pour chacun de vos plats. Définissez précisément les ingrédients, les quantités, les étapes de préparation et les portions. Cette standardisation garantit la constance de vos plats, facilite la formation de votre équipe et vous permet de calculer avec précision le coût de chaque recette. Vos recettes deviennent un actif documenté de votre entreprise.',
-        descriptionEn: 'Create detailed technical sheets for each of your dishes. Precisely define ingredients, quantities, preparation steps and portions. This standardization ensures consistency of your dishes, facilitates team training and allows you to accurately calculate the cost of each recipe. Your recipes become a documented asset of your business.',
+        titleFr: 'Catalogue centralisé de recettes',
+        titleEn: 'Centralized Recipe Catalog',
+        descriptionFr: 'Centralisez toutes vos recettes dans un catalogue unique et structuré. Chaque recette contient ses ingrédients, quantités, étapes de préparation et coûts calculés automatiquement. Accédez instantanément à l\'ensemble de vos fiches techniques, partagez-les avec votre équipe et assurez la constance de vos plats. Votre catalogue de recettes devient la référence centrale pour toute votre production.',
+        descriptionEn: 'Centralize all your recipes in a single, structured catalog. Each recipe contains its ingredients, quantities, preparation steps and automatically calculated costs. Instantly access all your technical sheets, share them with your team and ensure consistency of your dishes. Your recipe catalog becomes the central reference for all your production.',
         image: '/images/tools/foodcost-recettes.jpg',
         benefits: [
-          { fr: 'Fiches techniques détaillées et complètes', en: 'Detailed and complete technical sheets' },
-          { fr: 'Constance garantie de vos plats', en: 'Guaranteed consistency of your dishes' },
-          { fr: 'Formation simplifiée de l\'équipe', en: 'Simplified team training' }
+          { fr: 'Catalogue unique pour toutes vos recettes', en: 'Single catalog for all your recipes' },
+          { fr: 'Coûts calculés automatiquement', en: 'Automatically calculated costs' },
+          { fr: 'Accès instantané et partage d\'équipe', en: 'Instant access and team sharing' }
         ],
         concepts: ['operate']
       },
