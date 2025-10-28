@@ -12,7 +12,7 @@ import { getToolById, getNextTool, getPreviousTool } from "@/data/tools/tools-co
 import { ToolSEO } from "@/components/seo/tool-seo";
 import { LogoCard } from "@/components/widgets/logo-card";
 import OctogoneDashboardKPIs from "@/components/widgets/OctogoneDashboardKPIs";
-import { OctogoneInventoryWidget } from "@/components/widgets/octogone_inventories";
+import { InventoryFlowContainer } from "@/components/widgets/octogone_inventories";
 import { RecipeFlowContainer } from "@/components/widgets/octogone_recipe";
 import { RotatingText } from "@/components/ui/rotating-text";
 import { OctogoneButton } from "@/components/ui/octogone-button";
@@ -325,10 +325,10 @@ export default function ToolPage({
         </ResponsiveSection>
       )}
 
-      {/* Widget Inventaire - Uniquement pour Inventaire */}
+      {/* Flow Inventaire - Uniquement pour Inventaire */}
       {isInventaire && (
-        <ResponsiveSection spacing="xl" bgColor="">
-          <OctogoneInventoryWidget locale={locale as 'fr' | 'en'} />
+        <ResponsiveSection spacing="xxl" bgColor="">
+          <InventoryFlowContainer locale={locale as 'fr' | 'en'} />
         </ResponsiveSection>
       )}
 
