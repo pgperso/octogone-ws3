@@ -205,11 +205,11 @@ export const tools: Tool[] = [
     sections: [
       {
         concept: 'operate',
-        features: [0, 1, 2, 3, 4] // Features principales avec images + secondaires
+        features: [0, 1, 2, 3, 4, 5] // Features principales avec images + secondaires
       },
       {
         concept: 'analyze',
-        features: [5, 6, 7] // Features restantes
+        features: [6, 7, 8] // Features restantes
       }
     ],
     
@@ -239,6 +239,19 @@ export const tools: Tool[] = [
           { fr: 'Coûts calculés automatiquement', en: 'Automatically calculated costs' }
         ],
         concepts: ['operate', 'automate']
+      },
+      {
+        titleFr: 'Fiches recettes complètes',
+        titleEn: 'Complete Recipe Sheets',
+        descriptionFr: 'Chaque recette dispose d\'une fiche technique détaillée et professionnelle. Ingrédients avec quantités précises, étapes de préparation numérotées, temps de cuisson, portions, coûts détaillés et allergènes. Toutes les informations essentielles réunies dans un format clair et structuré, prêt à être utilisé en cuisine ou partagé avec votre équipe.',
+        descriptionEn: 'Each recipe has a detailed and professional technical sheet. Ingredients with precise quantities, numbered preparation steps, cooking times, portions, detailed costs and allergens. All essential information gathered in a clear and structured format, ready to be used in the kitchen or shared with your team.',
+        image: '/images/tools/foodcost-fiches.jpg',
+        benefits: [
+          { fr: 'Fiches techniques détaillées et pro', en: 'Detailed and professional sheets' },
+          { fr: 'Toutes les infos en un coup d\'œil', en: 'All info at a glance' },
+          { fr: 'Format clair et structuré', en: 'Clear and structured format' }
+        ],
+        concepts: ['operate']
       },
       {
         titleFr: 'Détection automatique des allergènes',

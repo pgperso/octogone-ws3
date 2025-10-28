@@ -282,6 +282,12 @@ export default function ToolDetailWidget({ tool, locale }: ToolDetailWidgetProps
                                       alt={isEnglish ? singleFeature.titleEn : singleFeature.titleFr}
                                       className="w-full h-auto"
                                     />
+                                  ) : (singleFeature.titleEn === 'Complete Recipe Sheets' || singleFeature.titleFr === 'Fiches recettes complètes') ? (
+                                    <img 
+                                      src={isEnglish ? '/images/pages/recipe_sheet_en.avif' : '/images/pages/recipe_sheet_fr.avif'}
+                                      alt={isEnglish ? singleFeature.titleEn : singleFeature.titleFr}
+                                      className="w-full h-auto"
+                                    />
                                   ) : (
                                     /* Placeholder pour les autres features */
                                     <div className="bg-gradient-to-r from-marine-50 to-gold-50 p-8">
