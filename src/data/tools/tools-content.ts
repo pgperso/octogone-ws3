@@ -213,7 +213,7 @@ export const tools: Tool[] = [
       },
       {
         concept: 'analyze',
-        features: [6] // Simulateur de Food Cost
+        features: [6, 7, 8, 9] // Simulateur + 3 colonnes (Ingénierie, Étiquettes, Pertes)
       }
     ],
     
@@ -327,6 +327,48 @@ export const tools: Tool[] = [
         ],
         concepts: ['analyze', 'predict'],
         layout: 'image-right'
+      },
+      {
+        titleFr: 'Ingénierie de menu',
+        titleEn: 'Menu Engineering',
+        descriptionFr: 'Analysez la rentabilité et la popularité de chaque plat avec la matrice d\'ingénierie de menu. Identifiez vos stars (populaires et rentables), vos chevaux de labour (populaires mais peu rentables), vos énigmes (rentables mais impopulaires) et vos poids morts. Optimisez votre menu pour maximiser vos profits.',
+        descriptionEn: 'Analyze the profitability and popularity of each dish with the menu engineering matrix. Identify your stars (popular and profitable), your workhorses (popular but not very profitable), your puzzles (profitable but unpopular) and your dead weight. Optimize your menu to maximize your profits.',
+        image: '/images/tools/foodcost-ingenierie.jpg',
+        benefits: [
+          { fr: 'Matrice d\'ingénierie de menu', en: 'Menu engineering matrix' },
+          { fr: 'Classification des plats', en: 'Dish classification' },
+          { fr: 'Optimisation de la rentabilité', en: 'Profitability optimization' }
+        ],
+        concepts: ['analyze'],
+        layout: 'three-columns'
+      },
+      {
+        titleFr: 'Impression d\'étiquettes',
+        titleEn: 'Label Printing',
+        descriptionFr: 'Générez et imprimez automatiquement des étiquettes professionnelles pour vos préparations. Incluez le nom du plat, la date de production, la date de péremption, les allergènes et les informations nutritionnelles. Conformité HACCP garantie et traçabilité complète de vos productions.',
+        descriptionEn: 'Automatically generate and print professional labels for your preparations. Include dish name, production date, expiration date, allergens and nutritional information. Guaranteed HACCP compliance and complete traceability of your productions.',
+        image: '/images/tools/foodcost-etiquettes.jpg',
+        benefits: [
+          { fr: 'Étiquettes professionnelles automatiques', en: 'Automatic professional labels' },
+          { fr: 'Conformité HACCP et traçabilité', en: 'HACCP compliance and traceability' },
+          { fr: 'Allergènes et infos nutritionnelles', en: 'Allergens and nutritional info' }
+        ],
+        concepts: ['operate', 'automate'],
+        layout: 'three-columns'
+      },
+      {
+        titleFr: 'Déclaration de pertes',
+        titleEn: 'Waste Declaration',
+        descriptionFr: 'Enregistrez et suivez toutes vos pertes en temps réel : casse, péremption, erreurs de production ou retours clients. Analysez les causes de gaspillage, identifiez les produits problématiques et mesurez l\'impact financier. Réduisez vos pertes et améliorez votre rentabilité.',
+        descriptionEn: 'Record and track all your losses in real-time: breakage, expiration, production errors or customer returns. Analyze waste causes, identify problematic products and measure financial impact. Reduce your losses and improve your profitability.',
+        image: '/images/tools/foodcost-pertes.jpg',
+        benefits: [
+          { fr: 'Suivi en temps réel des pertes', en: 'Real-time loss tracking' },
+          { fr: 'Analyse des causes de gaspillage', en: 'Waste cause analysis' },
+          { fr: 'Mesure de l\'impact financier', en: 'Financial impact measurement' }
+        ],
+        concepts: ['operate', 'analyze'],
+        layout: 'three-columns'
       }
     ]
   },
