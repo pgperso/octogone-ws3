@@ -108,7 +108,7 @@ export const InventoryCalculationAnimation: React.FC<InventoryCalculationAnimati
             </div>
             
             {/* Layout en 2 colonnes sur l'image */}
-            <div className="absolute inset-0 grid grid-cols-2 gap-4 p-6">
+            <div className="absolute inset-0 grid grid-cols-2 p-6">
               {/* Colonne gauche : Badges en liste verticale */}
               <div className="flex flex-col justify-center space-y-3">
                 {inventoryProducts.map((tag) => (
