@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Package, CheckCircle2 } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import inventoryData from '@/data/products/octogone_products_data.json';
 import { translateProduct } from '@/data/products/octogone_products_translations';
 import Image from 'next/image';
@@ -111,7 +111,7 @@ export const InventoryCalculationAnimation: React.FC<InventoryCalculationAnimati
             <div className="absolute inset-0 flex gap-4 p-6">
               {/* Colonne gauche : Badges en liste verticale */}
               <div className="flex-1 flex flex-col justify-center space-y-3">
-                {inventoryProducts.map((tag, index) => (
+                {inventoryProducts.map((tag) => (
                   <div key={tag.id}>
                     <div 
                       className="flex items-center gap-3 p-3 rounded-lg backdrop-blur-sm"
