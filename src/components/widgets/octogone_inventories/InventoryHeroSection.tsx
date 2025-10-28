@@ -280,7 +280,7 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                         {visibleTags.includes(tag.id) ? (
                           <CheckCircle2 
                             size={16} 
-                            style={{ color: 'var(--on-success-container)' }}
+                            style={{ color: 'var(--on-secondary-container)' }}
                           />
                         ) : (
                           <span 

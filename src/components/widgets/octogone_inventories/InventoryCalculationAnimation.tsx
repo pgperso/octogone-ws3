@@ -133,9 +133,20 @@ export const InventoryCalculationAnimation: React.FC<InventoryCalculationAnimati
               />
             </div>
             
-            {/* Layout en 2 colonnes sur l'image */}
-            <div className="absolute inset-0 grid grid-cols-2 p-6">
-              {/* Colonne gauche : Badges en liste verticale avec scroll */}
+            {/* Progress bar centrée sur l'image */}
+            <div className="absolute inset-0 flex items-center justify-center p-6">
+              <CircularProgress
+                progress={displayProgress}
+                size={280}
+                strokeWidth={12}
+                showPercentage={true}
+                percentageLabel={isEnglish ? 'completed' : 'complété'}
+                absolute={true}
+              />
+            </div>
+
+            {/* Liste cachée pour référence */}
+            <div style={{ display: 'none' }}>
               <div ref={scrollContainerRef} className="flex flex-col space-y-3 overflow-y-auto pr-2" style={{ maxHeight: '550px' }}>
                 {inventoryProducts.filter(tag => visibleTags.includes(tag.id)).map((tag) => (
                   <div key={tag.id}>
@@ -156,7 +167,7 @@ export const InventoryCalculationAnimation: React.FC<InventoryCalculationAnimati
                       >
                         <CheckCircle2 
                           size={16} 
-                          style={{ color: 'var(--on-success-container)' }}
+                          style={{ color: 'var(--on-secondary-container)' }}
                         />
                       </div>
 
@@ -187,17 +198,6 @@ export const InventoryCalculationAnimation: React.FC<InventoryCalculationAnimati
                     </div>
                   </div>
                 ))}
-              </div>
-
-              {/* Colonne droite : Progress Bar */}
-              <div className="flex items-center justify-center">
-                <CircularProgress
-                  progress={displayProgress}
-                  size={200}
-                  strokeWidth={8}
-                  showPercentage={true}
-                  percentageLabel={isEnglish ? 'completed' : 'complété'}
-                />
               </div>
             </div>
           </div>
