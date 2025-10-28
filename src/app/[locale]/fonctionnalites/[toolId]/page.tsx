@@ -336,21 +336,21 @@ export default function ToolPage({
             <div className="relative rounded-2xl overflow-hidden">
               {/* Images en split screen 50/50 */}
               <div className="absolute inset-0" style={{ zIndex: 0 }}>
-                {/* Moitié gauche - inventaire mobile */}
+                {/* Moitié gauche - inventory1 */}
                 <div 
                   className="absolute top-0 left-0 bottom-0 w-1/2"
                   style={{
-                    backgroundImage: 'url(/images/tools/inventaire-mobile.jpg)',
+                    backgroundImage: 'url(/images/tools/inventory1.avif)',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center'
                   }}
                 />
                 
-                {/* Moitié droite - inventaire zones */}
+                {/* Moitié droite - inventory2 */}
                 <div 
                   className="absolute top-0 right-0 bottom-0 w-1/2"
                   style={{
-                    backgroundImage: 'url(/images/tools/inventaire-emplacements.jpg)',
+                    backgroundImage: 'url(/images/tools/inventory2.avif)',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center'
                   }}
