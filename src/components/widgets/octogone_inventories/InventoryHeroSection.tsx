@@ -1,13 +1,12 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { Mail, Key, ClipboardCheck, FileText, Package } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { RECIPE_ACCESS_CONFIG } from '@/config/recipe-access';
 import { trackRecipeAccessRequest, trackRecipeAccessUnlocked } from '@/lib/tracking/hubspot-events';
 import { INVENTORY_TAGS, INITIAL_INVENTORY_PROGRESS, HERO_TAG_DELAYS } from './inventoryPriceTags';
-import { QuantityTag } from './QuantityTag';
 import { CircularProgress } from '../octogone_recipe/CircularProgress';
 
 interface InventoryHeroSectionProps {
@@ -156,101 +155,194 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
       }}
     >
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-          {/* Image de l'inventaire avec progress bar circulaire */}
-          <div className="order-1 lg:order-1 relative" style={{ height: '600px' }}>
+        {/* Titre et description en haut */}
+        <div className="mb-8 space-y-3">
+          {/* Badge En cours */}
+          <div className="flex items-center gap-2 mb-3">
             <div 
-              className="w-full h-full rounded-3xl overflow-hidden shadow-2xl"
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full"
               style={{ 
-                border: '2px solid var(--outline)'
+                backgroundColor: 'var(--secondary-container)',
+                border: '1px solid var(--secondary)'
               }}
             >
-              <Image
-                src={inventoryImage}
-                alt={inventoryName}
-                width={600}
-                height={600}
-                className="w-full h-full object-cover"
+              <Package 
+                size={16} 
+                style={{ color: 'var(--on-secondary-container)' }}
               />
+              <span 
+                className="text-sm font-medium"
+                style={{ color: 'var(--on-secondary-container)' }}
+              >
+                {isEnglish ? 'In Progress' : 'En cours'}
+              </span>
             </div>
-            
-            {/* Progress bar circulaire par-dessus l'image */}
-            <CircularProgress
-              progress={displayProgress}
-              size={200}
-              strokeWidth={8}
-              showPercentage={true}
-              percentageLabel={isEnglish ? 'completed' : 'complété'}
-            />
-
-            {/* Tags de quantités sur les produits */}
-            {INVENTORY_TAGS.map((tag) => (
-              <QuantityTag
-                key={tag.id}
-                quantity={tag.quantity}
-                label={isEnglish ? tag.labelEn : tag.labelFr}
-                top={tag.top}
-                left={'left' in tag ? tag.left : undefined}
-                right={'right' in tag ? tag.right : undefined}
-                isVisible={visibleTags.includes(tag.id)}
-              />
-            ))}
           </div>
 
-          {/* Description et bouton */}
-          <div className="order-2 lg:order-2 space-y-6">
-            <div className="space-y-3">
-            {/* Badge En cours */}
-            <div className="flex items-center gap-2 mb-3">
-              <div 
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full"
-                style={{ 
-                  backgroundColor: 'var(--secondary-container)',
-                  border: '1px solid var(--secondary)'
-                }}
-              >
-                <Package 
-                  size={16} 
-                  style={{ color: 'var(--on-secondary-container)' }}
-                />
-                <span 
-                  className="text-sm font-medium"
-                  style={{ color: 'var(--on-secondary-container)' }}
-                >
-                  {isEnglish ? 'In Progress' : 'En cours'}
-                </span>
-              </div>
-            </div>
-
-            <h1 
-              className="text-4xl lg:text-5xl font-bold mb-3"
-              style={{ color: 'var(--on-surface)' }}
-            >
-              {inventoryName}
-            </h1>
-            
-            {/* Container de description avec bordure */}
-            <div 
-              className="p-4 rounded-lg border"
-              style={{ borderColor: 'var(--outline)' }}
-            >
-              <div className="flex items-center gap-2 mb-2">
-                <FileText size={16} style={{ color: 'var(--on-surface-variant)' }} />
-                <span 
-                  className="text-sm font-medium"
-                  style={{ color: 'var(--on-surface-variant)' }}
-                >
-                  Description
-                </span>
-              </div>
-              <p 
-                className="text-lg leading-relaxed"
+          <h1 
+            className="text-4xl lg:text-5xl font-bold mb-3"
+            style={{ color: 'var(--on-surface)' }}
+          >
+            {inventoryName}
+          </h1>
+          
+          {/* Container de description avec bordure */}
+          <div 
+            className="p-4 rounded-lg border"
+            style={{ borderColor: 'var(--outline)' }}
+          >
+            <div className="flex items-center gap-2 mb-2">
+              <FileText size={16} style={{ color: 'var(--on-surface-variant)' }} />
+              <span 
+                className="text-sm font-medium"
                 style={{ color: 'var(--on-surface-variant)' }}
               >
-                {description}
-              </p>
+                Description
+              </span>
             </div>
+            <p 
+              className="text-lg leading-relaxed"
+              style={{ color: 'var(--on-surface-variant)' }}
+            >
+              {description}
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          {/* Colonne gauche : Badges de produits */}
+          <div className="order-1 lg:order-1">
+            <div className="space-y-4">
+              {/* Titre de la colonne */}
+              <div className="flex items-center gap-3 mb-6">
+                <Package 
+                  size={24} 
+                  style={{ color: 'var(--primary)' }}
+                />
+                <h3 
+                  className="text-xl font-bold"
+                  style={{ color: 'var(--on-surface)' }}
+                >
+                  {isEnglish ? 'Products to Count' : 'Produits à compter'}
+                </h3>
+              </div>
+
+              {/* Liste des produits avec animation séquentielle */}
+              <div className="space-y-3">
+                {INVENTORY_TAGS.map((tag, index) => (
+                  <motion.div
+                    key={tag.id}
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={visibleTags.includes(tag.id) ? {
+                      opacity: 1,
+                      x: 0
+                    } : {
+                      opacity: 0,
+                      x: -50
+                    }}
+                    transition={{
+                      duration: 0.4,
+                      ease: [0.34, 1.56, 0.64, 1]
+                    }}
+                  >
+                    <div 
+                      className="flex items-center gap-4 p-4 rounded-xl border-2"
+                      style={{
+                        backgroundColor: visibleTags.includes(tag.id) 
+                          ? 'rgba(180, 212, 255, 0.15)' 
+                          : 'var(--surface)',
+                        borderColor: visibleTags.includes(tag.id)
+                          ? 'var(--primary)'
+                          : 'var(--outline)',
+                        transition: 'all 0.3s ease'
+                      }}
+                    >
+                      {/* Numéro */}
+                      <div 
+                        className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center"
+                        style={{
+                          backgroundColor: visibleTags.includes(tag.id)
+                            ? 'var(--primary)'
+                            : 'var(--surface-variant)'
+                        }}
+                      >
+                        <span 
+                          className="text-sm font-bold"
+                          style={{ 
+                            color: visibleTags.includes(tag.id)
+                              ? 'white'
+                              : 'var(--on-surface-variant)'
+                          }}
+                        >
+                          {index + 1}
+                        </span>
+                      </div>
+
+                      {/* Nom du produit */}
+                      <div className="flex-1">
+                        <p 
+                          className="text-lg font-semibold"
+                          style={{ 
+                            color: visibleTags.includes(tag.id)
+                              ? 'var(--on-surface)'
+                              : 'var(--on-surface-variant)'
+                          }}
+                        >
+                          {isEnglish ? tag.labelEn : tag.labelFr}
+                        </p>
+                      </div>
+
+                      {/* Quantité */}
+                      <div 
+                        className="flex-shrink-0 px-4 py-2 rounded-lg"
+                        style={{
+                          backgroundColor: visibleTags.includes(tag.id)
+                            ? 'var(--primary-container)'
+                            : 'var(--surface-variant)'
+                        }}
+                      >
+                        <span 
+                          className="text-xl font-bold"
+                          style={{ 
+                            color: visibleTags.includes(tag.id)
+                              ? 'var(--on-primary-container)'
+                              : 'var(--on-surface-variant)'
+                          }}
+                        >
+                          {tag.quantity}
+                        </span>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
+          </div>
+
+          {/* Colonne droite : Progress Bar + Actions */}
+          <div className="order-2 lg:order-2">
+            {/* Progress Bar centrée */}
+            <div className="flex items-center justify-center mb-8">
+              <motion.div
+                className="relative"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+              >
+                <div className="relative flex items-center justify-center" style={{ width: '280px', height: '280px' }}>
+                  <CircularProgress
+                    progress={displayProgress}
+                    size={280}
+                    strokeWidth={12}
+                    showPercentage={true}
+                    percentageLabel={isEnglish ? 'completed' : 'complété'}
+                  />
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Actions */}
+            <div className="space-y-6">
 
             {/* Système d'email gate (seulement si activé) */}
             {RECIPE_ACCESS_CONFIG.ENABLE_EMAIL_GATE && (
@@ -358,6 +450,7 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
               <ClipboardCheck size={20} />
               {isEnglish ? 'Complete my inventory' : 'Compléter mon inventaire'}
             </OctogoneButton>
+            </div>
           </div>
         </div>
       </div>
