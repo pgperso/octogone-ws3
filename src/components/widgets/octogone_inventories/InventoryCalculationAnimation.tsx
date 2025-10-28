@@ -3,7 +3,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Package, CheckCircle2 } from 'lucide-react';
-import { INVENTORY_TAGS, INITIAL_INVENTORY_PROGRESS, ANIMATION_TAG_DELAYS } from './inventoryPriceTags';
+import inventoryData from '@/data/products/octogone_products_data.json';
+import { translateProduct } from '@/data/products/octogone_products_translations';
+import Image from 'next/image';
 import { CircularProgress } from '../octogone_recipe/CircularProgress';
 
 interface InventoryCalculationAnimationProps {
@@ -13,231 +15,189 @@ interface InventoryCalculationAnimationProps {
   locale?: 'fr' | 'en';
 }
 
+interface InventoryProduct {
+  id: string;
+  name: string;
+  initialQuantity?: number;
+  unit: string;
+}
+
 export const InventoryCalculationAnimation: React.FC<InventoryCalculationAnimationProps> = ({
+  inventoryName,
+  inventoryImage,
   onComplete,
   locale = 'fr'
 }) => {
   const isEnglish = locale === 'en';
-  const [progress, setProgress] = useState(INITIAL_INVENTORY_PROGRESS);
+  const [displayProgress, setDisplayProgress] = useState(0);
   const [visibleTags, setVisibleTags] = useState<number[]>([]);
 
-  // Animation des tags de quantités
+  // Récupérer les mêmes produits que le Hero
+  const allProducts = inventoryData.products as InventoryProduct[];
+  const totalProductCount = allProducts.length;
+  
+  const inventoryProducts = allProducts
+    .filter(p => p.initialQuantity && p.initialQuantity > 0)
+    .slice(0, 5)
+    .map((p, index) => ({
+      id: index + 1,
+      productId: p.id,
+      name: p.name,
+      quantity: p.initialQuantity!,
+      unit: p.unit
+    }));
+
+  const currentProgress = (visibleTags.length / totalProductCount) * 100;
+
+  // Tous les tags sont déjà visibles au départ (on garde l'état du Hero)
   useEffect(() => {
-    const timers = INVENTORY_TAGS.map((tag, index) => 
-      setTimeout(() => {
-        setVisibleTags(prev => [...prev, tag.id]);
-      }, ANIMATION_TAG_DELAYS[index])
-    );
-    return () => timers.forEach(clearTimeout);
+    setVisibleTags(inventoryProducts.map(p => p.id));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Animation du progress
+  // Animation du pourcentage de currentProgress vers 100%
   useEffect(() => {
-    const duration = 3000;
-    const interval = 30;
-    const remainingProgress = 100 - INITIAL_INVENTORY_PROGRESS;
-    const increment = (remainingProgress / duration) * interval;
+    // Démarrer depuis le progrès actuel
+    setDisplayProgress(currentProgress);
+    
+    const duration = 2000;
+    const steps = 60;
+    const targetProgress = 100;
+    const increment = (targetProgress - currentProgress) / steps;
+    const interval = duration / steps;
 
     const timer = setInterval(() => {
-      setProgress(prev => {
+      setDisplayProgress(prev => {
         const next = prev + increment;
-        if (next >= 100) {
+        if (next >= targetProgress) {
           clearInterval(timer);
           setTimeout(onComplete, 300);
-          return 100;
+          return targetProgress;
         }
         return next;
       });
     }, interval);
 
     return () => clearInterval(timer);
-  }, [onComplete]);
+  }, [currentProgress, onComplete]);
 
   return (
     <div 
       className="w-full px-6 py-12"
       style={{ 
-        backgroundColor: 'var(--surface-container-low)',
-        borderBottom: '1px solid var(--outline)'
+        backgroundColor: 'var(--surface-container-low)'
       }}
     >
       <div className="max-w-7xl mx-auto">
-        {/* Titre centré */}
-        <motion.div 
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h2 
-            className="text-3xl font-bold mb-2"
-            style={{ color: 'var(--on-surface)' }}
-          >
-            {isEnglish ? 'Calculating inventory...' : 'Calcul de l\'inventaire...'}
-          </h2>
-          <p 
-            className="text-lg"
-            style={{ color: 'var(--on-surface-variant)' }}
-          >
-            {isEnglish 
-              ? 'Analyzing stock levels and variances'
-              : 'Analyse des niveaux de stock et des écarts'}
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* Colonne gauche : Badges de produits comptés */}
-          <div className="order-1 lg:order-1">
-            <motion.div
-              className="space-y-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          {/* Image de l'inventaire avec badges et progress bar par-dessus (même style que Hero) */}
+          <div className="order-1 lg:order-1 relative" style={{ height: '600px' }}>
+            <div 
+              className="w-full h-full rounded-3xl overflow-hidden shadow-2xl"
+              style={{ 
+                border: '2px solid var(--outline)'
+              }}
             >
-              {/* Titre de la colonne */}
-              <div className="flex items-center gap-3 mb-6">
-                <Package 
-                  size={24} 
-                  style={{ color: 'var(--primary)' }}
-                />
-                <h3 
-                  className="text-xl font-bold"
-                  style={{ color: 'var(--on-surface)' }}
-                >
-                  {isEnglish ? 'Products Counted' : 'Produits comptés'}
-                </h3>
-              </div>
-
-              {/* Liste des produits avec animation séquentielle */}
-              <div className="space-y-3">
-                {INVENTORY_TAGS.map((tag, index) => (
-                  <motion.div
-                    key={tag.id}
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={visibleTags.includes(tag.id) ? {
-                      opacity: 1,
-                      x: 0
-                    } : {
-                      opacity: 0,
-                      x: -50
-                    }}
-                    transition={{
-                      duration: 0.4,
-                      ease: [0.34, 1.56, 0.64, 1]
-                    }}
-                  >
+              <Image
+                src={inventoryImage}
+                alt={inventoryName}
+                width={600}
+                height={600}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            
+            {/* Layout en 2 colonnes sur l'image */}
+            <div className="absolute inset-0 flex gap-4 p-6">
+              {/* Colonne gauche : Badges en liste verticale */}
+              <div className="flex-1 flex flex-col justify-center space-y-3">
+                {inventoryProducts.map((tag, index) => (
+                  <div key={tag.id}>
                     <div 
-                      className="flex items-center gap-4 p-4 rounded-xl border-2"
+                      className="flex items-center gap-3 p-3 rounded-lg backdrop-blur-sm"
                       style={{
-                        backgroundColor: visibleTags.includes(tag.id) 
-                          ? 'rgba(180, 212, 255, 0.15)' 
-                          : 'var(--surface)',
-                        borderColor: visibleTags.includes(tag.id)
-                          ? 'var(--primary)'
-                          : 'var(--outline)',
+                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
                         transition: 'all 0.3s ease'
                       }}
                     >
-                      {/* Icône de validation */}
+                      {/* Icône */}
                       <div 
-                        className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center"
+                        className="flex-shrink-0 w-8 h-8 rounded flex items-center justify-center"
                         style={{
-                          backgroundColor: visibleTags.includes(tag.id)
-                            ? 'var(--primary)'
-                            : 'var(--surface-variant)'
+                          backgroundColor: 'var(--success)',
+                          borderRadius: '6px'
                         }}
                       >
-                        {visibleTags.includes(tag.id) ? (
-                          <CheckCircle2 
-                            size={20} 
-                            style={{ color: 'white' }}
-                          />
-                        ) : (
-                          <span 
-                            className="text-sm font-bold"
-                            style={{ color: 'var(--on-surface-variant)' }}
-                          >
-                            {index + 1}
-                          </span>
-                        )}
+                        <CheckCircle2 
+                          size={16} 
+                          style={{ color: 'white' }}
+                        />
                       </div>
 
-                      {/* Nom du produit */}
-                      <div className="flex-1">
+                      {/* Nom */}
+                      <div className="flex-1 min-w-0">
                         <p 
-                          className="text-lg font-semibold"
-                          style={{ 
-                            color: visibleTags.includes(tag.id)
-                              ? 'var(--on-surface)'
-                              : 'var(--on-surface-variant)'
-                          }}
+                          className="text-sm font-semibold truncate"
+                          style={{ color: '#1a1a1a' }}
                         >
-                          {isEnglish ? tag.labelEn : tag.labelFr}
+                          {translateProduct(tag.name, locale)}
                         </p>
                       </div>
 
-                      {/* Quantité */}
+                      {/* Quantité avec unité */}
                       <div 
-                        className="flex-shrink-0 px-4 py-2 rounded-lg"
+                        className="flex-shrink-0 px-2 py-1 rounded"
                         style={{
-                          backgroundColor: visibleTags.includes(tag.id)
-                            ? 'var(--primary-container)'
-                            : 'var(--surface-variant)'
+                          backgroundColor: 'rgba(0, 0, 0, 0.05)'
                         }}
                       >
                         <span 
-                          className="text-xl font-bold"
-                          style={{ 
-                            color: visibleTags.includes(tag.id)
-                              ? 'var(--on-primary-container)'
-                              : 'var(--on-surface-variant)'
-                          }}
+                          className="text-sm font-bold"
+                          style={{ color: '#1a1a1a' }}
                         >
-                          {tag.quantity}
+                          {tag.quantity} {tag.unit}
                         </span>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
-            </motion.div>
-          </div>
 
-          {/* Colonne droite : Progress Bar */}
-          <div className="order-2 lg:order-2 flex items-center justify-center">
-            <motion.div
-              className="relative"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              {/* Container pour centrer le CircularProgress */}
-              <div className="relative flex items-center justify-center" style={{ width: '300px', height: '300px' }}>
+              {/* Colonne droite : Progress Bar */}
+              <div className="flex-shrink-0 flex items-center justify-end" style={{ width: '250px' }}>
                 <CircularProgress
-                  progress={progress}
-                  size={280}
-                  strokeWidth={12}
+                  progress={displayProgress}
+                  size={200}
+                  strokeWidth={8}
                   showPercentage={true}
                   percentageLabel={isEnglish ? 'completed' : 'complété'}
                 />
               </div>
+            </div>
+          </div>
 
-              {/* Message sous le progress */}
-              <motion.div
-                className="text-center mt-8"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.8 }}
+          {/* Colonne droite : Message de calcul */}
+          <div className="order-2 lg:order-2 flex items-center justify-center">
+            <motion.div
+              className="text-center"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              <h2 
+                className="text-3xl font-bold mb-4"
+                style={{ color: 'var(--on-surface)' }}
               >
-                <p 
-                  className="text-base font-medium"
-                  style={{ color: 'var(--on-surface-variant)' }}
-                >
-                  {isEnglish 
-                    ? 'Calculating costs and variances...'
-                    : 'Calcul des coûts et écarts...'}
-                </p>
-              </motion.div>
+                {isEnglish ? 'Calculating inventory...' : 'Calcul de l\'inventaire...'}
+              </h2>
+              <p 
+                className="text-lg"
+                style={{ color: 'var(--on-surface-variant)' }}
+              >
+                {isEnglish 
+                  ? 'Analyzing stock levels and variances'
+                  : 'Analyse des niveaux de stock et des écarts'}
+              </p>
             </motion.div>
           </div>
         </div>
