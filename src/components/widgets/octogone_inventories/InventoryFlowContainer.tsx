@@ -19,7 +19,7 @@ export const InventoryFlowContainer: React.FC<InventoryFlowContainerProps> = ({
 
   // Données de l'inventaire
   const inventoryName = isEnglish ? 'Weekly Inventory' : 'Inventaire hebdomadaire';
-  const inventoryImage = '/images/pages/inventory1.avif';
+  const inventoryImage = '/images/pages/inventory3.avif';
   const description = isEnglish 
     ? 'Complete your weekly inventory count across all storage zones: walk-in cooler, dry storage, freezer, and bar area.'
     : 'Complétez votre inventaire hebdomadaire dans toutes les zones de stockage : chambre froide, entreposage sec, congélateur et zone bar.';

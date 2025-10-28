@@ -14,8 +14,6 @@ interface InventoryCalculationAnimationProps {
 }
 
 export const InventoryCalculationAnimation: React.FC<InventoryCalculationAnimationProps> = ({
-  inventoryName,
-  inventoryImage,
   onComplete,
   locale = 'fr'
 }) => {
