@@ -349,11 +349,11 @@ export default function ToolPage({
                   }}
                 />
                 
-                {/* Moitié droite - inventory2 */}
+                {/* Moitié droite - inventory4 */}
                 <div 
                   className="absolute top-0 right-0 bottom-0 w-1/2"
                   style={{
-                    backgroundImage: 'url(/images/pages/inventory2.avif)',
+                    backgroundImage: 'url(/images/pages/inventory4.avif)',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center'
                   }}

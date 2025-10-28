@@ -7,7 +7,7 @@ import { Mail, Key, ClipboardCheck, FileText, Package, CheckCircle2 } from 'luci
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { RECIPE_ACCESS_CONFIG } from '@/config/recipe-access';
 import { trackRecipeAccessRequest, trackRecipeAccessUnlocked } from '@/lib/tracking/hubspot-events';
-import { INVENTORY_TAGS, INITIAL_INVENTORY_PROGRESS, HERO_TAG_DELAYS } from './inventoryPriceTags';
+import { INVENTORY_TAGS, HERO_TAG_DELAYS } from './inventoryPriceTags';
 import { CircularProgress } from '../octogone_recipe/CircularProgress';
 
 interface InventoryHeroSectionProps {
