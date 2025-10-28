@@ -36,8 +36,12 @@ export default function ToolPage({
 
   const isEnglish = locale === "en";
   
+  // Type guard pour toolId
+  const isInventaire = tool.id === 'inventaire';
+  const isFoodCost = tool.id === 'food-cost';
+  
   // Couleurs pour le hero food-cost
-  const heroTextColor = toolId === 'food-cost' ? '#1a1a1a' : 'white';
+  const heroTextColor = isFoodCost ? '#1a1a1a' : 'white';
   
   // Cartes de bénéfices - Food Cost
   const foodCostBenefitCards = [
@@ -160,7 +164,7 @@ export default function ToolPage({
   ];
 
   // Sélectionner les bonnes cartes selon le toolId
-  const benefitCards = toolId === 'inventaire' ? inventaireBenefitCards : foodCostBenefitCards;
+  const benefitCards = isInventaire ? inventaireBenefitCards : foodCostBenefitCards;
   
   // State pour la carte sélectionnée
   const [selectedCard, setSelectedCard] = React.useState<string>('operate');
@@ -196,7 +200,7 @@ export default function ToolPage({
         {/* Image de fond */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-[#002236] via-[#003d5c] to-[#005a82]" style={{
-            ...(toolId === 'food-cost' && {
+            ...(isFoodCost && {
               background: 'linear-gradient(135deg, #B8E0D2 0%, #A5CABE 100%)'
             })
           }} />
@@ -205,7 +209,7 @@ export default function ToolPage({
               backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(220, 178, 107, 0.3) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(186, 223, 246, 0.3) 0%, transparent 50%)'
             }}
           />
-          {toolId !== 'food-cost' && <div className="absolute inset-0 bg-black/50"></div>}
+          {!isFoodCost && <div className="absolute inset-0 bg-black/50"></div>}
         </div>
 
         <div className="relative z-10 text-center">
@@ -224,14 +228,14 @@ export default function ToolPage({
           <motion.h1 
             className="text-4xl lg:text-6xl font-bold mb-3"
             style={{ 
-              color: toolId === 'food-cost' ? '#1a1a1a' : 'white',
-              textShadow: toolId === 'food-cost' ? 'none' : '0 2px 8px rgba(0,0,0,0.5)'
+              color: isFoodCost ? '#1a1a1a' : 'white',
+              textShadow: isFoodCost ? 'none' : '0 2px 8px rgba(0,0,0,0.5)'
             }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            {toolId === 'food-cost' ? (
+            {isFoodCost ? (
               <RotatingText 
                 words={isEnglish 
                   ? [
@@ -312,21 +316,21 @@ export default function ToolPage({
       </ResponsiveSection>
 
       {/* Dashboard KPIs - Uniquement pour Octogone 360 */}
-      {toolId === 'octogone-360' && (
+      {tool.id === 'octogone-360' && (
         <ResponsiveSection spacing="xl" bgColor="">
           <OctogoneDashboardKPIs locale={locale as 'fr' | 'en'} />
         </ResponsiveSection>
       )}
 
       {/* Widget Inventaire - Uniquement pour Inventaire */}
-      {toolId === 'inventaire' && (
+      {isInventaire && (
         <ResponsiveSection spacing="xl" bgColor="">
           <OctogoneInventoryWidget locale={locale as 'fr' | 'en'} />
         </ResponsiveSection>
       )}
 
       {/* Section Bénéfices avec Parallaxe - Uniquement pour Inventaire */}
-      {toolId === 'inventaire' && (
+      {isInventaire && (
         <div className="py-16 md:py-24">
           <div className="relative px-3 md:px-4">
             <div className="relative rounded-2xl overflow-hidden">
@@ -485,7 +489,7 @@ export default function ToolPage({
                           >
                             <div className="text-center">
                               <div className="text-2xl font-bold" style={{ color: '#1a1a1a' }}>
-                                {toolId === 'inventaire' 
+                                {isInventaire
                                   ? (selectedCard === 'operate' ? '70%' : 
                                      selectedCard === 'automate' ? '100%' :
                                      selectedCard === 'analyze' ? '2-5%' : '15-20%')
@@ -577,14 +581,14 @@ export default function ToolPage({
       )}
 
       {/* Widget Recettes - Uniquement pour Food Cost */}
-      {toolId === 'food-cost' && (
+      {isFoodCost && (
         <ResponsiveSection spacing="xxl" bgColor="">
           <RecipeFlowContainer locale={locale as 'fr' | 'en'} />
         </ResponsiveSection>
       )}
 
       {/* Section Bénéfices avec Parallaxe - Uniquement pour Food Cost */}
-      {toolId === 'food-cost' && (
+      {isFoodCost && (
         <div className="py-16 md:py-24">
           {/* Wrapper avec petit padding horizontal et radius pour effet flottant */}
           <div className="relative px-3 md:px-4">
@@ -748,7 +752,7 @@ export default function ToolPage({
                     >
                       <div className="text-center">
                         <div className="text-2xl font-bold" style={{ color: '#1a1a1a' }}>
-                          {toolId === 'inventaire' 
+                          {isInventaire
                             ? (selectedCard === 'operate' ? '70%' : 
                                selectedCard === 'automate' ? '100%' :
                                selectedCard === 'analyze' ? '2-5%' : '15-20%')
@@ -845,7 +849,7 @@ export default function ToolPage({
       </ResponsiveSection>
 
       {/* CTA Gel de tarifs - Pour Food Cost et Inventaire */}
-      {(toolId === 'food-cost' || toolId === 'inventaire') && (
+      {(isFoodCost || isInventaire) && (
         <ResponsiveSection spacing="xl" bgColor="">
           <div className="max-w-4xl mx-auto">
             {/* Séparateur */}
@@ -902,7 +906,7 @@ export default function ToolPage({
       )}
 
       {/* Section Partenaires - RH : Gestionnaires d'horaires */}
-      {toolId === 'ressources-humaines' && (
+      {tool.id === 'ressources-humaines' && (
         <ResponsiveSection spacing="xl" bgColor="">
           <div className="max-w-4xl mx-auto">
             {/* Séparateur */}
@@ -935,7 +939,7 @@ export default function ToolPage({
       )}
 
       {/* Section Partenaires - Inventaire : Fournisseurs */}
-      {toolId === 'inventaire' && (
+      {isInventaire && (
         <ResponsiveSection spacing="xl" bgColor="">
           <div className="max-w-5xl mx-auto">
             {/* Séparateur */}
