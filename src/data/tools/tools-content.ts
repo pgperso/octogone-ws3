@@ -314,16 +314,16 @@ export const tools: Tool[] = [
       {
         titleFr: 'Simulateur de Food Cost',
         titleEn: 'Food Cost Simulator',
-        descriptionFr: 'Testez différents scénarios avant de prendre vos décisions. Simulez l\'impact d\'un changement de fournisseur, d\'une augmentation de prix ou d\'une modification de recette. Comparez les options et choisissez la meilleure stratégie pour votre rentabilité.',
-        descriptionEn: 'Test different scenarios before making your decisions. Simulate the impact of a supplier change, price increase or recipe modification. Compare options and choose the best strategy for your profitability.',
+        descriptionFr: 'Anticipez l\'impact financier de vos décisions avant de les prendre. Le simulateur vous permet de tester différents scénarios en temps réel : changement de fournisseur, hausse de prix, modification de recette ou ajustement de portions. Comparez plusieurs options côte à côte, visualisez l\'effet sur vos marges et votre rentabilité globale. Prenez des décisions stratégiques basées sur des données précises plutôt que sur des estimations.',
+        descriptionEn: 'Anticipate the financial impact of your decisions before making them. The simulator lets you test different scenarios in real-time: supplier changes, price increases, recipe modifications or portion adjustments. Compare multiple options side by side, visualize the effect on your margins and overall profitability. Make strategic decisions based on accurate data rather than estimates.',
         image: {
           src: '/images/pages/food_cost_simulator_en.avif',
           srcFr: '/images/pages/food_cost_simulator_fr.avif'
         },
         benefits: [
-          { fr: 'Simulation de scénarios multiples', en: 'Multiple scenario simulation' },
-          { fr: 'Comparaison d\'options', en: 'Option comparison' },
-          { fr: 'Décisions éclairées', en: 'Informed decisions' }
+          { fr: 'Testez avant d\'agir, zéro risque', en: 'Test before acting, zero risk' },
+          { fr: 'Visualisation instantanée des impacts', en: 'Instant impact visualization' },
+          { fr: 'Décisions basées sur des données réelles', en: 'Decisions based on real data' }
         ],
         concepts: ['analyze', 'predict'],
         layout: 'image-right'
