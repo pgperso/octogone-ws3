@@ -163,11 +163,8 @@ export const InventoryCalculationAnimation: React.FC<InventoryCalculationAnimati
                 ))}
               </div>
 
-              {/* Spacer pour pousser la progress bar à droite */}
-              <div className="flex-1"></div>
-
               {/* Colonne droite : Progress Bar */}
-              <div className="flex items-center justify-center">
+              <div className="flex items-center justify-end">
                 <CircularProgress
                   progress={displayProgress}
                   size={200}
