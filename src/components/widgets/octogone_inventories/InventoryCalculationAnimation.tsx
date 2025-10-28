@@ -164,7 +164,7 @@ export const InventoryCalculationAnimation: React.FC<InventoryCalculationAnimati
               </div>
 
               {/* Colonne droite : Progress Bar */}
-              <div className="flex-shrink-0 flex items-center justify-end" style={{ width: '250px' }}>
+              <div className="flex-1 flex items-center justify-center">
                 <CircularProgress
                   progress={displayProgress}
                   size={200}
