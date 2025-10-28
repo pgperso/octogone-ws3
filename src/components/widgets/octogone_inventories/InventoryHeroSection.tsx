@@ -234,7 +234,7 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                         {visibleTags.includes(tag.id) ? (
                           <CheckCircle2 
                             size={16} 
-                            style={{ color: 'var(--on-success-container)' }}
+                            style={{ color: 'white' }}
                           />
                         ) : (
                           <span 
@@ -276,7 +276,7 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
               </div>
 
               {/* Colonne droite : Progress Bar */}
-              <div className="flex-shrink-0 flex items-center justify-center" style={{ width: '250px' }}>
+              <div className="flex-shrink-0 flex items-center justify-end" style={{ width: '250px' }}>
                 <CircularProgress
                   progress={displayProgress}
                   size={200}
