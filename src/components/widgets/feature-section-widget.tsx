@@ -53,12 +53,6 @@ const getImageSrc = (image: ToolFeature['image'], isEnglish: boolean): string | 
 // Couleurs pastel pour la barre de progression
 const progressColors = ['#B8E0D2', '#B4D4FF', '#FFE5B4', '#C8B6FF'];
 
-// Pourcentages aléatoires entre 60% et 85%
-const getRandomProgress = (index: number) => {
-  const seed = index * 7; // Seed pour cohérence
-  return 60 + ((seed * 13) % 26); // Entre 60 et 85
-};
-
 // Composant réutilisable pour les badges de concepts
 function ConceptBadges({ concepts, isEnglish, justify = 'center' }: { 
   concepts?: Array<'operate' | 'automate' | 'analyze' | 'predict'>;
@@ -237,7 +231,6 @@ function ImageTextFeature({ feature, isEnglish, imageSrc, imageOnLeft }: {
   // Générer un index stable basé sur le titre pour cohérence
   const featureIndex = feature.titleEn.length % progressColors.length;
   const progressColor = progressColors[featureIndex];
-  const progressValue = getRandomProgress(featureIndex);
 
   return (
     <motion.div 
