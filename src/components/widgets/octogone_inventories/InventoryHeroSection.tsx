@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { Mail, Key, ClipboardCheck, FileText, Package, CheckCircle2 } from 'lucide-react';
+import { Mail, Key, ClipboardCheck, Package, CheckCircle2 } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { RECIPE_ACCESS_CONFIG } from '@/config/recipe-access';
 import { trackRecipeAccessRequest, trackRecipeAccessUnlocked } from '@/lib/tracking/hubspot-events';
@@ -14,7 +14,6 @@ import { CircularProgress } from '../octogone_recipe/CircularProgress';
 interface InventoryHeroSectionProps {
   inventoryName: string;
   inventoryImage: string;
-  description: string;
   onCalculateClick: () => void;
   locale?: 'fr' | 'en';
 }
@@ -24,7 +23,6 @@ type AccessState = 'email' | 'code' | 'unlocked';
 export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
   inventoryName,
   inventoryImage,
-  description,
   onCalculateClick,
   locale = 'fr'
 }) => {
