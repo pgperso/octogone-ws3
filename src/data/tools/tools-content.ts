@@ -8,15 +8,19 @@ export interface ToolFeature {
   titleEn: string;
   descriptionFr: string;
   descriptionEn: string;
-  image?: string; // Optionnel pour layout full-width
+  // Image optionnelle (peut être bilingue)
+  image?: {
+    src: string;      // Image par défaut ou EN
+    srcFr?: string;   // Image FR (optionnel si bilingue)
+  } | string;         // Support ancien format pour compatibilité
   benefits: Array<{
     fr: string;
     en: string;
   }>;
   // Concepts associés à cette feature (peut être 1, 2, 3 ou 4 concepts)
   concepts?: Array<'operate' | 'automate' | 'analyze' | 'predict'>;
-  // Layout spécial pour cette feature (optionnel)
-  layout?: 'full-width' | 'image-text' | 'three-columns';
+  // Layout de la feature
+  layout?: 'image-left' | 'image-right' | 'text-only' | 'two-columns' | 'three-columns' | 'full-width';
 }
 
 export interface Tool {
@@ -219,42 +223,51 @@ export const tools: Tool[] = [
         titleEn: 'Centralized Product Catalog',
         descriptionFr: 'Tous les produits de vos fournisseurs réunis dans un seul catalogue. C\'est à partir de ce catalogue que vous créez vos recettes : chaque produit contient son prix, ses formats, ses unités de mesure et ses conversions. Un seul catalogue pour vos inventaires et vos recettes, garantissant que vos calculs de food cost utilisent toujours les prix réels de vos fournisseurs.',
         descriptionEn: 'All products from your suppliers in one catalog. This is where you create your recipes from: each product contains its price, formats, units of measure and conversions. One catalog for your inventories and recipes, ensuring your food cost calculations always use real prices from your suppliers.',
-        image: '/images/tools/foodcost-catalogue.jpg',
+        image: {
+          src: '/images/pages/product_list_en.avif',
+          srcFr: '/images/pages/product_list_fr.avif'
+        },
         benefits: [
           { fr: 'Tous vos produits fournisseurs en un lieu', en: 'All your supplier products in one place' },
           { fr: 'Source unique pour créer vos recettes', en: 'Single source to create your recipes' },
           { fr: 'Prix réels synchronisés', en: 'Real prices synchronized' }
         ],
         concepts: ['operate', 'automate'],
-        layout: 'image-text'
+        layout: 'image-left'
       },
       {
         titleFr: 'Catalogue centralisé de recettes',
         titleEn: 'Centralized Recipe Catalog',
         descriptionFr: 'Toutes vos recettes réunies dans un catalogue unique et structuré. Chaque recette est créée à partir des produits de votre catalogue et contient ses ingrédients, quantités, étapes de préparation et coûts calculés automatiquement. Accédez instantanément à l\'ensemble de vos fiches techniques et assurez la constance de vos plats. Votre catalogue de recettes devient la référence centrale pour toute votre production.',
         descriptionEn: 'All your recipes in a single, structured catalog. Each recipe is created from products in your catalog and contains its ingredients, quantities, preparation steps and automatically calculated costs. Instantly access all your technical sheets and ensure consistency of your dishes. Your recipe catalog becomes the central reference for all your production.',
-        image: '/images/tools/foodcost-recettes.jpg',
+        image: {
+          src: '/images/pages/recipe_list_en.avif',
+          srcFr: '/images/pages/recipe_list_fr.avif'
+        },
         benefits: [
           { fr: 'Toutes vos recettes en un lieu', en: 'All your recipes in one place' },
           { fr: 'Créées à partir du catalogue produits', en: 'Created from product catalog' },
           { fr: 'Coûts calculés automatiquement', en: 'Automatically calculated costs' }
         ],
         concepts: ['operate', 'automate'],
-        layout: 'image-text'
+        layout: 'image-right'
       },
       {
         titleFr: 'Fiches recettes complètes',
         titleEn: 'Complete Recipe Sheets',
         descriptionFr: 'Chaque recette dispose d\'une fiche technique détaillée et professionnelle. Ingrédients avec quantités précises, étapes de préparation numérotées, temps de cuisson, portions, coûts détaillés et allergènes. Toutes les informations essentielles réunies dans un format clair et structuré, prêt à être utilisé en cuisine ou partagé avec votre équipe.',
         descriptionEn: 'Each recipe has a detailed and professional technical sheet. Ingredients with precise quantities, numbered preparation steps, cooking times, portions, detailed costs and allergens. All essential information gathered in a clear and structured format, ready to be used in the kitchen or shared with your team.',
-        image: '/images/tools/foodcost-fiches.jpg',
+        image: {
+          src: '/images/pages/recipe_sheet_en.avif',
+          srcFr: '/images/pages/recipe_sheet_fr.avif'
+        },
         benefits: [
           { fr: 'Fiches techniques détaillées et pro', en: 'Detailed and professional sheets' },
           { fr: 'Toutes les infos en un coup d\'œil', en: 'All info at a glance' },
           { fr: 'Format clair et structuré', en: 'Clear and structured format' }
         ],
         concepts: ['operate'],
-        layout: 'image-text'
+        layout: 'image-left'
       },
       {
         titleFr: 'Détection automatique des allergènes',
@@ -303,13 +316,17 @@ export const tools: Tool[] = [
         titleEn: 'Food Cost Simulator',
         descriptionFr: 'Testez différents scénarios avant de prendre vos décisions. Simulez l\'impact d\'un changement de fournisseur, d\'une augmentation de prix ou d\'une modification de recette. Comparez les options et choisissez la meilleure stratégie pour votre rentabilité.',
         descriptionEn: 'Test different scenarios before making your decisions. Simulate the impact of a supplier change, price increase or recipe modification. Compare options and choose the best strategy for your profitability.',
-        image: '/images/tools/foodcost-simulateur.jpg',
+        image: {
+          src: '/images/pages/food_cost_simulator_en.avif',
+          srcFr: '/images/pages/food_cost_simulator_fr.avif'
+        },
         benefits: [
           { fr: 'Simulation de scénarios multiples', en: 'Multiple scenario simulation' },
           { fr: 'Comparaison d\'options', en: 'Option comparison' },
           { fr: 'Décisions éclairées', en: 'Informed decisions' }
         ],
-        concepts: ['analyze', 'predict']
+        concepts: ['analyze', 'predict'],
+        layout: 'image-right'
       },
       {
         titleFr: 'Ingénierie de menu',

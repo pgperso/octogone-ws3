@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Play, Zap, TrendingUp, Sparkles } from "lucide-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { ResponsiveSection } from "@/components/ui/responsive-section";
-import ToolDetailWidget from "@/components/widgets/tool-detail-widget";
+import ToolDetailWidgetV2 from "@/components/widgets/tool-detail-widget-v2";
 import { getToolById, getNextTool, getPreviousTool } from "@/data/tools/tools-content";
 import { ToolSEO } from "@/components/seo/tool-seo";
 import { LogoCard } from "@/components/widgets/logo-card";
@@ -521,7 +521,7 @@ export default function ToolPage({
 
       {/* Features Section - Widget réutilisable */}
       <ResponsiveSection spacing="xxl" bgColor="">
-        <ToolDetailWidget tool={tool} locale={locale} />
+        <ToolDetailWidgetV2 tool={tool} locale={locale} />
       </ResponsiveSection>
 
       {/* Section Partenaires - RH : Gestionnaires d'horaires */}
