@@ -103,7 +103,7 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
 
   // Animation séquentielle des produits (un par un)
   useEffect(() => {
-    const delay = 400; // 400ms entre chaque produit pour voir la progression
+    const delay = 600; // 600ms entre chaque produit pour une animation plus lente
     const timers = inventoryProducts.map((product, index) => 
       setTimeout(() => {
         setVisibleTags(prev => [...prev, product.id]);
@@ -280,7 +280,7 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                         {visibleTags.includes(tag.id) ? (
                           <CheckCircle2 
                             size={16} 
-                            style={{ color: 'white' }}
+                            style={{ color: 'var(--on-success-container)' }}
                           />
                         ) : (
                           <span 

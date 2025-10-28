@@ -73,24 +73,13 @@ export const InventoryCalculationAnimation: React.FC<InventoryCalculationAnimati
 
   const currentProgress = (visibleTags.length / totalProductCount) * 100;
 
-  // Animation séquentielle des produits (un par un)
+  // Afficher tous les produits immédiatement (pas d'animation séquentielle)
   useEffect(() => {
-    const delay = 80; // 80ms entre chaque produit
-    const timers = inventoryProducts.map((product, index) => 
-      setTimeout(() => {
-        setVisibleTags(prev => [...prev, product.id]);
-      }, index * delay)
-    );
-    return () => timers.forEach(clearTimeout);
+    setVisibleTags(inventoryProducts.map(p => p.id));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Scroll automatique pour suivre les nouveaux produits
-  useEffect(() => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight;
-    }
-  }, [visibleTags]);
+  // Pas de scroll automatique puisque tous les produits sont déjà visibles
 
   // Animation du pourcentage de currentProgress vers 100%
   useEffect(() => {
@@ -167,7 +156,7 @@ export const InventoryCalculationAnimation: React.FC<InventoryCalculationAnimati
                       >
                         <CheckCircle2 
                           size={16} 
-                          style={{ color: 'white' }}
+                          style={{ color: 'var(--on-success-container)' }}
                         />
                       </div>
 
