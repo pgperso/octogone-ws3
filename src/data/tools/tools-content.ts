@@ -16,7 +16,7 @@ export interface ToolFeature {
   // Concepts associés à cette feature (peut être 1, 2, 3 ou 4 concepts)
   concepts?: Array<'operate' | 'automate' | 'analyze' | 'predict'>;
   // Layout spécial pour cette feature (optionnel)
-  layout?: 'full-width';
+  layout?: 'full-width' | 'image-text' | 'three-columns';
 }
 
 export interface Tool {
@@ -225,7 +225,8 @@ export const tools: Tool[] = [
           { fr: 'Source unique pour créer vos recettes', en: 'Single source to create your recipes' },
           { fr: 'Prix réels synchronisés', en: 'Real prices synchronized' }
         ],
-        concepts: ['operate', 'automate']
+        concepts: ['operate', 'automate'],
+        layout: 'image-text'
       },
       {
         titleFr: 'Catalogue centralisé de recettes',
@@ -238,7 +239,8 @@ export const tools: Tool[] = [
           { fr: 'Créées à partir du catalogue produits', en: 'Created from product catalog' },
           { fr: 'Coûts calculés automatiquement', en: 'Automatically calculated costs' }
         ],
-        concepts: ['operate', 'automate']
+        concepts: ['operate', 'automate'],
+        layout: 'image-text'
       },
       {
         titleFr: 'Fiches recettes complètes',
@@ -251,7 +253,8 @@ export const tools: Tool[] = [
           { fr: 'Toutes les infos en un coup d\'œil', en: 'All info at a glance' },
           { fr: 'Format clair et structuré', en: 'Clear and structured format' }
         ],
-        concepts: ['operate']
+        concepts: ['operate'],
+        layout: 'image-text'
       },
       {
         titleFr: 'Détection automatique des allergènes',
@@ -264,7 +267,8 @@ export const tools: Tool[] = [
           { fr: 'Sécurité maximale pour vos clients', en: 'Maximum safety for your customers' },
           { fr: 'Conformité réglementaire garantie', en: 'Guaranteed regulatory compliance' }
         ],
-        concepts: ['automate', 'operate']
+        concepts: ['automate', 'operate'],
+        layout: 'three-columns'
       },
       {
         titleFr: 'Multiplicateur de recettes',
@@ -277,7 +281,8 @@ export const tools: Tool[] = [
           { fr: 'Calculs automatiques précis', en: 'Accurate automatic calculations' },
           { fr: 'Idéal pour événements et banquets', en: 'Ideal for events and banquets' }
         ],
-        concepts: ['automate', 'operate']
+        concepts: ['automate', 'operate'],
+        layout: 'three-columns'
       },
       {
         titleFr: 'Formats personnalisés de recettes',
@@ -290,7 +295,8 @@ export const tools: Tool[] = [
           { fr: 'Proportions et coûts automatiques', en: 'Automatic proportions and costs' },
           { fr: 'Développez votre offre rapidement', en: 'Expand your offering quickly' }
         ],
-        concepts: ['operate', 'automate']
+        concepts: ['operate', 'automate'],
+        layout: 'three-columns'
       },
       {
         titleFr: 'Simulateur de Food Cost',

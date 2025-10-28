@@ -42,34 +42,35 @@ const conceptConfig = {
   }
 };
 
-// Fonction utilitaire pour créer les groupes de features
-const createFeatureGroups = (features: number[]): { type: 'single' | 'triple', features: number[] }[] => {
-  const groups: { type: 'single' | 'triple', features: number[] }[] = [];
+// Fonction utilitaire pour grouper les features selon leur layout
+const groupFeaturesByLayout = (features: number[], tool: Tool): { type: 'full-width' | 'image-text' | 'three-columns', features: number[] }[] => {
+  const groups: { type: 'full-width' | 'image-text' | 'three-columns', features: number[] }[] = [];
   let i = 0;
   
   while (i < features.length) {
-    // Feature 1 : single
-    if (i < features.length) {
-      groups.push({ type: 'single', features: [features[i]] });
-      i++;
-    }
+    const feature = tool.features[features[i]];
+    const layout = feature?.layout || 'image-text'; // Par défaut: image-text
     
-    // Feature 2 : single
-    if (i < features.length) {
-      groups.push({ type: 'single', features: [features[i]] });
+    if (layout === 'three-columns') {
+      // Grouper jusqu'à 3 features consécutives avec layout three-columns
+      const threeColFeatures = [features[i]];
       i++;
-    }
-    
-    // Features 3-4-5 : triple (si on a au moins 3 features)
-    if (i + 2 < features.length) {
-      groups.push({ type: 'triple', features: [features[i], features[i + 1], features[i + 2]] });
-      i += 3;
-    } else {
-      // Moins de 3 features restantes, faire des singles
-      while (i < features.length) {
-        groups.push({ type: 'single', features: [features[i]] });
-        i++;
+      
+      while (i < features.length && threeColFeatures.length < 3) {
+        const nextFeature = tool.features[features[i]];
+        if (nextFeature?.layout === 'three-columns') {
+          threeColFeatures.push(features[i]);
+          i++;
+        } else {
+          break;
+        }
       }
+      
+      groups.push({ type: 'three-columns', features: threeColFeatures });
+    } else {
+      // full-width ou image-text : une feature par groupe
+      groups.push({ type: layout, features: [features[i]] });
+      i++;
     }
   }
   
@@ -100,16 +101,16 @@ export default function ToolDetailWidget({ tool, locale }: ToolDetailWidgetProps
               {section.features.length > 0 && (
                 <>
                   {(() => {
-                    const groups = createFeatureGroups(section.features);
+                    const groups = groupFeaturesByLayout(section.features, tool);
                     
                     return (
                       <div className="space-y-16">
                         {groups.map((group, groupIdx) => {
                           
                           // Vérifier si c'est une feature full-width
-                          if (group.type === 'single') {
+                          if (group.type === 'full-width') {
                             const feature = tool.features[group.features[0]];
-                            if (feature?.layout === 'full-width') {
+                            if (feature) {
                               return (
                                 <motion.div
                                   key={`full-width-${groupIdx}`}
@@ -170,11 +171,11 @@ export default function ToolDetailWidget({ tool, locale }: ToolDetailWidgetProps
                             }
                           }
                           
-                          if (group.type === 'triple') {
-                            // Groupe de 3 features SANS IMAGE en colonnes (juste texte)
+                          if (group.type === 'three-columns') {
+                            // Groupe de features en 3 colonnes (juste texte, pas d'images)
                             return (
                               <motion.div
-                                key={`triple-${groupIdx}`} 
+                                key={`three-columns-${groupIdx}`} 
                                 className="grid grid-cols-1 md:grid-cols-3 gap-8 py-32 motion-element"
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -238,16 +239,16 @@ export default function ToolDetailWidget({ tool, locale }: ToolDetailWidgetProps
                             );
                           }
                           
-                          // Feature seule avec image (alternance gauche/droite)
-                          const singleFeature = tool.features[group.features[0]];
-                          if (!singleFeature) return null;
+                          // Feature avec image et texte (alternance gauche/droite)
+                          const imageTextFeature = tool.features[group.features[0]];
+                          if (!imageTextFeature) return null;
                           
                           const imageOnLeft = globalImageCounter % 2 === 0;
                           globalImageCounter++;
                           
                           return (
                             <motion.div 
-                              key={`single-${groupIdx}`} 
+                              key={`image-text-${groupIdx}`} 
                               className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center motion-element"
                               initial={{ opacity: 0, y: 20 }}
                               whileInView={{ opacity: 1, y: 0 }}
@@ -264,28 +265,28 @@ export default function ToolDetailWidget({ tool, locale }: ToolDetailWidgetProps
                                   transition={{ duration: 0.8, delay: 0.4 }}
                                 >
                                   {/* Images bilingues pour catalogues et simulateur */}
-                                  {(singleFeature.titleEn === 'Centralized Product Catalog' || singleFeature.titleFr === 'Catalogue centralisé de produits') ? (
+                                  {(imageTextFeature.titleEn === 'Centralized Product Catalog' || imageTextFeature.titleFr === 'Catalogue centralisé de produits') ? (
                                     <img 
                                       src={isEnglish ? '/images/pages/product_list_en.avif' : '/images/pages/product_list_fr.avif'}
-                                      alt={isEnglish ? singleFeature.titleEn : singleFeature.titleFr}
+                                      alt={isEnglish ? imageTextFeature.titleEn : imageTextFeature.titleFr}
                                       className="w-full h-auto"
                                     />
-                                  ) : (singleFeature.titleEn === 'Centralized Recipe Catalog' || singleFeature.titleFr === 'Catalogue centralisé de recettes') ? (
+                                  ) : (imageTextFeature.titleEn === 'Centralized Recipe Catalog' || imageTextFeature.titleFr === 'Catalogue centralisé de recettes') ? (
                                     <img 
                                       src={isEnglish ? '/images/pages/recipe_list_en.avif' : '/images/pages/recipe_list_fr.avif'}
-                                      alt={isEnglish ? singleFeature.titleEn : singleFeature.titleFr}
+                                      alt={isEnglish ? imageTextFeature.titleEn : imageTextFeature.titleFr}
                                       className="w-full h-auto"
                                     />
-                                  ) : (singleFeature.titleEn === 'Food Cost Simulator' || singleFeature.titleFr === 'Simulateur de Food Cost') ? (
+                                  ) : (imageTextFeature.titleEn === 'Food Cost Simulator' || imageTextFeature.titleFr === 'Simulateur de Food Cost') ? (
                                     <img 
                                       src={isEnglish ? '/images/pages/food_cost_simulator_en.avif' : '/images/pages/food_cost_simulator_fr.avif'}
-                                      alt={isEnglish ? singleFeature.titleEn : singleFeature.titleFr}
+                                      alt={isEnglish ? imageTextFeature.titleEn : imageTextFeature.titleFr}
                                       className="w-full h-auto"
                                     />
-                                  ) : (singleFeature.titleEn === 'Complete Recipe Sheets' || singleFeature.titleFr === 'Fiches recettes complètes') ? (
+                                  ) : (imageTextFeature.titleEn === 'Complete Recipe Sheets' || imageTextFeature.titleFr === 'Fiches recettes complètes') ? (
                                     <img 
                                       src={isEnglish ? '/images/pages/recipe_sheet_en.avif' : '/images/pages/recipe_sheet_fr.avif'}
-                                      alt={isEnglish ? singleFeature.titleEn : singleFeature.titleFr}
+                                      alt={isEnglish ? imageTextFeature.titleEn : imageTextFeature.titleFr}
                                       className="w-full h-auto"
                                     />
                                   ) : (
@@ -300,7 +301,7 @@ export default function ToolDetailWidget({ tool, locale }: ToolDetailWidgetProps
                                       >
                                         <div className="text-5xl mb-2" role="img" aria-label="Mobile device">📱</div>
                                         <p className="text-sm font-medium text-marine-600">
-                                          {isEnglish ? singleFeature.titleEn : singleFeature.titleFr}
+                                          {isEnglish ? imageTextFeature.titleEn : imageTextFeature.titleFr}
                                         </p>
                                         <p className="text-xs mt-1 opacity-70 text-marine-500">(placeholder)</p>
                                       </motion.div>
@@ -312,9 +313,9 @@ export default function ToolDetailWidget({ tool, locale }: ToolDetailWidgetProps
                               {/* Contenu */}
                               <div className={`${imageOnLeft ? 'lg:order-2' : 'lg:order-1'} text-center lg:text-left`}>
                                 {/* Badges de concepts */}
-                                {singleFeature.concepts && singleFeature.concepts.length > 0 && (
+                                {imageTextFeature.concepts && imageTextFeature.concepts.length > 0 && (
                                   <div className="flex flex-wrap gap-2 mb-4 justify-center lg:justify-start">
-                                    {singleFeature.concepts?.map((conceptId) => {
+                                    {imageTextFeature.concepts?.map((conceptId) => {
                                       const conceptInfo = conceptConfig[conceptId];
                                       if (!conceptInfo) return null;
                                       
@@ -335,13 +336,13 @@ export default function ToolDetailWidget({ tool, locale }: ToolDetailWidgetProps
                                   </div>
                                 )}
                                 <h4 className="text-3xl lg:text-4xl font-bold mb-6" style={{ color: 'var(--on-surface)' }}>
-                                  {isEnglish ? singleFeature.titleEn : singleFeature.titleFr}
+                                  {isEnglish ? imageTextFeature.titleEn : imageTextFeature.titleFr}
                                 </h4>
                                 <p className="text-base mb-6" style={{ color: 'var(--on-surface-variant)' }}>
-                                  {isEnglish ? singleFeature.descriptionEn : singleFeature.descriptionFr}
+                                  {isEnglish ? imageTextFeature.descriptionEn : imageTextFeature.descriptionFr}
                                 </p>
                                 <div className="space-y-3 flex flex-col items-center lg:items-start">
-                                  {singleFeature.benefits.map((benefit, idx) => (
+                                  {imageTextFeature.benefits.map((benefit, idx) => (
                                     <div key={idx} className="flex items-start gap-3">
                                       <Check className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: 'var(--secondary)' }} />
                                       <span className="text-base" style={{ color: 'var(--on-surface)' }}>
