@@ -332,7 +332,8 @@ export default function ToolPage({
                       style={{
                         backgroundColor: card.color,
                         border: isSelected ? `3px solid ${card.border}` : `2px solid ${card.border}`,
-                        opacity: isSelected ? 1 : 0.3
+                        opacity: isSelected ? 1 : 0.3,
+                        boxShadow: isSelected ? `0 0 40px ${card.color}` : 'none'
                       }}
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: isSelected ? 1 : 0.3, y: 0 }}
