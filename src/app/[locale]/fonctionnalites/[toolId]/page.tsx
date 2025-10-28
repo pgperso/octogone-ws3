@@ -271,13 +271,15 @@ export default function ToolPage({
       {toolId === 'food-cost' && (
         <ResponsiveSection 
           spacing="xxl" 
-          className="relative px-4 md:px-6"
           style={{
             backgroundColor: '#1a1a1a'
           }}
         >
-          {/* Images en split screen 50/50 */}
-          <div className="absolute inset-0 rounded-2xl overflow-hidden" style={{ zIndex: 0 }}>
+          {/* Wrapper avec padding et radius pour effet flottant */}
+          <div className="relative px-4 md:px-6">
+            <div className="relative rounded-2xl overflow-hidden">
+              {/* Images en split screen 50/50 */}
+              <div className="absolute inset-0" style={{ zIndex: 0 }}>
             {/* Moitié gauche - recipe */}
             <div 
               className="absolute top-0 left-0 bottom-0 w-1/2"
@@ -514,6 +516,8 @@ export default function ToolPage({
                   </p>
                 </motion.div>
               </div>
+            </div>
+          </div>
             </div>
           </div>
         </ResponsiveSection>
