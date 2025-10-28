@@ -213,7 +213,7 @@ export const tools: Tool[] = [
       },
       {
         concept: 'analyze',
-        features: [6, 7, 8, 9] // Simulateur + 3 colonnes (Ingénierie, Étiquettes, Pertes)
+        features: [6, 7, 8, 9, 10] // Simulateur + Étiquettes + 3 colonnes (Ingénierie, POS, Pertes)
       }
     ],
     
@@ -329,6 +329,23 @@ export const tools: Tool[] = [
         layout: 'image-right'
       },
       {
+        titleFr: 'Impression d\'\u00e9tiquettes',
+        titleEn: 'Label Printing',
+        descriptionFr: 'Générez et imprimez automatiquement des étiquettes professionnelles pour vos préparations. Incluez le nom du plat, la date de production, la date de péremption, les allergènes et les informations nutritionnelles. Compatible avec n\'importe quelle imprimante : thermique, laser ou jet d\'encre. Traçabilité complète de vos productions.',
+        descriptionEn: 'Automatically generate and print professional labels for your preparations. Include dish name, production date, expiration date, allergens and nutritional information. Compatible with any printer: thermal, laser or inkjet. Complete traceability of your productions.',
+        image: {
+          src: '/images/pages/ticket_print_en.avif',
+          srcFr: '/images/pages/ticket_print_fr.avif'
+        },
+        benefits: [
+          { fr: 'Étiquettes professionnelles automatiques', en: 'Automatic professional labels' },
+          { fr: 'Compatible avec toute imprimante', en: 'Compatible with any printer' },
+          { fr: 'Allergènes et infos nutritionnelles', en: 'Allergens and nutritional info' }
+        ],
+        concepts: ['operate', 'automate'],
+        layout: 'image-left'
+      },
+      {
         titleFr: 'Ingénierie de menu',
         titleEn: 'Menu Engineering',
         descriptionFr: 'Analysez la rentabilité et la popularité de chaque plat avec la matrice d\'ingénierie de menu. Identifiez vos stars (populaires et rentables), vos chevaux de labour (populaires mais peu rentables), vos énigmes (rentables mais impopulaires) et vos poids morts. Optimisez votre menu pour maximiser vos profits.',
@@ -343,17 +360,17 @@ export const tools: Tool[] = [
         layout: 'three-columns'
       },
       {
-        titleFr: 'Impression d\'étiquettes',
-        titleEn: 'Label Printing',
-        descriptionFr: 'Générez et imprimez automatiquement des étiquettes professionnelles pour vos préparations. Incluez le nom du plat, la date de production, la date de péremption, les allergènes et les informations nutritionnelles. Conformité HACCP garantie et traçabilité complète de vos productions.',
-        descriptionEn: 'Automatically generate and print professional labels for your preparations. Include dish name, production date, expiration date, allergens and nutritional information. Guaranteed HACCP compliance and complete traceability of your productions.',
-        image: '/images/tools/foodcost-etiquettes.jpg',
+        titleFr: 'Connexion à votre POS',
+        titleEn: 'POS Connection',
+        descriptionFr: 'Synchronisez automatiquement vos ventes avec votre système de caisse. Les données de vente remontent en temps réel pour calculer automatiquement vos food costs réels. Comparez vos coûts théoriques et réels, identifiez les écarts et optimisez votre rentabilité. Compatible avec les principaux systèmes de caisse du marché.',
+        descriptionEn: 'Automatically synchronize your sales with your POS system. Sales data flows in real-time to automatically calculate your actual food costs. Compare your theoretical and actual costs, identify discrepancies and optimize your profitability. Compatible with major POS systems on the market.',
+        image: '/images/tools/foodcost-pos.jpg',
         benefits: [
-          { fr: 'Étiquettes professionnelles automatiques', en: 'Automatic professional labels' },
-          { fr: 'Conformité HACCP et traçabilité', en: 'HACCP compliance and traceability' },
-          { fr: 'Allergènes et infos nutritionnelles', en: 'Allergens and nutritional info' }
+          { fr: 'Synchronisation automatique des ventes', en: 'Automatic sales synchronization' },
+          { fr: 'Food cost réel vs théorique', en: 'Actual vs theoretical food cost' },
+          { fr: 'Compatible avec les POS majeurs', en: 'Compatible with major POS' }
         ],
-        concepts: ['operate', 'automate'],
+        concepts: ['automate', 'analyze'],
         layout: 'three-columns'
       },
       {
