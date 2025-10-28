@@ -328,12 +328,14 @@ export default function ToolPage({
                   return (
                     <motion.div
                       key={card.concept}
-                      className="p-6 rounded-xl cursor-pointer transition-all duration-300"
+                      className="p-6 rounded-xl cursor-pointer transition-all duration-300 relative"
                       style={{
                         backgroundColor: card.color,
                         border: isSelected ? `3px solid ${card.border}` : `2px solid ${card.border}`,
                         opacity: isSelected ? 1 : 0.3,
-                        boxShadow: isSelected ? `0 0 40px ${card.color}` : 'none'
+                        boxShadow: isSelected 
+                          ? `0 0 40px ${card.color}, 0 0 0 8px rgba(255,255,255,0.1), 0 0 0 16px rgba(255,255,255,0.05)` 
+                          : 'none'
                       }}
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: isSelected ? 1 : 0.3, y: 0 }}
