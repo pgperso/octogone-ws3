@@ -50,6 +50,15 @@ const getImageSrc = (image: ToolFeature['image'], isEnglish: boolean): string | 
   return isEnglish ? image.src : (image.srcFr || image.src);
 };
 
+// Couleurs pastel pour la barre de progression
+const progressColors = ['#B8E0D2', '#B4D4FF', '#FFE5B4', '#C8B6FF'];
+
+// Pourcentages aléatoires entre 60% et 85%
+const getRandomProgress = (index: number) => {
+  const seed = index * 7; // Seed pour cohérence
+  return 60 + ((seed * 13) % 26); // Entre 60 et 85
+};
+
 // Composant réutilisable pour les badges de concepts
 function ConceptBadges({ concepts, isEnglish, justify = 'center' }: { 
   concepts?: Array<'operate' | 'automate' | 'analyze' | 'predict'>;
@@ -225,6 +234,11 @@ function ImageTextFeature({ feature, isEnglish, imageSrc, imageOnLeft }: {
   imageSrc: string | null;
   imageOnLeft: boolean;
 }) {
+  // Générer un index stable basé sur le titre pour cohérence
+  const featureIndex = feature.titleEn.length % progressColors.length;
+  const progressColor = progressColors[featureIndex];
+  const progressValue = getRandomProgress(featureIndex);
+
   return (
     <motion.div 
       className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center motion-element"
@@ -235,20 +249,21 @@ function ImageTextFeature({ feature, isEnglish, imageSrc, imageOnLeft }: {
     >
       {/* Image */}
       <div className={imageOnLeft ? 'lg:order-1' : 'lg:order-2'}>
-        <motion.div
-          className="rounded-2xl motion-element shadow-lg overflow-hidden"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          {imageSrc ? (
-            <img 
-              src={imageSrc}
-              alt={isEnglish ? feature.titleEn : feature.titleFr}
-              className="w-full h-auto"
-            />
-          ) : (
+        <div className="space-y-3">
+          <motion.div
+            className="rounded-2xl motion-element shadow-lg overflow-hidden"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            {imageSrc ? (
+              <img 
+                src={imageSrc}
+                alt={isEnglish ? feature.titleEn : feature.titleFr}
+                className="w-full h-auto"
+              />
+            ) : (
             <div className="bg-gradient-to-r from-marine-50 to-gold-50 p-8">
               <div className="text-center">
                 <div className="text-5xl mb-2">📱</div>
@@ -259,7 +274,37 @@ function ImageTextFeature({ feature, isEnglish, imageSrc, imageOnLeft }: {
               </div>
             </div>
           )}
-        </motion.div>
+          </motion.div>
+          
+          {/* Widget de progression - Subtil et intrigant */}
+          <motion.div
+            className="px-3 py-2 rounded-lg"
+            style={{ backgroundColor: 'rgba(0, 0, 0, 0.03)' }}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-xs font-medium" style={{ color: 'var(--on-surface-variant)', opacity: 0.7 }}>
+                {isEnglish ? 'New version in preparation' : 'Nouvelle version en préparation'}
+              </span>
+              <span className="text-xs font-bold" style={{ color: progressColor }}>
+                {progressValue}%
+              </span>
+            </div>
+            <div className="w-full h-1.5 bg-gray-200 rounded-full overflow-hidden">
+              <motion.div
+                className="h-full rounded-full"
+                style={{ backgroundColor: progressColor }}
+                initial={{ width: 0 }}
+                whileInView={{ width: `${progressValue}%` }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, delay: 0.8, ease: "easeOut" }}
+              />
+            </div>
+          </motion.div>
+        </div>
       </div>
       
       {/* Contenu */}
