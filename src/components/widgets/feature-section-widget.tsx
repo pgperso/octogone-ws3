@@ -60,43 +60,91 @@ export default function FeatureSectionWidget({ tool, locale }: ToolDetailWidgetP
 
   return (
     <div className="motion-container">
-      {tool.sections.map((section, sectionIndex) => (
-        <React.Fragment key={sectionIndex}>
-          {section.features.map((featureIndex) => {
-            const feature = tool.features[featureIndex];
-            if (!feature) return null;
+      {tool.sections.map((section, sectionIndex) => {
+        // Grouper les features three-columns consécutives
+        const groupedFeatures: Array<{ type: 'single' | 'group', features: number[] }> = [];
+        let i = 0;
+        
+        while (i < section.features.length) {
+          const featureIndex = section.features[i];
+          const feature = tool.features[featureIndex];
+          const layout = feature?.layout || 'image-left';
+          
+          if (layout === 'three-columns') {
+            // Grouper jusqu'à 3 features three-columns consécutives
+            const group = [featureIndex];
+            i++;
+            
+            while (i < section.features.length && group.length < 3) {
+              const nextFeature = tool.features[section.features[i]];
+              if (nextFeature?.layout === 'three-columns') {
+                group.push(section.features[i]);
+                i++;
+              } else {
+                break;
+              }
+            }
+            
+            groupedFeatures.push({ type: 'group', features: group });
+          } else {
+            groupedFeatures.push({ type: 'single', features: [featureIndex] });
+            i++;
+          }
+        }
+        
+        return (
+          <React.Fragment key={sectionIndex}>
+            {groupedFeatures.map((group, groupIndex) => {
+              if (group.type === 'group') {
+                // Groupe de features three-columns dans une seule ResponsiveSection
+                return (
+                  <ResponsiveSection key={`group-${groupIndex}`} spacing="xl" bgColor="">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                      {group.features.map((featureIndex) => {
+                        const feature = tool.features[featureIndex];
+                        if (!feature) return null;
+                        return (
+                          <ThreeColumnsFeature key={featureIndex} feature={feature} isEnglish={isEnglish} />
+                        );
+                      })}
+                    </div>
+                  </ResponsiveSection>
+                );
+              } else {
+                // Feature individuelle
+                const featureIndex = group.features[0];
+                const feature = tool.features[featureIndex];
+                if (!feature) return null;
 
-            const layout = feature.layout || 'image-left';
-            const imageSrc = getImageSrc(feature.image, isEnglish);
+                const layout = feature.layout || 'image-left';
+                const imageSrc = getImageSrc(feature.image, isEnglish);
 
-            // Render selon le layout
-            return (
-              <ResponsiveSection key={featureIndex} spacing="xl" bgColor="">
-                {layout === 'full-width' && (
-                  <FullWidthFeature feature={feature} isEnglish={isEnglish} />
-                )}
-                {(layout === 'image-left' || layout === 'image-right') && (
-                  <ImageTextFeature 
-                    feature={feature} 
-                    isEnglish={isEnglish} 
-                    imageSrc={imageSrc}
-                    imageOnLeft={layout === 'image-left'}
-                  />
-                )}
-                {layout === 'three-columns' && (
-                  <ThreeColumnsFeature feature={feature} isEnglish={isEnglish} />
-                )}
-                {layout === 'two-columns' && (
-                  <TwoColumnsFeature feature={feature} isEnglish={isEnglish} />
-                )}
-                {layout === 'text-only' && (
-                  <TextOnlyFeature feature={feature} isEnglish={isEnglish} />
-                )}
-              </ResponsiveSection>
-            );
-          })}
-        </React.Fragment>
-      ))}
+                return (
+                  <ResponsiveSection key={featureIndex} spacing="xl" bgColor="">
+                    {layout === 'full-width' && (
+                      <FullWidthFeature feature={feature} isEnglish={isEnglish} />
+                    )}
+                    {(layout === 'image-left' || layout === 'image-right') && (
+                      <ImageTextFeature 
+                        feature={feature} 
+                        isEnglish={isEnglish} 
+                        imageSrc={imageSrc}
+                        imageOnLeft={layout === 'image-left'}
+                      />
+                    )}
+                    {layout === 'two-columns' && (
+                      <TwoColumnsFeature feature={feature} isEnglish={isEnglish} />
+                    )}
+                    {layout === 'text-only' && (
+                      <TextOnlyFeature feature={feature} isEnglish={isEnglish} />
+                    )}
+                  </ResponsiveSection>
+                );
+              }
+            })}
+          </React.Fragment>
+        );
+      })}
     </div>
   );
 }
