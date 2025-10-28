@@ -282,7 +282,7 @@ export default function ToolPage({
             <div 
               className="absolute top-0 left-0 bottom-0 w-1/2"
               style={{
-                backgroundImage: 'url(/images/pages/recipe.avif)',
+                backgroundImage: 'url(/images/pages/pizza.avif)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center'
               }}

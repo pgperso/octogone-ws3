@@ -238,7 +238,7 @@ export const tools: Tool[] = [
           { fr: 'Créées à partir du catalogue produits', en: 'Created from product catalog' },
           { fr: 'Coûts calculés automatiquement', en: 'Automatically calculated costs' }
         ],
-        concepts: ['operate']
+        concepts: ['operate', 'automate']
       },
       {
         titleFr: 'Simulation de changements de prix',
@@ -251,7 +251,7 @@ export const tools: Tool[] = [
           { fr: 'Comparez plusieurs scénarios', en: 'Compare multiple scenarios' },
           { fr: 'Décisions éclairées et rapides', en: 'Informed and quick decisions' }
         ],
-        concepts: ['analyze']
+        concepts: ['analyze', 'predict']
       },
       {
         titleFr: 'Optimisation des marges par plat',
@@ -277,7 +277,7 @@ export const tools: Tool[] = [
           { fr: 'Anticipez les hausses saisonnières', en: 'Anticipate seasonal increases' },
           { fr: 'Adaptez vos prix au bon moment', en: 'Adjust prices at the right time' }
         ],
-        concepts: ['analyze']
+        concepts: ['analyze', 'predict']
       },
       {
         titleFr: 'Simulateur de Food Cost',
