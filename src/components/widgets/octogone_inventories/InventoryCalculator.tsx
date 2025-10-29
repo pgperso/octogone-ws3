@@ -214,9 +214,22 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
       {/* Header */}
       <div className="px-6 py-6 border-b" style={{ borderColor: 'var(--outline)' }}>
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-semibold" style={{ color: 'var(--on-surface)' }}>
-            {selectedProduct ? translateProduct(selectedProduct.name, locale) : (isEnglish ? 'Product Details' : 'Détails du produit')}
-          </h2>
+          <div>
+            <h2 className="text-lg font-semibold" style={{ color: 'var(--on-surface)' }}>
+              {selectedProduct ? translateProduct(selectedProduct.name, locale) : (isEnglish ? 'Product Details' : 'Détails du produit')}
+            </h2>
+            {selectedProduct?.isRecipe && (
+              <span 
+                className="inline-block px-2 py-0.5 text-xs font-semibold rounded-full mt-1"
+                style={{ 
+                  backgroundColor: '#E2CDED',
+                  color: '#1F1F1F'
+                }}
+              >
+                {isEnglish ? 'Recipe' : 'Recette'}
+              </span>
+            )}
+          </div>
           <div className="flex items-center gap-2">
             {/* Bouton Panier de commande */}
             <button

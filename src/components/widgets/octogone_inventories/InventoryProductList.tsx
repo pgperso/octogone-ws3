@@ -200,25 +200,25 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
             }}
           >
             <tr>
-              <th className="px-6 py-3 text-left font-semibold text-xs" style={{ color: 'var(--on-surface)', width: '30%' }}>
+              <th className="px-3 py-3 text-left font-semibold text-xs" style={{ color: 'var(--on-surface)', width: '30%' }}>
                 {isEnglish ? 'Product' : 'Produit'}
               </th>
-              <th className="px-6 py-3 text-left font-semibold text-xs hidden md:table-cell" style={{ color: 'var(--on-surface)', width: '15%' }}>
+              <th className="px-3 py-3 text-left font-semibold text-xs hidden md:table-cell" style={{ color: 'var(--on-surface)', width: '15%' }}>
                 {isEnglish ? 'Category' : 'Catégorie'}
               </th>
-              <th className="px-6 py-3 text-left font-semibold text-xs" style={{ color: 'var(--on-surface)', width: '18%' }}>
+              <th className="px-3 py-3 text-left font-semibold text-xs" style={{ color: 'var(--on-surface)', width: '18%' }}>
                 <span className="hidden md:inline" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Theoretical inventory' : 'Inventaire théorique'}</span>
                 <span className="md:hidden" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Theoretical' : 'Théorique'}</span>
               </th>
-              <th className="px-6 py-3 text-left font-semibold text-xs" style={{ color: 'var(--on-surface)', width: '18%' }}>
+              <th className="px-3 py-3 text-left font-semibold text-xs" style={{ color: 'var(--on-surface)', width: '18%' }}>
                 <span className="hidden md:inline" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Current inventory' : 'Inventaire en cours'}</span>
                 <span className="md:hidden" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Current' : 'En cours'}</span>
               </th>
-              <th className="px-6 py-3 text-left font-semibold text-xs" style={{ color: 'var(--on-surface)', width: '15%' }}>
+              <th className="px-3 py-3 text-left font-semibold text-xs" style={{ color: 'var(--on-surface)', width: '15%' }}>
                 <span className="hidden md:inline" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Total value' : 'Valeur totale'}</span>
                 <span className="md:hidden" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Total' : 'Total'}</span>
               </th>
-              <th className="px-6 py-3 text-right font-semibold text-xs hidden md:table-cell" style={{ color: 'var(--on-surface)', width: '4%' }}>
+              <th className="px-3 py-3 text-right font-semibold text-xs hidden md:table-cell" style={{ color: 'var(--on-surface)', width: '4%' }}>
               </th>
             </tr>
           </thead>
@@ -257,7 +257,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                     }}
                   >
                     {/* Colonne Produit */}
-                    <td className="px-6 py-3">
+                    <td className="px-3 py-3">
                       <div className="font-medium text-sm">{translateProduct(product.name, locale)}</div>
                       {product.isRecipe && (
                         <span 
@@ -273,7 +273,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                     </td>
                     
                     {/* Colonne Catégorie */}
-                    <td className="px-6 py-3 hidden md:table-cell">
+                    <td className="px-3 py-3 hidden md:table-cell">
                       <div 
                         className="text-sm"
                         style={{ color: isSelected ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)' }}
@@ -283,7 +283,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                     </td>
                     
                     {/* Colonne Inventaire théorique */}
-                    <td className="px-6 py-3">
+                    <td className="px-3 py-3">
                       {!product.nonInventoriable && (() => {
                         const theoreticalQty = product.theoreticalQuantity || 0;
                         const minInventory = product.minInventory || 0;
@@ -330,7 +330,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                     </td>
                     
                     {/* Colonne Inventaire en cours */}
-                    <td className="px-6 py-3">
+                    <td className="px-3 py-3">
                       {!product.nonInventoriable && (
                         <div 
                           className="w-full px-2 py-2 rounded text-xs flex items-center justify-between gap-2"
@@ -372,7 +372,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                     </td>
                     
                     {/* Colonne Valeur totale */}
-                    <td className="px-6 py-3 text-left">
+                    <td className="px-3 py-3 text-left">
                       {product.nonInventoriable ? (
                         <span 
                           className="text-xs font-semibold"
@@ -388,7 +388,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                     </td>
                     
                     {/* Colonne Avatar */}
-                    <td className="px-6 py-3 text-right hidden md:table-cell">
+                    <td className="px-3 py-3 text-right hidden md:table-cell">
                       {product.nonInventoriable ? (
                         <div className="flex justify-end">
                           <div 
