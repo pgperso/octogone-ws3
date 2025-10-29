@@ -92,7 +92,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
         <div className="flex-1 p-3 flex flex-col justify-between">
           <div className="flex-1 flex flex-col">
             {/* Informations d'inventaire sobre */}
-            <div className="space-y-0.5 text-xs mb-0.5">
+            <div className="space-y-0.5 text-xs">
               <div className="flex justify-between">
                 <span style={{ color: 'var(--on-surface-variant)' }}>
                   {isEnglish ? 'Value' : 'Valeur'}
@@ -225,7 +225,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
         <div className="flex-1 p-4 flex flex-col justify-between">
           <div className="flex-1 flex flex-col">
             {/* Informations d'inventaire sobre */}
-            <div className="space-y-1 text-sm mb-1">
+            <div className="space-y-1 text-sm">
               <div className="flex justify-between">
                 <span style={{ color: 'var(--on-surface-variant)' }}>
                   {isEnglish ? 'Value' : 'Valeur'}
