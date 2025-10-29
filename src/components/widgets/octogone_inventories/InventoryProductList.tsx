@@ -191,18 +191,18 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
       </div>
 
       {/* En-tête des colonnes */}
-      <div className="flex gap-2 px-6 py-3 border-b font-semibold text-sm" style={{ backgroundColor: 'var(--surface-container)', borderColor: 'var(--outline)', color: 'var(--on-surface)' }}>
-        <div className="flex-[2]">{isEnglish ? 'Product' : 'Produit'}</div>
-        <div className="flex-1 hidden md:block">{isEnglish ? 'Category' : 'Catégorie'}</div>
-        <div className="flex-1">
+      <div className="flex gap-2 px-6 py-3 border-b font-semibold text-sm" style={{ backgroundColor: 'var(--surface-container)', borderColor: 'var(--outline)' }}>
+        <div className="flex-[2]" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Product' : 'Produit'}</div>
+        <div className="flex-1 hidden md:block" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Category' : 'Catégorie'}</div>
+        <div className="flex-1" style={{ color: 'var(--on-surface)' }}>
           <span className="hidden md:inline">{isEnglish ? 'Previous inventory' : 'Inventaire précédent'}</span>
           <span className="md:hidden">{isEnglish ? 'Previous' : 'Précédent'}</span>
         </div>
-        <div className="flex-1">
+        <div className="flex-1" style={{ color: 'var(--on-surface)' }}>
           <span className="hidden md:inline">{isEnglish ? 'Current inventory' : 'Inventaire en cours'}</span>
           <span className="md:hidden">{isEnglish ? 'Current' : 'En cours'}</span>
         </div>
-        <div className="flex-1 text-right pr-2">
+        <div className="flex-1 text-right pr-2" style={{ color: 'var(--on-surface)' }}>
           <span className="hidden md:inline">{isEnglish ? 'Total value' : 'Valeur totale'}</span>
           <span className="md:hidden">{isEnglish ? 'Total' : 'Total'}</span>
         </div>
