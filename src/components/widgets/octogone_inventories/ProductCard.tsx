@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { ShoppingCart, ImageIcon, ChefHat } from 'lucide-react';
+import { ShoppingCart, ImageIcon, ChefHat, AlertTriangle } from 'lucide-react';
 import { translateProduct, translateUnit } from '@/data/products/octogone_products_translations';
 import { getProductImage } from '@/utils/productImageMapping';
 import { OctogoneButton } from '@/components/ui/octogone-button';
@@ -70,6 +70,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
           ) : (
             <div className="w-full h-full flex items-center justify-center">
               <ImageIcon size={32} style={{ color: 'var(--on-surface-variant)', opacity: 0.3 }} />
+            </div>
+          )}
+          {/* Icône de warning si sous le seuil */}
+          {needsOrder && (
+            <div 
+              className="absolute inset-0 flex items-center justify-center"
+              style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }}
+            >
+              <div 
+                className="rounded-full p-2"
+                style={{ backgroundColor: 'rgba(255, 152, 0, 0.9)' }}
+              >
+                <AlertTriangle size={24} color="#1F1F1F" />
+              </div>
             </div>
           )}
         </div>
@@ -190,6 +204,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
           ) : (
             <div className="w-full h-full flex items-center justify-center">
               <ImageIcon size={48} style={{ color: 'var(--on-surface-variant)', opacity: 0.3 }} />
+            </div>
+          )}
+          {/* Icône de warning si sous le seuil */}
+          {needsOrder && (
+            <div 
+              className="absolute inset-0 flex items-center justify-center"
+              style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }}
+            >
+              <div 
+                className="rounded-full p-3"
+                style={{ backgroundColor: 'rgba(255, 152, 0, 0.9)' }}
+              >
+                <AlertTriangle size={40} color="#1F1F1F" />
+              </div>
             </div>
           )}
         </div>
