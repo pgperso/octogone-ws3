@@ -205,21 +205,21 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
           alignItems: 'center'
         }}
       >
-        <div style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Product' : 'Produit'}</div>
-        <div className="hidden md:block" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Category' : 'Catégorie'}</div>
-        <div>
+        <div style={{ color: 'var(--on-surface)', backgroundColor: 'rgba(255,0,0,0.1)' }}>{isEnglish ? 'Product' : 'Produit'}</div>
+        <div className="hidden md:block" style={{ color: 'var(--on-surface)', backgroundColor: 'rgba(0,255,0,0.1)' }}>{isEnglish ? 'Category' : 'Catégorie'}</div>
+        <div style={{ backgroundColor: 'rgba(0,0,255,0.1)' }}>
           <span className="hidden md:inline" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Theoretical inventory' : 'Inventaire théorique'}</span>
           <span className="md:hidden" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Theoretical' : 'Théorique'}</span>
         </div>
-        <div>
+        <div style={{ backgroundColor: 'rgba(255,255,0,0.1)' }}>
           <span className="hidden md:inline" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Current inventory' : 'Inventaire en cours'}</span>
           <span className="md:hidden" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Current' : 'En cours'}</span>
         </div>
-        <div className="text-right">
+        <div className="text-right" style={{ backgroundColor: 'rgba(255,0,255,0.1)' }}>
           <span className="hidden md:inline" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Total value' : 'Valeur totale'}</span>
           <span className="md:hidden" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Total' : 'Total'}</span>
         </div>
-        <div className="hidden md:block"></div>
+        <div className="hidden md:block" style={{ backgroundColor: 'rgba(128,128,128,0.1)' }}></div>
       </div>
 
       {/* Liste scrollable */}
@@ -264,7 +264,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 }}
               >
                 {/* Colonne Produit */}
-                <div>
+                <div style={{ backgroundColor: 'rgba(255,0,0,0.05)' }}>
                   <div className="font-medium text-sm">{translateProduct(product.name, locale)}</div>
                   {product.isRecipe && (
                     <span 
@@ -280,7 +280,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 </div>
                 
                 {/* Colonne Catégorie */}
-                <div className="hidden md:block">
+                <div className="hidden md:block" style={{ backgroundColor: 'rgba(0,255,0,0.05)' }}>
                   <div 
                     className="text-sm"
                     style={{ color: isSelected ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)' }}
@@ -290,7 +290,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 </div>
                 
                 {/* Colonne Inventaire théorique */}
-                <div>
+                <div style={{ backgroundColor: 'rgba(0,0,255,0.05)' }}>
                   {!product.nonInventoriable && (
                     (() => {
                       const theoreticalQty = product.theoreticalQuantity || 0;
@@ -340,7 +340,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 </div>
                 
                 {/* Colonne Inventaire en cours */}
-                <div>
+                <div style={{ backgroundColor: 'rgba(255,255,0,0.05)' }}>
                   {!product.nonInventoriable && (
                     <div 
                       className="w-full px-2 py-2 rounded text-xs flex items-center justify-between gap-2"
@@ -370,7 +370,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 </div>
                 
                 {/* Colonne Valeur totale */}
-                <div className="text-right">
+                <div className="text-right" style={{ backgroundColor: 'rgba(255,0,255,0.05)' }}>
                   {product.nonInventoriable ? (
                     <span 
                       className="text-xs font-semibold"
@@ -386,7 +386,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                     </div>
                   )}
                 </div>
-                <div className="hidden md:flex items-center justify-end">
+                <div className="hidden md:flex items-center justify-end" style={{ backgroundColor: 'rgba(128,128,128,0.05)' }}>
                   {product.nonInventoriable ? (
                     <div 
                       className="w-7 h-7 rounded-lg flex items-center justify-center"
