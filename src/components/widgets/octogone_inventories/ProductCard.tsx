@@ -32,6 +32,7 @@ interface ProductCardProps {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr', currentQuantity = 0, onAddToOrder }) => {
   const isEnglish = locale === 'en';
+  const [autoAddToCart, setAutoAddToCart] = React.useState(false);
   const displayBrand = product.brand ? translateBrand(product.brand, locale) : (isEnglish ? 'No brand' : 'Sans marque');
   const minInventory = product.minInventory || 0;
   
@@ -152,6 +153,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                   onClick={onAddToOrder}
                   className="w-full"
                   icon={product.isRecipe ? <ChefHat size={16} /> : <ShoppingCart size={16} />}
+                  disabled={autoAddToCart}
                 >
                   {product.isRecipe 
                     ? (isEnglish ? 'Produce' : 'Produire')
@@ -161,12 +163,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                 <label className="flex items-center gap-2 mt-2 cursor-pointer">
                   <input
                     type="checkbox"
+                    checked={autoAddToCart}
+                    onChange={(e) => setAutoAddToCart(e.target.checked)}
                     className="w-4 h-4 rounded cursor-pointer"
                     style={{
-                      accentColor: 'var(--primary)'
+                      accentColor: 'var(--secondary-container)'
                     }}
                   />
-                  <span className="text-xs" style={{ color: 'var(--on-surface-variant)' }}>
+                  <span className="text-[10px]" style={{ color: 'var(--on-surface-variant)' }}>
                     {isEnglish ? 'Add to cart automatically' : 'Ajouter au panier automatiquement'}
                   </span>
                 </label>
@@ -304,6 +308,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               onClick={onAddToOrder}
               className="w-full"
               icon={product.isRecipe ? <ChefHat size={20} /> : <ShoppingCart size={20} />}
+              disabled={autoAddToCart}
             >
               {product.isRecipe 
                 ? (isEnglish ? 'Produce' : 'Produire')
@@ -313,12 +318,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
             <label className="flex items-center gap-2 mt-3 cursor-pointer">
               <input
                 type="checkbox"
+                checked={autoAddToCart}
+                onChange={(e) => setAutoAddToCart(e.target.checked)}
                 className="w-4 h-4 rounded cursor-pointer"
                 style={{
-                  accentColor: 'var(--primary)'
+                  accentColor: 'var(--secondary-container)'
                 }}
               />
-              <span className="text-sm" style={{ color: 'var(--on-surface-variant)' }}>
+              <span className="text-xs" style={{ color: 'var(--on-surface-variant)' }}>
                 {isEnglish ? 'Add to cart automatically' : 'Ajouter au panier automatiquement'}
               </span>
             </label>
