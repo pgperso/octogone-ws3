@@ -590,7 +590,20 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
             </div>
             
             {/* Avatars des utilisateurs actifs */}
-            <div className="flex items-center gap-3 mb-6">
+            <div 
+              className="p-4 rounded-lg border mb-6"
+              style={{ 
+                backgroundColor: 'transparent',
+                borderColor: 'var(--outline)'
+              }}
+            >
+              <h3 
+                className="text-sm font-semibold mb-3"
+                style={{ color: 'var(--on-surface)' }}
+              >
+                {isEnglish ? 'Users' : 'Utilisateurs'}
+              </h3>
+              <div className="flex items-center gap-3">
               {/* Avatar Vincent - Toujours actif */}
               <div className="relative group">
                 <div className="w-12 h-12 rounded-full overflow-hidden border-2" style={{ borderColor: 'var(--primary)' }}>
@@ -673,7 +686,7 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                   </div>
                 </motion.div>
               )}
-            </div>
+              </div>
             </div>
 
             {/* Système d'email gate (seulement si activé) */}
