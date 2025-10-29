@@ -65,18 +65,8 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
     }
   }, [selectedProduct]); // Dépendance complète pour éviter les warnings
 
-  // Logique d'ajout automatique au panier
-  useEffect(() => {
-    if (selectedProduct && !selectedProduct.nonInventoriable && currentInventoryQuantity > 0) {
-      const minInventory = selectedProduct.minInventory || 0;
-      const isBelowMinimum = currentInventoryQuantity < minInventory;
-      
-      if (isBelowMinimum && autoAddToCart && !orderBasket.has(selectedProduct.id)) {
-        // Ajouter automatiquement au panier de commande
-        setOrderBasket(prev => new Set(prev).add(selectedProduct.id));
-      }
-    }
-  }, [selectedProduct, currentInventoryQuantity, autoAddToCart, orderBasket]);
+  // Note: L'ajout automatique au panier se fait maintenant dans handleSave,
+  // pas en temps réel pendant la saisie
 
   const handleNumberClick = (num: string) => {
     setIsEditing(true);
@@ -141,6 +131,18 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
       setTimeout(() => {
         // Étape 2: Sauvegarder et montrer la confirmation (800ms)
         onSave(selectedProduct.id, quantity);
+        
+        // Logique d'ajout automatique au panier APRÈS la sauvegarde
+        if (selectedProduct && !selectedProduct.nonInventoriable && quantity > 0) {
+          const minInventory = selectedProduct.minInventory || 0;
+          const isBelowMinimum = quantity < minInventory;
+          
+          if (isBelowMinimum && autoAddToCart && !orderBasket.has(selectedProduct.id)) {
+            // Ajouter automatiquement au panier de commande
+            setOrderBasket(prev => new Set(prev).add(selectedProduct.id));
+          }
+        }
+        
         setDisplayValue('0');
         setIsEditing(false);
         setIsSaving(false);
@@ -272,13 +274,7 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
         <ProductCard 
           product={selectedProduct} 
           locale={locale}
-          currentQuantity={
-            isEditing 
-              ? parseFloat(displayValue) || 0 
-              : (currentInventoryQuantity > 0 
-                  ? currentInventoryQuantity 
-                  : (selectedProduct.theoreticalQuantity || selectedProduct.initialQuantity || 0))
-          }
+          currentQuantity={currentInventoryQuantity}
           autoAddToCart={autoAddToCart}
           onAutoAddToCartChange={setAutoAddToCart}
           onAddToOrder={() => {
