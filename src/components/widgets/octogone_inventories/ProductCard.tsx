@@ -140,6 +140,22 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               </span>
             </div>
             {needsOrder && (
+              <div className="flex justify-between items-center">
+                <span style={{ color: 'var(--on-surface-variant)' }}>
+                  {isEnglish ? 'Auto-add to basket' : 'Ajouter au panier automatiquement'}
+                </span>
+                <input
+                  type="checkbox"
+                  checked={autoAddToCart}
+                  onChange={(e) => onAutoAddToCartChange?.(e.target.checked)}
+                  className="w-3 h-3 rounded cursor-pointer"
+                  style={{
+                    accentColor: 'var(--secondary-container)'
+                  }}
+                />
+              </div>
+            )}
+            {needsOrder && (
               <div className="flex-1 flex flex-col pt-1 pb-1">
                 <div 
                   className="p-2 rounded text-[10px] flex-1 flex flex-col"
@@ -191,20 +207,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                   }
                 </OctogoneButton>
               </div>
-              <label className="flex items-center gap-1 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={autoAddToCart}
-                  onChange={(e) => onAutoAddToCartChange?.(e.target.checked)}
-                  className="w-3 h-3 rounded cursor-pointer"
-                  style={{
-                    accentColor: 'var(--secondary-container)'
-                  }}
-                />
-                <span className="text-[9px]" style={{ color: 'var(--on-surface-variant)' }}>
-                  {isEnglish ? 'Auto-add' : 'Auto-ajout'}
-                </span>
-              </label>
             </div>
           )}
         </div>
@@ -282,6 +284,22 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               </span>
             </div>
             {needsOrder && (
+              <div className="flex justify-between items-center">
+                <span style={{ color: 'var(--on-surface-variant)' }}>
+                  {isEnglish ? 'Auto-add to basket' : 'Ajouter au panier automatiquement'}
+                </span>
+                <input
+                  type="checkbox"
+                  checked={autoAddToCart}
+                  onChange={(e) => onAutoAddToCartChange?.(e.target.checked)}
+                  className="w-4 h-4 rounded cursor-pointer"
+                  style={{
+                    accentColor: 'var(--secondary-container)'
+                  }}
+                />
+              </div>
+            )}
+            {needsOrder && (
               <div className="flex-1 flex flex-col pt-2 pb-2">
                 <div 
                   className="p-2 rounded text-xs flex-1 flex flex-col"
@@ -333,20 +351,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                   }
                 </OctogoneButton>
               </div>
-              <label className="flex items-center gap-2 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={autoAddToCart}
-                  onChange={(e) => onAutoAddToCartChange?.(e.target.checked)}
-                  className="w-4 h-4 rounded cursor-pointer"
-                  style={{
-                    accentColor: 'var(--secondary-container)'
-                  }}
-                />
-                <span className="text-sm" style={{ color: 'var(--on-surface-variant)' }}>
-                  {isEnglish ? 'Add to cart automatically' : 'Ajouter au panier automatiquement'}
-                </span>
-              </label>
             </div>
           )}
         </div>
