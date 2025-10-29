@@ -90,9 +90,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
 
         {/* Contenu à droite */}
         <div className="flex-1 p-3 flex flex-col justify-between">
-          <div className="flex-1 flex flex-col space-y-0.5">
+          <div className="flex-1 flex flex-col">
             {/* Informations d'inventaire sobre */}
-            <div className="space-y-0.5 text-xs">
+            <div className="space-y-0.5 text-xs mb-0.5">
               <div className="flex justify-between">
                 <span style={{ color: 'var(--on-surface-variant)' }}>
                   {isEnglish ? 'Value' : 'Valeur'}
@@ -130,7 +130,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               </div>
             </div>
             {needsOrder && (
-              <div className="relative flex-1 flex flex-col">
+              <div className="relative flex-1 flex flex-col mb-0.5">
                 <div 
                   className="absolute -top-2 left-2 px-1 text-[9px] font-semibold"
                   style={{ 
@@ -146,8 +146,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                 >
                   <span style={{ color: 'var(--on-surface)' }}>
                     {isEnglish 
-                      ? `Order ${quantityToOrder} ${translateUnit(product.unit, locale)} to reach minimum threshold`
-                      : `Commander ${quantityToOrder} ${translateUnit(product.unit, locale)} pour atteindre le seuil minimum`
+                      ? `Stock level below minimum threshold. Order ${quantityToOrder} ${translateUnit(product.unit, locale)} to restore optimal inventory levels.`
+                      : `Niveau de stock sous le seuil minimum. Commander ${quantityToOrder} ${translateUnit(product.unit, locale)} pour rétablir les niveaux optimaux.`
                     }
                   </span>
                 </div>
@@ -223,9 +223,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
 
         {/* Contenu à droite - 60% */}
         <div className="flex-1 p-4 flex flex-col justify-between">
-          <div className="flex-1 flex flex-col space-y-1">
+          <div className="flex-1 flex flex-col">
             {/* Informations d'inventaire sobre */}
-            <div className="space-y-1 text-sm">
+            <div className="space-y-1 text-sm mb-1">
               <div className="flex justify-between">
                 <span style={{ color: 'var(--on-surface-variant)' }}>
                   {isEnglish ? 'Value' : 'Valeur'}
@@ -263,7 +263,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               </div>
             </div>
             {needsOrder && (
-              <div className="relative flex-1 flex flex-col">
+              <div className="relative flex-1 flex flex-col mb-1">
                 <div 
                   className="absolute -top-2 left-2 px-1 text-[10px] font-semibold"
                   style={{ 
@@ -279,8 +279,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                 >
                   <span style={{ color: 'var(--on-surface)' }}>
                     {isEnglish 
-                      ? `Order ${quantityToOrder} ${translateUnit(product.unit, locale)} to reach minimum threshold`
-                      : `Commander ${quantityToOrder} ${translateUnit(product.unit, locale)} pour atteindre le seuil minimum`
+                      ? `Stock level below minimum threshold. Order ${quantityToOrder} ${translateUnit(product.unit, locale)} to restore optimal inventory levels.`
+                      : `Niveau de stock sous le seuil minimum. Commander ${quantityToOrder} ${translateUnit(product.unit, locale)} pour rétablir les niveaux optimaux.`
                     }
                   </span>
                 </div>
