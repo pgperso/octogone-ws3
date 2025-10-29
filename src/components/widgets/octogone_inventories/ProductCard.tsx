@@ -130,7 +130,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               </div>
             </div>
             {needsOrder && (
-              <div className="relative mt-0.5 flex-1 flex flex-col">
+              <div className="relative mt-0.5 mb-0.5 flex-1 flex flex-col">
                 <div 
                   className="absolute -top-2 left-2 px-1 text-[9px] font-semibold"
                   style={{ 
@@ -263,7 +263,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               </div>
             </div>
             {needsOrder && (
-              <div className="relative mt-1 flex-1 flex flex-col">
+              <div className="relative mt-1 mb-1 flex-1 flex flex-col">
                 <div 
                   className="absolute -top-2 left-2 px-1 text-[10px] font-semibold"
                   style={{ 
