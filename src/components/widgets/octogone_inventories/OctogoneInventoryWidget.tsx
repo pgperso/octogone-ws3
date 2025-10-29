@@ -79,10 +79,10 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
   // Sélectionner la baguette par défaut au chargement
   useEffect(() => {
     const baguette = (inventoryData.products as Product[]).find(p => p.id === 'prod-030');
-    if (baguette && !selectedProduct) {
+    if (baguette) {
       setSelectedProduct(baguette);
     }
-  }, [selectedProduct]);
+  }, []); // Exécuter une seule fois au montage
 
   // Afficher le deuxième utilisateur après 10 secondes
   useEffect(() => {
