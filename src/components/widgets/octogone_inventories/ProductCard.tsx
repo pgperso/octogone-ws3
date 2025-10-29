@@ -30,11 +30,9 @@ interface ProductCardProps {
   locale?: 'fr' | 'en';
   currentQuantity?: number; // Nouvelle saisie de l'utilisateur
   onAddToOrder?: () => void;
-  autoAddToCart?: boolean;
-  onAutoAddToCartChange?: (value: boolean) => void;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr', currentQuantity = 0, onAddToOrder, autoAddToCart = false, onAutoAddToCartChange }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr', currentQuantity = 0, onAddToOrder }) => {
   const isEnglish = locale === 'en';
   const minInventory = product.minInventory || 0;
   const theoreticalStock = product.theoreticalQuantity || product.initialQuantity || 0;
