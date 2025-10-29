@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useMemo } from 'react';
+import Image from 'next/image';
 import { Search, Check, History, X, ArrowUpDown, EqualNot, AlertTriangle } from 'lucide-react';
 import { translateCategory, translateProduct, translateUnit } from '@/data/products/octogone_products_translations';
 import { OctogoneButton } from '@/components/ui/octogone-button';
@@ -20,6 +21,7 @@ interface Product {
   theoreticalQuantity?: number;
   isRecipe?: boolean;
   nonInventoriable?: boolean;
+  enteredBy?: 'Vincent' | 'Julie' | 'Marie';
 }
 
 interface InventoryItem {
@@ -385,14 +387,14 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                       />
                     </div>
                   ) : (
-                    quantity > 0 && (
-                      <div 
-                        className="w-7 h-7 rounded-lg flex items-center justify-center"
-                        style={{ backgroundColor: 'var(--success)' }}
-                      >
-                        <Check 
-                          className="w-5 h-5" 
-                          style={{ color: 'var(--on-primary-container)' }}
+                    quantity > 0 && product.enteredBy && (
+                      <div className="w-8 h-8 rounded-full overflow-hidden border-2" style={{ borderColor: 'var(--primary)' }}>
+                        <Image
+                          src={`/images/avatars/${product.enteredBy.toLowerCase()}.avif`}
+                          alt={product.enteredBy}
+                          width={32}
+                          height={32}
+                          className="w-full h-full object-cover"
                         />
                       </div>
                     )

@@ -6,17 +6,31 @@
       "category": "Viandes",
       "brand": "Boucherie Sélection",
       "unit": "kg",
-      "availableUnits": ["kg", "g", "lb"],
+      "availableUnits": [
+        "kg",
+        "g",
+        "lb"
+      ],
       "unitCost": 18.5,
       "storage": "frigidaire",
       "minInventory": 8,
       "initialQuantity": 8,
       "theoreticalQuantity": 6,
       "enrichment": {
-        "recipes": ["recipe-001"],
+        "recipes": [
+          "recipe-001"
+        ],
         "recipe_role": "protein",
-        "pairs_well_with": ["prod-006", "prod-012", "prod-013", "prod-029", "prod-039", "prod-040"]
-      }
+        "pairs_well_with": [
+          "prod-006",
+          "prod-012",
+          "prod-013",
+          "prod-029",
+          "prod-039",
+          "prod-040"
+        ]
+      },
+      "enteredBy": "Marie"
     },
     {
       "id": "prod-002",
@@ -24,16 +38,27 @@
       "category": "Viandes",
       "brand": "Boucherie Sélection",
       "unit": "kg",
-      "availableUnits": ["kg", "g", "lb"],
+      "availableUnits": [
+        "kg",
+        "g",
+        "lb"
+      ],
       "unitCost": 15.99,
       "storage": "frigidaire",
       "minInventory": 14,
       "initialQuantity": 12,
       "theoreticalQuantity": 12,
       "enrichment": {
-        "recipes": ["recipe-001", "recipe-002"],
+        "recipes": [
+          "recipe-001",
+          "recipe-002"
+        ],
         "recipe_role": "protein",
-        "pairs_well_with": ["prod-005", "prod-007", "prod-031"]
+        "pairs_well_with": [
+          "prod-005",
+          "prod-007",
+          "prod-031"
+        ]
       }
     },
     {
@@ -42,7 +67,10 @@
       "category": "Viandes",
       "brand": "Viandes Premium",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
       "unitCost": 14.5,
       "storage": "frigidaire",
       "minInventory": 8,
@@ -55,12 +83,16 @@
       "category": "Fruits de mer",
       "brand": "Océan Frais",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
       "unitCost": 38,
       "storage": "frigidaire",
       "minInventory": 13,
       "initialQuantity": 19,
-      "theoreticalQuantity": 17
+      "theoreticalQuantity": 17,
+      "enteredBy": "Marie"
     },
     {
       "id": "prod-005",
@@ -68,17 +100,28 @@
       "category": "Produits laitiers",
       "brand": "Ferme Laitière",
       "unit": "un",
-      "availableUnits": ["un"],
+      "availableUnits": [
+        "un"
+      ],
       "unitCost": 0.42,
       "storage": "frigidaire",
       "minInventory": 22,
       "initialQuantity": 36,
       "theoreticalQuantity": 33,
       "enrichment": {
-        "recipes": ["recipe-002", "recipe-004"],
+        "recipes": [
+          "recipe-002",
+          "recipe-004"
+        ],
         "recipe_role": "dairy",
-        "pairs_well_with": ["prod-002", "prod-007", "prod-010", "prod-031"]
-      }
+        "pairs_well_with": [
+          "prod-002",
+          "prod-007",
+          "prod-010",
+          "prod-031"
+        ]
+      },
+      "enteredBy": "Vincent"
     },
     {
       "id": "prod-006",
@@ -86,17 +129,26 @@
       "category": "Produits laitiers",
       "brand": "Fromagerie Artisanale",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
       "unitCost": 14.5,
       "storage": "frigidaire",
       "minInventory": 12,
       "initialQuantity": 15,
       "theoreticalQuantity": 15,
       "enrichment": {
-        "recipes": ["recipe-001"],
+        "recipes": [
+          "recipe-001"
+        ],
         "recipe_role": "dairy",
-        "pairs_well_with": ["prod-001", "prod-029"]
-      }
+        "pairs_well_with": [
+          "prod-001",
+          "prod-029"
+        ]
+      },
+      "enteredBy": "Vincent"
     },
     {
       "id": "prod-007",
@@ -104,17 +156,27 @@
       "category": "Produits laitiers",
       "brand": "Fromagerie Artisanale",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
-      "unitCost": 28.0,
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
+      "unitCost": 28,
       "storage": "frigidaire",
       "minInventory": 5,
       "initialQuantity": 3,
       "theoreticalQuantity": 2,
       "enrichment": {
-        "recipes": ["recipe-002"],
+        "recipes": [
+          "recipe-002"
+        ],
         "recipe_role": "dairy",
-        "pairs_well_with": ["prod-002", "prod-005", "prod-031"]
-      }
+        "pairs_well_with": [
+          "prod-002",
+          "prod-005",
+          "prod-031"
+        ]
+      },
+      "enteredBy": "Vincent"
     },
     {
       "id": "prod-008",
@@ -122,12 +184,16 @@
       "category": "Produits laitiers",
       "brand": "Fromagerie Artisanale",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
       "unitCost": 12,
       "storage": "frigidaire",
       "minInventory": 13,
       "initialQuantity": 13,
-      "theoreticalQuantity": 12
+      "theoreticalQuantity": 12,
+      "enteredBy": "Marie"
     },
     {
       "id": "prod-009",
@@ -135,7 +201,10 @@
       "category": "Produits laitiers",
       "brand": "Ferme Laitière",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
       "unitCost": 9.5,
       "storage": "frigidaire",
       "minInventory": 11,
@@ -148,17 +217,28 @@
       "category": "Produits laitiers",
       "brand": "Ferme Laitière",
       "unit": "L",
-      "availableUnits": ["L", "mL"],
+      "availableUnits": [
+        "L",
+        "mL"
+      ],
       "unitCost": 6.5,
       "storage": "frigidaire",
       "minInventory": 5,
       "initialQuantity": 3,
       "theoreticalQuantity": 2,
       "enrichment": {
-        "recipes": ["recipe-002", "recipe-004"],
+        "recipes": [
+          "recipe-002",
+          "recipe-004"
+        ],
         "recipe_role": "dairy",
-        "pairs_well_with": ["prod-005", "prod-038", "prod-048"]
-      }
+        "pairs_well_with": [
+          "prod-005",
+          "prod-038",
+          "prod-048"
+        ]
+      },
+      "enteredBy": "Marie"
     },
     {
       "id": "prod-011",
@@ -166,12 +246,16 @@
       "category": "Produits laitiers",
       "brand": "Ferme Laitière",
       "unit": "L",
-      "availableUnits": ["L", "mL"],
+      "availableUnits": [
+        "L",
+        "mL"
+      ],
       "unitCost": 3.5,
       "storage": "frigidaire",
       "minInventory": 4,
       "initialQuantity": 5,
-      "theoreticalQuantity": 4
+      "theoreticalQuantity": 4,
+      "enteredBy": "Vincent"
     },
     {
       "id": "prod-012",
@@ -179,12 +263,17 @@
       "category": "Légumes",
       "brand": "Maraîcher Bio",
       "unit": "kg",
-      "availableUnits": ["kg", "g", "un"],
+      "availableUnits": [
+        "kg",
+        "g",
+        "un"
+      ],
       "unitCost": 4.5,
       "storage": "frigidaire",
       "minInventory": 7,
       "initialQuantity": 12,
-      "theoreticalQuantity": 12
+      "theoreticalQuantity": 12,
+      "enteredBy": "Marie"
     },
     {
       "id": "prod-013",
@@ -192,12 +281,16 @@
       "category": "Légumes",
       "brand": "Ferme Locale",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
       "unitCost": 5.5,
       "storage": "frigidaire",
       "minInventory": 11,
       "initialQuantity": 13,
-      "theoreticalQuantity": 10
+      "theoreticalQuantity": 10,
+      "enteredBy": "Julie"
     },
     {
       "id": "prod-014",
@@ -205,12 +298,16 @@
       "category": "Légumes",
       "brand": "Ferme Locale",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
       "unitCost": 2.75,
       "storage": "sec",
       "minInventory": 11,
       "initialQuantity": 13,
-      "theoreticalQuantity": 9
+      "theoreticalQuantity": 9,
+      "enteredBy": "Vincent"
     },
     {
       "id": "prod-015",
@@ -218,16 +315,26 @@
       "category": "Légumes",
       "brand": "Ferme Locale",
       "unit": "kg",
-      "availableUnits": ["kg", "g", "un"],
+      "availableUnits": [
+        "kg",
+        "g",
+        "un"
+      ],
       "unitCost": 8.5,
       "storage": "frigidaire",
       "minInventory": 6,
       "initialQuantity": 10,
       "theoreticalQuantity": 7,
       "enrichment": {
-        "recipes": ["recipe-002"],
+        "recipes": [
+          "recipe-002"
+        ],
         "recipe_role": "seasoning",
-        "pairs_well_with": ["prod-002", "prod-031", "prod-034"]
+        "pairs_well_with": [
+          "prod-002",
+          "prod-031",
+          "prod-034"
+        ]
       }
     },
     {
@@ -236,12 +343,16 @@
       "category": "Légumes",
       "brand": "Ferme Locale",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
       "unitCost": 2.5,
       "storage": "sec",
       "minInventory": 6,
       "initialQuantity": 9,
-      "theoreticalQuantity": 7
+      "theoreticalQuantity": 7,
+      "enteredBy": "Julie"
     },
     {
       "id": "prod-017",
@@ -249,7 +360,10 @@
       "category": "Légumes",
       "brand": "Maraîcher Bio",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
       "unitCost": 3.5,
       "storage": "frigidaire",
       "minInventory": 6,
@@ -262,7 +376,10 @@
       "category": "Légumes",
       "brand": "Champignonnière",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
       "unitCost": 8.99,
       "storage": "frigidaire",
       "minInventory": 14,
@@ -275,12 +392,16 @@
       "category": "Légumes",
       "brand": "Maraîcher Bio",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
       "unitCost": 6.5,
       "storage": "frigidaire",
       "minInventory": 9,
       "initialQuantity": 15,
-      "theoreticalQuantity": 13
+      "theoreticalQuantity": 13,
+      "enteredBy": "Vincent"
     },
     {
       "id": "prod-020",
@@ -288,12 +409,16 @@
       "category": "Légumes",
       "brand": "Maraîcher Bio",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
       "unitCost": 3.75,
       "storage": "frigidaire",
       "minInventory": 10,
       "initialQuantity": 19,
-      "theoreticalQuantity": 18
+      "theoreticalQuantity": 18,
+      "enteredBy": "Vincent"
     },
     {
       "id": "prod-021",
@@ -301,12 +426,16 @@
       "category": "Fruits",
       "brand": "Fruits Tropicaux",
       "unit": "un",
-      "availableUnits": ["un", "kg"],
+      "availableUnits": [
+        "un",
+        "kg"
+      ],
       "unitCost": 2.5,
       "storage": "frigidaire",
       "minInventory": 27,
       "initialQuantity": 45,
-      "theoreticalQuantity": 43
+      "theoreticalQuantity": 43,
+      "enteredBy": "Vincent"
     },
     {
       "id": "prod-022",
@@ -314,7 +443,9 @@
       "category": "Herbes",
       "brand": "Jardin Frais",
       "unit": "un",
-      "availableUnits": ["un"],
+      "availableUnits": [
+        "un"
+      ],
       "unitCost": 2.99,
       "storage": "frigidaire",
       "minInventory": 24,
@@ -327,12 +458,15 @@
       "category": "Herbes",
       "brand": "Jardin Frais",
       "unit": "un",
-      "availableUnits": ["un"],
+      "availableUnits": [
+        "un"
+      ],
       "unitCost": 2.25,
       "storage": "frigidaire",
       "minInventory": 12,
       "initialQuantity": 20,
-      "theoreticalQuantity": 18
+      "theoreticalQuantity": 18,
+      "enteredBy": "Julie"
     },
     {
       "id": "prod-024",
@@ -340,12 +474,15 @@
       "category": "Herbes",
       "brand": "Jardin Frais",
       "unit": "un",
-      "availableUnits": ["un"],
+      "availableUnits": [
+        "un"
+      ],
       "unitCost": 2.5,
       "storage": "frigidaire",
       "minInventory": 11,
       "initialQuantity": 16,
-      "theoreticalQuantity": 12
+      "theoreticalQuantity": 12,
+      "enteredBy": "Vincent"
     },
     {
       "id": "prod-025",
@@ -353,17 +490,27 @@
       "category": "Herbes",
       "brand": "Jardin Frais",
       "unit": "un",
-      "availableUnits": ["un"],
+      "availableUnits": [
+        "un"
+      ],
       "unitCost": 2.5,
       "storage": "frigidaire",
       "minInventory": 8,
       "initialQuantity": 10,
       "theoreticalQuantity": 8,
       "enrichment": {
-        "recipes": ["recipe-003"],
+        "recipes": [
+          "recipe-003"
+        ],
         "recipe_role": "herb",
-        "pairs_well_with": ["prod-027", "prod-038", "prod-044", "prod-046"]
-      }
+        "pairs_well_with": [
+          "prod-027",
+          "prod-038",
+          "prod-044",
+          "prod-046"
+        ]
+      },
+      "enteredBy": "Marie"
     },
     {
       "id": "prod-026",
@@ -371,12 +518,17 @@
       "category": "Fruits",
       "brand": "Verger Sélection",
       "unit": "kg",
-      "availableUnits": ["kg", "g", "un"],
+      "availableUnits": [
+        "kg",
+        "g",
+        "un"
+      ],
       "unitCost": 4.25,
       "storage": "frigidaire",
       "minInventory": 13,
       "initialQuantity": 15,
-      "theoreticalQuantity": 13
+      "theoreticalQuantity": 13,
+      "enteredBy": "Vincent"
     },
     {
       "id": "prod-027",
@@ -384,16 +536,26 @@
       "category": "Fruits",
       "brand": "Verger Sélection",
       "unit": "kg",
-      "availableUnits": ["kg", "g", "un"],
-      "unitCost": 5.0,
+      "availableUnits": [
+        "kg",
+        "g",
+        "un"
+      ],
+      "unitCost": 5,
       "storage": "frigidaire",
       "minInventory": 8,
       "initialQuantity": 10,
       "theoreticalQuantity": 9,
       "enrichment": {
-        "recipes": ["recipe-003"],
+        "recipes": [
+          "recipe-003"
+        ],
         "recipe_role": "garnish",
-        "pairs_well_with": ["prod-025", "prod-038", "prod-044"]
+        "pairs_well_with": [
+          "prod-025",
+          "prod-038",
+          "prod-044"
+        ]
       }
     },
     {
@@ -402,12 +564,15 @@
       "category": "Fruits",
       "brand": "Fruits Tropicaux",
       "unit": "un",
-      "availableUnits": ["un"],
+      "availableUnits": [
+        "un"
+      ],
       "unitCost": 3.25,
       "storage": "frigidaire",
       "minInventory": 10,
       "initialQuantity": 10,
-      "theoreticalQuantity": 7
+      "theoreticalQuantity": 7,
+      "enteredBy": "Marie"
     },
     {
       "id": "prod-029",
@@ -415,17 +580,27 @@
       "category": "Boulangerie",
       "brand": "Boulangerie Artisanale",
       "unit": "un",
-      "availableUnits": ["un"],
+      "availableUnits": [
+        "un"
+      ],
       "unitCost": 0.9,
       "storage": "sec",
       "minInventory": 15,
       "initialQuantity": 20,
       "theoreticalQuantity": 18,
       "enrichment": {
-        "recipes": ["recipe-001"],
+        "recipes": [
+          "recipe-001"
+        ],
         "recipe_role": "carb",
-        "pairs_well_with": ["prod-001", "prod-006", "prod-012", "prod-013"]
-      }
+        "pairs_well_with": [
+          "prod-001",
+          "prod-006",
+          "prod-012",
+          "prod-013"
+        ]
+      },
+      "enteredBy": "Julie"
     },
     {
       "id": "prod-030",
@@ -433,12 +608,15 @@
       "category": "Boulangerie",
       "brand": "Pain Maison",
       "unit": "un",
-      "availableUnits": ["un"],
+      "availableUnits": [
+        "un"
+      ],
       "unitCost": 1.5,
       "storage": "sec",
       "minInventory": 11,
       "initialQuantity": 13,
-      "theoreticalQuantity": 11
+      "theoreticalQuantity": 11,
+      "enteredBy": "Julie"
     },
     {
       "id": "prod-031",
@@ -446,17 +624,28 @@
       "category": "Épicerie",
       "brand": "Marque Maison",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
       "unitCost": 3.5,
       "storage": "sec",
       "minInventory": 11,
       "initialQuantity": 19,
       "theoreticalQuantity": 19,
       "enrichment": {
-        "recipes": ["recipe-002"],
+        "recipes": [
+          "recipe-002"
+        ],
         "recipe_role": "carb",
-        "pairs_well_with": ["prod-002", "prod-005", "prod-007", "prod-015"]
-      }
+        "pairs_well_with": [
+          "prod-002",
+          "prod-005",
+          "prod-007",
+          "prod-015"
+        ]
+      },
+      "enteredBy": "Marie"
     },
     {
       "id": "prod-032",
@@ -464,12 +653,16 @@
       "category": "Épicerie",
       "brand": "Marque Maison",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
       "unitCost": 3.25,
       "storage": "sec",
       "minInventory": 9,
       "initialQuantity": 14,
-      "theoreticalQuantity": 14
+      "theoreticalQuantity": 14,
+      "enteredBy": "Julie"
     },
     {
       "id": "prod-033",
@@ -477,7 +670,10 @@
       "category": "Épicerie",
       "brand": "Marque Maison",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
       "unitCost": 2.25,
       "storage": "sec",
       "minInventory": 8,
@@ -490,12 +686,16 @@
       "category": "Épicerie",
       "brand": "Épicerie Sélection",
       "unit": "L",
-      "availableUnits": ["L", "mL"],
+      "availableUnits": [
+        "L",
+        "mL"
+      ],
       "unitCost": 18,
       "storage": "sec",
       "minInventory": 10,
       "initialQuantity": 11,
-      "theoreticalQuantity": 9
+      "theoreticalQuantity": 9,
+      "enteredBy": "Vincent"
     },
     {
       "id": "prod-035",
@@ -503,12 +703,16 @@
       "category": "Épicerie",
       "brand": "Marque Maison",
       "unit": "L",
-      "availableUnits": ["L", "mL"],
+      "availableUnits": [
+        "L",
+        "mL"
+      ],
       "unitCost": 8.5,
       "storage": "sec",
       "minInventory": 8,
       "initialQuantity": 15,
-      "theoreticalQuantity": 11
+      "theoreticalQuantity": 11,
+      "enteredBy": "Julie"
     },
     {
       "id": "prod-036",
@@ -516,13 +720,17 @@
       "category": "Épicerie",
       "brand": "Marque Maison",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
       "unitCost": 1.5,
       "storage": "sec",
       "minInventory": 10,
       "initialQuantity": 17,
       "theoreticalQuantity": 13,
-      "nonInventoriable": true
+      "nonInventoriable": true,
+      "enteredBy": "Vincent"
     },
     {
       "id": "prod-037",
@@ -530,18 +738,29 @@
       "category": "Épicerie",
       "brand": "Épices du Monde",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
-      "unitCost": 26.0,
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
+      "unitCost": 26,
       "storage": "sec",
       "minInventory": 3,
       "initialQuantity": 2,
       "theoreticalQuantity": 2,
       "nonInventoriable": true,
       "enrichment": {
-        "recipes": ["recipe-001", "recipe-002"],
+        "recipes": [
+          "recipe-001",
+          "recipe-002"
+        ],
         "recipe_role": "seasoning",
-        "pairs_well_with": ["prod-001", "prod-002", "prod-031"]
-      }
+        "pairs_well_with": [
+          "prod-001",
+          "prod-002",
+          "prod-031"
+        ]
+      },
+      "enteredBy": "Julie"
     },
     {
       "id": "prod-038",
@@ -549,16 +768,28 @@
       "category": "Épicerie",
       "brand": "Marque Maison",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
       "unitCost": 2,
       "storage": "sec",
       "minInventory": 7,
       "initialQuantity": 13,
       "theoreticalQuantity": 13,
       "enrichment": {
-        "recipes": ["recipe-003", "recipe-004"],
+        "recipes": [
+          "recipe-003",
+          "recipe-004"
+        ],
         "recipe_role": "sweetener",
-        "pairs_well_with": ["prod-005", "prod-010", "prod-025", "prod-027", "prod-048"]
+        "pairs_well_with": [
+          "prod-005",
+          "prod-010",
+          "prod-025",
+          "prod-027",
+          "prod-048"
+        ]
       }
     },
     {
@@ -567,7 +798,10 @@
       "category": "Condiments",
       "brand": "Saveurs du Monde",
       "unit": "L",
-      "availableUnits": ["L", "mL"],
+      "availableUnits": [
+        "L",
+        "mL"
+      ],
       "unitCost": 5.5,
       "storage": "sec",
       "minInventory": 5,
@@ -580,12 +814,16 @@
       "category": "Condiments",
       "brand": "Saveurs du Monde",
       "unit": "L",
-      "availableUnits": ["L", "mL"],
+      "availableUnits": [
+        "L",
+        "mL"
+      ],
       "unitCost": 8.5,
       "storage": "frigidaire",
       "minInventory": 5,
       "initialQuantity": 3,
-      "theoreticalQuantity": 2
+      "theoreticalQuantity": 2,
+      "enteredBy": "Vincent"
     },
     {
       "id": "prod-041",
@@ -593,12 +831,16 @@
       "category": "Condiments",
       "brand": "Saveurs du Monde",
       "unit": "L",
-      "availableUnits": ["L", "mL"],
-      "unitCost": 6.0,
+      "availableUnits": [
+        "L",
+        "mL"
+      ],
+      "unitCost": 6,
       "storage": "sec",
       "minInventory": 4,
       "initialQuantity": 3,
-      "theoreticalQuantity": 2
+      "theoreticalQuantity": 2,
+      "enteredBy": "Julie"
     },
     {
       "id": "prod-042",
@@ -606,12 +848,16 @@
       "category": "Condiments",
       "brand": "Conserves Premium",
       "unit": "L",
-      "availableUnits": ["L", "mL"],
+      "availableUnits": [
+        "L",
+        "mL"
+      ],
       "unitCost": 7.5,
       "storage": "sec",
       "minInventory": 4,
       "initialQuantity": 2,
-      "theoreticalQuantity": 2
+      "theoreticalQuantity": 2,
+      "enteredBy": "Julie"
     },
     {
       "id": "prod-043",
@@ -619,7 +865,10 @@
       "category": "Condiments",
       "brand": "Épicerie Sélection",
       "unit": "L",
-      "availableUnits": ["L", "mL"],
+      "availableUnits": [
+        "L",
+        "mL"
+      ],
       "unitCost": 12,
       "storage": "sec",
       "minInventory": 4,
@@ -632,17 +881,28 @@
       "category": "Boissons",
       "brand": "Distillerie Artisanale",
       "unit": "L",
-      "availableUnits": ["L", "mL"],
-      "unitCost": 35.0,
+      "availableUnits": [
+        "L",
+        "mL"
+      ],
+      "unitCost": 35,
       "storage": "sec",
       "minInventory": 3,
       "initialQuantity": 2,
       "theoreticalQuantity": 2,
       "enrichment": {
-        "recipes": ["recipe-003"],
+        "recipes": [
+          "recipe-003"
+        ],
         "recipe_role": "alcohol",
-        "pairs_well_with": ["prod-025", "prod-027", "prod-038", "prod-046"]
-      }
+        "pairs_well_with": [
+          "prod-025",
+          "prod-027",
+          "prod-038",
+          "prod-046"
+        ]
+      },
+      "enteredBy": "Vincent"
     },
     {
       "id": "prod-045",
@@ -650,12 +910,15 @@
       "category": "Boissons",
       "brand": "Cave Sélection",
       "unit": "un",
-      "availableUnits": ["un"],
+      "availableUnits": [
+        "un"
+      ],
       "unitCost": 15,
       "storage": "sec",
       "minInventory": 27,
       "initialQuantity": 23,
-      "theoreticalQuantity": 20
+      "theoreticalQuantity": 20,
+      "enteredBy": "Vincent"
     },
     {
       "id": "prod-046",
@@ -663,17 +926,27 @@
       "category": "Boissons",
       "brand": "Source Naturelle",
       "unit": "L",
-      "availableUnits": ["L", "mL"],
+      "availableUnits": [
+        "L",
+        "mL"
+      ],
       "unitCost": 1.5,
       "storage": "sec",
       "minInventory": 20,
       "initialQuantity": 30,
       "theoreticalQuantity": 25,
       "enrichment": {
-        "recipes": ["recipe-003"],
+        "recipes": [
+          "recipe-003"
+        ],
         "recipe_role": "mixer",
-        "pairs_well_with": ["prod-025", "prod-027", "prod-044"]
-      }
+        "pairs_well_with": [
+          "prod-025",
+          "prod-027",
+          "prod-044"
+        ]
+      },
+      "enteredBy": "Marie"
     },
     {
       "id": "prod-047",
@@ -681,7 +954,10 @@
       "category": "Boissons",
       "brand": "Verger Sélection",
       "unit": "L",
-      "availableUnits": ["L", "mL"],
+      "availableUnits": [
+        "L",
+        "mL"
+      ],
       "unitCost": 5.25,
       "storage": "frigidaire",
       "minInventory": 10,
@@ -694,17 +970,26 @@
       "category": "Épicerie",
       "brand": "Épices du Monde",
       "unit": "mL",
-      "availableUnits": ["mL"],
+      "availableUnits": [
+        "mL"
+      ],
       "unitCost": 0.25,
       "storage": "sec",
       "minInventory": 100,
       "initialQuantity": 250,
       "theoreticalQuantity": 200,
       "enrichment": {
-        "recipes": ["recipe-004"],
+        "recipes": [
+          "recipe-004"
+        ],
         "recipe_role": "seasoning",
-        "pairs_well_with": ["prod-005", "prod-010", "prod-038"]
-      }
+        "pairs_well_with": [
+          "prod-005",
+          "prod-010",
+          "prod-038"
+        ]
+      },
+      "enteredBy": "Julie"
     },
     {
       "id": "prod-049",
@@ -712,7 +997,10 @@
       "category": "Épicerie",
       "brand": "Produits Artisanaux",
       "unit": "L",
-      "availableUnits": ["L", "mL"],
+      "availableUnits": [
+        "L",
+        "mL"
+      ],
       "unitCost": 45,
       "storage": "sec",
       "minInventory": 4,
@@ -725,12 +1013,16 @@
       "category": "Surgelés",
       "brand": "Surgelés Qualité",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
       "unitCost": 4.5,
       "storage": "congelateur",
       "minInventory": 11,
       "initialQuantity": 6,
-      "theoreticalQuantity": 5
+      "theoreticalQuantity": 5,
+      "enteredBy": "Julie"
     },
     {
       "id": "prod-051",
@@ -738,12 +1030,16 @@
       "category": "Surgelés",
       "brand": "Glaces Artisanales",
       "unit": "L",
-      "availableUnits": ["L", "mL"],
+      "availableUnits": [
+        "L",
+        "mL"
+      ],
       "unitCost": 7.99,
       "storage": "congelateur",
       "minInventory": 9,
       "initialQuantity": 17,
-      "theoreticalQuantity": 16
+      "theoreticalQuantity": 16,
+      "enteredBy": "Vincent"
     },
     {
       "id": "prod-052",
@@ -751,7 +1047,10 @@
       "category": "Surgelés",
       "brand": "Fraîcheur Glacée",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
       "unitCost": 8.25,
       "storage": "congelateur",
       "minInventory": 9,
@@ -764,12 +1063,16 @@
       "category": "Surgelés",
       "brand": "Surgelés Qualité",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
       "unitCost": 4.25,
       "storage": "congelateur",
       "minInventory": 13,
       "initialQuantity": 14,
-      "theoreticalQuantity": 10
+      "theoreticalQuantity": 10,
+      "enteredBy": "Marie"
     },
     {
       "id": "prod-054",
@@ -777,12 +1080,16 @@
       "category": "Surgelés",
       "brand": "Pâtisserie Glacée",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
       "unitCost": 5.75,
       "storage": "congelateur",
       "minInventory": 10,
       "initialQuantity": 17,
-      "theoreticalQuantity": 16
+      "theoreticalQuantity": 16,
+      "enteredBy": "Vincent"
     },
     {
       "id": "prod-055",
@@ -790,13 +1097,16 @@
       "category": "Condiments portion",
       "brand": "Heinz",
       "unit": "un",
-      "availableUnits": ["un"],
+      "availableUnits": [
+        "un"
+      ],
       "unitCost": 0.05,
       "storage": "sec",
       "minInventory": 500,
       "initialQuantity": 800,
       "theoreticalQuantity": 750,
-      "nonInventoriable": true
+      "nonInventoriable": true,
+      "enteredBy": "Vincent"
     },
     {
       "id": "prod-056",
@@ -804,7 +1114,9 @@
       "category": "Fournitures de service",
       "brand": "Cascades",
       "unit": "un",
-      "availableUnits": ["un"],
+      "availableUnits": [
+        "un"
+      ],
       "unitCost": 0.02,
       "storage": "sec",
       "minInventory": 1000,
@@ -818,7 +1130,10 @@
       "category": "Produits de nettoyage",
       "brand": "Dawn",
       "unit": "L",
-      "availableUnits": ["L", "mL"],
+      "availableUnits": [
+        "L",
+        "mL"
+      ],
       "unitCost": 8.99,
       "storage": "sec",
       "minInventory": 3,
@@ -831,8 +1146,11 @@
       "category": "Produits de nettoyage",
       "brand": "Lysol",
       "unit": "L",
-      "availableUnits": ["L", "mL"],
-      "unitCost": 12.50,
+      "availableUnits": [
+        "L",
+        "mL"
+      ],
+      "unitCost": 12.5,
       "storage": "sec",
       "minInventory": 2,
       "initialQuantity": 4,
@@ -844,12 +1162,15 @@
       "category": "Fournitures de service",
       "brand": "Nitrile Pro",
       "unit": "un",
-      "availableUnits": ["un"],
+      "availableUnits": [
+        "un"
+      ],
       "unitCost": 0.15,
       "storage": "sec",
       "minInventory": 200,
       "initialQuantity": 300,
-      "theoreticalQuantity": 250
+      "theoreticalQuantity": 250,
+      "enteredBy": "Marie"
     },
     {
       "id": "prod-060",
@@ -857,12 +1178,15 @@
       "category": "Fournitures de service",
       "brand": "Bounty",
       "unit": "un",
-      "availableUnits": ["un"],
-      "unitCost": 2.50,
+      "availableUnits": [
+        "un"
+      ],
+      "unitCost": 2.5,
       "storage": "sec",
       "minInventory": 10,
       "initialQuantity": 15,
-      "theoreticalQuantity": 12
+      "theoreticalQuantity": 12,
+      "enteredBy": "Vincent"
     },
     {
       "id": "prod-061",
@@ -870,8 +1194,10 @@
       "category": "Fournitures de service",
       "brand": "Glad",
       "unit": "un",
-      "availableUnits": ["un"],
-      "unitCost": 0.30,
+      "availableUnits": [
+        "un"
+      ],
+      "unitCost": 0.3,
       "storage": "sec",
       "minInventory": 50,
       "initialQuantity": 80,
@@ -883,8 +1209,11 @@
       "category": "Préparation",
       "brand": "Marque Maison",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
-      "unitCost": 25.50,
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
+      "unitCost": 25.5,
       "storage": "sec",
       "minInventory": 2,
       "initialQuantity": 3,
@@ -892,8 +1221,13 @@
       "isRecipe": true,
       "enrichment": {
         "recipe_role": "seasoning",
-        "pairs_well_with": ["prod-001", "prod-003", "prod-002"]
-      }
+        "pairs_well_with": [
+          "prod-001",
+          "prod-003",
+          "prod-002"
+        ]
+      },
+      "enteredBy": "Julie"
     },
     {
       "id": "recipe-002",
@@ -901,7 +1235,10 @@
       "category": "Préparation",
       "brand": "Marque Maison",
       "unit": "kg",
-      "availableUnits": ["kg", "g"],
+      "availableUnits": [
+        "kg",
+        "g"
+      ],
       "unitCost": 18.75,
       "storage": "sec",
       "minInventory": 1,
@@ -910,8 +1247,12 @@
       "isRecipe": true,
       "enrichment": {
         "recipe_role": "coating",
-        "pairs_well_with": ["prod-003", "prod-054"]
-      }
+        "pairs_well_with": [
+          "prod-003",
+          "prod-054"
+        ]
+      },
+      "enteredBy": "Julie"
     },
     {
       "id": "recipe-003",
@@ -919,7 +1260,10 @@
       "category": "Préparation",
       "brand": "Marque Maison",
       "unit": "L",
-      "availableUnits": ["L", "mL"],
+      "availableUnits": [
+        "L",
+        "mL"
+      ],
       "unitCost": 12.25,
       "storage": "congelateur",
       "minInventory": 5,
@@ -928,8 +1272,12 @@
       "isRecipe": true,
       "enrichment": {
         "recipe_role": "sauce",
-        "pairs_well_with": ["prod-032", "prod-049"]
-      }
+        "pairs_well_with": [
+          "prod-032",
+          "prod-049"
+        ]
+      },
+      "enteredBy": "Julie"
     },
     {
       "id": "recipe-004",
@@ -937,8 +1285,11 @@
       "category": "Préparation",
       "brand": "Marque Maison",
       "unit": "L",
-      "availableUnits": ["L", "mL"],
-      "unitCost": 8.50,
+      "availableUnits": [
+        "L",
+        "mL"
+      ],
+      "unitCost": 8.5,
       "storage": "congelateur",
       "minInventory": 3,
       "initialQuantity": 5,
@@ -946,8 +1297,12 @@
       "isRecipe": true,
       "enrichment": {
         "recipe_role": "base",
-        "pairs_well_with": ["prod-050", "prod-032"]
-      }
+        "pairs_well_with": [
+          "prod-050",
+          "prod-032"
+        ]
+      },
+      "enteredBy": "Marie"
     },
     {
       "id": "recipe-005",
@@ -955,8 +1310,11 @@
       "category": "Préparation",
       "brand": "Marque Maison",
       "unit": "L",
-      "availableUnits": ["L", "mL"],
-      "unitCost": 15.80,
+      "availableUnits": [
+        "L",
+        "mL"
+      ],
+      "unitCost": 15.8,
       "storage": "frigidaire",
       "minInventory": 1,
       "initialQuantity": 2,
@@ -964,7 +1322,11 @@
       "isRecipe": true,
       "enrichment": {
         "recipe_role": "dressing",
-        "pairs_well_with": ["prod-029", "prod-013", "prod-043"]
+        "pairs_well_with": [
+          "prod-029",
+          "prod-013",
+          "prod-043"
+        ]
       }
     },
     {
@@ -973,8 +1335,11 @@
       "category": "Préparation",
       "brand": "Marque Maison",
       "unit": "L",
-      "availableUnits": ["L", "mL"],
-      "unitCost": 11.40,
+      "availableUnits": [
+        "L",
+        "mL"
+      ],
+      "unitCost": 11.4,
       "storage": "frigidaire",
       "minInventory": 1,
       "initialQuantity": 2,
@@ -982,8 +1347,11 @@
       "isRecipe": true,
       "enrichment": {
         "recipe_role": "marinade",
-        "pairs_well_with": ["prod-003"]
-      }
+        "pairs_well_with": [
+          "prod-003"
+        ]
+      },
+      "enteredBy": "Marie"
     },
     {
       "id": "recipe-007",
@@ -991,7 +1359,10 @@
       "category": "Entrée",
       "brand": "Marque Maison",
       "unit": "L",
-      "availableUnits": ["L", "mL"],
+      "availableUnits": [
+        "L",
+        "mL"
+      ],
       "unitCost": 9.75,
       "storage": "frigidaire",
       "minInventory": 3,
@@ -1000,8 +1371,13 @@
       "isRecipe": true,
       "enrichment": {
         "recipe_role": "starter",
-        "pairs_well_with": ["prod-006", "prod-009", "prod-027"]
-      }
+        "pairs_well_with": [
+          "prod-006",
+          "prod-009",
+          "prod-027"
+        ]
+      },
+      "enteredBy": "Vincent"
     },
     {
       "id": "recipe-008",
@@ -1009,8 +1385,10 @@
       "category": "Plat principal",
       "brand": "Marque Maison",
       "unit": "un",
-      "availableUnits": ["un"],
-      "unitCost": 45.00,
+      "availableUnits": [
+        "un"
+      ],
+      "unitCost": 45,
       "storage": "congelateur",
       "minInventory": 2,
       "initialQuantity": 4,
@@ -1018,8 +1396,13 @@
       "isRecipe": true,
       "enrichment": {
         "recipe_role": "main_dish",
-        "pairs_well_with": ["prod-001", "prod-032", "prod-009"]
-      }
+        "pairs_well_with": [
+          "prod-001",
+          "prod-032",
+          "prod-009"
+        ]
+      },
+      "enteredBy": "Vincent"
     },
     {
       "id": "recipe-009",
@@ -1027,8 +1410,10 @@
       "category": "Dessert",
       "brand": "Marque Maison",
       "unit": "un",
-      "availableUnits": ["un"],
-      "unitCost": 28.50,
+      "availableUnits": [
+        "un"
+      ],
+      "unitCost": 28.5,
       "storage": "frigidaire",
       "minInventory": 1,
       "initialQuantity": 2,
@@ -1036,7 +1421,11 @@
       "isRecipe": true,
       "enrichment": {
         "recipe_role": "dessert",
-        "pairs_well_with": ["prod-005", "prod-010", "prod-038"]
+        "pairs_well_with": [
+          "prod-005",
+          "prod-010",
+          "prod-038"
+        ]
       }
     },
     {
@@ -1045,8 +1434,11 @@
       "category": "Entrée",
       "brand": "Marque Maison",
       "unit": "L",
-      "availableUnits": ["L", "mL"],
-      "unitCost": 7.80,
+      "availableUnits": [
+        "L",
+        "mL"
+      ],
+      "unitCost": 7.8,
       "storage": "congelateur",
       "minInventory": 4,
       "initialQuantity": 6,
@@ -1054,8 +1446,12 @@
       "isRecipe": true,
       "enrichment": {
         "recipe_role": "starter",
-        "pairs_well_with": ["prod-010", "prod-006"]
-      }
+        "pairs_well_with": [
+          "prod-010",
+          "prod-006"
+        ]
+      },
+      "enteredBy": "Marie"
     },
     {
       "id": "recipe-011",
@@ -1063,8 +1459,10 @@
       "category": "Plat principal",
       "brand": "Marque Maison",
       "unit": "un",
-      "availableUnits": ["un"],
-      "unitCost": 35.00,
+      "availableUnits": [
+        "un"
+      ],
+      "unitCost": 35,
       "storage": "frigidaire",
       "minInventory": 2,
       "initialQuantity": 3,
@@ -1072,7 +1470,10 @@
       "isRecipe": true,
       "enrichment": {
         "recipe_role": "main_dish",
-        "pairs_well_with": ["prod-003", "prod-014"]
+        "pairs_well_with": [
+          "prod-003",
+          "prod-014"
+        ]
       }
     },
     {
@@ -1081,8 +1482,10 @@
       "category": "Dessert",
       "brand": "Marque Maison",
       "unit": "un",
-      "availableUnits": ["un"],
-      "unitCost": 32.00,
+      "availableUnits": [
+        "un"
+      ],
+      "unitCost": 32,
       "storage": "frigidaire",
       "minInventory": 1,
       "initialQuantity": 2,
@@ -1090,7 +1493,10 @@
       "isRecipe": true,
       "enrichment": {
         "recipe_role": "dessert",
-        "pairs_well_with": ["prod-038", "prod-048"]
+        "pairs_well_with": [
+          "prod-038",
+          "prod-048"
+        ]
       }
     },
     {
@@ -1099,7 +1505,10 @@
       "category": "Préparation",
       "brand": "Marque Maison",
       "unit": "L",
-      "availableUnits": ["L", "mL"],
+      "availableUnits": [
+        "L",
+        "mL"
+      ],
       "unitCost": 0.85,
       "image": "/products/supreme-sauce.avif",
       "storage": "frigidaire",
@@ -1109,8 +1518,13 @@
       "isRecipe": true,
       "enrichment": {
         "recipe_role": "sauce",
-        "pairs_well_with": ["prod-001", "prod-029", "prod-003"]
-      }
+        "pairs_well_with": [
+          "prod-001",
+          "prod-029",
+          "prod-003"
+        ]
+      },
+      "enteredBy": "Julie"
     }
   ]
 }
