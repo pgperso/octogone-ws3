@@ -8,6 +8,7 @@ import { getProductImage } from '@/utils/productImageMapping';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { translateProduct } from '@/data/products/octogone_products_translations';
 import { OctogoneQuantitySelector } from '@/components/ui/octogone-quantity-selector';
+import { OctogoneUnitSelector } from '@/components/ui/octogone-unit-selector';
 
 interface Product {
   id: string;
@@ -49,8 +50,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
   const needsOrder = gap < 0;
   
   const [orderQuantity, setOrderQuantity] = useState(quantityToOrder);
+  const [orderUnit, setOrderUnit] = useState(product.unit);
   
   const productImage = getProductImage(product.name);
+  
+  // Options d'unités disponibles
+  const unitOptions = (product.availableUnits || [product.unit]).map(unit => ({
+    value: unit,
+    label: translateUnit(unit, locale)
+  }));
 
   return (
     <div 
@@ -155,17 +163,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
           {needsOrder && (
             <div>
               <div className="flex gap-2 mb-0.5">
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-2">
                   <OctogoneQuantitySelector
                     value={orderQuantity}
                     onChange={setOrderQuantity}
                     min={0}
-                    step={product.unit === 'kg' || product.unit === 'L' ? 0.1 : 1}
+                    step={orderUnit === 'kg' || orderUnit === 'L' ? 0.1 : 1}
                     size="sm"
                   />
-                  <span className="text-[9px]" style={{ color: 'var(--on-surface-variant)' }}>
-                    {translateUnit(product.unit, locale)}
-                  </span>
+                  <OctogoneUnitSelector
+                    options={unitOptions}
+                    value={orderUnit}
+                    onChange={setOrderUnit}
+                    size="sm"
+                  />
                 </div>
                 <OctogoneButton
                   variant="primary"
@@ -294,17 +305,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
           {needsOrder && (
             <div>
               <div className="flex gap-2 mb-2">
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-2">
                   <OctogoneQuantitySelector
                     value={orderQuantity}
                     onChange={setOrderQuantity}
                     min={0}
-                    step={product.unit === 'kg' || product.unit === 'L' ? 0.1 : 1}
+                    step={orderUnit === 'kg' || orderUnit === 'L' ? 0.1 : 1}
                     size="md"
                   />
-                  <span className="text-xs" style={{ color: 'var(--on-surface-variant)' }}>
-                    {translateUnit(product.unit, locale)}
-                  </span>
+                  <OctogoneUnitSelector
+                    options={unitOptions}
+                    value={orderUnit}
+                    onChange={setOrderUnit}
+                    size="md"
+                  />
                 </div>
                 <OctogoneButton
                   variant="primary"
