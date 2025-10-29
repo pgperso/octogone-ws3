@@ -42,7 +42,7 @@ interface InventoryProductListProps {
   locale?: 'fr' | 'en';
 }
 
-export type SortOption = 'alphabetical' | 'category' | 'inventoried' | 'not-inventoried' | 'recipes' | 'non-inventoriable';
+export type SortOption = 'alphabetical' | 'category' | 'inventoried' | 'not-inventoried' | 'recipes' | 'non-inventoriable' | 'below-minimum';
 
 export const InventoryProductList: React.FC<InventoryProductListProps> = ({
   products,
@@ -98,6 +98,12 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
           if (a.nonInventoriable && !b.nonInventoriable) return -1;
           if (!a.nonInventoriable && b.nonInventoriable) return 1;
           return translateProduct(a.name, locale).localeCompare(translateProduct(b.name, locale));
+        case 'below-minimum':
+          const isBelowA = (a.theoreticalQuantity || 0) < (a.minInventory || 0);
+          const isBelowB = (b.theoreticalQuantity || 0) < (b.minInventory || 0);
+          if (isBelowA && !isBelowB) return -1;
+          if (!isBelowA && isBelowB) return 1;
+          return translateProduct(a.name, locale).localeCompare(translateProduct(b.name, locale));
         default:
           return 0;
       }
@@ -152,7 +158,8 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
               { value: 'inventoried', label: isEnglish ? 'Inventoried' : 'Inventoriés' },
               { value: 'not-inventoried', label: isEnglish ? 'Not inventoried' : 'Non inventoriés' },
               { value: 'recipes', label: isEnglish ? 'Recipes' : 'Recettes' },
-              { value: 'non-inventoriable', label: isEnglish ? "Don't count" : 'Ne pas compter' }
+              { value: 'non-inventoriable', label: isEnglish ? "Don't count" : 'Ne pas compter' },
+              { value: 'below-minimum', label: isEnglish ? 'Below minimum threshold' : 'Sous le seuil minimum' }
             ]}
             value={sortBy}
             onChange={(value) => onSortChange(value as SortOption)}

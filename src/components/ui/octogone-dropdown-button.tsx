@@ -120,10 +120,11 @@ export const OctogoneDropdownButton: React.FC<OctogoneDropdownButtonProps> = ({
       {/* Menu dropdown */}
       {isOpen && (
         <div
-          className="absolute top-full left-0 mt-2 rounded-lg shadow-lg overflow-hidden z-50 min-w-full"
+          className="absolute top-full left-0 mt-2 rounded-lg shadow-lg overflow-hidden z-50 w-max"
           style={{
             backgroundColor: 'var(--surface-container)',
-            border: '1px solid var(--outline)'
+            border: '1px solid var(--outline)',
+            minWidth: '100%'
           }}
         >
           {options.map((option) => (
