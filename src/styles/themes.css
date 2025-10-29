@@ -74,8 +74,8 @@
   /* Couleurs d'erreur */
   --error: #D32525;
   --on-error: #FFFFFF;
-  --error-container: #FFDAD6;
-  --on-error-container: #410002;
+  --error-container: #D32525;
+  --on-error-container: #FFFFFF;
 
   /* Couleurs de succès */
   --success: #BFD495;
@@ -128,8 +128,8 @@
   /* Couleurs d'erreur */
   --error: #D32525;
   --on-error: #E3E2E6;
-  --error-container: #93000A;
-  --on-error-container: #FFDAD6;
+  --error-container: #D32525;
+  --on-error-container: #FFFFFF;
 
   /* Couleurs de succès */
   --success: #BFD495;
