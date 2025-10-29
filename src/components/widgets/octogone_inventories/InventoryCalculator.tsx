@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Delete, Check, ChevronUp, ChevronDown, Loader2, EqualNot } from 'lucide-react';
+import { Delete, Check, ChevronUp, ChevronDown, Loader2, EqualNot, ShoppingCart, ChefHat } from 'lucide-react';
 import { ProductCard } from './ProductCard';
 
 interface Product {
@@ -166,9 +166,37 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
     <div className="flex flex-col h-full">
       {/* Header */}
       <div className="px-6 py-6 border-b" style={{ borderColor: 'var(--outline)' }}>
-        <h2 className="text-lg font-semibold" style={{ color: 'var(--on-surface)' }}>
-          {isEnglish ? 'Product Details' : 'Détails du produit'}
-        </h2>
+        <div className="flex items-center justify-between">
+          <h2 className="text-lg font-semibold" style={{ color: 'var(--on-surface)' }}>
+            {isEnglish ? 'Product Details' : 'Détails du produit'}
+          </h2>
+          <div className="flex items-center gap-2">
+            {/* Bouton Panier de commande */}
+            <button
+              className="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:shadow-lg"
+              style={{
+                backgroundColor: 'var(--primary-container)',
+                color: 'var(--on-primary-container)'
+              }}
+              onClick={() => console.log('Panier de commande')}
+              title={isEnglish ? 'Order basket' : 'Panier de commande'}
+            >
+              <ShoppingCart className="w-5 h-5" />
+            </button>
+            {/* Bouton Panier de production */}
+            <button
+              className="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:shadow-lg"
+              style={{
+                backgroundColor: 'var(--secondary-container)',
+                color: 'var(--on-secondary-container)'
+              }}
+              onClick={() => console.log('Panier de production')}
+              title={isEnglish ? 'Production basket' : 'Panier de production'}
+            >
+              <ChefHat className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
       </div>
       
       {/* Contenu avec padding */}
