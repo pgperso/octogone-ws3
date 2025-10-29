@@ -279,19 +279,31 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 {/* Colonne Inventaire théorique */}
                 <div className="flex-1 flex items-center justify-center">
                   {!product.nonInventoriable && (
-                    <div 
-                      className="w-full px-3 py-2 rounded text-xs"
-                      style={{
-                        backgroundColor: quantity === 0 ? 'var(--secondary-container)' : 'var(--surface)',
-                        color: quantity === 0 ? 'var(--on-secondary-container)' : 'var(--outline)',
-                        border: isSelected ? '3px solid white' : (quantity === 0 ? '3px solid white' : '2px solid var(--outline)'),
-                        fontWeight: quantity === 0 ? 'bold' : 'normal'
-                      }}
-                    >
-                      <div className="font-semibold text-sm">
-                        {product.theoreticalQuantity || 0} {translateUnit(product.unit, locale)}
-                      </div>
-                    </div>
+                    (() => {
+                      const theoreticalQty = product.theoreticalQuantity || 0;
+                      const minInventory = product.minInventory || 0;
+                      const isBelowMinimum = theoreticalQty < minInventory;
+                      
+                      return (
+                        <div 
+                          className="w-full px-3 py-2 rounded text-xs"
+                          style={{
+                            backgroundColor: isBelowMinimum 
+                              ? 'var(--error-container)' 
+                              : (quantity === 0 ? 'var(--secondary-container)' : 'var(--surface)'),
+                            color: isBelowMinimum
+                              ? 'var(--on-error-container)'
+                              : (quantity === 0 ? 'var(--on-secondary-container)' : 'var(--outline)'),
+                            border: isSelected ? '3px solid white' : (quantity === 0 ? '3px solid white' : '2px solid var(--outline)'),
+                            fontWeight: quantity === 0 ? 'bold' : 'normal'
+                          }}
+                        >
+                          <div className="font-semibold text-sm">
+                            {theoreticalQty} {translateUnit(product.unit, locale)}
+                          </div>
+                        </div>
+                      );
+                    })()
                   )}
                 </div>
                 
