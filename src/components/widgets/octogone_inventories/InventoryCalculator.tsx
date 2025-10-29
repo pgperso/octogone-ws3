@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Delete, Check, ChevronUp, ChevronDown, Loader2, EqualNot, ShoppingCart, ChefHat } from 'lucide-react';
 import { ProductCard } from './ProductCard';
+import { translateProduct } from '@/data/products/octogone_products_translations';
 
 interface Product {
   id: string;
@@ -214,7 +215,7 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
       <div className="px-6 py-6 border-b" style={{ borderColor: 'var(--outline)' }}>
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-semibold" style={{ color: 'var(--on-surface)' }}>
-            {isEnglish ? 'Product Details' : 'Détails du produit'}
+            {selectedProduct ? translateProduct(selectedProduct.name, locale) : (isEnglish ? 'Product Details' : 'Détails du produit')}
           </h2>
           <div className="flex items-center gap-2">
             {/* Bouton Panier de commande */}

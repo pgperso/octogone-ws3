@@ -91,16 +91,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
         {/* Contenu à droite */}
         <div className="flex-1 p-3 flex flex-col justify-between">
           <div>
-            <h3 
-              className="text-base font-bold mb-1 tracking-tight"
-              style={{ color: 'var(--on-surface)' }}
-            >
-              {translateProduct(product.name, locale)}
-            </h3>
-            
             {product.isRecipe && (
               <span 
-                className="inline-block px-2 py-0.5 text-xs font-semibold rounded-full mb-1"
+                className="inline-block px-2 py-0.5 text-xs font-semibold rounded-full mb-2"
                 style={{ 
                   backgroundColor: '#E2CDED',
                   color: '#1F1F1F'
@@ -110,12 +103,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               </span>
             )}
 
-            <div className="text-xs font-medium mb-2" style={{ color: 'var(--on-surface-variant)' }}>
-              {product.unitCost.toFixed(2)} $ / {translateUnit(product.unit, locale)}
-            </div>
-
             {/* Informations d'inventaire sobre */}
             <div className="space-y-0.5 text-xs mb-2">
+              <div className="flex justify-between">
+                <span style={{ color: 'var(--on-surface-variant)' }}>
+                  {isEnglish ? 'Value' : 'Valeur'}
+                </span>
+                <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
+                  {product.unitCost.toFixed(2)} $ / {translateUnit(product.unit, locale)}
+                </span>
+              </div>
               <div className="flex justify-between">
                 <span style={{ color: 'var(--on-surface-variant)' }}>
                   {isEnglish ? 'Theoretical inventory' : 'Inventaire théorique'}
@@ -225,16 +222,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
         {/* Contenu à droite - 60% */}
         <div className="flex-1 p-4 flex flex-col justify-between">
           <div>
-            <h3 
-              className="text-xl font-bold mb-2 tracking-tight"
-              style={{ color: 'var(--on-surface)' }}
-            >
-              {translateProduct(product.name, locale)}
-            </h3>
-            
             {product.isRecipe && (
               <span 
-                className="inline-block px-2 py-0.5 text-xs font-semibold rounded-full mb-2"
+                className="inline-block px-2 py-0.5 text-xs font-semibold rounded-full mb-3"
                 style={{ 
                   backgroundColor: '#E2CDED',
                   color: '#1F1F1F'
@@ -244,12 +234,16 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               </span>
             )}
 
-            <div className="text-sm font-medium mb-3" style={{ color: 'var(--on-surface-variant)' }}>
-              {product.unitCost.toFixed(2)} $ / {translateUnit(product.unit, locale)}
-            </div>
-
             {/* Informations d'inventaire sobre */}
             <div className="space-y-1 text-sm mb-3">
+              <div className="flex justify-between">
+                <span style={{ color: 'var(--on-surface-variant)' }}>
+                  {isEnglish ? 'Value' : 'Valeur'}
+                </span>
+                <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
+                  {product.unitCost.toFixed(2)} $ / {translateUnit(product.unit, locale)}
+                </span>
+              </div>
               <div className="flex justify-between">
                 <span style={{ color: 'var(--on-surface-variant)' }}>
                   {isEnglish ? 'Theoretical inventory' : 'Inventaire théorique'}
