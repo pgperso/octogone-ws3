@@ -290,12 +290,12 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                           style={{
                             backgroundColor: isBelowMinimum 
                               ? 'var(--error-container)' 
-                              : (quantity === 0 ? 'var(--secondary-container)' : 'var(--surface)'),
+                              : 'var(--surface)',
                             color: isBelowMinimum
                               ? 'var(--on-error-container)'
-                              : (quantity === 0 ? 'var(--on-secondary-container)' : 'var(--outline)'),
-                            border: isSelected ? '3px solid white' : (quantity === 0 ? '3px solid white' : '2px solid var(--outline)'),
-                            fontWeight: quantity === 0 ? 'bold' : 'normal'
+                              : 'var(--outline)',
+                            border: isSelected ? '3px solid white' : '2px solid var(--outline)',
+                            fontWeight: 'normal'
                           }}
                         >
                           <div className="font-semibold text-sm">
