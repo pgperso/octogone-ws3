@@ -145,18 +145,32 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               </div>
             </div>
             {onAddToOrder && (
-              <OctogoneButton
-                variant="primary"
-                size="sm"
-                onClick={onAddToOrder}
-                className="w-full"
-                icon={product.isRecipe ? <ChefHat size={16} /> : <ShoppingCart size={16} />}
-              >
-                {product.isRecipe 
-                  ? (isEnglish ? 'Produce' : 'Produire')
-                  : (isEnglish ? 'Order' : 'Commander')
-                }
-              </OctogoneButton>
+              <>
+                <OctogoneButton
+                  variant="primary"
+                  size="sm"
+                  onClick={onAddToOrder}
+                  className="w-full"
+                  icon={product.isRecipe ? <ChefHat size={16} /> : <ShoppingCart size={16} />}
+                >
+                  {product.isRecipe 
+                    ? (isEnglish ? 'Produce' : 'Produire')
+                    : (isEnglish ? 'Order' : 'Commander')
+                  }
+                </OctogoneButton>
+                <label className="flex items-center gap-2 mt-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    className="w-4 h-4 rounded cursor-pointer"
+                    style={{
+                      accentColor: 'var(--primary)'
+                    }}
+                  />
+                  <span className="text-xs" style={{ color: 'var(--on-surface-variant)' }}>
+                    {isEnglish ? 'Add to cart automatically' : 'Ajouter au panier automatiquement'}
+                  </span>
+                </label>
+              </>
             )}
           </div>
         </div>
@@ -226,7 +240,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
             </div>
           </div>
         </div>
-      </div>
 
         {/* Troisième colonne - Graphique et bouton - Desktop */}
         <div className="flex-1 p-6 border-l flex flex-col justify-between" style={{ borderColor: 'var(--outline)' }}>
@@ -283,21 +296,34 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
 
         {/* Bouton Commander/Produire - Desktop */}
         {onAddToOrder && (
-          <OctogoneButton
-            variant="primary"
-            size="lg"
-            onClick={onAddToOrder}
-            className="w-full"
-            icon={product.isRecipe ? <ChefHat size={20} /> : <ShoppingCart size={20} />}
-          >
-            {product.isRecipe 
-              ? (isEnglish ? 'Produce' : 'Produire')
-              : (isEnglish ? 'Order' : 'Commander')
-            }
-          </OctogoneButton>
+          <>
+            <OctogoneButton
+              variant="primary"
+              size="lg"
+              onClick={onAddToOrder}
+              className="w-full"
+              icon={product.isRecipe ? <ChefHat size={20} /> : <ShoppingCart size={20} />}
+            >
+              {product.isRecipe 
+                ? (isEnglish ? 'Produce' : 'Produire')
+                : (isEnglish ? 'Order' : 'Commander')
+              }
+            </OctogoneButton>
+            <label className="flex items-center gap-2 mt-3 cursor-pointer">
+              <input
+                type="checkbox"
+                className="w-4 h-4 rounded cursor-pointer"
+                style={{
+                  accentColor: 'var(--primary)'
+                }}
+              />
+              <span className="text-sm" style={{ color: 'var(--on-surface-variant)' }}>
+                {isEnglish ? 'Add to cart automatically' : 'Ajouter au panier automatiquement'}
+              </span>
+            </label>
+          </>
         )}
       </div>
       </div>
     </div>
   );
-};
