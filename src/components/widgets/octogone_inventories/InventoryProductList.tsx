@@ -330,7 +330,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 <div className="flex-1 flex items-center justify-center">
                   {!product.nonInventoriable && (
                     <div 
-                      className="w-full px-2 py-2 rounded text-xs"
+                      className="w-full px-2 py-2 rounded text-xs flex items-center justify-between gap-2"
                       style={{
                         backgroundColor: quantity > 0 ? 'var(--success)' : 'var(--surface)',
                         color: quantity > 0 ? 'var(--on-success)' : 'var(--on-surface-variant)',
@@ -341,6 +341,17 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                       <div className="font-bold text-sm">
                         {quantity > 0 ? `${quantity} ${translateUnit(product.unit, locale)}` : '-'}
                       </div>
+                      {quantity > 0 && (
+                        <div 
+                          className="w-5 h-5 rounded flex items-center justify-center flex-shrink-0"
+                          style={{ backgroundColor: 'var(--surface)' }}
+                        >
+                          <Check 
+                            size={12} 
+                            style={{ color: 'var(--on-surface)' }}
+                          />
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
