@@ -7,6 +7,7 @@ import { translateUnit } from '@/data/products/octogone_products_translations';
 import { getProductImage } from '@/utils/productImageMapping';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { translateProduct } from '@/data/products/octogone_products_translations';
+import { OctogoneQuantitySelector } from '@/components/ui/octogone-quantity-selector';
 
 interface Product {
   id: string;
@@ -155,17 +156,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
             <div>
               <div className="flex gap-2 mb-0.5">
                 <div className="flex items-center gap-1">
-                  <input
-                    type="number"
+                  <OctogoneQuantitySelector
                     value={orderQuantity}
-                    onChange={(e) => setOrderQuantity(Number(e.target.value))}
-                    className="w-12 px-1 py-1 text-xs text-center rounded border"
-                    style={{
-                      backgroundColor: 'var(--surface)',
-                      borderColor: 'var(--outline)',
-                      color: 'var(--on-surface)'
-                    }}
-                    min="0"
+                    onChange={setOrderQuantity}
+                    min={0}
+                    step={product.unit === 'kg' || product.unit === 'L' ? 0.1 : 1}
+                    size="sm"
                   />
                   <span className="text-[9px]" style={{ color: 'var(--on-surface-variant)' }}>
                     {translateUnit(product.unit, locale)}
@@ -299,17 +295,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
             <div>
               <div className="flex gap-2 mb-2">
                 <div className="flex items-center gap-1">
-                  <input
-                    type="number"
+                  <OctogoneQuantitySelector
                     value={orderQuantity}
-                    onChange={(e) => setOrderQuantity(Number(e.target.value))}
-                    className="w-16 px-2 py-1 text-sm text-center rounded border"
-                    style={{
-                      backgroundColor: 'var(--surface)',
-                      borderColor: 'var(--outline)',
-                      color: 'var(--on-surface)'
-                    }}
-                    min="0"
+                    onChange={setOrderQuantity}
+                    min={0}
+                    step={product.unit === 'kg' || product.unit === 'L' ? 0.1 : 1}
+                    size="md"
                   />
                   <span className="text-xs" style={{ color: 'var(--on-surface-variant)' }}>
                     {translateUnit(product.unit, locale)}
