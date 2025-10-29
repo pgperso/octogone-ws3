@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { Mail, Key, ClipboardCheck, Package, CheckCircle2 } from 'lucide-react';
+import { Mail, Key, ClipboardCheck, Package, CheckCircle2, Calendar } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { RECIPE_ACCESS_CONFIG } from '@/config/recipe-access';
 import { trackRecipeAccessRequest, trackRecipeAccessUnlocked } from '@/lib/tracking/hubspot-events';
@@ -389,30 +389,49 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
             </h1>
 
             {/* Période de l'inventaire */}
-            <div className="flex items-center gap-2 mb-6">
-              <div 
-                className="px-3 py-1.5 rounded-full"
-                style={{ backgroundColor: 'var(--secondary-container)' }}
-              >
-                <span 
-                  className="text-sm font-medium"
-                  style={{ color: 'var(--on-secondary-container)' }}
-                >
-                  {(() => {
-                    const now = new Date();
-                    const startDate = new Date(now.getFullYear(), now.getMonth(), 1);
-                    const endDate = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+            <div className="flex items-center gap-4 mb-6">
+              {(() => {
+                const now = new Date();
+                const startDate = new Date(now.getFullYear(), now.getMonth(), 1);
+                const endDate = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+                
+                const formatFullDate = (date: Date) => {
+                  return date.toLocaleDateString(isEnglish ? 'en-US' : 'fr-FR', { 
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric'
+                  });
+                };
+                
+                return (
+                  <>
+                    {/* Date de début */}
+                    <div className="flex items-center gap-2">
+                      <Calendar size={18} style={{ color: 'var(--primary)' }} />
+                      <span 
+                        className="text-sm font-medium"
+                        style={{ color: 'var(--on-surface-variant)' }}
+                      >
+                        {formatFullDate(startDate)}
+                      </span>
+                    </div>
                     
-                    const formatDate = (date: Date) => {
-                      const day = date.getDate();
-                      const month = date.toLocaleDateString(isEnglish ? 'en-US' : 'fr-FR', { month: 'short' });
-                      return isEnglish ? `${month} ${day}` : `${day} ${month}`;
-                    };
+                    {/* Séparateur */}
+                    <span style={{ color: 'var(--on-surface-variant)' }}>→</span>
                     
-                    return `${formatDate(startDate)} - ${formatDate(endDate)}`;
-                  })()}
-                </span>
-              </div>
+                    {/* Date de fin */}
+                    <div className="flex items-center gap-2">
+                      <Calendar size={18} style={{ color: 'var(--primary)' }} />
+                      <span 
+                        className="text-sm font-medium"
+                        style={{ color: 'var(--on-surface-variant)' }}
+                      >
+                        {formatFullDate(endDate)}
+                      </span>
+                    </div>
+                  </>
+                );
+              })()}
             </div>
             
             {/* Avatars des utilisateurs actifs */}
