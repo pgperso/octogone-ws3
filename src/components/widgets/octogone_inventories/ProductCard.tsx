@@ -103,15 +103,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               <div 
                 className="px-3 py-2 rounded-lg mb-2"
                 style={{ 
-                  backgroundColor: 'var(--error-container)',
-                  border: '1px solid var(--error)'
+                  backgroundColor: 'transparent',
+                  border: '2px solid var(--outline)'
                 }}
               >
-                <div className="text-xs font-medium" style={{ color: 'var(--on-error-container)' }}>
+                <div className="text-xs font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
                   {isEnglish ? 'Quantity to order' : 'Quantité à commander'}
                 </div>
                 <div className="text-lg font-bold" style={{ color: 'var(--error)' }}>
                   {quantityToOrder} {translateUnit(product.unit, locale)}
+                </div>
+                <div className="text-xs mt-1" style={{ color: 'var(--on-surface-variant)' }}>
+                  {isEnglish ? 'Minimum threshold' : 'Seuil minimum'}: {minInventory} {translateUnit(product.unit, locale)}
                 </div>
               </div>
             )}
@@ -200,15 +203,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               <div 
                 className="px-4 py-3 rounded-lg mb-4"
                 style={{ 
-                  backgroundColor: 'var(--error-container)',
-                  border: '2px solid var(--error)'
+                  backgroundColor: 'transparent',
+                  border: '2px solid var(--outline)'
                 }}
               >
-                <div className="text-sm font-medium mb-1" style={{ color: 'var(--on-error-container)' }}>
+                <div className="text-sm font-medium mb-1" style={{ color: 'var(--on-surface-variant)' }}>
                   {isEnglish ? 'Quantity to order' : 'Quantité à commander'}
                 </div>
                 <div className="text-2xl font-bold" style={{ color: 'var(--error)' }}>
                   {quantityToOrder} {translateUnit(product.unit, locale)}
+                </div>
+                <div className="text-sm mt-2" style={{ color: 'var(--on-surface-variant)' }}>
+                  {isEnglish ? 'Minimum threshold' : 'Seuil minimum'}: {minInventory} {translateUnit(product.unit, locale)}
                 </div>
               </div>
             )}
