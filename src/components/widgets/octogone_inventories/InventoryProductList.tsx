@@ -289,7 +289,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                           className="w-full px-3 py-2 rounded text-xs flex items-center justify-between gap-2"
                           style={{
                             backgroundColor: 'var(--surface)',
-                            color: 'var(--outline)',
+                            color: 'var(--on-surface)',
                             border: isSelected ? '3px solid white' : '2px solid var(--outline)',
                             fontWeight: 'normal'
                           }}

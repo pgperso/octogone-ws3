@@ -282,8 +282,8 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
           disabled={!selectedProduct}
           className="p-4 rounded-lg transition-colors disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
           style={{
-            backgroundColor: 'var(--error-container)',
-            color: 'var(--on-error-container)'
+            backgroundColor: 'var(--surface-variant)',
+            color: 'var(--on-surface)'
           }}
         >
           <Delete className="w-6 h-6 mx-auto" />
