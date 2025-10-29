@@ -163,24 +163,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                 />
               </div>
             )}
-            {needsOrder && (
-              <div className="flex-1 flex flex-col pt-1 pb-1">
-                <div 
-                  className="p-2 rounded text-[10px] flex-1 flex flex-col"
-                  style={{ border: '1px solid var(--outline)' }}
-                >
-                  <div className="text-[9px] font-semibold mb-1" style={{ color: 'var(--on-surface-variant)' }}>
-                    {isEnglish ? 'Recommendation' : 'Recommandation'}
-                  </div>
-                  <span style={{ color: 'var(--on-surface)' }}>
-                    {isEnglish 
-                      ? `Your ${actualStock > 0 ? 'current' : 'theoretical'} inventory indicates it is below the minimum threshold of ${minInventory} ${translateUnit(product.unit, locale)}. Add ${translateProduct(product.name, locale)} to your ${product.isRecipe ? 'production' : 'order'} basket to avoid stockouts or simply ignore.`
-                      : `Votre inventaire ${actualStock > 0 ? 'en cours' : 'théorique'} indique qu'il est sous le seuil minimum de ${minInventory} ${translateUnit(product.unit, locale)}. Ajoutez ${translateProduct(product.name, locale)} à votre panier de ${product.isRecipe ? 'production' : 'commande'} pour éviter une rupture de stock ou tout simplement ignorer.`
-                    }
-                  </span>
-                </div>
-              </div>
-            )}
           </div>
 
           {/* Bouton et toggle */}
@@ -313,24 +295,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                     accentColor: 'var(--secondary-container)'
                   }}
                 />
-              </div>
-            )}
-            {needsOrder && (
-              <div className="flex-1 flex flex-col pt-2 pb-2">
-                <div 
-                  className="p-2 rounded text-xs flex-1 flex flex-col"
-                  style={{ border: '1px solid var(--outline)' }}
-                >
-                  <div className="text-[10px] font-semibold mb-1" style={{ color: 'var(--on-surface-variant)' }}>
-                    {isEnglish ? 'Recommendation' : 'Recommandation'}
-                  </div>
-                  <span style={{ color: 'var(--on-surface)' }}>
-                    {isEnglish 
-                      ? `Your ${actualStock > 0 ? 'current' : 'theoretical'} inventory indicates it is below the minimum threshold of ${minInventory} ${translateUnit(product.unit, locale)}. Add ${translateProduct(product.name, locale)} to your ${product.isRecipe ? 'production' : 'order'} basket to avoid stockouts or simply ignore.`
-                      : `Votre inventaire ${actualStock > 0 ? 'en cours' : 'théorique'} indique qu'il est sous le seuil minimum de ${minInventory} ${translateUnit(product.unit, locale)}. Ajoutez ${translateProduct(product.name, locale)} à votre panier de ${product.isRecipe ? 'production' : 'commande'} pour éviter une rupture de stock ou tout simplement ignorer.`
-                    }
-                  </span>
-                </div>
               </div>
             )}
           </div>
