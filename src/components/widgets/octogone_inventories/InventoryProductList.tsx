@@ -286,7 +286,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                       
                       return (
                         <div 
-                          className="w-full px-3 py-2 rounded text-xs flex items-center justify-between gap-2"
+                          className="w-full px-2 py-2 rounded text-xs flex items-center justify-between gap-2"
                           style={{
                             backgroundColor: 'var(--surface)',
                             color: 'var(--on-surface)',
@@ -330,7 +330,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 <div className="flex-1 flex items-center justify-center">
                   {!product.nonInventoriable && (
                     <div 
-                      className="w-full px-3 py-2 rounded text-xs"
+                      className="w-full px-2 py-2 rounded text-xs"
                       style={{
                         backgroundColor: quantity > 0 ? 'var(--success)' : 'var(--surface)',
                         color: quantity > 0 ? 'var(--on-success)' : 'var(--on-surface-variant)',
