@@ -30,7 +30,8 @@
           "prod-040"
         ]
       },
-      "enteredBy": "Marie"
+      "enteredBy": "Marie",
+      "enteredAt": "2025-10-29T14:41:18.432Z"
     },
     {
       "id": "prod-002",
@@ -59,7 +60,9 @@
           "prod-007",
           "prod-031"
         ]
-      }
+      },
+      "enteredBy": "Marie",
+      "enteredAt": "2025-10-28T17:34:18.443Z"
     },
     {
       "id": "prod-003",
@@ -75,7 +78,9 @@
       "storage": "frigidaire",
       "minInventory": 8,
       "initialQuantity": 5,
-      "theoreticalQuantity": 3
+      "theoreticalQuantity": 3,
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-28T21:03:18.443Z"
     },
     {
       "id": "prod-004",
@@ -92,7 +97,8 @@
       "minInventory": 13,
       "initialQuantity": 19,
       "theoreticalQuantity": 17,
-      "enteredBy": "Marie"
+      "enteredBy": "Marie",
+      "enteredAt": "2025-10-29T03:47:18.443Z"
     },
     {
       "id": "prod-005",
@@ -450,7 +456,9 @@
       "storage": "frigidaire",
       "minInventory": 24,
       "initialQuantity": 44,
-      "theoreticalQuantity": 37
+      "theoreticalQuantity": 37,
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-29T09:40:18.443Z"
     },
     {
       "id": "prod-023",
@@ -662,7 +670,8 @@
       "minInventory": 9,
       "initialQuantity": 14,
       "theoreticalQuantity": 14,
-      "enteredBy": "Julie"
+      "enteredBy": "Julie",
+      "enteredAt": "2025-10-28T18:05:18.443Z"
     },
     {
       "id": "prod-033",
@@ -760,7 +769,8 @@
           "prod-031"
         ]
       },
-      "enteredBy": "Julie"
+      "enteredBy": "Julie",
+      "enteredAt": "2025-10-29T09:52:18.443Z"
     },
     {
       "id": "prod-038",
@@ -790,7 +800,9 @@
           "prod-027",
           "prod-048"
         ]
-      }
+      },
+      "enteredBy": "Marie",
+      "enteredAt": "2025-10-29T08:44:18.443Z"
     },
     {
       "id": "prod-039",
@@ -806,7 +818,9 @@
       "storage": "sec",
       "minInventory": 5,
       "initialQuantity": 4,
-      "theoreticalQuantity": 3
+      "theoreticalQuantity": 3,
+      "enteredBy": "Marie",
+      "enteredAt": "2025-10-29T11:47:18.443Z"
     },
     {
       "id": "prod-040",
@@ -823,7 +837,8 @@
       "minInventory": 5,
       "initialQuantity": 3,
       "theoreticalQuantity": 2,
-      "enteredBy": "Vincent"
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-29T14:26:18.443Z"
     },
     {
       "id": "prod-041",
@@ -840,7 +855,8 @@
       "minInventory": 4,
       "initialQuantity": 3,
       "theoreticalQuantity": 2,
-      "enteredBy": "Julie"
+      "enteredBy": "Julie",
+      "enteredAt": "2025-10-28T17:45:18.443Z"
     },
     {
       "id": "prod-042",
@@ -857,7 +873,8 @@
       "minInventory": 4,
       "initialQuantity": 2,
       "theoreticalQuantity": 2,
-      "enteredBy": "Julie"
+      "enteredBy": "Julie",
+      "enteredAt": "2025-10-28T18:20:18.443Z"
     },
     {
       "id": "prod-043",
@@ -873,7 +890,9 @@
       "storage": "sec",
       "minInventory": 4,
       "initialQuantity": 5,
-      "theoreticalQuantity": 4
+      "theoreticalQuantity": 4,
+      "enteredBy": "Marie",
+      "enteredAt": "2025-10-28T21:21:18.443Z"
     },
     {
       "id": "prod-044",
@@ -902,7 +921,8 @@
           "prod-046"
         ]
       },
-      "enteredBy": "Vincent"
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-29T12:48:18.443Z"
     },
     {
       "id": "prod-045",
@@ -918,7 +938,8 @@
       "minInventory": 27,
       "initialQuantity": 23,
       "theoreticalQuantity": 20,
-      "enteredBy": "Vincent"
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-28T19:10:18.443Z"
     },
     {
       "id": "prod-046",
@@ -946,7 +967,8 @@
           "prod-044"
         ]
       },
-      "enteredBy": "Marie"
+      "enteredBy": "Marie",
+      "enteredAt": "2025-10-28T17:21:18.443Z"
     },
     {
       "id": "prod-047",
@@ -962,7 +984,9 @@
       "storage": "frigidaire",
       "minInventory": 10,
       "initialQuantity": 17,
-      "theoreticalQuantity": 12
+      "theoreticalQuantity": 12,
+      "enteredBy": "Julie",
+      "enteredAt": "2025-10-29T03:02:18.443Z"
     },
     {
       "id": "prod-048",
@@ -989,7 +1013,8 @@
           "prod-038"
         ]
       },
-      "enteredBy": "Julie"
+      "enteredBy": "Julie",
+      "enteredAt": "2025-10-28T16:32:18.443Z"
     },
     {
       "id": "prod-049",
@@ -1005,7 +1030,9 @@
       "storage": "sec",
       "minInventory": 4,
       "initialQuantity": 6,
-      "theoreticalQuantity": 5
+      "theoreticalQuantity": 5,
+      "enteredBy": "Marie",
+      "enteredAt": "2025-10-29T13:24:18.443Z"
     },
     {
       "id": "prod-050",
@@ -1022,7 +1049,8 @@
       "minInventory": 11,
       "initialQuantity": 6,
       "theoreticalQuantity": 5,
-      "enteredBy": "Julie"
+      "enteredBy": "Julie",
+      "enteredAt": "2025-10-29T06:50:18.443Z"
     },
     {
       "id": "prod-051",
@@ -1039,7 +1067,8 @@
       "minInventory": 9,
       "initialQuantity": 17,
       "theoreticalQuantity": 16,
-      "enteredBy": "Vincent"
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-29T15:52:18.443Z"
     },
     {
       "id": "prod-052",
@@ -1055,7 +1084,9 @@
       "storage": "congelateur",
       "minInventory": 9,
       "initialQuantity": 12,
-      "theoreticalQuantity": 8
+      "theoreticalQuantity": 8,
+      "enteredBy": "Marie",
+      "enteredAt": "2025-10-28T23:47:18.443Z"
     },
     {
       "id": "prod-053",
@@ -1072,7 +1103,8 @@
       "minInventory": 13,
       "initialQuantity": 14,
       "theoreticalQuantity": 10,
-      "enteredBy": "Marie"
+      "enteredBy": "Marie",
+      "enteredAt": "2025-10-29T03:33:18.443Z"
     },
     {
       "id": "prod-054",
@@ -1089,7 +1121,8 @@
       "minInventory": 10,
       "initialQuantity": 17,
       "theoreticalQuantity": 16,
-      "enteredBy": "Vincent"
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-29T02:54:18.443Z"
     },
     {
       "id": "prod-055",
@@ -1106,7 +1139,8 @@
       "initialQuantity": 800,
       "theoreticalQuantity": 750,
       "nonInventoriable": true,
-      "enteredBy": "Vincent"
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-29T03:51:18.443Z"
     },
     {
       "id": "prod-056",
@@ -1122,7 +1156,9 @@
       "minInventory": 1000,
       "initialQuantity": 1500,
       "theoreticalQuantity": 1200,
-      "nonInventoriable": true
+      "nonInventoriable": true,
+      "enteredBy": "Julie",
+      "enteredAt": "2025-10-29T00:48:18.443Z"
     },
     {
       "id": "prod-057",
@@ -1138,7 +1174,9 @@
       "storage": "sec",
       "minInventory": 3,
       "initialQuantity": 5,
-      "theoreticalQuantity": 4
+      "theoreticalQuantity": 4,
+      "enteredBy": "Julie",
+      "enteredAt": "2025-10-28T21:47:18.443Z"
     },
     {
       "id": "prod-058",
@@ -1154,7 +1192,9 @@
       "storage": "sec",
       "minInventory": 2,
       "initialQuantity": 4,
-      "theoreticalQuantity": 3
+      "theoreticalQuantity": 3,
+      "enteredBy": "Marie",
+      "enteredAt": "2025-10-29T10:35:18.443Z"
     },
     {
       "id": "prod-059",
@@ -1170,7 +1210,8 @@
       "minInventory": 200,
       "initialQuantity": 300,
       "theoreticalQuantity": 250,
-      "enteredBy": "Marie"
+      "enteredBy": "Marie",
+      "enteredAt": "2025-10-28T22:52:18.443Z"
     },
     {
       "id": "prod-060",
@@ -1186,7 +1227,8 @@
       "minInventory": 10,
       "initialQuantity": 15,
       "theoreticalQuantity": 12,
-      "enteredBy": "Vincent"
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-28T20:44:18.443Z"
     },
     {
       "id": "prod-061",
@@ -1201,7 +1243,9 @@
       "storage": "sec",
       "minInventory": 50,
       "initialQuantity": 80,
-      "theoreticalQuantity": 65
+      "theoreticalQuantity": 65,
+      "enteredBy": "Marie",
+      "enteredAt": "2025-10-29T04:47:18.443Z"
     },
     {
       "id": "recipe-001",

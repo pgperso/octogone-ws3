@@ -22,6 +22,7 @@ interface Product {
   isRecipe?: boolean;
   nonInventoriable?: boolean;
   enteredBy?: 'Vincent' | 'Julie' | 'Marie';
+  enteredAt?: string;
 }
 
 interface InventoryItem {
@@ -388,14 +389,47 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                     </div>
                   ) : (
                     quantity > 0 && product.enteredBy && (
-                      <div className="w-8 h-8 rounded-full overflow-hidden border-2" style={{ borderColor: 'var(--primary)' }}>
-                        <Image
-                          src={`/images/avatars/${product.enteredBy.toLowerCase()}.avif`}
-                          alt={product.enteredBy}
-                          width={32}
-                          height={32}
-                          className="w-full h-full object-cover"
-                        />
+                      <div className="relative group">
+                        <div className="w-8 h-8 rounded-full overflow-hidden border-2" style={{ borderColor: 'var(--primary)' }}>
+                          <Image
+                            src={`/images/avatars/${product.enteredBy.toLowerCase()}.avif`}
+                            alt={product.enteredBy}
+                            width={32}
+                            height={32}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                        {/* Tooltip */}
+                        <div 
+                          className="absolute bottom-full right-0 mb-2 px-3 py-2 rounded text-xs font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10"
+                          style={{ 
+                            backgroundColor: 'var(--inverse-surface)',
+                            color: 'var(--inverse-on-surface)'
+                          }}
+                        >
+                          <div className="font-semibold">{product.enteredBy}</div>
+                          {product.enteredAt && (
+                            <div className="text-[10px] mt-0.5 opacity-80">
+                              {(() => {
+                                // Date d'aujourd'hui (dynamique)
+                                const today = new Date();
+                                const dateStr = today.toLocaleDateString(isEnglish ? 'en-US' : 'fr-CA', {
+                                  year: 'numeric',
+                                  month: 'short',
+                                  day: 'numeric'
+                                });
+                                
+                                // Heure statique du JSON
+                                const timeStr = new Date(product.enteredAt).toLocaleTimeString(isEnglish ? 'en-US' : 'fr-CA', {
+                                  hour: '2-digit',
+                                  minute: '2-digit'
+                                });
+                                
+                                return `${dateStr}, ${timeStr}`;
+                              })()}
+                            </div>
+                          )}
+                        </div>
                       </div>
                     )
                   )}
