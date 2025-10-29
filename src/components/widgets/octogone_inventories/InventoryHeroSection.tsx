@@ -612,7 +612,11 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                     let activeCount = 1; // Vincent toujours actif
                     if (showSecondUser && secondUserActive) activeCount++;
                     if (showThirdUser) activeCount++;
-                    return isEnglish ? `${activeCount} active` : `${activeCount} actifs`;
+                    if (isEnglish) {
+                      return `${activeCount} active`;
+                    } else {
+                      return activeCount === 1 ? `${activeCount} actif` : `${activeCount} actifs`;
+                    }
                   })()}
                 </span>
               </div>
