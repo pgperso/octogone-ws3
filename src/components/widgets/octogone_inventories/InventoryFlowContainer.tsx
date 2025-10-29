@@ -17,8 +17,18 @@ export const InventoryFlowContainer: React.FC<InventoryFlowContainerProps> = ({
   const [flowState, setFlowState] = useState<FlowState>('hero');
   const isEnglish = locale === 'en';
 
-  // Données de l'inventaire
-  const inventoryName = isEnglish ? 'Weekly Inventory' : 'Inventaire hebdomadaire';
+  // Données de l'inventaire avec mois et année dynamiques
+  const currentDate = new Date();
+  const monthNames = {
+    fr: ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'],
+    en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  };
+  const currentMonth = monthNames[isEnglish ? 'en' : 'fr'][currentDate.getMonth()];
+  const currentYear = currentDate.getFullYear();
+  
+  const inventoryName = isEnglish 
+    ? `${currentMonth} ${currentYear} Inventory`
+    : `Inventaire ${currentMonth} ${currentYear}`;
   const inventoryImage = '/images/pages/inventory5.avif';
 
   const handleCalculateClick = () => {
