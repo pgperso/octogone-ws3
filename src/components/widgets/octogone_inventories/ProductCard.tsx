@@ -92,7 +92,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
         <div className="flex-1 p-3 flex flex-col justify-between">
           <div>
             {/* Informations d'inventaire sobre */}
-            <div className="space-y-0.5 text-xs mb-2">
+            <div className="space-y-0.5 text-xs mb-1">
               <div className="flex justify-between">
                 <span style={{ color: 'var(--on-surface-variant)' }}>
                   {isEnglish ? 'Value' : 'Valeur'}
@@ -130,16 +130,27 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               </div>
             </div>
             {needsOrder && (
-              <div 
-                className="mt-2 p-2 rounded text-xs"
-                style={{ border: '1px solid var(--outline)' }}
-              >
-                <span style={{ color: 'var(--on-surface-variant)' }}>
-                  {isEnglish ? 'Recommendation' : 'Recommandation'}:{' '}
-                </span>
-                <span className="font-medium" style={{ color: 'var(--error)' }}>
-                  {isEnglish ? 'Add' : 'Ajouter'} {quantityToOrder} {translateUnit(product.unit, locale)}
-                </span>
+              <div className="relative mt-2">
+                <div 
+                  className="absolute -top-2 left-2 px-1 text-[9px] font-semibold"
+                  style={{ 
+                    backgroundColor: 'var(--surface)',
+                    color: 'var(--on-surface-variant)'
+                  }}
+                >
+                  {isEnglish ? 'RECOMMENDATION' : 'RECOMMANDATION'}
+                </div>
+                <div 
+                  className="p-2 rounded text-xs"
+                  style={{ border: '1px solid var(--outline)' }}
+                >
+                  <span style={{ color: 'var(--on-surface)' }}>
+                    {isEnglish 
+                      ? `Order ${quantityToOrder} ${translateUnit(product.unit, locale)} to reach minimum threshold`
+                      : `Commander ${quantityToOrder} ${translateUnit(product.unit, locale)} pour atteindre le seuil minimum`
+                    }
+                  </span>
+                </div>
               </div>
             )}
           </div>
@@ -152,7 +163,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                 size="sm"
                 onClick={onAddToOrder}
                 icon={product.isRecipe ? <ChefHat className="w-4 h-4" /> : <ShoppingCart className="w-4 h-4" />}
-                className="w-full mb-1"
+                className="w-full mb-0.5"
               >
                 {product.isRecipe 
                   ? (isEnglish ? 'Add to production basket' : 'Ajouter au panier de production')
@@ -214,7 +225,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
         <div className="flex-1 p-4 flex flex-col justify-between">
           <div>
             {/* Informations d'inventaire sobre */}
-            <div className="space-y-1 text-sm mb-3">
+            <div className="space-y-1 text-sm mb-2">
               <div className="flex justify-between">
                 <span style={{ color: 'var(--on-surface-variant)' }}>
                   {isEnglish ? 'Value' : 'Valeur'}
@@ -252,16 +263,27 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               </div>
             </div>
             {needsOrder && (
-              <div 
-                className="mt-2 p-2 rounded text-sm"
-                style={{ border: '1px solid var(--outline)' }}
-              >
-                <span style={{ color: 'var(--on-surface-variant)' }}>
-                  {isEnglish ? 'Recommendation' : 'Recommandation'}:{' '}
-                </span>
-                <span className="font-medium" style={{ color: 'var(--error)' }}>
-                  {isEnglish ? 'Add' : 'Ajouter'} {quantityToOrder} {translateUnit(product.unit, locale)}
-                </span>
+              <div className="relative mt-2">
+                <div 
+                  className="absolute -top-2 left-2 px-1 text-[10px] font-semibold"
+                  style={{ 
+                    backgroundColor: 'var(--surface)',
+                    color: 'var(--on-surface-variant)'
+                  }}
+                >
+                  {isEnglish ? 'RECOMMENDATION' : 'RECOMMANDATION'}
+                </div>
+                <div 
+                  className="p-2 rounded text-sm"
+                  style={{ border: '1px solid var(--outline)' }}
+                >
+                  <span style={{ color: 'var(--on-surface)' }}>
+                    {isEnglish 
+                      ? `Order ${quantityToOrder} ${translateUnit(product.unit, locale)} to reach minimum threshold`
+                      : `Commander ${quantityToOrder} ${translateUnit(product.unit, locale)} pour atteindre le seuil minimum`
+                    }
+                  </span>
+                </div>
               </div>
             )}
           </div>
@@ -274,7 +296,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                 size="md"
                 onClick={onAddToOrder}
                 icon={product.isRecipe ? <ChefHat className="w-5 h-5" /> : <ShoppingCart className="w-5 h-5" />}
-                className="w-full mb-3"
+                className="w-full mb-2"
               >
                 {product.isRecipe 
                   ? (isEnglish ? 'Add to production basket' : 'Ajouter au panier de production')
