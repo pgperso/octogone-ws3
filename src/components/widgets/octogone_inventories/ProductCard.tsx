@@ -140,17 +140,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                   {gap >= 0 ? '+' : ''}{gap} {translateUnit(product.unit, locale)}
                 </span>
               </div>
-              {needsOrder && (
-                <div className="pt-1 mt-1 border-t" style={{ borderColor: 'var(--outline)' }}>
-                  <span style={{ color: 'var(--on-surface-variant)' }}>
-                    {isEnglish ? 'Recommendation' : 'Recommandation'}:{' '}
-                  </span>
-                  <span className="font-medium" style={{ color: 'var(--error)' }}>
-                    {isEnglish ? 'Add' : 'Ajouter'} {quantityToOrder} {translateUnit(product.unit, locale)}
-                  </span>
-                </div>
-              )}
             </div>
+            {needsOrder && (
+              <div 
+                className="mt-2 p-2 rounded text-xs"
+                style={{ border: '1px solid var(--outline)' }}
+              >
+                <span style={{ color: 'var(--on-surface-variant)' }}>
+                  {isEnglish ? 'Recommendation' : 'Recommandation'}:{' '}
+                </span>
+                <span className="font-medium" style={{ color: 'var(--error)' }}>
+                  {isEnglish ? 'Add' : 'Ajouter'} {quantityToOrder} {translateUnit(product.unit, locale)}
+                </span>
+              </div>
+            )}
           </div>
 
           {/* Bouton et toggle */}
@@ -271,17 +274,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                   {gap >= 0 ? '+' : ''}{gap} {translateUnit(product.unit, locale)}
                 </span>
               </div>
-              {needsOrder && (
-                <div className="pt-1 mt-1 border-t" style={{ borderColor: 'var(--outline)' }}>
-                  <span style={{ color: 'var(--on-surface-variant)' }}>
-                    {isEnglish ? 'Recommendation' : 'Recommandation'}:{' '}
-                  </span>
-                  <span className="font-medium" style={{ color: 'var(--error)' }}>
-                    {isEnglish ? 'Add' : 'Ajouter'} {quantityToOrder} {translateUnit(product.unit, locale)}
-                  </span>
-                </div>
-              )}
             </div>
+            {needsOrder && (
+              <div 
+                className="mt-2 p-2 rounded text-sm"
+                style={{ border: '1px solid var(--outline)' }}
+              >
+                <span style={{ color: 'var(--on-surface-variant)' }}>
+                  {isEnglish ? 'Recommendation' : 'Recommandation'}:{' '}
+                </span>
+                <span className="font-medium" style={{ color: 'var(--error)' }}>
+                  {isEnglish ? 'Add' : 'Ajouter'} {quantityToOrder} {translateUnit(product.unit, locale)}
+                </span>
+              </div>
+            )}
           </div>
 
           {/* Bouton et toggle */}
