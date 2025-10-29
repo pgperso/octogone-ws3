@@ -6,7 +6,6 @@ import { ShoppingCart, ImageIcon, ChefHat, AlertTriangle } from 'lucide-react';
 import { translateUnit } from '@/data/products/octogone_products_translations';
 import { getProductImage } from '@/utils/productImageMapping';
 import { OctogoneButton } from '@/components/ui/octogone-button';
-import { translateProduct } from '@/data/products/octogone_products_translations';
 import { OctogoneQuantitySelector } from '@/components/ui/octogone-quantity-selector';
 import { OctogoneUnitSelector } from '@/components/ui/octogone-unit-selector';
 
@@ -120,7 +119,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                 {theoreticalStock} {translateUnit(product.unit, locale)}
               </span>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between" style={{ opacity: actualStock > 0 ? 1 : 0.5 }}>
               <span style={{ color: 'var(--on-surface-variant)' }}>
                 {isEnglish ? 'Current inventory' : 'Inventaire en cours'}
               </span>
@@ -254,7 +253,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                 {theoreticalStock} {translateUnit(product.unit, locale)}
               </span>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between" style={{ opacity: actualStock > 0 ? 1 : 0.5 }}>
               <span style={{ color: 'var(--on-surface-variant)' }}>
                 {isEnglish ? 'Current inventory' : 'Inventaire en cours'}
               </span>
