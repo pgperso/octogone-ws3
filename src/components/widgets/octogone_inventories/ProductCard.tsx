@@ -90,7 +90,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
 
         {/* Contenu à droite */}
         <div className="flex-1 p-3 flex flex-col justify-between">
-          <div className="flex-1 flex flex-col">
+          <div className="flex-1 flex flex-col space-y-0.5">
             {/* Informations d'inventaire sobre */}
             <div className="space-y-0.5 text-xs">
               <div className="flex justify-between">
@@ -130,7 +130,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               </div>
             </div>
             {needsOrder && (
-              <div className="relative mt-0.5 mb-0.5 flex-1 flex flex-col">
+              <div className="relative flex-1 flex flex-col">
                 <div 
                   className="absolute -top-2 left-2 px-1 text-[9px] font-semibold"
                   style={{ 
@@ -223,7 +223,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
 
         {/* Contenu à droite - 60% */}
         <div className="flex-1 p-4 flex flex-col justify-between">
-          <div className="flex-1 flex flex-col">
+          <div className="flex-1 flex flex-col space-y-1">
             {/* Informations d'inventaire sobre */}
             <div className="space-y-1 text-sm">
               <div className="flex justify-between">
@@ -263,7 +263,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               </div>
             </div>
             {needsOrder && (
-              <div className="relative mt-1 mb-1 flex-1 flex flex-col">
+              <div className="relative flex-1 flex flex-col">
                 <div 
                   className="absolute -top-2 left-2 px-1 text-[10px] font-semibold"
                   style={{ 
