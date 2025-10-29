@@ -197,11 +197,11 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
       <div className="flex gap-2 px-6 py-3 border-b font-semibold text-sm" style={{ backgroundColor: 'var(--surface-container)', borderColor: 'var(--outline)' }}>
         <div className="flex-[2]" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Product' : 'Produit'}</div>
         <div className="flex-1 hidden md:block" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Category' : 'Catégorie'}</div>
-        <div className="flex-1 text-center">
+        <div className="flex-1">
           <span className="hidden md:inline" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Theoretical inventory' : 'Inventaire théorique'}</span>
           <span className="md:hidden" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Theoretical' : 'Théorique'}</span>
         </div>
-        <div className="flex-1 text-center">
+        <div className="flex-1">
           <span className="hidden md:inline" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Current inventory' : 'Inventaire en cours'}</span>
           <span className="md:hidden" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Current' : 'En cours'}</span>
         </div>
