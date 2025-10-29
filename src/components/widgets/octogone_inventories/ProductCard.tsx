@@ -28,11 +28,12 @@ interface ProductCardProps {
   locale?: 'fr' | 'en';
   currentQuantity?: number; // Nouvelle saisie de l'utilisateur
   onAddToOrder?: () => void;
+  autoAddToCart?: boolean;
+  onAutoAddToCartChange?: (value: boolean) => void;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr', currentQuantity = 0, onAddToOrder }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr', currentQuantity = 0, onAddToOrder, autoAddToCart = false, onAutoAddToCartChange }) => {
   const isEnglish = locale === 'en';
-  const [autoAddToCart, setAutoAddToCart] = React.useState(false);
   const displayBrand = product.brand ? translateBrand(product.brand, locale) : (isEnglish ? 'No brand' : 'Sans marque');
   const minInventory = product.minInventory || 0;
   
@@ -164,7 +165,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                   <input
                     type="checkbox"
                     checked={autoAddToCart}
-                    onChange={(e) => setAutoAddToCart(e.target.checked)}
+                    onChange={(e) => onAutoAddToCartChange?.(e.target.checked)}
                     className="w-4 h-4 rounded cursor-pointer"
                     style={{
                       accentColor: 'var(--secondary-container)'
@@ -319,7 +320,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               <input
                 type="checkbox"
                 checked={autoAddToCart}
-                onChange={(e) => setAutoAddToCart(e.target.checked)}
+                onChange={(e) => onAutoAddToCartChange?.(e.target.checked)}
                 className="w-4 h-4 rounded cursor-pointer"
                 style={{
                   accentColor: 'var(--secondary-container)'

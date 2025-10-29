@@ -52,6 +52,9 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
   const [selectedUnit, setSelectedUnit] = useState<string>('');
   const [isSaving, setIsSaving] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [orderBasket, setOrderBasket] = useState<Set<string>>(new Set());
+  const [productionBasket, setProductionBasket] = useState<Set<string>>(new Set());
+  const [autoAddToCart, setAutoAddToCart] = useState(false);
 
   // Réinitialiser quand le produit change
   useEffect(() => {
@@ -61,6 +64,19 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
       setIsEditing(false);
     }
   }, [selectedProduct]); // Dépendance complète pour éviter les warnings
+
+  // Logique d'ajout automatique au panier
+  useEffect(() => {
+    if (selectedProduct && !selectedProduct.nonInventoriable && currentInventoryQuantity > 0) {
+      const minInventory = selectedProduct.minInventory || 0;
+      const isBelowMinimum = currentInventoryQuantity < minInventory;
+      
+      if (isBelowMinimum && autoAddToCart && !orderBasket.has(selectedProduct.id)) {
+        // Ajouter automatiquement au panier de commande
+        setOrderBasket(prev => new Set(prev).add(selectedProduct.id));
+      }
+    }
+  }, [selectedProduct, currentInventoryQuantity, autoAddToCart, orderBasket]);
 
   const handleNumberClick = (num: string) => {
     setIsEditing(true);
@@ -75,6 +91,34 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
     setIsEditing(true);
     if (!displayValue.includes('.')) {
       setDisplayValue(displayValue + '.');
+    }
+  };
+
+  const handleAddToOrderBasket = () => {
+    if (selectedProduct) {
+      setOrderBasket(prev => {
+        const newSet = new Set(prev);
+        if (newSet.has(selectedProduct.id)) {
+          newSet.delete(selectedProduct.id);
+        } else {
+          newSet.add(selectedProduct.id);
+        }
+        return newSet;
+      });
+    }
+  };
+
+  const handleAddToProductionBasket = () => {
+    if (selectedProduct && selectedProduct.isRecipe) {
+      setProductionBasket(prev => {
+        const newSet = new Set(prev);
+        if (newSet.has(selectedProduct.id)) {
+          newSet.delete(selectedProduct.id);
+        } else {
+          newSet.add(selectedProduct.id);
+        }
+        return newSet;
+      });
     }
   };
 
@@ -173,27 +217,49 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
           <div className="flex items-center gap-2">
             {/* Bouton Panier de commande */}
             <button
-              className="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:shadow-lg"
+              className="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:shadow-lg relative"
               style={{
                 backgroundColor: 'var(--primary-container)',
                 color: 'var(--on-primary-container)'
               }}
-              onClick={() => console.log('Panier de commande')}
+              onClick={handleAddToOrderBasket}
               title={isEnglish ? 'Order basket' : 'Panier de commande'}
             >
               <ShoppingCart className="w-5 h-5" />
+              {orderBasket.size > 0 && (
+                <div 
+                  className="absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold"
+                  style={{
+                    backgroundColor: 'var(--error)',
+                    color: 'white'
+                  }}
+                >
+                  {orderBasket.size}
+                </div>
+              )}
             </button>
             {/* Bouton Panier de production */}
             <button
-              className="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:shadow-lg"
+              className="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:shadow-lg relative"
               style={{
                 backgroundColor: 'var(--secondary-container)',
                 color: 'var(--on-secondary-container)'
               }}
-              onClick={() => console.log('Panier de production')}
+              onClick={handleAddToProductionBasket}
               title={isEnglish ? 'Production basket' : 'Panier de production'}
             >
               <ChefHat className="w-5 h-5" />
+              {productionBasket.size > 0 && (
+                <div 
+                  className="absolute -top-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold"
+                  style={{
+                    backgroundColor: 'var(--error)',
+                    color: 'white'
+                  }}
+                >
+                  {productionBasket.size}
+                </div>
+              )}
             </button>
           </div>
         </div>
@@ -213,9 +279,14 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
                   ? currentInventoryQuantity 
                   : (selectedProduct.theoreticalQuantity || selectedProduct.initialQuantity || 0))
           }
+          autoAddToCart={autoAddToCart}
+          onAutoAddToCartChange={setAutoAddToCart}
           onAddToOrder={() => {
-            // Fonction pour ajouter à la commande (à implémenter)
-            console.log('Ajouter à la commande:', selectedProduct.name);
+            if (selectedProduct.isRecipe) {
+              handleAddToProductionBasket();
+            } else {
+              handleAddToOrderBasket();
+            }
           }}
         />
       ) : (
