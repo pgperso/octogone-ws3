@@ -134,7 +134,7 @@ export const OctogoneDropdownButton: React.FC<OctogoneDropdownButtonProps> = ({
                 onChange(option.value);
                 setIsOpen(false);
               }}
-              className={`w-full px-4 py-2.5 text-left text-sm transition-colors duration-150 ${
+              className={`w-full px-4 py-2.5 text-left text-sm transition-colors duration-150 whitespace-nowrap ${
                 option.value === value ? 'font-semibold' : ''
               }`}
               style={{

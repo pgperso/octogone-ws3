@@ -207,16 +207,16 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 {isEnglish ? 'Category' : 'Catégorie'}
               </th>
               <th className="px-6 py-3 text-left font-semibold text-xs" style={{ color: 'var(--on-surface)', width: '18%' }}>
-                <span className="hidden md:inline">{isEnglish ? 'Theoretical inventory' : 'Inventaire théorique'}</span>
-                <span className="md:hidden">{isEnglish ? 'Theoretical' : 'Théorique'}</span>
+                <span className="hidden md:inline" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Theoretical inventory' : 'Inventaire théorique'}</span>
+                <span className="md:hidden" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Theoretical' : 'Théorique'}</span>
               </th>
               <th className="px-6 py-3 text-left font-semibold text-xs" style={{ color: 'var(--on-surface)', width: '18%' }}>
-                <span className="hidden md:inline">{isEnglish ? 'Current inventory' : 'Inventaire en cours'}</span>
-                <span className="md:hidden">{isEnglish ? 'Current' : 'En cours'}</span>
+                <span className="hidden md:inline" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Current inventory' : 'Inventaire en cours'}</span>
+                <span className="md:hidden" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Current' : 'En cours'}</span>
               </th>
               <th className="px-6 py-3 text-left font-semibold text-xs" style={{ color: 'var(--on-surface)', width: '15%' }}>
-                <span className="hidden md:inline">{isEnglish ? 'Total value' : 'Valeur totale'}</span>
-                <span className="md:hidden">{isEnglish ? 'Total' : 'Total'}</span>
+                <span className="hidden md:inline" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Total value' : 'Valeur totale'}</span>
+                <span className="md:hidden" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Total' : 'Total'}</span>
               </th>
               <th className="px-6 py-3 text-right font-semibold text-xs hidden md:table-cell" style={{ color: 'var(--on-surface)', width: '4%' }}>
               </th>
@@ -345,14 +345,26 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                             {quantity > 0 ? `${quantity} ${translateUnit(product.unit, locale)}` : '-'}
                           </div>
                           {quantity > 0 && (
-                            <div 
-                              className="w-5 h-5 rounded flex items-center justify-center flex-shrink-0"
-                              style={{ backgroundColor: 'var(--surface)' }}
-                            >
-                              <Check 
-                                size={12} 
-                                style={{ color: 'var(--on-surface)' }}
-                              />
+                            <div className="relative group flex-shrink-0">
+                              <div 
+                                className="w-5 h-5 rounded flex items-center justify-center"
+                                style={{ backgroundColor: 'var(--surface)' }}
+                              >
+                                <Check 
+                                  size={12} 
+                                  style={{ color: 'var(--on-surface)' }}
+                                />
+                              </div>
+                              {/* Tooltip */}
+                              <div 
+                                className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 px-3 py-2 rounded text-xs font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10"
+                                style={{ 
+                                  backgroundColor: 'var(--success)',
+                                  color: 'var(--on-success)'
+                                }}
+                              >
+                                {isEnglish ? 'Product inventoried' : 'Produit inventorié'}
+                              </div>
                             </div>
                           )}
                         </div>
