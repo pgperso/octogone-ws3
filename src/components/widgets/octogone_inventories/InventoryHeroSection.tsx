@@ -398,14 +398,14 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                     alt="Vincent"
                     width={48}
                     height={48}
-                    className="object-cover"
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <div 
-                  className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2"
+                  className="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full border-2"
                   style={{ 
                     backgroundColor: 'var(--success)',
-                    borderColor: 'var(--surface-container-low)'
+                    borderColor: 'var(--surface)'
                   }}
                 />
                 <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap" style={{ backgroundColor: 'var(--inverse-surface)' }}>
@@ -427,18 +427,16 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                       alt="Julie"
                       width={48}
                       height={48}
-                      className="object-cover"
+                      className="w-full h-full object-cover"
                     />
                   </div>
-                  {secondUserActive && (
-                    <div 
-                      className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2"
-                      style={{ 
-                        backgroundColor: 'var(--success)',
-                        borderColor: 'var(--surface-container-low)'
-                      }}
-                    />
-                  )}
+                  <div 
+                    className="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full border-2"
+                    style={{ 
+                      backgroundColor: secondUserActive ? 'var(--success)' : 'var(--error)',
+                      borderColor: 'var(--surface)'
+                    }}
+                  />
                   <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap" style={{ backgroundColor: 'var(--inverse-surface)' }}>
                     <span className="text-xs" style={{ color: 'var(--inverse-on-surface)' }}>Julie</span>
                   </div>
@@ -459,14 +457,14 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                       alt="Marie"
                       width={48}
                       height={48}
-                      className="object-cover"
+                      className="w-full h-full object-cover"
                     />
                   </div>
                   <div 
-                    className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2"
+                    className="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full border-2"
                     style={{ 
                       backgroundColor: 'var(--success)',
-                      borderColor: 'var(--surface-container-low)'
+                      borderColor: 'var(--surface)'
                     }}
                   />
                   <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap" style={{ backgroundColor: 'var(--inverse-surface)' }}>
