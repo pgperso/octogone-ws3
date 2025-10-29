@@ -280,7 +280,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 </div>
                 
                 {/* Colonne Inventaire théorique */}
-                <div className="flex-1 flex items-center justify-center">
+                <div className="flex-1 flex items-center">
                   {!product.nonInventoriable && (
                     (() => {
                       const theoreticalQty = product.theoreticalQuantity || 0;
@@ -330,7 +330,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 </div>
                 
                 {/* Colonne Inventaire en cours */}
-                <div className="flex-1 flex items-center justify-center">
+                <div className="flex-1 flex items-center">
                   {!product.nonInventoriable && (
                     <div 
                       className="w-full px-2 py-2 rounded text-xs flex items-center justify-between gap-2"
