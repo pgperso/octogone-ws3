@@ -38,6 +38,8 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
   const [showSecondUser, setShowSecondUser] = useState(false);
   const [showThirdUser, setShowThirdUser] = useState(false);
   const [secondUserActive, setSecondUserActive] = useState(true);
+  const [selectedStorage, setSelectedStorage] = useState<'sec' | 'congelateur' | 'frigidaire'>('sec');
+  const [animateProgress, setAnimateProgress] = useState(false);
 
   // Liste des produits inventoriés (même liste que dans OctogoneInventoryWidget)
   interface InventoryProduct {
@@ -134,6 +136,14 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
       clearTimeout(timer2);
       clearTimeout(timer3);
     };
+  }, []);
+
+  // Animation des barres de progression au chargement
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimateProgress(true);
+    }, 300); // Petit délai pour l'animation
+    return () => clearTimeout(timer);
   }, []);
 
   // Calculer le progrès basé sur le nombre de tags visibles par rapport au total de produits
@@ -455,16 +465,25 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
               {/* Garde-manger */}
               <div className="flex items-center gap-3">
                 <div 
-                  className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0"
+                  className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 cursor-pointer transition-all"
+                  onClick={() => setSelectedStorage('sec')}
                   style={{ 
-                    borderColor: 'var(--outline)',
+                    borderColor: selectedStorage === 'sec' ? 'var(--secondary)' : 'var(--outline)',
                     backgroundColor: 'var(--surface)'
                   }}
-                />
+                >
+                  {selectedStorage === 'sec' && (
+                    <div 
+                      className="w-3 h-3 rounded-full"
+                      style={{ backgroundColor: 'var(--secondary)' }}
+                    />
+                  )}
+                </div>
                 <div className="flex-1">
                   <div className="flex items-center justify-between mb-1">
                     <span 
-                      className="text-sm font-semibold"
+                      className="text-sm font-semibold cursor-pointer"
+                      onClick={() => setSelectedStorage('sec')}
                       style={{ color: 'var(--on-surface)' }}
                     >
                       {isEnglish ? `Pantry (${secProgress.entered}/${secProgress.total})` : `Garde-manger (${secProgress.entered}/${secProgress.total})`}
@@ -475,9 +494,9 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                     style={{ backgroundColor: 'var(--surface-variant)' }}
                   >
                     <div 
-                      className="h-full transition-all duration-500 ease-out rounded-full"
+                      className="h-full transition-all duration-1000 ease-out rounded-full"
                       style={{ 
-                        width: `${secProgress.percentage}%`,
+                        width: animateProgress ? `${secProgress.percentage}%` : '0%',
                         backgroundColor: 'var(--success)'
                       }}
                     />
@@ -488,16 +507,25 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
               {/* Congélateur */}
               <div className="flex items-center gap-3">
                 <div 
-                  className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0"
+                  className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 cursor-pointer transition-all"
+                  onClick={() => setSelectedStorage('congelateur')}
                   style={{ 
-                    borderColor: 'var(--outline)',
+                    borderColor: selectedStorage === 'congelateur' ? 'var(--secondary)' : 'var(--outline)',
                     backgroundColor: 'var(--surface)'
                   }}
-                />
+                >
+                  {selectedStorage === 'congelateur' && (
+                    <div 
+                      className="w-3 h-3 rounded-full"
+                      style={{ backgroundColor: 'var(--secondary)' }}
+                    />
+                  )}
+                </div>
                 <div className="flex-1">
                   <div className="flex items-center justify-between mb-1">
                     <span 
-                      className="text-sm font-semibold"
+                      className="text-sm font-semibold cursor-pointer"
+                      onClick={() => setSelectedStorage('congelateur')}
                       style={{ color: 'var(--on-surface)' }}
                     >
                       {isEnglish ? `Freezer (${congelateurProgress.entered}/${congelateurProgress.total})` : `Congélateur (${congelateurProgress.entered}/${congelateurProgress.total})`}
@@ -508,9 +536,9 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                     style={{ backgroundColor: 'var(--surface-variant)' }}
                   >
                     <div 
-                      className="h-full transition-all duration-500 ease-out rounded-full"
+                      className="h-full transition-all duration-1000 ease-out rounded-full"
                       style={{ 
-                        width: `${congelateurProgress.percentage}%`,
+                        width: animateProgress ? `${congelateurProgress.percentage}%` : '0%',
                         backgroundColor: 'var(--success)'
                       }}
                     />
@@ -521,16 +549,25 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
               {/* Frigidaire */}
               <div className="flex items-center gap-3">
                 <div 
-                  className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0"
+                  className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 cursor-pointer transition-all"
+                  onClick={() => setSelectedStorage('frigidaire')}
                   style={{ 
-                    borderColor: 'var(--outline)',
+                    borderColor: selectedStorage === 'frigidaire' ? 'var(--secondary)' : 'var(--outline)',
                     backgroundColor: 'var(--surface)'
                   }}
-                />
+                >
+                  {selectedStorage === 'frigidaire' && (
+                    <div 
+                      className="w-3 h-3 rounded-full"
+                      style={{ backgroundColor: 'var(--secondary)' }}
+                    />
+                  )}
+                </div>
                 <div className="flex-1">
                   <div className="flex items-center justify-between mb-1">
                     <span 
-                      className="text-sm font-semibold"
+                      className="text-sm font-semibold cursor-pointer"
+                      onClick={() => setSelectedStorage('frigidaire')}
                       style={{ color: 'var(--on-surface)' }}
                     >
                       {isEnglish ? `Fridge (${frigidaireProgress.entered}/${frigidaireProgress.total})` : `Frigidaire (${frigidaireProgress.entered}/${frigidaireProgress.total})`}
@@ -541,9 +578,9 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                     style={{ backgroundColor: 'var(--surface-variant)' }}
                   >
                     <div 
-                      className="h-full transition-all duration-500 ease-out rounded-full"
+                      className="h-full transition-all duration-1000 ease-out rounded-full"
                       style={{ 
-                        width: `${frigidaireProgress.percentage}%`,
+                        width: animateProgress ? `${frigidaireProgress.percentage}%` : '0%',
                         backgroundColor: 'var(--success)'
                       }}
                     />
