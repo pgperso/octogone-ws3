@@ -382,11 +382,38 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
             </div>
 
             <h1 
-              className="text-4xl lg:text-5xl font-bold mb-6"
+              className="text-4xl lg:text-5xl font-bold mb-3"
               style={{ color: 'var(--on-surface)' }}
             >
               {inventoryName}
             </h1>
+
+            {/* Période de l'inventaire */}
+            <div className="flex items-center gap-2 mb-6">
+              <div 
+                className="px-3 py-1.5 rounded-full"
+                style={{ backgroundColor: 'var(--secondary-container)' }}
+              >
+                <span 
+                  className="text-sm font-medium"
+                  style={{ color: 'var(--on-secondary-container)' }}
+                >
+                  {(() => {
+                    const now = new Date();
+                    const startDate = new Date(now.getFullYear(), now.getMonth(), 1);
+                    const endDate = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+                    
+                    const formatDate = (date: Date) => {
+                      const day = date.getDate();
+                      const month = date.toLocaleDateString(isEnglish ? 'en-US' : 'fr-FR', { month: 'short' });
+                      return isEnglish ? `${month} ${day}` : `${day} ${month}`;
+                    };
+                    
+                    return `${formatDate(startDate)} - ${formatDate(endDate)}`;
+                  })()}
+                </span>
+              </div>
+            </div>
             
             {/* Avatars des utilisateurs actifs */}
             <div className="flex items-center gap-3 mb-6">
