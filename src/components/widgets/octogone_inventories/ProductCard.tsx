@@ -49,7 +49,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
   const quantityToOrder = gap < 0 ? Math.abs(gap) : 0;
   const needsOrder = gap < 0;
   
-  const [orderQuantity, setOrderQuantity] = useState(quantityToOrder);
+  // Valeurs par défaut basées sur l'écart
+  const [orderQuantity, setOrderQuantity] = useState(Math.abs(gap));
   const [orderUnit, setOrderUnit] = useState(product.unit);
   
   const productImage = getProductImage(product.name);
