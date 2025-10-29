@@ -49,6 +49,7 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
     unit: string;
     storage?: string;
     nonInventoriable?: boolean;
+    unitCost?: number;
   }
 
   const initialInventory = [
@@ -101,6 +102,17 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
   const secProgress = getStorageProgress('sec');
   const congelateurProgress = getStorageProgress('congelateur');
   const frigidaireProgress = getStorageProgress('frigidaire');
+
+  // Calculer la valeur totale de l'inventaire
+  const totalValue = initialInventory.reduce((sum, item) => {
+    const product = allProducts.find(p => p.id === item.productId);
+    return sum + (product ? (product.unitCost || 0) * item.quantity : 0);
+  }, 0);
+
+  // Formater la devise
+  const formatCurrency = (value: number) => {
+    return value.toLocaleString('fr-CA', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  };
 
   // Charger l'email sauvegardé et vérifier si déjà débloqué dans la session
   useEffect(() => {
@@ -415,7 +427,8 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
             </h1>
 
             {/* Période de l'inventaire */}
-            <div className="flex items-center gap-4 mb-6">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-4">
               {(() => {
                 const now = new Date();
                 const startDate = new Date(now.getFullYear(), now.getMonth(), 1);
@@ -458,6 +471,17 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                   </>
                 );
               })()}
+              </div>
+              
+              {/* Valeur totale */}
+              <div className="flex items-center gap-2">
+                <span 
+                  className="text-sm font-semibold"
+                  style={{ color: 'var(--on-surface)' }}
+                >
+                  {formatCurrency(totalValue)} $
+                </span>
+              </div>
             </div>
 
             {/* Barres de progression par emplacement */}
