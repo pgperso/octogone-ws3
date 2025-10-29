@@ -128,20 +128,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               </span>
             </div>
             {needsOrder && (
-              <div className="relative flex-1 flex flex-col pt-1 pb-1">
+              <div className="flex-1 flex flex-col pt-1 pb-1">
                 <div 
-                  className="absolute -top-2 left-2 px-1 text-[9px] font-semibold"
-                  style={{ 
-                    backgroundColor: 'var(--surface)',
-                    color: 'var(--on-surface-variant)'
-                  }}
-                >
-                  {isEnglish ? 'Recommendation' : 'Recommandation'}
-                </div>
-                <div 
-                  className="p-2 rounded text-[10px] flex-1 flex items-center"
+                  className="p-2 rounded text-[10px] flex-1 flex flex-col"
                   style={{ border: '1px solid var(--outline)' }}
                 >
+                  <div className="text-[9px] font-semibold mb-1" style={{ color: 'var(--on-surface-variant)' }}>
+                    {isEnglish ? 'Recommendation' : 'Recommandation'}
+                  </div>
                   <span style={{ color: 'var(--on-surface)' }}>
                     {isEnglish 
                       ? `Stock level below minimum threshold. Order ${quantityToOrder} ${translateUnit(product.unit, locale)} to restore optimal inventory levels.`
@@ -259,20 +253,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               </span>
             </div>
             {needsOrder && (
-              <div className="relative flex-1 flex flex-col pt-2 pb-2">
+              <div className="flex-1 flex flex-col pt-2 pb-2">
                 <div 
-                  className="absolute -top-2 left-2 px-1 text-[10px] font-semibold"
-                  style={{ 
-                    backgroundColor: 'var(--surface)',
-                    color: 'var(--on-surface-variant)'
-                  }}
-                >
-                  {isEnglish ? 'Recommendation' : 'Recommandation'}
-                </div>
-                <div 
-                  className="p-2 rounded text-xs flex-1 flex items-center"
+                  className="p-2 rounded text-xs flex-1 flex flex-col"
                   style={{ border: '1px solid var(--outline)' }}
                 >
+                  <div className="text-[10px] font-semibold mb-1" style={{ color: 'var(--on-surface-variant)' }}>
+                    {isEnglish ? 'Recommendation' : 'Recommandation'}
+                  </div>
                   <span style={{ color: 'var(--on-surface)' }}>
                     {isEnglish 
                       ? `Stock level below minimum threshold. Order ${quantityToOrder} ${translateUnit(product.unit, locale)} to restore optimal inventory levels.`
