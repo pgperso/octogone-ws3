@@ -112,12 +112,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                 {product.unitCost.toFixed(2)} $ / {translateUnit(product.unit, locale)}
               </span>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between" style={{ opacity: actualStock > 0 ? 0.5 : 1 }}>
               <span style={{ color: 'var(--on-surface-variant)' }}>
                 {isEnglish ? 'Theoretical inventory' : 'Inventaire théorique'}
               </span>
               <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
                 {theoreticalStock} {translateUnit(product.unit, locale)}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span style={{ color: 'var(--on-surface-variant)' }}>
+                {isEnglish ? 'Current inventory' : 'Inventaire en cours'}
+              </span>
+              <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
+                {actualStock > 0 ? `${actualStock} ${translateUnit(product.unit, locale)}` : '—'}
               </span>
             </div>
             <div className="flex justify-between">
@@ -256,12 +264,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                 {product.unitCost.toFixed(2)} $ / {translateUnit(product.unit, locale)}
               </span>
             </div>
-            <div className="flex justify-between">
+            <div className="flex justify-between" style={{ opacity: actualStock > 0 ? 0.5 : 1 }}>
               <span style={{ color: 'var(--on-surface-variant)' }}>
                 {isEnglish ? 'Theoretical inventory' : 'Inventaire théorique'}
               </span>
               <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
                 {theoreticalStock} {translateUnit(product.unit, locale)}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span style={{ color: 'var(--on-surface-variant)' }}>
+                {isEnglish ? 'Current inventory' : 'Inventaire en cours'}
+              </span>
+              <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
+                {actualStock > 0 ? `${actualStock} ${translateUnit(product.unit, locale)}` : '—'}
               </span>
             </div>
             <div className="flex justify-between">
