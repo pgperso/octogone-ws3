@@ -1,5 +1,5 @@
 // Mapper le nom du produit à son image
-export const getProductImage = (productName: string): string => {
+export const getProductImage = (productName: string): string | null => {
   const imageMap: Record<string, string> = {
     'Ail frais': '/products/fresh_garlic.avif',
     'Ananas': '/products/pineapple.avif',
@@ -67,5 +67,5 @@ export const getProductImage = (productName: string): string => {
     'Œufs': '/products/eggs.avif',
     'Épinards surgelés': '/products/frozen-spinach.avif',
   };
-  return imageMap[productName] || '/products/placeholder.avif';
+  return imageMap[productName] || null;
 };
