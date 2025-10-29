@@ -39,61 +39,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
   
   // Stock actuel = toujours la quantité saisie (currentQuantity vient de la calculatrice)
   const actualStock = currentQuantity;
-  const isBelowMinimum = actualStock < minInventory;
-  const difference = actualStock - minInventory;
   
-  // Calculer la quantité à commander
-  const quantityToOrder = isBelowMinimum ? Math.abs(difference) : 0;
-  
-  // Écart entre théorique et saisi
-  const variance = actualStock > 0 ? actualStock - theoreticalStock : 0;
-  const hasVariance = actualStock > 0 && Math.abs(variance) > 0;
-  
-  // Déterminer le message à afficher
-  const getInventoryMessage = () => {
-    // Cas 1: Rien saisi encore, mais théorique sous le seuil
-    if (actualStock === 0 && theoreticalStock < minInventory && theoreticalStock > 0) {
-      return {
-        type: 'warning',
-        icon: '⚠️',
-        title: isEnglish ? 'Theoretical inventory below threshold' : 'Inventaire théorique sous le seuil',
-        message: isEnglish 
-          ? `Theoretical: ${theoreticalStock} ${translateUnit(product.unit, locale)} (Min: ${minInventory}). Verify and order if needed.`
-          : `Théorique: ${theoreticalStock} ${translateUnit(product.unit, locale)} (Min: ${minInventory}). Vérifiez et commandez si nécessaire.`,
-        showButton: true
-      };
-    }
-    
-    // Cas 2: Saisi et sous le seuil
-    if (actualStock > 0 && isBelowMinimum) {
-      return {
-        type: 'error',
-        icon: '❌',
-        title: isEnglish ? 'Stock below minimum threshold' : 'Stock sous le seuil minimum',
-        message: isEnglish
-          ? `Current: ${actualStock} ${translateUnit(product.unit, locale)} | Min: ${minInventory} | Order: ${quantityToOrder}`
-          : `Actuel: ${actualStock} ${translateUnit(product.unit, locale)} | Min: ${minInventory} | Commander: ${quantityToOrder}`,
-        showButton: true
-      };
-    }
-    
-    // Cas 3: Saisi et au-dessus du seuil
-    if (actualStock > 0 && !isBelowMinimum) {
-      return {
-        type: 'success',
-        icon: '✅',
-        title: isEnglish ? 'Sufficient stock' : 'Stock suffisant',
-        message: isEnglish
-          ? `Current: ${actualStock} ${translateUnit(product.unit, locale)} (Min: ${minInventory})`
-          : `Actuel: ${actualStock} ${translateUnit(product.unit, locale)} (Min: ${minInventory})`,
-        showButton: false
-      };
-    }
-    
-    return null;
-  };
-  
-  const inventoryMessage = getInventoryMessage();
+  // Écart dynamique : si saisie faite, utiliser saisie, sinon théorique
+  const currentStock = actualStock > 0 ? actualStock : theoreticalStock;
+  const gap = currentStock - minInventory;
+  const quantityToOrder = gap < 0 ? Math.abs(gap) : 0;
+  const needsOrder = gap < 0;
   
   const productImage = getProductImage(product.name);
 
@@ -145,50 +96,54 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               </span>
             )}
 
-            <div className="text-sm font-medium mb-2" style={{ color: 'var(--on-surface-variant)' }}>
+            <div className="text-sm font-medium mb-3" style={{ color: 'var(--on-surface-variant)' }}>
               {product.unitCost.toFixed(2)} $ / {translateUnit(product.unit, locale)}
             </div>
 
-            {/* Message d'inventaire dynamique */}
-            {inventoryMessage && (
-              <div 
-                className="px-3 py-2 rounded-lg mb-2"
-                style={{ 
-                  backgroundColor: 'transparent',
-                  border: `2px solid ${
-                    inventoryMessage.type === 'error' ? 'var(--error)' : 
-                    inventoryMessage.type === 'warning' ? 'var(--warning)' : 
-                    'var(--success)'
-                  }`
-                }}
-              >
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-base">{inventoryMessage.icon}</span>
-                  <div className="text-xs font-semibold" style={{ 
-                    color: inventoryMessage.type === 'error' ? 'var(--error)' : 
-                           inventoryMessage.type === 'warning' ? 'var(--warning)' : 
-                           'var(--success)'
-                  }}>
-                    {inventoryMessage.title}
-                  </div>
-                </div>
-                <div className="text-xs" style={{ color: 'var(--on-surface)' }}>
-                  {inventoryMessage.message}
-                </div>
-                {hasVariance && (
-                  <div className="text-xs mt-1 pt-1 border-t" style={{ 
-                    color: 'var(--on-surface-variant)',
-                    borderColor: 'var(--outline)'
-                  }}>
-                    {isEnglish ? 'Variance' : 'Écart'}: {variance > 0 ? '+' : ''}{variance} {translateUnit(product.unit, locale)}
-                  </div>
-                )}
+            {/* Informations d'inventaire sobre */}
+            <div className="space-y-1 text-xs mb-3">
+              <div className="flex justify-between">
+                <span style={{ color: 'var(--on-surface-variant)' }}>
+                  {isEnglish ? 'Theoretical inventory' : 'Inventaire théorique'}
+                </span>
+                <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
+                  {theoreticalStock} {translateUnit(product.unit, locale)}
+                </span>
               </div>
-            )}
+              <div className="flex justify-between">
+                <span style={{ color: 'var(--on-surface-variant)' }}>
+                  {isEnglish ? 'Minimum inventory' : 'Inventaire minimum'}
+                </span>
+                <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
+                  {minInventory} {translateUnit(product.unit, locale)}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span style={{ color: 'var(--on-surface-variant)' }}>
+                  {isEnglish ? 'Gap' : 'Écart'}
+                </span>
+                <span 
+                  className="font-bold" 
+                  style={{ color: gap >= 0 ? 'var(--success)' : 'var(--error)' }}
+                >
+                  {gap >= 0 ? '+' : ''}{gap} {translateUnit(product.unit, locale)}
+                </span>
+              </div>
+              {needsOrder && (
+                <div className="pt-2 mt-2 border-t" style={{ borderColor: 'var(--outline)' }}>
+                  <span style={{ color: 'var(--on-surface-variant)' }}>
+                    {isEnglish ? 'Recommendation' : 'Recommandation'}:{' '}
+                  </span>
+                  <span className="font-medium" style={{ color: 'var(--error)' }}>
+                    {isEnglish ? 'Add' : 'Ajouter'} {quantityToOrder} {translateUnit(product.unit, locale)} {isEnglish ? 'to order basket' : 'au panier de commande'}
+                  </span>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Bouton et toggle */}
-          {inventoryMessage?.showButton && (
+          {needsOrder && (
             <div>
               <OctogoneButton
                 variant="primary"
@@ -198,8 +153,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                 className="w-full mb-2"
               >
                 {product.isRecipe 
-                  ? (isEnglish ? 'Produce' : 'Produire')
-                  : (isEnglish ? 'Order' : 'Commander')
+                  ? (isEnglish ? 'Add to production basket' : 'Ajouter au panier de production')
+                  : (isEnglish ? 'Add to order basket' : 'Ajouter au panier de commande')
                 }
               </OctogoneButton>
               <label className="flex items-center gap-2 cursor-pointer">
@@ -265,46 +220,50 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               {product.unitCost.toFixed(2)} $ / {translateUnit(product.unit, locale)}
             </div>
 
-            {/* Message d'inventaire dynamique */}
-            {inventoryMessage && (
-              <div 
-                className="px-4 py-3 rounded-lg mb-4"
-                style={{ 
-                  backgroundColor: 'transparent',
-                  border: `2px solid ${
-                    inventoryMessage.type === 'error' ? 'var(--error)' : 
-                    inventoryMessage.type === 'warning' ? 'var(--warning)' : 
-                    'var(--success)'
-                  }`
-                }}
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-lg">{inventoryMessage.icon}</span>
-                  <div className="text-sm font-semibold" style={{ 
-                    color: inventoryMessage.type === 'error' ? 'var(--error)' : 
-                           inventoryMessage.type === 'warning' ? 'var(--warning)' : 
-                           'var(--success)'
-                  }}>
-                    {inventoryMessage.title}
-                  </div>
-                </div>
-                <div className="text-sm" style={{ color: 'var(--on-surface)' }}>
-                  {inventoryMessage.message}
-                </div>
-                {hasVariance && (
-                  <div className="text-sm mt-2 pt-2 border-t" style={{ 
-                    color: 'var(--on-surface-variant)',
-                    borderColor: 'var(--outline)'
-                  }}>
-                    {isEnglish ? 'Variance' : 'Écart'}: {variance > 0 ? '+' : ''}{variance} {translateUnit(product.unit, locale)}
-                  </div>
-                )}
+            {/* Informations d'inventaire sobre */}
+            <div className="space-y-2 text-sm mb-4">
+              <div className="flex justify-between">
+                <span style={{ color: 'var(--on-surface-variant)' }}>
+                  {isEnglish ? 'Theoretical inventory' : 'Inventaire théorique'}
+                </span>
+                <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
+                  {theoreticalStock} {translateUnit(product.unit, locale)}
+                </span>
               </div>
-            )}
+              <div className="flex justify-between">
+                <span style={{ color: 'var(--on-surface-variant)' }}>
+                  {isEnglish ? 'Minimum inventory' : 'Inventaire minimum'}
+                </span>
+                <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
+                  {minInventory} {translateUnit(product.unit, locale)}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span style={{ color: 'var(--on-surface-variant)' }}>
+                  {isEnglish ? 'Gap' : 'Écart'}
+                </span>
+                <span 
+                  className="font-bold" 
+                  style={{ color: gap >= 0 ? 'var(--success)' : 'var(--error)' }}
+                >
+                  {gap >= 0 ? '+' : ''}{gap} {translateUnit(product.unit, locale)}
+                </span>
+              </div>
+              {needsOrder && (
+                <div className="pt-2 mt-2 border-t" style={{ borderColor: 'var(--outline)' }}>
+                  <span style={{ color: 'var(--on-surface-variant)' }}>
+                    {isEnglish ? 'Recommendation' : 'Recommandation'}:{' '}
+                  </span>
+                  <span className="font-medium" style={{ color: 'var(--error)' }}>
+                    {isEnglish ? 'Add' : 'Ajouter'} {quantityToOrder} {translateUnit(product.unit, locale)} {isEnglish ? 'to order basket' : 'au panier de commande'}
+                  </span>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Bouton et toggle */}
-          {inventoryMessage?.showButton && (
+          {needsOrder && (
             <div>
               <OctogoneButton
                 variant="primary"
@@ -314,8 +273,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                 className="w-full mb-3"
               >
                 {product.isRecipe 
-                  ? (isEnglish ? 'Produce' : 'Produire')
-                  : (isEnglish ? 'Order' : 'Commander')
+                  ? (isEnglish ? 'Add to production basket' : 'Ajouter au panier de production')
+                  : (isEnglish ? 'Add to order basket' : 'Ajouter au panier de commande')
                 }
               </OctogoneButton>
               <label className="flex items-center gap-2 cursor-pointer">
