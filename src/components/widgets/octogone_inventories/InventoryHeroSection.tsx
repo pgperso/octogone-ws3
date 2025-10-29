@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { Mail, Key, ClipboardCheck, Package, CheckCircle2, Calendar } from 'lucide-react';
+import { Mail, Key, ClipboardCheck, Package, CheckCircle2, Calendar, DollarSign } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { RECIPE_ACCESS_CONFIG } from '@/config/recipe-access';
 import { trackRecipeAccessRequest, trackRecipeAccessUnlocked } from '@/lib/tracking/hubspot-events';
@@ -475,6 +475,7 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
               
               {/* Valeur totale */}
               <div className="flex items-center gap-2">
+                <DollarSign size={18} style={{ color: 'var(--primary)' }} />
                 <span 
                   className="text-sm font-semibold"
                   style={{ color: 'var(--on-surface)' }}
