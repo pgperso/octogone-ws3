@@ -240,6 +240,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
             </div>
           </div>
         </div>
+        </div>
 
         {/* Troisième colonne - Graphique et bouton - Desktop */}
         <div className="flex-1 p-6 border-l flex flex-col justify-between" style={{ borderColor: 'var(--outline)' }}>
@@ -327,3 +328,4 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
       </div>
     </div>
   );
+};
