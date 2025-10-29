@@ -40,19 +40,26 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
   // Stock actuel = toujours la quantité saisie (currentQuantity vient de la calculatrice)
   const actualStock = currentQuantity;
   
+  // Quantité ajoutée au panier
+  const [addedToBasket, setAddedToBasket] = useState(0);
+  
   // Écart dynamique : si saisie faite, utiliser saisie, sinon théorique
   const currentStock = actualStock > 0 ? actualStock : theoreticalStock;
-  const gap = currentStock - minInventory;
-  const needsOrder = gap < 0;
+  const baseGap = currentStock - minInventory;
+  
+  // Écart théorique = écart de base + quantité ajoutée au panier
+  const gap = baseGap + addedToBasket;
+  const needsOrder = baseGap < 0;
   
   // Valeurs par défaut basées sur l'écart
-  const [orderQuantity, setOrderQuantity] = useState(Math.abs(gap));
+  const [orderQuantity, setOrderQuantity] = useState(Math.abs(baseGap));
   const [orderUnit, setOrderUnit] = useState(product.unit);
   
-  // Mettre à jour la quantité quand le gap change
+  // Mettre à jour la quantité quand le baseGap change
   useEffect(() => {
-    setOrderQuantity(Math.abs(gap));
-  }, [gap]);
+    setOrderQuantity(Math.abs(baseGap));
+    setAddedToBasket(0); // Réinitialiser quand le produit ou la quantité change
+  }, [baseGap]);
   
   const productImage = getProductImage(product.name);
   
@@ -140,7 +147,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
             </div>
             <div className="flex justify-between">
               <span style={{ color: 'var(--on-surface-variant)' }}>
-                {isEnglish ? 'Gap' : 'Écart'}
+                {isEnglish ? 'Theoretical gap' : 'Écart théorique'}
               </span>
               <span 
                 className="font-bold" 
@@ -174,7 +181,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               <OctogoneButton
                 variant="primary"
                 size="sm"
-                onClick={onAddToOrder}
+                onClick={() => {
+                  onAddToOrder?.();
+                  setAddedToBasket(prev => prev + orderQuantity);
+                  setOrderQuantity(0);
+                }}
                 icon={product.isRecipe ? <ChefHat className="w-4 h-4" /> : <ShoppingCart className="w-4 h-4" />}
                 className="w-full"
               >
@@ -258,7 +269,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
             </div>
             <div className="flex justify-between">
               <span style={{ color: 'var(--on-surface-variant)' }}>
-                {isEnglish ? 'Gap' : 'Écart'}
+                {isEnglish ? 'Theoretical gap' : 'Écart théorique'}
               </span>
               <span 
                 className="font-bold" 
@@ -292,7 +303,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               <OctogoneButton
                 variant="primary"
                 size="md"
-                onClick={onAddToOrder}
+                onClick={() => {
+                  onAddToOrder?.();
+                  setAddedToBasket(prev => prev + orderQuantity);
+                  setOrderQuantity(0);
+                }}
                 icon={product.isRecipe ? <ChefHat className="w-5 h-5" /> : <ShoppingCart className="w-5 h-5" />}
                 className="w-full"
               >
