@@ -45,6 +45,8 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
     name: string;
     initialQuantity?: number;
     unit: string;
+    storage?: string;
+    nonInventoriable?: boolean;
   }
 
   const initialInventory = [
@@ -80,9 +82,23 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
       productId: item.productId,
       name: product?.name || '',
       quantity: item.quantity,
-      unit: product?.unit || ''
+      unit: product?.unit || '',
+      storage: product?.storage || 'sec'
     };
   }).filter(p => p.name);
+
+  // Calculer la progression par emplacement
+  const getStorageProgress = (storage: string) => {
+    const storageProducts = allProducts.filter((p: InventoryProduct) => p.storage === storage && !p.nonInventoriable);
+    const entered = inventoryProducts.filter(p => p.storage === storage).length;
+    const total = storageProducts.length;
+    const percentage = total > 0 ? (entered / total) * 100 : 0;
+    return { entered, total, percentage };
+  };
+
+  const secProgress = getStorageProgress('sec');
+  const congelateurProgress = getStorageProgress('congelateur');
+  const frigidaireProgress = getStorageProgress('frigidaire');
 
   // Charger l'email sauvegardé et vérifier si déjà débloqué dans la session
   useEffect(() => {
@@ -432,6 +448,108 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                   </>
                 );
               })()}
+            </div>
+
+            {/* Barres de progression par emplacement */}
+            <div className="space-y-3 mb-6">
+              {/* Garde-manger */}
+              <div className="flex items-center gap-3">
+                <div 
+                  className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0"
+                  style={{ 
+                    borderColor: 'var(--outline)',
+                    backgroundColor: 'var(--surface)'
+                  }}
+                />
+                <div className="flex-1">
+                  <div className="flex items-center justify-between mb-1">
+                    <span 
+                      className="text-sm font-semibold"
+                      style={{ color: 'var(--on-surface)' }}
+                    >
+                      {isEnglish ? `Pantry (${secProgress.entered}/${secProgress.total})` : `Garde-manger (${secProgress.entered}/${secProgress.total})`}
+                    </span>
+                  </div>
+                  <div 
+                    className="w-full h-2 rounded-full overflow-hidden"
+                    style={{ backgroundColor: 'var(--surface-variant)' }}
+                  >
+                    <div 
+                      className="h-full transition-all duration-500 ease-out rounded-full"
+                      style={{ 
+                        width: `${secProgress.percentage}%`,
+                        backgroundColor: 'var(--success)'
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Congélateur */}
+              <div className="flex items-center gap-3">
+                <div 
+                  className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0"
+                  style={{ 
+                    borderColor: 'var(--outline)',
+                    backgroundColor: 'var(--surface)'
+                  }}
+                />
+                <div className="flex-1">
+                  <div className="flex items-center justify-between mb-1">
+                    <span 
+                      className="text-sm font-semibold"
+                      style={{ color: 'var(--on-surface)' }}
+                    >
+                      {isEnglish ? `Freezer (${congelateurProgress.entered}/${congelateurProgress.total})` : `Congélateur (${congelateurProgress.entered}/${congelateurProgress.total})`}
+                    </span>
+                  </div>
+                  <div 
+                    className="w-full h-2 rounded-full overflow-hidden"
+                    style={{ backgroundColor: 'var(--surface-variant)' }}
+                  >
+                    <div 
+                      className="h-full transition-all duration-500 ease-out rounded-full"
+                      style={{ 
+                        width: `${congelateurProgress.percentage}%`,
+                        backgroundColor: 'var(--success)'
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Frigidaire */}
+              <div className="flex items-center gap-3">
+                <div 
+                  className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0"
+                  style={{ 
+                    borderColor: 'var(--outline)',
+                    backgroundColor: 'var(--surface)'
+                  }}
+                />
+                <div className="flex-1">
+                  <div className="flex items-center justify-between mb-1">
+                    <span 
+                      className="text-sm font-semibold"
+                      style={{ color: 'var(--on-surface)' }}
+                    >
+                      {isEnglish ? `Fridge (${frigidaireProgress.entered}/${frigidaireProgress.total})` : `Frigidaire (${frigidaireProgress.entered}/${frigidaireProgress.total})`}
+                    </span>
+                  </div>
+                  <div 
+                    className="w-full h-2 rounded-full overflow-hidden"
+                    style={{ backgroundColor: 'var(--surface-variant)' }}
+                  >
+                    <div 
+                      className="h-full transition-all duration-500 ease-out rounded-full"
+                      style={{ 
+                        width: `${frigidaireProgress.percentage}%`,
+                        backgroundColor: 'var(--success)'
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
             
             {/* Avatars des utilisateurs actifs */}
