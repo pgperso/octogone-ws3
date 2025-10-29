@@ -163,9 +163,18 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
   }
 
   return (
-    <div className="flex flex-col h-full p-6">
-      {/* Carte produit */}
-      {selectedProduct ? (
+    <div className="flex flex-col h-full">
+      {/* Header */}
+      <div className="px-6 py-6 border-b" style={{ borderColor: 'var(--outline)' }}>
+        <h2 className="text-lg font-semibold" style={{ color: 'var(--on-surface)' }}>
+          {isEnglish ? 'Product Details' : 'Détails du produit'}
+        </h2>
+      </div>
+      
+      {/* Contenu avec padding */}
+      <div className="flex-1 p-6 overflow-y-auto">
+        {/* Carte produit */}
+        {selectedProduct ? (
         <ProductCard 
           product={selectedProduct} 
           locale={locale}
@@ -363,6 +372,7 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
             <ChevronDown className="w-5 h-5" />
           </button>
         </div>
+      </div>
       </div>
     </div>
   );
