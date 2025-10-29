@@ -167,35 +167,33 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
           {/* Bouton et toggle */}
           {needsOrder && (
             <div>
-              <div className="flex gap-2 mb-0.5">
-                <div className="flex items-center gap-2">
-                  <OctogoneQuantitySelector
-                    value={orderQuantity}
-                    onChange={setOrderQuantity}
-                    min={0}
-                    step={orderUnit === 'kg' || orderUnit === 'L' ? 0.1 : 1}
-                    size="sm"
-                  />
-                  <OctogoneUnitSelector
-                    options={unitOptions}
-                    value={orderUnit}
-                    onChange={setOrderUnit}
-                    size="sm"
-                  />
-                </div>
-                <OctogoneButton
-                  variant="primary"
+              <div className="flex items-center gap-2 mb-0.5">
+                <OctogoneQuantitySelector
+                  value={orderQuantity}
+                  onChange={setOrderQuantity}
+                  min={0}
+                  step={orderUnit === 'kg' || orderUnit === 'L' ? 0.1 : 1}
                   size="sm"
-                  onClick={onAddToOrder}
-                  icon={product.isRecipe ? <ChefHat className="w-4 h-4" /> : <ShoppingCart className="w-4 h-4" />}
-                  className="flex-1"
-                >
-                  {product.isRecipe 
-                    ? (isEnglish ? 'Add to production basket' : 'Ajouter au panier de production')
-                    : (isEnglish ? 'Add to order basket' : 'Ajouter au panier de commande')
-                  }
-                </OctogoneButton>
+                />
+                <OctogoneUnitSelector
+                  options={unitOptions}
+                  value={orderUnit}
+                  onChange={setOrderUnit}
+                  size="sm"
+                />
               </div>
+              <OctogoneButton
+                variant="primary"
+                size="sm"
+                onClick={onAddToOrder}
+                icon={product.isRecipe ? <ChefHat className="w-4 h-4" /> : <ShoppingCart className="w-4 h-4" />}
+                className="w-full"
+              >
+                {product.isRecipe 
+                  ? (isEnglish ? 'Add to production basket' : 'Ajouter au panier de production')
+                  : (isEnglish ? 'Add to order basket' : 'Ajouter au panier de commande')
+                }
+              </OctogoneButton>
             </div>
           )}
         </div>
@@ -301,35 +299,33 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
           {/* Bouton et toggle */}
           {needsOrder && (
             <div>
-              <div className="flex gap-2 mb-2">
-                <div className="flex items-center gap-2">
-                  <OctogoneQuantitySelector
-                    value={orderQuantity}
-                    onChange={setOrderQuantity}
-                    min={0}
-                    step={orderUnit === 'kg' || orderUnit === 'L' ? 0.1 : 1}
-                    size="md"
-                  />
-                  <OctogoneUnitSelector
-                    options={unitOptions}
-                    value={orderUnit}
-                    onChange={setOrderUnit}
-                    size="md"
-                  />
-                </div>
-                <OctogoneButton
-                  variant="primary"
+              <div className="flex items-center gap-2 mb-2">
+                <OctogoneQuantitySelector
+                  value={orderQuantity}
+                  onChange={setOrderQuantity}
+                  min={0}
+                  step={orderUnit === 'kg' || orderUnit === 'L' ? 0.1 : 1}
                   size="md"
-                  onClick={onAddToOrder}
-                  icon={product.isRecipe ? <ChefHat className="w-5 h-5" /> : <ShoppingCart className="w-5 h-5" />}
-                  className="flex-1"
-                >
-                  {product.isRecipe 
-                    ? (isEnglish ? 'Add to production basket' : 'Ajouter au panier de production')
-                    : (isEnglish ? 'Add to order basket' : 'Ajouter au panier de commande')
-                  }
-                </OctogoneButton>
+                />
+                <OctogoneUnitSelector
+                  options={unitOptions}
+                  value={orderUnit}
+                  onChange={setOrderUnit}
+                  size="md"
+                />
               </div>
+              <OctogoneButton
+                variant="primary"
+                size="md"
+                onClick={onAddToOrder}
+                icon={product.isRecipe ? <ChefHat className="w-5 h-5" /> : <ShoppingCart className="w-5 h-5" />}
+                className="w-full"
+              >
+                {product.isRecipe 
+                  ? (isEnglish ? 'Add to production basket' : 'Ajouter au panier de production')
+                  : (isEnglish ? 'Add to order basket' : 'Ajouter au panier de commande')
+                }
+              </OctogoneButton>
             </div>
           )}
         </div>
