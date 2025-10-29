@@ -46,7 +46,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
   // Écart dynamique : si saisie faite, utiliser saisie, sinon théorique
   const currentStock = actualStock > 0 ? actualStock : theoreticalStock;
   const gap = currentStock - minInventory;
-  const quantityToOrder = gap < 0 ? Math.abs(gap) : 0;
   const needsOrder = gap < 0;
   
   // Valeurs par défaut basées sur l'écart
