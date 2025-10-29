@@ -194,7 +194,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
       </div>
 
       {/* En-tête des colonnes */}
-      <div className="flex gap-2 px-6 py-3 border-b font-semibold text-sm" style={{ backgroundColor: 'var(--surface-container)', borderColor: 'var(--outline)' }}>
+      <div className="flex gap-2 px-6 py-3 border-b font-semibold text-xs" style={{ backgroundColor: 'var(--surface-container)', borderColor: 'var(--outline)' }}>
         <div className="flex-[2]" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Product' : 'Produit'}</div>
         <div className="flex-1 hidden md:block" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Category' : 'Catégorie'}</div>
         <div className="flex-1">
@@ -252,7 +252,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 {/* Colonne Produit */}
                 <div className={`flex-[2] ${product.isRecipe ? '' : 'flex items-center'}`}>
                   <div>
-                    <div className="font-medium">{translateProduct(product.name, locale)}</div>
+                    <div className="font-medium text-sm">{translateProduct(product.name, locale)}</div>
                     {product.isRecipe && (
                       <span 
                         className="px-2 py-0.5 text-xs font-semibold rounded-full inline-block mt-1"
