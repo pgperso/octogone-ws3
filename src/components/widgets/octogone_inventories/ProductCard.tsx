@@ -80,7 +80,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
             >
               <div 
                 className="rounded-lg p-2"
-                style={{ backgroundColor: 'var(--warning)' }}
+                style={{ backgroundColor: 'var(--warning)', opacity: 0.9 }}
               >
                 <AlertTriangle size={24} style={{ color: 'var(--on-primary-container)' }} />
               </div>
@@ -214,7 +214,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
             >
               <div 
                 className="rounded-lg p-3"
-                style={{ backgroundColor: 'var(--warning)' }}
+                style={{ backgroundColor: 'var(--warning)', opacity: 0.9 }}
               >
                 <AlertTriangle size={40} style={{ color: 'var(--on-primary-container)' }} />
               </div>
