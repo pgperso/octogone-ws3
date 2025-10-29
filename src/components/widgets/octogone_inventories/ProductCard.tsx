@@ -90,47 +90,45 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
 
         {/* Contenu à droite */}
         <div className="flex-1 p-3 flex flex-col justify-between">
-          <div className="flex-1 flex flex-col">
+          <div className="flex-1 flex flex-col space-y-0.5 text-xs">
             {/* Informations d'inventaire sobre */}
-            <div className="space-y-0.5 text-xs">
-              <div className="flex justify-between">
-                <span style={{ color: 'var(--on-surface-variant)' }}>
-                  {isEnglish ? 'Value' : 'Valeur'}
-                </span>
-                <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
-                  {product.unitCost.toFixed(2)} $ / {translateUnit(product.unit, locale)}
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span style={{ color: 'var(--on-surface-variant)' }}>
-                  {isEnglish ? 'Theoretical inventory' : 'Inventaire théorique'}
-                </span>
-                <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
-                  {theoreticalStock} {translateUnit(product.unit, locale)}
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span style={{ color: 'var(--on-surface-variant)' }}>
-                  {isEnglish ? 'Minimum inventory' : 'Inventaire minimum'}
-                </span>
-                <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
-                  {minInventory} {translateUnit(product.unit, locale)}
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span style={{ color: 'var(--on-surface-variant)' }}>
-                  {isEnglish ? 'Gap' : 'Écart'}
-                </span>
-                <span 
-                  className="font-bold" 
-                  style={{ color: gap >= 0 ? 'var(--success)' : 'var(--error)' }}
-                >
-                  {gap >= 0 ? '+' : ''}{gap} {translateUnit(product.unit, locale)}
-                </span>
-              </div>
+            <div className="flex justify-between">
+              <span style={{ color: 'var(--on-surface-variant)' }}>
+                {isEnglish ? 'Value' : 'Valeur'}
+              </span>
+              <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
+                {product.unitCost.toFixed(2)} $ / {translateUnit(product.unit, locale)}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span style={{ color: 'var(--on-surface-variant)' }}>
+                {isEnglish ? 'Theoretical inventory' : 'Inventaire théorique'}
+              </span>
+              <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
+                {theoreticalStock} {translateUnit(product.unit, locale)}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span style={{ color: 'var(--on-surface-variant)' }}>
+                {isEnglish ? 'Minimum inventory' : 'Inventaire minimum'}
+              </span>
+              <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
+                {minInventory} {translateUnit(product.unit, locale)}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span style={{ color: 'var(--on-surface-variant)' }}>
+                {isEnglish ? 'Gap' : 'Écart'}
+              </span>
+              <span 
+                className="font-bold" 
+                style={{ color: gap >= 0 ? 'var(--success)' : 'var(--error)' }}
+              >
+                {gap >= 0 ? '+' : ''}{gap} {translateUnit(product.unit, locale)}
+              </span>
             </div>
             {needsOrder && (
-              <div className="relative flex-1 flex flex-col mb-0.5">
+              <div className="relative flex-1 flex flex-col">
                 <div 
                   className="absolute -top-2 left-2 px-1 text-[9px] font-semibold"
                   style={{ 
@@ -223,47 +221,45 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
 
         {/* Contenu à droite - 60% */}
         <div className="flex-1 p-4 flex flex-col justify-between">
-          <div className="flex-1 flex flex-col">
+          <div className="flex-1 flex flex-col space-y-1 text-sm">
             {/* Informations d'inventaire sobre */}
-            <div className="space-y-1 text-sm">
-              <div className="flex justify-between">
-                <span style={{ color: 'var(--on-surface-variant)' }}>
-                  {isEnglish ? 'Value' : 'Valeur'}
-                </span>
-                <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
-                  {product.unitCost.toFixed(2)} $ / {translateUnit(product.unit, locale)}
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span style={{ color: 'var(--on-surface-variant)' }}>
-                  {isEnglish ? 'Theoretical inventory' : 'Inventaire théorique'}
-                </span>
-                <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
-                  {theoreticalStock} {translateUnit(product.unit, locale)}
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span style={{ color: 'var(--on-surface-variant)' }}>
-                  {isEnglish ? 'Minimum inventory' : 'Inventaire minimum'}
-                </span>
-                <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
-                  {minInventory} {translateUnit(product.unit, locale)}
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span style={{ color: 'var(--on-surface-variant)' }}>
-                  {isEnglish ? 'Gap' : 'Écart'}
-                </span>
-                <span 
-                  className="font-bold" 
-                  style={{ color: gap >= 0 ? 'var(--success)' : 'var(--error)' }}
-                >
-                  {gap >= 0 ? '+' : ''}{gap} {translateUnit(product.unit, locale)}
-                </span>
-              </div>
+            <div className="flex justify-between">
+              <span style={{ color: 'var(--on-surface-variant)' }}>
+                {isEnglish ? 'Value' : 'Valeur'}
+              </span>
+              <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
+                {product.unitCost.toFixed(2)} $ / {translateUnit(product.unit, locale)}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span style={{ color: 'var(--on-surface-variant)' }}>
+                {isEnglish ? 'Theoretical inventory' : 'Inventaire théorique'}
+              </span>
+              <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
+                {theoreticalStock} {translateUnit(product.unit, locale)}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span style={{ color: 'var(--on-surface-variant)' }}>
+                {isEnglish ? 'Minimum inventory' : 'Inventaire minimum'}
+              </span>
+              <span className="font-medium" style={{ color: 'var(--on-surface)' }}>
+                {minInventory} {translateUnit(product.unit, locale)}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span style={{ color: 'var(--on-surface-variant)' }}>
+                {isEnglish ? 'Gap' : 'Écart'}
+              </span>
+              <span 
+                className="font-bold" 
+                style={{ color: gap >= 0 ? 'var(--success)' : 'var(--error)' }}
+              >
+                {gap >= 0 ? '+' : ''}{gap} {translateUnit(product.unit, locale)}
+              </span>
             </div>
             {needsOrder && (
-              <div className="relative flex-1 flex flex-col mb-1">
+              <div className="relative flex-1 flex flex-col">
                 <div 
                   className="absolute -top-2 left-2 px-1 text-[10px] font-semibold"
                   style={{ 
