@@ -597,12 +597,25 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                 borderColor: 'var(--outline)'
               }}
             >
-              <h3 
-                className="text-sm font-semibold mb-3"
-                style={{ color: 'var(--on-surface)' }}
-              >
-                {isEnglish ? 'Users' : 'Utilisateurs'}
-              </h3>
+              <div className="flex items-center justify-between mb-3">
+                <h3 
+                  className="text-sm font-semibold"
+                  style={{ color: 'var(--on-surface)' }}
+                >
+                  {isEnglish ? 'Users' : 'Utilisateurs'}
+                </h3>
+                <span 
+                  className="text-xs font-medium"
+                  style={{ color: 'var(--on-surface-variant)' }}
+                >
+                  {(() => {
+                    let activeCount = 1; // Vincent toujours actif
+                    if (showSecondUser && secondUserActive) activeCount++;
+                    if (showThirdUser) activeCount++;
+                    return isEnglish ? `${activeCount} active` : `${activeCount} actifs`;
+                  })()}
+                </span>
+              </div>
               <div className="flex items-center gap-3">
               {/* Avatar Vincent - Toujours actif */}
               <div className="relative group">
