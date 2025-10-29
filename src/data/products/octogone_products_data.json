@@ -31,7 +31,7 @@
         ]
       },
       "enteredBy": "Marie",
-      "enteredAt": "2025-10-29T14:41:18.432Z"
+      "enteredAt": "2025-10-29T13:03:00.000Z"
     },
     {
       "id": "prod-002",
@@ -62,7 +62,7 @@
         ]
       },
       "enteredBy": "Marie",
-      "enteredAt": "2025-10-28T17:34:18.443Z"
+      "enteredAt": "2025-10-29T13:03:00.000Z"
     },
     {
       "id": "prod-003",
@@ -80,7 +80,7 @@
       "initialQuantity": 5,
       "theoreticalQuantity": 3,
       "enteredBy": "Vincent",
-      "enteredAt": "2025-10-28T21:03:18.443Z"
+      "enteredAt": "2025-10-29T13:05:00.000Z"
     },
     {
       "id": "prod-004",
@@ -98,7 +98,7 @@
       "initialQuantity": 19,
       "theoreticalQuantity": 17,
       "enteredBy": "Marie",
-      "enteredAt": "2025-10-29T03:47:18.443Z"
+      "enteredAt": "2025-10-29T13:05:00.000Z"
     },
     {
       "id": "prod-005",
@@ -127,7 +127,8 @@
           "prod-031"
         ]
       },
-      "enteredBy": "Vincent"
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-29T13:09:00.000Z"
     },
     {
       "id": "prod-006",
@@ -154,7 +155,8 @@
           "prod-029"
         ]
       },
-      "enteredBy": "Vincent"
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-29T13:10:00.000Z"
     },
     {
       "id": "prod-007",
@@ -182,7 +184,8 @@
           "prod-031"
         ]
       },
-      "enteredBy": "Vincent"
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-29T13:11:00.000Z"
     },
     {
       "id": "prod-008",
@@ -199,7 +202,8 @@
       "minInventory": 13,
       "initialQuantity": 13,
       "theoreticalQuantity": 12,
-      "enteredBy": "Marie"
+      "enteredBy": "Marie",
+      "enteredAt": "2025-10-29T13:12:00.000Z"
     },
     {
       "id": "prod-009",
@@ -244,7 +248,8 @@
           "prod-048"
         ]
       },
-      "enteredBy": "Marie"
+      "enteredBy": "Marie",
+      "enteredAt": "2025-10-29T13:11:00.000Z"
     },
     {
       "id": "prod-011",
@@ -261,7 +266,8 @@
       "minInventory": 4,
       "initialQuantity": 5,
       "theoreticalQuantity": 4,
-      "enteredBy": "Vincent"
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-29T13:14:00.000Z"
     },
     {
       "id": "prod-012",
@@ -279,7 +285,8 @@
       "minInventory": 7,
       "initialQuantity": 12,
       "theoreticalQuantity": 12,
-      "enteredBy": "Marie"
+      "enteredBy": "Marie",
+      "enteredAt": "2025-10-29T13:15:00.000Z"
     },
     {
       "id": "prod-013",
@@ -296,7 +303,8 @@
       "minInventory": 11,
       "initialQuantity": 13,
       "theoreticalQuantity": 10,
-      "enteredBy": "Julie"
+      "enteredBy": "Julie",
+      "enteredAt": "2025-10-29T13:17:00.000Z"
     },
     {
       "id": "prod-014",
@@ -313,7 +321,8 @@
       "minInventory": 11,
       "initialQuantity": 13,
       "theoreticalQuantity": 9,
-      "enteredBy": "Vincent"
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-29T13:16:00.000Z"
     },
     {
       "id": "prod-015",
@@ -358,7 +367,8 @@
       "minInventory": 6,
       "initialQuantity": 9,
       "theoreticalQuantity": 7,
-      "enteredBy": "Julie"
+      "enteredBy": "Julie",
+      "enteredAt": "2025-10-29T13:21:00.000Z"
     },
     {
       "id": "prod-017",
@@ -407,7 +417,8 @@
       "minInventory": 9,
       "initialQuantity": 15,
       "theoreticalQuantity": 13,
-      "enteredBy": "Vincent"
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-29T13:19:00.000Z"
     },
     {
       "id": "prod-020",
@@ -424,7 +435,8 @@
       "minInventory": 10,
       "initialQuantity": 19,
       "theoreticalQuantity": 18,
-      "enteredBy": "Vincent"
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-29T13:25:00.000Z"
     },
     {
       "id": "prod-021",
@@ -441,7 +453,8 @@
       "minInventory": 27,
       "initialQuantity": 45,
       "theoreticalQuantity": 43,
-      "enteredBy": "Vincent"
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-29T13:26:00.000Z"
     },
     {
       "id": "prod-022",
@@ -458,7 +471,7 @@
       "initialQuantity": 44,
       "theoreticalQuantity": 37,
       "enteredBy": "Vincent",
-      "enteredAt": "2025-10-29T09:40:18.443Z"
+      "enteredAt": "2025-10-29T13:25:00.000Z"
     },
     {
       "id": "prod-023",
@@ -474,7 +487,8 @@
       "minInventory": 12,
       "initialQuantity": 20,
       "theoreticalQuantity": 18,
-      "enteredBy": "Julie"
+      "enteredBy": "Julie",
+      "enteredAt": "2025-10-29T13:28:00.000Z"
     },
     {
       "id": "prod-024",
@@ -490,7 +504,8 @@
       "minInventory": 11,
       "initialQuantity": 16,
       "theoreticalQuantity": 12,
-      "enteredBy": "Vincent"
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-29T13:26:00.000Z"
     },
     {
       "id": "prod-025",
@@ -518,7 +533,8 @@
           "prod-046"
         ]
       },
-      "enteredBy": "Marie"
+      "enteredBy": "Marie",
+      "enteredAt": "2025-10-29T13:29:00.000Z"
     },
     {
       "id": "prod-026",
@@ -536,7 +552,8 @@
       "minInventory": 13,
       "initialQuantity": 15,
       "theoreticalQuantity": 13,
-      "enteredBy": "Vincent"
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-29T13:32:00.000Z"
     },
     {
       "id": "prod-027",
@@ -580,7 +597,8 @@
       "minInventory": 10,
       "initialQuantity": 10,
       "theoreticalQuantity": 7,
-      "enteredBy": "Marie"
+      "enteredBy": "Marie",
+      "enteredAt": "2025-10-29T13:34:00.000Z"
     },
     {
       "id": "prod-029",
@@ -608,7 +626,8 @@
           "prod-013"
         ]
       },
-      "enteredBy": "Julie"
+      "enteredBy": "Julie",
+      "enteredAt": "2025-10-29T13:35:00.000Z"
     },
     {
       "id": "prod-030",
@@ -624,7 +643,8 @@
       "minInventory": 11,
       "initialQuantity": 13,
       "theoreticalQuantity": 11,
-      "enteredBy": "Julie"
+      "enteredBy": "Julie",
+      "enteredAt": "2025-10-29T13:35:00.000Z"
     },
     {
       "id": "prod-031",
@@ -653,7 +673,8 @@
           "prod-015"
         ]
       },
-      "enteredBy": "Marie"
+      "enteredBy": "Marie",
+      "enteredAt": "2025-10-29T13:38:00.000Z"
     },
     {
       "id": "prod-032",
@@ -671,7 +692,7 @@
       "initialQuantity": 14,
       "theoreticalQuantity": 14,
       "enteredBy": "Julie",
-      "enteredAt": "2025-10-28T18:05:18.443Z"
+      "enteredAt": "2025-10-29T13:38:00.000Z"
     },
     {
       "id": "prod-033",
@@ -704,7 +725,8 @@
       "minInventory": 10,
       "initialQuantity": 11,
       "theoreticalQuantity": 9,
-      "enteredBy": "Vincent"
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-29T13:38:00.000Z"
     },
     {
       "id": "prod-035",
@@ -721,7 +743,8 @@
       "minInventory": 8,
       "initialQuantity": 15,
       "theoreticalQuantity": 11,
-      "enteredBy": "Julie"
+      "enteredBy": "Julie",
+      "enteredAt": "2025-10-29T13:41:00.000Z"
     },
     {
       "id": "prod-036",
@@ -739,7 +762,8 @@
       "initialQuantity": 17,
       "theoreticalQuantity": 13,
       "nonInventoriable": true,
-      "enteredBy": "Vincent"
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-29T13:42:00.000Z"
     },
     {
       "id": "prod-037",
@@ -770,7 +794,7 @@
         ]
       },
       "enteredBy": "Julie",
-      "enteredAt": "2025-10-29T09:52:18.443Z"
+      "enteredAt": "2025-10-29T13:44:00.000Z"
     },
     {
       "id": "prod-038",
@@ -802,7 +826,7 @@
         ]
       },
       "enteredBy": "Marie",
-      "enteredAt": "2025-10-29T08:44:18.443Z"
+      "enteredAt": "2025-10-29T13:43:00.000Z"
     },
     {
       "id": "prod-039",
@@ -820,7 +844,7 @@
       "initialQuantity": 4,
       "theoreticalQuantity": 3,
       "enteredBy": "Marie",
-      "enteredAt": "2025-10-29T11:47:18.443Z"
+      "enteredAt": "2025-10-29T13:45:00.000Z"
     },
     {
       "id": "prod-040",
@@ -838,7 +862,7 @@
       "initialQuantity": 3,
       "theoreticalQuantity": 2,
       "enteredBy": "Vincent",
-      "enteredAt": "2025-10-29T14:26:18.443Z"
+      "enteredAt": "2025-10-29T13:49:00.000Z"
     },
     {
       "id": "prod-041",
@@ -856,7 +880,7 @@
       "initialQuantity": 3,
       "theoreticalQuantity": 2,
       "enteredBy": "Julie",
-      "enteredAt": "2025-10-28T17:45:18.443Z"
+      "enteredAt": "2025-10-29T13:49:00.000Z"
     },
     {
       "id": "prod-042",
@@ -874,7 +898,7 @@
       "initialQuantity": 2,
       "theoreticalQuantity": 2,
       "enteredBy": "Julie",
-      "enteredAt": "2025-10-28T18:20:18.443Z"
+      "enteredAt": "2025-10-29T13:51:00.000Z"
     },
     {
       "id": "prod-043",
@@ -892,7 +916,7 @@
       "initialQuantity": 5,
       "theoreticalQuantity": 4,
       "enteredBy": "Marie",
-      "enteredAt": "2025-10-28T21:21:18.443Z"
+      "enteredAt": "2025-10-29T13:52:00.000Z"
     },
     {
       "id": "prod-044",
@@ -922,7 +946,7 @@
         ]
       },
       "enteredBy": "Vincent",
-      "enteredAt": "2025-10-29T12:48:18.443Z"
+      "enteredAt": "2025-10-29T13:52:00.000Z"
     },
     {
       "id": "prod-045",
@@ -939,7 +963,7 @@
       "initialQuantity": 23,
       "theoreticalQuantity": 20,
       "enteredBy": "Vincent",
-      "enteredAt": "2025-10-28T19:10:18.443Z"
+      "enteredAt": "2025-10-29T13:55:00.000Z"
     },
     {
       "id": "prod-046",
@@ -968,7 +992,7 @@
         ]
       },
       "enteredBy": "Marie",
-      "enteredAt": "2025-10-28T17:21:18.443Z"
+      "enteredAt": "2025-10-29T13:54:00.000Z"
     },
     {
       "id": "prod-047",
@@ -986,7 +1010,7 @@
       "initialQuantity": 17,
       "theoreticalQuantity": 12,
       "enteredBy": "Julie",
-      "enteredAt": "2025-10-29T03:02:18.443Z"
+      "enteredAt": "2025-10-29T13:56:00.000Z"
     },
     {
       "id": "prod-048",
@@ -1014,7 +1038,7 @@
         ]
       },
       "enteredBy": "Julie",
-      "enteredAt": "2025-10-28T16:32:18.443Z"
+      "enteredAt": "2025-10-29T13:58:00.000Z"
     },
     {
       "id": "prod-049",
@@ -1032,7 +1056,7 @@
       "initialQuantity": 6,
       "theoreticalQuantity": 5,
       "enteredBy": "Marie",
-      "enteredAt": "2025-10-29T13:24:18.443Z"
+      "enteredAt": "2025-10-29T14:01:00.000Z"
     },
     {
       "id": "prod-050",
@@ -1050,7 +1074,7 @@
       "initialQuantity": 6,
       "theoreticalQuantity": 5,
       "enteredBy": "Julie",
-      "enteredAt": "2025-10-29T06:50:18.443Z"
+      "enteredAt": "2025-10-29T14:01:00.000Z"
     },
     {
       "id": "prod-051",
@@ -1068,7 +1092,7 @@
       "initialQuantity": 17,
       "theoreticalQuantity": 16,
       "enteredBy": "Vincent",
-      "enteredAt": "2025-10-29T15:52:18.443Z"
+      "enteredAt": "2025-10-29T14:04:00.000Z"
     },
     {
       "id": "prod-052",
@@ -1086,7 +1110,7 @@
       "initialQuantity": 12,
       "theoreticalQuantity": 8,
       "enteredBy": "Marie",
-      "enteredAt": "2025-10-28T23:47:18.443Z"
+      "enteredAt": "2025-10-29T14:06:00.000Z"
     },
     {
       "id": "prod-053",
@@ -1104,7 +1128,7 @@
       "initialQuantity": 14,
       "theoreticalQuantity": 10,
       "enteredBy": "Marie",
-      "enteredAt": "2025-10-29T03:33:18.443Z"
+      "enteredAt": "2025-10-29T14:08:00.000Z"
     },
     {
       "id": "prod-054",
@@ -1122,7 +1146,7 @@
       "initialQuantity": 17,
       "theoreticalQuantity": 16,
       "enteredBy": "Vincent",
-      "enteredAt": "2025-10-29T02:54:18.443Z"
+      "enteredAt": "2025-10-29T14:09:00.000Z"
     },
     {
       "id": "prod-055",
@@ -1140,7 +1164,7 @@
       "theoreticalQuantity": 750,
       "nonInventoriable": true,
       "enteredBy": "Vincent",
-      "enteredAt": "2025-10-29T03:51:18.443Z"
+      "enteredAt": "2025-10-29T14:08:00.000Z"
     },
     {
       "id": "prod-056",
@@ -1158,7 +1182,7 @@
       "theoreticalQuantity": 1200,
       "nonInventoriable": true,
       "enteredBy": "Julie",
-      "enteredAt": "2025-10-29T00:48:18.443Z"
+      "enteredAt": "2025-10-29T14:11:00.000Z"
     },
     {
       "id": "prod-057",
@@ -1176,7 +1200,7 @@
       "initialQuantity": 5,
       "theoreticalQuantity": 4,
       "enteredBy": "Julie",
-      "enteredAt": "2025-10-28T21:47:18.443Z"
+      "enteredAt": "2025-10-29T14:14:00.000Z"
     },
     {
       "id": "prod-058",
@@ -1194,7 +1218,7 @@
       "initialQuantity": 4,
       "theoreticalQuantity": 3,
       "enteredBy": "Marie",
-      "enteredAt": "2025-10-29T10:35:18.443Z"
+      "enteredAt": "2025-10-29T14:11:00.000Z"
     },
     {
       "id": "prod-059",
@@ -1211,7 +1235,7 @@
       "initialQuantity": 300,
       "theoreticalQuantity": 250,
       "enteredBy": "Marie",
-      "enteredAt": "2025-10-28T22:52:18.443Z"
+      "enteredAt": "2025-10-29T14:15:00.000Z"
     },
     {
       "id": "prod-060",
@@ -1228,7 +1252,7 @@
       "initialQuantity": 15,
       "theoreticalQuantity": 12,
       "enteredBy": "Vincent",
-      "enteredAt": "2025-10-28T20:44:18.443Z"
+      "enteredAt": "2025-10-29T14:17:00.000Z"
     },
     {
       "id": "prod-061",
@@ -1245,7 +1269,7 @@
       "initialQuantity": 80,
       "theoreticalQuantity": 65,
       "enteredBy": "Marie",
-      "enteredAt": "2025-10-29T04:47:18.443Z"
+      "enteredAt": "2025-10-29T14:19:00.000Z"
     },
     {
       "id": "recipe-001",
@@ -1271,7 +1295,8 @@
           "prod-002"
         ]
       },
-      "enteredBy": "Julie"
+      "enteredBy": "Julie",
+      "enteredAt": "2025-10-29T14:17:00.000Z"
     },
     {
       "id": "recipe-002",
@@ -1296,7 +1321,8 @@
           "prod-054"
         ]
       },
-      "enteredBy": "Julie"
+      "enteredBy": "Julie",
+      "enteredAt": "2025-10-29T14:18:00.000Z"
     },
     {
       "id": "recipe-003",
@@ -1321,7 +1347,8 @@
           "prod-049"
         ]
       },
-      "enteredBy": "Julie"
+      "enteredBy": "Julie",
+      "enteredAt": "2025-10-29T14:24:00.000Z"
     },
     {
       "id": "recipe-004",
@@ -1346,7 +1373,8 @@
           "prod-032"
         ]
       },
-      "enteredBy": "Marie"
+      "enteredBy": "Marie",
+      "enteredAt": "2025-10-29T14:22:00.000Z"
     },
     {
       "id": "recipe-005",
@@ -1395,7 +1423,8 @@
           "prod-003"
         ]
       },
-      "enteredBy": "Marie"
+      "enteredBy": "Marie",
+      "enteredAt": "2025-10-29T14:23:00.000Z"
     },
     {
       "id": "recipe-007",
@@ -1421,7 +1450,8 @@
           "prod-027"
         ]
       },
-      "enteredBy": "Vincent"
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-29T14:25:00.000Z"
     },
     {
       "id": "recipe-008",
@@ -1446,7 +1476,8 @@
           "prod-009"
         ]
       },
-      "enteredBy": "Vincent"
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-29T14:27:00.000Z"
     },
     {
       "id": "recipe-009",
@@ -1495,7 +1526,8 @@
           "prod-006"
         ]
       },
-      "enteredBy": "Marie"
+      "enteredBy": "Marie",
+      "enteredAt": "2025-10-29T14:29:00.000Z"
     },
     {
       "id": "recipe-011",
@@ -1568,7 +1600,8 @@
           "prod-003"
         ]
       },
-      "enteredBy": "Julie"
+      "enteredBy": "Julie",
+      "enteredAt": "2025-10-29T14:29:00.000Z"
     }
   ]
 }
