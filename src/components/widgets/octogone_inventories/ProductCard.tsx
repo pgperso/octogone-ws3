@@ -90,9 +90,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
 
         {/* Contenu à droite */}
         <div className="flex-1 p-3 flex flex-col justify-between">
-          <div>
+          <div className="flex-1 flex flex-col">
             {/* Informations d'inventaire sobre */}
-            <div className="space-y-0.5 text-xs mb-1">
+            <div className="space-y-0.5 text-xs">
               <div className="flex justify-between">
                 <span style={{ color: 'var(--on-surface-variant)' }}>
                   {isEnglish ? 'Value' : 'Valeur'}
@@ -130,7 +130,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               </div>
             </div>
             {needsOrder && (
-              <div className="relative mt-2">
+              <div className="relative mt-0.5 flex-1 flex flex-col">
                 <div 
                   className="absolute -top-2 left-2 px-1 text-[9px] font-semibold"
                   style={{ 
@@ -138,10 +138,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                     color: 'var(--on-surface-variant)'
                   }}
                 >
-                  {isEnglish ? 'RECOMMENDATION' : 'RECOMMANDATION'}
+                  {isEnglish ? 'Recommendation' : 'Recommandation'}
                 </div>
                 <div 
-                  className="p-2 rounded text-xs"
+                  className="p-2 rounded text-[10px] flex-1 flex items-center"
                   style={{ border: '1px solid var(--outline)' }}
                 >
                   <span style={{ color: 'var(--on-surface)' }}>
@@ -223,9 +223,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
 
         {/* Contenu à droite - 60% */}
         <div className="flex-1 p-4 flex flex-col justify-between">
-          <div>
+          <div className="flex-1 flex flex-col">
             {/* Informations d'inventaire sobre */}
-            <div className="space-y-1 text-sm mb-2">
+            <div className="space-y-1 text-sm">
               <div className="flex justify-between">
                 <span style={{ color: 'var(--on-surface-variant)' }}>
                   {isEnglish ? 'Value' : 'Valeur'}
@@ -263,7 +263,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               </div>
             </div>
             {needsOrder && (
-              <div className="relative mt-2">
+              <div className="relative mt-1 flex-1 flex flex-col">
                 <div 
                   className="absolute -top-2 left-2 px-1 text-[10px] font-semibold"
                   style={{ 
@@ -271,10 +271,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                     color: 'var(--on-surface-variant)'
                   }}
                 >
-                  {isEnglish ? 'RECOMMENDATION' : 'RECOMMANDATION'}
+                  {isEnglish ? 'Recommendation' : 'Recommandation'}
                 </div>
                 <div 
-                  className="p-2 rounded text-sm"
+                  className="p-2 rounded text-xs flex-1 flex items-center"
                   style={{ border: '1px solid var(--outline)' }}
                 >
                   <span style={{ color: 'var(--on-surface)' }}>
