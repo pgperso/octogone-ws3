@@ -277,7 +277,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 </div>
                 
                 {/* Colonne Inventaire théorique */}
-                <div className="flex-1 flex items-center justify-center gap-2">
+                <div className="flex-1 flex items-center justify-center">
                   {!product.nonInventoriable && (
                     (() => {
                       const theoreticalQty = product.theoreticalQuantity || 0;
@@ -285,28 +285,26 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                       const isBelowMinimum = theoreticalQty < minInventory;
                       
                       return (
-                        <>
-                          <div 
-                            className="w-full px-3 py-2 rounded text-xs"
-                            style={{
-                              backgroundColor: 'var(--surface)',
-                              color: 'var(--outline)',
-                              border: isSelected ? '3px solid white' : '2px solid var(--outline)',
-                              fontWeight: 'normal'
-                            }}
-                          >
-                            <div className="font-semibold text-sm">
-                              {theoreticalQty} {translateUnit(product.unit, locale)}
-                            </div>
+                        <div 
+                          className="w-full px-3 py-2 rounded text-xs flex items-center justify-between gap-2"
+                          style={{
+                            backgroundColor: 'var(--surface)',
+                            color: 'var(--outline)',
+                            border: isSelected ? '3px solid white' : '2px solid var(--outline)',
+                            fontWeight: 'normal'
+                          }}
+                        >
+                          <div className="font-semibold text-sm">
+                            {theoreticalQty} {translateUnit(product.unit, locale)}
                           </div>
                           {isBelowMinimum && (
                             <div className="relative group flex-shrink-0">
                               <div 
-                                className="w-6 h-6 rounded flex items-center justify-center"
+                                className="w-5 h-5 rounded flex items-center justify-center"
                                 style={{ backgroundColor: 'var(--warning)' }}
                               >
                                 <AlertTriangle 
-                                  size={14} 
+                                  size={12} 
                                   style={{ color: 'var(--on-primary-container)' }}
                                 />
                               </div>
@@ -314,15 +312,15 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                               <div 
                                 className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 px-3 py-2 rounded text-xs font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10"
                                 style={{ 
-                                  backgroundColor: 'var(--inverse-surface)',
-                                  color: 'var(--inverse-on-surface)'
+                                  backgroundColor: 'var(--warning)',
+                                  color: 'var(--on-primary-container)'
                                 }}
                               >
                                 {isEnglish ? 'Below minimum threshold' : 'Sous le seuil minimum'}
                               </div>
                             </div>
                           )}
-                        </>
+                        </div>
                       );
                     })()
                   )}
