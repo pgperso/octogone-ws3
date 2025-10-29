@@ -622,7 +622,7 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
               </div>
               <div className="flex items-center gap-3">
               {/* Avatar Vincent - Toujours actif */}
-              <div className="relative group">
+              <div className="relative">
                 <div className="w-12 h-12 rounded-full overflow-hidden border-2" style={{ borderColor: 'var(--primary)' }}>
                   <Image
                     src="/images/avatars/vincent.avif"
@@ -639,15 +639,12 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                     borderColor: 'var(--surface)'
                   }}
                 />
-                <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap" style={{ backgroundColor: 'var(--inverse-surface)' }}>
-                  <span className="text-xs" style={{ color: 'var(--inverse-on-surface)' }}>Vincent</span>
-                </div>
               </div>
 
               {/* Avatar Julie - Apparaît après 3 secondes */}
               {showSecondUser && (
                 <motion.div 
-                  className="relative group"
+                  className="relative"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3 }}
@@ -668,16 +665,13 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                       borderColor: 'var(--surface)'
                     }}
                   />
-                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap" style={{ backgroundColor: 'var(--inverse-surface)' }}>
-                    <span className="text-xs" style={{ color: 'var(--inverse-on-surface)' }}>Julie</span>
-                  </div>
                 </motion.div>
               )}
 
               {/* Avatar Marie - Apparaît après 6 secondes */}
               {showThirdUser && (
                 <motion.div 
-                  className="relative group"
+                  className="relative"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3 }}
@@ -698,9 +692,6 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                       borderColor: 'var(--surface)'
                     }}
                   />
-                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap" style={{ backgroundColor: 'var(--inverse-surface)' }}>
-                    <span className="text-xs" style={{ color: 'var(--inverse-on-surface)' }}>Marie</span>
-                  </div>
                 </motion.div>
               )}
               </div>
