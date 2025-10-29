@@ -167,7 +167,15 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
   }, [filteredProducts, sortBy, locale, inventory]);
 
   // Réinitialiser la recherche et sélectionner le premier produit quand on change d'emplacement
+  // (mais pas au premier chargement où la baguette est déjà sélectionnée)
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+  
   useEffect(() => {
+    if (isInitialLoad) {
+      setIsInitialLoad(false);
+      return; // Ne pas exécuter au premier chargement
+    }
+    
     setSearchTerm('');
     const firstProduct = filteredProducts[0];
     if (firstProduct) {
