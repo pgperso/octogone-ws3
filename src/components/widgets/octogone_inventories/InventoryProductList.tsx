@@ -280,11 +280,12 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 <div className="flex-1 flex items-center justify-center">
                   {!product.nonInventoriable && (
                     <div 
-                      className="px-3 py-1.5 rounded-md"
-                      style={{ 
-                        backgroundColor: isSelected ? 'var(--secondary-container)' : 'var(--surface-variant)',
-                        color: isSelected ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)',
-                        border: '1px solid var(--outline)'
+                      className="w-full px-3 py-2 rounded text-xs"
+                      style={{
+                        backgroundColor: quantity === 0 ? 'var(--secondary-container)' : 'var(--surface)',
+                        color: quantity === 0 ? 'var(--on-secondary-container)' : 'var(--outline)',
+                        border: isSelected ? '3px solid white' : (quantity === 0 ? '3px solid white' : '2px solid var(--outline)'),
+                        fontWeight: quantity === 0 ? 'bold' : 'normal'
                       }}
                     >
                       <div className="font-semibold text-sm">
