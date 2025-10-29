@@ -79,10 +79,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }}
             >
               <div 
-                className="rounded-full p-2"
-                style={{ backgroundColor: 'rgba(255, 152, 0, 0.9)' }}
+                className="rounded-lg p-2"
+                style={{ backgroundColor: 'var(--warning)' }}
               >
-                <AlertTriangle size={24} color="#1F1F1F" />
+                <AlertTriangle size={24} style={{ color: 'var(--on-primary-container)' }} />
               </div>
             </div>
           )}
@@ -213,10 +213,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
               style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)' }}
             >
               <div 
-                className="rounded-full p-3"
-                style={{ backgroundColor: 'rgba(255, 152, 0, 0.9)' }}
+                className="rounded-lg p-3"
+                style={{ backgroundColor: 'var(--warning)' }}
               >
-                <AlertTriangle size={40} color="#1F1F1F" />
+                <AlertTriangle size={40} style={{ color: 'var(--on-primary-container)' }} />
               </div>
             </div>
           )}
