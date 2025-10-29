@@ -207,7 +207,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 <span className="hidden md:inline">{isEnglish ? 'Current inventory' : 'Inventaire en cours'}</span>
                 <span className="md:hidden">{isEnglish ? 'Current' : 'En cours'}</span>
               </th>
-              <th className="px-6 py-3 text-right font-semibold text-xs" style={{ color: 'var(--on-surface)', width: '15%' }}>
+              <th className="px-6 py-3 text-left font-semibold text-xs" style={{ color: 'var(--on-surface)', width: '15%' }}>
                 <span className="hidden md:inline">{isEnglish ? 'Total value' : 'Valeur totale'}</span>
                 <span className="md:hidden">{isEnglish ? 'Total' : 'Total'}</span>
               </th>
@@ -353,7 +353,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                     </td>
                     
                     {/* Colonne Valeur totale */}
-                    <td className="px-6 py-3 text-right">
+                    <td className="px-6 py-3 text-left">
                       {product.nonInventoriable ? (
                         <span 
                           className="text-xs font-semibold"
