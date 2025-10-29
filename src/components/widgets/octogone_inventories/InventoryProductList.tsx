@@ -195,8 +195,8 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
         <div className="flex-[2]" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Product' : 'Produit'}</div>
         <div className="flex-1 hidden md:block" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Category' : 'Catégorie'}</div>
         <div className="flex-1">
-          <span className="hidden md:inline" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Previous inventory' : 'Inventaire précédent'}</span>
-          <span className="md:hidden" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Previous' : 'Précédent'}</span>
+          <span className="hidden md:inline" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Theoretical inventory' : 'Inventaire théorique'}</span>
+          <span className="md:hidden" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Theoretical' : 'Théorique'}</span>
         </div>
         <div className="flex-1">
           <span className="hidden md:inline" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Current inventory' : 'Inventaire en cours'}</span>
@@ -276,20 +276,19 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                   )}
                 </div>
                 
-                {/* Colonne Inventaire précédent */}
+                {/* Colonne Inventaire théorique */}
                 <div className="flex-1 flex items-center justify-center">
                   {!product.nonInventoriable && (
                     <div 
-                      className="w-full px-3 py-2 rounded text-xs"
-                      style={{
-                        backgroundColor: quantity === 0 ? 'var(--secondary-container)' : 'var(--surface)',
-                        color: quantity === 0 ? 'var(--on-secondary-container)' : 'var(--outline)',
-                        border: isSelected ? '3px solid white' : (quantity === 0 ? '3px solid white' : '2px solid var(--outline)'),
-                        fontWeight: quantity === 0 ? 'bold' : 'normal'
+                      className="px-3 py-1.5 rounded-md"
+                      style={{ 
+                        backgroundColor: isSelected ? 'var(--secondary-container)' : 'var(--surface-variant)',
+                        color: isSelected ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)',
+                        border: '1px solid var(--outline)'
                       }}
                     >
                       <div className="font-semibold text-sm">
-                        {product.initialQuantity || 0} {translateUnit(product.unit, locale)}
+                        {product.theoreticalQuantity || 0} {translateUnit(product.unit, locale)}
                       </div>
                     </div>
                   )}
