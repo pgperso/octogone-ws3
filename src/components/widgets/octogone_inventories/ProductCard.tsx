@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { ShoppingCart, ImageIcon, ChefHat, AlertTriangle } from 'lucide-react';
-import { translateProduct, translateUnit } from '@/data/products/octogone_products_translations';
+import { translateUnit } from '@/data/products/octogone_products_translations';
 import { getProductImage } from '@/utils/productImageMapping';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 
