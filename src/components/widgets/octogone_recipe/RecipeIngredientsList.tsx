@@ -184,9 +184,9 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
                         alignSelf: 'stretch'
                       }}
                     >
-                      {(product.image || getProductImage(product.name)) !== '/products/placeholder.avif' ? (
+                      {(product.image || getProductImage(product.name)) ? (
                         <Image
-                          src={product.image || getProductImage(product.name)}
+                          src={product.image || getProductImage(product.name)!}
                           alt={product.name}
                           width={64}
                           height={64}
@@ -247,9 +247,9 @@ export const RecipeIngredientsList: React.FC<RecipeIngredientsListProps> = ({
                       alignSelf: 'stretch'
                     }}
                   >
-                    {(product.image || getProductImage(product.name)) !== '/products/placeholder.avif' ? (
+                    {(product.image || getProductImage(product.name)) ? (
                       <Image
-                        src={product.image || getProductImage(product.name)}
+                        src={product.image || getProductImage(product.name)!}
                         alt={product.name}
                         width={64}
                         height={64}
