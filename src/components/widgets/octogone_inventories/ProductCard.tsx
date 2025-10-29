@@ -146,35 +146,21 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                 {gap >= 0 ? '+' : ''}{gap} {translateUnit(product.unit, locale)}
               </span>
             </div>
-            {needsOrder && (
-              <div className="flex justify-between items-center">
-                <span style={{ color: 'var(--on-surface-variant)' }}>
-                  {isEnglish ? 'Auto-add to basket' : 'Ajouter au panier automatiquement'}
-                </span>
-                <input
-                  type="checkbox"
-                  checked={autoAddToCart}
-                  onChange={(e) => onAutoAddToCartChange?.(e.target.checked)}
-                  className="w-3 h-3 rounded cursor-pointer"
-                  style={{
-                    accentColor: 'var(--secondary-container)'
-                  }}
-                />
-              </div>
-            )}
           </div>
 
           {/* Bouton et toggle */}
           {needsOrder && (
             <div>
               <div className="flex items-center gap-2 mb-0.5">
-                <OctogoneQuantitySelector
-                  value={orderQuantity}
-                  onChange={setOrderQuantity}
-                  min={0}
-                  step={orderUnit === 'kg' || orderUnit === 'L' ? 0.1 : 1}
-                  size="sm"
-                />
+                <div className="flex-1">
+                  <OctogoneQuantitySelector
+                    value={orderQuantity}
+                    onChange={setOrderQuantity}
+                    min={0}
+                    step={orderUnit === 'kg' || orderUnit === 'L' ? 0.1 : 1}
+                    size="sm"
+                  />
+                </div>
                 <OctogoneUnitSelector
                   options={unitOptions}
                   value={orderUnit}
@@ -278,35 +264,21 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                 {gap >= 0 ? '+' : ''}{gap} {translateUnit(product.unit, locale)}
               </span>
             </div>
-            {needsOrder && (
-              <div className="flex justify-between items-center">
-                <span style={{ color: 'var(--on-surface-variant)' }}>
-                  {isEnglish ? 'Auto-add to basket' : 'Ajouter au panier automatiquement'}
-                </span>
-                <input
-                  type="checkbox"
-                  checked={autoAddToCart}
-                  onChange={(e) => onAutoAddToCartChange?.(e.target.checked)}
-                  className="w-4 h-4 rounded cursor-pointer"
-                  style={{
-                    accentColor: 'var(--secondary-container)'
-                  }}
-                />
-              </div>
-            )}
           </div>
 
           {/* Bouton et toggle */}
           {needsOrder && (
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <OctogoneQuantitySelector
-                  value={orderQuantity}
-                  onChange={setOrderQuantity}
-                  min={0}
-                  step={orderUnit === 'kg' || orderUnit === 'L' ? 0.1 : 1}
-                  size="md"
-                />
+                <div className="flex-1">
+                  <OctogoneQuantitySelector
+                    value={orderQuantity}
+                    onChange={setOrderQuantity}
+                    min={0}
+                    step={orderUnit === 'kg' || orderUnit === 'L' ? 0.1 : 1}
+                    size="md"
+                  />
+                </div>
                 <OctogoneUnitSelector
                   options={unitOptions}
                   value={orderUnit}
