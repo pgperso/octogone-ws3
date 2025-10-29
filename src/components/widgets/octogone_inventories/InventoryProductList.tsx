@@ -197,15 +197,15 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
       <div className="flex gap-2 px-6 py-3 border-b font-semibold text-sm" style={{ backgroundColor: 'var(--surface-container)', borderColor: 'var(--outline)' }}>
         <div className="flex-[2]" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Product' : 'Produit'}</div>
         <div className="flex-1 hidden md:block" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Category' : 'Catégorie'}</div>
-        <div className="flex-1">
+        <div className="flex-1 text-center">
           <span className="hidden md:inline" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Theoretical inventory' : 'Inventaire théorique'}</span>
           <span className="md:hidden" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Theoretical' : 'Théorique'}</span>
         </div>
-        <div className="flex-1">
+        <div className="flex-1 text-center">
           <span className="hidden md:inline" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Current inventory' : 'Inventaire en cours'}</span>
           <span className="md:hidden" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Current' : 'En cours'}</span>
         </div>
-        <div className="flex-1 text-right pr-2">
+        <div className="flex-1 text-right">
           <span className="hidden md:inline" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Total value' : 'Valeur totale'}</span>
           <span className="md:hidden" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Total' : 'Total'}</span>
         </div>
@@ -297,7 +297,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                             fontWeight: 'normal'
                           }}
                         >
-                          <div className="font-semibold text-sm">
+                          <div className="font-semibold text-xs">
                             {theoreticalQty} {translateUnit(product.unit, locale)}
                           </div>
                           {isBelowMinimum && (
@@ -341,7 +341,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                         fontWeight: quantity > 0 ? 'bold' : 'normal'
                       }}
                     >
-                      <div className="font-bold text-sm">
+                      <div className="font-bold text-xs">
                         {quantity > 0 ? `${quantity} ${translateUnit(product.unit, locale)}` : '-'}
                       </div>
                       {quantity > 0 && (
@@ -371,7 +371,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                       {isEnglish ? "Don't count" : 'Ne pas compter'}
                     </span>
                   ) : (
-                    <div className="font-semibold">
+                    <div className="font-semibold text-sm">
                       {quantity > 0 ? `${totalCost.toFixed(2)} $` : '-'}
                     </div>
                   )}
