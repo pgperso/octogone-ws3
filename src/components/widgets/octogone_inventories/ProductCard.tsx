@@ -1,11 +1,12 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { ShoppingCart, ImageIcon, ChefHat, AlertTriangle } from 'lucide-react';
 import { translateUnit } from '@/data/products/octogone_products_translations';
 import { getProductImage } from '@/utils/productImageMapping';
 import { OctogoneButton } from '@/components/ui/octogone-button';
+import { translateProduct } from '@/data/products/octogone_products_translations';
 
 interface Product {
   id: string;
@@ -45,6 +46,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
   const gap = currentStock - minInventory;
   const quantityToOrder = gap < 0 ? Math.abs(gap) : 0;
   const needsOrder = gap < 0;
+  
+  const [orderQuantity, setOrderQuantity] = useState(quantityToOrder);
   
   const productImage = getProductImage(product.name);
 
@@ -138,8 +141,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                   </div>
                   <span style={{ color: 'var(--on-surface)' }}>
                     {isEnglish 
-                      ? `Stock level below minimum threshold. Order ${quantityToOrder} ${translateUnit(product.unit, locale)} to restore optimal inventory levels.`
-                      : `Niveau de stock sous le seuil minimum. Commander ${quantityToOrder} ${translateUnit(product.unit, locale)} pour rétablir les niveaux optimaux.`
+                      ? `Your ${actualStock > 0 ? 'current' : 'theoretical'} inventory indicates it is below the minimum threshold of ${minInventory} ${translateUnit(product.unit, locale)}. Add ${translateProduct(product.name, locale)} to your ${product.isRecipe ? 'production' : 'order'} basket to avoid stockouts or simply ignore.`
+                      : `Votre inventaire ${actualStock > 0 ? 'en cours' : 'théorique'} indique qu'il est sous le seuil minimum de ${minInventory} ${translateUnit(product.unit, locale)}. Ajoutez ${translateProduct(product.name, locale)} à votre panier de ${product.isRecipe ? 'production' : 'commande'} pour éviter une rupture de stock ou tout simplement ignorer.`
                     }
                   </span>
                 </div>
@@ -150,18 +153,37 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
           {/* Bouton et toggle */}
           {needsOrder && (
             <div>
-              <OctogoneButton
-                variant="primary"
-                size="sm"
-                onClick={onAddToOrder}
-                icon={product.isRecipe ? <ChefHat className="w-4 h-4" /> : <ShoppingCart className="w-4 h-4" />}
-                className="w-full mb-0.5"
-              >
-                {product.isRecipe 
-                  ? (isEnglish ? 'Add to production basket' : 'Ajouter au panier de production')
-                  : (isEnglish ? 'Add to order basket' : 'Ajouter au panier de commande')
-                }
-              </OctogoneButton>
+              <div className="flex gap-2 mb-0.5">
+                <div className="flex items-center gap-1">
+                  <input
+                    type="number"
+                    value={orderQuantity}
+                    onChange={(e) => setOrderQuantity(Number(e.target.value))}
+                    className="w-12 px-1 py-1 text-xs text-center rounded border"
+                    style={{
+                      backgroundColor: 'var(--surface)',
+                      borderColor: 'var(--outline)',
+                      color: 'var(--on-surface)'
+                    }}
+                    min="0"
+                  />
+                  <span className="text-[9px]" style={{ color: 'var(--on-surface-variant)' }}>
+                    {translateUnit(product.unit, locale)}
+                  </span>
+                </div>
+                <OctogoneButton
+                  variant="primary"
+                  size="sm"
+                  onClick={onAddToOrder}
+                  icon={product.isRecipe ? <ChefHat className="w-4 h-4" /> : <ShoppingCart className="w-4 h-4" />}
+                  className="flex-1"
+                >
+                  {product.isRecipe 
+                    ? (isEnglish ? 'Add to production basket' : 'Ajouter au panier de production')
+                    : (isEnglish ? 'Add to order basket' : 'Ajouter au panier de commande')
+                  }
+                </OctogoneButton>
+              </div>
               <label className="flex items-center gap-1 cursor-pointer">
                 <input
                   type="checkbox"
@@ -263,8 +285,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                   </div>
                   <span style={{ color: 'var(--on-surface)' }}>
                     {isEnglish 
-                      ? `Stock level below minimum threshold. Order ${quantityToOrder} ${translateUnit(product.unit, locale)} to restore optimal inventory levels.`
-                      : `Niveau de stock sous le seuil minimum. Commander ${quantityToOrder} ${translateUnit(product.unit, locale)} pour rétablir les niveaux optimaux.`
+                      ? `Your ${actualStock > 0 ? 'current' : 'theoretical'} inventory indicates it is below the minimum threshold of ${minInventory} ${translateUnit(product.unit, locale)}. Add ${translateProduct(product.name, locale)} to your ${product.isRecipe ? 'production' : 'order'} basket to avoid stockouts or simply ignore.`
+                      : `Votre inventaire ${actualStock > 0 ? 'en cours' : 'théorique'} indique qu'il est sous le seuil minimum de ${minInventory} ${translateUnit(product.unit, locale)}. Ajoutez ${translateProduct(product.name, locale)} à votre panier de ${product.isRecipe ? 'production' : 'commande'} pour éviter une rupture de stock ou tout simplement ignorer.`
                     }
                   </span>
                 </div>
@@ -275,18 +297,37 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
           {/* Bouton et toggle */}
           {needsOrder && (
             <div>
-              <OctogoneButton
-                variant="primary"
-                size="md"
-                onClick={onAddToOrder}
-                icon={product.isRecipe ? <ChefHat className="w-5 h-5" /> : <ShoppingCart className="w-5 h-5" />}
-                className="w-full mb-2"
-              >
-                {product.isRecipe 
-                  ? (isEnglish ? 'Add to production basket' : 'Ajouter au panier de production')
-                  : (isEnglish ? 'Add to order basket' : 'Ajouter au panier de commande')
-                }
-              </OctogoneButton>
+              <div className="flex gap-2 mb-2">
+                <div className="flex items-center gap-1">
+                  <input
+                    type="number"
+                    value={orderQuantity}
+                    onChange={(e) => setOrderQuantity(Number(e.target.value))}
+                    className="w-16 px-2 py-1 text-sm text-center rounded border"
+                    style={{
+                      backgroundColor: 'var(--surface)',
+                      borderColor: 'var(--outline)',
+                      color: 'var(--on-surface)'
+                    }}
+                    min="0"
+                  />
+                  <span className="text-xs" style={{ color: 'var(--on-surface-variant)' }}>
+                    {translateUnit(product.unit, locale)}
+                  </span>
+                </div>
+                <OctogoneButton
+                  variant="primary"
+                  size="md"
+                  onClick={onAddToOrder}
+                  icon={product.isRecipe ? <ChefHat className="w-5 h-5" /> : <ShoppingCart className="w-5 h-5" />}
+                  className="flex-1"
+                >
+                  {product.isRecipe 
+                    ? (isEnglish ? 'Add to production basket' : 'Ajouter au panier de production')
+                    : (isEnglish ? 'Add to order basket' : 'Ajouter au panier de commande')
+                  }
+                </OctogoneButton>
+              </div>
               <label className="flex items-center gap-2 cursor-pointer">
                 <input
                   type="checkbox"
