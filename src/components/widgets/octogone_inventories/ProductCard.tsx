@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { ShoppingCart, ImageIcon, ChefHat, AlertTriangle } from 'lucide-react';
 import { translateUnit } from '@/data/products/octogone_products_translations';
@@ -48,6 +48,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
   // Valeurs par défaut basées sur l'écart
   const [orderQuantity, setOrderQuantity] = useState(Math.abs(gap));
   const [orderUnit, setOrderUnit] = useState(product.unit);
+  
+  // Mettre à jour la quantité quand le gap change
+  useEffect(() => {
+    setOrderQuantity(Math.abs(gap));
+  }, [gap]);
   
   const productImage = getProductImage(product.name);
   

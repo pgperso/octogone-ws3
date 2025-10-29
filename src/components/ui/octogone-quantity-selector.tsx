@@ -92,7 +92,7 @@ export const OctogoneQuantitySelector: React.FC<OctogoneQuantitySelectorProps> =
 
   return (
     <div 
-      className={`inline-flex items-center rounded-lg transition-all duration-200 ${sizeClasses.container}`}
+      className={`flex items-center rounded-lg transition-all duration-200 w-full ${sizeClasses.container}`}
       style={{
         backgroundColor: 'transparent',
         border: `2px solid ${forceBorderWhite ? '#FFFFFF' : (isFocused ? '#FFFFFF' : 'var(--outline)')}`,
@@ -130,7 +130,7 @@ export const OctogoneQuantitySelector: React.FC<OctogoneQuantitySelectorProps> =
         onKeyDown={handleKeyDown}
         onFocus={() => setIsFocused(true)}
         onBlur={() => setIsFocused(false)}
-        className={`w-20 text-center font-medium ${sizeClasses.input} bg-transparent outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none`}
+        className={`flex-1 text-center font-medium ${sizeClasses.input} bg-transparent outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none`}
         style={{
           color: 'var(--on-surface)',
           borderLeft: '1px solid var(--outline)',
