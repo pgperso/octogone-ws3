@@ -200,7 +200,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
             }}
           >
             <tr>
-              <th className="px-3 py-3 text-left font-semibold text-xs" style={{ color: 'var(--on-surface)', width: '30%' }}>
+              <th className="px-6 py-3 text-left font-semibold text-xs" style={{ color: 'var(--on-surface)', width: '30%' }}>
                 {isEnglish ? 'Product' : 'Produit'}
               </th>
               <th className="px-3 py-3 text-left font-semibold text-xs hidden md:table-cell" style={{ color: 'var(--on-surface)', width: '15%' }}>
@@ -218,7 +218,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                 <span className="hidden md:inline" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Total value' : 'Valeur totale'}</span>
                 <span className="md:hidden" style={{ color: 'var(--on-surface)' }}>{isEnglish ? 'Total' : 'Total'}</span>
               </th>
-              <th className="px-3 py-3 text-right font-semibold text-xs hidden md:table-cell" style={{ color: 'var(--on-surface)', width: '4%' }}>
+              <th className="px-3 py-3 text-right font-semibold text-xs hidden md:table-cell" style={{ color: 'var(--on-surface)', width: '3%' }}>
               </th>
             </tr>
           </thead>
@@ -257,7 +257,7 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                     }}
                   >
                     {/* Colonne Produit */}
-                    <td className="px-3 py-3">
+                    <td className="px-6 py-3">
                       <div className="font-medium text-sm">{translateProduct(product.name, locale)}</div>
                       {product.isRecipe && (
                         <span 
