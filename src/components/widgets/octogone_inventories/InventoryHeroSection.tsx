@@ -783,6 +783,7 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
                 {/* État 3: Accès débloqué - Pas de message, juste activer le bouton */}
               </div>
             )}
+            </div>
 
             {/* Bouton Compléter */}
             <OctogoneButton
