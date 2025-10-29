@@ -259,11 +259,13 @@ export const InventoryHeroSection: React.FC<InventoryHeroSectionProps> = ({
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           {/* Image de l'inventaire avec badges et progress bar par-dessus */}
-          <div className="order-1 lg:order-1 relative" style={{ height: '600px' }}>
+          <div className="order-1 lg:order-1 relative">
             <div 
-              className="w-full h-full rounded-3xl overflow-hidden shadow-2xl"
+              className="w-full rounded-3xl overflow-hidden shadow-2xl"
               style={{ 
-                border: '2px solid var(--outline)'
+                border: '2px solid var(--outline)',
+                aspectRatio: '1 / 1',
+                minHeight: '600px'
               }}
             >
               <Image
