@@ -64,9 +64,7 @@ export const InventoryFlowContainer: React.FC<InventoryFlowContainerProps> = ({
       {/* État 3: Widget complet */}
       {flowState === 'widget' && (
         <div className="px-6 py-8">
-          <div className="h-[800px]">
-            <OctogoneInventoryWidget locale={locale} />
-          </div>
+          <OctogoneInventoryWidget locale={locale} />
         </div>
       )}
     </div>
