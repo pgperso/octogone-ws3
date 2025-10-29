@@ -55,7 +55,6 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
   const [showSuccess, setShowSuccess] = useState(false);
   const [orderBasket, setOrderBasket] = useState<Set<string>>(new Set());
   const [productionBasket, setProductionBasket] = useState<Set<string>>(new Set());
-  const [autoAddToCart, setAutoAddToCart] = useState(false);
 
   // Réinitialiser quand le produit change
   useEffect(() => {
@@ -132,17 +131,6 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
       setTimeout(() => {
         // Étape 2: Sauvegarder et montrer la confirmation (800ms)
         onSave(selectedProduct.id, quantity);
-        
-        // Logique d'ajout automatique au panier APRÈS la sauvegarde
-        if (selectedProduct && !selectedProduct.nonInventoriable && quantity > 0) {
-          const minInventory = selectedProduct.minInventory || 0;
-          const isBelowMinimum = quantity < minInventory;
-          
-          if (isBelowMinimum && autoAddToCart && !orderBasket.has(selectedProduct.id)) {
-            // Ajouter automatiquement au panier de commande
-            setOrderBasket(prev => new Set(prev).add(selectedProduct.id));
-          }
-        }
         
         setDisplayValue('0');
         setIsEditing(false);
@@ -289,8 +277,6 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
           product={selectedProduct} 
           locale={locale}
           currentQuantity={currentInventoryQuantity}
-          autoAddToCart={autoAddToCart}
-          onAutoAddToCartChange={setAutoAddToCart}
           onAddToOrder={() => {
             if (selectedProduct.isRecipe) {
               handleAddToProductionBasket();
