@@ -80,6 +80,17 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
           0% { background-position: -200% 0; }
           100% { background-position: 200% 0; }
         }
+        
+        /* Swiper pagination dots */
+        .swiper-pagination-bullet {
+          background: var(--outline) !important;
+          opacity: 0.5 !important;
+        }
+        
+        .swiper-pagination-bullet-active {
+          background: var(--secondary-container) !important;
+          opacity: 1 !important;
+        }
       `}</style>
       
       {/* Hero Section */}
