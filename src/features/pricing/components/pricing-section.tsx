@@ -20,7 +20,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
   const basePrice = pricingData[0].pricePerLocationPerMonth;
   
   // Mapping des icônes
-  const iconMap: Record<string, any> = {
+  const iconMap: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = {
     Warehouse,
     ChefHat,
     DollarSign,
@@ -30,7 +30,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
   // Créer les plans à partir des modules (exclure thermometer)
   const plans = modulesData
     .filter(module => module.id !== 'thermometer')
-    .map((module, index) => ({
+    .map((module) => ({
       id: module.id,
       name: isEnglish ? module.nameEn : module.nameFr,
       icon: iconMap[module.icon] || Package,
