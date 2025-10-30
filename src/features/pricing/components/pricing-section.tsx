@@ -1,9 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { ResponsiveSection } from '@/components/ui/responsive-section';
 import { OctogoneButton } from '@/components/ui/octogone-button';
-import { Check, Warehouse, ChefHat, DollarSign, Package } from 'lucide-react';
+import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Sparkles, TrendingDown, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import modulesData from '@/data/calculator/modules.json';
@@ -15,9 +15,11 @@ interface PricingSectionProps {
 
 export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
   const isEnglish = locale === 'en';
+  const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly');
   
   // Prix de base pour 1 établissement
   const basePrice = pricingData[0].pricePerLocationPerMonth;
+  const annualDiscount = 0.15; // 15% de rabais annuel
   
   // Mapping des icônes
   const iconMap: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = {
@@ -30,47 +32,106 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
   // Créer les plans à partir des modules (exclure thermometer)
   const plans = modulesData
     .filter(module => module.id !== 'thermometer')
-    .map((module) => ({
-      id: module.id,
-      name: isEnglish ? module.nameEn : module.nameFr,
-      icon: iconMap[module.icon] || Package,
-      price: module.id === 'pro' 
-        ? `${basePrice * 4}$` 
-        : `${basePrice}$`,
-      priceDetail: isEnglish ? '/location/month' : '/établissement/mois',
-      description: isEnglish ? module.descriptionEn : module.descriptionFr,
-      features: isEnglish ? module.featuresEn : module.featuresFr,
-      highlighted: module.id === 'pro',
-      savings: `${module.monthlySavingsPerLocation}$`,
-      timeSaved: `${module.timesSavedPerWeekPerLocation}h`
-    }));
+    .map((module) => {
+      const monthlyPrice = module.id === 'pro' ? basePrice * 4 : basePrice;
+      const annualPrice = Math.round(monthlyPrice * (1 - annualDiscount));
+      const displayPrice = billingCycle === 'monthly' ? monthlyPrice : annualPrice;
+      
+      return {
+        id: module.id,
+        name: isEnglish ? module.nameEn : module.nameFr,
+        icon: iconMap[module.icon] || Package,
+        price: displayPrice,
+        originalPrice: billingCycle === 'annual' ? monthlyPrice : null,
+        priceDetail: isEnglish ? '/location/month' : '/établissement/mois',
+        description: isEnglish ? module.descriptionEn : module.descriptionFr,
+        features: isEnglish ? module.featuresEn : module.featuresFr,
+        highlighted: module.id === 'pro',
+        savings: module.monthlySavingsPerLocation,
+        timeSaved: module.timesSavedPerWeekPerLocation,
+        popular: module.id === 'foodcost'
+      };
+    });
 
   return (
     <>
       {/* Hero Section */}
       <ResponsiveSection spacing="xl" bgColor="">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-4xl mx-auto mb-12">
+          <motion.div
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+            style={{ backgroundColor: 'var(--primary-container)', color: 'var(--on-primary-container)' }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Sparkles className="w-4 h-4" />
+            <span className="text-sm font-semibold">
+              {isEnglish ? 'Save up to 15% with annual billing' : 'Économisez jusqu\'à 15% avec la facturation annuelle'}
+            </span>
+          </motion.div>
+
           <motion.h1 
             className="text-5xl md:text-6xl font-bold mb-6"
             style={{ color: 'var(--on-surface)' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
-            {isEnglish ? 'Simple, transparent pricing' : 'Tarification simple et transparente'}
+            {isEnglish ? 'Pricing that grows with you' : 'Une tarification qui évolue avec vous'}
           </motion.h1>
+          
           <motion.p 
-            className="text-xl"
+            className="text-xl mb-8"
             style={{ color: 'var(--on-surface-variant)' }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
             {isEnglish 
-              ? 'Choose the plan that fits your restaurant\'s needs. All plans include core features with no hidden fees.'
-              : 'Choisissez le forfait qui correspond aux besoins de votre restaurant. Tous les forfaits incluent les fonctionnalités de base sans frais cachés.'
+              ? 'Choose the perfect plan for your restaurant. Start small, scale as you grow. No hidden fees, cancel anytime.'
+              : 'Choisissez le forfait parfait pour votre restaurant. Commencez petit, évoluez selon vos besoins. Aucun frais caché, annulez à tout moment.'
             }
           </motion.p>
+
+          {/* Billing Toggle */}
+          <motion.div 
+            className="flex items-center justify-center gap-4 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <button
+              onClick={() => setBillingCycle('monthly')}
+              className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+                billingCycle === 'monthly' ? 'shadow-lg' : ''
+              }`}
+              style={{
+                backgroundColor: billingCycle === 'monthly' ? 'var(--primary)' : 'var(--surface-variant)',
+                color: billingCycle === 'monthly' ? 'var(--on-primary)' : 'var(--on-surface-variant)'
+              }}
+            >
+              {isEnglish ? 'Monthly' : 'Mensuel'}
+            </button>
+            <button
+              onClick={() => setBillingCycle('annual')}
+              className={`px-6 py-3 rounded-lg font-semibold transition-all relative ${
+                billingCycle === 'annual' ? 'shadow-lg' : ''
+              }`}
+              style={{
+                backgroundColor: billingCycle === 'annual' ? 'var(--primary)' : 'var(--surface-variant)',
+                color: billingCycle === 'annual' ? 'var(--on-primary)' : 'var(--on-surface-variant)'
+              }}
+            >
+              {isEnglish ? 'Annual' : 'Annuel'}
+              <span 
+                className="absolute -top-2 -right-2 px-2 py-0.5 text-xs font-bold rounded-full"
+                style={{ backgroundColor: 'var(--success)', color: 'white' }}
+              >
+                -15%
+              </span>
+            </button>
+          </motion.div>
         </div>
 
         {/* Pricing Cards */}
@@ -121,31 +182,45 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                 </h3>
 
                 {/* Price */}
-                <div className="text-center mb-4">
-                  <div 
-                    className="text-3xl font-bold"
-                    style={{ color: 'var(--primary)' }}
-                  >
-                    {plan.price}
+                <div className="text-center mb-6">
+                  <div className="flex items-center justify-center gap-2 mb-1">
+                    {plan.originalPrice && (
+                      <span 
+                        className="text-lg line-through"
+                        style={{ color: 'var(--on-surface-variant)', opacity: 0.5 }}
+                      >
+                        {plan.originalPrice}$
+                      </span>
+                    )}
+                    <div 
+                      className="text-4xl font-bold"
+                      style={{ color: 'var(--primary)' }}
+                    >
+                      {plan.price}$
+                    </div>
                   </div>
                   <div 
-                    className="text-sm"
+                    className="text-sm mb-4"
                     style={{ color: plan.highlighted ? 'var(--on-primary-container)' : 'var(--on-surface-variant)' }}
                   >
                     {plan.priceDetail}
                   </div>
-                  <div className="mt-2 space-y-1">
+                  
+                  {/* Value Badges */}
+                  <div className="flex flex-wrap gap-2 justify-center">
                     <div 
-                      className="text-xs font-semibold"
-                      style={{ color: 'var(--success)' }}
+                      className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold"
+                      style={{ backgroundColor: 'var(--success-container)', color: 'var(--on-success-container)' }}
                     >
-                      {isEnglish ? 'Saves' : 'Économise'} {plan.savings}{isEnglish ? '/month' : '/mois'}
+                      <TrendingDown className="w-3 h-3" />
+                      {isEnglish ? 'Save' : 'Économise'} {plan.savings}$/mois
                     </div>
                     <div 
-                      className="text-xs"
-                      style={{ color: plan.highlighted ? 'var(--on-primary-container)' : 'var(--on-surface-variant)' }}
+                      className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold"
+                      style={{ backgroundColor: 'var(--tertiary-container)', color: 'var(--on-tertiary-container)' }}
                     >
-                      {isEnglish ? 'Saves' : 'Économise'} {plan.timeSaved}{isEnglish ? '/week' : '/semaine'}
+                      <Clock className="w-3 h-3" />
+                      {plan.timeSaved}h/semaine
                     </div>
                   </div>
                 </div>
@@ -181,9 +256,10 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                   <OctogoneButton
                     variant={plan.highlighted ? 'primary' : 'secondary'}
                     size="lg"
-                    className="w-full"
+                    className="w-full flex items-center justify-center gap-2"
                   >
-                    {isEnglish ? 'Contact us' : 'Nous contacter'}
+                    {isEnglish ? 'Get started' : 'Commencer'}
+                    <ArrowRight className="w-5 h-5" />
                   </OctogoneButton>
                 </Link>
               </motion.div>
