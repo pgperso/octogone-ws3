@@ -297,7 +297,6 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                             style={{
                               backgroundColor: 'var(--surface)',
                               color: 'var(--on-surface)',
-                              border: isSelected ? '3px solid white' : '2px solid var(--outline)',
                               fontWeight: 'normal'
                             }}
                           >
