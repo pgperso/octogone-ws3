@@ -198,7 +198,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className={`rounded-2xl p-8 relative flex flex-col shadow-lg ${plan.specialEffects?.ring || ''}`}
+                    className={`rounded-2xl p-8 relative flex flex-col ${hasCustomColors ? 'shadow-lg' : ''} ${plan.specialEffects?.ring || ''}`}
                     style={{
                       border: plan.customColors?.background ? 'none' : '1px solid var(--outline)',
                       background: plan.customColors?.background || 'var(--surface)',
