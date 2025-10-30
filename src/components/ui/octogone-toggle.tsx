@@ -66,7 +66,7 @@ export const OctogoneToggle: React.FC<OctogoneToggleProps> = ({
             {option.label}
             {option.badge && (
               <span
-                className="absolute -top-2 -right-2 px-2 py-0.5 text-xs font-bold rounded-full"
+                className="absolute -top-2 -right-4 px-2 py-0.5 text-xs font-bold rounded-full"
                 style={{
                   backgroundColor: option.badge.backgroundColor || 'var(--success)',
                   color: option.badge.color || 'var(--on-primary-container)'

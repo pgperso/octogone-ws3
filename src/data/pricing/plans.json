@@ -84,8 +84,8 @@
     "highlighted": false,
     "popular": false,
     "badge": {
-      "textFr": "Sécurité",
-      "textEn": "Security",
+      "textFr": "La sécurité sans compromis",
+      "textEn": "Security without compromise",
       "color": "success"
     },
     "customColors": null,

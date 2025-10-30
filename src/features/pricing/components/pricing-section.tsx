@@ -103,16 +103,6 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
       {/* Hero Section */}
       <ResponsiveSection spacing="none" bgColor="" className="py-20">
         <div className="text-center max-w-4xl mx-auto mb-12">
-          <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
-            style={{ backgroundColor: 'var(--primary-container)', color: 'var(--on-primary-container)' }}
-          >
-            <Sparkles className="w-4 h-4" />
-            <span className="text-sm font-semibold">
-              {isEnglish ? pricingConfig.hero.badge.textEn : pricingConfig.hero.badge.textFr}
-            </span>
-          </div>
-
           <h1 
             className="text-5xl md:text-6xl font-bold mb-6"
             style={{ color: 'var(--on-surface)' }}
@@ -195,7 +185,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                 {plan.badge && (
                   <>
                     <div 
-                      className="absolute left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2"
+                      className="absolute left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-lg text-sm font-bold whitespace-nowrap"
                       style={{ 
                         top: '-22px',
                         backgroundColor: plan.badgeColor === 'cortex' ? '#E2CDED' : 
