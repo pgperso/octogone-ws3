@@ -348,19 +348,15 @@ style={{ backgroundColor: 'transparent' }}
             />
           ))}
           
-          {/* Carte "+ 300" */}
+          {/* Texte "+ 300" */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.05 * 11 }}
-            className="flex items-center justify-center h-24 rounded-lg"
-            style={{ 
-              backgroundColor: 'var(--primary-container)',
-              border: '2px solid var(--primary)'
-            }}
+            className="flex items-center justify-center h-24"
           >
-            <span className="text-3xl font-bold" style={{ color: 'var(--primary)' }}>
+            <span className="text-3xl font-bold" style={{ color: 'var(--on-surface)' }}>
               + 300
             </span>
           </motion.div>
