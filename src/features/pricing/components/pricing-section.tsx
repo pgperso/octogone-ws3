@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { ResponsiveSection } from '@/components/ui/responsive-section';
 import { OctogoneButton } from '@/components/ui/octogone-button';
+import { OctogoneGradientButton } from '@/components/ui/octogone-gradient-button';
 import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Sparkles, ChevronLeft, ChevronRight, Star, Thermometer } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -311,16 +312,19 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                 </ul>
 
                 {/* CTA Button */}
-                <Link href="https://octogone-ws3.vercel.app/fr/contact" target="_blank" rel="noopener noreferrer">
-                  <OctogoneButton
-                    variant={plan.highlighted ? 'primary' : 'secondary'}
-                    size="lg"
-                    className="w-full flex items-center justify-center gap-2"
-                  >
-                    {isEnglish ? pricingConfig.cta.button.en : pricingConfig.cta.button.fr}
-                    <ArrowRight className="w-5 h-5" />
-                  </OctogoneButton>
-                </Link>
+                <OctogoneGradientButton
+                  href="https://octogone-ws3.vercel.app/fr/contact"
+                  icon={ArrowRight}
+                  text={isEnglish ? pricingConfig.cta.button.en : pricingConfig.cta.button.fr}
+                  gradient={
+                    plan.id === 'pro' || plan.id === 'pro_ai'
+                      ? 'linear-gradient(135deg, #E2CDED 0%, #BADFF6 100%)'
+                      : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+                  }
+                  className="w-full"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                />
               </motion.div>
                 </SwiperSlide>
               );
