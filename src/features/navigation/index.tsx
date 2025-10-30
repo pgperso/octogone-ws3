@@ -158,7 +158,10 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
                 ? "Enjoy a rate freeze now"
                 : "Welcome to our new website, a preview of the new Octogone version. Choose your plan now and enjoy a rate freeze at launch.")
           }
-          link={undefined}
+          link={{
+            text: '',
+            href: `/${locale}/contact`
+          }}
           isVisible={isAnnouncementVisible}
           onDismiss={() => {
             setIsAnnouncementVisible(false);
