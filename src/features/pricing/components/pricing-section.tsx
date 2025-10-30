@@ -319,8 +319,9 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                   gradient={
                     plan.id === 'pro' || plan.id === 'pro_ai'
                       ? 'linear-gradient(135deg, #E2CDED 0%, #BADFF6 100%)'
-                      : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+                      : undefined
                   }
+                  showBorder={plan.id !== 'pro' && plan.id !== 'pro_ai'}
                   className="w-full"
                   target="_blank"
                   rel="noopener noreferrer"
