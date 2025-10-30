@@ -303,8 +303,8 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
       )}
 
       {hasExistingEntry ? (
-        /* Affichage de la saisie existante */
-        <div className="mb-6">
+        /* Affichage de la saisie existante - même hauteur que la calculatrice */
+        <div className="mb-6 flex flex-col" style={{ minHeight: '520px' }}>
           <div 
             className="mb-4 p-6 rounded-lg text-center"
             style={{ backgroundColor: 'var(--surface-variant)' }}
@@ -325,6 +325,8 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
               {isEnglish ? 'Value:' : 'Valeur:'} {((currentInventoryQuantity || 0) * (selectedProduct?.unitCost || 0)).toFixed(2)} $
             </div>
           </div>
+          
+          <div className="flex-1"></div>
           
           <button
             onClick={() => {
