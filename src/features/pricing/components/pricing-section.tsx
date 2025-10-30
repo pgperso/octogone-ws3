@@ -104,7 +104,16 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
         }
         
         .swiper-no-cls .swiper-wrapper {
-          transform: translate3d(0, 0, 0) !important;
+          align-items: stretch;
+        }
+        
+        .swiper-no-cls .swiper-slide {
+          height: auto;
+          display: flex;
+        }
+        
+        .swiper-no-cls .swiper-slide > div {
+          width: 100%;
         }
       `}</style>
       
@@ -149,7 +158,6 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
 
         {/* Pricing Carousel */}
         <div className="py-8">
-          <div style={{ minHeight: '750px', position: 'relative' }}>
             <Swiper
               modules={[Pagination]}
               spaceBetween={24}
@@ -192,8 +200,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                     className={`rounded-2xl p-8 relative flex flex-col ${hasCustomColors ? 'shadow-lg' : ''} ${plan.specialEffects?.ring || ''}`}
                     style={{
                       border: plan.customColors?.background ? 'none' : '1px solid var(--outline)',
-                      background: plan.customColors?.background || 'var(--surface)',
-                      height: '650px'
+                      background: plan.customColors?.background || 'var(--surface)'
                     }}
                   >
                 {plan.badge && (
@@ -361,7 +368,6 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
             >
               <ChevronRight className="w-5 h-5" />
             </button>
-          </div>
           </div>
         </div>
       </ResponsiveSection>
