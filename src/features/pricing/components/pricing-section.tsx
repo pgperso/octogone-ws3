@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { ResponsiveSection } from '@/components/ui/responsive-section';
 import { OctogoneButton } from '@/components/ui/octogone-button';
-import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Sparkles, TrendingDown, Clock } from 'lucide-react';
+import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import modulesData from '@/data/calculator/modules.json';
@@ -230,35 +230,17 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                     </div>
                   </div>
                   <div 
-                    className="text-sm mb-4"
+                    className="text-sm"
                     style={{ color: isProPlan ? 'rgba(255,255,255,0.9)' : 'var(--on-surface-variant)' }}
                   >
                     {plan.priceDetail}
                   </div>
                   
-                  {/* Value Badges */}
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    <div 
-                      className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold"
-                      style={{ 
-                        backgroundColor: isProPlan ? 'rgba(255,255,255,0.25)' : 'var(--success-container)', 
-                        color: isProPlan ? 'white' : 'var(--on-success-container)' 
-                      }}
-                    >
-                      <TrendingDown className="w-3 h-3" />
-                      {isEnglish ? pricingConfig.labels.save.en : pricingConfig.labels.save.fr} {plan.savings}${isEnglish ? pricingConfig.labels.perMonth.en : pricingConfig.labels.perMonth.fr}
-                    </div>
-                    <div 
-                      className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold"
-                      style={{ 
-                        backgroundColor: isProPlan ? 'rgba(255,255,255,0.25)' : 'var(--tertiary-container)', 
-                        color: isProPlan ? 'white' : 'var(--on-tertiary-container)' 
-                      }}
-                    >
-                      <Clock className="w-3 h-3" />
-                      {plan.timeSaved}h{isEnglish ? pricingConfig.labels.perWeek.en : pricingConfig.labels.perWeek.fr}
-                    </div>
-                  </div>
+                  {/* Ligne séparatrice */}
+                  <div 
+                    className="w-full h-px mt-4"
+                    style={{ backgroundColor: 'var(--outline)' }}
+                  />
                 </div>
 
                 {/* Description */}

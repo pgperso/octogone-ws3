@@ -50,7 +50,7 @@
       "badgeBg": "rgba(255,255,255,0.25)"
     },
     "fixedPrice": 159,
-    "originalPrice": 229,
+    "originalPrice": null,
     "specialEffects": {
       "shimmer": true,
       "scale": 1.08,
