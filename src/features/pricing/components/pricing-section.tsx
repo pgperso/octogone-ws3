@@ -179,7 +179,6 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
           >
             {plans.map((plan) => {
               const Icon = plan.icon;
-              const isProPlan = plan.id === 'pro';
               const hasCustomColors = !!plan.customColors;
               
               return (
