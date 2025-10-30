@@ -292,11 +292,11 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                 </p>
 
                 {/* Features */}
-                <ul className="space-y-3 mb-8 flex-1" style={{ minHeight: '200px' }}>
+                <ul className="mb-8 flex-1" style={{ display: 'grid', gridTemplateRows: 'repeat(auto-fill, 32px)', gap: '12px', minHeight: '200px' }}>
                   {plan.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-3" style={{ minHeight: '28px' }}>
+                    <li key={idx} style={{ display: 'grid', gridTemplateColumns: '20px 1fr', gap: '12px', alignItems: 'start' }}>
                       <Check 
-                        className="w-5 h-5 flex-shrink-0 mt-0.5" 
+                        className="w-5 h-5 flex-shrink-0" 
                         style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--success)' }}
                       />
                       <span 
