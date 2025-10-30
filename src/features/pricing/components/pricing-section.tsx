@@ -167,28 +167,10 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
         </div>
 
         {/* Pricing Carousel */}
-        <div className="relative max-w-7xl mx-auto px-16">
-          {/* Navigation Buttons */}
-          <button
-            onClick={scrollPrev}
-            className="absolute -left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
-            style={{ backgroundColor: 'var(--primary)', color: 'var(--on-primary)' }}
-            aria-label="Previous"
-          >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-          <button
-            onClick={scrollNext}
-            className="absolute -right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
-            style={{ backgroundColor: 'var(--primary)', color: 'var(--on-primary)' }}
-            aria-label="Next"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-
+        <div className="relative">
           {/* Carousel Container */}
           <div className="overflow-hidden py-8" ref={emblaRef}>
-            <div className="flex">
+            <div className="flex embla__container">
               {plans.map((plan, index) => {
                 const Icon = plan.icon;
                 const isProPlan = plan.id === 'pro';
