@@ -163,8 +163,68 @@ export default function ToolPage({
     }
   ];
 
+  // Cartes de bénéfices - Octogone 360
+  const octogone360BenefitCards = [
+    {
+      concept: 'operate',
+      icon: Play,
+      color: 'rgba(184, 224, 210, 0.85)',
+      border: '#A5CABE',
+      titleFr: 'Centralisation intelligente',
+      titleEn: 'Smart Centralization',
+      descFr: 'Tous vos outils en un seul endroit',
+      descEn: 'All your tools in one place',
+      statFr: '3h économisées',
+      statEn: '3h saved',
+      explanationFr: 'Fini de jongler entre 5-6 applications différentes. Octogone 360 centralise inventaire, recettes, food cost, tableaux de bord et analyses dans une seule plateforme. Vos équipes gagnent en moyenne 3 heures par jour en évitant les doubles saisies, les exports/imports manuels et la recherche d\'informations dispersées.',
+      explanationEn: 'No more juggling between 5-6 different applications. Octogone 360 centralizes inventory, recipes, food cost, dashboards and analytics in a single platform. Your teams save an average of 3 hours per day by avoiding double entries, manual exports/imports and searching for scattered information.'
+    },
+    {
+      concept: 'automate',
+      icon: Zap,
+      color: 'rgba(180, 212, 255, 0.85)',
+      border: '#A5C4E6',
+      titleFr: 'Synchronisation automatique',
+      titleEn: 'Automatic Synchronization',
+      descFr: 'Données en temps réel partout',
+      descEn: 'Real-time data everywhere',
+      statFr: '100% synchronisé',
+      statEn: '100% synchronized',
+      explanationFr: 'Chaque modification se propage instantanément à tous les modules. Un changement de prix fournisseur met à jour automatiquement vos recettes, votre food cost, vos analyses et vos tableaux de bord. Plus d\'erreurs de version, plus de données obsolètes. Tout est toujours à jour, partout, en temps réel.',
+      explanationEn: 'Every change instantly propagates to all modules. A supplier price change automatically updates your recipes, food cost, analytics and dashboards. No more version errors, no more outdated data. Everything is always up-to-date, everywhere, in real-time.'
+    },
+    {
+      concept: 'analyze',
+      icon: TrendingUp,
+      color: 'rgba(255, 229, 180, 0.85)',
+      border: '#F5D89E',
+      titleFr: 'Visibilité totale',
+      titleEn: 'Complete Visibility',
+      descFr: 'KPIs et métriques en un coup d\'œil',
+      descEn: 'KPIs and metrics at a glance',
+      statFr: '25% de réduction',
+      statEn: '25% reduction',
+      explanationFr: 'Les restaurants qui ne suivent pas leurs KPIs perdent en moyenne 25% de rentabilité potentielle. Octogone 360 agrège toutes vos données et vous présente les métriques critiques : food cost réel vs théorique, variances d\'inventaire, rentabilité par plat, tendances de ventes. Prenez des décisions basées sur des données, pas sur des intuitions.',
+      explanationEn: 'Restaurants that don\'t track their KPIs lose an average of 25% potential profitability. Octogone 360 aggregates all your data and presents critical metrics: actual vs theoretical food cost, inventory variances, profitability per dish, sales trends. Make data-driven decisions, not gut feelings.'
+    },
+    {
+      concept: 'predict',
+      icon: Sparkles,
+      color: 'rgba(200, 182, 255, 0.85)',
+      border: '#B8A5F0',
+      titleFr: 'Intelligence artificielle',
+      titleEn: 'Artificial Intelligence',
+      descFr: 'Cortex analyse et recommande',
+      descEn: 'Cortex analyzes and recommends',
+      statFr: '30% d\'optimisation',
+      statEn: '30% optimization',
+      explanationFr: 'Cortex, notre IA intégrée, analyse vos données en continu pour détecter les anomalies, prédire les tendances et suggérer des optimisations. Elle identifie les opportunités d\'amélioration que vous n\'auriez jamais vues : recettes à ajuster, produits à substituer, moments optimaux pour commander. C\'est comme avoir un consultant expert disponible 24/7.',
+      explanationEn: 'Cortex, our integrated AI, continuously analyzes your data to detect anomalies, predict trends and suggest optimizations. It identifies improvement opportunities you would never have seen: recipes to adjust, products to substitute, optimal ordering times. It\'s like having an expert consultant available 24/7.'
+    }
+  ];
+
   // Sélectionner les bonnes cartes selon le toolId
-  const benefitCards = isInventaire ? inventaireBenefitCards : foodCostBenefitCards;
+  const benefitCards = tool.id === 'octogone-360' ? octogone360BenefitCards : (isInventaire ? inventaireBenefitCards : foodCostBenefitCards);
   
   // State pour la carte sélectionnée
   const [selectedCard, setSelectedCard] = React.useState<string>('operate');
@@ -323,6 +383,252 @@ export default function ToolPage({
         <ResponsiveSection spacing="xl" bgColor="">
           <OctogoneDashboardKPIs locale={locale as 'fr' | 'en'} />
         </ResponsiveSection>
+      )}
+
+      {/* Section Bénéfices avec Parallaxe - Uniquement pour Octogone 360 */}
+      {tool.id === 'octogone-360' && (
+        <div className="py-16 md:py-24">
+          <div className="relative px-3 md:px-4">
+            <div className="relative rounded-2xl overflow-hidden">
+              {/* Images en split screen 50/50 */}
+              <div className="absolute inset-0" style={{ zIndex: 0 }}>
+                {/* Moitié gauche - dashboard */}
+                <div 
+                  className="absolute top-0 left-0 bottom-0 w-1/2"
+                  style={{
+                    backgroundImage: 'url(/images/pages/dashboard1.avif)',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                />
+                
+                {/* Moitié droite - analytics */}
+                <div 
+                  className="absolute top-0 right-0 bottom-0 w-1/2"
+                  style={{
+                    backgroundImage: 'url(/images/pages/dashboard2.avif)',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center'
+                  }}
+                />
+              </div>
+              
+              {/* Overlay subtil */}
+              <div 
+                className="absolute inset-0 rounded-2xl"
+                style={{ backgroundColor: 'rgba(0, 0, 0, 0.65)', zIndex: 1 }}
+              />
+
+              {/* Contenu */}
+              <div className="relative z-10 py-16 md:py-24 px-4 md:px-8">
+                <div className="max-w-7xl mx-auto">
+                  {/* Titre */}
+                  <motion.h2
+                    className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12"
+                    style={{ color: 'white' }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    {isEnglish ? 'Immediate Benefits' : 'Des bénéfices immédiats'}
+                  </motion.h2>
+                  
+                  {/* 4 cartes simples avec sélection - 2x2 sur mobile, 4 colonnes sur desktop */}
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-12">
+                    {octogone360BenefitCards.map((card, index) => {
+                      const isSelected = selectedCard === card.concept;
+                      
+                      return (
+                        <motion.div
+                          key={card.concept}
+                          className="p-6 rounded-xl cursor-pointer relative"
+                          style={{
+                            backgroundColor: card.color,
+                            border: isSelected ? `3px solid ${card.border}` : `2px solid ${card.border}`,
+                            opacity: isSelected ? 1 : 0.3,
+                            boxShadow: isSelected 
+                              ? `0 0 40px ${card.color}, 0 0 0 8px rgba(255,255,255,0.1), 0 0 0 16px rgba(255,255,255,0.05)` 
+                              : 'none',
+                            transition: 'all 0.3s ease'
+                          }}
+                          initial={{ opacity: 0, y: 30 }}
+                          whileInView={{ opacity: isSelected ? 1 : 0.3, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.5, delay: 0.1 + (index * 0.1) }}
+                          whileHover={{
+                            opacity: 1,
+                            boxShadow: `0 0 40px ${card.color}, 0 0 0 8px rgba(255,255,255,0.1), 0 0 0 16px rgba(255,255,255,0.05)`
+                          }}
+                          onClick={() => setSelectedCard(card.concept)}
+                        >
+                          <div className="flex items-start gap-3">
+                            {React.createElement(card.icon, { className: "w-6 h-6 flex-shrink-0 mt-1", style: { color: '#1a1a1a' } })}
+                            <div>
+                              <h3 className="text-lg font-bold mb-2" style={{ color: '#1a1a1a' }}>
+                                {isEnglish ? card.titleEn : card.titleFr}
+                              </h3>
+                              <p className="text-sm" style={{ color: '#1a1a1a', opacity: 0.85 }}>
+                                {isEnglish ? card.descEn : card.descFr}
+                              </p>
+                            </div>
+                          </div>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                  
+                  {/* Layout responsive */}
+                  <div className="grid grid-cols-1 gap-8 mt-8">
+                    <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 items-center">
+                      {/* Colonne 1 : Nombre géant */}
+                      <motion.div
+                        key={`number-${selectedCard}`}
+                        className="flex flex-col items-center justify-center"
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.6, ease: 'easeOut' }}
+                      >
+                        <div 
+                          className="text-8xl font-black mb-4"
+                          style={{ 
+                            color: octogone360BenefitCards.find(c => c.concept === selectedCard)?.border,
+                            textShadow: `0 0 60px ${octogone360BenefitCards.find(c => c.concept === selectedCard)?.color}`
+                          }}
+                        >
+                          {isEnglish 
+                            ? octogone360BenefitCards.find(c => c.concept === selectedCard)?.statEn.split(' ')[0]
+                            : octogone360BenefitCards.find(c => c.concept === selectedCard)?.statFr.split(' ')[0]}
+                        </div>
+                        <div className="text-lg font-semibold text-center" style={{ color: 'white', opacity: 0.9 }}>
+                          {isEnglish 
+                            ? octogone360BenefitCards.find(c => c.concept === selectedCard)?.statEn.split(' ').slice(1).join(' ')
+                            : octogone360BenefitCards.find(c => c.concept === selectedCard)?.statFr.split(' ').slice(1).join(' ')}
+                        </div>
+                      </motion.div>
+                      
+                      {/* Colonne 2 : Graphique */}
+                      <motion.div
+                        key={`graphic-${selectedCard}`}
+                        className="flex items-center justify-center"
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                      >
+                        <div className="relative h-64 w-64 flex items-center justify-center">
+                          {[1, 2, 3].map((ring, i) => (
+                            <motion.div
+                              key={ring}
+                              className="absolute rounded-full"
+                              style={{
+                                width: `${80 + (i * 60)}px`,
+                                height: `${80 + (i * 60)}px`,
+                                border: `2px solid ${octogone360BenefitCards.find(c => c.concept === selectedCard)?.border}`,
+                                opacity: 0.2 - (i * 0.05)
+                              }}
+                              initial={{ scale: 0, opacity: 0 }}
+                              animate={{ scale: 1, opacity: 0.2 - (i * 0.05) }}
+                              transition={{ duration: 0.8, delay: i * 0.1 }}
+                            />
+                          ))}
+                          
+                          <motion.div
+                            className="absolute w-32 h-32 rounded-full flex items-center justify-center"
+                            style={{
+                              backgroundColor: octogone360BenefitCards.find(c => c.concept === selectedCard)?.color,
+                              border: `4px solid ${octogone360BenefitCards.find(c => c.concept === selectedCard)?.border}`,
+                              boxShadow: `0 0 60px ${octogone360BenefitCards.find(c => c.concept === selectedCard)?.color}`
+                            }}
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ duration: 0.6, delay: 0.3 }}
+                          >
+                            <div className="text-center">
+                              <div className="text-2xl font-bold" style={{ color: '#1a1a1a' }}>
+                                {selectedCard === 'operate' ? '3h' : 
+                                 selectedCard === 'automate' ? '100%' :
+                                 selectedCard === 'analyze' ? '25%' : '30%'}
+                              </div>
+                              <div className="text-xs font-semibold" style={{ color: '#1a1a1a', opacity: 0.7 }}>
+                                {isEnglish ? 'Impact' : 'Impact'}
+                              </div>
+                            </div>
+                          </motion.div>
+                        </div>
+                      </motion.div>
+                      
+                      {/* Colonne 3 : Texte - Desktop */}
+                      <motion.div
+                        key={`text-${selectedCard}`}
+                        className="hidden lg:flex flex-col justify-center"
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
+                      >
+                        <div className="flex items-center gap-3 mb-4">
+                          <h3 className="text-2xl font-bold" style={{ color: 'white' }}>
+                            {isEnglish 
+                              ? octogone360BenefitCards.find(c => c.concept === selectedCard)?.titleEn
+                              : octogone360BenefitCards.find(c => c.concept === selectedCard)?.titleFr}
+                          </h3>
+                          {selectedCard === 'predict' && (
+                            <span 
+                              className="px-3 py-1 rounded-md text-xs font-semibold whitespace-nowrap"
+                              style={{ 
+                                backgroundColor: octogone360BenefitCards.find(c => c.concept === selectedCard)?.color,
+                                color: '#1a1a1a'
+                              }}
+                            >
+                              {isEnglish ? 'Coming Soon' : 'Bientôt'}
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-base leading-relaxed" style={{ color: 'white', opacity: 0.9 }}>
+                          {isEnglish 
+                            ? octogone360BenefitCards.find(c => c.concept === selectedCard)?.explanationEn
+                            : octogone360BenefitCards.find(c => c.concept === selectedCard)?.explanationFr}
+                        </p>
+                      </motion.div>
+                    </div>
+                    
+                    {/* Texte - Mobile */}
+                    <motion.div
+                      key={`text-mobile-${selectedCard}`}
+                      className="lg:hidden"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.4 }}
+                    >
+                      <div className="flex items-center gap-3 mb-4">
+                        <h3 className="text-2xl font-bold" style={{ color: 'white' }}>
+                          {isEnglish 
+                            ? octogone360BenefitCards.find(c => c.concept === selectedCard)?.titleEn
+                            : octogone360BenefitCards.find(c => c.concept === selectedCard)?.titleFr}
+                        </h3>
+                        {selectedCard === 'predict' && (
+                          <span 
+                            className="px-3 py-1 rounded-md text-xs font-semibold whitespace-nowrap"
+                            style={{ 
+                              backgroundColor: octogone360BenefitCards.find(c => c.concept === selectedCard)?.color,
+                              color: '#1a1a1a'
+                            }}
+                          >
+                            {isEnglish ? 'Coming Soon' : 'Bientôt'}
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-base leading-relaxed" style={{ color: 'white', opacity: 0.9 }}>
+                        {isEnglish 
+                          ? octogone360BenefitCards.find(c => c.concept === selectedCard)?.explanationEn
+                          : octogone360BenefitCards.find(c => c.concept === selectedCard)?.explanationFr}
+                      </p>
+                    </motion.div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
 
       {/* Flow Inventaire - Uniquement pour Inventaire */}
