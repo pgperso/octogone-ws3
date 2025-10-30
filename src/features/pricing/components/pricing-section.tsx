@@ -187,8 +187,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
           </button>
 
           {/* Carousel Container */}
-          <div className="overflow-hidden px-16 py-8" ref={emblaRef}>
-            <div className="flex gap-6">
+          <div className="overflow-hidden py-8" ref={emblaRef}>
+            <div className="flex gap-6 px-4">
               {plans.map((plan, index) => {
                 const Icon = plan.icon;
                 const isProPlan = plan.id === 'pro';
@@ -203,7 +203,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                     style={{
                       border: isProPlan ? 'none' : '1px solid var(--outline)',
                       background: plan.customColors?.background || 'var(--surface)',
-                      width: '350px',
+                      width: 'calc(100vw - 8rem)',
+                      maxWidth: '350px',
                       minHeight: '600px',
                       flex: '0 0 auto'
                     }}
