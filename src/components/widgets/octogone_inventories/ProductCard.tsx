@@ -49,7 +49,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
   
   // Écart théorique = écart de base + quantité ajoutée au panier
   const gap = baseGap + addedToBasket;
-  const needsOrder = baseGap < 0;
+  const needsOrder = gap < 0;
   
   // Valeurs par défaut basées sur l'écart
   const [orderQuantity, setOrderQuantity] = useState(Math.abs(baseGap));
