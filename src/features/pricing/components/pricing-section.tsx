@@ -96,33 +96,22 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
             </span>
           </div>
 
-          <motion.h1 
+          <h1 
             className="text-5xl md:text-6xl font-bold mb-6"
             style={{ color: 'var(--on-surface)' }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
           >
             {isEnglish ? pricingConfig.hero.title.en : pricingConfig.hero.title.fr}
-          </motion.h1>
+          </h1>
           
-          <motion.p 
+          <p 
             className="text-xl mb-8"
             style={{ color: 'var(--on-surface-variant)' }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
           >
             {isEnglish ? pricingConfig.hero.description.en : pricingConfig.hero.description.fr}
-          </motion.p>
+          </p>
 
           {/* Billing Toggle */}
-          <motion.div 
-            className="flex items-center justify-center gap-4 mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
+          <div className="flex items-center justify-center gap-4 mb-12">
             <button
               onClick={() => setBillingCycle('monthly')}
               className={`px-6 py-3 rounded-lg font-semibold transition-all ${
@@ -153,7 +142,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                 {pricingConfig.billing.annualBadge}
               </span>
             </button>
-          </motion.div>
+          </div>
         </div>
 
         {/* Pricing Carousel */}
@@ -219,7 +208,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                 )}
 
                 {/* Icon */}
-                <div className="flex justify-center mb-4">
+                <div className="flex justify-center gap-4 mb-8">
                   <div 
                     className="w-16 h-16 rounded-xl flex items-center justify-center"
                     style={{ backgroundColor: hasCustomColors ? (plan.customColors?.iconBg || 'rgba(0,0,0,0.05)') : 'var(--secondary-container)' }}
