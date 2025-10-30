@@ -184,7 +184,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
             onSwiper={setSwiperInstance}
             style={{ paddingTop: '2rem', paddingBottom: '1rem', paddingLeft: '12px', paddingRight: '12px' }}
           >
-            {plans.map((plan, index) => {
+            {plans.map((plan) => {
               const Icon = plan.icon;
               const isProPlan = plan.id === 'pro';
               const hasCustomColors = !!plan.customColors;
