@@ -180,7 +180,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
               }
             }}
             onSwiper={setSwiperInstance}
-            style={{ paddingTop: '2rem', paddingBottom: '1rem', paddingLeft: '4rem', paddingRight: '4rem' }}
+            style={{ paddingTop: '2rem', paddingBottom: '1rem', paddingLeft: '12px', paddingRight: '12px' }}
           >
             {plans.map((plan, index) => {
               const Icon = plan.icon;
