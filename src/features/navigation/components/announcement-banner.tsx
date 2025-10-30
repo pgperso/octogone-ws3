@@ -54,31 +54,33 @@ export const AnnouncementBanner: React.FC<AnnouncementBannerProps> = ({
           className="announcement-banner fixed top-0 left-0 right-0 z-[70] overflow-hidden"
           style={{ backgroundColor: '#C8B6FF', margin: 0, padding: 0 }}
         >
-          <a 
-            href={link?.href}
-            className="block container mx-auto px-3 py-3 sm:py-4 flex items-center justify-center relative cursor-pointer hover:opacity-90 transition-opacity"
-            style={{ textDecoration: 'none' }}
-          >
-            {/* Contenu principal centré */}
-            <div className="flex items-center justify-center max-w-[85%] sm:max-w-[90%] text-center">
-              <div className="text-xs sm:text-sm md:text-base font-semibold leading-relaxed" style={{ color: '#1F1F1F' }}>
-                {message}
-                {link && link.text && (
-                  <span
-                    className="ml-1 sm:ml-2 font-bold transition-colors border-b-2 border-white/50 hover:border-white inline-block"
-                    style={{ color: '#1F1F1F' }}
-                  >
-                    {link.text}
-                  </span>
-                )}
+          <div className="container mx-auto px-3 py-3 sm:py-4 relative flex items-center justify-center min-h-[48px]">
+            <a 
+              href={link?.href}
+              className="flex items-center justify-center flex-1 cursor-pointer hover:opacity-90 transition-opacity"
+              style={{ textDecoration: 'none' }}
+            >
+              {/* Contenu principal centré */}
+              <div className="flex items-center justify-center max-w-[85%] sm:max-w-[90%] text-center">
+                <div className="text-xs sm:text-sm md:text-base font-semibold leading-relaxed" style={{ color: '#1F1F1F' }}>
+                  {message}
+                  {link && link.text && (
+                    <span
+                      className="ml-1 sm:ml-2 font-bold transition-colors border-b-2 border-white/50 hover:border-white inline-block"
+                      style={{ color: '#1F1F1F' }}
+                    >
+                      {link.text}
+                    </span>
+                  )}
+                </div>
               </div>
-            </div>
+            </a>
 
             {/* Bouton de fermeture */}
             <Button
               variant="ghost"
               size="icon"
-              className="absolute right-1 sm:right-3 top-1/2 transform -translate-y-1/2 h-7 w-7 sm:h-8 sm:w-8 btn-gold-light flex-shrink-0 ml-2"
+              className="absolute right-1 sm:right-3 h-7 w-7 sm:h-8 sm:w-8 btn-gold-light flex-shrink-0"
               onClick={(e) => {
                 e.preventDefault();
                 onDismiss();
@@ -88,7 +90,7 @@ export const AnnouncementBanner: React.FC<AnnouncementBannerProps> = ({
               <X className="h-5 w-5" />
               <span className="sr-only">Fermer</span>
             </Button>
-          </a>
+          </div>
         </motion.div>
       )}
     </AnimatePresence>
