@@ -11,6 +11,7 @@ import modulesData from '@/data/calculator/modules.json';
 import pricingData from '@/data/calculator/pricing.json';
 import plansConfig from '@/data/pricing/plans.json';
 import pricingConfig from '@/data/pricing/config.json';
+import './pricing-carousel.css';
 
 interface PricingSectionProps {
   locale: 'fr' | 'en';
@@ -187,7 +188,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
 
           {/* Carousel Container */}
           <div className="overflow-hidden py-8" ref={emblaRef}>
-            <div className="flex gap-6">
+            <div className="flex">
               {plans.map((plan, index) => {
                 const Icon = plan.icon;
                 const isProPlan = plan.id === 'pro';
@@ -198,13 +199,11 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className={`rounded-2xl p-6 relative flex flex-col ${isProPlan ? 'shadow-2xl ring-4 ring-blue-600/30' : 'shadow-lg'}`}
+                    className={`embla__slide rounded-2xl p-6 relative flex flex-col ${isProPlan ? 'shadow-2xl ring-4 ring-blue-600/30' : 'shadow-lg'}`}
                     style={{
                       border: isProPlan ? 'none' : '1px solid var(--outline)',
                       background: plan.customColors?.background || 'var(--surface)',
-                      width: '350px',
-                      minHeight: '600px',
-                      flex: '0 0 350px'
+                      minHeight: '600px'
                     }}
                   >
                 {plan.badge && (
