@@ -86,18 +86,15 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
       {/* Hero Section */}
       <ResponsiveSection spacing="xl" bgColor="">
         <div className="text-center max-w-4xl mx-auto mb-12">
-          <motion.div
+          <div
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
             style={{ backgroundColor: 'var(--primary-container)', color: 'var(--on-primary-container)' }}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
           >
             <Sparkles className="w-4 h-4" />
             <span className="text-sm font-semibold">
               {isEnglish ? pricingConfig.hero.badge.textEn : pricingConfig.hero.badge.textFr}
             </span>
-          </motion.div>
+          </div>
 
           <motion.h1 
             className="text-5xl md:text-6xl font-bold mb-6"
@@ -160,7 +157,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
         </div>
 
         {/* Pricing Carousel */}
-        <div className="py-8">
+        <div className="py-8" style={{ minHeight: '700px' }}>
           <Swiper
             modules={[Pagination]}
             spaceBetween={24}
@@ -194,10 +191,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
               
               return (
                 <SwiperSlide key={plan.id} style={{ height: 'auto' }}>
-                  <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  <div
                     className={`rounded-2xl p-8 relative flex flex-col ${hasCustomColors ? 'shadow-lg' : ''} ${plan.specialEffects?.ring || ''}`}
                     style={{
                       border: plan.customColors?.background ? 'none' : '1px solid var(--outline)',
@@ -234,6 +228,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                       <img 
                         src={Icon} 
                         alt="Icon" 
+                        width={32}
+                        height={32}
                         className="w-8 h-8" 
                         style={{ 
                           filter: 'brightness(0) saturate(100%) invert(8%) sepia(15%) saturate(3207%) hue-rotate(167deg) brightness(96%) contrast(101%)'
@@ -326,7 +322,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 />
-              </motion.div>
+              </div>
                 </SwiperSlide>
               );
             })}
