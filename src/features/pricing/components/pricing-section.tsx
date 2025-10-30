@@ -5,7 +5,7 @@ import { ResponsiveSection } from '@/components/ui/responsive-section';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { OctogoneGradientButton } from '@/components/ui/octogone-gradient-button';
 import { OctogoneToggle } from '@/components/ui/octogone-toggle';
-import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Sparkles, Star, Thermometer, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Star, Thermometer, ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
@@ -57,7 +57,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
       // Label de prix selon le cycle de facturation
       const priceDetail = billingCycle === 'monthly' 
         ? (isEnglish ? pricingConfig.labels.priceDetail.en : pricingConfig.labels.priceDetail.fr)
-        : (isEnglish ? 'per location, per year' : 'par établissement, par année');
+        : (isEnglish ? 'per location / year' : 'par établissement / année');
       
       return {
         id: moduleData.id,
