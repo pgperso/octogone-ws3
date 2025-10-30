@@ -198,7 +198,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className={`rounded-2xl p-6 relative flex flex-col shadow-lg ${plan.specialEffects?.ring || ''}`}
+                    className={`rounded-2xl p-8 relative flex flex-col shadow-lg ${plan.specialEffects?.ring || ''}`}
                     style={{
                       border: plan.customColors?.background ? 'none' : '1px solid var(--outline)',
                       background: plan.customColors?.background || 'var(--surface)',
@@ -216,9 +216,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                                        plan.badgeColor === 'success' ? 'var(--success)' :
                                        isProPlan ? 'var(--secondary)' : 'var(--primary)',
                         color: 'var(--on-primary-container)',
-                        border: isProAI ? '4px solid #E2CDED' : 
-                               isProPlan ? '4px solid rgb(147 197 253)' : 
-                               '4px solid var(--outline)'
+                        border: '4px solid var(--surface)'
                       }}
                     >
                       {plan.badge}
