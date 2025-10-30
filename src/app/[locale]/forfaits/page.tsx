@@ -7,17 +7,17 @@ export const metadata: Metadata = {
 };
 
 interface PricingPageProps {
-  params: {
+  params: Promise<{
     locale: string;
-  };
+  }>;
 }
 
-export default function PricingPage({ params }: PricingPageProps) {
-  const locale = params.locale as 'fr' | 'en';
+export default async function PricingPage({ params }: PricingPageProps) {
+  const { locale } = await params;
 
   return (
     <main>
-      <PricingSection locale={locale} />
+      <PricingSection locale={locale as 'fr' | 'en'} />
     </main>
   );
 }

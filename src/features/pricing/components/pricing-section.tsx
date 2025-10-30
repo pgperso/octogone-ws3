@@ -3,9 +3,11 @@
 import React from 'react';
 import { ResponsiveSection } from '@/components/ui/responsive-section';
 import { OctogoneButton } from '@/components/ui/octogone-button';
-import { Check, Sparkles, Building2, Users } from 'lucide-react';
+import { Check, Warehouse, ChefHat, DollarSign, Package } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import modulesData from '@/data/calculator/modules.json';
+import pricingData from '@/data/calculator/pricing.json';
 
 interface PricingSectionProps {
   locale: 'fr' | 'en';
@@ -13,63 +15,35 @@ interface PricingSectionProps {
 
 export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
   const isEnglish = locale === 'en';
+  
+  // Prix de base pour 1 établissement
+  const basePrice = pricingData[0].pricePerLocationPerMonth;
+  
+  // Mapping des icônes
+  const iconMap: Record<string, any> = {
+    Warehouse,
+    ChefHat,
+    DollarSign,
+    Package
+  };
 
-  const plans = [
-    {
-      id: 'starter',
-      name: isEnglish ? 'Starter' : 'Démarrage',
-      icon: Sparkles,
-      price: isEnglish ? 'Contact us' : 'Nous contacter',
-      description: isEnglish 
-        ? 'Perfect for single-location restaurants starting their digital transformation'
-        : 'Parfait pour les restaurants mono-établissement qui démarrent leur transformation numérique',
-      features: [
-        isEnglish ? 'Real-time inventory management' : 'Gestion d\'inventaire en temps réel',
-        isEnglish ? 'Recipe costing' : 'Calcul des coûts de recettes',
-        isEnglish ? 'Basic dashboard' : 'Tableau de bord de base',
-        isEnglish ? 'POS integration' : 'Intégration POS',
-        isEnglish ? 'Email support' : 'Support par email',
-        isEnglish ? '1 location' : '1 établissement'
-      ],
-      highlighted: false
-    },
-    {
-      id: 'professional',
-      name: isEnglish ? 'Professional' : 'Professionnel',
-      icon: Building2,
-      price: isEnglish ? 'Contact us' : 'Nous contacter',
-      description: isEnglish
-        ? 'For growing restaurants needing advanced features and analytics'
-        : 'Pour les restaurants en croissance nécessitant des fonctionnalités avancées',
-      features: [
-        isEnglish ? 'Everything in Starter' : 'Tout ce qui est dans Démarrage',
-        isEnglish ? 'Octogone 360 Dashboard' : 'Tableau de bord Octogone 360',
-        isEnglish ? 'Advanced analytics & reports' : 'Analyses et rapports avancés',
-        isEnglish ? 'Multi-supplier integration' : 'Intégration multi-fournisseurs',
-        isEnglish ? 'Priority support' : 'Support prioritaire',
-        isEnglish ? 'Up to 3 locations' : 'Jusqu\'à 3 établissements'
-      ],
-      highlighted: true
-    },
-    {
-      id: 'enterprise',
-      name: isEnglish ? 'Enterprise' : 'Entreprise',
-      icon: Users,
-      price: isEnglish ? 'Custom pricing' : 'Tarification personnalisée',
-      description: isEnglish
-        ? 'For restaurant groups and franchises requiring full customization'
-        : 'Pour les groupes de restaurants et franchises nécessitant une personnalisation complète',
-      features: [
-        isEnglish ? 'Everything in Professional' : 'Tout ce qui est dans Professionnel',
-        isEnglish ? 'Cortex AI assistant' : 'Assistant IA Cortex',
-        isEnglish ? 'Custom integrations' : 'Intégrations personnalisées',
-        isEnglish ? 'Dedicated account manager' : 'Gestionnaire de compte dédié',
-        isEnglish ? 'Concierge service' : 'Service de conciergerie',
-        isEnglish ? 'Unlimited locations' : 'Établissements illimités'
-      ],
-      highlighted: false
-    }
-  ];
+  // Créer les plans à partir des modules (exclure thermometer)
+  const plans = modulesData
+    .filter(module => module.id !== 'thermometer')
+    .map((module, index) => ({
+      id: module.id,
+      name: isEnglish ? module.nameEn : module.nameFr,
+      icon: iconMap[module.icon] || Package,
+      price: module.id === 'pro' 
+        ? `${basePrice * 4}$` 
+        : `${basePrice}$`,
+      priceDetail: isEnglish ? '/location/month' : '/établissement/mois',
+      description: isEnglish ? module.descriptionEn : module.descriptionFr,
+      features: isEnglish ? module.featuresEn : module.featuresFr,
+      highlighted: module.id === 'pro',
+      savings: `${module.monthlySavingsPerLocation}$`,
+      timeSaved: `${module.timesSavedPerWeekPerLocation}h`
+    }));
 
   return (
     <>
@@ -153,6 +127,26 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                     style={{ color: 'var(--primary)' }}
                   >
                     {plan.price}
+                  </div>
+                  <div 
+                    className="text-sm"
+                    style={{ color: plan.highlighted ? 'var(--on-primary-container)' : 'var(--on-surface-variant)' }}
+                  >
+                    {plan.priceDetail}
+                  </div>
+                  <div className="mt-2 space-y-1">
+                    <div 
+                      className="text-xs font-semibold"
+                      style={{ color: 'var(--success)' }}
+                    >
+                      {isEnglish ? 'Saves' : 'Économise'} {plan.savings}{isEnglish ? '/month' : '/mois'}
+                    </div>
+                    <div 
+                      className="text-xs"
+                      style={{ color: plan.highlighted ? 'var(--on-primary-container)' : 'var(--on-surface-variant)' }}
+                    >
+                      {isEnglish ? 'Saves' : 'Économise'} {plan.timeSaved}{isEnglish ? '/week' : '/semaine'}
+                    </div>
                   </div>
                 </div>
 
