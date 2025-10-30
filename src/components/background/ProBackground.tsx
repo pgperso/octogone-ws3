@@ -42,11 +42,15 @@ export default function ProBackground() {
 
   return (
     <>
-      {/* SVG toujours actif (baseline) */}
-      {!Enhanced3D && <ProBackgroundSVG />}
+      {/* SVG toujours actif sur mobile et comme fallback */}
+      <ProBackgroundSVG />
       
-      {/* Version 3D si chargée avec succès */}
-      {Enhanced3D && <Enhanced3D density={1} />}
+      {/* Version 3D si chargée avec succès (remplace le SVG sur desktop) */}
+      {Enhanced3D && (
+        <div style={{ position: 'fixed', inset: 0, zIndex: -1 }}>
+          <Enhanced3D density={1} />
+        </div>
+      )}
     </>
   );
 }
