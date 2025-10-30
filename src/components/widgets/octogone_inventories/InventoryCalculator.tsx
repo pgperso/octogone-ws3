@@ -69,10 +69,7 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
       setSelectedUnit(selectedProduct.unit);
       setIsEditing(false);
     }
-  }, [selectedProduct]); // Dépendance complète pour éviter les warnings
-
-  // Note: L'ajout automatique au panier se fait maintenant dans handleSave,
-  // pas en temps réel pendant la saisie
+  }, [selectedProduct]);
 
   const handleNumberClick = (num: string) => {
     setIsEditing(true);
