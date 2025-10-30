@@ -11,7 +11,7 @@ export default function NotFound() {
       {/* Image de fond */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/restaurant1.avif"
+          src="/restaurant1.avif"
           alt="Restaurant background"
           fill
           className="object-cover"
