@@ -2,11 +2,9 @@
 
 import React, { useState } from 'react';
 import { ResponsiveSection } from '@/components/ui/responsive-section';
-import { OctogoneButton } from '@/components/ui/octogone-button';
 import { OctogoneGradientButton } from '@/components/ui/octogone-gradient-button';
 import { OctogoneToggle } from '@/components/ui/octogone-toggle';
 import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Star, Thermometer, ChevronLeft, ChevronRight } from 'lucide-react';
-import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
 import { Pagination } from 'swiper/modules';
