@@ -145,7 +145,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
         </div>
 
         {/* Pricing Carousel */}
-        <div className="py-8" style={{ minHeight: '750px' }}>
+        <div className="py-8" style={{ minHeight: '800px' }}>
           <Swiper
             modules={[Pagination]}
             spaceBetween={24}
@@ -184,8 +184,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                     style={{
                       border: plan.customColors?.background ? 'none' : '1px solid var(--outline)',
                       background: plan.customColors?.background || 'var(--surface)',
-                      height: '100%',
-                      minHeight: '600px'
+                      height: '700px'
                     }}
                   >
                 {plan.badge && (
