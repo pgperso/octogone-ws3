@@ -129,9 +129,9 @@ export const PricingCard: React.FC<PricingCardProps> = ({ plan, locale }) => {
         </p>
 
         {/* Features */}
-        <ul className="mb-8 flex-1" style={{ display: 'grid', gridTemplateRows: 'repeat(auto-fill, 32px)', gap: '12px', minHeight: '200px' }}>
+        <ul className="mb-8 flex-1" style={{ display: 'flex', flexDirection: 'column', gap: '12px', minHeight: '200px' }}>
           {plan.features.map((feature, idx) => (
-            <li key={idx} style={{ display: 'grid', gridTemplateColumns: '20px 1fr', gap: '12px', alignItems: 'start' }}>
+            <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
               <Check 
                 className="w-5 h-5 flex-shrink-0" 
                 style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--success)' }}
