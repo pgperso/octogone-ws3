@@ -187,6 +187,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
               const Icon = plan.icon;
               const isProPlan = plan.id === 'pro';
               const hasCustomColors = !!plan.customColors;
+              const isProAI = plan.id === 'pro_ai';
               
               return (
                 <SwiperSlide key={plan.id} style={{ height: 'auto' }}>
@@ -212,7 +213,9 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                                        plan.badgeColor === 'success' ? 'var(--success)' :
                                        isProPlan ? 'var(--secondary)' : 'var(--primary)',
                         color: 'var(--on-primary-container)',
-                        border: '4px solid var(--surface)'
+                        border: isProAI ? '4px solid #E2CDED' : 
+                               isProPlan ? '4px solid rgb(147 197 253)' : 
+                               '4px solid var(--outline)'
                       }}
                     >
                       {plan.badge}
