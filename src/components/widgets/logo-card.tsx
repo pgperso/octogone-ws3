@@ -18,8 +18,8 @@ interface LogoCardProps {
 export const LogoCard: React.FC<LogoCardProps> = ({ name, logo, index, delay = 0.05 }) => {
   return (
     <motion.div
-      className="flex items-center justify-center p-6 rounded-xl border-2 bg-white shadow-md hover:shadow-lg transition-all duration-300"
-      style={{ borderColor: 'var(--outline)', minHeight: '100px' }}
+      className="flex items-center justify-center p-6 rounded-xl border-2 bg-white transition-all duration-300 aspect-square"
+      style={{ borderColor: 'var(--outline)' }}
       initial={{ opacity: 0, scale: 0.9 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
