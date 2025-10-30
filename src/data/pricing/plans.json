@@ -44,7 +44,7 @@
       "color": "primary"
     },
     "customColors": {
-      "background": "linear-gradient(135deg, #7dd3fc 0%, #38bdf8 100%)",
+      "background": "linear-gradient(135deg, #bfdbfe 0%, #93c5fd 100%)",
       "text": "on-surface",
       "iconBg": "rgba(0,0,0,0.05)",
       "badgeBg": "rgba(0,0,0,0.05)"
@@ -52,7 +52,7 @@
     "fixedPrice": 159,
     "originalPrice": null,
     "specialEffects": {
-      "shimmer": true,
+      "shimmer": false,
       "scale": 1.08,
       "ring": "ring-4 ring-blue-600/30"
     }

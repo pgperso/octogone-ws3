@@ -160,12 +160,10 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`rounded-2xl p-6 relative ${isProPlan ? 'shadow-2xl ring-4 ring-yellow-600/30' : 'shadow-lg'}`}
+                className={`rounded-2xl p-6 relative flex flex-col ${isProPlan ? 'shadow-2xl ring-4 ring-blue-600/30' : 'shadow-lg'}`}
                 style={{
                   border: isProPlan ? 'none' : '1px solid var(--outline)',
-                  background: isProPlan 
-                    ? 'linear-gradient(135deg, #dcb26b 0%, #b8935a 100%)'
-                    : 'var(--surface)',
+                  background: plan.customColors?.background || 'var(--surface)',
                   transform: isProPlan ? 'scale(1.08)' : 'scale(1)'
                 }}
               >
@@ -182,14 +180,6 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                       {isProPlan && <Sparkles className="w-4 h-4" />}
                       {plan.badge}
                     </div>
-                    {/* Effet de brillance */}
-                    <div className="absolute inset-0 rounded-2xl opacity-20 pointer-events-none"
-                         style={{
-                           background: 'linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%)',
-                           backgroundSize: '200% 200%',
-                           animation: 'shimmer 3s infinite'
-                         }}
-                    />
                   </>
                 )}
 
@@ -252,7 +242,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                 </p>
 
                 {/* Features */}
-                <ul className="space-y-3 mb-8">
+                <ul className="space-y-3 mb-8 flex-1">
                   {plan.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-3">
                       <Check 
@@ -270,7 +260,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                 </ul>
 
                 {/* CTA Button */}
-                <Link href={`/${locale}/contact`}>
+                <Link href="https://octogone-ws3.vercel.app/fr/contact" target="_blank" rel="noopener noreferrer">
                   <OctogoneButton
                     variant={plan.highlighted ? 'primary' : 'secondary'}
                     size="lg"

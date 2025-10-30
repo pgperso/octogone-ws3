@@ -27,8 +27,8 @@
   },
   "cta": {
     "button": {
-      "fr": "Commencer",
-      "en": "Get started"
+      "fr": "Choisir",
+      "en": "Choose"
     },
     "customSolution": {
       "title": {
@@ -47,8 +47,8 @@
   },
   "labels": {
     "priceDetail": {
-      "fr": "/établissement/mois",
-      "en": "/location/month"
+      "fr": "par établissement / mois",
+      "en": "per location / month"
     },
     "save": {
       "fr": "Économise",
