@@ -197,16 +197,16 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                 <div className="flex justify-center mb-4">
                   <div 
                     className="w-16 h-16 rounded-xl flex items-center justify-center"
-                    style={{ backgroundColor: isProPlan ? 'rgba(255,255,255,0.2)' : 'var(--secondary-container)' }}
+                    style={{ backgroundColor: isProPlan ? (plan.customColors?.iconBg || 'rgba(0,0,0,0.05)') : 'var(--secondary-container)' }}
                   >
-                    <Icon className="w-8 h-8" style={{ color: isProPlan ? 'white' : 'var(--on-secondary-container)' }} />
+                    <Icon className="w-8 h-8" style={{ color: isProPlan ? 'var(--on-surface)' : 'var(--on-secondary-container)' }} />
                   </div>
                 </div>
 
                 {/* Plan Name */}
                 <h3 
                   className="text-2xl font-bold text-center mb-2"
-                  style={{ color: isProPlan ? 'white' : 'var(--on-surface)' }}
+                  style={{ color: 'var(--on-surface)' }}
                 >
                   {plan.name}
                 </h3>
@@ -224,14 +224,14 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                     )}
                     <div 
                       className="text-4xl font-bold"
-                      style={{ color: isProPlan ? 'white' : 'var(--primary)' }}
+                      style={{ color: isProPlan ? 'var(--on-surface)' : 'var(--primary)' }}
                     >
                       {plan.price}$
                     </div>
                   </div>
                   <div 
                     className="text-sm"
-                    style={{ color: isProPlan ? 'rgba(255,255,255,0.9)' : 'var(--on-surface-variant)' }}
+                    style={{ color: 'var(--on-surface-variant)' }}
                   >
                     {plan.priceDetail}
                   </div>
@@ -246,7 +246,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                 {/* Description */}
                 <p 
                   className="text-center mb-6 min-h-[60px]"
-                  style={{ color: isProPlan ? 'rgba(255,255,255,0.95)' : 'var(--on-surface-variant)' }}
+                  style={{ color: 'var(--on-surface-variant)' }}
                 >
                   {plan.description}
                 </p>
@@ -257,11 +257,11 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                     <li key={idx} className="flex items-start gap-3">
                       <Check 
                         className="w-5 h-5 flex-shrink-0 mt-0.5" 
-                        style={{ color: isProPlan ? 'white' : 'var(--success)' }}
+                        style={{ color: 'var(--success)' }}
                       />
                       <span 
                         className="text-sm"
-                        style={{ color: isProPlan ? 'white' : 'var(--on-surface)' }}
+                        style={{ color: 'var(--on-surface)' }}
                       >
                         {feature}
                       </span>
