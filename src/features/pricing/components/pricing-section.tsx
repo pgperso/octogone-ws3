@@ -23,10 +23,9 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
   // Carousel setup
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'start',
-    loop: true,
-    skipSnaps: false,
-    containScroll: 'trimSnaps',
-    slidesToScroll: 1
+    loop: false,
+    slidesToScroll: 'auto',
+    containScroll: 'trimSnaps'
   });
 
   const scrollPrev = useCallback(() => {
@@ -167,11 +166,11 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
         </div>
 
         {/* Pricing Carousel */}
-        <div className="relative max-w-[1600px] mx-auto">
+        <div className="relative max-w-7xl mx-auto px-16">
           {/* Navigation Buttons */}
           <button
             onClick={scrollPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
+            className="absolute -left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
             style={{ backgroundColor: 'var(--primary)', color: 'var(--on-primary)' }}
             aria-label="Previous"
           >
@@ -179,7 +178,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
           </button>
           <button
             onClick={scrollNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
+            className="absolute -right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
             style={{ backgroundColor: 'var(--primary)', color: 'var(--on-primary)' }}
             aria-label="Next"
           >
@@ -188,7 +187,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
 
           {/* Carousel Container */}
           <div className="overflow-hidden py-8" ref={emblaRef}>
-            <div className="flex gap-6 px-4">
+            <div className="flex gap-6">
               {plans.map((plan, index) => {
                 const Icon = plan.icon;
                 const isProPlan = plan.id === 'pro';
@@ -203,10 +202,9 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                     style={{
                       border: isProPlan ? 'none' : '1px solid var(--outline)',
                       background: plan.customColors?.background || 'var(--surface)',
-                      width: 'calc(100vw - 8rem)',
-                      maxWidth: '350px',
+                      width: '350px',
                       minHeight: '600px',
-                      flex: '0 0 auto'
+                      flex: '0 0 350px'
                     }}
                   >
                 {plan.badge && (
