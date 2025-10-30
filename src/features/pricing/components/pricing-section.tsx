@@ -7,6 +7,7 @@ import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Sparkles, C
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperType } from 'swiper';
 import { Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -22,7 +23,7 @@ interface PricingSectionProps {
 export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
   const isEnglish = locale === 'en';
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly');
-  const [swiperInstance, setSwiperInstance] = useState<any>(null);
+  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
   
   // Prix de base pour 1 établissement
   const basePrice = pricingData[0].pricePerLocationPerMonth;
