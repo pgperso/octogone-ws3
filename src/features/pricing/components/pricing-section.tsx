@@ -155,7 +155,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
         </div>
 
         {/* Pricing Carousel */}
-        <div className="py-8 px-16">
+        <div className="py-8">
           <Swiper
             modules={[Pagination]}
             spaceBetween={24}
@@ -170,7 +170,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
               1400: { slidesPerView: 4 }
             }}
             onSwiper={setSwiperInstance}
-            style={{ paddingTop: '2rem', paddingBottom: '1rem' }}
+            style={{ paddingTop: '2rem', paddingBottom: '1rem', paddingLeft: '4rem', paddingRight: '4rem' }}
           >
             {plans.map((plan, index) => {
               const Icon = plan.icon;
@@ -300,10 +300,10 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
           </Swiper>
           
           {/* Custom Navigation Buttons */}
-          <div className="flex items-center justify-center gap-6 mt-4">
+          <div className="flex items-center justify-center gap-6 mt-4 mx-auto max-w-md">
             <button
               onClick={() => swiperInstance?.slidePrev()}
-              className="w-10 h-10 rounded-lg flex items-center justify-center transition-all"
+              className="w-10 h-10 rounded-lg flex items-center justify-center transition-all cursor-pointer"
               style={{ backgroundColor: 'var(--primary)', color: 'var(--on-primary)' }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = 'var(--secondary)';
@@ -318,11 +318,11 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
               <ChevronLeft className="w-5 h-5" />
             </button>
             
-            <div className="swiper-pagination-custom" />
+            <div className="swiper-pagination-custom flex-1 flex justify-center" style={{ cursor: 'pointer' }} />
             
             <button
               onClick={() => swiperInstance?.slideNext()}
-              className="w-10 h-10 rounded-lg flex items-center justify-center transition-all"
+              className="w-10 h-10 rounded-lg flex items-center justify-center transition-all cursor-pointer"
               style={{ backgroundColor: 'var(--primary)', color: 'var(--on-primary)' }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = 'var(--secondary)';
