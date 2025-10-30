@@ -204,8 +204,9 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                 {plan.badge && (
                   <>
                     <div 
-                      className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2"
+                      className="absolute left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2"
                       style={{ 
+                        top: '-22px',
                         backgroundColor: isProPlan ? 'var(--secondary)' : 'var(--primary)',
                         color: 'var(--on-primary-container)',
                         border: '2px solid var(--surface)'
