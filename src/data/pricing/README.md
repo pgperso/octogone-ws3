@@ -4,6 +4,16 @@ Ce dossier contient la configuration des forfaits affichés sur la page `/forfai
 
 ## Fichiers
 
+### `config.json`
+Configuration globale de la page de pricing (textes, labels, rabais).
+
+**Contenu :**
+- `annualDiscount` : Pourcentage de rabais annuel (0.15 = 15%)
+- `hero` : Textes de la section hero (badge, titre, description)
+- `billing` : Labels des boutons mensuel/annuel
+- `cta` : Textes des boutons d'action
+- `labels` : Labels réutilisables (prix, économies, etc.)
+
 ### `plans.json`
 Configuration principale des forfaits. Chaque forfait référence un module dans `/data/calculator/modules.json`.
 

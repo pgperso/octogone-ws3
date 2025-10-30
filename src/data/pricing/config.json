@@ -1,0 +1,66 @@
+{
+  "annualDiscount": 0.15,
+  "hero": {
+    "badge": {
+      "textFr": "Économisez jusqu'à 15% avec la facturation annuelle",
+      "textEn": "Save up to 15% with annual billing"
+    },
+    "title": {
+      "fr": "Une tarification qui évolue avec vous",
+      "en": "Pricing that grows with you"
+    },
+    "description": {
+      "fr": "Choisissez le forfait parfait pour votre restaurant. Commencez petit, évoluez selon vos besoins. Aucun frais caché, annulez à tout moment.",
+      "en": "Choose the perfect plan for your restaurant. Start small, scale as you grow. No hidden fees, cancel anytime."
+    }
+  },
+  "billing": {
+    "monthly": {
+      "fr": "Mensuel",
+      "en": "Monthly"
+    },
+    "annual": {
+      "fr": "Annuel",
+      "en": "Annual"
+    },
+    "annualBadge": "-15%"
+  },
+  "cta": {
+    "button": {
+      "fr": "Commencer",
+      "en": "Get started"
+    },
+    "customSolution": {
+      "title": {
+        "fr": "Besoin d'une solution personnalisée ?",
+        "en": "Need a custom solution?"
+      },
+      "description": {
+        "fr": "Chaque restaurant est unique. Contactez-nous pour discuter d'un forfait sur mesure qui correspond parfaitement à vos besoins spécifiques et à votre budget.",
+        "en": "Every restaurant is unique. Contact us to discuss a tailored plan that perfectly fits your specific needs and budget."
+      },
+      "button": {
+        "fr": "Planifier une démo",
+        "en": "Schedule a demo"
+      }
+    }
+  },
+  "labels": {
+    "priceDetail": {
+      "fr": "/établissement/mois",
+      "en": "/location/month"
+    },
+    "save": {
+      "fr": "Économise",
+      "en": "Save"
+    },
+    "perMonth": {
+      "fr": "/mois",
+      "en": "/month"
+    },
+    "perWeek": {
+      "fr": "/semaine",
+      "en": "/week"
+    }
+  }
+}

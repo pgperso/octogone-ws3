@@ -9,6 +9,7 @@ import Link from 'next/link';
 import modulesData from '@/data/calculator/modules.json';
 import pricingData from '@/data/calculator/pricing.json';
 import plansConfig from '@/data/pricing/plans.json';
+import pricingConfig from '@/data/pricing/config.json';
 
 interface PricingSectionProps {
   locale: 'fr' | 'en';
@@ -20,7 +21,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
   
   // Prix de base pour 1 établissement
   const basePrice = pricingData[0].pricePerLocationPerMonth;
-  const annualDiscount = 0.15; // 15% de rabais annuel
+  const annualDiscount = pricingConfig.annualDiscount;
   
   // Mapping des icônes
   const iconMap: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = {
@@ -48,7 +49,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
         icon: iconMap[moduleData.icon] || Package,
         price: displayPrice,
         originalPrice: billingCycle === 'annual' ? monthlyPrice : null,
-        priceDetail: isEnglish ? '/location/month' : '/établissement/mois',
+        priceDetail: isEnglish ? pricingConfig.labels.priceDetail.en : pricingConfig.labels.priceDetail.fr,
         description: isEnglish ? moduleData.descriptionEn : moduleData.descriptionFr,
         features: isEnglish ? moduleData.featuresEn : moduleData.featuresFr,
         highlighted: planConfig.highlighted,
@@ -83,7 +84,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
           >
             <Sparkles className="w-4 h-4" />
             <span className="text-sm font-semibold">
-              {isEnglish ? 'Save up to 15% with annual billing' : 'Économisez jusqu\'à 15% avec la facturation annuelle'}
+              {isEnglish ? pricingConfig.hero.badge.textEn : pricingConfig.hero.badge.textFr}
             </span>
           </motion.div>
 
@@ -94,7 +95,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            {isEnglish ? 'Pricing that grows with you' : 'Une tarification qui évolue avec vous'}
+            {isEnglish ? pricingConfig.hero.title.en : pricingConfig.hero.title.fr}
           </motion.h1>
           
           <motion.p 
@@ -104,10 +105,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            {isEnglish 
-              ? 'Choose the perfect plan for your restaurant. Start small, scale as you grow. No hidden fees, cancel anytime.'
-              : 'Choisissez le forfait parfait pour votre restaurant. Commencez petit, évoluez selon vos besoins. Aucun frais caché, annulez à tout moment.'
-            }
+            {isEnglish ? pricingConfig.hero.description.en : pricingConfig.hero.description.fr}
           </motion.p>
 
           {/* Billing Toggle */}
@@ -127,7 +125,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                 color: billingCycle === 'monthly' ? 'var(--on-primary)' : 'var(--on-surface-variant)'
               }}
             >
-              {isEnglish ? 'Monthly' : 'Mensuel'}
+              {isEnglish ? pricingConfig.billing.monthly.en : pricingConfig.billing.monthly.fr}
             </button>
             <button
               onClick={() => setBillingCycle('annual')}
@@ -139,12 +137,12 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                 color: billingCycle === 'annual' ? 'var(--on-primary)' : 'var(--on-surface-variant)'
               }}
             >
-              {isEnglish ? 'Annual' : 'Annuel'}
+              {isEnglish ? pricingConfig.billing.annual.en : pricingConfig.billing.annual.fr}
               <span 
                 className="absolute -top-2 -right-2 px-2 py-0.5 text-xs font-bold rounded-full"
                 style={{ backgroundColor: 'var(--success)', color: 'white' }}
               >
-                -15%
+                {pricingConfig.billing.annualBadge}
               </span>
             </button>
           </motion.div>
@@ -248,7 +246,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                       }}
                     >
                       <TrendingDown className="w-3 h-3" />
-                      {isEnglish ? 'Save' : 'Économise'} {plan.savings}$/mois
+                      {isEnglish ? pricingConfig.labels.save.en : pricingConfig.labels.save.fr} {plan.savings}${isEnglish ? pricingConfig.labels.perMonth.en : pricingConfig.labels.perMonth.fr}
                     </div>
                     <div 
                       className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold"
@@ -258,7 +256,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                       }}
                     >
                       <Clock className="w-3 h-3" />
-                      {plan.timeSaved}h/semaine
+                      {plan.timeSaved}h{isEnglish ? pricingConfig.labels.perWeek.en : pricingConfig.labels.perWeek.fr}
                     </div>
                   </div>
                 </div>
@@ -296,7 +294,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                     size="lg"
                     className="w-full flex items-center justify-center gap-2"
                   >
-                    {isEnglish ? 'Get started' : 'Commencer'}
+                    {isEnglish ? pricingConfig.cta.button.en : pricingConfig.cta.button.fr}
                     <ArrowRight className="w-5 h-5" />
                   </OctogoneButton>
                 </Link>
@@ -310,17 +308,14 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
       <ResponsiveSection spacing="lg" bgColor="var(--surface-variant)">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6" style={{ color: 'var(--on-surface)' }}>
-            {isEnglish ? 'Need a custom solution?' : 'Besoin d\'une solution personnalisée ?'}
+            {isEnglish ? pricingConfig.cta.customSolution.title.en : pricingConfig.cta.customSolution.title.fr}
           </h2>
           <p className="text-lg mb-8" style={{ color: 'var(--on-surface-variant)' }}>
-            {isEnglish
-              ? 'Every restaurant is unique. Contact us to discuss a tailored plan that perfectly fits your specific needs and budget.'
-              : 'Chaque restaurant est unique. Contactez-nous pour discuter d\'un forfait sur mesure qui correspond parfaitement à vos besoins spécifiques et à votre budget.'
-            }
+            {isEnglish ? pricingConfig.cta.customSolution.description.en : pricingConfig.cta.customSolution.description.fr}
           </p>
           <Link href={`/${locale}/contact`}>
             <OctogoneButton variant="primary" size="lg">
-              {isEnglish ? 'Schedule a demo' : 'Planifier une démo'}
+              {isEnglish ? pricingConfig.cta.customSolution.button.en : pricingConfig.cta.customSolution.button.fr}
             </OctogoneButton>
           </Link>
         </div>
