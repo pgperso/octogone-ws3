@@ -157,7 +157,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
         </div>
 
         {/* Pricing Carousel */}
-        <div className="py-8" style={{ minHeight: '700px' }}>
+        <div className="py-8" style={{ minHeight: '750px' }}>
           <Swiper
             modules={[Pagination]}
             spaceBetween={24}
@@ -182,7 +182,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
               }
             }}
             onSwiper={setSwiperInstance}
-            style={{ paddingTop: '2rem', paddingBottom: '1rem', paddingLeft: '12px', paddingRight: '12px' }}
+            style={{ paddingTop: '3rem', paddingBottom: '1rem', paddingLeft: '12px', paddingRight: '12px' }}
           >
             {plans.map((plan) => {
               const Icon = plan.icon;
