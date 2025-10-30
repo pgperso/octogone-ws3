@@ -8,7 +8,6 @@ const COLORS = {
   sky: '#BADFF6',
   mint: '#B8E6D5',
   violet: '#E2CDED',
-  bg: '#0B0D12',
 };
 
 // Génération déterministe avec angle d'or
@@ -168,7 +167,7 @@ export default function ProBackgroundSVG() {
           </filter>
         </defs>
 
-        <rect width="100" height="100" fill={COLORS.bg} />
+        <rect width="100" height="100" fill="var(--background)" />
 
         {shapes.map((shape, i) => {
           const opacity = shape.layer === 'back' ? 0.15 : shape.layer === 'mid' ? 0.25 : 0.35;
