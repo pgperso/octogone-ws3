@@ -55,6 +55,13 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
 
   return (
     <>
+      <style jsx global>{`
+        @keyframes shimmer {
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
+        }
+      `}</style>
+      
       {/* Hero Section */}
       <ResponsiveSection spacing="xl" bgColor="">
         <div className="text-center max-w-4xl mx-auto mb-12">
