@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { ResponsiveSection } from '@/components/ui/responsive-section';
 import { OctogoneButton } from '@/components/ui/octogone-button';
-import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Sparkles, ChevronLeft, ChevronRight, Star, Thermometer } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -30,11 +30,14 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
   const annualDiscount = pricingConfig.annualDiscount;
   
   // Mapping des icônes
-  const iconMap: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = {
+  const iconMap: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }> | string> = {
     Warehouse,
     ChefHat,
     DollarSign,
-    Package
+    Package,
+    Star,
+    Thermometer,
+    Cortex: '/cortex.svg'
   };
 
   // Créer les plans à partir de la configuration et des modules
@@ -229,7 +232,11 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                     className="w-16 h-16 rounded-xl flex items-center justify-center"
                     style={{ backgroundColor: hasCustomColors ? (plan.customColors?.iconBg || 'rgba(0,0,0,0.05)') : 'var(--secondary-container)' }}
                   >
-                    <Icon className="w-8 h-8" style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--on-secondary-container)' }} />
+                    {typeof Icon === 'string' ? (
+                      <img src={Icon} alt="Icon" className="w-8 h-8" />
+                    ) : (
+                      <Icon className="w-8 h-8" style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--on-secondary-container)' }} />
+                    )}
                   </div>
                 </div>
 
