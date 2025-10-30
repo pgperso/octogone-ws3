@@ -128,7 +128,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
           </p>
 
           {/* Billing Toggle */}
-          <div className="flex items-center justify-center gap-4 mb-12">
+          <div className="flex items-center justify-center mb-12 relative">
             <OctogoneToggle
               options={[
                 { value: 'monthly', label: isEnglish ? pricingConfig.billing.monthly.en : pricingConfig.billing.monthly.fr },
@@ -138,14 +138,12 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
               onChange={(value) => setBillingCycle(value as 'monthly' | 'annual')}
               size="lg"
             />
-            {billingCycle === 'annual' && (
-              <span 
-                className="px-3 py-1.5 text-sm font-bold rounded-full"
-                style={{ backgroundColor: 'var(--on-primary-container)', color: 'var(--primary-container)' }}
-              >
-                -10%
-              </span>
-            )}
+            <span 
+              className="absolute -top-2 -right-2 px-2 py-0.5 text-xs font-bold rounded-full"
+              style={{ backgroundColor: 'var(--success)', color: 'var(--on-primary-container)' }}
+            >
+              -10%
+            </span>
           </div>
         </div>
 
@@ -200,7 +198,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                         top: '-22px',
                         backgroundColor: plan.badgeColor === 'cortex' ? '#E2CDED' : 
                                        plan.badgeColor === 'success' ? '#B8E0D2' :
-                                       plan.badgeColor === 'primary' ? '#BADFF6' : 'var(--primary)',
+                                       plan.badgeColor === 'primary' ? '#FFE5B4' : 'var(--primary)',
                         color: 'var(--on-primary-container)',
                         border: '4px solid var(--surface)'
                       }}
@@ -247,7 +245,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                     {plan.originalPrice && (
                       <span 
                         className="text-lg line-through"
-                        style={{ color: 'var(--on-primary-container)', opacity: 0.5 }}
+                        style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--on-surface-variant)', opacity: 0.5 }}
                       >
                         {plan.originalPrice}$
                       </span>
