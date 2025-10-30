@@ -220,13 +220,13 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
           </div>
           <div className="flex items-center gap-2">
             {/* Bouton Panier de commande */}
-            <button
-              className="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:shadow-lg relative"
+            <div
+              className="w-10 h-10 rounded-lg flex items-center justify-center relative"
               style={{
                 backgroundColor: 'var(--primary-container)',
-                color: 'var(--on-primary-container)'
+                color: 'var(--on-primary-container)',
+                pointerEvents: 'none'
               }}
-              onClick={handleAddToOrderBasket}
               title={isEnglish ? 'Order basket' : 'Panier de commande'}
             >
               <ShoppingCart className="w-5 h-5" />
@@ -241,15 +241,15 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
                   {orderBasket.size}
                 </div>
               )}
-            </button>
+            </div>
             {/* Bouton Panier de production */}
-            <button
-              className="w-10 h-10 rounded-lg flex items-center justify-center transition-all hover:shadow-lg relative"
+            <div
+              className="w-10 h-10 rounded-lg flex items-center justify-center relative"
               style={{
                 backgroundColor: 'var(--secondary-container)',
-                color: 'var(--on-secondary-container)'
+                color: 'var(--on-secondary-container)',
+                pointerEvents: 'none'
               }}
-              onClick={handleAddToProductionBasket}
               title={isEnglish ? 'Production basket' : 'Panier de production'}
             >
               <ChefHat className="w-5 h-5" />
@@ -264,7 +264,7 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
                   {productionBasket.size}
                 </div>
               )}
-            </button>
+            </div>
           </div>
         </div>
       </div>
