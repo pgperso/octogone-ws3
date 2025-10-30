@@ -942,54 +942,6 @@ export default function ToolPage({
       )}
 
       {/* Section Partenaires - Inventaire : Fournisseurs */}
-      {isInventaire && (
-        <ResponsiveSection spacing="xl" bgColor="">
-          <div className="max-w-5xl mx-auto">
-            {/* Séparateur */}
-            <div className="mb-12 flex items-center gap-4">
-              <div className="flex-1 h-px" style={{ backgroundColor: 'var(--outline)' }}></div>
-              <div className="text-sm font-semibold" style={{ color: 'var(--on-surface-variant)' }}>
-                {isEnglish ? 'Our Supplier Partners' : 'Nos fournisseurs partenaires'}
-              </div>
-              <div className="flex-1 h-px" style={{ backgroundColor: 'var(--outline)' }}></div>
-            </div>
-            
-            {/* Description */}
-            <p className="text-center text-base mb-8 max-w-3xl mx-auto" style={{ color: 'var(--on-surface-variant)' }}>
-              {isEnglish 
-                ? 'Work with these partner suppliers? We handle importing all the products you use into Octogone. Your supplier isn\'t listed? No problem—we\'ll connect to them.'
-                : 'Vous travaillez avec ces fournisseurs partenaires ? Nous nous chargeons d\'importer tous les produits que vous utilisez dans Octogone. Votre fournisseur n\'est pas dans la liste ? Aucun problème, nous nous connecterons à lui.'
-              }
-            </p>
-
-            {/* Logos des fournisseurs partenaires */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {[
-                { name: 'Borderon et fils', logo: '/images/suppliers/borderon.png' },
-                { name: 'Norref', logo: '/images/suppliers/norref.png' },
-                { name: 'Gordon', logo: '/images/suppliers/gordon.png' },
-                { name: 'Hector Larivée', logo: '/images/suppliers/hector.png' },
-                { name: 'Sysco', logo: '/images/suppliers/sysco.png' },
-                { name: 'SAQ', logo: '/images/suppliers/saq.png' },
-                { name: 'Viandex', logo: '/images/suppliers/viandex.png' },
-                { name: 'FLB', logo: '/images/suppliers/flb.png' },
-                { name: 'Canabec', logo: '/images/suppliers/canabec.png' },
-                { name: 'JG Fruits et Légumes', logo: '/images/suppliers/jg.png' },
-                { name: 'Les emballages L.Boucher', logo: '/images/suppliers/lboucher.png' },
-                { name: 'Tout Prêt', logo: '/images/suppliers/toutpret.png' }
-              ].map((supplier, index) => (
-                <LogoCard
-                  key={supplier.name}
-                  name={supplier.name}
-                  logo={supplier.logo}
-                  index={index}
-                  delay={0.05}
-                />
-              ))}
-            </div>
-          </div>
-        </ResponsiveSection>
-      )}
       </main>
     </>
   );

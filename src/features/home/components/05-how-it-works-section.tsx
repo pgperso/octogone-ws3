@@ -306,6 +306,51 @@ style={{ backgroundColor: 'transparent' }}
         </div>
       </motion.div>
 
+      {/* Logos des fournisseurs partenaires */}
+      <motion.div 
+        className="mt-16 max-w-7xl mx-auto"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+      >
+        <h3 className="text-2xl font-bold text-center mb-4" style={{ color: 'var(--on-surface)' }}>
+          {locale === "fr" ? "Nos fournisseurs partenaires" : "Our Supplier Partners"}
+        </h3>
+        
+        <p className="text-center text-base mb-8 max-w-3xl mx-auto" style={{ color: 'var(--on-surface-variant)' }}>
+          {locale === "fr"
+            ? "Vous travaillez avec ces fournisseurs partenaires ? Nous nous chargeons d'importer tous les produits que vous utilisez dans Octogone. Votre fournisseur n'est pas dans la liste ? Aucun problème, nous nous connecterons à lui."
+            : "Work with these partner suppliers? We handle importing all the products you use into Octogone. Your supplier isn't listed? No problem—we'll connect to them."
+          }
+        </p>
+        
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 items-center">
+          {[
+            { name: 'Borderon et fils', logo: '/images/suppliers/borderon.png' },
+            { name: 'Norref', logo: '/images/suppliers/norref.png' },
+            { name: 'Gordon', logo: '/images/suppliers/gordon.png' },
+            { name: 'Hector Larivée', logo: '/images/suppliers/hector.png' },
+            { name: 'Sysco', logo: '/images/suppliers/sysco.png' },
+            { name: 'SAQ', logo: '/images/suppliers/saq.png' },
+            { name: 'Viandex', logo: '/images/suppliers/viandex.png' },
+            { name: 'FLB', logo: '/images/suppliers/flb.png' },
+            { name: 'Canabec', logo: '/images/suppliers/canabec.png' },
+            { name: 'JG Fruits et Légumes', logo: '/images/suppliers/jg.png' },
+            { name: 'Les emballages L.Boucher', logo: '/images/suppliers/lboucher.png' },
+            { name: 'Tout Prêt', logo: '/images/suppliers/toutpret.png' }
+          ].map((supplier, index) => (
+            <LogoCard
+              key={supplier.name}
+              name={supplier.name}
+              logo={supplier.logo}
+              index={index}
+              delay={0.05}
+            />
+          ))}
+        </div>
+      </motion.div>
+
       {/* Logos des POS compatibles */}
       <motion.div 
         className="mt-16 max-w-7xl mx-auto"
