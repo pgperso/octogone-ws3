@@ -1,9 +1,11 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Delete, Check, ChevronUp, ChevronDown, Loader2, EqualNot, ShoppingCart, ChefHat } from 'lucide-react';
 import { ProductCard } from './ProductCard';
 import { translateProduct } from '@/data/products/octogone_products_translations';
+import { getProductImage } from '@/utils/productImageMapping';
 
 interface Product {
   id: string;
@@ -155,22 +157,36 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
 
   // Si le produit est non-inventoriable, afficher un message
   if (selectedProduct?.nonInventoriable) {
+    const productImage = getProductImage(selectedProduct.name);
+    
     return (
       <div className="p-6 flex flex-col h-full">
-        <ProductCard 
-          product={selectedProduct} 
-          locale={locale}
-          currentQuantity={0}
-          onAddToOrder={() => {
-            console.log('Ajouter à la commande:', selectedProduct.name);
-          }}
-        />
         <div className="flex-1 flex flex-col items-center justify-center">
-          <div className="text-center mb-6">
-            <EqualNot 
-              className="w-16 h-16 mx-auto mb-4" 
-              style={{ color: 'var(--error)' }}
+          {/* Image du produit avec icône centrée */}
+          <div className="relative w-64 h-64 mb-6">
+            <Image
+              src={productImage || '/images/products/default.jpg'}
+              alt={selectedProduct.name}
+              fill
+              className="object-cover rounded-lg"
             />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div 
+                className="w-20 h-20 rounded-full flex items-center justify-center"
+                style={{ 
+                  backgroundColor: 'var(--error)',
+                  boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.3)'
+                }}
+              >
+                <EqualNot 
+                  className="w-12 h-12" 
+                  style={{ color: 'white' }}
+                />
+              </div>
+            </div>
+          </div>
+          
+          <div className="text-center mb-6">
             <p 
               className="text-lg font-semibold mb-2"
               style={{ color: 'var(--on-surface)' }}
