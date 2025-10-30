@@ -159,7 +159,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
           </div>
 
           {/* Bouton et toggle */}
-          {needsOrder && actualStock > 0 && (
+          {needsOrder && actualStock > 0 && gap < 0 && (
             <div>
               <div className="flex items-center gap-2 mb-0.5">
                 <div className="flex-1">
@@ -281,7 +281,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
           </div>
 
           {/* Bouton et toggle */}
-          {needsOrder && actualStock > 0 && (
+          {needsOrder && actualStock > 0 && gap < 0 && (
             <div>
               <div className="flex items-center gap-2 mb-2">
                 <div className="flex-1">
