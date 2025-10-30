@@ -45,14 +45,13 @@ export const PricingCard: React.FC<PricingCardProps> = ({ plan, locale }) => {
         {plan.badge && (
           <>
             <div 
-              className="absolute left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-lg text-sm font-bold whitespace-nowrap"
+              className="absolute left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-lg text-sm font-bold whitespace-nowrap ring-4 ring-[var(--surface)]"
               style={{ 
                 top: '-22px',
                 backgroundColor: plan.badgeColor === 'cortex' ? '#E2CDED' : 
                                plan.badgeColor === 'success' ? '#B8E0D2' :
                                plan.badgeColor === 'warning' ? '#FFE5B4' : '#BADFF6',
                 color: '#1F1F1F',
-                border: '1px solid var(--surface)',
                 boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
               }}
             >
