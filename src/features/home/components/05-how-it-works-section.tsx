@@ -315,7 +315,7 @@ style={{ backgroundColor: 'transparent' }}
         transition={{ duration: 0.6, delay: 0.4 }}
       >
         <h3 className="text-2xl font-bold text-center mb-4" style={{ color: 'var(--on-surface)' }}>
-          {locale === "fr" ? "Nos fournisseurs partenaires" : "Our Supplier Partners"}
+          {locale === "fr" ? "Connecté avec plus de 300 fournisseurs" : "Connected with over 300 suppliers"}
         </h3>
         
         <p className="text-center text-base mb-8 max-w-3xl mx-auto" style={{ color: 'var(--on-surface-variant)' }}>
@@ -337,8 +337,7 @@ style={{ backgroundColor: 'transparent' }}
             { name: 'FLB', logo: '/images/suppliers/flb.png' },
             { name: 'Canabec', logo: '/images/suppliers/canabec.png' },
             { name: 'JG Fruits et Légumes', logo: '/images/suppliers/jg.png' },
-            { name: 'Les emballages L.Boucher', logo: '/images/suppliers/lboucher.png' },
-            { name: 'Tout Prêt', logo: '/images/suppliers/toutpret.png' }
+            { name: 'Les emballages L.Boucher', logo: '/images/suppliers/lboucher.png' }
           ].map((supplier, index) => (
             <LogoCard
               key={supplier.name}
@@ -348,6 +347,23 @@ style={{ backgroundColor: 'transparent' }}
               delay={0.05}
             />
           ))}
+          
+          {/* Carte "+ 300" */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.05 * 11 }}
+            className="flex items-center justify-center h-24 rounded-lg"
+            style={{ 
+              backgroundColor: 'var(--primary-container)',
+              border: '2px solid var(--primary)'
+            }}
+          >
+            <span className="text-3xl font-bold" style={{ color: 'var(--primary)' }}>
+              + 300
+            </span>
+          </motion.div>
         </div>
       </motion.div>
 
