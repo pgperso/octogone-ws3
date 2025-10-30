@@ -160,14 +160,17 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
             modules={[Pagination]}
             spaceBetween={24}
             slidesPerView={1}
-            pagination={{ clickable: true }}
+            pagination={{ 
+              clickable: true,
+              el: '.swiper-pagination-custom'
+            }}
             breakpoints={{
               768: { slidesPerView: 2 },
               1024: { slidesPerView: 3 },
               1400: { slidesPerView: 4 }
             }}
             onSwiper={setSwiperInstance}
-            style={{ paddingTop: '2rem', paddingBottom: '3rem' }}
+            style={{ paddingTop: '2rem', paddingBottom: '1rem' }}
           >
             {plans.map((plan, index) => {
               const Icon = plan.icon;
@@ -297,19 +300,38 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
           </Swiper>
           
           {/* Custom Navigation Buttons */}
-          <div className="flex items-center justify-center gap-4 mt-4">
+          <div className="flex items-center justify-center gap-6 mt-4">
             <button
               onClick={() => swiperInstance?.slidePrev()}
-              className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110"
-              style={{ backgroundColor: 'var(--surface-variant)', color: 'var(--on-surface-variant)' }}
+              className="w-10 h-10 rounded-lg flex items-center justify-center transition-all"
+              style={{ backgroundColor: 'var(--primary)', color: 'var(--on-primary)' }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--secondary)';
+                e.currentTarget.style.color = 'var(--on-secondary)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--primary)';
+                e.currentTarget.style.color = 'var(--on-primary)';
+              }}
               aria-label="Previous"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
+            
+            <div className="swiper-pagination-custom" />
+            
             <button
               onClick={() => swiperInstance?.slideNext()}
-              className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110"
-              style={{ backgroundColor: 'var(--surface-variant)', color: 'var(--on-surface-variant)' }}
+              className="w-10 h-10 rounded-lg flex items-center justify-center transition-all"
+              style={{ backgroundColor: 'var(--primary)', color: 'var(--on-primary)' }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--secondary)';
+                e.currentTarget.style.color = 'var(--on-secondary)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'var(--primary)';
+                e.currentTarget.style.color = 'var(--on-primary)';
+              }}
               aria-label="Next"
             >
               <ChevronRight className="w-5 h-5" />
