@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { ResponsiveSection } from '@/components/ui/responsive-section';
 import { OctogoneButton } from '@/components/ui/octogone-button';
-import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Sparkles } from 'lucide-react';
+import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -22,6 +22,7 @@ interface PricingSectionProps {
 export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
   const isEnglish = locale === 'en';
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly');
+  const [swiperInstance, setSwiperInstance] = useState<any>(null);
   
   // Prix de base pour 1 établissement
   const basePrice = pricingData[0].pricePerLocationPerMonth;
@@ -164,6 +165,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
               1024: { slidesPerView: 3 },
               1400: { slidesPerView: 4 }
             }}
+            onSwiper={setSwiperInstance}
             style={{ paddingTop: '2rem', paddingBottom: '3rem' }}
           >
             {plans.map((plan, index) => {
@@ -292,6 +294,26 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
               );
             })}
           </Swiper>
+          
+          {/* Custom Navigation Buttons */}
+          <div className="flex items-center justify-center gap-4 mt-4">
+            <button
+              onClick={() => swiperInstance?.slidePrev()}
+              className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110"
+              style={{ backgroundColor: 'var(--surface-variant)', color: 'var(--on-surface-variant)' }}
+              aria-label="Previous"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => swiperInstance?.slideNext()}
+              className="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110"
+              style={{ backgroundColor: 'var(--surface-variant)', color: 'var(--on-surface-variant)' }}
+              aria-label="Next"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
         </div>
       </ResponsiveSection>
 
