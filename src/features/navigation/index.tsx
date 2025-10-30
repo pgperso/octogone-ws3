@@ -128,6 +128,18 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
     }
   }, []);
 
+  // Fermer le menu mobile quand on passe en mode desktop
+  React.useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1280 && isOpen) { // xl breakpoint = 1280px
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isOpen, setIsOpen]);
+
   // Framer Motion scroll animations
   const { scrollYProgress } = useScroll();
 

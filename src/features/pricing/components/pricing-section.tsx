@@ -4,13 +4,8 @@ import React, { useState } from 'react';
 import { ResponsiveSection } from '@/components/ui/responsive-section';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { OctogoneGradientButton } from '@/components/ui/octogone-gradient-button';
-import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Sparkles, ChevronLeft, ChevronRight, Star, Thermometer } from 'lucide-react';
+import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Sparkles, Star, Thermometer } from 'lucide-react';
 import Link from 'next/link';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import type { Swiper as SwiperType } from 'swiper';
-import { Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
 import modulesData from '@/data/calculator/modules.json';
 import pricingData from '@/data/calculator/pricing.json';
 import plansConfig from '@/data/pricing/plans.json';
@@ -23,7 +18,6 @@ interface PricingSectionProps {
 export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
   const isEnglish = locale === 'en';
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly');
-  const [swiperInstance, setSwiperInstance] = useState<SwiperType | null>(null);
   
   // Prix de base pour 1 établissement
   const basePrice = pricingData[0].pricePerLocationPerMonth;
@@ -144,41 +138,16 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
           </div>
         </div>
 
-        {/* Pricing Carousel */}
-        <div className="py-8" style={{ minHeight: '800px' }}>
-          <Swiper
-            modules={[Pagination]}
-            spaceBetween={24}
-            slidesPerView={1}
-            slidesPerGroup={1}
-            pagination={{ 
-              clickable: true,
-              el: '.swiper-pagination-custom'
-            }}
-            breakpoints={{
-              768: { 
-                slidesPerView: 2,
-                slidesPerGroup: 2
-              },
-              1024: { 
-                slidesPerView: 3,
-                slidesPerGroup: 3
-              },
-              1400: { 
-                slidesPerView: 4,
-                slidesPerGroup: 4
-              }
-            }}
-            onSwiper={setSwiperInstance}
-            style={{ paddingTop: '3rem', paddingBottom: '1rem', paddingLeft: '12px', paddingRight: '12px' }}
-          >
+        {/* Pricing Grid */}
+        <div className="py-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pt-12">
             {plans.map((plan) => {
               const Icon = plan.icon;
               const isProPlan = plan.id === 'pro';
               const hasCustomColors = !!plan.customColors;
               
               return (
-                <SwiperSlide key={plan.id} style={{ height: 'auto' }}>
+                <div key={plan.id}>
                   <div
                     className={`rounded-2xl p-8 relative flex flex-col ${hasCustomColors ? 'shadow-lg' : ''} ${plan.specialEffects?.ring || ''}`}
                     style={{
@@ -310,48 +279,9 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                   rel="noopener noreferrer"
                 />
               </div>
-                </SwiperSlide>
+                </div>
               );
             })}
-          </Swiper>
-          
-          {/* Custom Navigation Buttons */}
-          <div className="flex items-center justify-center gap-6 mt-4 mx-auto max-w-md">
-            <button
-              onClick={() => swiperInstance?.slidePrev()}
-              className="w-10 h-10 rounded-lg flex items-center justify-center transition-all cursor-pointer"
-              style={{ backgroundColor: 'var(--primary)', color: 'var(--on-primary)' }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--secondary)';
-                e.currentTarget.style.color = 'var(--on-secondary)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--primary)';
-                e.currentTarget.style.color = 'var(--on-primary)';
-              }}
-              aria-label="Previous"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            
-            <div className="swiper-pagination-custom flex-1 flex justify-center" style={{ cursor: 'pointer' }} />
-            
-            <button
-              onClick={() => swiperInstance?.slideNext()}
-              className="w-10 h-10 rounded-lg flex items-center justify-center transition-all cursor-pointer"
-              style={{ backgroundColor: 'var(--primary)', color: 'var(--on-primary)' }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--secondary)';
-                e.currentTarget.style.color = 'var(--on-secondary)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'var(--primary)';
-                e.currentTarget.style.color = 'var(--on-primary)';
-              }}
-              aria-label="Next"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
           </div>
         </div>
       </ResponsiveSection>
