@@ -36,8 +36,8 @@ export const OctogoneGradientButton: React.FC<OctogoneGradientButtonProps> = ({
         border: showBorder ? '3px solid var(--surface)' : 'none'
       }}
     >
-      <Icon className="w-5 h-5 transition-transform group-hover:scale-110" />
-      <span>{text}</span>
+      <Icon className="w-5 h-5 transition-transform group-hover:scale-110 text-white" />
+      <span className="text-white">{text}</span>
     </Link>
   );
 };
