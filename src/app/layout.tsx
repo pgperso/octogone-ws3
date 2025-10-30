@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import "@/styles/motion-optimization.css";
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const metadata: Metadata = {
   title: {
@@ -92,6 +93,7 @@ export default function RootLayout({
           color: 'var(--on-background)'
         }}>
           {children}
+          <SpeedInsights />
         </body>
       </html>
     </ThemeProvider>
