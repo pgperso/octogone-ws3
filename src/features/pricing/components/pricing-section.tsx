@@ -160,14 +160,24 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
             modules={[Pagination]}
             spaceBetween={24}
             slidesPerView={1}
+            slidesPerGroup={1}
             pagination={{ 
               clickable: true,
               el: '.swiper-pagination-custom'
             }}
             breakpoints={{
-              768: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-              1400: { slidesPerView: 4 }
+              768: { 
+                slidesPerView: 2,
+                slidesPerGroup: 2
+              },
+              1024: { 
+                slidesPerView: 3,
+                slidesPerGroup: 3
+              },
+              1400: { 
+                slidesPerView: 4,
+                slidesPerGroup: 4
+              }
             }}
             onSwiper={setSwiperInstance}
             style={{ paddingTop: '2rem', paddingBottom: '1rem', paddingLeft: '4rem', paddingRight: '4rem' }}
