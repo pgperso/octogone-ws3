@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { ResponsiveSection } from '@/components/ui/responsive-section';
 import { OctogoneGradientButton } from '@/components/ui/octogone-gradient-button';
 import { OctogoneToggle } from '@/components/ui/octogone-toggle';
-import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Star, Thermometer, ChevronLeft, ChevronRight, MessageCircle } from 'lucide-react';
+import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Star, Thermometer, ChevronLeft, ChevronRight, MessageCircleMore } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
 import { Pagination } from 'swiper/modules';
@@ -360,7 +360,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
           </p>
           <OctogoneGradientButton
             href={`/${locale}/contact`}
-            icon={MessageCircle}
+            icon={MessageCircleMore}
             text={isEnglish ? pricingConfig.cta.customSolution.button.en : pricingConfig.cta.customSolution.button.fr}
           />
         </div>
