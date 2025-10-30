@@ -159,10 +159,9 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
         </div>
 
         {/* Pricing Carousel */}
-        <div className="relative">
-          {/* Carousel Container */}
-          <div className="overflow-hidden py-8" ref={emblaRef}>
-            <div className="flex embla__container">
+        <div className="relative py-8">
+          <div className="embla" ref={emblaRef}>
+            <div className="embla__container">
               {plans.map((plan, index) => {
                 const Icon = plan.icon;
                 const isProPlan = plan.id === 'pro';
