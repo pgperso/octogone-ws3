@@ -48,9 +48,9 @@
     "highlighted": false,
     "popular": false,
     "badge": {
-      "textFr": "Essentiel",
-      "textEn": "Essential",
-      "color": "secondary"
+      "textFr": "Sécurité",
+      "textEn": "Security",
+      "color": "success"
     },
     "customColors": null,
     "fixedPrice": 59,
@@ -91,9 +91,9 @@
     "highlighted": true,
     "popular": false,
     "badge": {
-      "textFr": "Bêta",
-      "textEn": "Beta",
-      "color": "secondary"
+      "textFr": "Pour un temps limité",
+      "textEn": "Limited time",
+      "color": "cortex"
     },
     "customColors": {
       "background": "linear-gradient(180deg, #BADFF6 0%, #E2CDED 100%)",
@@ -101,7 +101,7 @@
       "iconBg": "rgba(0,0,0,0.05)",
       "badgeBg": "rgba(0,0,0,0.05)"
     },
-    "fixedPrice": 229,
+    "fixedPrice": 199,
     "originalPrice": null,
     "specialEffects": {
       "shimmer": false,
