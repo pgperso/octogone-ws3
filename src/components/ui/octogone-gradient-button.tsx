@@ -30,14 +30,15 @@ export const OctogoneGradientButton: React.FC<OctogoneGradientButtonProps> = ({
       href={href}
       target={target}
       rel={rel}
-      className={`group relative inline-flex items-center justify-center gap-3 px-6 py-3 rounded-xl font-semibold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl ${className}`}
+      className={`group relative inline-flex items-center justify-center gap-3 px-6 py-3 rounded-xl font-semibold overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-xl ${className}`}
       style={{ 
         background: gradient,
-        border: showBorder ? '3px solid var(--surface)' : 'none'
+        border: showBorder ? '3px solid var(--surface)' : 'none',
+        color: 'var(--on-primary-container)'
       }}
     >
-      <Icon className="w-5 h-5 transition-transform group-hover:scale-110 text-white" />
-      <span className="text-white">{text}</span>
+      <Icon className="w-5 h-5 transition-transform group-hover:scale-110" style={{ color: 'var(--on-primary-container)' }} />
+      <span style={{ color: 'var(--on-primary-container)' }}>{text}</span>
     </Link>
   );
 };
