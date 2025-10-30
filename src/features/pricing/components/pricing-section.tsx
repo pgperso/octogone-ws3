@@ -34,8 +34,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
   const plans = plansConfig
     .sort((a, b) => a.order - b.order)
     .map((planConfig) => {
-      const module = modulesData.find(m => m.id === planConfig.moduleId);
-      if (!module) return null;
+      const moduleData = modulesData.find(m => m.id === planConfig.moduleId);
+      if (!moduleData) return null;
       
       const priceMultiplier = planConfig.priceMultiplier || 1;
       const monthlyPrice = basePrice * priceMultiplier;
@@ -43,17 +43,17 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
       const displayPrice = billingCycle === 'monthly' ? monthlyPrice : annualPrice;
       
       return {
-        id: module.id,
-        name: isEnglish ? module.nameEn : module.nameFr,
-        icon: iconMap[module.icon] || Package,
+        id: moduleData.id,
+        name: isEnglish ? moduleData.nameEn : moduleData.nameFr,
+        icon: iconMap[moduleData.icon] || Package,
         price: displayPrice,
         originalPrice: billingCycle === 'annual' ? monthlyPrice : null,
         priceDetail: isEnglish ? '/location/month' : '/établissement/mois',
-        description: isEnglish ? module.descriptionEn : module.descriptionFr,
-        features: isEnglish ? module.featuresEn : module.featuresFr,
+        description: isEnglish ? moduleData.descriptionEn : moduleData.descriptionFr,
+        features: isEnglish ? moduleData.featuresEn : moduleData.featuresFr,
         highlighted: planConfig.highlighted,
-        savings: module.monthlySavingsPerLocation,
-        timeSaved: module.timesSavedPerWeekPerLocation,
+        savings: moduleData.monthlySavingsPerLocation,
+        timeSaved: moduleData.timesSavedPerWeekPerLocation,
         popular: planConfig.popular,
         badge: planConfig.badge ? (isEnglish ? planConfig.badge.textEn : planConfig.badge.textFr) : null,
         customColors: planConfig.customColors,
