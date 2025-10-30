@@ -219,7 +219,9 @@
       "storage": "frigidaire",
       "minInventory": 11,
       "initialQuantity": 21,
-      "theoreticalQuantity": 16
+      "theoreticalQuantity": 16,
+      "enteredBy": "Julie",
+      "enteredAt": "2025-10-29T13:12:00.000Z"
     },
     {
       "id": "prod-010",
@@ -350,7 +352,9 @@
           "prod-031",
           "prod-034"
         ]
-      }
+      },
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-29T13:16:00.000Z"
     },
     {
       "id": "prod-016",
@@ -384,7 +388,9 @@
       "storage": "frigidaire",
       "minInventory": 6,
       "initialQuantity": 7,
-      "theoreticalQuantity": 6
+      "theoreticalQuantity": 6,
+      "enteredBy": "Marie",
+      "enteredAt": "2025-10-29T13:20:00.000Z"
     },
     {
       "id": "prod-018",
@@ -400,7 +406,9 @@
       "storage": "frigidaire",
       "minInventory": 14,
       "initialQuantity": 18,
-      "theoreticalQuantity": 16
+      "theoreticalQuantity": 16,
+      "enteredBy": "Julie",
+      "enteredAt": "2025-10-29T13:22:00.000Z"
     },
     {
       "id": "prod-019",
@@ -581,7 +589,9 @@
           "prod-038",
           "prod-044"
         ]
-      }
+      },
+      "enteredBy": "Vincent",
+      "enteredAt": "2025-10-29T13:33:00.000Z"
     },
     {
       "id": "prod-028",
@@ -708,7 +718,9 @@
       "storage": "sec",
       "minInventory": 8,
       "initialQuantity": 10,
-      "theoreticalQuantity": 8
+      "theoreticalQuantity": 8,
+      "enteredBy": "Marie",
+      "enteredAt": "2025-10-29T13:39:00.000Z"
     },
     {
       "id": "prod-034",
