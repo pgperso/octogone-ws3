@@ -1,16 +1,17 @@
 .embla {
   overflow: hidden;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .embla__container {
   display: flex;
+  gap: 1.5rem;
 }
 
 .embla__slide {
-  flex: 0 0 100%;
+  flex: 0 0 calc(100% - 1.5rem);
   min-width: 0;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
 }
 
 @media (min-width: 768px) {

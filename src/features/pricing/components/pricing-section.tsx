@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { ResponsiveSection } from '@/components/ui/responsive-section';
 import { OctogoneButton } from '@/components/ui/octogone-button';
-import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Sparkles } from 'lucide-react';
+import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import useEmblaCarousel from 'embla-carousel-react';
@@ -22,12 +22,15 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly');
   
   // Carousel setup
-  const [emblaRef] = useEmblaCarousel({
+  const [emblaRef, emblaApi] = useEmblaCarousel({
     align: 'start',
     loop: false,
     slidesToScroll: 'auto',
     containScroll: 'trimSnaps'
   });
+
+  const scrollPrev = () => emblaApi && emblaApi.scrollPrev();
+  const scrollNext = () => emblaApi && emblaApi.scrollNext();
   
   // Prix de base pour 1 établissement
   const basePrice = pricingData[0].pricePerLocationPerMonth;
@@ -160,6 +163,24 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
 
         {/* Pricing Carousel */}
         <div className="relative py-8">
+          {/* Navigation Buttons */}
+          <button
+            onClick={scrollPrev}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
+            style={{ backgroundColor: 'var(--primary)', color: 'var(--on-primary)' }}
+            aria-label="Previous"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          <button
+            onClick={scrollNext}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
+            style={{ backgroundColor: 'var(--primary)', color: 'var(--on-primary)' }}
+            aria-label="Next"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+
           <div className="embla" ref={emblaRef}>
             <div className="embla__container">
               {plans.map((plan, index) => {
