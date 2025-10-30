@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { ResponsiveSection } from '@/components/ui/responsive-section';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { OctogoneGradientButton } from '@/components/ui/octogone-gradient-button';
+import { OctogoneToggle } from '@/components/ui/octogone-toggle';
 import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Sparkles, Star, Thermometer, ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -122,36 +123,23 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
 
           {/* Billing Toggle */}
           <div className="flex items-center justify-center gap-4 mb-12">
-            <button
-              onClick={() => setBillingCycle('monthly')}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all ${
-                billingCycle === 'monthly' ? 'shadow-lg' : ''
-              }`}
-              style={{
-                backgroundColor: billingCycle === 'monthly' ? 'var(--primary)' : 'var(--surface-variant)',
-                color: billingCycle === 'monthly' ? 'var(--on-primary)' : 'var(--on-surface-variant)'
-              }}
-            >
-              {isEnglish ? pricingConfig.billing.monthly.en : pricingConfig.billing.monthly.fr}
-            </button>
-            <button
-              onClick={() => setBillingCycle('annual')}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all relative ${
-                billingCycle === 'annual' ? 'shadow-lg' : ''
-              }`}
-              style={{
-                backgroundColor: billingCycle === 'annual' ? 'var(--primary)' : 'var(--surface-variant)',
-                color: billingCycle === 'annual' ? 'var(--on-primary)' : 'var(--on-surface-variant)'
-              }}
-            >
-              {isEnglish ? pricingConfig.billing.annual.en : pricingConfig.billing.annual.fr}
+            <OctogoneToggle
+              options={[
+                { value: 'monthly', label: isEnglish ? pricingConfig.billing.monthly.en : pricingConfig.billing.monthly.fr },
+                { value: 'annual', label: isEnglish ? pricingConfig.billing.annual.en : pricingConfig.billing.annual.fr }
+              ]}
+              value={billingCycle}
+              onChange={(value) => setBillingCycle(value as 'monthly' | 'annual')}
+              size="lg"
+            />
+            {billingCycle === 'annual' && (
               <span 
-                className="absolute -top-2 -right-2 px-2 py-0.5 text-xs font-bold rounded-full"
-                style={{ backgroundColor: 'var(--success)', color: 'white' }}
+                className="px-3 py-1.5 text-sm font-bold rounded-full"
+                style={{ backgroundColor: 'var(--on-primary-container)', color: 'var(--primary-container)' }}
               >
-                {pricingConfig.billing.annualBadge}
+                -10%
               </span>
-            </button>
+            )}
           </div>
         </div>
 

@@ -28,40 +28,8 @@
     }
   },
   {
-    "id": "tips",
-    "order": 3,
-    "moduleId": "tips",
-    "highlighted": false,
-    "popular": false,
-    "badge": null,
-    "customColors": null,
-    "fixedPrice": 89,
-    "originalPrice": null,
-    "specialEffects": {
-      "ring": "ring-4 ring-[var(--outline)]"
-    }
-  },
-  {
-    "id": "thermometer",
-    "order": 4,
-    "moduleId": "thermometer",
-    "highlighted": false,
-    "popular": false,
-    "badge": {
-      "textFr": "Sécurité",
-      "textEn": "Security",
-      "color": "success"
-    },
-    "customColors": null,
-    "fixedPrice": 59,
-    "originalPrice": null,
-    "specialEffects": {
-      "ring": "ring-4 ring-[var(--outline)]"
-    }
-  },
-  {
     "id": "pro",
-    "order": 5,
+    "order": 3,
     "moduleId": "pro",
     "highlighted": true,
     "popular": true,
@@ -86,7 +54,7 @@
   },
   {
     "id": "pro_ai",
-    "order": 6,
+    "order": 4,
     "moduleId": "pro_ai",
     "highlighted": true,
     "popular": false,
@@ -107,6 +75,38 @@
       "shimmer": false,
       "scale": 1.08,
       "ring": "ring-4 ring-[#E2CDED]"
+    }
+  },
+  {
+    "id": "thermometer",
+    "order": 5,
+    "moduleId": "thermometer",
+    "highlighted": false,
+    "popular": false,
+    "badge": {
+      "textFr": "Sécurité",
+      "textEn": "Security",
+      "color": "success"
+    },
+    "customColors": null,
+    "fixedPrice": 59,
+    "originalPrice": null,
+    "specialEffects": {
+      "ring": "ring-4 ring-[var(--outline)]"
+    }
+  },
+  {
+    "id": "tips",
+    "order": 6,
+    "moduleId": "tips",
+    "highlighted": false,
+    "popular": false,
+    "badge": null,
+    "customColors": null,
+    "fixedPrice": 89,
+    "originalPrice": null,
+    "specialEffects": {
+      "ring": "ring-4 ring-[var(--outline)]"
     }
   }
 ]
