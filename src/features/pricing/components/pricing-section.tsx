@@ -3,15 +3,18 @@
 import React, { useState } from 'react';
 import { ResponsiveSection } from '@/components/ui/responsive-section';
 import { OctogoneButton } from '@/components/ui/octogone-button';
-import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import useEmblaCarousel from 'embla-carousel-react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 import modulesData from '@/data/calculator/modules.json';
 import pricingData from '@/data/calculator/pricing.json';
 import plansConfig from '@/data/pricing/plans.json';
 import pricingConfig from '@/data/pricing/config.json';
-import './pricing-carousel.css';
 
 interface PricingSectionProps {
   locale: 'fr' | 'en';
@@ -20,17 +23,6 @@ interface PricingSectionProps {
 export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
   const isEnglish = locale === 'en';
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly');
-  
-  // Carousel setup
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: 'start',
-    loop: false,
-    slidesToScroll: 'auto',
-    containScroll: 'trimSnaps'
-  });
-
-  const scrollPrev = () => emblaApi && emblaApi.scrollPrev();
-  const scrollNext = () => emblaApi && emblaApi.scrollNext();
   
   // Prix de base pour 1 établissement
   const basePrice = pricingData[0].pricePerLocationPerMonth;
@@ -162,38 +154,31 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
         </div>
 
         {/* Pricing Carousel */}
-        <div className="relative py-8">
-          {/* Navigation Buttons */}
-          <button
-            onClick={scrollPrev}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
-            style={{ backgroundColor: 'var(--primary)', color: 'var(--on-primary)' }}
-            aria-label="Previous"
+        <div className="py-8">
+          <Swiper
+            modules={[Navigation, Pagination]}
+            spaceBetween={24}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            breakpoints={{
+              768: { slidesPerView: 2 },
+              1024: { slidesPerView: 3 },
+              1400: { slidesPerView: 4 }
+            }}
+            className="pricing-swiper"
           >
-            <ChevronLeft className="w-6 h-6" />
-          </button>
-          <button
-            onClick={scrollNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
-            style={{ backgroundColor: 'var(--primary)', color: 'var(--on-primary)' }}
-            aria-label="Next"
-          >
-            <ChevronRight className="w-6 h-6" />
-          </button>
-
-          <div className="embla" ref={emblaRef}>
-            <div className="embla__container">
-              {plans.map((plan, index) => {
-                const Icon = plan.icon;
-                const isProPlan = plan.id === 'pro';
-                
-                return (
+            {plans.map((plan, index) => {
+              const Icon = plan.icon;
+              const isProPlan = plan.id === 'pro';
+              
+              return (
+                <SwiperSlide key={plan.id}>
                   <motion.div
-                    key={plan.id}
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className={`embla__slide rounded-2xl p-6 relative flex flex-col ${isProPlan ? 'shadow-2xl ring-4 ring-blue-600/30' : 'shadow-lg'}`}
+                    className={`rounded-2xl p-6 relative flex flex-col h-full ${isProPlan ? 'shadow-2xl ring-4 ring-blue-600/30' : 'shadow-lg'}`}
                     style={{
                       border: isProPlan ? 'none' : '1px solid var(--outline)',
                       background: plan.customColors?.background || 'var(--surface)',
@@ -304,10 +289,10 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                   </OctogoneButton>
                 </Link>
               </motion.div>
-            );
-          })}
-            </div>
-          </div>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
         </div>
       </ResponsiveSection>
 
