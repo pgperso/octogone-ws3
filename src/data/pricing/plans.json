@@ -91,8 +91,8 @@
     "highlighted": true,
     "popular": false,
     "badge": {
-      "textFr": "Pour un temps limité",
-      "textEn": "Limited time",
+      "textFr": "Réservez votre accès",
+      "textEn": "Reserve your access",
       "color": "cortex"
     },
     "customColors": {

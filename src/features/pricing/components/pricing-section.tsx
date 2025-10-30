@@ -212,10 +212,9 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                                        plan.badgeColor === 'success' ? 'var(--success)' :
                                        isProPlan ? 'var(--secondary)' : 'var(--primary)',
                         color: 'var(--on-primary-container)',
-                        border: '2px solid var(--surface)'
+                        border: '4px solid var(--surface)'
                       }}
                     >
-                      {isProPlan && <Sparkles className="w-4 h-4" />}
                       {plan.badge}
                     </div>
                   </>
