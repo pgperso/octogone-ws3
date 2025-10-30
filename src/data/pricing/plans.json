@@ -6,20 +6,20 @@
     "highlighted": false,
     "popular": false,
     "badge": null,
-    "customColors": null
+    "customColors": null,
+    "fixedPrice": 69,
+    "originalPrice": null
   },
   {
     "id": "foodcost",
     "order": 2,
     "moduleId": "foodcost",
     "highlighted": false,
-    "popular": true,
-    "badge": {
-      "textFr": "Populaire",
-      "textEn": "Popular",
-      "color": "secondary"
-    },
-    "customColors": null
+    "popular": false,
+    "badge": null,
+    "customColors": null,
+    "fixedPrice": 79,
+    "originalPrice": null
   },
   {
     "id": "tips",
@@ -28,30 +28,33 @@
     "highlighted": false,
     "popular": false,
     "badge": null,
-    "customColors": null
+    "customColors": null,
+    "fixedPrice": 89,
+    "originalPrice": null
   },
   {
     "id": "pro",
     "order": 4,
     "moduleId": "pro",
     "highlighted": true,
-    "popular": false,
+    "popular": true,
     "badge": {
-      "textFr": "Meilleure valeur",
-      "textEn": "Best Value",
+      "textFr": "Populaire",
+      "textEn": "Popular",
       "color": "primary"
     },
     "customColors": {
-      "background": "linear-gradient(135deg, #dcb26b 0%, #b8935a 100%)",
+      "background": "linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%)",
       "text": "white",
       "iconBg": "rgba(255,255,255,0.2)",
       "badgeBg": "rgba(255,255,255,0.25)"
     },
-    "priceMultiplier": 4,
+    "fixedPrice": 159,
+    "originalPrice": 229,
     "specialEffects": {
       "shimmer": true,
       "scale": 1.08,
-      "ring": "ring-4 ring-yellow-600/30"
+      "ring": "ring-4 ring-blue-600/30"
     }
   }
 ]

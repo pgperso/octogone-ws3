@@ -2,26 +2,61 @@
   {
     "minLocations": 1,
     "maxLocations": 1,
-    "pricePerLocationPerMonth": 159
+    "pricePerLocationPerMonth": 69,
+    "modules": {
+      "inventory": 69,
+      "foodcost": 79,
+      "tips": 89,
+      "thermometer": 59,
+      "pro": 159
+    }
   },
   {
     "minLocations": 2,
     "maxLocations": 5,
-    "pricePerLocationPerMonth": 139
+    "pricePerLocationPerMonth": 59,
+    "modules": {
+      "inventory": 59,
+      "foodcost": 69,
+      "tips": 79,
+      "thermometer": 49,
+      "pro": 139
+    }
   },
   {
     "minLocations": 6,
     "maxLocations": 10,
-    "pricePerLocationPerMonth": 119
+    "pricePerLocationPerMonth": 49,
+    "modules": {
+      "inventory": 49,
+      "foodcost": 59,
+      "tips": 69,
+      "thermometer": 39,
+      "pro": 119
+    }
   },
   {
     "minLocations": 11,
     "maxLocations": 20,
-    "pricePerLocationPerMonth": 99
+    "pricePerLocationPerMonth": 39,
+    "modules": {
+      "inventory": 39,
+      "foodcost": 49,
+      "tips": 59,
+      "thermometer": 29,
+      "pro": 99
+    }
   },
   {
     "minLocations": 21,
     "maxLocations": null,
-    "pricePerLocationPerMonth": 89
+    "pricePerLocationPerMonth": 29,
+    "modules": {
+      "inventory": 29,
+      "foodcost": 39,
+      "tips": 49,
+      "thermometer": 19,
+      "pro": 89
+    }
   }
 ]

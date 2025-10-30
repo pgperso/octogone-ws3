@@ -38,8 +38,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
       const moduleData = modulesData.find(m => m.id === planConfig.moduleId);
       if (!moduleData) return null;
       
-      const priceMultiplier = planConfig.priceMultiplier || 1;
-      const monthlyPrice = basePrice * priceMultiplier;
+      // Utiliser le prix fixe du plan
+      const monthlyPrice = planConfig.fixedPrice || basePrice;
       const annualPrice = Math.round(monthlyPrice * (1 - annualDiscount));
       const displayPrice = billingCycle === 'monthly' ? monthlyPrice : annualPrice;
       
@@ -48,7 +48,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
         name: isEnglish ? moduleData.nameEn : moduleData.nameFr,
         icon: iconMap[moduleData.icon] || Package,
         price: displayPrice,
-        originalPrice: billingCycle === 'annual' ? monthlyPrice : null,
+        originalPrice: planConfig.originalPrice || (billingCycle === 'annual' ? monthlyPrice : null),
         priceDetail: isEnglish ? pricingConfig.labels.priceDetail.en : pricingConfig.labels.priceDetail.fr,
         description: isEnglish ? moduleData.descriptionEn : moduleData.descriptionFr,
         features: isEnglish ? moduleData.featuresEn : moduleData.featuresFr,
