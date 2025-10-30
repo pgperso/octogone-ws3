@@ -77,6 +77,7 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
   const [secondUserActive, setSecondUserActive] = useState(true);
   const [sortBy, setSortBy] = useState<SortOption>('alphabetical');
   const [nonInventoriableOverrides, setNonInventoriableOverrides] = useState<Record<string, boolean>>({});
+  const [addedToBasketByProduct, setAddedToBasketByProduct] = useState<Record<string, number>>({});
 
   // Sélectionner la baguette par défaut au chargement
   useEffect(() => {
@@ -827,6 +828,15 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
             onNavigatePrevious={selectedProduct && sortedProducts.findIndex((p: Product) => p.id === selectedProduct.id) > 0 ? handleNavigatePrevious : undefined}
             onToggleNonInventoriable={handleToggleNonInventoriable}
             locale={locale}
+            addedToBasket={selectedProduct ? addedToBasketByProduct[selectedProduct.id] || 0 : 0}
+            onAddedToBasketChange={(quantity) => {
+              if (selectedProduct) {
+                setAddedToBasketByProduct(prev => ({
+                  ...prev,
+                  [selectedProduct.id]: quantity
+                }));
+              }
+            }}
           />
         </div>
       </div>

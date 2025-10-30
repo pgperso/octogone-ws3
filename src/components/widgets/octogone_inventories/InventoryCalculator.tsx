@@ -30,12 +30,16 @@ interface InventoryCalculatorProps {
   onNavigatePrevious?: () => void;
   onToggleNonInventoriable?: (productId: string) => void;
   locale?: 'fr' | 'en';
+  addedToBasket?: number;
+  onAddedToBasketChange?: (quantity: number) => void;
 }
 
 export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
   selectedProduct,
   hasExistingEntry,
   currentInventoryQuantity = 0,
+  addedToBasket = 0,
+  onAddedToBasketChange,
   onSave,
   onNavigateNext,
   onNavigatePrevious,
@@ -284,6 +288,8 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
               handleAddToOrderBasket();
             }
           }}
+          addedToBasket={addedToBasket}
+          onAddedToBasketChange={onAddedToBasketChange}
         />
       ) : (
         <div className="mb-6">

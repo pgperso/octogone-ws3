@@ -30,9 +30,11 @@ interface ProductCardProps {
   locale?: 'fr' | 'en';
   currentQuantity?: number; // Nouvelle saisie de l'utilisateur
   onAddToOrder?: () => void;
+  addedToBasket?: number;
+  onAddedToBasketChange?: (quantity: number) => void;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr', currentQuantity = 0, onAddToOrder }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr', currentQuantity = 0, onAddToOrder, addedToBasket: externalAddedToBasket = 0, onAddedToBasketChange }) => {
   const isEnglish = locale === 'en';
   const minInventory = product.minInventory || 0;
   const theoreticalStock = product.theoreticalQuantity || product.initialQuantity || 0;
@@ -40,15 +42,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
   // Stock actuel = toujours la quantité saisie (currentQuantity vient de la calculatrice)
   const actualStock = currentQuantity;
   
-  // Quantité ajoutée au panier
-  const [addedToBasket, setAddedToBasket] = useState(0);
-  
   // Écart dynamique : si saisie faite, utiliser saisie, sinon théorique
   const currentStock = actualStock > 0 ? actualStock : theoreticalStock;
   const baseGap = currentStock - minInventory;
   
-  // Écart théorique = écart de base + quantité ajoutée au panier
-  const gap = baseGap + addedToBasket;
+  // Écart théorique = écart de base + quantité ajoutée au panier (depuis le parent)
+  const gap = baseGap + externalAddedToBasket;
   const needsOrder = gap < 0;
   
   // Valeurs par défaut basées sur l'écart
@@ -58,7 +57,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
   // Mettre à jour la quantité quand le baseGap change
   useEffect(() => {
     setOrderQuantity(Math.abs(baseGap));
-    setAddedToBasket(0); // Réinitialiser quand le produit ou la quantité change
   }, [baseGap]);
   
   const productImage = getProductImage(product.name);
@@ -183,7 +181,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                 size="sm"
                 onClick={() => {
                   onAddToOrder?.();
-                  setAddedToBasket(prev => prev + orderQuantity);
+                  onAddedToBasketChange?.(externalAddedToBasket + orderQuantity);
                   setOrderQuantity(0);
                 }}
                 icon={product.isRecipe ? <ChefHat className="w-4 h-4" /> : <ShoppingCart className="w-4 h-4" />}
@@ -305,7 +303,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, locale = 'fr'
                 size="md"
                 onClick={() => {
                   onAddToOrder?.();
-                  setAddedToBasket(prev => prev + orderQuantity);
+                  onAddedToBasketChange?.(externalAddedToBasket + orderQuantity);
                   setOrderQuantity(0);
                 }}
                 icon={product.isRecipe ? <ChefHat className="w-5 h-5" /> : <ShoppingCart className="w-5 h-5" />}
