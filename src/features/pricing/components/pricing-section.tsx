@@ -135,48 +135,64 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1400px] mx-auto">
           {plans.map((plan, index) => {
             const Icon = plan.icon;
+            const isProPlan = plan.id === 'pro';
+            
             return (
               <motion.div
                 key={plan.id}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`rounded-2xl p-8 relative ${plan.highlighted ? 'shadow-2xl' : 'shadow-lg'}`}
+                className={`rounded-2xl p-6 relative ${isProPlan ? 'shadow-2xl ring-4 ring-yellow-600/30' : 'shadow-lg'}`}
                 style={{
-                  backgroundColor: plan.highlighted ? 'var(--primary-container)' : 'var(--surface)',
-                  border: plan.highlighted ? '3px solid var(--primary)' : '1px solid var(--outline)',
-                  transform: plan.highlighted ? 'scale(1.05)' : 'scale(1)'
+                  border: isProPlan ? 'none' : '1px solid var(--outline)',
+                  background: isProPlan 
+                    ? 'linear-gradient(135deg, #dcb26b 0%, #b8935a 100%)'
+                    : 'var(--surface)',
+                  transform: isProPlan ? 'scale(1.08)' : 'scale(1)'
                 }}
               >
-                {plan.highlighted && (
-                  <div 
-                    className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-1 rounded-full text-sm font-bold"
-                    style={{ 
-                      backgroundColor: 'var(--primary)',
-                      color: 'var(--on-primary)'
-                    }}
-                  >
-                    {isEnglish ? 'Most Popular' : 'Plus populaire'}
-                  </div>
+                {isProPlan && (
+                  <>
+                    <div 
+                      className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2"
+                      style={{ 
+                        backgroundColor: 'var(--secondary)',
+                        color: 'white',
+                        boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
+                      }}
+                    >
+                      <Sparkles className="w-4 h-4" />
+                      {isEnglish ? 'Best Value' : 'Meilleure valeur'}
+                    </div>
+                    {/* Effet de brillance */}
+                    <div className="absolute inset-0 rounded-2xl opacity-20 pointer-events-none"
+                         style={{
+                           background: 'linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%)',
+                           backgroundSize: '200% 200%',
+                           animation: 'shimmer 3s infinite'
+                         }}
+                    />
+                  </>
                 )}
 
                 {/* Icon */}
                 <div className="flex justify-center mb-4">
                   <div 
                     className="w-16 h-16 rounded-xl flex items-center justify-center"
-                    style={{ backgroundColor: 'var(--secondary-container)' }}
+                    style={{ backgroundColor: isProPlan ? 'rgba(255,255,255,0.2)' : 'var(--secondary-container)' }}
                   >
-                    <Icon className="w-8 h-8" style={{ color: 'var(--on-secondary-container)' }} />
+                    <Icon className="w-8 h-8" style={{ color: isProPlan ? 'white' : 'var(--on-secondary-container)' }} />
                   </div>
                 </div>
 
                 {/* Plan Name */}
                 <h3 
                   className="text-2xl font-bold text-center mb-2"
-                  style={{ color: plan.highlighted ? 'var(--on-primary-container)' : 'var(--on-surface)' }}
+                  style={{ color: isProPlan ? 'white' : 'var(--on-surface)' }}
                 >
                   {plan.name}
                 </h3>
@@ -194,14 +210,14 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                     )}
                     <div 
                       className="text-4xl font-bold"
-                      style={{ color: 'var(--primary)' }}
+                      style={{ color: isProPlan ? 'white' : 'var(--primary)' }}
                     >
                       {plan.price}$
                     </div>
                   </div>
                   <div 
                     className="text-sm mb-4"
-                    style={{ color: plan.highlighted ? 'var(--on-primary-container)' : 'var(--on-surface-variant)' }}
+                    style={{ color: isProPlan ? 'rgba(255,255,255,0.9)' : 'var(--on-surface-variant)' }}
                   >
                     {plan.priceDetail}
                   </div>
@@ -210,14 +226,20 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                   <div className="flex flex-wrap gap-2 justify-center">
                     <div 
                       className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold"
-                      style={{ backgroundColor: 'var(--success-container)', color: 'var(--on-success-container)' }}
+                      style={{ 
+                        backgroundColor: isProPlan ? 'rgba(255,255,255,0.25)' : 'var(--success-container)', 
+                        color: isProPlan ? 'white' : 'var(--on-success-container)' 
+                      }}
                     >
                       <TrendingDown className="w-3 h-3" />
                       {isEnglish ? 'Save' : 'Économise'} {plan.savings}$/mois
                     </div>
                     <div 
                       className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold"
-                      style={{ backgroundColor: 'var(--tertiary-container)', color: 'var(--on-tertiary-container)' }}
+                      style={{ 
+                        backgroundColor: isProPlan ? 'rgba(255,255,255,0.25)' : 'var(--tertiary-container)', 
+                        color: isProPlan ? 'white' : 'var(--on-tertiary-container)' 
+                      }}
                     >
                       <Clock className="w-3 h-3" />
                       {plan.timeSaved}h/semaine
@@ -228,7 +250,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                 {/* Description */}
                 <p 
                   className="text-center mb-6 min-h-[60px]"
-                  style={{ color: plan.highlighted ? 'var(--on-primary-container)' : 'var(--on-surface-variant)' }}
+                  style={{ color: isProPlan ? 'rgba(255,255,255,0.95)' : 'var(--on-surface-variant)' }}
                 >
                   {plan.description}
                 </p>
@@ -239,11 +261,11 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                     <li key={idx} className="flex items-start gap-3">
                       <Check 
                         className="w-5 h-5 flex-shrink-0 mt-0.5" 
-                        style={{ color: 'var(--success)' }}
+                        style={{ color: isProPlan ? 'white' : 'var(--success)' }}
                       />
                       <span 
                         className="text-sm"
-                        style={{ color: plan.highlighted ? 'var(--on-primary-container)' : 'var(--on-surface)' }}
+                        style={{ color: isProPlan ? 'white' : 'var(--on-surface)' }}
                       >
                         {feature}
                       </span>
