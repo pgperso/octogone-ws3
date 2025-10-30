@@ -32,12 +32,12 @@
     },
     "customSolution": {
       "title": {
-        "fr": "Besoin d'une solution personnalisée ?",
-        "en": "Need a custom solution?"
+        "fr": "Vous gérez plusieurs établissements ?",
+        "en": "Managing multiple locations?"
       },
       "description": {
-        "fr": "Chaque restaurant est unique. Contactez-nous pour discuter d'un forfait sur mesure qui correspond parfaitement à vos besoins spécifiques et à votre budget.",
-        "en": "Every restaurant is unique. Contact us to discuss a tailored plan that perfectly fits your specific needs and budget."
+        "fr": "Groupes de restaurants et franchises : nous avons des solutions adaptées à votre réalité. Contactez-nous pour discuter d'un forfait qui correspond à vos besoins et à votre structure.",
+        "en": "Restaurant groups and franchises: we have solutions tailored to your reality. Contact us to discuss a plan that fits your needs and structure."
       },
       "button": {
         "fr": "Planifier une démo",
