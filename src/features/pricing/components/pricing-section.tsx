@@ -5,7 +5,6 @@ import { ResponsiveSection } from '@/components/ui/responsive-section';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { OctogoneGradientButton } from '@/components/ui/octogone-gradient-button';
 import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Sparkles, ChevronLeft, ChevronRight, Star, Thermometer } from 'lucide-react';
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { Swiper as SwiperType } from 'swiper';
