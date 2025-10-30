@@ -45,7 +45,7 @@
     },
     "customColors": {
       "background": "linear-gradient(135deg, #bfdbfe 0%, #93c5fd 100%)",
-      "text": "on-surface",
+      "text": "on-primary-container",
       "iconBg": "rgba(0,0,0,0.05)",
       "badgeBg": "rgba(0,0,0,0.05)"
     },
