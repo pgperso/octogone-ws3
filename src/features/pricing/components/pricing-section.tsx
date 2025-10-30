@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import modulesData from '@/data/calculator/modules.json';
 import pricingData from '@/data/calculator/pricing.json';
+import plansConfig from '@/data/pricing/plans.json';
 
 interface PricingSectionProps {
   locale: 'fr' | 'en';
@@ -29,11 +30,15 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
     Package
   };
 
-  // Créer les plans à partir des modules (exclure thermometer)
-  const plans = modulesData
-    .filter(module => module.id !== 'thermometer')
-    .map((module) => {
-      const monthlyPrice = module.id === 'pro' ? basePrice * 4 : basePrice;
+  // Créer les plans à partir de la configuration et des modules
+  const plans = plansConfig
+    .sort((a, b) => a.order - b.order)
+    .map((planConfig) => {
+      const module = modulesData.find(m => m.id === planConfig.moduleId);
+      if (!module) return null;
+      
+      const priceMultiplier = planConfig.priceMultiplier || 1;
+      const monthlyPrice = basePrice * priceMultiplier;
       const annualPrice = Math.round(monthlyPrice * (1 - annualDiscount));
       const displayPrice = billingCycle === 'monthly' ? monthlyPrice : annualPrice;
       
@@ -46,12 +51,16 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
         priceDetail: isEnglish ? '/location/month' : '/établissement/mois',
         description: isEnglish ? module.descriptionEn : module.descriptionFr,
         features: isEnglish ? module.featuresEn : module.featuresFr,
-        highlighted: module.id === 'pro',
+        highlighted: planConfig.highlighted,
         savings: module.monthlySavingsPerLocation,
         timeSaved: module.timesSavedPerWeekPerLocation,
-        popular: module.id === 'foodcost'
+        popular: planConfig.popular,
+        badge: planConfig.badge ? (isEnglish ? planConfig.badge.textEn : planConfig.badge.textFr) : null,
+        customColors: planConfig.customColors,
+        specialEffects: planConfig.specialEffects
       };
-    });
+    })
+    .filter((plan): plan is NonNullable<typeof plan> => plan !== null);
 
   return (
     <>
@@ -162,18 +171,18 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                   transform: isProPlan ? 'scale(1.08)' : 'scale(1)'
                 }}
               >
-                {isProPlan && (
+                {plan.badge && (
                   <>
                     <div 
                       className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2"
                       style={{ 
-                        backgroundColor: 'var(--secondary)',
+                        backgroundColor: isProPlan ? 'var(--secondary)' : 'var(--primary)',
                         color: 'white',
                         boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
                       }}
                     >
-                      <Sparkles className="w-4 h-4" />
-                      {isEnglish ? 'Best Value' : 'Meilleure valeur'}
+                      {isProPlan && <Sparkles className="w-4 h-4" />}
+                      {plan.badge}
                     </div>
                     {/* Effet de brillance */}
                     <div className="absolute inset-0 rounded-2xl opacity-20 pointer-events-none"
