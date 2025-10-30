@@ -360,11 +360,11 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
           <p className="text-lg mb-8" style={{ color: 'var(--on-surface-variant)' }}>
             {isEnglish ? pricingConfig.cta.customSolution.description.en : pricingConfig.cta.customSolution.description.fr}
           </p>
-          <Link href={`/${locale}/contact`}>
-            <OctogoneButton variant="primary" size="lg">
-              {isEnglish ? pricingConfig.cta.customSolution.button.en : pricingConfig.cta.customSolution.button.fr}
-            </OctogoneButton>
-          </Link>
+          <OctogoneGradientButton
+            href={`/${locale}/contact`}
+            icon={ArrowRight}
+            text={isEnglish ? pricingConfig.cta.customSolution.button.en : pricingConfig.cta.customSolution.button.fr}
+          />
         </div>
       </ResponsiveSection>
     </>
