@@ -41,6 +41,20 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
   // État pour la hauteur dynamique de la bannière
   const [bannerHeight, setBannerHeight] = React.useState(60);
 
+  // État pour détecter si on est sur mobile
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  // Détecter la taille de l'écran
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   // Gérer la visibilité de la bannière en fonction du défilement
   React.useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -137,8 +151,12 @@ const NavigationContent: React.FC<DesktopNavProps> = ({
       {SHOW_ANNOUNCEMENT_BANNER && (
         <AnnouncementBanner
           message={locale === 'fr' 
-            ? "Bienvenue sur notre nouveau site web, un avant-goût de la nouvelle version d'Octogone. Choisissez votre forfait maintenant et profitez du gel de votre tarif lors du lancement." 
-            : "Welcome to our new website, a preview of the new Octogone version. Choose your plan now and enjoy a rate freeze at launch."
+            ? (isMobile 
+                ? "Profitez d'un gel de tarif maintenant" 
+                : "Bienvenue sur notre nouveau site web, un avant-goût de la nouvelle version d'Octogone. Choisissez votre forfait maintenant et profitez du gel de votre tarif lors du lancement.")
+            : (isMobile
+                ? "Enjoy a rate freeze now"
+                : "Welcome to our new website, a preview of the new Octogone version. Choose your plan now and enjoy a rate freeze at launch.")
           }
           link={undefined}
           isVisible={isAnnouncementVisible}
