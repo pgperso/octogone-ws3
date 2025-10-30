@@ -12,17 +12,13 @@ interface PricingCardProps {
     priceDetail: string;
     description: string;
     features: string[];
-    highlighted?: boolean;
     savings?: number;
     timeSaved?: number;
-    popular?: boolean;
     badge: string | null;
     badgeColor: string | null;
     customColors?: {
       background?: string;
-      text?: string;
       iconBg?: string;
-      badgeBg?: string;
     } | null;
     specialEffects?: {
       ring?: string;
@@ -55,7 +51,9 @@ export const PricingCard: React.FC<PricingCardProps> = ({ plan, locale }) => {
                 backgroundColor: plan.badgeColor === 'cortex' ? '#E2CDED' : 
                                plan.badgeColor === 'success' ? '#B8E0D2' :
                                plan.badgeColor === 'warning' ? '#FFE5B4' : '#BADFF6',
-                color: '#1F1F1F'
+                color: '#1F1F1F',
+                border: '2px solid var(--surface)',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
               }}
             >
               {plan.badge}

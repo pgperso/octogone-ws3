@@ -3,8 +3,6 @@
     "id": "inventory",
     "order": 1,
     "moduleId": "inventory",
-    "highlighted": false,
-    "popular": false,
     "badge": null,
     "customColors": null,
     "fixedPrice": 69,
@@ -17,8 +15,6 @@
     "id": "foodcost",
     "order": 2,
     "moduleId": "foodcost",
-    "highlighted": false,
-    "popular": false,
     "badge": null,
     "customColors": null,
     "fixedPrice": 79,
@@ -31,8 +27,6 @@
     "id": "pro",
     "order": 3,
     "moduleId": "pro",
-    "highlighted": true,
-    "popular": true,
     "badge": {
       "textFr": "L'option des professionnels",
       "textEn": "The professionals' choice",
@@ -40,15 +34,11 @@
     },
     "customColors": {
       "background": "linear-gradient(135deg, #bfdbfe 0%, #93c5fd 100%)",
-      "text": "on-primary-container",
-      "iconBg": "rgba(0,0,0,0.05)",
-      "badgeBg": "rgba(0,0,0,0.05)"
+      "iconBg": "rgba(0,0,0,0.05)"
     },
     "fixedPrice": 159,
     "originalPrice": null,
     "specialEffects": {
-      "shimmer": false,
-      "scale": 1.08,
       "ring": "ring-4 ring-blue-600/30"
     }
   },
@@ -56,8 +46,6 @@
     "id": "pro_ai",
     "order": 4,
     "moduleId": "pro_ai",
-    "highlighted": true,
-    "popular": false,
     "badge": {
       "textFr": "Réservez votre prix et votre accès",
       "textEn": "Reserve your price and access",
@@ -65,15 +53,11 @@
     },
     "customColors": {
       "background": "linear-gradient(180deg, #BADFF6 0%, #E2CDED 100%)",
-      "text": "on-primary-container",
-      "iconBg": "rgba(0,0,0,0.05)",
-      "badgeBg": "rgba(0,0,0,0.05)"
+      "iconBg": "rgba(0,0,0,0.05)"
     },
     "fixedPrice": 199,
     "originalPrice": null,
     "specialEffects": {
-      "shimmer": false,
-      "scale": 1.08,
       "ring": "ring-4 ring-[#E2CDED]"
     }
   },
@@ -81,8 +65,6 @@
     "id": "thermometer",
     "order": 5,
     "moduleId": "thermometer",
-    "highlighted": false,
-    "popular": false,
     "badge": {
       "textFr": "La sécurité sans compromis",
       "textEn": "Security without compromise",
@@ -99,8 +81,6 @@
     "id": "tips",
     "order": 6,
     "moduleId": "tips",
-    "highlighted": false,
-    "popular": false,
     "badge": null,
     "customColors": null,
     "fixedPrice": 89,
