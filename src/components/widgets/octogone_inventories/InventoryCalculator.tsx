@@ -302,52 +302,99 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
         </div>
       )}
 
-      {/* Affichage quantité avec sélecteur d'unités */}
-      <div 
-        className="mb-6 p-4 rounded-lg"
-        style={{ backgroundColor: 'var(--surface-variant)' }}
-      >
-        <div className="flex items-center justify-between mb-2">
+      {hasExistingEntry ? (
+        /* Affichage de la saisie existante */
+        <div className="mb-6">
           <div 
-            className="text-4xl font-bold"
-            style={{ color: 'var(--on-surface)' }}
+            className="mb-4 p-6 rounded-lg text-center"
+            style={{ backgroundColor: 'var(--surface-variant)' }}
           >
-            {displayValue}
-          </div>
-          {selectedProduct && selectedProduct.availableUnits && selectedProduct.availableUnits.length > 1 && (
-            <select
-              value={selectedUnit}
-              onChange={(e) => setSelectedUnit(e.target.value)}
-              className="ml-4 px-3 py-2 rounded-lg text-lg font-semibold border-2 focus:outline-none cursor-pointer"
-              style={{
-                backgroundColor: 'var(--surface)',
-                borderColor: 'var(--primary)',
-                color: 'var(--on-surface)'
-              }}
+            <div className="text-sm mb-2" style={{ color: 'var(--on-surface-variant)' }}>
+              {isEnglish ? 'Current entry:' : 'Saisie actuelle :'}
+            </div>
+            <div 
+              className="text-5xl font-bold"
+              style={{ color: 'var(--on-surface)' }}
             >
-              {selectedProduct.availableUnits.map((unit) => (
-                <option key={unit} value={unit}>
-                  {unit}
-                </option>
-              ))}
-            </select>
-          )}
-          {selectedProduct && (!selectedProduct.availableUnits || selectedProduct.availableUnits.length <= 1) && (
-            <span className="ml-4 text-2xl font-semibold" style={{ color: 'var(--on-surface-variant)' }}>
-              {selectedUnit}
-            </span>
-          )}
+              {currentInventoryQuantity} {selectedProduct?.unit}
+            </div>
+            <div 
+              className="text-lg mt-2"
+              style={{ color: 'var(--on-surface-variant)' }}
+            >
+              {isEnglish ? 'Value:' : 'Valeur:'} {((currentInventoryQuantity || 0) * (selectedProduct?.unitCost || 0)).toFixed(2)} $
+            </div>
+          </div>
+          
+          <button
+            onClick={() => {
+              if (selectedProduct) {
+                onSave(selectedProduct.id, 0);
+                onAddedToBasketChange?.(0); // Réinitialiser aussi le panier
+                setDisplayValue('0');
+                setIsEditing(false);
+              }
+            }}
+            disabled={!selectedProduct}
+            className="w-full p-4 rounded-lg font-bold text-lg flex items-center justify-center gap-3 cursor-pointer"
+            style={{
+              backgroundColor: 'var(--error)',
+              color: 'var(--on-error)',
+              boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)'
+            }}
+          >
+            <Delete className="w-6 h-6" />
+            {isEnglish ? 'Delete entry' : 'Supprimer la saisie'}
+          </button>
         </div>
-        <div 
-          className="text-lg text-right"
-          style={{ color: 'var(--on-surface-variant)' }}
-        >
-          {isEnglish ? 'Value:' : 'Valeur:'} {totalValue.toFixed(2)} $
-        </div>
-      </div>
+      ) : (
+        <>
+          {/* Affichage quantité avec sélecteur d'unités */}
+          <div 
+            className="mb-6 p-4 rounded-lg"
+            style={{ backgroundColor: 'var(--surface-variant)' }}
+          >
+            <div className="flex items-center justify-between mb-2">
+              <div 
+                className="text-4xl font-bold"
+                style={{ color: 'var(--on-surface)' }}
+              >
+                {displayValue}
+              </div>
+              {selectedProduct && selectedProduct.availableUnits && selectedProduct.availableUnits.length > 1 && (
+                <select
+                  value={selectedUnit}
+                  onChange={(e) => setSelectedUnit(e.target.value)}
+                  className="ml-4 px-3 py-2 rounded-lg text-lg font-semibold border-2 focus:outline-none cursor-pointer"
+                  style={{
+                    backgroundColor: 'var(--surface)',
+                    borderColor: 'var(--primary)',
+                    color: 'var(--on-surface)'
+                  }}
+                >
+                  {selectedProduct.availableUnits.map((unit) => (
+                    <option key={unit} value={unit}>
+                      {unit}
+                    </option>
+                  ))}
+                </select>
+              )}
+              {selectedProduct && (!selectedProduct.availableUnits || selectedProduct.availableUnits.length <= 1) && (
+                <span className="ml-4 text-2xl font-semibold" style={{ color: 'var(--on-surface-variant)' }}>
+                  {selectedUnit}
+                </span>
+              )}
+            </div>
+            <div 
+              className="text-lg text-right"
+              style={{ color: 'var(--on-surface-variant)' }}
+            >
+              {isEnglish ? 'Value:' : 'Valeur:'} {totalValue.toFixed(2)} $
+            </div>
+          </div>
 
-      {/* Calculatrice */}
-      <div className="grid grid-cols-3 gap-3 mb-6">
+          {/* Calculatrice */}
+          <div className="grid grid-cols-3 gap-3 mb-6">
         {['7', '8', '9', '4', '5', '6', '1', '2', '3'].map((num) => (
           <button
             key={num}
@@ -398,10 +445,10 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
         >
           <Delete className="w-6 h-6 mx-auto" />
         </button>
-      </div>
+          </div>
 
-      {/* Boutons d'action */}
-      <div className="mt-auto flex gap-3">
+          {/* Boutons d'action */}
+          <div className="mt-auto flex gap-3">
         {/* Bouton Ajouter - prend tout l'espace disponible */}
         <button
           onClick={handleSave}
@@ -473,7 +520,9 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
             <ChevronDown className="w-5 h-5" />
           </button>
         </div>
-      </div>
+          </div>
+        </>
+      )}
       </div>
     </div>
   );
