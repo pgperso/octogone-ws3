@@ -67,5 +67,9 @@ export const getProductImage = (productName: string): string | null => {
     'Œufs': '/products/eggs.avif',
     'Épinards surgelés': '/products/frozen-spinach.avif',
   };
-  return imageMap[productName] || null;
+  const result = imageMap[productName] || null;
+  if (!result) {
+    console.warn('⚠️ No image found for product:', productName);
+  }
+  return result;
 };
