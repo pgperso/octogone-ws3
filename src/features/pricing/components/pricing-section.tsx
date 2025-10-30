@@ -164,22 +164,23 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
               1024: { slidesPerView: 3 },
               1400: { slidesPerView: 4 }
             }}
-            style={{ paddingBottom: '3rem' }}
+            style={{ paddingTop: '2rem', paddingBottom: '3rem' }}
           >
             {plans.map((plan, index) => {
               const Icon = plan.icon;
               const isProPlan = plan.id === 'pro';
               
               return (
-                <SwiperSlide key={plan.id}>
+                <SwiperSlide key={plan.id} style={{ height: 'auto' }}>
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className={`rounded-2xl p-6 relative flex flex-col h-full ${isProPlan ? 'shadow-2xl ring-4 ring-blue-600/30' : 'shadow-lg'}`}
+                    className={`rounded-2xl p-6 relative flex flex-col ${isProPlan ? 'shadow-2xl ring-4 ring-blue-600/30' : 'shadow-lg'}`}
                     style={{
                       border: isProPlan ? 'none' : '1px solid var(--outline)',
                       background: plan.customColors?.background || 'var(--surface)',
+                      height: '100%',
                       minHeight: '600px'
                     }}
                   >
