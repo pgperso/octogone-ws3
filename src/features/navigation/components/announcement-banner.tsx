@@ -44,15 +44,20 @@ export const AnnouncementBanner: React.FC<AnnouncementBannerProps> = ({
   }, []);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       {isVisible && (
         <motion.div
-          initial={{ y: -40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -40, opacity: 0 }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
           className="announcement-banner fixed top-0 left-0 right-0 z-[70] overflow-hidden"
-          style={{ backgroundColor: '#C8B6FF', margin: 0, padding: 0 }}
+          style={{ 
+            backgroundColor: '#C8B6FF', 
+            margin: 0, 
+            padding: 0,
+            willChange: 'opacity'
+          }}
         >
           <div className="container mx-auto px-3 py-3 sm:py-4 relative flex items-center justify-center min-h-[48px]">
             <a 
