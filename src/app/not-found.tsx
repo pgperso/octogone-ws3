@@ -1,13 +1,26 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { OctogoneButton } from '@/components/ui/octogone-button';
-import { Home, ArrowLeft, Search } from 'lucide-react';
+import { Home, Search } from 'lucide-react';
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4" style={{ backgroundColor: 'var(--background)' }}>
-      <div className="max-w-2xl w-full text-center">
+    <div className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
+      {/* Image de fond */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/restaurant1.avif"
+          alt="Restaurant background"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0, 0, 0, 0.7)' }}></div>
+      </div>
+
+      <div className="max-w-2xl w-full text-center relative z-10">
         {/* Numéro 404 stylisé */}
         <div className="mb-8">
           <h1 
@@ -27,15 +40,15 @@ export default function NotFound() {
         </div>
 
         {/* Message */}
-        <h2 className="text-3xl font-bold mb-4" style={{ color: 'var(--on-surface)' }}>
+        <h2 className="text-3xl font-bold mb-4 text-white">
           Page introuvable
         </h2>
-        <p className="text-lg mb-8" style={{ color: 'var(--on-surface-variant)' }}>
+        <p className="text-lg mb-8 text-gray-200">
           Désolé, la page que vous recherchez n&apos;existe pas ou a été déplacée.
         </p>
 
-        {/* Boutons d'action */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        {/* Bouton d'action */}
+        <div className="flex justify-center">
           <Link href="/fr">
             <OctogoneButton
               variant="primary"
@@ -46,23 +59,11 @@ export default function NotFound() {
               Retour à l&apos;accueil
             </OctogoneButton>
           </Link>
-          
-          <button
-            onClick={() => window.history.back()}
-            className="flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all"
-            style={{
-              backgroundColor: 'var(--surface-variant)',
-              color: 'var(--on-surface-variant)'
-            }}
-          >
-            <ArrowLeft className="w-5 h-5" />
-            Page précédente
-          </button>
         </div>
 
         {/* Suggestions */}
-        <div className="mt-12 p-6 rounded-2xl" style={{ backgroundColor: 'var(--surface-variant)' }}>
-          <h3 className="text-lg font-semibold mb-4" style={{ color: 'var(--on-surface)' }}>
+        <div className="mt-12 p-6 rounded-2xl backdrop-blur-sm" style={{ backgroundColor: 'rgba(255, 255, 255, 0.1)' }}>
+          <h3 className="text-lg font-semibold mb-4 text-white">
             Liens utiles
           </h3>
           <div className="flex flex-wrap gap-3 justify-center">
