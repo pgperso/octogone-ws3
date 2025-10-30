@@ -94,7 +94,7 @@
     "specialEffects": {
       "shimmer": false,
       "scale": 1.08,
-      "ring": "ring-4 ring-[#E2CDED]/30"
+      "ring": "ring-4 ring-[#E2CDED]"
     }
   }
 ]
