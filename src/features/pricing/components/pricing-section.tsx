@@ -200,8 +200,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                       style={{ 
                         top: '-22px',
                         backgroundColor: plan.badgeColor === 'cortex' ? '#E2CDED' : 
-                                       plan.badgeColor === 'success' ? 'var(--success)' :
-                                       isProPlan ? 'var(--secondary)' : 'var(--primary)',
+                                       plan.badgeColor === 'success' ? '#B8E0D2' :
+                                       plan.badgeColor === 'primary' ? '#BADFF6' : 'var(--primary)',
                         color: 'var(--on-primary-container)',
                         border: '4px solid var(--surface)'
                       }}
@@ -248,7 +248,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                     {plan.originalPrice && (
                       <span 
                         className="text-lg line-through"
-                        style={{ color: 'var(--on-surface-variant)', opacity: 0.5 }}
+                        style={{ color: 'var(--on-primary-container)', opacity: 0.5 }}
                       >
                         {plan.originalPrice}$
                       </span>
