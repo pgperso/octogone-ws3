@@ -30,6 +30,8 @@ type StorageType = 'sec' | 'congelateur' | 'frigidaire';
 interface InventoryItem {
   productId: string;
   quantity: number;
+  enteredBy?: 'Vincent' | 'Julie' | 'Marie';
+  enteredAt?: string;
 }
 
 interface OctogoneInventoryWidgetProps {
@@ -41,29 +43,29 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
   // Inventaire initial avec quelques produits déjà saisis
   const initialInventory: InventoryItem[] = [
     // Garde-manger (sec)
-    { productId: 'prod-022', quantity: 25 }, // Farine
-    { productId: 'prod-032', quantity: 15 }, // Pâtes
-    { productId: 'prod-037', quantity: 20 }, // Riz
-    { productId: 'prod-025', quantity: 5 }, // Huile d'olive
-    { productId: 'prod-039', quantity: 2 }, // Sel
-    { productId: 'prod-041', quantity: 10 }, // Sucre
-    { productId: 'prod-009', quantity: 3 }, // Bière
-    { productId: 'prod-017', quantity: 2 }, // Coca-Cola
+    { productId: 'prod-022', quantity: 25, enteredBy: 'Vincent', enteredAt: '09:15' }, // Farine
+    { productId: 'prod-032', quantity: 15, enteredBy: 'Vincent', enteredAt: '09:18' }, // Pâtes
+    { productId: 'prod-037', quantity: 20, enteredBy: 'Julie', enteredAt: '09:22' }, // Riz
+    { productId: 'prod-025', quantity: 5, enteredBy: 'Julie', enteredAt: '09:25' }, // Huile d'olive
+    { productId: 'prod-039', quantity: 2, enteredBy: 'Marie', enteredAt: '09:30' }, // Sel
+    { productId: 'prod-041', quantity: 10, enteredBy: 'Marie', enteredAt: '09:32' }, // Sucre
+    { productId: 'prod-009', quantity: 3, enteredBy: 'Vincent', enteredAt: '09:35' }, // Bière
+    { productId: 'prod-017', quantity: 2, enteredBy: 'Julie', enteredAt: '09:38' }, // Coca-Cola
     
     // Congélateur
-    { productId: 'prod-023', quantity: 30 }, // Frites surgelées
-    { productId: 'prod-049', quantity: 8 }, // Pizza surgelée
-    { productId: 'prod-050', quantity: 12 }, // Légumes mélangés
-    { productId: 'prod-057', quantity: 5 }, // Crème glacée
+    { productId: 'prod-023', quantity: 30, enteredBy: 'Vincent', enteredAt: '09:42' }, // Frites surgelées
+    { productId: 'prod-049', quantity: 8, enteredBy: 'Julie', enteredAt: '09:45' }, // Pizza surgelée
+    { productId: 'prod-050', quantity: 12, enteredBy: 'Marie', enteredAt: '09:48' }, // Légumes mélangés
+    { productId: 'prod-057', quantity: 5, enteredBy: 'Vincent', enteredAt: '09:50' }, // Crème glacée
     
     // Frigidaire
-    { productId: 'prod-008', quantity: 8 }, // Beurre
-    { productId: 'prod-028', quantity: 20 }, // Lait
-    { productId: 'prod-031', quantity: 15 }, // Œufs
-    { productId: 'prod-013', quantity: 10 }, // Carottes
-    { productId: 'prod-043', quantity: 8 }, // Tomates
-    { productId: 'prod-029', quantity: 5 }, // Laitue
-    { productId: 'prod-004', quantity: 12 }, // Avocat
+    { productId: 'prod-008', quantity: 8, enteredBy: 'Julie', enteredAt: '09:55' }, // Beurre
+    { productId: 'prod-028', quantity: 20, enteredBy: 'Marie', enteredAt: '09:58' }, // Lait
+    { productId: 'prod-031', quantity: 15, enteredBy: 'Vincent', enteredAt: '10:02' }, // Œufs
+    { productId: 'prod-013', quantity: 10, enteredBy: 'Julie', enteredAt: '10:05' }, // Carottes
+    { productId: 'prod-043', quantity: 8, enteredBy: 'Marie', enteredAt: '10:08' }, // Tomates
+    { productId: 'prod-029', quantity: 5, enteredBy: 'Vincent', enteredAt: '10:10' }, // Laitue
+    { productId: 'prod-004', quantity: 12, enteredBy: 'Julie', enteredAt: '10:12' }, // Avocat
   ];
 
   const [inventory, setInventory] = useState<InventoryItem[]>(initialInventory);
@@ -198,13 +200,16 @@ export const OctogoneInventoryWidget: React.FC<OctogoneInventoryWidgetProps> = (
         return prev.filter(i => i.productId !== productId);
       }
       
+      const now = new Date();
+      const enteredAt = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+      
       if (existingIndex >= 0) {
         const updated = [...prev];
-        updated[existingIndex] = { productId, quantity };
+        updated[existingIndex] = { productId, quantity, enteredBy: 'Vincent', enteredAt };
         return updated;
       }
       
-      return [...prev, { productId, quantity }];
+      return [...prev, { productId, quantity, enteredBy: 'Vincent', enteredAt }];
     });
   };
 

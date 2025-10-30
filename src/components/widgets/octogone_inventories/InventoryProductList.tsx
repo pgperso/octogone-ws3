@@ -28,6 +28,8 @@ interface Product {
 interface InventoryItem {
   productId: string;
   quantity: number;
+  enteredBy?: 'Vincent' | 'Julie' | 'Marie';
+  enteredAt?: string;
 }
 
 interface InventoryProductListProps {
