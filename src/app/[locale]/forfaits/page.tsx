@@ -1,19 +1,11 @@
-import { Metadata } from 'next';
+'use client';
+
 import { PricingSection } from '@/features/pricing/components/pricing-section';
+import { useParams } from 'next/navigation';
 
-export const metadata: Metadata = {
-  title: 'Forfaits et tarification | Octogone',
-  description: 'Découvrez nos forfaits adaptés à vos besoins. Solutions flexibles pour restaurants de toutes tailles.',
-};
-
-interface PricingPageProps {
-  params: Promise<{
-    locale: string;
-  }>;
-}
-
-export default async function PricingPage({ params }: PricingPageProps) {
-  const { locale } = await params;
+export default function PricingPage() {
+  const params = useParams();
+  const locale = params.locale as string;
 
   return (
     <main>
