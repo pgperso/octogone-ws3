@@ -3,7 +3,7 @@
 import React from 'react';
 import { useParams } from 'next/navigation';
 import { ResponsiveSection } from '@/components/ui/responsive-section';
-import { Heart, MonitorSpeaker, Settings, TrendingUp, Headphones, Play, Zap, LineChart, Brain, HandHeart } from 'lucide-react';
+import { Heart, MonitorSpeaker, Settings, TrendingUp, Play, Zap, LineChart, Brain, HeartHandshake } from 'lucide-react';
 import { OctogoneButton } from '@/components/ui/octogone-button';
 import { LogoCard } from '@/components/widgets/logo-card';
 import { motion } from 'framer-motion';
@@ -287,7 +287,7 @@ style={{ backgroundColor: 'transparent' }}
           {/* Icône à gauche */}
           <div className="w-24 h-24 rounded-xl flex items-center justify-center flex-shrink-0"
                style={{ backgroundColor: 'var(--secondary-container)' }}>
-            <HandHeart className="w-12 h-12" style={{ color: 'var(--on-secondary-container)' }} />
+            <HeartHandshake className="w-12 h-12" style={{ color: 'var(--on-secondary-container)' }} />
           </div>
           
           {/* Contenu */}
