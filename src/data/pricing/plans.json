@@ -84,7 +84,7 @@
       "color": "secondary"
     },
     "customColors": {
-      "background": "linear-gradient(135deg, #e9d5ff 0%, #d8b4fe 100%)",
+      "background": "linear-gradient(180deg, #BADFF6 0%, #E2CDED 100%)",
       "text": "on-primary-container",
       "iconBg": "rgba(0,0,0,0.05)",
       "badgeBg": "rgba(0,0,0,0.05)"
@@ -94,7 +94,7 @@
     "specialEffects": {
       "shimmer": false,
       "scale": 1.08,
-      "ring": "ring-4 ring-purple-600/30"
+      "ring": "ring-4 ring-[#E2CDED]/30"
     }
   }
 ]

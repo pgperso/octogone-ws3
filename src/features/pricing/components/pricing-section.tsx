@@ -182,9 +182,9 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className={`rounded-2xl p-6 relative flex flex-col ${isProPlan ? 'shadow-2xl ring-4 ring-blue-600/30' : 'shadow-lg'}`}
+                    className={`rounded-2xl p-6 relative flex flex-col shadow-lg ${plan.specialEffects?.ring || ''}`}
                     style={{
-                      border: isProPlan ? 'none' : '1px solid var(--outline)',
+                      border: plan.customColors?.background ? 'none' : '1px solid var(--outline)',
                       background: plan.customColors?.background || 'var(--surface)',
                       height: '100%',
                       minHeight: '600px'
@@ -193,10 +193,10 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                 {plan.badge && (
                   <>
                     <div 
-                      className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2"
+                      className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2"
                       style={{ 
                         backgroundColor: isProPlan ? 'var(--secondary)' : 'var(--primary)',
-                        color: 'white',
+                        color: 'var(--on-primary-container)',
                         boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
                       }}
                     >
