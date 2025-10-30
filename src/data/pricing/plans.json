@@ -71,5 +71,30 @@
       "scale": 1.08,
       "ring": "ring-4 ring-blue-600/30"
     }
+  },
+  {
+    "id": "pro_ai",
+    "order": 6,
+    "moduleId": "pro_ai",
+    "highlighted": true,
+    "popular": false,
+    "badge": {
+      "textFr": "Bêta",
+      "textEn": "Beta",
+      "color": "secondary"
+    },
+    "customColors": {
+      "background": "linear-gradient(135deg, #e9d5ff 0%, #d8b4fe 100%)",
+      "text": "on-primary-container",
+      "iconBg": "rgba(0,0,0,0.05)",
+      "badgeBg": "rgba(0,0,0,0.05)"
+    },
+    "fixedPrice": 189,
+    "originalPrice": null,
+    "specialEffects": {
+      "shimmer": false,
+      "scale": 1.08,
+      "ring": "ring-4 ring-purple-600/30"
+    }
   }
 ]

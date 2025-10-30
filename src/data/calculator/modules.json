@@ -129,8 +129,8 @@
   },
   {
     "id": "pro",
-    "nameFr": "PRO",
-    "nameEn": "PRO",
+    "nameFr": "Pro",
+    "nameEn": "Pro",
     "descriptionFr": "Tous les modules inclus",
     "descriptionEn": "All modules included",
     "featuresFr": [
@@ -159,6 +159,34 @@
     "timesSavedPerWeekPerLocation": 21,
     "manualTasksReduction": 0.8,
     "invoiceTasksReduction": 0.9,
+    "icon": "Package"
+  },
+  {
+    "id": "pro_ai",
+    "nameFr": "Pro + IA",
+    "nameEn": "Pro + AI",
+    "descriptionFr": "Tous les modules Pro + Intelligence Artificielle Cortex",
+    "descriptionEn": "All Pro modules + Cortex AI Intelligence",
+    "featuresFr": [
+      "Tout ce qui inclut le forfait Pro",
+      "Cortex - Assistant IA (version bêta)",
+      "Analyses prédictives",
+      "Recommandations intelligentes",
+      "Optimisation automatique",
+      "Insights avancés"
+    ],
+    "featuresEn": [
+      "Everything included in Pro plan",
+      "Cortex - AI Assistant (beta version)",
+      "Predictive analytics",
+      "Smart recommendations",
+      "Automatic optimization",
+      "Advanced insights"
+    ],
+    "monthlySavingsPerLocation": 3500,
+    "timesSavedPerWeekPerLocation": 25,
+    "manualTasksReduction": 0.85,
+    "invoiceTasksReduction": 0.95,
     "icon": "Package"
   }
 ]
