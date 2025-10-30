@@ -297,7 +297,8 @@ export const InventoryProductList: React.FC<InventoryProductListProps> = ({
                             style={{
                               backgroundColor: 'var(--surface)',
                               color: 'var(--on-surface)',
-                              fontWeight: 'normal'
+                              fontWeight: 'normal',
+                              opacity: quantity > 0 ? 0.5 : 1
                             }}
                           >
                             <div className="font-semibold text-xs">
