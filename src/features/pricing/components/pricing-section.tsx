@@ -149,52 +149,51 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
 
         {/* Pricing Carousel */}
         <div className="py-8">
-          <Swiper
-            modules={[Pagination]}
-            spaceBetween={24}
-            slidesPerView={1}
-            slidesPerGroup={1}
-            pagination={{ 
-              clickable: true,
-              el: '.swiper-pagination-custom'
-            }}
-            breakpoints={{
-              640: { 
-                slidesPerView: 2,
-                slidesPerGroup: 2
-              },
-              1024: { 
-                slidesPerView: 3,
-                slidesPerGroup: 3
-              },
-              1400: { 
-                slidesPerView: 4,
-                slidesPerGroup: 4
-              }
-            }}
-            onSwiper={setSwiperInstance}
-            style={{ 
-              paddingTop: '3rem', 
-              paddingBottom: '1rem', 
-              paddingLeft: '12px', 
-              paddingRight: '12px',
-              minHeight: '650px'
-            }}
-            className="swiper-no-cls"
-          >
+          <div style={{ minHeight: '750px', position: 'relative' }}>
+            <Swiper
+              modules={[Pagination]}
+              spaceBetween={24}
+              slidesPerView={1}
+              slidesPerGroup={1}
+              pagination={{ 
+                clickable: true,
+                el: '.swiper-pagination-custom'
+              }}
+              breakpoints={{
+                640: { 
+                  slidesPerView: 2,
+                  slidesPerGroup: 2
+                },
+                1024: { 
+                  slidesPerView: 3,
+                  slidesPerGroup: 3
+                },
+                1400: { 
+                  slidesPerView: 4,
+                  slidesPerGroup: 4
+                }
+              }}
+              onSwiper={setSwiperInstance}
+              style={{ 
+                paddingTop: '3rem', 
+                paddingBottom: '1rem', 
+                paddingLeft: '12px', 
+                paddingRight: '12px'
+              }}
+              className="swiper-no-cls"
+            >
             {plans.map((plan) => {
               const Icon = plan.icon;
               const hasCustomColors = !!plan.customColors;
               
               return (
-                <SwiperSlide key={plan.id} style={{ height: 'auto' }}>
+                <SwiperSlide key={plan.id}>
                   <div
                     className={`rounded-2xl p-8 relative flex flex-col ${hasCustomColors ? 'shadow-lg' : ''} ${plan.specialEffects?.ring || ''}`}
                     style={{
                       border: plan.customColors?.background ? 'none' : '1px solid var(--outline)',
                       background: plan.customColors?.background || 'var(--surface)',
-                      height: '100%',
-                      minHeight: '600px'
+                      height: '650px'
                     }}
                   >
                 {plan.badge && (
@@ -362,6 +361,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
             >
               <ChevronRight className="w-5 h-5" />
             </button>
+          </div>
           </div>
         </div>
       </ResponsiveSection>
