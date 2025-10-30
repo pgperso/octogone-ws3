@@ -190,7 +190,6 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
               const Icon = plan.icon;
               const isProPlan = plan.id === 'pro';
               const hasCustomColors = !!plan.customColors;
-              const isProAI = plan.id === 'pro_ai';
               
               return (
                 <SwiperSlide key={plan.id} style={{ height: 'auto' }}>
@@ -231,7 +230,14 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                     style={{ backgroundColor: hasCustomColors ? (plan.customColors?.iconBg || 'rgba(0,0,0,0.05)') : 'var(--secondary-container)' }}
                   >
                     {typeof Icon === 'string' ? (
-                      <img src={Icon} alt="Icon" className="w-8 h-8" />
+                      <img 
+                        src={Icon} 
+                        alt="Icon" 
+                        className="w-8 h-8" 
+                        style={{ 
+                          filter: 'brightness(0) saturate(100%) invert(8%) sepia(15%) saturate(3207%) hue-rotate(167deg) brightness(96%) contrast(101%)'
+                        }} 
+                      />
                     ) : (
                       <Icon className="w-8 h-8" style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--on-secondary-container)' }} />
                     )}
