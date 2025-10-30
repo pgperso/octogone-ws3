@@ -34,8 +34,8 @@
     "highlighted": true,
     "popular": true,
     "badge": {
-      "textFr": "Populaire",
-      "textEn": "Popular",
+      "textFr": "L'option des professionnels",
+      "textEn": "The professionals' choice",
       "color": "primary"
     },
     "customColors": {
@@ -59,8 +59,8 @@
     "highlighted": true,
     "popular": false,
     "badge": {
-      "textFr": "Réservez votre accès",
-      "textEn": "Reserve your access",
+      "textFr": "Réservez votre prix et votre accès",
+      "textEn": "Reserve your price and access",
       "color": "cortex"
     },
     "customColors": {
