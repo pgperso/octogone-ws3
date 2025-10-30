@@ -140,7 +140,7 @@ export const ModernMobileNav: React.FC<MobileDrawerProps> = ({
                     </div>
                   ) : (
                     <Link
-                      href={route.path}
+                      href={route.href || route.path}
                       className={cn(
                         "block p-3 rounded-lg",
                         isActive
