@@ -409,6 +409,20 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
               // Annuler la saisie
               onSave(selectedProduct.id, 0);
               onAddedToBasketChange?.(0);
+              // Retirer du panier aussi
+              if (selectedProduct.isRecipe) {
+                setProductionBasket(prev => {
+                  const newSet = new Set(prev);
+                  newSet.delete(selectedProduct.id);
+                  return newSet;
+                });
+              } else {
+                setOrderBasket(prev => {
+                  const newSet = new Set(prev);
+                  newSet.delete(selectedProduct.id);
+                  return newSet;
+                });
+              }
               setDisplayValue('0');
               setIsEditing(false);
             } else {
