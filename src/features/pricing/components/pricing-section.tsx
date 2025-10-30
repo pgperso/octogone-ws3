@@ -7,9 +7,8 @@ import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Sparkles } 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Pagination } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import modulesData from '@/data/calculator/modules.json';
 import pricingData from '@/data/calculator/pricing.json';
@@ -154,19 +153,18 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
         </div>
 
         {/* Pricing Carousel */}
-        <div className="py-8">
+        <div className="py-8 px-16">
           <Swiper
-            modules={[Navigation, Pagination]}
+            modules={[Pagination]}
             spaceBetween={24}
             slidesPerView={1}
-            navigation
             pagination={{ clickable: true }}
             breakpoints={{
               768: { slidesPerView: 2 },
               1024: { slidesPerView: 3 },
               1400: { slidesPerView: 4 }
             }}
-            className="pricing-swiper"
+            style={{ paddingBottom: '3rem' }}
           >
             {plans.map((plan, index) => {
               const Icon = plan.icon;
