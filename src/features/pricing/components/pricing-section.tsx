@@ -50,16 +50,22 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
       
       // Utiliser le prix fixe du plan
       const monthlyPrice = planConfig.fixedPrice || basePrice;
-      const annualPrice = Math.round(monthlyPrice * (1 - annualDiscount));
+      // Prix annuel = (mensuel × 12) - 10%
+      const annualPrice = Math.round(monthlyPrice * 12 * (1 - annualDiscount));
       const displayPrice = billingCycle === 'monthly' ? monthlyPrice : annualPrice;
+      
+      // Label de prix selon le cycle de facturation
+      const priceDetail = billingCycle === 'monthly' 
+        ? (isEnglish ? pricingConfig.labels.priceDetail.en : pricingConfig.labels.priceDetail.fr)
+        : (isEnglish ? 'per location, per year' : 'par établissement, par année');
       
       return {
         id: moduleData.id,
         name: isEnglish ? moduleData.nameEn : moduleData.nameFr,
         icon: iconMap[moduleData.icon] || Package,
         price: displayPrice,
-        originalPrice: planConfig.originalPrice || (billingCycle === 'annual' ? monthlyPrice : null),
-        priceDetail: isEnglish ? pricingConfig.labels.priceDetail.en : pricingConfig.labels.priceDetail.fr,
+        originalPrice: planConfig.originalPrice || (billingCycle === 'annual' ? monthlyPrice * 12 : null),
+        priceDetail: priceDetail,
         description: isEnglish ? moduleData.descriptionEn : moduleData.descriptionFr,
         features: isEnglish ? moduleData.featuresEn : moduleData.featuresFr,
         highlighted: planConfig.highlighted,
