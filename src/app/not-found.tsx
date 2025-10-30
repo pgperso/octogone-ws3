@@ -31,7 +31,7 @@ export default function NotFound() {
           Page introuvable
         </h2>
         <p className="text-lg mb-8" style={{ color: 'var(--on-surface-variant)' }}>
-          Désolé, la page que vous recherchez n'existe pas ou a été déplacée.
+          Désolé, la page que vous recherchez n&apos;existe pas ou a été déplacée.
         </p>
 
         {/* Boutons d'action */}
@@ -43,7 +43,7 @@ export default function NotFound() {
               className="flex items-center gap-2"
             >
               <Home className="w-5 h-5" />
-              Retour à l'accueil
+              Retour à l&apos;accueil
             </OctogoneButton>
           </Link>
           
