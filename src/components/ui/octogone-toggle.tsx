@@ -6,6 +6,11 @@ interface OctogoneToggleOption {
   value: string;
   label: string;
   icon?: React.ReactNode;
+  badge?: {
+    text: string;
+    backgroundColor?: string;
+    color?: string;
+  };
 }
 
 interface OctogoneToggleProps {
@@ -51,7 +56,7 @@ export const OctogoneToggle: React.FC<OctogoneToggleProps> = ({
           <button
             key={option.value}
             onClick={() => onChange(option.value)}
-            className={`${sizeClasses} rounded-md font-medium transition-all flex items-center gap-2 cursor-pointer`}
+            className={`${sizeClasses} rounded-md font-medium transition-all flex items-center gap-2 cursor-pointer relative`}
             style={{
               backgroundColor: isActive ? 'var(--secondary-container)' : 'transparent',
               color: isActive ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)'
@@ -59,6 +64,17 @@ export const OctogoneToggle: React.FC<OctogoneToggleProps> = ({
           >
             {option.icon && option.icon}
             {option.label}
+            {option.badge && (
+              <span
+                className="absolute -top-2 -right-2 px-2 py-0.5 text-xs font-bold rounded-full"
+                style={{
+                  backgroundColor: option.badge.backgroundColor || 'var(--success)',
+                  color: option.badge.color || 'var(--on-primary-container)'
+                }}
+              >
+                {option.badge.text}
+              </span>
+            )}
           </button>
         );
       })}

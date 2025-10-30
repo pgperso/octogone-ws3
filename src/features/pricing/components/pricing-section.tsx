@@ -128,22 +128,24 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
           </p>
 
           {/* Billing Toggle */}
-          <div className="flex items-center justify-center mb-12 relative">
+          <div className="flex items-center justify-center mb-12">
             <OctogoneToggle
               options={[
                 { value: 'monthly', label: isEnglish ? pricingConfig.billing.monthly.en : pricingConfig.billing.monthly.fr },
-                { value: 'annual', label: isEnglish ? pricingConfig.billing.annual.en : pricingConfig.billing.annual.fr }
+                { 
+                  value: 'annual', 
+                  label: isEnglish ? pricingConfig.billing.annual.en : pricingConfig.billing.annual.fr,
+                  badge: {
+                    text: '-10%',
+                    backgroundColor: 'var(--success)',
+                    color: 'var(--on-primary-container)'
+                  }
+                }
               ]}
               value={billingCycle}
               onChange={(value) => setBillingCycle(value as 'monthly' | 'annual')}
               size="lg"
             />
-            <span 
-              className="absolute -top-2 -right-2 px-2 py-0.5 text-xs font-bold rounded-full"
-              style={{ backgroundColor: 'var(--success)', color: 'var(--on-primary-container)' }}
-            >
-              -10%
-            </span>
           </div>
         </div>
 
