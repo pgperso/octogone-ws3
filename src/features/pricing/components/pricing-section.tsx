@@ -200,7 +200,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                     className={`rounded-2xl p-8 relative flex flex-col ${hasCustomColors ? 'shadow-lg' : ''} ${plan.specialEffects?.ring || ''}`}
                     style={{
                       border: plan.customColors?.background ? 'none' : '1px solid var(--outline)',
-                      background: plan.customColors?.background || 'var(--surface)'
+                      background: plan.customColors?.background || 'var(--surface)',
+                      minHeight: '700px'
                     }}
                   >
                 {plan.badge && (

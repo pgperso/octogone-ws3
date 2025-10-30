@@ -15,7 +15,11 @@ import { CookiebotBanner } from "@/components/cookiebot/cookiebot-banner";
 import { COOKIEBOT_CONFIG } from "@/config/cookiebot";
 import ProBackground from "@/components/background/ProBackground";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ 
+  subsets: ["latin"],
+  display: 'swap',
+  preload: true
+});
 
 export default function LocaleLayout({
   children,
