@@ -157,7 +157,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
         </div>
 
         {/* Pricing Carousel */}
-        <div className="py-8">
+        <div className="py-8" style={{ minHeight: '800px' }}>
             <Swiper
               modules={[Pagination]}
               spaceBetween={24}
@@ -231,15 +231,13 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                       <img 
                         src={Icon} 
                         alt="Icon" 
-                        width={32}
-                        height={32}
-                        className="w-8 h-8" 
-                        style={{ 
-                          filter: 'brightness(0) saturate(100%) invert(8%) sepia(15%) saturate(3207%) hue-rotate(167deg) brightness(96%) contrast(101%)'
-                        }} 
+                        width="32"
+                        height="32"
+                        className="mx-auto"
+                        style={{ display: 'block', width: '32px', height: '32px' }}
                       />
                     ) : (
-                      <Icon className="w-8 h-8" style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--on-secondary-container)' }} />
+                      <Icon className="w-8 h-8 mx-auto" style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--on-secondary-container)', width: '32px', height: '32px' }} />
                     )}
                   </div>
                 </div>
@@ -293,9 +291,9 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                 </p>
 
                 {/* Features */}
-                <ul className="space-y-3 mb-8 flex-1">
+                <ul className="space-y-3 mb-8 flex-1" style={{ minHeight: '200px' }}>
                   {plan.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-3">
+                    <li key={idx} className="flex items-start gap-3" style={{ minHeight: '28px' }}>
                       <Check 
                         className="w-5 h-5 flex-shrink-0 mt-0.5" 
                         style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--success)' }}
