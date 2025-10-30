@@ -96,6 +96,16 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
           background: var(--secondary-container) !important;
           opacity: 1 !important;
         }
+
+        /* Prevent CLS during Swiper initialization */
+        .swiper-no-cls {
+          visibility: visible !important;
+          opacity: 1 !important;
+        }
+        
+        .swiper-no-cls .swiper-wrapper {
+          transform: translate3d(0, 0, 0) !important;
+        }
       `}</style>
       
       {/* Hero Section */}
@@ -163,7 +173,14 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
               }
             }}
             onSwiper={setSwiperInstance}
-            style={{ paddingTop: '3rem', paddingBottom: '1rem', paddingLeft: '12px', paddingRight: '12px' }}
+            style={{ 
+              paddingTop: '3rem', 
+              paddingBottom: '1rem', 
+              paddingLeft: '12px', 
+              paddingRight: '12px',
+              minHeight: '650px'
+            }}
+            className="swiper-no-cls"
           >
             {plans.map((plan) => {
               const Icon = plan.icon;
