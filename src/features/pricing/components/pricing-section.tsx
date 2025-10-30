@@ -22,13 +22,11 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
   
   // Carousel setup
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: 'center',
+    align: 'start',
     loop: true,
     skipSnaps: false,
-    breakpoints: {
-      '(min-width: 768px)': { slidesToScroll: 2 },
-      '(min-width: 1024px)': { slidesToScroll: 3 }
-    }
+    containScroll: 'trimSnaps',
+    slidesToScroll: 1
   });
 
   const scrollPrev = useCallback(() => {
