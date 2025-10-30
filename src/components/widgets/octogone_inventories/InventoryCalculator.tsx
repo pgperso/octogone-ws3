@@ -170,11 +170,19 @@ export const InventoryCalculator: React.FC<InventoryCalculatorProps> = ({
               fill
               className="object-cover rounded-lg"
             />
-            <div className="absolute inset-0 flex items-center justify-center rounded-lg" style={{ backgroundColor: 'rgba(220, 38, 38, 0.85)' }}>
-              <EqualNot 
-                className="w-16 h-16" 
-                style={{ color: 'white' }}
-              />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div 
+                className="w-20 h-20 rounded-lg flex items-center justify-center"
+                style={{ 
+                  backgroundColor: 'var(--error)',
+                  boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.3)'
+                }}
+              >
+                <EqualNot 
+                  className="w-12 h-12" 
+                  style={{ color: 'white' }}
+                />
+              </div>
             </div>
           </div>
           
