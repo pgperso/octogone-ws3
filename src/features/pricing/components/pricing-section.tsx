@@ -83,7 +83,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
       `}</style>
       
       {/* Hero Section */}
-      <ResponsiveSection spacing="xl" bgColor="">
+      <ResponsiveSection spacing="xl" bgColor="" className="!overflow-visible">
         <div className="text-center max-w-4xl mx-auto mb-12">
           <div
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
