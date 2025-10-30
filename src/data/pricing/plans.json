@@ -33,8 +33,23 @@
     "originalPrice": null
   },
   {
-    "id": "pro",
+    "id": "thermometer",
     "order": 4,
+    "moduleId": "thermometer",
+    "highlighted": false,
+    "popular": false,
+    "badge": {
+      "textFr": "Essentiel",
+      "textEn": "Essential",
+      "color": "secondary"
+    },
+    "customColors": null,
+    "fixedPrice": 59,
+    "originalPrice": null
+  },
+  {
+    "id": "pro",
+    "order": 5,
     "moduleId": "pro",
     "highlighted": true,
     "popular": true,

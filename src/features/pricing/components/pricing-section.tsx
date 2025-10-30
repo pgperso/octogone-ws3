@@ -1,11 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { ResponsiveSection } from '@/components/ui/responsive-section';
 import { OctogoneButton } from '@/components/ui/octogone-button';
-import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Sparkles } from 'lucide-react';
+import { Check, Warehouse, ChefHat, DollarSign, Package, ArrowRight, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import useEmblaCarousel from 'embla-carousel-react';
 import modulesData from '@/data/calculator/modules.json';
 import pricingData from '@/data/calculator/pricing.json';
 import plansConfig from '@/data/pricing/plans.json';
@@ -18,6 +19,25 @@ interface PricingSectionProps {
 export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
   const isEnglish = locale === 'en';
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly');
+  
+  // Carousel setup
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: 'center',
+    loop: true,
+    skipSnaps: false,
+    breakpoints: {
+      '(min-width: 768px)': { slidesToScroll: 2 },
+      '(min-width: 1024px)': { slidesToScroll: 3 }
+    }
+  });
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
   
   // Prix de base pour 1 établissement
   const basePrice = pricingData[0].pricePerLocationPerMonth;
@@ -148,25 +168,47 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
           </motion.div>
         </div>
 
-        {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1400px] mx-auto">
-          {plans.map((plan, index) => {
-            const Icon = plan.icon;
-            const isProPlan = plan.id === 'pro';
-            
-            return (
-              <motion.div
-                key={plan.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`rounded-2xl p-6 relative flex flex-col ${isProPlan ? 'shadow-2xl ring-4 ring-blue-600/30' : 'shadow-lg'}`}
-                style={{
-                  border: isProPlan ? 'none' : '1px solid var(--outline)',
-                  background: plan.customColors?.background || 'var(--surface)',
-                  transform: isProPlan ? 'scale(1.08)' : 'scale(1)'
-                }}
-              >
+        {/* Pricing Carousel */}
+        <div className="relative max-w-[1600px] mx-auto">
+          {/* Navigation Buttons */}
+          <button
+            onClick={scrollPrev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
+            style={{ backgroundColor: 'var(--primary)', color: 'var(--on-primary)' }}
+            aria-label="Previous"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          <button
+            onClick={scrollNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
+            style={{ backgroundColor: 'var(--primary)', color: 'var(--on-primary)' }}
+            aria-label="Next"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+
+          {/* Carousel Container */}
+          <div className="overflow-hidden px-16" ref={emblaRef}>
+            <div className="flex gap-6">
+              {plans.map((plan, index) => {
+                const Icon = plan.icon;
+                const isProPlan = plan.id === 'pro';
+                
+                return (
+                  <motion.div
+                    key={plan.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className={`rounded-2xl p-6 relative flex flex-col ${isProPlan ? 'shadow-2xl ring-4 ring-blue-600/30' : 'shadow-lg'}`}
+                    style={{
+                      border: isProPlan ? 'none' : '1px solid var(--outline)',
+                      background: plan.customColors?.background || 'var(--surface)',
+                      minWidth: isProPlan ? '380px' : '320px',
+                      flex: '0 0 auto'
+                    }}
+                  >
                 {plan.badge && (
                   <>
                     <div 
@@ -273,6 +315,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
               </motion.div>
             );
           })}
+            </div>
+          </div>
         </div>
       </ResponsiveSection>
 
