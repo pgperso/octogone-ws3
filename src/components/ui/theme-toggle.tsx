@@ -3,13 +3,18 @@
 import { Moon, Sun } from 'lucide-react';
 import { useThemeContext } from '@/components/providers/theme-provider';
 
-export function ThemeToggle() {
+interface ThemeToggleProps {
+  onThemeChange?: () => void;
+}
+
+export function ThemeToggle({ onThemeChange }: ThemeToggleProps = {}) {
   const { theme, setTheme } = useThemeContext();
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     console.log('🔄 Toggle clicked! Current:', theme, '→ New:', newTheme);
     setTheme(newTheme);
+    onThemeChange?.();
   };
 
   return (

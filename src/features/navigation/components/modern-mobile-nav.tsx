@@ -172,7 +172,7 @@ export const ModernMobileNav: React.FC<MobileDrawerProps> = ({
             <div className="flex items-center justify-center w-full">
               <div className="flex items-center gap-2">
                 <span className="text-marine-700 dark:text-dark-text">Thème:</span>
-                <ThemeToggle />
+                <ThemeToggle onThemeChange={onClose} />
               </div>
             </div>
           </div>

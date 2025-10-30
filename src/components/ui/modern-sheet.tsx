@@ -25,7 +25,7 @@ const SheetOverlay = React.forwardRef<
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName;
 
 const sheetVariants = cva(
-  "fixed z-50 gap-4 bg-white p-0 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500 dark:bg-slate-950 rounded-l-2xl",
+  "fixed z-50 gap-4 p-0 shadow-lg transition ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:duration-500 rounded-l-2xl",
   {
     variants: {
       side: {
@@ -56,6 +56,10 @@ const SheetContent = React.forwardRef<
     <SheetPrimitive.Content
       ref={ref}
       className={cn(sheetVariants({ side }), className)}
+      style={{
+        backgroundColor: 'var(--surface)',
+        color: 'var(--on-surface)'
+      }}
       {...props}
     >
       {children}
@@ -74,7 +78,8 @@ const SheetHeader = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "flex flex-col space-y-2 text-center sm:text-left py-6 px-6 border-b border-marine-100",
+      "flex flex-col space-y-2 text-center sm:text-left py-6 px-6 border-b",
+      "border-[var(--outline)]",
       className,
     )}
     {...props}
@@ -88,7 +93,8 @@ const SheetFooter = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 py-4 px-6 border-t border-marine-100",
+      "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 py-4 px-6 border-t",
+      "border-[var(--outline)]",
       className,
     )}
     {...props}
@@ -102,7 +108,8 @@ const SheetTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Title
     ref={ref}
-    className={cn("text-xl font-semibold text-marine-900", className)}
+    className={cn("text-xl font-semibold", className)}
+    style={{ color: 'var(--on-surface)' }}
     {...props}
   />
 ));
