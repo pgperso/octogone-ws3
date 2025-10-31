@@ -102,7 +102,17 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
         ? (isEnglish ? 'per location (1 user) / annual payment' : 'par établissement (1 utilisateur) / paiement annuel')
         : (isEnglish ? 'per location (1 user) / month' : 'par établissement (1 utilisateur) / mois'),
       description: isEnglish ? 'Boost your performance with Cortex, Octogone\'s AI agent' : 'Propulsez vos performances avec Cortex, l\'agent IA d\'Octogone',
-      features: isEnglish ? modulesData.find(m => m.id === 'pro_ai')?.featuresEn || [] : modulesData.find(m => m.id === 'pro_ai')?.featuresFr || [],
+      features: isEnglish ? [
+        'Add Cortex, Octogone\'s new AI agent that will soon transform your data into decisions.',
+        'Chat naturally, ask questions, Cortex is directly connected to your account and knows you.',
+        'Generate charts, execute actions, generate reports and get recommendations powered by artificial intelligence.',
+        'Everything included in the Pro plan.'
+      ] : [
+        'Ajoutez Cortex, le nouvel agent IA d\'Octogone qui transformera bientôt vos données en décisions.',
+        'Discutez naturellement, posez des questions, Cortex est branché directement dans votre compte et il vous connait.',
+        'Générez des graphiques, exécutez des actions, générez des rapports et obtenez des recommandations propulsées par l\'intelligence artificielle.',
+        'Tout ce qu\'inclut le forfait Pro.'
+      ],
       badge: isEnglish ? 'Reserve your price and access' : 'Réservez votre prix et votre accès',
       badgeColor: 'cortex',
       customColors: {
