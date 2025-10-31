@@ -105,8 +105,8 @@
     "id": "pro",
     "nameFr": "Pro",
     "nameEn": "Pro",
-    "descriptionFr": "Tous les modules inclus",
-    "descriptionEn": "All modules included",
+    "descriptionFr": "Tous les outils inclus",
+    "descriptionEn": "All tools included",
     "featuresFr": [
       "Intégration POS pour toute la puissance de la plateforme.",
       "Tableau de bord pro avec KPI et comparaison multi-établissements.",
@@ -135,8 +135,8 @@
     "id": "pro_ai",
     "nameFr": "Pro + IA",
     "nameEn": "Pro + AI",
-    "descriptionFr": "Tous les modules Pro + Notre nouvel assistant IA Cortex (version Bêta)",
-    "descriptionEn": "All Pro modules + Our new AI assistant Cortex (Beta version)",
+    "descriptionFr": "Tous les outils Pro + Notre nouvel assistant IA Cortex (version Bêta)",
+    "descriptionEn": "All Pro tools + Our new AI assistant Cortex (Beta version)",
     "featuresFr": [
       "Agent IA Cortex transforme vos données en décisions.",
       "Conversation naturelle avec vos données de compte.",

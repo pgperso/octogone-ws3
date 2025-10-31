@@ -194,22 +194,22 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
           </div>
         </div>
 
-        {/* MODULES ADDITIONNELS */}
+        {/* OUTILS ADDITIONNELS */}
         <div className="py-12 px-4">
           <div className="max-w-7xl mx-auto">
             <h2 
               className="text-3xl font-bold mb-4 text-center"
               style={{ color: 'var(--on-surface)' }}
             >
-              {isEnglish ? 'Essential Add-ons' : 'Les ajouts indispensables'}
+              {isEnglish ? 'Essential Add-ons' : 'Les outils indispensables'}
             </h2>
             <p 
               className="text-center text-xl mb-10"
               style={{ color: 'var(--on-surface-variant)' }}
             >
               {isEnglish 
-                ? 'Essential modules for your performance. Add Thermometer to your Pro or Pro + AI plan. On the Essential plan? Upgrade to Pro to include Thermometer and Tips and save.'
-                : 'Des modules essentiels à votre performance. Ajoutez Thermomètre à votre plan Pro ou Pro + IA. Vous êtes sur le plan Essentiel ? Passez à Pro pour inclure Thermomètre et Pourboire et réaliser des économies.'}
+                ? 'Essential tools for your performance. Add Thermometer to your Pro or Pro + AI plan. On the Essential plan? Upgrade to Pro to include Thermometer and Tips and save.'
+                : 'Des outils essentiels à votre performance. Ajoutez Thermomètre à votre plan Pro ou Pro + IA. Vous êtes sur le plan Essentiel ? Passez à Pro pour inclure Thermomètre et Pourboire et réaliser des économies.'}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {addonModules.map((addon) => (
