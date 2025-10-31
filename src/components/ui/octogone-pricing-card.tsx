@@ -263,35 +263,43 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
               pointerEvents: 'none'
             }}
           >
-            {/* Animated circles */}
-            <div style={{ position: 'relative', width: '80px', height: '80px', margin: '0 auto 24px' }}>
+            {/* Animated octagon line around Cortex icon */}
+            <div style={{ position: 'relative', width: '100px', height: '100px', margin: '0 auto 24px' }}>
+              {/* Rotating octagon line */}
+              <svg 
+                width="100" 
+                height="100" 
+                viewBox="0 0 100 100"
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  animation: 'spin 3s linear infinite'
+                }}
+              >
+                <defs>
+                  <linearGradient id="octagonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style={{ stopColor: 'var(--secondary-container)', stopOpacity: 0 }} />
+                    <stop offset="50%" style={{ stopColor: 'var(--secondary-container)', stopOpacity: 1 }} />
+                    <stop offset="100%" style={{ stopColor: 'var(--secondary-container)', stopOpacity: 0 }} />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M 50,10 L 70,20 L 80,40 L 80,60 L 70,80 L 50,90 L 30,80 L 20,60 L 20,40 L 30,20 Z"
+                  fill="none"
+                  stroke="url(#octagonGradient)"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
+              </svg>
+              
+              {/* Cortex icon in center */}
               <div style={{
                 position: 'absolute',
-                width: '80px',
-                height: '80px',
-                border: '3px solid transparent',
-                borderTopColor: 'var(--secondary-container)',
-                borderRadius: '50%',
-                animation: 'spin 1.5s linear infinite'
-              }} />
-              <div style={{
-                position: 'absolute',
-                width: '60px',
-                height: '60px',
-                top: '10px',
-                left: '10px',
-                border: '3px solid transparent',
-                borderTopColor: 'var(--secondary-container)',
-                borderRadius: '50%',
-                animation: 'spin-reverse 1s linear infinite',
-                opacity: 0.7
-              }} />
-              <div style={{
-                position: 'absolute',
-                width: '40px',
-                height: '40px',
-                top: '20px',
-                left: '20px',
+                width: '100px',
+                height: '100px',
+                top: 0,
+                left: 0,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -301,8 +309,8 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
                   src="/cortex.svg" 
                   alt="Cortex" 
                   style={{
-                    width: '32px',
-                    height: '32px',
+                    width: '40px',
+                    height: '40px',
                     filter: 'brightness(0) saturate(100%)',
                     opacity: 0.7
                   }}
