@@ -46,8 +46,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
         ...(isEnglish ? modulesData.find(m => m.id === 'inventory')?.featuresEn.slice(0, 5) || [] : modulesData.find(m => m.id === 'inventory')?.featuresFr.slice(0, 5) || []),
         ...(isEnglish ? modulesData.find(m => m.id === 'foodcost')?.featuresEn.slice(0, 3) || [] : modulesData.find(m => m.id === 'foodcost')?.featuresFr.slice(0, 3) || [])
       ],
-      badge: null,
-      badgeColor: null,
+      badge: isEnglish ? 'To get started' : 'Pour bien débuter',
+      badgeColor: 'primary',
       customColors: null,
       specialEffects: { ring: 'ring-4 ring-[var(--outline)]' }
     },
@@ -242,7 +242,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                       <div 
                         className="inline-block px-4 py-2 rounded-lg text-sm font-bold"
                         style={{ 
-                          backgroundColor: 'var(--surface)',
+                          backgroundColor: '#BADFF6',
                           color: '#1F1F1F',
                           border: '1px solid var(--outline)'
                         }}
