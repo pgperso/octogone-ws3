@@ -208,8 +208,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
               style={{ color: 'var(--on-surface-variant)' }}
             >
               {isEnglish 
-                ? 'Essential tools for your performance. Add Thermometer to your Pro or Pro + AI plan. On the Essential plan? Upgrade to Pro to include Thermometer and Tips and save.'
-                : 'Des outils essentiels à votre performance. Ajoutez Thermomètre à votre plan Pro ou Pro + IA. Vous êtes sur le plan Essentiel ? Passez à Pro pour inclure Thermomètre et Pourboire et réaliser des économies.'}
+                ? 'Because there\'s no compromise when it comes to safety, add Thermometer to any of your plans. Tired of managing your tips manually? Add Tips to your plan! Want the complete package? Pro + Thermometer is what you need. Interested in Cortex? Contact our team quickly to reserve your access and lock in your rate.'
+                : 'Parce qu\'il n\'y a pas de compromis quand il s\'agit de sécurité, ajoutez Thermomètre à n\'importe quel de vos forfaits. Vous en avez assez de gérer vos pourboires à la mitaine? Ajoutez Pourboire à votre forfait! Vous voulez la totale? C\'est Pro + Thermomètre qu\'il vous faut. Cortex vous intéresse? Contactez-vite notre équipe pour réserver votre accès et geler votre tarif.'}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {addonModules.map((addon) => (
