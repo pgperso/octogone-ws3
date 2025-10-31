@@ -50,22 +50,28 @@ export const AddonCard: React.FC<AddonCardProps> = ({ addon, locale }) => {
           style={{ backgroundColor: 'var(--secondary-container)' }}
         >
           {typeof Icon === 'string' ? (
-            <img src={Icon} alt="Icon" width="32" height="32" />
+            <img 
+              src={Icon} 
+              alt="Icon" 
+              width="32" 
+              height="32"
+              style={{ display: 'block', width: '32px', height: '32px' }}
+            />
           ) : (
-            <Icon className="w-8 h-8" style={{ color: 'var(--on-secondary-container)' }} />
+            <Icon className="w-8 h-8" style={{ color: 'var(--on-secondary-container)', width: '32px', height: '32px' }} />
           )}
         </div>
 
         <div className="flex-1">
           <h3 
-            className="text-xl font-bold"
+            className="text-2xl font-bold"
             style={{ color: 'var(--on-surface)' }}
           >
             {addon.name}
           </h3>
           <div className="flex items-baseline gap-2 mt-1">
             <span 
-              className="text-2xl font-bold"
+              className="text-4xl font-bold"
               style={{ color: 'var(--primary)' }}
             >
               {addon.price}$
@@ -82,7 +88,7 @@ export const AddonCard: React.FC<AddonCardProps> = ({ addon, locale }) => {
 
       {/* Description */}
       <p 
-        className="text-sm"
+        className="text-base"
         style={{ color: 'var(--on-surface-variant)' }}
       >
         {addon.description}
@@ -97,7 +103,7 @@ export const AddonCard: React.FC<AddonCardProps> = ({ addon, locale }) => {
               style={{ color: 'var(--success)' }}
             />
             <span 
-              className="text-sm"
+              className="text-base"
               style={{ color: 'var(--on-surface)' }}
             >
               {feature}
