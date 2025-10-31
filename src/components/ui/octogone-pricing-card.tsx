@@ -265,7 +265,7 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
           >
             {/* Animated octagon line around Cortex icon */}
             <div style={{ position: 'relative', width: '100px', height: '100px', margin: '0 auto 24px' }}>
-              {/* Rotating octagon line */}
+              {/* Animated octagon line with dash effect */}
               <svg 
                 width="100" 
                 height="100" 
@@ -273,23 +273,21 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
                 style={{
                   position: 'absolute',
                   top: 0,
-                  left: 0,
-                  animation: 'spin 3s linear infinite'
+                  left: 0
                 }}
               >
-                <defs>
-                  <linearGradient id="octagonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style={{ stopColor: 'var(--secondary-container)', stopOpacity: 0 }} />
-                    <stop offset="50%" style={{ stopColor: 'var(--secondary-container)', stopOpacity: 1 }} />
-                    <stop offset="100%" style={{ stopColor: 'var(--secondary-container)', stopOpacity: 0 }} />
-                  </linearGradient>
-                </defs>
                 <path
                   d="M 50,10 L 70,20 L 80,40 L 80,60 L 70,80 L 50,90 L 30,80 L 20,60 L 20,40 L 30,20 Z"
                   fill="none"
-                  stroke="url(#octagonGradient)"
+                  stroke="var(--secondary-container)"
                   strokeWidth="3"
                   strokeLinecap="round"
+                  strokeLinejoin="bevel"
+                  strokeDasharray="40 500"
+                  strokeDashoffset="0"
+                  style={{
+                    animation: 'cortexDashAnimation 4s ease-out infinite'
+                  }}
                 />
               </svg>
               
@@ -341,13 +339,18 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
         )}
 
         <style jsx>{`
-          @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-          }
-          @keyframes spin-reverse {
-            0% { transform: rotate(360deg); }
-            100% { transform: rotate(0deg); }
+          @keyframes cortexDashAnimation {
+            0% {
+              stroke-dashoffset: 0;
+              opacity: 0.3;
+            }
+            50% {
+              opacity: 1;
+            }
+            100% {
+              stroke-dashoffset: -540;
+              opacity: 0.3;
+            }
           }
           @keyframes pulse-glow {
             0%, 100% { opacity: 0.6; transform: scale(1); }
