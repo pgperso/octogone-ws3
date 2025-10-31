@@ -142,7 +142,10 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
       badge: null,
       badgeColor: null,
       customColors: null,
-      specialEffects: { ring: 'ring-4 ring-[var(--outline)]' }
+      specialEffects: { 
+        ring: 'ring-4 ring-[var(--outline)]',
+        blurred: true  // Set to false to disable blur effect
+      }
     }
   ];
 

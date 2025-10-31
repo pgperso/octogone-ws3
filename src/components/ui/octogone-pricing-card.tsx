@@ -281,7 +281,7 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
               marginBottom: '12px',
               letterSpacing: '0.5px'
             }}>
-              {isEnglish ? 'Coming Soon' : 'Bientôt disponible'}
+              {isEnglish ? 'Generating...' : 'Génération en cours...'}
             </div>
             
             {/* Subtitle */}

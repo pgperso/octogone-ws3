@@ -1,5 +1,6 @@
 import React from 'react';
 import { Check } from 'lucide-react';
+import { CortexSpinner } from '@/components/ui/cortex-spinner';
 
 interface AddonCardProps {
   addon: {
@@ -12,12 +13,18 @@ interface AddonCardProps {
     features: string[];
     badge: string | null;
     badgeColor: string | null;
+    specialEffects?: {
+      ring?: string;
+      blurred?: boolean;
+    };
   };
   locale: 'fr' | 'en';
 }
 
-export const OctogoneAddonCard: React.FC<AddonCardProps> = ({ addon }) => {
+export const OctogoneAddonCard: React.FC<AddonCardProps> = ({ addon, locale }) => {
   const Icon = addon.icon;
+  const isBlurred = addon.specialEffects?.blurred || false;
+  const isEnglish = locale === 'en';
 
   return (
     <div
@@ -43,6 +50,8 @@ export const OctogoneAddonCard: React.FC<AddonCardProps> = ({ addon }) => {
         </div>
       )}
 
+      {/* Content wrapper with blur */}
+      <div style={{ filter: isBlurred ? 'blur(4px)' : 'none', pointerEvents: isBlurred ? 'none' : 'auto', position: 'relative' }}>
       {/* Header: Icon + Name + Price */}
       <div className="flex items-start gap-4">
         <div 
@@ -123,6 +132,52 @@ export const OctogoneAddonCard: React.FC<AddonCardProps> = ({ addon }) => {
           </li>
         ))}
       </ul>
+      </div>
+      {/* End blur wrapper */}
+
+      {/* AI Loading animation overlay */}
+      {isBlurred && (
+        <div 
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            zIndex: 20,
+            textAlign: 'center',
+            pointerEvents: 'none'
+          }}
+        >
+          {/* Cortex Spinner */}
+          <CortexSpinner 
+            size={80}
+            iconSize={44}
+            strokeWidth={3}
+            colorful={false}
+            className="mx-auto mb-4"
+          />
+          
+          {/* Text */}
+          <div style={{
+            color: 'var(--on-surface)',
+            fontSize: '18px',
+            fontWeight: '600',
+            marginBottom: '8px',
+            letterSpacing: '0.5px'
+          }}>
+            {isEnglish ? 'Pending...' : 'En attente...'}
+          </div>
+          
+          {/* Subtitle */}
+          <div style={{
+            color: 'var(--on-surface-variant)',
+            fontSize: '13px',
+            fontWeight: '400'
+          }}>
+            {isEnglish ? 'Powered by Cortex AI' : 'Propulsé par Cortex IA'}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
