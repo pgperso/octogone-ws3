@@ -210,7 +210,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
               className="text-3xl font-bold mb-4 text-center"
               style={{ color: 'var(--on-surface)' }}
             >
-              {isEnglish ? 'Essential Add-ons' : 'Les outils indispensables'}
+              {isEnglish ? 'Essential Add-ons' : 'Les ajouts indispensables'}
             </h2>
             <p 
               className="text-center text-xl"
@@ -321,11 +321,18 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                         </td>
                       </tr>
                       {/* Features in this category */}
-                      {category.features.map((feature, featureIndex) => (
+                      {category.features.map((feature, featureIndex) => {
+                        const isCortexCategory = (isEnglish ? category.categoryEn : category.categoryFr).includes('Cortex') || 
+                                                 (isEnglish ? category.categoryEn : category.categoryFr).includes('Intelligence');
+                        return (
                         <tr 
                           key={`${catIndex}-${featureIndex}`}
                           className="border-t"
-                          style={{ borderColor: 'var(--outline-variant)' }}
+                          style={{ 
+                            borderColor: 'var(--outline-variant)',
+                            filter: isCortexCategory ? 'blur(4px)' : 'none',
+                            opacity: isCortexCategory ? 0.6 : 1
+                          }}
                         >
                           <td 
                             className="py-4 pr-4"
@@ -392,7 +399,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                             )}
                           </td>
                         </tr>
-                      ))}
+                        );
+                      })}
                     </React.Fragment>
                   ))}
                 </tbody>
