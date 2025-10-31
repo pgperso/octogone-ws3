@@ -141,9 +141,12 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
       features: isEnglish ? modulesData.find(m => m.id === 'pro_ai')?.featuresEn?.slice(0, 3) || [] : modulesData.find(m => m.id === 'pro_ai')?.featuresFr?.slice(0, 3) || [],
       badge: null,
       badgeColor: null,
-      customColors: null,
+      customColors: {
+        background: 'linear-gradient(180deg, #BADFF6 0%, #E2CDED 100%)',
+        iconBg: 'rgba(0,0,0,0.05)'
+      },
       specialEffects: { 
-        ring: 'ring-4 ring-[var(--outline)]',
+        ring: 'ring-4 ring-[#E2CDED]',
         blurred: true  // Set to false to disable blur effect
       }
     }

@@ -13,6 +13,10 @@ interface AddonCardProps {
     features: string[];
     badge: string | null;
     badgeColor: string | null;
+    customColors?: {
+      background?: string;
+      iconBg?: string;
+    } | null;
     specialEffects?: {
       ring?: string;
       blurred?: boolean;
@@ -25,13 +29,14 @@ export const OctogoneAddonCard: React.FC<AddonCardProps> = ({ addon, locale }) =
   const Icon = addon.icon;
   const isBlurred = addon.specialEffects?.blurred || false;
   const isEnglish = locale === 'en';
+  const hasCustomColors = addon.customColors !== null && addon.customColors !== undefined;
 
   return (
     <div
       className="rounded-2xl p-8 relative flex flex-col ring-4 ring-[var(--outline)]"
       style={{
         border: 'none',
-        background: 'var(--surface)'
+        background: hasCustomColors ? addon.customColors?.background : 'var(--surface)'
       }}
     >
       {addon.badge && (
@@ -56,7 +61,7 @@ export const OctogoneAddonCard: React.FC<AddonCardProps> = ({ addon, locale }) =
       <div className="flex items-start gap-4">
         <div 
           className="w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0"
-          style={{ backgroundColor: 'var(--secondary-container)' }}
+          style={{ backgroundColor: hasCustomColors ? (addon.customColors?.iconBg || 'rgba(0,0,0,0.05)') : 'var(--secondary-container)' }}
         >
           {typeof Icon === 'string' ? (
             <img 
