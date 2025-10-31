@@ -9,6 +9,7 @@ import { PricingCard } from './pricing-card';
 import { AddonCard } from './addon-card';
 import modulesData from '@/data/calculator/modules.json';
 import pricingConfig from '@/data/pricing/config.json';
+import comparisonData from '@/data/pricing/comparison-matrix.json';
 
 interface PricingSectionProps {
   locale: 'fr' | 'en';
@@ -112,16 +113,6 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
     }
   ];
 
-  // MATRICE DE COMPARAISON
-  const comparisonMatrix = [
-    { feature: isEnglish ? 'Centralized product catalog' : 'Catalogue centralisé de produits', essentiel: true, pro: true, ia: true },
-    { feature: isEnglish ? 'Real-time Food Cost' : 'Food cost en temps réel', essentiel: true, pro: true, ia: true },
-    { feature: isEnglish ? 'POS & supplier integrations' : 'Intégrations POS & fournisseurs', essentiel: false, pro: true, ia: true },
-    { feature: isEnglish ? 'Automations & advanced reports' : 'Automatisations & rapports avancés', essentiel: false, pro: true, ia: true },
-    { feature: isEnglish ? 'Tips management' : 'Gestion des pourboires', essentiel: false, pro: true, ia: true },
-    { feature: isEnglish ? 'AI predictions & recommendations (Cortex)' : 'Prévisions & recommandations IA (Cortex)', essentiel: false, pro: false, ia: true },
-    { feature: isEnglish ? 'Priority support / SLA' : 'Support prioritaire / SLA', essentiel: false, pro: true, ia: true }
-  ];
 
   return (
     <>
@@ -244,38 +235,53 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {comparisonMatrix.map((row, i) => (
-                    <tr 
-                      key={i}
-                      style={{
-                        backgroundColor: i % 2 ? 'var(--surface-variant)' : 'transparent'
-                      }}
-                    >
-                      <td 
-                        className="p-4"
-                        style={{ color: 'var(--on-surface)' }}
-                      >
-                        {row.feature}
-                      </td>
-                      <td 
-                        className="p-4 text-center"
-                        style={{ color: row.essentiel ? 'var(--success)' : 'var(--on-surface-variant)' }}
-                      >
-                        {row.essentiel ? '✓' : '—'}
-                      </td>
-                      <td 
-                        className="p-4 text-center"
-                        style={{ color: row.pro ? 'var(--success)' : 'var(--on-surface-variant)' }}
-                      >
-                        {row.pro ? '✓' : '—'}
-                      </td>
-                      <td 
-                        className="p-4 text-center"
-                        style={{ color: row.ia ? 'var(--success)' : 'var(--on-surface-variant)' }}
-                      >
-                        {row.ia ? '✓' : '—'}
-                      </td>
-                    </tr>
+                  {comparisonData.map((category, catIndex) => (
+                    <React.Fragment key={catIndex}>
+                      {/* Category Header */}
+                      <tr style={{ backgroundColor: 'var(--surface-variant)' }}>
+                        <td 
+                          colSpan={4}
+                          className="p-4 font-bold"
+                          style={{ color: 'var(--on-surface)' }}
+                        >
+                          {isEnglish ? category.categoryEn : category.categoryFr}
+                        </td>
+                      </tr>
+                      {/* Features in this category */}
+                      {category.features.map((feature, featureIndex) => (
+                        <tr 
+                          key={`${catIndex}-${featureIndex}`}
+                          style={{
+                            backgroundColor: 'transparent'
+                          }}
+                        >
+                          <td 
+                            className="p-4 pl-8"
+                            style={{ color: 'var(--on-surface)' }}
+                          >
+                            {isEnglish ? feature.nameEn : feature.nameFr}
+                          </td>
+                          <td 
+                            className="p-4 text-center"
+                            style={{ color: feature.essentiel ? 'var(--success)' : 'var(--on-surface-variant)' }}
+                          >
+                            {feature.essentiel ? '✓' : '—'}
+                          </td>
+                          <td 
+                            className="p-4 text-center"
+                            style={{ color: feature.pro ? 'var(--success)' : 'var(--on-surface-variant)' }}
+                          >
+                            {feature.pro ? '✓' : '—'}
+                          </td>
+                          <td 
+                            className="p-4 text-center"
+                            style={{ color: feature.proAi ? 'var(--success)' : 'var(--on-surface-variant)' }}
+                          >
+                            {feature.proAi ? '✓' : '—'}
+                          </td>
+                        </tr>
+                      ))}
+                    </React.Fragment>
                   ))}
                 </tbody>
               </table>

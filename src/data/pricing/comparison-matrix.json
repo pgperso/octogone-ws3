@@ -1,0 +1,123 @@
+[
+  {
+    "categoryFr": "Gestion des produits et inventaires",
+    "categoryEn": "Product and Inventory Management",
+    "features": [
+      {
+        "nameFr": "Catalogue et inventaire centralisés",
+        "nameEn": "Centralized catalog and inventory",
+        "essentiel": true,
+        "pro": true,
+        "proAi": true
+      },
+      {
+        "nameFr": "Mise à jour automatique des coûts et surveillance des prix",
+        "nameEn": "Automatic cost updates and price monitoring",
+        "essentiel": true,
+        "pro": true,
+        "proAi": true
+      },
+      {
+        "nameFr": "Numérisation et standardisation des recettes",
+        "nameEn": "Recipe digitization and standardization",
+        "essentiel": true,
+        "pro": true,
+        "proAi": true
+      }
+    ]
+  },
+  {
+    "categoryFr": "Automatisation et opérations",
+    "categoryEn": "Automation and Operations",
+    "features": [
+      {
+        "nameFr": "Planification des commandes et de la production",
+        "nameEn": "Order and production planning",
+        "essentiel": false,
+        "pro": true,
+        "proAi": true
+      },
+      {
+        "nameFr": "Suivi du food cost et de la main-d'œuvre",
+        "nameEn": "Food cost and labor tracking",
+        "essentiel": false,
+        "pro": true,
+        "proAi": true
+      },
+      {
+        "nameFr": "Gestion des pertes et transferts entre succursales",
+        "nameEn": "Loss management and inter-branch transfers",
+        "essentiel": false,
+        "pro": true,
+        "proAi": true
+      }
+    ]
+  },
+  {
+    "categoryFr": "Intégrations et connectivité",
+    "categoryEn": "Integrations and Connectivity",
+    "features": [
+      {
+        "nameFr": "Intégrations POS, RH et fournisseurs",
+        "nameEn": "POS, HR, and supplier integrations",
+        "essentiel": false,
+        "pro": true,
+        "proAi": true
+      },
+      {
+        "nameFr": "Support prioritaire et SLA personnalisable",
+        "nameEn": "Priority support and customizable SLA",
+        "essentiel": false,
+        "pro": true,
+        "proAi": true
+      }
+    ]
+  },
+  {
+    "categoryFr": "Intelligence artificielle (Cortex)",
+    "categoryEn": "Artificial Intelligence (Cortex)",
+    "features": [
+      {
+        "nameFr": "Cortex IA – assistant intelligent",
+        "nameEn": "Cortex AI – intelligent assistant",
+        "essentiel": false,
+        "pro": false,
+        "proAi": true
+      },
+      {
+        "nameFr": "Analyses prédictives et recommandations",
+        "nameEn": "Predictive analytics and recommendations",
+        "essentiel": false,
+        "pro": false,
+        "proAi": true
+      },
+      {
+        "nameFr": "Optimisation et insights avancés",
+        "nameEn": "Optimization and advanced insights",
+        "essentiel": false,
+        "pro": false,
+        "proAi": true
+      }
+    ]
+  },
+  {
+    "categoryFr": "Modules additionnels (optionnels)",
+    "categoryEn": "Additional Modules (Optional)",
+    "features": [
+      {
+        "nameFr": "Thermomètre connecté – surveillance en temps réel",
+        "nameEn": "Connected thermometer – real-time monitoring",
+        "essentiel": false,
+        "pro": true,
+        "proAi": true
+      },
+      {
+        "nameFr": "Pourboires – répartition automatique et intégrations RH",
+        "nameEn": "Tips – automatic distribution and HR integrations",
+        "essentiel": false,
+        "pro": true,
+        "proAi": true
+      }
+    ]
+  }
+]
