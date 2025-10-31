@@ -49,7 +49,8 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
                 top: '-22px',
                 backgroundColor: plan.badgeColor === 'cortex' ? '#E2CDED' : 
                                plan.badgeColor === 'success' ? '#B8E0D2' :
-                               plan.badgeColor === 'warning' ? '#FFE5B4' : '#BADFF6',
+                               plan.badgeColor === 'warning' ? '#FFE5B4' :
+                               plan.badgeColor === 'primary' ? 'var(--primary)' : '#BADFF6',
                 color: '#1F1F1F',
                 border: '4px solid var(--background)'
               }}
