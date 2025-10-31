@@ -178,8 +178,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
               style={{ color: 'var(--on-surface-variant)' }}
             >
               {isEnglish 
-                ? 'Activate the modules you need. They automatically integrate with your Octogone base.'
-                : 'Activez les modules dont vous avez besoin. Ils se branchent automatiquement à votre base Octogone.'}
+                ? 'Essential tools! Add Thermometer to your Pro or Pro+AI plan. Want to add Thermometer and Tips to your Essential plan? Upgrade to Pro or Pro AI and save.'
+                : 'Des outils indispensables! Ajoutez Thermomètre à votre forfait Pro ou Pro+IA. Vous aimeriez ajouter Thermomètre et Pourboire à votre forfait Essentiel? Passez à Pro ou Pro IA et économisez.'}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {addonModules.map((addon) => (
