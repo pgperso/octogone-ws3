@@ -23,6 +23,13 @@ interface PricingCardProps {
     specialEffects?: {
       ring?: string;
     };
+    sections?: {
+      name: string;
+      price: number;
+      priceDetail: string;
+      features: string[];
+    }[];
+    commonFeatures?: string[];
   };
   locale: 'fr' | 'en';
 }
@@ -90,61 +97,138 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
           {plan.name}
         </h3>
 
-        {/* Price */}
-        <div className="text-center mb-6">
-          <div className="flex items-baseline justify-center gap-2">
-            {plan.originalPrice && (
-              <span 
-                className="text-lg line-through opacity-60"
+        {/* Price - Support for sections or single price */}
+        {plan.sections ? (
+          <div className="mb-6">
+            {plan.sections.map((section, sectionIdx) => (
+              <div key={sectionIdx} className={sectionIdx > 0 ? 'mt-6' : ''}>
+                <h4 
+                  className="text-lg font-bold text-center mb-2"
+                  style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--on-surface)' }}
+                >
+                  {section.name}
+                </h4>
+                <div className="text-center mb-4">
+                  <div 
+                    className="text-3xl font-bold"
+                    style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--primary)' }}
+                  >
+                    {section.price}$
+                  </div>
+                  <div 
+                    className="text-sm mt-1"
+                    style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--on-surface-variant)' }}
+                  >
+                    {section.priceDetail}
+                  </div>
+                </div>
+                <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '16px' }}>
+                  {section.features.map((feature, idx) => (
+                    <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                      <Check 
+                        className="w-5 h-5 flex-shrink-0" 
+                        style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--success)' }}
+                      />
+                      <span 
+                        className="text-sm"
+                        style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--on-surface)' }}
+                      >
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                {sectionIdx < plan.sections.length - 1 && (
+                  <div 
+                    className="w-full h-px my-4"
+                    style={{ backgroundColor: 'var(--outline)' }}
+                  />
+                )}
+              </div>
+            ))}
+            {plan.commonFeatures && plan.commonFeatures.length > 0 && (
+              <>
+                <div 
+                  className="w-full h-px my-4"
+                  style={{ backgroundColor: 'var(--outline)' }}
+                />
+                <ul className="mb-8 flex-1" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                  {plan.commonFeatures.map((feature, idx) => (
+                    <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                      <Check 
+                        className="w-5 h-5 flex-shrink-0" 
+                        style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--success)' }}
+                      />
+                      <span 
+                        className="text-sm"
+                        style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--on-surface)' }}
+                      >
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </div>
+        ) : (
+          <>
+            <div className="text-center mb-6">
+              <div className="flex items-baseline justify-center gap-2">
+                {plan.originalPrice && (
+                  <span 
+                    className="text-lg line-through opacity-60"
+                    style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--on-surface-variant)' }}
+                  >
+                    {plan.originalPrice}$
+                  </span>
+                )}
+                <div 
+                  className="text-4xl font-bold"
+                  style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--primary)' }}
+                >
+                  {plan.price}$
+                </div>
+              </div>
+              <div 
+                className="text-sm mt-1"
                 style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--on-surface-variant)' }}
               >
-                {plan.originalPrice}$
-              </span>
-            )}
-            <div 
-              className="text-4xl font-bold"
-              style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--primary)' }}
-            >
-              {plan.price}$
-            </div>
-          </div>
-          <div 
-            className="text-sm mt-1"
-            style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--on-surface-variant)' }}
-          >
-            {plan.priceDetail}
-          </div>
-          <div 
-            className="w-full h-px mt-4"
-            style={{ backgroundColor: 'var(--outline)' }}
-          />
-        </div>
-
-        {/* Description */}
-        <p 
-          className="text-center mb-6 min-h-[60px]"
-          style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--on-surface-variant)' }}
-        >
-          {plan.description}
-        </p>
-
-        {/* Features */}
-        <ul className="mb-8 flex-1" style={{ display: 'flex', flexDirection: 'column', gap: '12px', minHeight: '200px' }}>
-          {plan.features.map((feature, idx) => (
-            <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-              <Check 
-                className="w-5 h-5 flex-shrink-0" 
-                style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--success)' }}
+                {plan.priceDetail}
+              </div>
+              <div 
+                className="w-full h-px mt-4"
+                style={{ backgroundColor: 'var(--outline)' }}
               />
-              <span 
-                className="text-sm"
-                style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--on-surface)' }}
-              >
-                {feature}
-              </span>
-            </li>
-          ))}
-        </ul>
+            </div>
+
+            {/* Description */}
+            <p 
+              className="text-center mb-6 min-h-[60px]"
+              style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--on-surface-variant)' }}
+            >
+              {plan.description}
+            </p>
+
+            {/* Features */}
+            <ul className="mb-8 flex-1" style={{ display: 'flex', flexDirection: 'column', gap: '12px', minHeight: '200px' }}>
+              {plan.features.map((feature, idx) => (
+                <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                  <Check 
+                    className="w-5 h-5 flex-shrink-0" 
+                    style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--success)' }}
+                  />
+                  <span 
+                    className="text-sm"
+                    style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--on-surface)' }}
+                  >
+                    {feature}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
 
         {/* CTA Button */}
         <div className="mt-auto">

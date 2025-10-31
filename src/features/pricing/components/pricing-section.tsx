@@ -40,17 +40,38 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
       id: 'essentiel',
       name: isEnglish ? 'Essential' : 'Essentiel',
       icon: Package,
-      ...calculatePrice(129),
+      price: 148,
+      originalPrice: null,
+      priceDetail: '',
       description: isEnglish ? 'The essentials for restaurateurs' : 'L\'essentiel des restaurateurs',
-      features: isEnglish ? [
-        'Everything you need to manage your product catalog, supplier list and inventory.',
-        'Everything you need to digitize your recipes, standardize your procedures and control your costs.',
+      features: [],
+      sections: [
+        {
+          name: isEnglish ? 'Inventory' : 'Inventaire',
+          price: 69,
+          priceDetail: isEnglish ? 'per location / month' : 'par établissement / mois',
+          features: isEnglish ? [
+            'Everything you need to manage your product catalog, supplier list and inventory.'
+          ] : [
+            'Tout ce dont vous avez besoin pour gérer votre catalogue de produits, votre liste de fournisseurs et votre prise d\'inventaire.'
+          ]
+        },
+        {
+          name: isEnglish ? 'Add Recipe & Foodcost' : 'Ajoute Recette & Foodcost',
+          price: 79,
+          priceDetail: isEnglish ? 'per location / month' : 'par établissement / mois',
+          features: isEnglish ? [
+            'Everything you need to digitize your recipes, standardize your procedures and control your costs.'
+          ] : [
+            'Tout ce dont vous avez besoin pour numériser vos recettes, standardiser vos procédures et contrôler vos coûts.'
+          ]
+        }
+      ],
+      commonFeatures: isEnglish ? [
         'Access to the essential dashboard.',
         'Everything you need to simplify invoice management.',
         'Everything you need to manage your employees\' profiles and roles.'
       ] : [
-        'Tout ce dont vous avez besoin pour gérer votre catalogue de produits, votre liste de fournisseurs et votre prise d\'inventaire.',
-        'Tout ce dont vous avez besoin pour numériser vos recettes, standardiser vos procédures et contrôler vos coûts.',
         'Accès au tableau de bord essentiel.',
         'Tout ce dont vous avez besoin pour simplifier la gestion des factures.',
         'Tout ce dont vous avez besoin pour gérer le profil et le rôle de vos employés.'
