@@ -5,8 +5,8 @@ import { ResponsiveSection } from '@/components/ui/responsive-section';
 import { OctogoneGradientButton } from '@/components/ui/octogone-gradient-button';
 import { OctogoneToggle } from '@/components/ui/octogone-toggle';
 import { DollarSign, Package, Star, Thermometer, MessageCircleMore, ArrowRight, Check } from 'lucide-react';
-import { PricingCard } from './pricing-card';
-import { AddonCard } from './addon-card';
+import { OctogonePricingCard } from '@/components/ui/octogone-pricing-card';
+import { OctogoneAddonCard } from '@/components/ui/octogone-addon-card';
 import modulesData from '@/data/calculator/modules.json';
 import pricingConfig from '@/data/pricing/config.json';
 import comparisonData from '@/data/pricing/comparison-matrix.json';
@@ -159,7 +159,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
         <div className="py-8 px-4" style={{ paddingTop: '3rem' }}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {mainPlans.map((plan) => (
-              <PricingCard key={plan.id} plan={plan} locale={locale} />
+              <OctogonePricingCard key={plan.id} plan={plan} locale={locale} />
             ))}
           </div>
         </div>
@@ -183,7 +183,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {addonModules.map((addon) => (
-                <AddonCard key={addon.id} addon={addon} locale={locale} />
+                <OctogoneAddonCard key={addon.id} addon={addon} locale={locale} />
               ))}
             </div>
           </div>

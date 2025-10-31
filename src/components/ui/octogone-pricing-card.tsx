@@ -27,7 +27,7 @@ interface PricingCardProps {
   locale: 'fr' | 'en';
 }
 
-export const PricingCard: React.FC<PricingCardProps> = ({ plan, locale }) => {
+export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }) => {
   const Icon = plan.icon;
   const hasCustomColors = !!plan.customColors;
   const isEnglish = locale === 'en';

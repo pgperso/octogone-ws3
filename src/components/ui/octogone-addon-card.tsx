@@ -17,7 +17,7 @@ interface AddonCardProps {
   locale: 'fr' | 'en';
 }
 
-export const AddonCard: React.FC<AddonCardProps> = ({ addon, locale }) => {
+export const OctogoneAddonCard: React.FC<AddonCardProps> = ({ addon, locale }) => {
   const Icon = addon.icon;
   const isEnglish = locale === 'en';
 
