@@ -85,20 +85,20 @@ export const OctogoneAddonCard: React.FC<AddonCardProps> = ({ addon, locale }) =
         <div className="flex-1">
           <h3 
             className="text-2xl font-bold"
-            style={{ color: 'var(--on-surface)' }}
+            style={{ color: hasCustomColors ? 'var(--on-secondary-container)' : 'var(--on-surface)' }}
           >
             {addon.name}
           </h3>
           <div className="mt-1">
             <div 
               className="text-4xl font-bold"
-              style={{ color: 'var(--primary)' }}
+              style={{ color: hasCustomColors ? 'var(--on-secondary-container)' : 'var(--primary)' }}
             >
               {addon.price}$
             </div>
             <div 
               className="text-sm mt-1"
-              style={{ color: 'var(--on-surface-variant)' }}
+              style={{ color: hasCustomColors ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)' }}
             >
               {addon.priceDetail}
             </div>
@@ -115,7 +115,7 @@ export const OctogoneAddonCard: React.FC<AddonCardProps> = ({ addon, locale }) =
       {/* Description */}
       <p 
         className="mb-6 mt-6"
-        style={{ color: 'var(--on-surface-variant)' }}
+        style={{ color: hasCustomColors ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)' }}
       >
         {addon.description}
       </p>
@@ -126,11 +126,11 @@ export const OctogoneAddonCard: React.FC<AddonCardProps> = ({ addon, locale }) =
           <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
             <Check 
               className="w-5 h-5 flex-shrink-0" 
-              style={{ color: 'var(--success)' }}
+              style={{ color: hasCustomColors ? 'var(--on-secondary-container)' : 'var(--success)' }}
             />
             <span 
               className="text-sm"
-              style={{ color: 'var(--on-surface)' }}
+              style={{ color: hasCustomColors ? 'var(--on-secondary-container)' : 'var(--on-surface)' }}
             >
               {feature}
             </span>
