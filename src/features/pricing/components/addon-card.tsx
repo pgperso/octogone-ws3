@@ -23,9 +23,9 @@ export const AddonCard: React.FC<AddonCardProps> = ({ addon, locale }) => {
 
   return (
     <div
-      className="rounded-2xl p-8 relative flex flex-col"
+      className="rounded-2xl p-8 relative flex flex-col ring-4 ring-[var(--outline)]"
       style={{
-        border: '1px solid var(--outline)',
+        border: 'none',
         background: 'var(--surface)'
       }}
     >

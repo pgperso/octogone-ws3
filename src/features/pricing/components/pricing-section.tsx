@@ -205,9 +205,9 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
               {isEnglish ? 'Condensed overview of key features by plan.' : 'Aperçu condensé des fonctions clés par plan.'}
             </p>
             <div 
-              className="overflow-auto rounded-2xl p-8"
+              className="overflow-auto rounded-2xl p-8 ring-4 ring-[var(--outline)]"
               style={{
-                border: '1px solid var(--outline)',
+                border: 'none',
                 background: 'var(--surface)',
                 boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.1)'
               }}
