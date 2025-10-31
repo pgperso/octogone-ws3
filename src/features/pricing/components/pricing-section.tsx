@@ -84,7 +84,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
     {
       id: 'pro_ai',
       name: 'Pro + IA',
-      icon: '/icons/cortex.svg',
+      icon: '/cortex.svg',
       ...calculatePrice(199),
       priceDetail: billingCycle === 'annual'
         ? (isEnglish ? 'per location (1 user) / annual payment' : 'par établissement (1 utilisateur) / paiement annuel')
@@ -130,7 +130,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
     {
       id: 'cortex_ai_extra',
       name: isEnglish ? 'Cortex AI' : 'Cortex IA',
-      icon: '/icons/cortex.svg',
+      icon: '/cortex.svg',
       price: 20,
       priceDetail: isEnglish ? 'per additional user / month' : 'par utilisateur supplémentaire / mois',
       originalPrice: null,
@@ -208,8 +208,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
               style={{ color: 'var(--on-surface-variant)' }}
             >
               {isEnglish 
-                ? 'Essential tools! Add Thermometer to your Pro or Pro+AI plan. Want to add Thermometer and Tips to your Essential plan? Upgrade to Pro or Pro AI and save.'
-                : 'Des outils indispensables! Ajoutez Thermomètre à votre forfait Pro ou Pro+IA. Vous aimeriez ajouter Thermomètre et Pourboire à votre forfait Essentiel? Passez à Pro ou Pro IA et économisez.'}
+                ? 'Essential modules for your performance. Add Thermometer to your Pro or Pro + AI plan. On the Essential plan? Upgrade to Pro to include Thermometer and Tips and save.'
+                : 'Des modules essentiels à votre performance. Ajoutez Thermomètre à votre plan Pro ou Pro + IA. Vous êtes sur le plan Essentiel ? Passez à Pro pour inclure Thermomètre et Pourboire et réaliser des économies.'}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {addonModules.map((addon) => (
