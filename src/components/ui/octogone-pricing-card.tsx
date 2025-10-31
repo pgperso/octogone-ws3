@@ -22,6 +22,7 @@ interface PricingCardProps {
     } | null;
     specialEffects?: {
       ring?: string;
+      blurred?: boolean;
     };
     sections?: {
       name: string;
@@ -38,6 +39,7 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
   const Icon = plan.icon;
   const hasCustomColors = !!plan.customColors;
   const isEnglish = locale === 'en';
+  const isBlurred = plan.specialEffects?.blurred || false;
 
   return (
     <div
@@ -68,6 +70,8 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
           </>
         )}
 
+        {/* Content wrapper with blur */}
+        <div style={{ filter: isBlurred ? 'blur(4px)' : 'none', pointerEvents: isBlurred ? 'none' : 'auto' }}>
         {/* Icon */}
         <div className="flex justify-center gap-4 mb-8">
           <div 
@@ -243,9 +247,11 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
             </ul>
           </>
         )}
+        </div>
+        {/* End blur wrapper */}
 
-        {/* CTA Button */}
-        <div className="mt-auto">
+        {/* CTA Button - Outside blur */}
+        <div className="mt-auto" style={{ position: 'relative', zIndex: 10 }}>
           <OctogoneGradientButton
             href="https://app.octogonecollectif.com/#/register"
             icon={ArrowRight}

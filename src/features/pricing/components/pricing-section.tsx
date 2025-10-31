@@ -97,7 +97,10 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
         background: 'linear-gradient(180deg, #BADFF6 0%, #E2CDED 100%)',
         iconBg: 'rgba(0,0,0,0.05)'
       },
-      specialEffects: { ring: 'ring-4 ring-[#E2CDED]' }
+      specialEffects: { 
+        ring: 'ring-4 ring-[#E2CDED]',
+        blurred: true  // Set to false to disable blur effect
+      }
     }
   ];
 
