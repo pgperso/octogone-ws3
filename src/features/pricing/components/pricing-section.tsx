@@ -5,6 +5,10 @@ import { ResponsiveSection } from '@/components/ui/responsive-section';
 import { OctogoneGradientButton } from '@/components/ui/octogone-gradient-button';
 import { OctogoneToggle } from '@/components/ui/octogone-toggle';
 import { Warehouse, ChefHat, DollarSign, Package, Star, Thermometer, MessageCircleMore } from 'lucide-react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
 import { PricingCard } from './pricing-card';
 import modulesData from '@/data/calculator/modules.json';
 import pricingData from '@/data/calculator/pricing.json';
@@ -112,13 +116,44 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
           </div>
         </div>
 
-        {/* Pricing Grid */}
+        {/* Pricing Carousel */}
         <div className="py-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-4">
+          <Swiper
+            modules={[Pagination]}
+            spaceBetween={24}
+            slidesPerView={1}
+            slidesPerGroup={1}
+            pagination={{ 
+              clickable: true,
+              dynamicBullets: true
+            }}
+            breakpoints={{
+              640: { 
+                slidesPerView: 2,
+                slidesPerGroup: 1
+              },
+              1024: { 
+                slidesPerView: 3,
+                slidesPerGroup: 1
+              },
+              1400: { 
+                slidesPerView: 4,
+                slidesPerGroup: 1
+              }
+            }}
+            style={{ 
+              paddingTop: '3rem',
+              paddingBottom: '3rem',
+              paddingLeft: '12px',
+              paddingRight: '12px'
+            }}
+          >
             {plans.map((plan) => (
-              <PricingCard key={plan.id} plan={plan} locale={locale} />
+              <SwiperSlide key={plan.id} style={{ height: 'auto' }}>
+                <PricingCard plan={plan} locale={locale} />
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
         </div>
       </ResponsiveSection>
 
