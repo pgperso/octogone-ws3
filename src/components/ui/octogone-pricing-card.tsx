@@ -250,7 +250,7 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
         </div>
         {/* End blur wrapper */}
 
-        {/* Building animation overlay */}
+        {/* AI Loading animation overlay */}
         {isBlurred && (
           <div 
             style={{
@@ -263,60 +263,74 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
               pointerEvents: 'none'
             }}
           >
-            <div style={{ 
-              fontSize: '48px',
-              marginBottom: '16px',
-              animation: 'pulse 2s ease-in-out infinite'
-            }}>
-              🚧
+            {/* Animated circles */}
+            <div style={{ position: 'relative', width: '80px', height: '80px', margin: '0 auto 24px' }}>
+              <div style={{
+                position: 'absolute',
+                width: '80px',
+                height: '80px',
+                border: '3px solid transparent',
+                borderTopColor: '#BADFF6',
+                borderRadius: '50%',
+                animation: 'spin 1.5s linear infinite'
+              }} />
+              <div style={{
+                position: 'absolute',
+                width: '60px',
+                height: '60px',
+                top: '10px',
+                left: '10px',
+                border: '3px solid transparent',
+                borderTopColor: '#E2CDED',
+                borderRadius: '50%',
+                animation: 'spin-reverse 1s linear infinite'
+              }} />
+              <div style={{
+                position: 'absolute',
+                width: '40px',
+                height: '40px',
+                top: '20px',
+                left: '20px',
+                background: 'linear-gradient(135deg, #BADFF6 0%, #E2CDED 100%)',
+                borderRadius: '50%',
+                animation: 'pulse-glow 2s ease-in-out infinite'
+              }} />
             </div>
+            
+            {/* Text */}
             <div style={{
               color: 'var(--on-surface)',
-              fontSize: '18px',
-              fontWeight: 'bold',
-              marginBottom: '8px'
+              fontSize: '20px',
+              fontWeight: '600',
+              marginBottom: '12px',
+              letterSpacing: '0.5px'
             }}>
               {isEnglish ? 'Coming Soon' : 'Bientôt disponible'}
             </div>
+            
+            {/* Subtitle */}
             <div style={{
-              display: 'flex',
-              gap: '8px',
-              justifyContent: 'center',
-              alignItems: 'center'
+              color: 'var(--on-surface-variant)',
+              fontSize: '14px',
+              fontWeight: '400'
             }}>
-              <div style={{
-                width: '8px',
-                height: '8px',
-                borderRadius: '50%',
-                backgroundColor: 'var(--primary)',
-                animation: 'blink 1.4s ease-in-out infinite'
-              }} />
-              <div style={{
-                width: '8px',
-                height: '8px',
-                borderRadius: '50%',
-                backgroundColor: 'var(--primary)',
-                animation: 'blink 1.4s ease-in-out 0.2s infinite'
-              }} />
-              <div style={{
-                width: '8px',
-                height: '8px',
-                borderRadius: '50%',
-                backgroundColor: 'var(--primary)',
-                animation: 'blink 1.4s ease-in-out 0.4s infinite'
-              }} />
+              {isEnglish ? 'Powered by Cortex AI' : 'Propulsé par Cortex IA'}
             </div>
           </div>
         )}
 
         <style jsx>{`
-          @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.8; }
+          @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
           }
-          @keyframes blink {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 1; }
+          @keyframes spin-reverse {
+            0% { transform: rotate(360deg); }
+            100% { transform: rotate(0deg); }
+          }
+          @keyframes pulse-glow {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
           }
         `}</style>
 
