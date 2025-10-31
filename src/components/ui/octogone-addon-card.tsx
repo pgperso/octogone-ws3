@@ -1,6 +1,5 @@
 import React from 'react';
-import { Check, ArrowRight } from 'lucide-react';
-import { OctogoneGradientButton } from '@/components/ui/octogone-gradient-button';
+import { Check } from 'lucide-react';
 
 interface AddonCardProps {
   addon: {
@@ -103,7 +102,7 @@ export const OctogoneAddonCard: React.FC<AddonCardProps> = ({ addon, locale }) =
       </p>
 
       {/* Features */}
-      <ul className="mb-8 flex-1" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+      <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
         {addon.features.map((feature, idx) => (
           <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
             <Check 
@@ -119,19 +118,6 @@ export const OctogoneAddonCard: React.FC<AddonCardProps> = ({ addon, locale }) =
           </li>
         ))}
       </ul>
-
-      {/* CTA Button */}
-      <div className="mt-auto">
-        <OctogoneGradientButton
-          href="https://app.octogonecollectif.com/#/register"
-          icon={ArrowRight}
-          text={isEnglish ? "Start now" : "Commencer maintenant"}
-          showBorder={true}
-          className="w-full"
-          target="_blank"
-          rel="noopener noreferrer"
-        />
-      </div>
     </div>
   );
 };
