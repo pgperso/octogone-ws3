@@ -155,11 +155,11 @@ export const OctogoneAddonCard: React.FC<AddonCardProps> = ({ addon, locale }) =
         >
           {/* Cortex Spinner */}
           <CortexSpinner 
-            size={80}
-            iconSize={44}
-            strokeWidth={3}
+            size={100}
+            iconSize={56}
+            strokeWidth={4}
             colorful={false}
-            className="mx-auto mb-4"
+            className="mx-auto mb-6"
           />
           
           {/* Text */}
