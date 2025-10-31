@@ -300,15 +300,14 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
                 left: 0,
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center',
-                animation: 'pulse-glow 2s ease-in-out infinite'
+                justifyContent: 'center'
               }}>
                 <img 
                   src="/cortex.svg" 
                   alt="Cortex" 
                   style={{
-                    width: '40px',
-                    height: '40px',
+                    width: '56px',
+                    height: '56px',
                     filter: 'brightness(0) saturate(100%)',
                     opacity: 0.7
                   }}
