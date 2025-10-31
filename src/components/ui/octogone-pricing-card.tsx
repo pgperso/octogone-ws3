@@ -269,7 +269,7 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
               <svg 
                 width="100" 
                 height="100" 
-                viewBox="0 0 100 100"
+                viewBox="0 0 200 200"
                 style={{
                   position: 'absolute',
                   top: 0,
@@ -277,13 +277,13 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
                 }}
               >
                 <path
-                  d="M 50,10 L 70,20 L 80,40 L 80,60 L 70,80 L 50,90 L 30,80 L 20,60 L 20,40 L 30,20 Z"
+                  d="M 60,20 L 140,20 L 180,60 L 180,140 L 140,180 L 60,180 L 20,140 L 20,60 Z"
                   fill="none"
-                  stroke="var(--secondary-container)"
+                  stroke="var(--on-secondary-container)"
                   strokeWidth="3"
                   strokeLinecap="round"
                   strokeLinejoin="bevel"
-                  strokeDasharray="40 500"
+                  strokeDasharray="70 1000"
                   strokeDashoffset="0"
                   style={{
                     animation: 'cortexDashAnimation 4s ease-out infinite'
@@ -348,7 +348,7 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
               opacity: 1;
             }
             100% {
-              stroke-dashoffset: -540;
+              stroke-dashoffset: -1070;
               opacity: 0.3;
             }
           }
