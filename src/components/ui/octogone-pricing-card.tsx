@@ -143,10 +143,14 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
                   ))}
                 </ul>
                 {plan.sections && sectionIdx < plan.sections.length - 1 && (
-                  <div 
-                    className="w-full h-px my-4"
-                    style={{ backgroundColor: 'var(--outline)' }}
-                  />
+                  <div className="text-center my-6">
+                    <span 
+                      className="text-lg font-bold"
+                      style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--on-surface)' }}
+                    >
+                      {isEnglish ? 'OR' : 'OU'}
+                    </span>
+                  </div>
                 )}
               </div>
             ))}
