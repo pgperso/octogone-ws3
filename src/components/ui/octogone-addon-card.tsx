@@ -55,7 +55,13 @@ export const OctogoneAddonCard: React.FC<AddonCardProps> = ({ addon }) => {
               alt="Icon" 
               width="32" 
               height="32"
-              style={{ display: 'block', width: '32px', height: '32px' }}
+              style={{ 
+                display: 'block', 
+                width: '32px', 
+                height: '32px',
+                filter: 'brightness(0) saturate(100%)',
+                opacity: 0.7
+              }}
             />
           ) : (
             <Icon className="w-8 h-8" style={{ color: 'var(--on-secondary-container)', width: '32px', height: '32px' }} />
