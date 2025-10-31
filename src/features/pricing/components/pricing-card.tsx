@@ -33,15 +33,14 @@ export const PricingCard: React.FC<PricingCardProps> = ({ plan, locale }) => {
   const isEnglish = locale === 'en';
 
   return (
-    <div>
-      <div
-        className={`rounded-2xl p-8 relative flex flex-col ${hasCustomColors ? 'shadow-lg' : ''} ${plan.specialEffects?.ring || ''}`}
-        style={{
-          border: plan.customColors?.background ? 'none' : '1px solid var(--outline)',
-          background: plan.customColors?.background || 'var(--surface)',
-          minHeight: '700px'
-        }}
-      >
+    <div
+      className={`rounded-2xl p-8 relative flex flex-col h-full ${hasCustomColors ? 'shadow-lg' : ''} ${plan.specialEffects?.ring || ''}`}
+      style={{
+        border: plan.customColors?.background ? 'none' : '1px solid var(--outline)',
+        background: plan.customColors?.background || 'var(--surface)',
+        minHeight: '700px'
+      }}
+    >
         {plan.badge && (
           <>
             <div 
@@ -162,7 +161,6 @@ export const PricingCard: React.FC<PricingCardProps> = ({ plan, locale }) => {
             rel="noopener noreferrer"
           />
         </div>
-      </div>
     </div>
   );
 };
