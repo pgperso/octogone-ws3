@@ -269,6 +269,7 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
               size={100}
               iconSize={56}
               strokeWidth={4}
+              colorful={false}
               className="mx-auto mb-6"
             />
             
