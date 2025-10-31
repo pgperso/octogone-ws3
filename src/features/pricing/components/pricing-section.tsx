@@ -51,30 +51,33 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
           price: 69,
           priceDetail: isEnglish ? 'per location / month' : 'par établissement / mois',
           features: isEnglish ? [
-            'Everything you need to manage your product catalog, supplier list and inventory.'
+            'Everything you need to manage your product catalog, supplier list and inventory.',
+            'Access to the essential dashboard.',
+            'Everything you need to simplify invoice management.',
+            'Everything you need to manage your employees\' profiles and roles.'
           ] : [
-            'Tout ce dont vous avez besoin pour gérer votre catalogue de produits, votre liste de fournisseurs et votre prise d\'inventaire.'
+            'Tout ce dont vous avez besoin pour gérer votre catalogue de produits, votre liste de fournisseurs et votre prise d\'inventaire.',
+            'Accès au tableau de bord essentiel.',
+            'Tout ce dont vous avez besoin pour simplifier la gestion des factures.',
+            'Tout ce dont vous avez besoin pour gérer le profil et le rôle de vos employés.'
           ]
         },
         {
-          name: isEnglish ? 'Add Recipe & Foodcost' : 'Ajoute Recette & Foodcost',
+          name: isEnglish ? 'Recipe & Foodcost' : 'Recette & Foodcost',
           price: 79,
           priceDetail: isEnglish ? 'per location / month' : 'par établissement / mois',
           features: isEnglish ? [
-            'Everything you need to digitize your recipes, standardize your procedures and control your costs.'
+            'Everything you need to digitize your recipes, standardize your procedures and control your costs.',
+            'Access to the essential dashboard.',
+            'Everything you need to simplify invoice management.',
+            'Everything you need to manage your employees\' profiles and roles.'
           ] : [
-            'Tout ce dont vous avez besoin pour numériser vos recettes, standardiser vos procédures et contrôler vos coûts.'
+            'Tout ce dont vous avez besoin pour numériser vos recettes, standardiser vos procédures et contrôler vos coûts.',
+            'Accès au tableau de bord essentiel.',
+            'Tout ce dont vous avez besoin pour simplifier la gestion des factures.',
+            'Tout ce dont vous avez besoin pour gérer le profil et le rôle de vos employés.'
           ]
         }
-      ],
-      commonFeatures: isEnglish ? [
-        'Access to the essential dashboard.',
-        'Everything you need to simplify invoice management.',
-        'Everything you need to manage your employees\' profiles and roles.'
-      ] : [
-        'Accès au tableau de bord essentiel.',
-        'Tout ce dont vous avez besoin pour simplifier la gestion des factures.',
-        'Tout ce dont vous avez besoin pour gérer le profil et le rôle de vos employés.'
       ],
       badge: isEnglish ? 'To get started' : 'Pour bien débuter',
       badgeColor: 'gold',

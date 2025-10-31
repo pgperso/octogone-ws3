@@ -116,11 +116,15 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
                     {section.price}$
                   </div>
                   <div 
-                    className="text-sm mt-1"
+                    className="text-sm mt-1 mb-4"
                     style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--on-surface-variant)' }}
                   >
                     {section.priceDetail}
                   </div>
+                  <div 
+                    className="w-full h-px"
+                    style={{ backgroundColor: 'var(--outline)' }}
+                  />
                 </div>
                 <ul style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '16px' }}>
                   {section.features.map((feature, idx) => (
