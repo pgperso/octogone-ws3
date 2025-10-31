@@ -23,7 +23,7 @@ export const AddonCard: React.FC<AddonCardProps> = ({ addon, locale }) => {
 
   return (
     <div
-      className="rounded-2xl p-6 relative flex flex-col gap-4"
+      className="rounded-2xl p-8 relative flex flex-col gap-4"
       style={{
         border: '1px solid var(--outline)',
         background: 'var(--surface)'
