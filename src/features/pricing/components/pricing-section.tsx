@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { ResponsiveSection } from '@/components/ui/responsive-section';
 import { OctogoneGradientButton } from '@/components/ui/octogone-gradient-button';
 import { OctogoneToggle } from '@/components/ui/octogone-toggle';
-import { DollarSign, Package, Star, Thermometer, Check } from 'lucide-react';
+import { DollarSign, Package, Star, Thermometer, Check, ArrowRight } from 'lucide-react';
 import { OctogonePricingCard } from '@/components/ui/octogone-pricing-card';
 import { OctogoneAddonCard } from '@/components/ui/octogone-addon-card';
 import modulesData from '@/data/calculator/modules.json';
@@ -50,33 +50,13 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
           name: isEnglish ? 'Inventory' : 'Inventaire',
           price: 69,
           priceDetail: isEnglish ? 'per location / month' : 'par établissement / mois',
-          features: isEnglish ? [
-            'Product catalog, suppliers and inventory management.',
-            'Access to the essential dashboard.',
-            'Simplified invoice management.',
-            'Employee profiles and roles management.'
-          ] : [
-            'Gestion du catalogue produits, fournisseurs et inventaire.',
-            'Accès au tableau de bord essentiel.',
-            'Gestion simplifiée des factures.',
-            'Gestion des profils et rôles employés.'
-          ]
+          features: isEnglish ? modulesData.find(m => m.id === 'inventory')?.featuresEn || [] : modulesData.find(m => m.id === 'inventory')?.featuresFr || []
         },
         {
           name: isEnglish ? 'Recipe & Foodcost' : 'Recette & Foodcost',
           price: 79,
           priceDetail: isEnglish ? 'per location / month' : 'par établissement / mois',
-          features: isEnglish ? [
-            'Recipe digitization, procedure standardization and cost control.',
-            'Access to the essential dashboard.',
-            'Simplified invoice management.',
-            'Employee profiles and roles management.'
-          ] : [
-            'Numérisation des recettes, standardisation et contrôle des coûts.',
-            'Accès au tableau de bord essentiel.',
-            'Gestion simplifiée des factures.',
-            'Gestion des profils et rôles employés.'
-          ]
+          features: isEnglish ? modulesData.find(m => m.id === 'foodcost')?.featuresEn || [] : modulesData.find(m => m.id === 'foodcost')?.featuresFr || []
         }
       ],
       badge: isEnglish ? 'To get started' : 'Pour bien débuter',
@@ -91,23 +71,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
       icon: Star,
       ...calculatePrice(159),
       description: isEnglish ? 'The complete solution for restaurant professionals' : 'La solution complète des professionnels de la restauration',
-      features: isEnglish ? [
-        'POS integration for full platform power.',
-        'Pro dashboard with KPIs and multi-location performance comparison.',
-        'Real-time inventory combined with counting.',
-        'Recipe and product transfers between locations.',
-        'Order and production baskets for productivity.',
-        'Automated tip management tool.',
-        'Everything included in the Essential plan'
-      ] : [
-        'Intégration POS pour toute la puissance de la plateforme.',
-        'Tableau de bord pro avec KPI et comparaison multi-établissements.',
-        'Inventaire en temps réel combiné à la prise d\'inventaire.',
-        'Transfert de recettes et produits entre établissements.',
-        'Paniers de commande et production pour la productivité.',
-        'Outil de gestion automatisée des pourboires.',
-        'Tout ce qu\'inclut le forfait Essentiel'
-      ],
+      features: isEnglish ? modulesData.find(m => m.id === 'pro')?.featuresEn || [] : modulesData.find(m => m.id === 'pro')?.featuresFr || [],
       badge: isEnglish ? "The professionals' choice" : "L'option des professionnels",
       badgeColor: 'primary',
       customColors: {
@@ -126,17 +90,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
         ? (isEnglish ? 'per location (1 user) / annual payment' : 'par établissement (1 utilisateur) / paiement annuel')
         : (isEnglish ? 'per location (1 user) / month' : 'par établissement (1 utilisateur) / mois'),
       description: isEnglish ? 'Boost your performance with Cortex, Octogone\'s AI agent' : 'Propulsez vos performances avec Cortex, l\'agent IA d\'Octogone',
-      features: isEnglish ? [
-        'Cortex AI agent transforms your data into decisions.',
-        'Natural conversation with your account data.',
-        'AI-powered charts, actions, reports and recommendations.',
-        'Everything included in the Pro plan.'
-      ] : [
-        'Agent IA Cortex transforme vos données en décisions.',
-        'Conversation naturelle avec vos données de compte.',
-        'Graphiques, actions, rapports et recommandations par IA.',
-        'Tout ce qu\'inclut le forfait Pro.'
-      ],
+      features: isEnglish ? modulesData.find(m => m.id === 'pro_ai')?.featuresEn || [] : modulesData.find(m => m.id === 'pro_ai')?.featuresFr || [],
       badge: isEnglish ? 'Reserve your price and access' : 'Réservez votre prix et votre accès',
       badgeColor: 'cortex',
       customColors: {
@@ -437,7 +391,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
           </p>
           <OctogoneGradientButton
             href={`/${locale}/contact`}
-            icon={MessageCircleMore}
+            icon={ArrowRight}
             text={isEnglish ? pricingConfig.cta.customSolution.button.en : pricingConfig.cta.customSolution.button.fr}
           />
         </div>
