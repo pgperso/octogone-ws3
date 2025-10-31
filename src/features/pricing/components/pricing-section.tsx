@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { ResponsiveSection } from '@/components/ui/responsive-section';
 import { OctogoneGradientButton } from '@/components/ui/octogone-gradient-button';
 import { OctogoneToggle } from '@/components/ui/octogone-toggle';
-import { DollarSign, Package, Star, Thermometer, MessageCircleMore, Check } from 'lucide-react';
+import { DollarSign, Package, Star, Thermometer, Check } from 'lucide-react';
 import { OctogonePricingCard } from '@/components/ui/octogone-pricing-card';
 import { OctogoneAddonCard } from '@/components/ui/octogone-addon-card';
 import modulesData from '@/data/calculator/modules.json';
@@ -120,7 +120,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
     {
       id: 'pro_ai',
       name: 'Pro + IA',
-      icon: MessageCircleMore,
+      icon: '/icons/cortex.svg',
       ...calculatePrice(199),
       priceDetail: billingCycle === 'annual'
         ? (isEnglish ? 'per location (1 user) / annual payment' : 'par établissement (1 utilisateur) / paiement annuel')
@@ -176,7 +176,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
     {
       id: 'cortex_ai_extra',
       name: isEnglish ? 'Cortex AI' : 'Cortex IA',
-      icon: MessageCircleMore,
+      icon: '/icons/cortex.svg',
       price: 20,
       priceDetail: isEnglish ? 'per additional user / month' : 'par utilisateur supplémentaire / mois',
       originalPrice: null,
