@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { ResponsiveSection } from '@/components/ui/responsive-section';
 import { OctogoneGradientButton } from '@/components/ui/octogone-gradient-button';
 import { OctogoneToggle } from '@/components/ui/octogone-toggle';
-import { DollarSign, Package, Star, Thermometer, MessageCircleMore, ArrowRight } from 'lucide-react';
+import { DollarSign, Package, Star, Thermometer, MessageCircleMore, ArrowRight, Check } from 'lucide-react';
 import { PricingCard } from './pricing-card';
 import { AddonCard } from './addon-card';
 import modulesData from '@/data/calculator/modules.json';
@@ -216,29 +216,55 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                 <thead>
                   <tr>
                     <th 
-                      className="text-left pb-6 font-bold text-lg"
+                      className="text-left pb-6 font-bold text-2xl"
                       style={{ color: 'var(--on-surface)' }}
                     >
                       {isEnglish ? 'Feature' : 'Fonctionnalité'}
                     </th>
-                    <th 
-                      className="text-center pb-6 font-bold text-lg"
-                      style={{ color: 'var(--on-surface)' }}
-                    >
-                      {isEnglish ? 'Essential' : 'Essentiel'}
+                    <th className="text-center pb-6">
+                      <div 
+                        className="inline-block px-4 py-2 rounded-lg text-sm font-bold"
+                        style={{ 
+                          backgroundColor: 'var(--surface)',
+                          color: '#1F1F1F',
+                          border: '1px solid var(--outline)'
+                        }}
+                      >
+                        {isEnglish ? 'Essential' : 'Essentiel'}
+                      </div>
                     </th>
-                    <th 
-                      className="text-center pb-6 font-bold text-lg"
-                      style={{ color: 'var(--on-surface)' }}
-                    >
-                      Pro
+                    <th className="text-center pb-6">
+                      <div 
+                        className="inline-block px-4 py-2 rounded-lg text-sm font-bold"
+                        style={{ 
+                          background: 'linear-gradient(135deg, #bfdbfe 0%, #93c5fd 100%)',
+                          color: '#1F1F1F',
+                          border: '1px solid var(--outline)'
+                        }}
+                      >
+                        Pro
+                      </div>
                     </th>
-                    <th 
-                      className="text-center pb-6 font-bold text-lg"
-                      style={{ color: 'var(--on-surface)' }}
-                    >
-                      Pro + IA
+                    <th className="text-center pb-6">
+                      <div 
+                        className="inline-block px-4 py-2 rounded-lg text-sm font-bold"
+                        style={{ 
+                          background: 'linear-gradient(180deg, #BADFF6 0%, #E2CDED 100%)',
+                          color: '#1F1F1F',
+                          border: '1px solid var(--outline)'
+                        }}
+                      >
+                        Pro + IA
+                      </div>
                     </th>
+                  </tr>
+                  <tr>
+                    <td colSpan={4}>
+                      <div 
+                        className="w-full h-px mb-6"
+                        style={{ backgroundColor: 'var(--outline)' }}
+                      />
+                    </td>
                   </tr>
                 </thead>
                 <tbody>
@@ -271,10 +297,13 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                           <td className="py-4 text-center">
                             {feature.essentiel ? (
                               <div 
-                                className="inline-flex items-center justify-center w-6 h-6 rounded-full"
-                                style={{ backgroundColor: 'var(--success-container)' }}
+                                className="inline-flex items-center justify-center w-8 h-8 rounded-lg"
+                                style={{ backgroundColor: 'var(--success)' }}
                               >
-                                <span style={{ color: 'var(--success)', fontSize: '16px' }}>✓</span>
+                                <Check 
+                                  className="w-5 h-5"
+                                  style={{ color: 'var(--on-primary-container)', strokeWidth: 3 }}
+                                />
                               </div>
                             ) : (
                               <span style={{ color: 'var(--on-surface-variant)' }}>—</span>
@@ -283,10 +312,13 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                           <td className="py-4 text-center">
                             {feature.pro ? (
                               <div 
-                                className="inline-flex items-center justify-center w-6 h-6 rounded-full"
-                                style={{ backgroundColor: 'var(--success-container)' }}
+                                className="inline-flex items-center justify-center w-8 h-8 rounded-lg"
+                                style={{ backgroundColor: 'var(--success)' }}
                               >
-                                <span style={{ color: 'var(--success)', fontSize: '16px' }}>✓</span>
+                                <Check 
+                                  className="w-5 h-5"
+                                  style={{ color: 'var(--on-primary-container)', strokeWidth: 3 }}
+                                />
                               </div>
                             ) : (
                               <span style={{ color: 'var(--on-surface-variant)' }}>—</span>
@@ -295,10 +327,13 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                           <td className="py-4 text-center">
                             {feature.proAi ? (
                               <div 
-                                className="inline-flex items-center justify-center w-6 h-6 rounded-full"
-                                style={{ backgroundColor: 'var(--success-container)' }}
+                                className="inline-flex items-center justify-center w-8 h-8 rounded-lg"
+                                style={{ backgroundColor: 'var(--success)' }}
                               >
-                                <span style={{ color: 'var(--success)', fontSize: '16px' }}>✓</span>
+                                <Check 
+                                  className="w-5 h-5"
+                                  style={{ color: 'var(--on-primary-container)', strokeWidth: 3 }}
+                                />
                               </div>
                             ) : (
                               <span style={{ color: 'var(--on-surface-variant)' }}>—</span>
