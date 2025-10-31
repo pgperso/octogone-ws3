@@ -275,7 +275,7 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
             
             {/* Text */}
             <div style={{
-              color: 'var(--on-surface)',
+              color: hasCustomColors ? 'var(--on-secondary-container)' : 'var(--on-surface)',
               fontSize: '20px',
               fontWeight: '600',
               marginBottom: '12px',
@@ -286,7 +286,7 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
             
             {/* Subtitle */}
             <div style={{
-              color: 'var(--on-surface-variant)',
+              color: hasCustomColors ? 'var(--on-secondary-container)' : 'var(--on-surface-variant)',
               fontSize: '14px',
               fontWeight: '400'
             }}>
