@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { ResponsiveSection } from '@/components/ui/responsive-section';
 import { OctogoneGradientButton } from '@/components/ui/octogone-gradient-button';
 import { OctogoneToggle } from '@/components/ui/octogone-toggle';
-import { DollarSign, Package, Star, Thermometer, MessageCircleMore, Check, ArrowRight } from 'lucide-react';
+import { DollarSign, Package, Star, Thermometer, MessageCircleMore, ArrowRight } from 'lucide-react';
 import { PricingCard } from './pricing-card';
 import modulesData from '@/data/calculator/modules.json';
 import pricingConfig from '@/data/pricing/config.json';
@@ -87,25 +87,27 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
   const addonModules = [
     {
       id: 'thermometer',
-      name: isEnglish ? modulesData.find(m => m.id === 'thermometer')?.nameEn : modulesData.find(m => m.id === 'thermometer')?.nameFr,
+      name: (isEnglish ? modulesData.find(m => m.id === 'thermometer')?.nameEn : modulesData.find(m => m.id === 'thermometer')?.nameFr) || 'Thermometer',
       icon: Thermometer,
       ...calculatePrice(59),
-      priceUnit: isEnglish ? 'per unit' : 'par unité',
-      description: isEnglish ? modulesData.find(m => m.id === 'thermometer')?.descriptionEn : modulesData.find(m => m.id === 'thermometer')?.descriptionFr,
+      description: (isEnglish ? modulesData.find(m => m.id === 'thermometer')?.descriptionEn : modulesData.find(m => m.id === 'thermometer')?.descriptionFr) || '',
       features: isEnglish ? modulesData.find(m => m.id === 'thermometer')?.featuresEn || [] : modulesData.find(m => m.id === 'thermometer')?.featuresFr || [],
       badge: isEnglish ? 'Security without compromise' : 'La sécurité sans compromis',
-      badgeColor: 'success'
+      badgeColor: 'success',
+      customColors: null,
+      specialEffects: { ring: 'ring-4 ring-[var(--outline)]' }
     },
     {
       id: 'tips',
-      name: isEnglish ? modulesData.find(m => m.id === 'tips')?.nameEn : modulesData.find(m => m.id === 'tips')?.nameFr,
+      name: (isEnglish ? modulesData.find(m => m.id === 'tips')?.nameEn : modulesData.find(m => m.id === 'tips')?.nameFr) || 'Tips',
       icon: DollarSign,
       ...calculatePrice(89),
-      priceUnit: isEnglish ? 'per location' : 'par établissement',
-      description: isEnglish ? modulesData.find(m => m.id === 'tips')?.descriptionEn : modulesData.find(m => m.id === 'tips')?.descriptionFr,
+      description: (isEnglish ? modulesData.find(m => m.id === 'tips')?.descriptionEn : modulesData.find(m => m.id === 'tips')?.descriptionFr) || '',
       features: isEnglish ? modulesData.find(m => m.id === 'tips')?.featuresEn || [] : modulesData.find(m => m.id === 'tips')?.featuresFr || [],
       badge: null,
-      badgeColor: null
+      badgeColor: null,
+      customColors: null,
+      specialEffects: { ring: 'ring-4 ring-[var(--outline)]' }
     }
   ];
 
@@ -189,88 +191,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {addonModules.map((addon) => (
-                <div
-                  key={addon.id}
-                  className="rounded-2xl p-6 relative flex flex-col gap-4"
-                  style={{
-                    border: '1px solid var(--outline)',
-                    background: 'var(--surface)'
-                  }}
-                >
-                  {addon.badge && (
-                    <div 
-                      className="absolute left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-lg text-sm font-bold whitespace-nowrap"
-                      style={{ 
-                        top: '-22px',
-                        backgroundColor: addon.badgeColor === 'success' ? '#B8E0D2' : '#BADFF6',
-                        color: '#1F1F1F',
-                        border: '4px solid var(--background)'
-                      }}
-                    >
-                      {addon.badge}
-                    </div>
-                  )}
-
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div 
-                        className="w-12 h-12 rounded-xl flex items-center justify-center"
-                        style={{ backgroundColor: 'var(--secondary-container)' }}
-                      >
-                        {typeof addon.icon === 'string' ? (
-                          <img src={addon.icon} alt="Icon" width="24" height="24" />
-                        ) : (
-                          <addon.icon className="w-6 h-6" style={{ color: 'var(--on-secondary-container)' }} />
-                        )}
-                      </div>
-                      <h3 
-                        className="text-xl font-bold"
-                        style={{ color: 'var(--on-surface)' }}
-                      >
-                        {addon.name}
-                      </h3>
-                    </div>
-                  </div>
-
-                  <p 
-                    className="text-sm"
-                    style={{ color: 'var(--on-surface-variant)' }}
-                  >
-                    {addon.description}
-                  </p>
-
-                  <div>
-                    <div 
-                      className="text-2xl font-bold"
-                      style={{ color: 'var(--primary)' }}
-                    >
-                      {addon.price}$
-                    </div>
-                    <div 
-                      className="text-sm"
-                      style={{ color: 'var(--on-surface-variant)' }}
-                    >
-                      {addon.priceDetail} · {addon.priceUnit}
-                    </div>
-                  </div>
-
-                  <ul className="space-y-2">
-                    {addon.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-start gap-3">
-                        <Check 
-                          className="w-5 h-5 flex-shrink-0 mt-0.5" 
-                          style={{ color: 'var(--success)' }}
-                        />
-                        <span 
-                          className="text-sm"
-                          style={{ color: 'var(--on-surface)' }}
-                        >
-                          {feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <PricingCard key={addon.id} plan={addon} locale={locale} />
               ))}
             </div>
           </div>
