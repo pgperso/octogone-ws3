@@ -24,12 +24,12 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
   // Fonction helper pour calculer le prix
   const calculatePrice = (basePrice: number) => {
     const price = billingCycle === 'annual' 
-      ? Math.round(basePrice * (1 - annualDiscount))
+      ? Math.round(basePrice * 12 * (1 - annualDiscount))
       : basePrice;
     const priceDetail = billingCycle === 'annual'
       ? (isEnglish ? 'per location / annual payment' : 'par établissement / paiement annuel')
       : (isEnglish ? 'per location / month' : 'par établissement / mois');
-    const originalPrice = billingCycle === 'annual' ? basePrice : null;
+    const originalPrice = billingCycle === 'annual' ? basePrice * 12 : null;
     return { price, priceDetail, originalPrice };
   };
 
@@ -171,7 +171,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
               className="text-2xl font-bold mb-2"
               style={{ color: 'var(--on-surface)' }}
             >
-              {isEnglish ? 'Additional Modules (Optional)' : 'Modules additionnels (optionnels)'}
+              {isEnglish ? 'Essential Add-ons' : 'Les ajouts indispensables'}
             </h2>
             <p 
               className="text-xl mb-10"
