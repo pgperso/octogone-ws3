@@ -73,6 +73,9 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
       name: 'Pro + IA',
       icon: MessageCircleMore,
       ...calculatePrice(199),
+      priceDetail: billingCycle === 'annual'
+        ? (isEnglish ? 'per location (1 user) / annual payment' : 'par établissement (1 utilisateur) / paiement annuel')
+        : (isEnglish ? 'per location (1 user) / month' : 'par établissement (1 utilisateur) / mois'),
       description: isEnglish ? 'Boost your performance with Cortex, Octogone\'s AI agent' : 'Propulsez vos performances avec Cortex, l\'agent IA d\'Octogone',
       features: isEnglish ? modulesData.find(m => m.id === 'pro_ai')?.featuresEn || [] : modulesData.find(m => m.id === 'pro_ai')?.featuresFr || [],
       badge: isEnglish ? 'Reserve your price and access' : 'Réservez votre prix et votre accès',
