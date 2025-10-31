@@ -292,10 +292,22 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
                 height: '40px',
                 top: '20px',
                 left: '20px',
-                background: 'var(--secondary-container)',
-                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
                 animation: 'pulse-glow 2s ease-in-out infinite'
-              }} />
+              }}>
+                <img 
+                  src="/cortex.svg" 
+                  alt="Cortex" 
+                  style={{
+                    width: '32px',
+                    height: '32px',
+                    filter: 'brightness(0) saturate(100%)',
+                    opacity: 0.7
+                  }}
+                />
+              </div>
             </div>
             
             {/* Text */}
