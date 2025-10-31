@@ -113,6 +113,20 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
       badgeColor: null,
       customColors: null,
       specialEffects: { ring: 'ring-4 ring-[var(--outline)]' }
+    },
+    {
+      id: 'cortex_ai_extra',
+      name: isEnglish ? 'Cortex AI' : 'Cortex IA',
+      icon: MessageCircleMore,
+      price: 20,
+      priceDetail: isEnglish ? 'per additional user / month' : 'par utilisateur supplémentaire / mois',
+      originalPrice: null,
+      description: isEnglish ? 'Add more users to your Cortex AI subscription' : 'Ajoutez plus d\'utilisateurs à votre abonnement Cortex IA',
+      features: isEnglish ? modulesData.find(m => m.id === 'pro_ai')?.featuresEn?.slice(0, 3) || [] : modulesData.find(m => m.id === 'pro_ai')?.featuresFr?.slice(0, 3) || [],
+      badge: null,
+      badgeColor: null,
+      customColors: null,
+      specialEffects: { ring: 'ring-4 ring-[var(--outline)]' }
     }
   ];
 
@@ -184,7 +198,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                 ? 'Essential tools! Add Thermometer to your Pro or Pro+AI plan. Want to add Thermometer and Tips to your Essential plan? Upgrade to Pro or Pro AI and save.'
                 : 'Des outils indispensables! Ajoutez Thermomètre à votre forfait Pro ou Pro+IA. Vous aimeriez ajouter Thermomètre et Pourboire à votre forfait Essentiel? Passez à Pro ou Pro IA et économisez.'}
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {addonModules.map((addon) => (
                 <OctogoneAddonCard key={addon.id} addon={addon} locale={locale} />
               ))}
