@@ -23,7 +23,7 @@ export const AddonCard: React.FC<AddonCardProps> = ({ addon, locale }) => {
 
   return (
     <div
-      className="rounded-2xl p-8 relative flex flex-col gap-4"
+      className="rounded-2xl p-8 relative flex flex-col"
       style={{
         border: '1px solid var(--outline)',
         background: 'var(--surface)'
@@ -34,7 +34,9 @@ export const AddonCard: React.FC<AddonCardProps> = ({ addon, locale }) => {
           className="absolute left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-lg text-sm font-bold whitespace-nowrap"
           style={{ 
             top: '-22px',
-            backgroundColor: addon.badgeColor === 'success' ? '#B8E0D2' : '#BADFF6',
+            backgroundColor: addon.badgeColor === 'cortex' ? '#E2CDED' : 
+                           addon.badgeColor === 'success' ? '#B8E0D2' :
+                           addon.badgeColor === 'warning' ? '#FFE5B4' : '#BADFF6',
             color: '#1F1F1F',
             border: '4px solid var(--background)'
           }}
@@ -44,7 +46,7 @@ export const AddonCard: React.FC<AddonCardProps> = ({ addon, locale }) => {
       )}
 
       {/* Header: Icon + Name + Price */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 mb-8">
         <div 
           className="w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0"
           style={{ backgroundColor: 'var(--secondary-container)' }}
@@ -88,28 +90,28 @@ export const AddonCard: React.FC<AddonCardProps> = ({ addon, locale }) => {
 
       {/* Divider */}
       <div 
-        className="w-full h-px"
+        className="w-full h-px mt-4"
         style={{ backgroundColor: 'var(--outline)' }}
       />
 
       {/* Description */}
       <p 
-        className="text-base"
+        className="mb-6 mt-6"
         style={{ color: 'var(--on-surface-variant)' }}
       >
         {addon.description}
       </p>
 
       {/* Features */}
-      <ul className="space-y-2">
+      <ul className="mb-8 flex-1" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
         {addon.features.map((feature, idx) => (
-          <li key={idx} className="flex items-start gap-3">
+          <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
             <Check 
-              className="w-5 h-5 flex-shrink-0 mt-0.5" 
+              className="w-5 h-5 flex-shrink-0" 
               style={{ color: 'var(--success)' }}
             />
             <span 
-              className="text-base"
+              className="text-sm"
               style={{ color: 'var(--on-surface)' }}
             >
               {feature}
