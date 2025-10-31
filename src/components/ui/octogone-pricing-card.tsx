@@ -81,7 +81,13 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
                 width="32"
                 height="32"
                 className="mx-auto"
-                style={{ display: 'block', width: '32px', height: '32px' }}
+                style={{ 
+                  display: 'block', 
+                  width: '32px', 
+                  height: '32px',
+                  filter: hasCustomColors ? 'none' : 'brightness(0) saturate(100%)',
+                  color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--on-secondary-container)'
+                }}
               />
             ) : (
               <Icon className="w-8 h-8 mx-auto" style={{ color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--on-secondary-container)', width: '32px', height: '32px' }} />
