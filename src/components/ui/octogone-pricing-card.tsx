@@ -70,24 +70,8 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
           </>
         )}
 
-        {/* Content wrapper */}
-        <div style={{ position: 'relative' }}>
-        {/* Overlay */}
-        {isBlurred && (
-          <div 
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: -32,
-              right: -32,
-              bottom: 0,
-              background: 'rgba(255, 255, 255, 0.7)',
-              backdropFilter: 'blur(2px)',
-              zIndex: 5,
-              pointerEvents: 'none'
-            }}
-          />
-        )}
+        {/* Content wrapper with blur */}
+        <div style={{ filter: isBlurred ? 'blur(4px)' : 'none', pointerEvents: isBlurred ? 'none' : 'auto', position: 'relative' }}>
         {/* Icon */}
         <div className="flex justify-center gap-4 mb-8">
           <div 
@@ -265,6 +249,76 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
         )}
         </div>
         {/* End blur wrapper */}
+
+        {/* Building animation overlay */}
+        {isBlurred && (
+          <div 
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              zIndex: 20,
+              textAlign: 'center',
+              pointerEvents: 'none'
+            }}
+          >
+            <div style={{ 
+              fontSize: '48px',
+              marginBottom: '16px',
+              animation: 'pulse 2s ease-in-out infinite'
+            }}>
+              🚧
+            </div>
+            <div style={{
+              color: 'var(--on-surface)',
+              fontSize: '18px',
+              fontWeight: 'bold',
+              marginBottom: '8px'
+            }}>
+              {isEnglish ? 'Coming Soon' : 'Bientôt disponible'}
+            </div>
+            <div style={{
+              display: 'flex',
+              gap: '8px',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}>
+              <div style={{
+                width: '8px',
+                height: '8px',
+                borderRadius: '50%',
+                backgroundColor: 'var(--primary)',
+                animation: 'blink 1.4s ease-in-out infinite'
+              }} />
+              <div style={{
+                width: '8px',
+                height: '8px',
+                borderRadius: '50%',
+                backgroundColor: 'var(--primary)',
+                animation: 'blink 1.4s ease-in-out 0.2s infinite'
+              }} />
+              <div style={{
+                width: '8px',
+                height: '8px',
+                borderRadius: '50%',
+                backgroundColor: 'var(--primary)',
+                animation: 'blink 1.4s ease-in-out 0.4s infinite'
+              }} />
+            </div>
+          </div>
+        )}
+
+        <style jsx>{`
+          @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+          }
+          @keyframes blink {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+          }
+        `}</style>
 
         {/* CTA Button - Outside blur */}
         <div className="mt-auto" style={{ position: 'relative', zIndex: 10 }}>
