@@ -52,8 +52,7 @@ export const PricingCard: React.FC<PricingCardProps> = ({ plan, locale }) => {
                                plan.badgeColor === 'success' ? '#B8E0D2' :
                                plan.badgeColor === 'warning' ? '#FFE5B4' : '#BADFF6',
                 color: '#1F1F1F',
-                border: '4px solid var(--surface)',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                border: '4px solid var(--background)'
               }}
             >
               {plan.badge}
