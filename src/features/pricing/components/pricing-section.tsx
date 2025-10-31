@@ -27,8 +27,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
       ? Math.round(basePrice * (1 - annualDiscount))
       : basePrice;
     const priceDetail = billingCycle === 'annual'
-      ? (isEnglish ? 'per month, billed annually' : 'par mois, facturé annuellement')
-      : (isEnglish ? 'per month' : 'par mois');
+      ? (isEnglish ? 'per location / annual payment' : 'par établissement / paiement annuel')
+      : (isEnglish ? 'per location / month' : 'par établissement / mois');
     const originalPrice = billingCycle === 'annual' ? basePrice : null;
     return { price, priceDetail, originalPrice };
   };
@@ -41,7 +41,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
       name: isEnglish ? 'Essential' : 'Essentiel',
       icon: Package,
       ...calculatePrice(69 + 79), // 148$
-      description: isEnglish ? 'Foundation to get started — Inventory + Food Cost' : 'Base pour démarrer — Inventaire + Food Cost',
+      description: isEnglish ? 'The essentials for restaurateurs' : 'L\'essentiel des restaurateurs',
       features: [
         ...(isEnglish ? modulesData.find(m => m.id === 'inventory')?.featuresEn.slice(0, 5) || [] : modulesData.find(m => m.id === 'inventory')?.featuresFr.slice(0, 5) || []),
         ...(isEnglish ? modulesData.find(m => m.id === 'foodcost')?.featuresEn.slice(0, 3) || [] : modulesData.find(m => m.id === 'foodcost')?.featuresFr.slice(0, 3) || [])
@@ -57,7 +57,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
       name: 'Pro',
       icon: Star,
       ...calculatePrice(159),
-      description: (isEnglish ? modulesData.find(m => m.id === 'pro')?.descriptionEn : modulesData.find(m => m.id === 'pro')?.descriptionFr) || '',
+      description: isEnglish ? 'The complete solution for restaurant professionals' : 'La solution complète des professionnels de la restauration',
       features: isEnglish ? modulesData.find(m => m.id === 'pro')?.featuresEn || [] : modulesData.find(m => m.id === 'pro')?.featuresFr || [],
       badge: isEnglish ? "The professionals' choice" : "L'option des professionnels",
       badgeColor: 'primary',
@@ -73,7 +73,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
       name: 'Pro + IA',
       icon: MessageCircleMore,
       ...calculatePrice(199),
-      description: (isEnglish ? modulesData.find(m => m.id === 'pro_ai')?.descriptionEn : modulesData.find(m => m.id === 'pro_ai')?.descriptionFr) || '',
+      description: isEnglish ? 'Boost your performance with Cortex, Octogone\'s AI agent' : 'Propulsez vos performances avec Cortex, l\'agent IA d\'Octogone',
       features: isEnglish ? modulesData.find(m => m.id === 'pro_ai')?.featuresEn || [] : modulesData.find(m => m.id === 'pro_ai')?.featuresFr || [],
       badge: isEnglish ? 'Reserve your price and access' : 'Réservez votre prix et votre accès',
       badgeColor: 'cortex',
@@ -345,21 +345,6 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                   ))}
                 </tbody>
               </table>
-            </div>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <OctogoneGradientButton
-                href="#contact"
-                icon={ArrowRight}
-                text={isEnglish ? 'Request a demo' : 'Demander une démo'}
-                showBorder={true}
-              />
-              <OctogoneGradientButton
-                href="#contact"
-                icon={ArrowRight}
-                text={isEnglish ? 'Talk to an expert' : 'Parler à un expert'}
-                showBorder={true}
-                gradient="linear-gradient(135deg, var(--surface) 0%, var(--surface) 100%)"
-              />
             </div>
           </div>
         </div>
