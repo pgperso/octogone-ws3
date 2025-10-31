@@ -168,13 +168,13 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
         <div className="py-12 px-4">
           <div className="max-w-6xl mx-auto">
             <h2 
-              className="text-2xl font-bold mb-2"
+              className="text-3xl font-bold mb-4 text-center"
               style={{ color: 'var(--on-surface)' }}
             >
               {isEnglish ? 'Essential Add-ons' : 'Les ajouts indispensables'}
             </h2>
             <p 
-              className="text-xl mb-10"
+              className="text-center text-xl mb-10"
               style={{ color: 'var(--on-surface-variant)' }}
             >
               {isEnglish 
