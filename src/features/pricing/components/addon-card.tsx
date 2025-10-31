@@ -86,6 +86,12 @@ export const AddonCard: React.FC<AddonCardProps> = ({ addon, locale }) => {
         </div>
       </div>
 
+      {/* Divider */}
+      <div 
+        className="w-full h-px"
+        style={{ backgroundColor: 'var(--outline)' }}
+      />
+
       {/* Description */}
       <p 
         className="text-base"
