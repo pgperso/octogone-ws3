@@ -46,7 +46,7 @@ export const AddonCard: React.FC<AddonCardProps> = ({ addon, locale }) => {
       )}
 
       {/* Header: Icon + Name + Price */}
-      <div className="flex items-center gap-4 mb-8">
+      <div className="flex items-center gap-4">
         <div 
           className="w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0"
           style={{ backgroundColor: 'var(--secondary-container)' }}
@@ -90,7 +90,7 @@ export const AddonCard: React.FC<AddonCardProps> = ({ addon, locale }) => {
 
       {/* Divider */}
       <div 
-        className="w-full h-px mt-4"
+        className="w-full h-px mt-6"
         style={{ backgroundColor: 'var(--outline)' }}
       />
 
