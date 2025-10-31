@@ -301,7 +301,11 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
           <OctogoneGradientButton
             href="https://app.octogonecollectif.com/#/register"
             icon={ArrowRight}
-            text={isEnglish ? "Start now" : "Commencer maintenant"}
+            text={
+              plan.id === 'pro_ai' 
+                ? (isEnglish ? "Reserve now" : "Réserver maintenant")
+                : (isEnglish ? "Start now" : "Commencer maintenant")
+            }
             gradient={
               plan.id === 'pro' || plan.id === 'pro_ai'
                 ? 'linear-gradient(135deg, #E2CDED 0%, #BADFF6 100%)'
