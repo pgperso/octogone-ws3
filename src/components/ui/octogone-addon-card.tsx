@@ -44,7 +44,7 @@ export const OctogoneAddonCard: React.FC<AddonCardProps> = ({ addon }) => {
       )}
 
       {/* Header: Icon + Name + Price */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-start gap-4">
         <div 
           className="w-16 h-16 rounded-xl flex items-center justify-center flex-shrink-0"
           style={{ backgroundColor: 'var(--secondary-container)' }}
@@ -69,19 +69,19 @@ export const OctogoneAddonCard: React.FC<AddonCardProps> = ({ addon }) => {
           >
             {addon.name}
           </h3>
-          <div className="flex items-baseline gap-2 mt-1">
-            <span 
+          <div className="mt-1">
+            <div 
               className="text-4xl font-bold"
               style={{ color: 'var(--primary)' }}
             >
               {addon.price}$
-            </span>
-            <span 
-              className="text-sm"
+            </div>
+            <div 
+              className="text-sm mt-1"
               style={{ color: 'var(--on-surface-variant)' }}
             >
               {addon.priceDetail}
-            </span>
+            </div>
           </div>
         </div>
       </div>
