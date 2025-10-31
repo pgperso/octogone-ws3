@@ -85,8 +85,8 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
                   display: 'block', 
                   width: '32px', 
                   height: '32px',
-                  filter: hasCustomColors ? 'none' : 'brightness(0) saturate(100%)',
-                  color: hasCustomColors ? 'var(--on-primary-container)' : 'var(--on-secondary-container)'
+                  filter: 'brightness(0) saturate(100%)',
+                  opacity: hasCustomColors ? 0.8 : 0.7
                 }}
               />
             ) : (
