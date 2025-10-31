@@ -174,7 +174,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
               {isEnglish ? 'Additional Modules (Optional)' : 'Modules additionnels (optionnels)'}
             </h2>
             <p 
-              className="text-sm mb-6"
+              className="text-sm mb-8"
               style={{ color: 'var(--on-surface-variant)' }}
             >
               {isEnglish 
