@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { ResponsiveSection } from '@/components/ui/responsive-section';
 import { OctogoneGradientButton } from '@/components/ui/octogone-gradient-button';
 import { OctogoneToggle } from '@/components/ui/octogone-toggle';
-import { DollarSign, Package, Star, Thermometer, MessageCircleMore, ArrowRight, Check } from 'lucide-react';
+import { DollarSign, Package, Star, Thermometer, MessageCircleMore, Check } from 'lucide-react';
 import { OctogonePricingCard } from '@/components/ui/octogone-pricing-card';
 import { OctogoneAddonCard } from '@/components/ui/octogone-addon-card';
 import modulesData from '@/data/calculator/modules.json';
