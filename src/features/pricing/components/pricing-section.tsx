@@ -51,15 +51,15 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
           price: 69,
           priceDetail: isEnglish ? 'per location / month' : 'par établissement / mois',
           features: isEnglish ? [
-            'Everything you need to manage your product catalog, supplier list and inventory.',
+            'Product catalog, suppliers and inventory management.',
             'Access to the essential dashboard.',
-            'Everything you need to simplify invoice management.',
-            'Everything you need to manage your employees\' profiles and roles.'
+            'Simplified invoice management.',
+            'Employee profiles and roles management.'
           ] : [
-            'Tout ce dont vous avez besoin pour gérer votre catalogue de produits, votre liste de fournisseurs et votre prise d\'inventaire.',
+            'Gestion du catalogue produits, fournisseurs et inventaire.',
             'Accès au tableau de bord essentiel.',
-            'Tout ce dont vous avez besoin pour simplifier la gestion des factures.',
-            'Tout ce dont vous avez besoin pour gérer le profil et le rôle de vos employés.'
+            'Gestion simplifiée des factures.',
+            'Gestion des profils et rôles employés.'
           ]
         },
         {
@@ -67,15 +67,15 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
           price: 79,
           priceDetail: isEnglish ? 'per location / month' : 'par établissement / mois',
           features: isEnglish ? [
-            'Everything you need to digitize your recipes, standardize your procedures and control your costs.',
+            'Recipe digitization, procedure standardization and cost control.',
             'Access to the essential dashboard.',
-            'Everything you need to simplify invoice management.',
-            'Everything you need to manage your employees\' profiles and roles.'
+            'Simplified invoice management.',
+            'Employee profiles and roles management.'
           ] : [
-            'Tout ce dont vous avez besoin pour numériser vos recettes, standardiser vos procédures et contrôler vos coûts.',
+            'Numérisation des recettes, standardisation et contrôle des coûts.',
             'Accès au tableau de bord essentiel.',
-            'Tout ce dont vous avez besoin pour simplifier la gestion des factures.',
-            'Tout ce dont vous avez besoin pour gérer le profil et le rôle de vos employés.'
+            'Gestion simplifiée des factures.',
+            'Gestion des profils et rôles employés.'
           ]
         }
       ],
@@ -92,20 +92,20 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
       ...calculatePrice(159),
       description: isEnglish ? 'The complete solution for restaurant professionals' : 'La solution complète des professionnels de la restauration',
       features: isEnglish ? [
-        'Connect your POS to Octogone and enjoy all the power and flexibility of the platform.',
-        'Access to the pro dashboard, the essential tool to analyze your KPIs, results and compare the performance of all your locations.',
-        'Combine inventory counting with the Real-time Inventory tool; the ultimate solution to understand what\'s happening now.',
-        'Transfer recipes and products between your different locations.',
-        'Take advantage of the order basket and production basket and boost your productivity.',
-        'Say goodbye to broken Excel formulas and manage your tip agreements with the Tips tool.',
+        'POS integration for full platform power.',
+        'Pro dashboard with KPIs and multi-location performance comparison.',
+        'Real-time inventory combined with counting.',
+        'Recipe and product transfers between locations.',
+        'Order and production baskets for productivity.',
+        'Automated tip management tool.',
         'Everything included in the Essential plan'
       ] : [
-        'Connectez votre POS à Octogone et profitez de toute la puissance et la souplesse de la plateforme.',
-        'Accès au tableau de bord pro, l\'outil indispensable pour analyser vos KPI, vos résultats et comparer les performances de tous vos établissements.',
-        'Combinez la prise d\'inventaire à l\'outil Inventaire en temps réel; l\'ultime solution pour comprendre ce qui se passe maintenant.',
-        'Transférez recettes et produits entre vos différents établissements.',
-        'Profitez du panier de commande et du panier de production et boostez votre productivité.',
-        'Dites adieu aux formules Excel brisées et gérez vos conventions de pourboire grâce à l\'outil Pourboire.',
+        'Intégration POS pour toute la puissance de la plateforme.',
+        'Tableau de bord pro avec KPI et comparaison multi-établissements.',
+        'Inventaire en temps réel combiné à la prise d\'inventaire.',
+        'Transfert de recettes et produits entre établissements.',
+        'Paniers de commande et production pour la productivité.',
+        'Outil de gestion automatisée des pourboires.',
         'Tout ce qu\'inclut le forfait Essentiel'
       ],
       badge: isEnglish ? "The professionals' choice" : "L'option des professionnels",
@@ -127,14 +127,14 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
         : (isEnglish ? 'per location (1 user) / month' : 'par établissement (1 utilisateur) / mois'),
       description: isEnglish ? 'Boost your performance with Cortex, Octogone\'s AI agent' : 'Propulsez vos performances avec Cortex, l\'agent IA d\'Octogone',
       features: isEnglish ? [
-        'Add Cortex, Octogone\'s new AI agent that will soon transform your data into decisions.',
-        'Chat naturally, ask questions, Cortex is directly connected to your account and knows you.',
-        'Generate charts, execute actions, generate reports and get recommendations powered by artificial intelligence.',
+        'Cortex AI agent transforms your data into decisions.',
+        'Natural conversation with your account data.',
+        'AI-powered charts, actions, reports and recommendations.',
         'Everything included in the Pro plan.'
       ] : [
-        'Ajoutez Cortex, le nouvel agent IA d\'Octogone qui transformera bientôt vos données en décisions.',
-        'Discutez naturellement, posez des questions, Cortex est branché directement dans votre compte et il vous connait.',
-        'Générez des graphiques, exécutez des actions, générez des rapports et obtenez des recommandations propulsées par l\'intelligence artificielle.',
+        'Agent IA Cortex transforme vos données en décisions.',
+        'Conversation naturelle avec vos données de compte.',
+        'Graphiques, actions, rapports et recommandations par IA.',
         'Tout ce qu\'inclut le forfait Pro.'
       ],
       badge: isEnglish ? 'Reserve your price and access' : 'Réservez votre prix et votre accès',
