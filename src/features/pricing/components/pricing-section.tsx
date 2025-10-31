@@ -40,7 +40,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
       id: 'essentiel',
       name: isEnglish ? 'Essential' : 'Essentiel',
       icon: Package,
-      ...calculatePrice(69 + 79), // 148$
+      ...calculatePrice(129),
       description: isEnglish ? 'The essentials for restaurateurs' : 'L\'essentiel des restaurateurs',
       features: [
         ...(isEnglish ? modulesData.find(m => m.id === 'inventory')?.featuresEn.slice(0, 5) || [] : modulesData.find(m => m.id === 'inventory')?.featuresFr.slice(0, 5) || []),
