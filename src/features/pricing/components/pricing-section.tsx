@@ -4,11 +4,9 @@ import React, { useState } from 'react';
 import { ResponsiveSection } from '@/components/ui/responsive-section';
 import { OctogoneGradientButton } from '@/components/ui/octogone-gradient-button';
 import { OctogoneToggle } from '@/components/ui/octogone-toggle';
-import { Warehouse, ChefHat, DollarSign, Package, Star, Thermometer, MessageCircleMore, Check, ArrowRight } from 'lucide-react';
+import { DollarSign, Package, Star, Thermometer, MessageCircleMore, Check, ArrowRight } from 'lucide-react';
 import { PricingCard } from './pricing-card';
 import modulesData from '@/data/calculator/modules.json';
-import pricingData from '@/data/calculator/pricing.json';
-import plansConfig from '@/data/pricing/plans.json';
 import pricingConfig from '@/data/pricing/config.json';
 
 interface PricingSectionProps {
@@ -18,26 +16,8 @@ interface PricingSectionProps {
 export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
   const isEnglish = locale === 'en';
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>('monthly');
-  const [isClient, setIsClient] = useState(false);
-
-  React.useEffect(() => {
-    setIsClient(true);
-  }, []);
   
-  // Prix de base pour 1 établissement
-  const basePrice = pricingData[0].pricePerLocationPerMonth;
   const annualDiscount = pricingConfig.annualDiscount;
-  
-  // Mapping des icônes
-  const iconMap: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }> | string> = {
-    Warehouse,
-    ChefHat,
-    DollarSign,
-    Package,
-    Star,
-    Thermometer,
-    MessageCircleMore
-  };
 
   // Fonction helper pour calculer le prix
   const calculatePrice = (basePrice: number) => {
