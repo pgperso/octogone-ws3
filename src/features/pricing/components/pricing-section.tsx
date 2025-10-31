@@ -42,9 +42,18 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
       icon: Package,
       ...calculatePrice(129),
       description: isEnglish ? 'The essentials for restaurateurs' : 'L\'essentiel des restaurateurs',
-      features: [
-        ...(isEnglish ? modulesData.find(m => m.id === 'inventory')?.featuresEn.slice(0, 5) || [] : modulesData.find(m => m.id === 'inventory')?.featuresFr.slice(0, 5) || []),
-        ...(isEnglish ? modulesData.find(m => m.id === 'foodcost')?.featuresEn.slice(0, 3) || [] : modulesData.find(m => m.id === 'foodcost')?.featuresFr.slice(0, 3) || [])
+      features: isEnglish ? [
+        'Everything you need to manage your product catalog, supplier list and inventory.',
+        'Everything you need to digitize your recipes, standardize your procedures and control your costs.',
+        'Access to the essential dashboard.',
+        'Everything you need to simplify invoice management.',
+        'Everything you need to manage your employees\' profiles and roles.'
+      ] : [
+        'Tout ce dont vous avez besoin pour gérer votre catalogue de produits, votre liste de fournisseurs et votre prise d\'inventaire.',
+        'Tout ce dont vous avez besoin pour numériser vos recettes, standardiser vos procédures et contrôler vos coûts.',
+        'Accès au tableau de bord essentiel.',
+        'Tout ce dont vous avez besoin pour simplifier la gestion des factures.',
+        'Tout ce dont vous avez besoin pour gérer le profil et le rôle de vos employés.'
       ],
       badge: isEnglish ? 'To get started' : 'Pour bien débuter',
       badgeColor: 'gold',
@@ -58,7 +67,23 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
       icon: Star,
       ...calculatePrice(159),
       description: isEnglish ? 'The complete solution for restaurant professionals' : 'La solution complète des professionnels de la restauration',
-      features: isEnglish ? modulesData.find(m => m.id === 'pro')?.featuresEn || [] : modulesData.find(m => m.id === 'pro')?.featuresFr || [],
+      features: isEnglish ? [
+        'Connect your POS to Octogone and enjoy all the power and flexibility of the platform.',
+        'Access to the pro dashboard, the essential tool to analyze your KPIs, results and compare the performance of all your locations.',
+        'Combine inventory counting with the Real-time Inventory tool; the ultimate solution to understand what\'s happening now.',
+        'Transfer recipes and products between your different locations.',
+        'Take advantage of the order basket and production basket and boost your productivity.',
+        'Say goodbye to broken Excel formulas and manage your tip agreements with the Tips tool.',
+        'Everything included in the Essential plan'
+      ] : [
+        'Connectez votre POS à Octogone et profitez de toute la puissance et la souplesse de la plateforme.',
+        'Accès au tableau de bord pro, l\'outil indispensable pour analyser vos KPI, vos résultats et comparer les performances de tous vos établissements.',
+        'Combinez la prise d\'inventaire à l\'outil Inventaire en temps réel; l\'ultime solution pour comprendre ce qui se passe maintenant.',
+        'Transférez recettes et produits entre vos différents établissements.',
+        'Profitez du panier de commande et du panier de production et boostez votre productivité.',
+        'Dites adieu aux formules Excel brisées et gérez vos conventions de pourboire grâce à l\'outil Pourboire.',
+        'Tout ce qu\'inclut le forfait Essentiel'
+      ],
       badge: isEnglish ? "The professionals' choice" : "L'option des professionnels",
       badgeColor: 'primary',
       customColors: {
