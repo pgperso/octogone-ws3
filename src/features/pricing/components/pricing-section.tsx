@@ -47,7 +47,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
         ...(isEnglish ? modulesData.find(m => m.id === 'foodcost')?.featuresEn.slice(0, 3) || [] : modulesData.find(m => m.id === 'foodcost')?.featuresFr.slice(0, 3) || [])
       ],
       badge: isEnglish ? 'To get started' : 'Pour bien débuter',
-      badgeColor: 'primary',
+      badgeColor: 'gold',
       customColors: null,
       specialEffects: { ring: 'ring-4 ring-[var(--outline)]' }
     },

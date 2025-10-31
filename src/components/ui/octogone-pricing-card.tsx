@@ -47,10 +47,11 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
               className="absolute left-1/2 transform -translate-x-1/2 px-4 py-2 rounded-lg text-sm font-bold whitespace-nowrap"
               style={{ 
                 top: '-22px',
-                backgroundColor: plan.badgeColor === 'cortex' ? '#E2CDED' : 
-                               plan.badgeColor === 'success' ? '#B8E0D2' :
-                               plan.badgeColor === 'warning' ? '#FFE5B4' :
-                               plan.badgeColor === 'primary' ? 'var(--primary)' : '#BADFF6',
+                backgroundColor: plan.badgeColor === 'cortex' ? 'var(--purple_cortex)' : 
+                               plan.badgeColor === 'success' ? 'var(--green-pastel)' :
+                               plan.badgeColor === 'warning' ? 'var(--yellow-pastel)' :
+                               plan.badgeColor === 'gold' ? 'var(--primary)' :
+                               plan.badgeColor === 'primary' ? 'var(--blue-pastel)' : 'var(--blue-pastel)',
                 color: '#1F1F1F',
                 border: '4px solid var(--background)'
               }}

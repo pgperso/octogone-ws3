@@ -88,6 +88,12 @@
   /* Couleurs orange (food cost élevé) */
   --orange: #ec9019;
   --on-orange: #1F1F1F;
+
+  /* Couleurs pastelles */
+  --green-pastel: #B8E0D2;
+  --blue-pastel: #B4D4FF;
+  --yellow-pastel: #FFE5B4;
+  --purple-pastel: #C8B6FF;
 }
 
 /* Thème Dark - Basé sur Flutter AppColors */
@@ -142,4 +148,10 @@
   /* Couleurs orange (food cost élevé) */
   --orange: #ec9019;
   --on-orange: #1F1F1F;
+
+  /* Couleurs pastelles */
+  --green-pastel: #B8E0D2;
+  --blue-pastel: #B4D4FF;
+  --yellow-pastel: #FFE5B4;
+  --purple-pastel: #C8B6FF;
 }
