@@ -174,7 +174,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
 
         {/* 3 FORFAITS PRINCIPAUX */}
         <div className="py-8 px-4" style={{ paddingTop: '3rem' }}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
             {mainPlans.map((plan) => (
               <OctogonePricingCard key={plan.id} plan={plan} locale={locale} />
             ))}
@@ -183,7 +183,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
 
         {/* MODULES ADDITIONNELS */}
         <div className="py-12 px-4">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-7xl mx-auto">
             <h2 
               className="text-3xl font-bold mb-4 text-center"
               style={{ color: 'var(--on-surface)' }}
@@ -208,7 +208,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
 
         {/* TABLEAU DE COMPARAISON */}
         <div className="py-12 px-4" id="compare">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-7xl mx-auto">
             <h2 
               className="text-3xl font-bold mb-4 text-center"
               style={{ color: 'var(--on-surface)' }}
