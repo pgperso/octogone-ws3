@@ -193,41 +193,48 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
         <div className="py-12 px-4" id="compare">
           <div className="max-w-6xl mx-auto">
             <h2 
-              className="text-2xl font-bold mb-6"
+              className="text-3xl font-bold mb-4 text-center"
               style={{ color: 'var(--on-surface)' }}
             >
-              {isEnglish ? 'Feature Comparison' : 'Comparaison des fonctionnalités'}
+              {isEnglish ? 'Detailed Feature Comparison' : 'Comparaison détaillée des fonctionnalités'}
             </h2>
+            <p 
+              className="text-center mb-8"
+              style={{ color: 'var(--on-surface-variant)' }}
+            >
+              {isEnglish ? 'Condensed overview of key features by plan.' : 'Aperçu condensé des fonctions clés par plan.'}
+            </p>
             <div 
-              className="overflow-auto rounded-2xl"
+              className="overflow-auto rounded-2xl p-8"
               style={{
                 border: '1px solid var(--outline)',
-                background: 'var(--surface)'
+                background: 'var(--surface)',
+                boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.1)'
               }}
             >
-              <table className="min-w-full text-sm">
-                <thead style={{ backgroundColor: 'var(--surface-variant)' }}>
+              <table className="min-w-full">
+                <thead>
                   <tr>
                     <th 
-                      className="text-left p-4 font-semibold"
+                      className="text-left pb-6 font-bold text-lg"
                       style={{ color: 'var(--on-surface)' }}
                     >
                       {isEnglish ? 'Feature' : 'Fonctionnalité'}
                     </th>
                     <th 
-                      className="text-center p-4 font-semibold"
+                      className="text-center pb-6 font-bold text-lg"
                       style={{ color: 'var(--on-surface)' }}
                     >
                       {isEnglish ? 'Essential' : 'Essentiel'}
                     </th>
                     <th 
-                      className="text-center p-4 font-semibold"
+                      className="text-center pb-6 font-bold text-lg"
                       style={{ color: 'var(--on-surface)' }}
                     >
                       Pro
                     </th>
                     <th 
-                      className="text-center p-4 font-semibold"
+                      className="text-center pb-6 font-bold text-lg"
                       style={{ color: 'var(--on-surface)' }}
                     >
                       Pro + IA
@@ -238,46 +245,64 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                   {comparisonData.map((category, catIndex) => (
                     <React.Fragment key={catIndex}>
                       {/* Category Header */}
-                      <tr style={{ backgroundColor: 'var(--surface-variant)' }}>
-                        <td 
-                          colSpan={4}
-                          className="p-4 font-bold"
-                          style={{ color: 'var(--on-surface)' }}
-                        >
-                          {isEnglish ? category.categoryEn : category.categoryFr}
+                      <tr>
+                        <td colSpan={4} className="pt-6 pb-3">
+                          <div 
+                            className="font-bold text-base"
+                            style={{ color: 'var(--on-surface)' }}
+                          >
+                            {isEnglish ? category.categoryEn : category.categoryFr}
+                          </div>
                         </td>
                       </tr>
                       {/* Features in this category */}
                       {category.features.map((feature, featureIndex) => (
                         <tr 
                           key={`${catIndex}-${featureIndex}`}
-                          style={{
-                            backgroundColor: 'transparent'
-                          }}
+                          className="border-t"
+                          style={{ borderColor: 'var(--outline-variant)' }}
                         >
                           <td 
-                            className="p-4 pl-8"
+                            className="py-4 pr-4"
                             style={{ color: 'var(--on-surface)' }}
                           >
                             {isEnglish ? feature.nameEn : feature.nameFr}
                           </td>
-                          <td 
-                            className="p-4 text-center"
-                            style={{ color: feature.essentiel ? 'var(--success)' : 'var(--on-surface-variant)' }}
-                          >
-                            {feature.essentiel ? '✓' : '—'}
+                          <td className="py-4 text-center">
+                            {feature.essentiel ? (
+                              <div 
+                                className="inline-flex items-center justify-center w-6 h-6 rounded-full"
+                                style={{ backgroundColor: 'var(--success-container)' }}
+                              >
+                                <span style={{ color: 'var(--success)', fontSize: '16px' }}>✓</span>
+                              </div>
+                            ) : (
+                              <span style={{ color: 'var(--on-surface-variant)' }}>—</span>
+                            )}
                           </td>
-                          <td 
-                            className="p-4 text-center"
-                            style={{ color: feature.pro ? 'var(--success)' : 'var(--on-surface-variant)' }}
-                          >
-                            {feature.pro ? '✓' : '—'}
+                          <td className="py-4 text-center">
+                            {feature.pro ? (
+                              <div 
+                                className="inline-flex items-center justify-center w-6 h-6 rounded-full"
+                                style={{ backgroundColor: 'var(--success-container)' }}
+                              >
+                                <span style={{ color: 'var(--success)', fontSize: '16px' }}>✓</span>
+                              </div>
+                            ) : (
+                              <span style={{ color: 'var(--on-surface-variant)' }}>—</span>
+                            )}
                           </td>
-                          <td 
-                            className="p-4 text-center"
-                            style={{ color: feature.proAi ? 'var(--success)' : 'var(--on-surface-variant)' }}
-                          >
-                            {feature.proAi ? '✓' : '—'}
+                          <td className="py-4 text-center">
+                            {feature.proAi ? (
+                              <div 
+                                className="inline-flex items-center justify-center w-6 h-6 rounded-full"
+                                style={{ backgroundColor: 'var(--success-container)' }}
+                              >
+                                <span style={{ color: 'var(--success)', fontSize: '16px' }}>✓</span>
+                              </div>
+                            ) : (
+                              <span style={{ color: 'var(--on-surface-variant)' }}>—</span>
+                            )}
                           </td>
                         </tr>
                       ))}
