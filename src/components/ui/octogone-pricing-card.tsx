@@ -70,8 +70,24 @@ export const OctogonePricingCard: React.FC<PricingCardProps> = ({ plan, locale }
           </>
         )}
 
-        {/* Content wrapper with blur */}
-        <div style={{ filter: isBlurred ? 'blur(4px)' : 'none', pointerEvents: isBlurred ? 'none' : 'auto' }}>
+        {/* Content wrapper */}
+        <div style={{ position: 'relative' }}>
+        {/* Overlay */}
+        {isBlurred && (
+          <div 
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: -32,
+              right: -32,
+              bottom: 0,
+              background: 'rgba(255, 255, 255, 0.7)',
+              backdropFilter: 'blur(2px)',
+              zIndex: 5,
+              pointerEvents: 'none'
+            }}
+          />
+        )}
         {/* Icon */}
         <div className="flex justify-center gap-4 mb-8">
           <div 
