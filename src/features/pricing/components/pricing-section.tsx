@@ -73,43 +73,6 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
 
   return (
     <>
-      <style jsx global>{`
-        @keyframes shimmer {
-          0% { background-position: -200% 0; }
-          100% { background-position: 200% 0; }
-        }
-        
-        /* Swiper pagination dots */
-        .swiper-pagination-bullet {
-          background: var(--outline) !important;
-          opacity: 0.5 !important;
-        }
-        
-        .swiper-pagination-bullet-active {
-          background: var(--secondary-container) !important;
-          opacity: 1 !important;
-        }
-
-        /* Prevent CLS during Swiper initialization */
-        .swiper-no-cls {
-          visibility: visible !important;
-          opacity: 1 !important;
-        }
-        
-        .swiper-no-cls .swiper-wrapper {
-          align-items: stretch;
-        }
-        
-        .swiper-no-cls .swiper-slide {
-          height: auto;
-          display: flex;
-        }
-        
-        .swiper-no-cls .swiper-slide > div {
-          width: 100%;
-        }
-      `}</style>
-      
       {/* Hero Section */}
       <ResponsiveSection spacing="none" bgColor="" className="py-20">
         <div className="text-center max-w-4xl mx-auto mb-12">
