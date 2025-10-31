@@ -125,8 +125,8 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
       ...calculatePrice(89),
       description: (isEnglish ? modulesData.find(m => m.id === 'tips')?.descriptionEn : modulesData.find(m => m.id === 'tips')?.descriptionFr) || '',
       features: isEnglish ? modulesData.find(m => m.id === 'tips')?.featuresEn || [] : modulesData.find(m => m.id === 'tips')?.featuresFr || [],
-      badge: null,
-      badgeColor: null,
+      badge: isEnglish ? 'Say goodbye to Excel' : 'Dites adieu Excel',
+      badgeColor: 'warning',
       customColors: null,
       specialEffects: { ring: 'ring-4 ring-[var(--outline)]' }
     },
