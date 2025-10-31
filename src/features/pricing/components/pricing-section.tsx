@@ -6,6 +6,7 @@ import { OctogoneGradientButton } from '@/components/ui/octogone-gradient-button
 import { OctogoneToggle } from '@/components/ui/octogone-toggle';
 import { DollarSign, Package, Star, Thermometer, MessageCircleMore, ArrowRight } from 'lucide-react';
 import { PricingCard } from './pricing-card';
+import { AddonCard } from './addon-card';
 import modulesData from '@/data/calculator/modules.json';
 import pricingConfig from '@/data/pricing/config.json';
 
@@ -191,7 +192,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {addonModules.map((addon) => (
-                <PricingCard key={addon.id} plan={addon} locale={locale} />
+                <AddonCard key={addon.id} addon={addon} locale={locale} />
               ))}
             </div>
           </div>
