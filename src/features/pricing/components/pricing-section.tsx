@@ -174,7 +174,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
               {isEnglish ? 'Additional Modules (Optional)' : 'Modules additionnels (optionnels)'}
             </h2>
             <p 
-              className="text-sm mb-8"
+              className="text-xl mb-10"
               style={{ color: 'var(--on-surface-variant)' }}
             >
               {isEnglish 
@@ -199,17 +199,17 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
               {isEnglish ? 'Detailed Feature Comparison' : 'Comparaison détaillée des fonctionnalités'}
             </h2>
             <p 
-              className="text-center mb-8"
+              className="text-center text-xl mb-8"
               style={{ color: 'var(--on-surface-variant)' }}
             >
               {isEnglish ? 'Condensed overview of key features by plan.' : 'Aperçu condensé des fonctions clés par plan.'}
             </p>
             <div 
-              className="overflow-auto rounded-2xl p-8 ring-4 ring-[var(--outline)]"
+              className="rounded-2xl p-8 ring-4 ring-[var(--outline)]"
               style={{
                 border: 'none',
                 background: 'var(--surface)',
-                boxShadow: '0 1px 3px 0 rgb(0 0 0 / 0.1)'
+                overflowX: 'auto'
               }}
             >
               <table className="min-w-full">
