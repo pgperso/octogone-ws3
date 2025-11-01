@@ -196,7 +196,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
 
         {/* 3 FORFAITS PRINCIPAUX */}
         <div className="py-8 px-4" style={{ paddingTop: '3rem' }}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-y-8 md:gap-6 max-w-7xl mx-auto">
             {mainPlans.map((plan) => (
               <OctogonePricingCard key={plan.id} plan={plan} locale={locale} />
             ))}
@@ -220,7 +220,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                 ? 'Because there\'s no compromise when it comes to safety, add Thermometer to any of your plans. Tired of managing your tips manually? Add Tips to your plan! Want the complete package? Pro + Thermometer is what you need. Interested in Cortex? Contact our team quickly to reserve your access and lock in your rate.'
                 : 'Parce qu\'il n\'y a pas de compromis quand il s\'agit de sécurité, ajoutez Thermomètre à n\'importe quel de vos forfaits. Vous en avez assez de gérer vos pourboires à la mitaine? Ajoutez Pourboire à votre plan! Vous voulez la totale? C\'est Pro + Thermomètre qu\'il vous faut. Cortex vous intéresse? Contactez-vite notre équipe pour réserver votre accès et geler votre tarif.'}
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6" style={{ paddingTop: '0' }}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-y-8 md:gap-6" style={{ paddingTop: '0' }}>
               {addonModules.map((addon) => (
                 <OctogoneAddonCard key={addon.id} addon={addon} locale={locale} />
               ))}
