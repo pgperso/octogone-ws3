@@ -50,13 +50,13 @@ export default function ToolPage({
       icon: Play,
       color: 'rgba(184, 224, 210, 0.85)',
       border: '#A5CABE',
-      titleFr: 'Standardisation complète',
-      titleEn: 'Complete Standardization',
-      descFr: 'Recettes unifiées pour tous',
-      descEn: 'Unified recipes for everyone',
+      titleFr: 'Centralisation numérique des recettes',
+      titleEn: 'Digital Recipe Centralization',
+      descFr: 'Standardisation des plats et portions',
+      descEn: 'Standardization of dishes and portions',
       statFr: '50% de temps économisé',
       statEn: '50% time saved',
-      explanationFr: 'La création manuelle de fiches recettes prend en moyenne 15-20 minutes par recette. Avec un catalogue centralisé de produits et des outils de création rapide, vous créez une fiche complète en 5-7 minutes. Pour un restaurant avec 80 recettes, cela représente 16-20 heures économisées. De plus, toute modification se propage instantanément à toutes les équipes, éliminant les versions obsolètes et les erreurs de communication.',
+      explanationFr: 'La centralisation numérique des recettes garantit la standardisation des plats et des portions, assurant une expérience client constante, jour après jour. En s\'appuyant sur des fiches recettes numériques et normalisées, chaque membre de l\'équipe dispose des mêmes informations claires et à jour, même en cas de roulement de personnel. Cette cohérence renforce la qualité perçue, la satisfaction des clients et la maîtrise du savoir-faire culinaire de l\'établissement.',
       explanationEn: 'Manual recipe card creation takes an average of 15-20 minutes per recipe. With a centralized product catalog and quick creation tools, you create a complete card in 5-7 minutes. For a restaurant with 80 recipes, this represents 16-20 hours saved. Additionally, any modification instantly propagates to all teams, eliminating outdated versions and communication errors.'
     },
     {
@@ -84,7 +84,7 @@ export default function ToolPage({
       descEn: 'Exact food cost % on every dish',
       statFr: '2-5% de réduction',
       statEn: '2-5% reduction',
-      explanationFr: 'Les restaurants qui ne suivent pas leurs coûts précisément perdent en moyenne 3-4% de leur chiffre d\'affaires en gaspillage et portions excessives. En connaissant le food cost exact de chaque plat, vous identifiez immédiatement les recettes non rentables, détectez les écarts de portions, et repérez le gaspillage. Cette visibilité vous permet d\'optimiser votre menu et de protéger vos marges.',
+      explanationFr: 'Le prix de chaque ingrédient et le coûtant de chaque recette sont visibles en tout temps. Cette visibilité permet d\'identifier rapidement les recettes les moins rentables, de contrôler les portions et de réduire le gaspillage. En maîtrisant ainsi les coûts en temps réel, le restaurant protège ses marges et optimise la rentabilité de son menu.',
       explanationEn: 'Restaurants that don\'t track their costs precisely lose an average of 3-4% of revenue to waste and over-portioning. By knowing the exact food cost of each dish, you immediately identify unprofitable recipes, detect portion variances, and spot waste. This visibility allows you to optimize your menu and protect your margins.'
     },
     {
@@ -112,8 +112,8 @@ export default function ToolPage({
       border: '#A5CABE',
       titleFr: 'Inventaire collaboratif',
       titleEn: 'Collaborative Inventory',
-      descFr: 'Plusieurs équipes en simultané',
-      descEn: 'Multiple teams simultaneously',
+      descFr: 'Plusieurs personnes simultanément',
+      descEn: 'Multiple people simultaneously',
       statFr: '65% plus rapide',
       statEn: '65% faster',
       explanationFr: 'L\'inventaire manuel traditionnel prend 3-4 heures pour un restaurant moyen. Avec la saisie collaborative et le mode hors ligne, plusieurs membres de l\'équipe comptent simultanément dans différentes zones. Un inventaire complet se fait maintenant en 50-80 minutes. Cette rapidité permet des comptages plus fréquents, améliorant la précision et la réactivité face aux écarts.',
@@ -130,7 +130,7 @@ export default function ToolPage({
       descEn: 'Instant threshold detection',
       statFr: '95% des ruptures',
       statEn: '95% of shortages',
-      explanationFr: 'Les ruptures de stock coûtent cher : ventes perdues, clients déçus, substitutions d\'urgence. Le système détecte automatiquement les produits sous leur seuil minimum pendant l\'inventaire et génère immédiatement des bons de commande ou de production. Vous agissez en temps réel au lieu d\'attendre la fin du comptage, éliminant les ruptures évitables.',
+      explanationFr: 'Évitez les pertes et les ruptures de stock tout en assurant la satisfaction de vos clients. Grâce à un système qui anticipe les manques et déclenche automatiquement le réapprovisionnement, vous gardez vos rayons toujours pleins, garantissez la continuité des ventes et gagnez en sérénité au quotidien.',
       explanationEn: 'Stock shortages are costly: lost sales, disappointed customers, emergency substitutions. The system automatically detects products below minimum threshold during inventory and immediately generates purchase or production orders. You act in real-time instead of waiting for count completion, eliminating avoidable shortages.'
     },
     {
@@ -579,7 +579,7 @@ export default function ToolPage({
                                 color: '#1a1a1a'
                               }}
                             >
-                              {isEnglish ? 'Coming Soon' : 'Bientôt'}
+                              {isEnglish ? 'Cortex AI' : 'Cortex IA'}
                             </span>
                           )}
                         </div>
@@ -607,13 +607,13 @@ export default function ToolPage({
                         </h3>
                         {selectedCard === 'predict' && (
                           <span 
-                            className="px-3 py-1 rounded-md text-xs font-semibold whitespace-nowrap"
+                            className="px-2 py-1 rounded-md text-xs font-semibold whitespace-nowrap"
                             style={{ 
                               backgroundColor: octogone360BenefitCards.find(c => c.concept === selectedCard)?.color,
                               color: '#1a1a1a'
                             }}
                           >
-                            {isEnglish ? 'Coming Soon' : 'Bientôt'}
+                            {isEnglish ? 'Cortex AI' : 'Cortex IA'}
                           </span>
                         )}
                       </div>
@@ -837,7 +837,7 @@ export default function ToolPage({
                                 color: '#1a1a1a'
                               }}
                             >
-                              {isEnglish ? 'Coming Soon' : 'Bientôt'}
+                              {isEnglish ? 'Cortex AI' : 'Cortex IA'}
                             </span>
                           )}
                         </div>
@@ -871,7 +871,7 @@ export default function ToolPage({
                               color: '#1a1a1a'
                             }}
                           >
-                            {isEnglish ? 'Coming Soon' : 'Bientôt'}
+                            {isEnglish ? 'Cortex AI' : 'Cortex IA'}
                           </span>
                         )}
                       </div>
@@ -1100,7 +1100,7 @@ export default function ToolPage({
                           color: '#1a1a1a'
                         }}
                       >
-                        {isEnglish ? 'Coming Soon' : 'Bientôt'}
+                        {isEnglish ? 'Cortex AI' : 'Cortex IA'}
                       </span>
                     )}
                   </div>
@@ -1134,7 +1134,7 @@ export default function ToolPage({
                           color: '#1a1a1a'
                         }}
                       >
-                        {isEnglish ? 'Coming Soon' : 'Bientôt'}
+                        {isEnglish ? 'Cortex AI' : 'Cortex IA'}
                       </span>
                     )}
                   </div>
