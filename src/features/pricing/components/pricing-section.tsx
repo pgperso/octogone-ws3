@@ -330,8 +330,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                           className="border-t"
                           style={{ 
                             borderColor: 'var(--outline-variant)',
-                            filter: isCortexCategory ? 'blur(4px)' : 'none',
-                            opacity: isCortexCategory ? 0.6 : 1
+                            filter: isCortexCategory ? 'blur(3px)' : 'none'
                           }}
                         >
                           <td 
@@ -372,28 +371,15 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                           </td>
                           <td className="py-4 text-center">
                             {feature.proAi ? (
-                              (isEnglish ? category.categoryEn : category.categoryFr).includes('Cortex') || 
-                              (isEnglish ? category.categoryEn : category.categoryFr).includes('Intelligence') ? (
-                                <span 
-                                  className="text-xs font-medium px-2 py-1 rounded"
-                                  style={{ 
-                                    color: 'var(--on-secondary-container)',
-                                    backgroundColor: 'var(--secondary-container)'
-                                  }}
-                                >
-                                  {isEnglish ? 'Pending...' : 'En attente...'}
-                                </span>
-                              ) : (
-                                <div 
-                                  className="inline-flex items-center justify-center w-8 h-8 rounded-lg"
-                                  style={{ backgroundColor: 'var(--success)' }}
-                                >
-                                  <Check 
-                                    className="w-5 h-5"
-                                    style={{ color: 'var(--on-primary-container)', strokeWidth: 3 }}
-                                  />
-                                </div>
-                              )
+                              <div 
+                                className="inline-flex items-center justify-center w-8 h-8 rounded-lg"
+                                style={{ backgroundColor: 'var(--success)' }}
+                              >
+                                <Check 
+                                  className="w-5 h-5"
+                                  style={{ color: 'var(--on-primary-container)', strokeWidth: 3 }}
+                                />
+                              </div>
                             ) : (
                               <span style={{ color: 'var(--on-surface-variant)' }}>—</span>
                             )}
