@@ -261,15 +261,27 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                       {isEnglish ? 'Feature' : 'Fonctionnalité'}
                     </th>
                     <th className="text-center pb-6">
-                      <div 
-                        className="inline-block px-4 py-2 rounded-lg text-sm font-bold"
-                        style={{ 
-                          backgroundColor: 'var(--primary)',
-                          color: 'var(--on-primary)',
-                          border: '1px solid var(--outline)'
-                        }}
-                      >
-                        {isEnglish ? 'Essential' : 'Essentiel'}
+                      <div className="flex flex-col gap-2 items-center">
+                        <div 
+                          className="inline-block px-4 py-2 rounded-lg text-sm font-bold"
+                          style={{ 
+                            backgroundColor: 'var(--green-pastel)',
+                            color: '#1F1F1F',
+                            border: '1px solid var(--outline)'
+                          }}
+                        >
+                          {isEnglish ? 'Inventory' : 'Inventaire'}
+                        </div>
+                        <div 
+                          className="inline-block px-4 py-2 rounded-lg text-sm font-bold"
+                          style={{ 
+                            backgroundColor: 'var(--yellow-pastel)',
+                            color: '#1F1F1F',
+                            border: '1px solid var(--outline)'
+                          }}
+                        >
+                          Food Cost
+                        </div>
                       </div>
                     </th>
                     <th className="text-center pb-6">
