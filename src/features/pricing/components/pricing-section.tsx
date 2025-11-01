@@ -261,27 +261,27 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                       {isEnglish ? 'Feature' : 'Fonctionnalité'}
                     </th>
                     <th className="text-center pb-6">
-                      <div className="flex flex-col gap-2 items-center">
-                        <div 
-                          className="inline-block px-4 py-2 rounded-lg text-sm font-bold"
-                          style={{ 
-                            backgroundColor: 'var(--green-pastel)',
-                            color: '#1F1F1F',
-                            border: '1px solid var(--outline)'
-                          }}
-                        >
-                          {isEnglish ? 'Inventory' : 'Inventaire'}
-                        </div>
-                        <div 
-                          className="inline-block px-4 py-2 rounded-lg text-sm font-bold"
-                          style={{ 
-                            backgroundColor: 'var(--yellow-pastel)',
-                            color: '#1F1F1F',
-                            border: '1px solid var(--outline)'
-                          }}
-                        >
-                          Food Cost
-                        </div>
+                      <div 
+                        className="inline-block px-4 py-2 rounded-lg text-sm font-bold"
+                        style={{ 
+                          backgroundColor: 'var(--green-pastel)',
+                          color: '#1F1F1F',
+                          border: '1px solid var(--outline)'
+                        }}
+                      >
+                        {isEnglish ? 'Inventory' : 'Inventaire'}
+                      </div>
+                    </th>
+                    <th className="text-center pb-6">
+                      <div 
+                        className="inline-block px-4 py-2 rounded-lg text-sm font-bold"
+                        style={{ 
+                          backgroundColor: 'var(--yellow-pastel)',
+                          color: '#1F1F1F',
+                          border: '1px solid var(--outline)'
+                        }}
+                      >
+                        Food Cost
                       </div>
                     </th>
                     <th className="text-center pb-6">
@@ -310,7 +310,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                     </th>
                   </tr>
                   <tr>
-                    <td colSpan={4}>
+                    <td colSpan={5}>
                       <div 
                         className="w-full h-px mb-6"
                         style={{ backgroundColor: 'var(--outline)' }}
@@ -323,7 +323,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                     <React.Fragment key={catIndex}>
                       {/* Category Header */}
                       <tr>
-                        <td colSpan={4} className="pt-6 pb-3">
+                        <td colSpan={5} className="pt-6 pb-3">
                           <div 
                             className="font-bold text-base"
                             style={{ color: 'var(--on-surface)' }}
@@ -352,7 +352,22 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ locale }) => {
                             {isEnglish ? feature.nameEn : feature.nameFr}
                           </td>
                           <td className="py-4 text-center">
-                            {feature.essentiel ? (
+                            {feature.inventaire ? (
+                              <div 
+                                className="inline-flex items-center justify-center w-8 h-8 rounded-lg"
+                                style={{ backgroundColor: 'var(--success)' }}
+                              >
+                                <Check 
+                                  className="w-5 h-5"
+                                  style={{ color: 'var(--on-primary-container)', strokeWidth: 3 }}
+                                />
+                              </div>
+                            ) : (
+                              <span style={{ color: 'var(--on-surface-variant)' }}>—</span>
+                            )}
+                          </td>
+                          <td className="py-4 text-center">
+                            {feature.foodCost ? (
                               <div 
                                 className="inline-flex items-center justify-center w-8 h-8 rounded-lg"
                                 style={{ backgroundColor: 'var(--success)' }}

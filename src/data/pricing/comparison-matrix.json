@@ -6,21 +6,24 @@
       {
         "nameFr": "Catalogue et inventaire centralisés",
         "nameEn": "Centralized catalog and inventory",
-        "essentiel": true,
+        "inventaire": true,
+        "foodCost": true,
         "pro": true,
         "proAi": true
       },
       {
         "nameFr": "Mise à jour automatique des coûts et surveillance des prix",
         "nameEn": "Automatic cost updates and price monitoring",
-        "essentiel": true,
+        "inventaire": true,
+        "foodCost": true,
         "pro": true,
         "proAi": true
       },
       {
         "nameFr": "Numérisation et standardisation des recettes",
         "nameEn": "Recipe digitization and standardization",
-        "essentiel": true,
+        "inventaire": false,
+        "foodCost": true,
         "pro": true,
         "proAi": true
       }
@@ -33,21 +36,24 @@
       {
         "nameFr": "Planification des commandes et de la production",
         "nameEn": "Order and production planning",
-        "essentiel": false,
+        "inventaire": false,
+        "foodCost": false,
         "pro": true,
         "proAi": true
       },
       {
         "nameFr": "Suivi du food cost et de la main-d'œuvre",
         "nameEn": "Food cost and labor tracking",
-        "essentiel": false,
+        "inventaire": false,
+        "foodCost": false,
         "pro": true,
         "proAi": true
       },
       {
         "nameFr": "Gestion des pertes et transferts entre succursales",
         "nameEn": "Loss management and inter-branch transfers",
-        "essentiel": false,
+        "inventaire": false,
+        "foodCost": false,
         "pro": true,
         "proAi": true
       }
@@ -60,14 +66,16 @@
       {
         "nameFr": "Intégrations POS, RH et fournisseurs",
         "nameEn": "POS, HR, and supplier integrations",
-        "essentiel": false,
+        "inventaire": false,
+        "foodCost": false,
         "pro": true,
         "proAi": true
       },
       {
         "nameFr": "Support prioritaire et SLA personnalisable",
         "nameEn": "Priority support and customizable SLA",
-        "essentiel": false,
+        "inventaire": false,
+        "foodCost": false,
         "pro": true,
         "proAi": true
       }
@@ -80,21 +88,24 @@
       {
         "nameFr": "Cortex IA – assistant intelligent",
         "nameEn": "Cortex AI – intelligent assistant",
-        "essentiel": false,
+        "inventaire": false,
+        "foodCost": false,
         "pro": false,
         "proAi": true
       },
       {
         "nameFr": "Analyses prédictives et recommandations",
         "nameEn": "Predictive analytics and recommendations",
-        "essentiel": false,
+        "inventaire": false,
+        "foodCost": false,
         "pro": false,
         "proAi": true
       },
       {
         "nameFr": "Optimisation et insights avancés",
         "nameEn": "Optimization and advanced insights",
-        "essentiel": false,
+        "inventaire": false,
+        "foodCost": false,
         "pro": false,
         "proAi": true
       }
@@ -107,14 +118,16 @@
       {
         "nameFr": "Thermomètre connecté – surveillance en temps réel",
         "nameEn": "Connected thermometer – real-time monitoring",
-        "essentiel": false,
+        "inventaire": false,
+        "foodCost": false,
         "pro": true,
         "proAi": true
       },
       {
         "nameFr": "Pourboires – répartition automatique et intégrations RH",
         "nameEn": "Tips – automatic distribution and HR integrations",
-        "essentiel": false,
+        "inventaire": false,
+        "foodCost": false,
         "pro": true,
         "proAi": true
       }
