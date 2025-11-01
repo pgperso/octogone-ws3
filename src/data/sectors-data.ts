@@ -54,10 +54,10 @@ export const targetSectors: TargetSector[] = [
   },
   {
     id: "purchasing-groups",
-    titleFr: "Regroupements d'achats",
-    titleEn: "Purchasing groups",
-    descriptionFr: "Achats groupés",
-    descriptionEn: "Group purchasing",
+    titleFr: "Résidences pour personnes âgées",
+    titleEn: "Senior living facilities",
+    descriptionFr: "Résidences pour aînés",
+    descriptionEn: "Senior residences",
     image: "/images/sectors/purchasing-groups.avif",
     gradient: "from-purple-400 to-purple-600",
     hoverGradient: "from-purple-500 to-purple-700"
